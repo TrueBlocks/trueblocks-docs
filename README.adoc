@@ -21,6 +21,7 @@ Through a binary cache, TrueBlocks can make your repeated queries _very fast_.
 For large complex queries, this cache can reduce query times from minutes to seconds.
 
 If they want privacy, speed, and data quality, TrueBlocks might be helpful to:
+
 * Data scientists
 * Investigators who want to track addresses and accounts
 * Organizations like charities who may need restricted donations.
@@ -120,12 +121,12 @@ We're really grateful for all commits and issues, from typos to major optimizati
 
 Some current items on the to-do list include:
 
-. Coding
-* [ ] [[I don't know!!]]
+* Coding
+** [ ] [[I don't know!!]]
 
-. Documentation
-* [ ] Commands 
-* [ ] explorer
+* Documentation
+** [ ] Commands 
+** [ ] explorer
 
 If you want to make a PR, here's our preferred flow:
 
