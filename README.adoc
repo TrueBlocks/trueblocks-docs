@@ -1,0 +1,146 @@
+= README
+:reproducible:
+
+Ethereum as it was meant to be: local-first, P2P, and accurate queries to all the data you'll ever need.
+
+image:./chifra-lists.gif[55s to under 0.1s!,800]
+
+== What even is this?
+
+TrueBlocks creates an index that lets you access the entire Ethereum chain directly from your local machine.
+It ships with a large number of tools that let you chain together queries on all types of Ethereum data:
+transaction numbers, addresses, blocks, ABIs, etcetera.
+
+Trueblocks works by capturing the chain at any point in time on an index.
+Although it lets you query the entire chain, the index occupies only about 50gb of space
+(for comparison, the unindexed chain occupies about six terrabytes).
+We distribute the index over the link:https://ipfs.io/[Interplanetary file system],
+letting you avoid centralized cloud node services.
+
+Through a binary cache, TrueBlocks can make your repeated queries _very fast_.
+For large complex queries, this cache can reduce query times from minutes to seconds.
+
+If they want privacy, speed, and data quality, TrueBlocks might be helpful to:
+* Data scientists
+* Investigators who want to track addresses and accounts
+* Organizations like charities who may need restricted donations.
+* Any Ethereum head. If you have a cool idea, let us know!
+
+=== The catch
+
+Unfortunately, while Trueblocks is already working on some test accounts, it's not quite ready for widespread public release.
+However, this repo currently does offer some tools that could be working to day.
+If you want to see what's currently working, check out <<What works now?>>:
+
+== Background: the promises and realities
+
+NOTE: [[_Jay, I need help on this part_]]
+
+Eight years ago, we got hooked on Ethereum.
+And not for riches, but for its technical and philosophical promises:
+
+* Ownerless computation and currency
+* Proof of stake consensus
+* Distributed
+
+Now, let's be honest: that hasn't all worked out quite as easily as we thought.
+It's true, the Ethereum foundation has made enormous progress, and we're very grateful for the work they continue to do.
+But, the reality is that some hard engineering problems have gotten in the way of the promises of ethereum:
+
+* Heavy computational requirements. Running a node requires a beefy machine, with a lot of spare memory 
+* Actually parsing the validation process is nearly impossible
+* The way the vast majority of users use Ethereum is completely centralized
+** Buy currency on a cloud exchange
+** Access a node through a cloud RPC.
+
+It's also extremely slow! When the DAO got hacked in 2016, the WhiteHats needed an accurate list of token account holders to reimburse. The python code they used took over 20 hours to generate a list of transactions on the DAO during the last fifteen days of the sale. _Twenty hours for fifteen days of data!_
+
+TrueBlocks tries to mitigate these issues.
+For the heavy computing problem, the index gives you access to the entire chain, without running a node. 
+[[NO IDEA about this one →]]For validation, our articulation tool lets you translate the transaction bytes into human-readable data.
+Accessing this index through the IPFS ensures immutability (as changing anything would change the address hash) 
+The index is local-first and distributed over IPFS, ensuring decentralization.
+The cache ensure its fast.
+
+== What works now?
+
+Until make indexing work on all computers, only a few of these tools will run on your current machines.
+Unfortunately, these are the tools that make queries to external APIs.
+For example `chifra quotes` lets you query Eth prices.
+But if you're not running a node, you'll need an RPC api key.
+This is _totally beside the point_, we get it.
+But if you want to give it a try, these tools are working today.
+
+The following instructions have you compiling from source and working on the CLI.
+If you want to use our browser front-end, see link:https://github.com/TrueBlocks/trueblocks-explorer[TrueBlocks Explorer.] For a docker image, see link:https://github.com/TrueBlocks/trueblocks-docker[TrueBlocks Docker]
+
+If you have fixes and ideas, see <<How can I help?>>.
+
+=== Installing
+
+. Install dependencies
++
+[shell]
+----
+sudo apt install build-essential git cmake python python-dev libcurl3-dev clang-format jq
+----
++
+. Compile
++
+[shell]
+----
+git clone git@github.com:TrueBlocks/trueblocks-core.git
+cd trueblocks-core
+mkdir build && cd build
+cmake ../src
+make
+----
++
+. Set the new `./bin` folder to PATH
+. If needed, add keys for RPC and EtherScan (for `chifra slurp`). In `~/.quickBlocks/quickBlocks.toml`, add these lines. Be sure they're under `[settings]`:
+ 
++
+[toml]
+----
+[settings]
+rpcProvider = "<url>/<key>
+etherscan_key = "<key>"
+----
++
+. Test your install.
++
+[shell]
+----
+chifra blocks 14560
+----
+
+== How can I help?
+
+We're really grateful for all commits and issues, from typos to major optimizations.
+
+Some current items on the to-do list include:
+
+. Coding
+* [ ] [[I don't know!!]]
+
+. Documentation
+* [ ] Commands 
+* [ ] explorer
+
+If you want to make a PR, here's our preferred flow:
+
+. Clone whichever repo you're interested in (trueblocks-core, trueblocks-docker, or trueblocks-explorer).
+
+. Checkout the develop branch (git checkout develop).
+
+. Create a branch from the develop branch (git checkout -b whatever).
+
+. Create a PR against the develop branch 
+
+. Once your PR is merged, your remote branch will be deleted (to keep the number of stale branches low)
+
+== What if I just have a question?
+
+Chat us on our discord! link:https://discord.gg/kS6WNk4d[Invite link].
+
+Or send an email to info@quickblocks.io.
