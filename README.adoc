@@ -65,19 +65,19 @@ The cache ensure its fast.
 
 == What works now?
 
-Until indexing works on all computers, only a few of these tools will run on your current machines.
-Unfortunately, these are the tools that make queries to external APIs.
-For example `chifra quotes` lets you query Eth prices.
-But if you're not running a node, you'll need an RPC API key.
-This is _totally beside the point_, we get it.
-But if you want to give it a try, these tools are working today.
+All of the [THIS SHOULD BE A LINK] TrueBlocks tools currently work and are passing more than 1,000 test cases. Some tools work better than others.
 
-The following instructions have you compiling from source and working on the CLI.
-If you want to use our browser front-end, see link:https://github.com/TrueBlocks/trueblocks-explorer[TrueBlocks Explorer.] For a docker image, see link:https://github.com/TrueBlocks/trueblocks-docker[TrueBlocks Docker]
+The largest remaining open issue is the TrueBlocks scraper, which extracts an index of address appearances from the
+chain. Currently, this index may be built from scratch, a process that takes two days and is free if you have your own archive
+node. Unfortunately, this process takes significantly longer and will cost you money if you do not have your own 
+archive node. We're working on processes (using IPFS) to get you the index in the later case.
 
-If you have fixes and ideas, see <<How can I help?>>.
+We are very open to your comments / questions. If you have fixes and ideas, see <<How can I help?>>.
 
 === Installing
+
+The following instructions help you compile the `core` tools from the TrueBlocks github repo.
+If you want to use our browser front-end, see link:https://github.com/TrueBlocks/trueblocks-explorer[TrueBlocks Explorer.] For a docker image, see link:https://github.com/TrueBlocks/trueblocks-docker[TrueBlocks Docker]
 
 . Install dependencies
 +
@@ -90,11 +90,11 @@ sudo apt install build-essential git cmake python python-dev libcurl3-dev clang-
 +
 [shell]
 ----
-git clone git@github.com:TrueBlocks/trueblocks-core.git
+git clone -b develop git@github.com:TrueBlocks/trueblocks-core.git
 cd trueblocks-core
 mkdir build && cd build
 cmake ../src
-make
+make -j
 ----
 +
 . Set the new `./bin` folder to PATH
