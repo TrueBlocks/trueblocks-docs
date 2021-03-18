@@ -84,12 +84,15 @@ If you want to use our browser front-end, see link:https://github.com/TrueBlocks
 
 . Install dependencies
 +
-* On Linux:
+**For Linux**:
++
 [shell]
 ----
 sudo apt install build-essential git cmake python python-dev libcurl3-dev clang-format jq
 ----
-* On Mac:
++
+**For Mac**:
++
 [shell]
 ----
 brew install cmake
@@ -97,7 +100,7 @@ brew install git
 brew install clang-format
 brew install jq
 ----
-+
+
 . Compile
 +
 [shell]
@@ -108,10 +111,8 @@ mkdir build && cd build
 cmake ../src
 make -j
 ----
-+
 . Set the new `./bin` folder to PATH
 . If needed, add keys for RPC and EtherScan (for `chifra slurp`). In `~/.quickBlocks/quickBlocks.toml`, add these lines. Be sure they're under `[settings]`:
- 
 +
 [toml]
 ----
@@ -119,7 +120,7 @@ make -j
 rpcProvider = "<url>/<key>
 etherscan_key = "<key>"
 ----
-+
+
 . Test your install.
 +
 [shell]
