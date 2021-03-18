@@ -65,12 +65,15 @@ The cache ensure its fast.
 
 == What works now?
 
-All of the [THIS SHOULD BE A LINK] TrueBlocks tools currently work and are passing more than 1,000 test cases. Some tools work better than others.
+All of the link:https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools[TrueBlocks tools] currently work and are passing more than 1,000 test cases.
+Some tools work better than others.
 
-The largest remaining open issue is the TrueBlocks scraper, which extracts an index of address appearances from the
-chain. Currently, this index may be built from scratch, a process that takes two days and is free if you have your own archive
-node. Unfortunately, this process takes significantly longer and will cost you money if you do not have your own 
-archive node. We're working on processes (using IPFS) to get you the index in the later case.
+The largest remaining open issue is the TrueBlocks scraper, which extracts an index of address appearances from the chain.
+Currently, this index may be built from scratch, a process that takes two days and is free if you have your own archive
+node.
+Unfortunately, this process takes significantly longer
+and, if you do not have your own archive node, it will cost money.
+We're working on processes (using IPFS) to get you the index in the later case.
 
 We are very open to your comments/questions. If you have fixes and ideas, see <<How can I help?>>.
 
