@@ -33,33 +33,30 @@ Unfortunately, while the index is already working on some test accounts, it's no
 However, this repo does offer some tools that should work on any Mac or Linux machine.
 If you want to see what's currently working, check out <<What works now?>>:
 
-== Background: the promises and realities
+== Background: Promise vs. Reality
 
-NOTE: [[_Jay, I need help on this part_]]
+Back in late 2015, we become obsessed with Ethereum. Not because of 'price go up', but because of the amazing promise that shared, global data has to change the world:
 
-Eight years ago, we got hooked on Ethereum.
-And not for riches, but for its technical and philosophical promises:
+* Permissionless data
+* World-wide consented-to data
+* Cryptographically secured data
+* Distributed data
+* Immutable data
 
-* Ownerless computation and currency
-* Proof of stake consensus
-* Distributed
+Sound enticing, but be honest: things haven't worked out exactly as we thought.
 
-Now, let's be honest: that hasn't all worked out quite as easily as we thought.
-It's true, the Ethereum foundation has made enormous progress, and we're very grateful for the work they continue to do.
-But, the reality is that some hard engineering problems have gotten in the way of the promises of ethereum:
+The reality is that there are many hard engineering problems left to solve:
 
-* Heavy computational requirements. Running a node requires a beefy machine, with a lot of spare memory 
-* Actually parsing the validation process is nearly impossible
-* The way the vast majority of users use Ethereum is completely centralized
-** Buy currency on a cloud exchange
-** Access a node through a cloud RPC.
+* Heavy computational requirements means Ethereum nodes are difficult to run on your own
+* Extracting meaningful data from the node is slow, error-prone, and confusing
+* Current methods of accessing Ethereum data rely on third-party providers and APIs which will lead to:
+** Privacy invasion
+** Winner-take-all market dominance by a small number of (or one!) providers
+** Unnecessary costs, rate-limiting, sharing of services for remote data
 
-It's also extremely slow!
-When the DAO got hacked in 2016, the WhiteHats needed an accurate list of token account holders to reimburse.
-The python code they used took over 20 hours to generate a list of transactions on the DAO during the last fifteen days of the sale.
-_Twenty hours for fifteen days of data!_
+Moreover, using an Ethereum node -- especially a remote node -- is REALLY slow!
 
-TrueBlocks tries to mitigate these issues.
+TrueBlocks tries to mitigate some of these issues.
 For the heavy computing problem, the index gives you access to the entire chain, without running a node. 
 [[NO IDEA about this one →]]For validation, our articulation tool lets you translate the transaction bytes into human-readable data.
 Accessing this index through the IPFS ensures immutability (as changing anything would change the address hash) 
@@ -68,19 +65,19 @@ The cache ensure its fast.
 
 == What works now?
 
-Until indexing works on all computers, only a few of these tools will run on your current machines.
-Unfortunately, these are the tools that make queries to external APIs.
-For example `chifra quotes` lets you query Eth prices.
-But if you're not running a node, you'll need an RPC API key.
-This is _totally beside the point_, we get it.
-But if you want to give it a try, these tools are working today.
+All of the [THIS SHOULD BE A LINK] TrueBlocks tools currently work and are passing more than 1,000 test cases. Some tools work better than others.
 
-The following instructions have you compiling from source and working on the CLI.
-If you want to use our browser front-end, see link:https://github.com/TrueBlocks/trueblocks-explorer[TrueBlocks Explorer.] For a docker image, see link:https://github.com/TrueBlocks/trueblocks-docker[TrueBlocks Docker]
+The largest remaining open issue is the TrueBlocks scraper, which extracts an index of address appearances from the
+chain. Currently, this index may be built from scratch, a process that takes two days and is free if you have your own archive
+node. Unfortunately, this process takes significantly longer and will cost you money if you do not have your own 
+archive node. We're working on processes (using IPFS) to get you the index in the later case.
 
-If you have fixes and ideas, see <<How can I help?>>.
+We are very open to your comments/questions. If you have fixes and ideas, see <<How can I help?>>.
 
 === Installing
+
+The following instructions help you compile the `core` tools from the TrueBlocks github repo.
+If you want to use our browser front-end, see link:https://github.com/TrueBlocks/trueblocks-explorer[TrueBlocks Explorer.] For a docker image, see link:https://github.com/TrueBlocks/trueblocks-docker[TrueBlocks Docker]
 
 . Install dependencies
 +
@@ -93,11 +90,11 @@ sudo apt install build-essential git cmake python python-dev libcurl3-dev clang-
 +
 [shell]
 ----
-git clone git@github.com:TrueBlocks/trueblocks-core.git
+git clone -b develop git@github.com:TrueBlocks/trueblocks-core.git
 cd trueblocks-core
 mkdir build && cd build
 cmake ../src
-make
+make -j
 ----
 +
 . Set the new `./bin` folder to PATH
