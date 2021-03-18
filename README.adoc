@@ -51,15 +51,15 @@ The reality is that there are many hard engineering problems left to solve:
 * Extracting meaningful data from the node is slow, error-prone, and confusing
 * Current methods of accessing Ethereum data rely on third-party providers and APIs which will lead to:
 ** Privacy invasion
-** Winner-take-all market dominance by a small number of (or one!) providers
+** Winner-take-all market dominance by a small number of providers(if not just one!)
 ** Unnecessary costs, rate-limiting, sharing of services for remote data
 
-Moreover, using an Ethereum node -- especially a remote node -- is REALLY slow!
+Moreover, using an Ethereum node ─ especially a remote node ─ is REALLY slow!
 
 TrueBlocks tries to mitigate some of these issues.
 For the heavy computing problem, the index gives you access to the entire chain, without running a node. 
-[[NO IDEA about this one →]]For validation, our articulation tool lets you translate the transaction bytes into human-readable data.
-Accessing this index through the IPFS ensures immutability (as changing anything would change the address hash) 
+For validation, our articulation tool lets you translate the transaction bytes into human-readable data.
+Accessing this index through the IPFS ensures immutability(as changing anything would change the address hash).
 The index is local-first and distributed over IPFS, ensuring decentralization.
 The cache ensure its fast.
 
@@ -84,9 +84,18 @@ If you want to use our browser front-end, see link:https://github.com/TrueBlocks
 
 . Install dependencies
 +
+* On Linux:
 [shell]
 ----
 sudo apt install build-essential git cmake python python-dev libcurl3-dev clang-format jq
+----
+* On Mac:
+[shell]
+----
+brew install cmake
+brew install git
+brew install clang-format
+brew install jq
 ----
 +
 . Compile
@@ -125,11 +134,15 @@ We're really grateful for all commits and issues, from typos to major optimizati
 Some current items on the to-do list include:
 
 * Coding
-** [ ] [[I don't know!!]]
+** [ ] Fixing `chifra scrape`
+** [ ] Getting reliability across machines
+
+* Network
+** [ ] Distributing index via IPFS
 
 * Documentation
-** [ ] Commands 
-** [ ] explorer
+** [ ] Full command reference
+** [ ] Some HOWTos
 
 If you want to make a PR, here's our preferred flow:
 
@@ -145,6 +158,6 @@ If you want to make a PR, here's our preferred flow:
 
 == What if I just have a question?
 
-Chat us on our discord! link:https://discord.gg/kS6WNk4d[Invite link].
+Chat with us on our discord! link:https://discord.gg/kS6WNk4d[Invite link].
 
 Or send an email to info@quickblocks.io.
