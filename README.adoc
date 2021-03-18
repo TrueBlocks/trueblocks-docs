@@ -56,7 +56,7 @@ The reality is that there are many hard engineering problems left to solve:
 
 Moreover, using an Ethereum node -- especially a remote node -- is REALLY slow!
 
-TrueBlocks tries to mitigate some these issues.
+TrueBlocks tries to mitigate some of these issues.
 For the heavy computing problem, the index gives you access to the entire chain, without running a node. 
 [[NO IDEA about this one →]]For validation, our articulation tool lets you translate the transaction bytes into human-readable data.
 Accessing this index through the IPFS ensures immutability (as changing anything would change the address hash) 
@@ -72,7 +72,7 @@ chain. Currently, this index may be built from scratch, a process that takes two
 node. Unfortunately, this process takes significantly longer and will cost you money if you do not have your own 
 archive node. We're working on processes (using IPFS) to get you the index in the later case.
 
-We are very open to your comments / questions. If you have fixes and ideas, see <<How can I help?>>.
+We are very open to your comments/questions. If you have fixes and ideas, see <<How can I help?>>.
 
 === Installing
 
