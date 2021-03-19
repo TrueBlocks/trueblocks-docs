@@ -134,20 +134,15 @@ We are very open to your comments/questions. If you have fixes and ideas, see <<
 
 We're really grateful for all commits and issues, from typos to major optimizations.
 
-Some current items on the to-do list include:
+For some easier ways to help, here are a few things we're trying to fix.
 
 * Coding
-** [ ] Fixing `chifra scrape`
-** [ ] Getting reliability across machines
+** [ ] [LINK TO FILE]
+** [ ] [LINK TO FILE]
 
-* Network
-** [ ] Distributing index via IPFS
+For some harder ways to help, see our link:https://app.zenhub.com/workspaces/trueblocks-workspace-5d680eb2a00eda0001a1bd65/board?repos=167762980,87072460,289506578[full issues board.]
 
-* Documentation
-** [ ] Full command reference
-** [ ] Some HOWTos
-
-If you want to make a PR, here's our preferred flow:
+If you want to make a PR, here's our preferred workflow:
 
 . Clone whichever repo you're interested in (trueblocks-core, trueblocks-docker, or trueblocks-explorer).
 
