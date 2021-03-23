@@ -4,7 +4,7 @@
 
 Ethereum as it was meant to be: local-first, P2P, and accurate queries to all the data you'll ever need.
 
-image:./chifra-lists.gif[55s to under 0.1s!,800]
+image:./chifra-lists.gif[1min to 5s. Video is at double speed because we type slow,800]
 
 == Installing
 
