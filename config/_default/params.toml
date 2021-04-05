@@ -1,0 +1,54 @@
+# Meta Data for SEO
+
+## Homepage
+title = "TrueBlocks"
+titleSeparator = "-"
+titleAddition = "Light, local index of the Ethereum blockchain"
+description = "Ethereum as it was meant to be: local-first, P2P, and accurate queries to all the data you’ll ever need."
+## Open Graph + Twitter Cards
+images = ["trueblocks.png"]
+twitterSite = "TrueBlocks"
+twitterCreator = "TrueBlocks"
+ogLocale = "en_US"
+
+## JSON-LD
+schemaType = "Organization"
+schemaLogo = "logo-doks.png"
+schemaTwitter = "https://twitter.com/trueblocks"
+schemaGitHub = "https://github.com/TrueBlocks/trueblocks-core"
+schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = false
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+
+# Footer
+footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
+
+# Alert
+alert = false
+alertText = "Like Doks? <a class=\"alert-link\" href=\"https://github.com/TrueBlocks/trueblocks-core/stargazers\">Star on GitHub</a>. Thanks!</a>"
+
+# Edit Page
+docsRepo = "https://github.com/TrueBlocks/trueblocks-core/"
+editPage = false
+
+[options]
+  lazySizes = true
+  clipBoard = true
+  instantPage = true
+  flexSearch = true
+  darkMode = true
+  bootStrapJs = false
+  breadCrumb = false
+  highLight = true
+  kaTex = false
