@@ -15,7 +15,7 @@ toc: true
 The following instructions help you compile the `core` tools from the TrueBlocks github repo.
 If you want to use our browser front-end, see [TrueBlocks Explorer](https://github.com/TrueBlocks/trueblocks-explorer) For a docker image, see link:https://github.com/TrueBlocks/trueblocks-docker[TrueBlocks Docker]
 
-1. Install dependencies
+## 1. Install dependencies
 
 **For Linux**:
 
@@ -32,7 +32,7 @@ brew install clang-format
 brew install jq
 ```
 
-2. Compile
+## 2. Compile
 
 ```shell
 git clone -b develop git@github.com:TrueBlocks/trueblocks-core.git
@@ -42,8 +42,15 @@ cmake ../src
 make -j
 ```
 
-3. Export the tools in the `./bin` directory to your $PATH
-4. If needed, add keys for RPC and EtherScan (for `chifra slurp`). In `~/.quickBlocks/quickBlocks.toml`, add these lines. Be sure they're under `[settings]`:
+## 3. Export `./bin` to $PATH
+
+How you do this depends on your preferences. We don't recommend just copying the tools to your `/usr/bin`, because this will have to manually repeat the copy everytime you rebuild TrueBlocks to update it.
+
+## 4. If needed, add keys for your RPC provider
+
+Along with EtherScan, if you want to use `chifra slurp`. 
+
+In `~/.quickBlocks/quickBlocks.toml`, add these lines. Be sure they're under `[settings]`:
 
 ```toml
 [settings]
@@ -51,7 +58,8 @@ rpcProvider = "<url>/<key>
 etherscan_key = "<key>"
 ```
 
-5. Test your install.
+## 5. Test your install.
+
 ```shell
 chifra blocks 14560
 ```
