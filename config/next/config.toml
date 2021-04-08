@@ -1,2 +1,2 @@
-baseurl = "trueblocks.netlify.app"
+baseurl = "https://trueblocks.netlify.app"
 canonifyURLs = true
