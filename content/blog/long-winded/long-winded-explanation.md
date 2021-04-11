@@ -7,6 +7,7 @@ lastmod: 2021-04-05T19:21:58-03:00
 draft: false
 weight: 50
 images: []
+toc: true
 contributors: [Thomas Jay Rush]
 ---
 
@@ -20,7 +21,7 @@ thought I'd take a moment during the lull to better explain myself. So
 this is an explanation for Nick (and anyone else who's listening) about
 how TrueBlocks indexes the Ethereum blockchain.
 
-**Chifra**
+### Chifra
 
 The first thing I want to discuss is a command line program we've
 written called **chifra**. Like git, **chifra** is an overarching tool
@@ -31,28 +32,28 @@ that gives access to many other tools. Here's the help screen:
 You can see a bunch of interesting tools. We'll start with one called
 **chifra blocks**.
 
-**A Simple Tool: chifra blocks**
+### A Simple Tool: chifra blocks
 
 Just to get us started I'm going to discuss a very simple tool called
-**chifra blocks**. Like many of the TrueBlocks tools, **chifra blocks**
+### chifra blocks**. Like many of the TrueBlocks tools, **chifra blocks
 is in some ways a front-end for the *eth_getBlock\** RPC calls. For
 example, one may run:
 
-**chifra blocks 1000**
+`chifra blocks 1000`
 
 and the tool will return the JSON data for block 1000. But as is also
 true of all TrueBlocks tools, **chifra blocks** extends the RPC to make
 it more useful. One simple way it does this is by allowing you to
 specify block ranges and block steps. So,
 
-**chifra blocks 1000-2000:10**
+`chifra blocks 1000-2000:10`
 
 exports the JSON data for every 10th block between block 1000 and 2000.
 There are a number of other options (including exporting to csv and tab
 delimited data), but I will focus on just one that directly affects the
 issue of indexing the chain:
 
-**chifra blocks \--uniq_tx 12000000**
+`chifra blocks \--uniq_tx 12000000`
 
 exports what we call 'every appearance of every address in the block'.
 'Appearance' here isan important concept. An 'appearance' includes
@@ -77,7 +78,7 @@ The above command returns something like this:
 Perhaps you can see the start of an index of appearances in the above
 output.
 
-**Scraping**
+### Scraping
 
 Ethereum is continually producing data. Every 14 seconds a new block
 appears.
@@ -88,7 +89,7 @@ looks for new blocks and with each new block, it does a very simple
 thing: it runs the above **\--uniq_tx** command against the block to
 extract the list of address appearances in that block.Unlike **chifra
 blocks** which simply outputs the list of appearances to the screen,
-**chifra scrape** stores the addresses in a file on the end user's
+### chifra scrape** stores the addresses in a file on the end user's
 machine.
 
 An important note: the TrueBlocks index is built on the end user's
@@ -103,9 +104,9 @@ address that appears anywhere in that block, and stores those addresses
 for later lightning-fast querying. Pretty standard stuff, but there's a
 serious twist.
 
-**A Sort-Of Index**
+### A Sort-Of Index
 
-**chifra scrape** builds an index \-- sort of. I say "sort of" because
+**chifra scrape** builds an index─sort of. I say "sort of" because
 the index isn't the traditional Web 2.0 database index with which you
 are probably familiar. That is because the data is immutable and we want
 to keep it that way. We want to make sure we preserve the Ethereum
@@ -125,7 +126,7 @@ height="3.1057403762029745in"}
 
 This is what we all love about blockchain data.
 
-**An Index is not a Time-Ordered Log**
+### An Index is not a Time-Ordered Log
 
 An index contains the same data as the time ordered log, but the data is
 no longer sorted by time. The data is sorted by whatever is being
@@ -159,7 +160,7 @@ change the IPFS location of the index file. However, we must continually
 add new records to the index in order to be able to query right up to
 the head of the chain.
 
-**Here's the solution:** after a certain amount of data has accumulated
+### Here's the solution:** after a certain amount of data has accumulated
 in the index we stop adding new records and create what we call an
 **index chunk**. We can then add that **chunk** to IPFS, and begin a new
 chunk.
@@ -167,7 +168,7 @@ chunk.
 A weird way to say the same thing is to say that we are creating *a
 time-ordered log of indexes of a time-ordered log*.
 
-**Bloom Filters**
+### Bloom Filters
 
 Before I move on, a quick note about bloom filters. [[Bloom
 filters]{.ul}](https://en.wikipedia.org/wiki/Bloom_filter) are an
@@ -181,7 +182,7 @@ bloom filter. The bloom filter will be seen to be super useful in
 creating the system that we want to create \-- a system that allows us
 to distribute the index to our end users very efficiently.
 
-**Back to the Scraper**
+### Back to the Scraper
 
 The scraper, in addition to querying each block and extracting
 appearances of addresses continually inserts them into the currently
@@ -208,7 +209,7 @@ Given a series of chunked indexes, each chunk of which has an associated
 bloom filter, we are now ready to get what we want\--a list of every
 appearance for an address.
 
-**Querying the Index**
+### Querying the Index
 
 Given any address, our applications query the index chunks by scanning
 through the bloom filters looking for hits. A bloom filter is a small
@@ -241,7 +242,7 @@ single user, one may do things that do not work on web servers.
 
 Ah, the beauty of local-first software.
 
-**Fixed-Width Binary Data is Fast!**
+### Fixed-Width Binary Data is Fast!
 
 There's another thing that makes the index search lightning fast, That
 is that we store the **index chunks** directly as bytes of fixed-width
@@ -269,7 +270,7 @@ blockNumber and transactionIndex. In C++:
 
 A bit old-fashioned, but extremely fast and portable.
 
-**Using the Index**
+### Using the Index
 
 Once in possession of the chunked index we can finally use TrueBlocks to
 do what we want to do: query for a list of every appearance of an
@@ -279,11 +280,15 @@ We'll use the TrueBlocks public wallet in the following examples. First,
 we'll remove the address from any caches just to make sure we're not?
 starting from a known place:
 
-**chifra monitors \--delete 0xf503017d7baf7fbc0fff7492b751025c6a78179b**
+```shell
+chifra monitors \--delete 0xf503017d7baf7fbc0fff7492b751025c6a78179b
+```
 
 Next, we list the appearances for this address:
 
-**chifra list 0xf503017d7baf7fbc0fff7492b751025c6a78179b**
+```shell
+chifra list 0xf503017d7baf7fbc0fff7492b751025c6a78179b
+```
 
 If you run this command (and your scraper is caught up to the front of
 the chain), you will see that chifra scans the bloom filters, opening
@@ -321,7 +326,7 @@ else's) addresses. (As long as they have enough room on their computer's
 hard drive \-- the point being that the size of the hard drive should be
 the decision of the end user, not the system designer.)
 
-**What to do with a List of Appearances?**
+### What to do with a List of Appearances?
 
 Now that we have a list of appearances, what can we do with it?
 
@@ -342,7 +347,7 @@ Remember, we never extract anything until we're told to.
 In order to extract the transactional details for the address, we use
 another **chifra** command:
 
-**chifra export 0xf503017d7baf7fbc0fff7492b751025c6a78179b**
+`chifra export 0xf503017d7baf7fbc0fff7492b751025c6a78179b`
 
 Finally, we're extracting transactional details from the chain (and
 we're caching that data, as you might expect). Notice that we are not
@@ -361,7 +366,7 @@ to fully understand any given transaction. If we\'re doing accounting
 (Ether or token accounting), we also extract the transaction\'s traces,
 but only if they are needed to make the accounting reconcile.
 
-There are a number of very useful options to the **chifra export**
+There are a number of very useful options to the **chifra export
 command:
 
 1.  **\--appearances** list only the appearances for the address
@@ -385,8 +390,8 @@ language text. (This last is super helpful in aiding the understanding
 of the data, but unfortunately is centralized by querying EtherScan.)
 
 Note that all the **chifra** tools provide a few very helpful options
-such as exporting its data as either **json** (the default), **csv**, or
-**txt**. The flexibility of the output allows us to support many uses
+such as exporting its data as either **json** (the default), `csv`, or
+`txt`. The flexibility of the output allows us to support many uses
 such as our GitCoin data dump site
 ([[https://tokenomics.io/gitcoin/]{.ul}](https://tokenomics.io/gitcoin/)),
 or send it over an API to a front end application as we do for our
@@ -394,12 +399,12 @@ TrueBlocks Explorer application (using the **chifra serve** option).
 
 This is what we mean by decentralization.
 
-**Upshot**
+### Upshot
 
 I respect Nick Johnson immensely, but he\'s incorrect. It is possible to
 index the Ethereum blockchain effectively on a small machine.
 
-**Extending the Ethereum Node using Turbo Geth**
+### Extending the Ethereum Node using Turbo Geth
 
 Last summer, we spent time looking closely at the TurboGeth codebase. As
 a result, we got super excited about the possibility of our work being
@@ -417,7 +422,7 @@ synchronization stages. Effectively, this is what the TrueBlocks
 TurboGeth stage and we intend to do that as soon as we have the
 opportunity.
 
-**Summary**
+### Summary
 
 We've shown that:
 
@@ -444,7 +449,7 @@ We've shown that:
 8)  Indexing the Ethereum blockchain is a small data problem, not a big
     > data problem
 
-**Closing Remarks**
+### Closing Remarks
 
 Following is a list of ideas and concepts that did not fit well in the
 above discussion. They are included here as a placeholder and a promise
