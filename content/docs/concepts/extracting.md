@@ -38,4 +38,3 @@ for each block in blockchain
     extract addrs from output
 ```
 
-{{< img src="extracting.png" alt="test" caption="test" class="wide" >}}
