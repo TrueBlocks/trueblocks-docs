@@ -10,71 +10,77 @@ images: ["getting-erc20-transfer-events.jpg"]
 contributors: [Thomas Jay Rush]
 ---
 
-A simple recipe to display every Transfer event from an ERC 20 contract using command line tools.
+A TrueBlocks recipe to display every ERC20 Transfer event from a given smart contract.
 
-**Note:** The following assumes you have either built yourself or downloaded the TrueBlocks index of appearances. It also assumes that the address you're using is indeed an ERC 20 contract.
+**Note:** The following assumes you have a copy of (either by having built it yourself or downloaded it) the TrueBlocks Appearance Index. These instructions also assume that the address you're querying is an ERC 20 smart contract.
 
 ## Preliminaries
 
-First, we want to query the index and make a list of every transaction that this address has ever been involved with.
+To get started, we want to extract (from the TrueBlocks index) a list of every transaction that our address has ever appeared in.
 
 ```[bash]
 chifra list 0x03fdcadc09559262f40f5ea61c720278264eb1da
 ```
 
-This query reports that there were 2,129 appearances (at the time of this writing) of this address anywhere on the chain. This is more appearances than you will find if you query all four of the EtherScan APIs and subsequently remove duplicates. There's a reason for this that we won't go into.
+This produces a list of 2,129 appearances (at the time of this writing). Each appearances is a pair of integers detailing the `blockNumber` and `transactionIndex` of the transaction. Note that other methods of getting such a list (such as EtherScan APIs) return far fewer transactions. We will explain this in a later post.
 
-Next, we can export the transactions to the screen (just so we can see that things are working).
+Next, we want to export (to the screen) the transactional details of these appearances. We do this in `csv` format.
 
 ```[bash]
 chifra export --fmt csv 0x03fdcadc09559262f40f5ea61c720278264eb1da
 ```
 
-The above command generates the same 2,129 records, but now with the details of the transactions.
+The above command generates the same 2,129 records, but this time it's showing the details of the transactions.
 
-**Note:** The `list` option gets called automatically if you simply run `export` on a new address. We are showing it here only to make this issue clear.
+**Note:** The `list` command is called automatically when you run the `export` command. You don't have to do it separately. We are showing it here only to make the distinction.
 
-The `--fmt` option may be used to export data in any of three formats: `txt`, `csv` or `json`. We'll intersperse these options below.
+The `--fmt` option may be used by any `chifra` command. It instructs the tools to export data in one of three formats: `txt`, `csv` or `json`. We'll intersperse this option below.
 
-Let's see what happens if we export the events generated during these 2,129 transactions.
+Let's see what happens if we export event (or log) detail instead of transactional detail of these 2,129 transactions.
 
 ## Focusing on Events / Logs
+
+We can display the events for a given address using the `--logs` option:
 
 ```[bash]
 chifra export --fmt csv --logs 0x03fdcadc09559262f40f5ea61c720278264eb1da
 ```
 
-This takes a bit longer and generates 8,100 records.
+This takes a bit longer to finish, and it generates 8,100 records.
 
-**Question:** Why is that?
+**Question:** Why is there so many more events than transactions?
 
-**Answer:** Many transactions generate more than a single event.
+**Answer:** Because many transactions generate more than a single event.
 
-**Question:** Is it possible to speed this step up?
+**Question:** Is it possible to speed things up?
 
-**Answer:** Yes. Add the `--cache_txs` option to any export command to put the result in the TrueBlocks cache. Speed things up 20 to 30 times over querying the node directly.
+**Answer:** Yes. You may speed up the `export` tool by adding the `--cache_txs` option. This will put the node data into the TrueBlocks cache. This speeds up operation of TrueBlocks by 20-30x over querying the node directly, but takes up additional hard drive space.
 
-## Articulating
+## Articulating the Result
 
-Before we move on, we'll add in another option called `--articulate`.
+Before we move on, let's talk about articulation.
 
-The `--articulate` option turns "ugly blockchain data into human-readable text". (Try the command above both with and without `--articulate` to see the difference.)
+We'll add an option to our query called `--articulate`. The `--articulate` option turns "ugly blockchain data into human-readable text". (Try the command above both with and without `--articulate` to see the difference.)
+
+```[bash]
+chifra export --fmt csv --logs --articulate 0x03fdcadc09559262f40f5ea61c720278264eb1da
+```
 
 ## Filtering the Results
 
-The above command generates 8,100 log entries. This includes every event *of any type* that our address had *anything* to do with. That is, this includes any event generated by any smart contract where this address appears.
+The above command generates 8,100 log entries. This includes every event *of any type* that our address had *anything* to do with. That is, this includes any event generated by any smart contract in which our address appears even if our address didn't generate that event.
 
-We're going to briefly switch to `json` output in order to look more deeply. `JSON` format shows all the data, whereas `txt` and `csv` show only selected fields.
+We're going to briefly switch the commands to `json` output in order to see what I mean. `JSON` format shows all the data, whereas `txt` and `csv` show only selected (and customizable) fields.
 
-The next command extracts the addresses of the contracts that emitted any of those 8,100 events:
+The next command extracts the addresses of the smart contracts that emitted any of those 8,100 events:
 
 ```[bash]
 chifra export --logs --articulate --fmt json 0x03fdcadc09559262f40f5ea61c720278264eb1da | grep -i address
 ```
 
-This is shows all the smart contracts that emitted an event in which our address appears. 'Appears' means our address generated (emitted) the event or it shows up in an event emitted by some other contract.
+You can see there are various addresses here. It shows all smart contracts that emitted any event in which our address appears. 'Appears' means the address either generated (emitted) the event or the address shows up in one of the fields of an event emitted by some other contract.
 
-We want to try to limit the data to include only those events *emitted* by our smart contract.
+We want to limit the result to include only those events *emitted* by our smart contract.
 
 We do this by including the `--emitter` option.
 
@@ -112,15 +118,15 @@ We are interested in the `blockNumber`, `transactionIndex`, and `compressLog` fi
 chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c720278264eb1da | cut -d, -f1,2,11-100
 ```
 
-And now we're starting to get somewhere.
+And now we're starting to get somewhere. You can see we've extract only events for our contract and we start to see the usefulness of articulation.
 
-Before we proceed, notice that we can build a histogram of the generated events thus:
+Before we proceed, notice that we could build a histogram of the generated events if we wished:
 
 ```[bash]
 chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c720278264eb1da | tr '"' ' ' | cut -d',' -f11-100 | cut -d'(' -f1 | sort | uniq -c | sort -n -r
 ```
 
-Which produces the following table:
+which produces the following table
 
 | Count |       Event      |
 |-------|------------------|
@@ -147,13 +153,15 @@ Which produces the following table:
 
 ## How Many Transfers?
 
-And finally, we get what we're after. A list of all `Transfers` events emitted by this address:
+And finally, we've arrived where we've been headed.
+
+A list of all `Transfers` events emitted by a given ERC20 address **ON THE COMMAND LINE AGAINST OUR OWN LOCALLY RUNNING NODE**:
 
 ```[bash]
 chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c720278264eb1da | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer
 ```
 
-And how many?
+How many of them are there?
 
 ```[bash]
 chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c720278264eb1da | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer | wc
@@ -165,16 +173,26 @@ You figure it out!
 
 You can do the same exact analysis with the `chifra serve` API.
 
-First, understand that the entire API route structure exactly mirrors the command line options. For every tool, you may type `&lt;tool name&gt; --help` to get a list of options. You may attach these options to your `curl` command following the name of the tool (the route) to enable that option.
-
-For example, the above final result could be written thus:
+First, start the API in a separate terminal window by running
 
 ```[bash]
-curl "http://localhost:8545/export?addrs=0x03fdcadc09559262f40f5ea61c720278264eb1da&logs&articulate&fmt=csv&max_records=10000"  | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer | wc
+chifra serve
 ```
 
-Two changes: (1) preceed the address with `addrs` and (2) add `max_records=10000` as the API only returns 250 records by default.
+The server serves its API on port :8080 by default.
 
-Note that the API produces `json` data by default. You must include the `fmt=csv` option to your curl command if you want to pipe through command line tools (unless you use `jq` a highly recommended json parser/data wrangler).
+Return to the first window to run the following curl command.
 
-We'll write about this later.
+Additionally, understand that the TrueBlocks API mirrors exactly the command line options for each tool. List all the available tools with `chifra --help`. And for any individual tool, list its options with `&lt;tool name&gt; --help`. Call one of the tools through the API by attaching the tool name followed by any options in regular URL format.
+
+For example, the above command-line query could be re-written as a curl command thus
+
+```[bash]
+curl "http://localhost:8080/export?addrs=0x03fdcadc09559262f40f5ea61c720278264eb1da&logs&articulate&fmt=csv&max_records=10000"  | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer | wc
+```
+
+Notice (1) prepend addresses and other positional parameters with the item's name (in this case, `addrs`) and (2) attach the `max_records=10000` option, as the API only returns 250 records by default.
+
+The API produces `json` data by default, so you must include the `fmt=csv` option to your curl command if you wish to pipe the data through a command line tool such as `cut`, `head`, `sed` or `grep` (unless you use the JSON parser `jq` which is highly recommended for JSON data wrangling).
+
+Have at it and Cheerio. Here's hoping only happy data comes your way.
