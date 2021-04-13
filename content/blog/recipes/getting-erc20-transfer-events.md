@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2021-04-13T08:00:02-04:00
 lastmod: 2021-04-13T08:00:02-04:00
-draft: true
+draft: false
 weight: 50
 images: ["getting-erc20-transfer-events.jpg"]
 contributors: []
