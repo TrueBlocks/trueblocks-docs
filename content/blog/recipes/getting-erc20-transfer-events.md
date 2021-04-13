@@ -87,7 +87,8 @@ chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c72027826
 This produces:
 
 ```[csv]
-"blocknumber","transactionindex","logindex","address","topic0","topic1","topic2","topic3","data","type","compressedlog"```
+"blocknumber","transactionindex","logindex","address","topic0","topic1","topic2","topic3","data","type","compressedlog"
+```
 
 We are interested in the `blockNumber`, `transactionIndex`, and `compressLog` fields, so we use the Linux command `cut` to get these columns:
 
