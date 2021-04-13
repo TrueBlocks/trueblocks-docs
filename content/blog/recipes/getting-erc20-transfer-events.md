@@ -11,3 +11,5 @@ contributors: []
 ---
 
 {{< img src="getting-erc20-transfer-events.jpg" alt="Getting Erc20 Transfer Events" caption="Getting Erc20 Transfer Events" class="wide" >}}
+
+This is a test of the emergency broadcast system
