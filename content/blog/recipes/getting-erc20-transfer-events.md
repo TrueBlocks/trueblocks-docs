@@ -106,12 +106,35 @@ chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c72027826
 
 This produces the following data:
 
-|-|-|
-| Count | Event |
-| 1 | 2 |
+| Count |       Event      |
+|-------|------------------|
+|  3135 | Transfer         |
+|  1325 | Sync             |
+|  1214 | Swap             |
+|  1075 | Approval         |
+|   485 | Deposit          |
+|   350 | Withdrawal       |
+|   272 | Claimed          |
+|    90 | Mint             |
+|    84 | Staked           |
+|    42 | Withdrawn        |
+|    21 | Burn             |
+|     6 | Sent             |
+|     5 | RoleGranted      |
+|     2 | TransferSingle   |
+|     2 | RoleAdminChanged |
+|     1 | Trade            |
+|     1 | PairCreated      |
+|     1 | OrderPlaced      |
+|     1 | Fill             |
+|     1 | EthPurchase      |
 
 And finally, we get what we're after. A list of all `Transfers` events emitted by this address:
 
 ```[bash]
 chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c720278264eb1da | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer
 ```
+
+## Using the API
+
+We will write another recipe soon showing how to do the same exact thing via the API which, by the way, you may start with `chifra serve`.
