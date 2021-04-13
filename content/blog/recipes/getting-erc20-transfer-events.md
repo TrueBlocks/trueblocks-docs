@@ -1,13 +1,13 @@
 ---
 title: "Recipe: Getting Erc20 Transfer Events"
-description: ""
-lead: ""
+description: "A method to extract ERC 20 Transfer events from a smart contract"
+lead: "How many Transfers?"
 date: 2021-04-13T08:00:02-04:00
 lastmod: 2021-04-13T08:00:02-04:00
 draft: false
 weight: 50
 images: ["getting-erc20-transfer-events.jpg"]
-contributors: []
+contributors: [Thomas Jay Rush]
 ---
 
 A simple recipe to display every Transfer event from an ERC 20 contract using command line tools.
