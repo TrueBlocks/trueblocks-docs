@@ -4,8 +4,9 @@ Notes as I learn:
 
 * The Homepage is in the `layouts/index.html`
 * If you want to generate state pages, just run `hugo` from the root directory. This will gen a file called `public`
+* Content templates go in `archetypes`
 
-.
+```
 ├── archetypes
 │   ├── blog.md
 │   ├── default.md
@@ -126,5 +127,4 @@ Notes as I learn:
 │       └── images
 ├── theme.toml
 └── yarn.lock
-
-39 directories, 81 files
+```
