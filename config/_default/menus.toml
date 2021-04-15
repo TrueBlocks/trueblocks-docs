@@ -20,7 +20,7 @@
   url = "/blog/"
   weight = 20
 
-[[Explorer]]
+[[main]]
   name= "Explorer"
   url = "/explorer/"
   weight = 15
