@@ -5,25 +5,55 @@
   url = "/docs/prologue/"
 
 [[docs]]
-  name = "Concepts"
-  weight = 60
-  identifier = "concepts"
+  name = "Tools"
+  weight = 20
+  identifier = "tools"
   url = "/docs/concepts/"
+
+[[docs]]
+  name = "Explorer"
+  weight = 30
+  identifier = "explorer"
+  url = "/docs/concepts"
+
+[[docs]]
+  name = "Libraries"
+  weigh = 40
+  identifier = "libraries"
+  url = "/docs/libraries"
+
+[[concepts]]
+  name ="Proust"
+  weight = 10
+  identifier = "proust"
+  url = "/explorer/proust"
+
+[[concepts]]
+  name ="Coleridge"
+  weight = 20
+  identifier = "coleridge"
+  url = "/explorer/coleridge"
 
 [[main]]
   name = "Docs"
   url = "/docs/prologue/introduction/"
   weight = 10
 
+
+[[main]]
+  name= "Concepts"
+  url = "/concepts/"
+  weight = 15
+
+[[main]]
+  name = "API"
+  url = ""
+  weight = 20
+
 [[main]]
   name = "Blog"
   url = "/blog/"
   weight = 20
-
-[[main]]
-  name= "Explorer"
-  url = "/explorer/"
-  weight = 15
 
 [[social]]
   name = "Twitter"
