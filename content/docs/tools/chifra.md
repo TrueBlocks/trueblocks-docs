@@ -346,19 +346,7 @@ All **TrueBlocks** command-line tools support the following commands (although i
 
 <small>*For the `--file:fn` option, place a series of valid command lines in a file and use the above options. In some cases, this option may significantly improve performance. A semi-colon at the start of a line makes that line a comment.*</small>
 
----
-title: "Chifra"
-description: "Trueblocks commandline application"
-lead: ""
-date: 2021-04-05T19:39:37-03:00
-lastmod: 2021-04-05T19:39:37-03:00
-draft: false
-images: []
-menu:
-  docs:
-    parent: "tools"
-toc: true
----
+## Chifra
 
 Chifra is the "one command line tool to rule them all". 
 
@@ -440,12 +428,9 @@ All **TrueBlocks** command-line tools support the following commands (although i
 
 <small>*For the `--file:fn` option, place a series of valid command lines in a file and use the above options. In some cases, this option may significantly improve performance. A semi-colon at the start of a line makes that line a comment.*</small>
 
-**Powered by TrueBlocks<sup>&trade;</sup>**
-
-
-## ethQuote
 
 The `ethQuote` tool provides Ethereum price data to various tools or for other purposes. Currently, `ethQuote` retrieves data using the Poloniex API. In future versions, we intend to add other sources of pricing data and provide a mechanism to specify an averaging calculate given multiple price sources. Ultimately, we hope Ethereum/fiat price data appears under consensus, but until that time, **TrueBlocks** uses `ethQuote`. Powered, in part, by Poloniex<sup>&reg;<sup>
+
 #### Usage
 
 `Usage:`    ethQuote [-f|-p|-a|-e|-v|-h]  
