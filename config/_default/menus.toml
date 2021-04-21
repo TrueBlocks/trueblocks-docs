@@ -5,25 +5,43 @@
   url = "/docs/prologue/"
 
 [[docs]]
-  name = "Concepts"
-  weight = 60
-  identifier = "concepts"
+  name = "Tools"
+  weight = 20
+  identifier = "tools"
   url = "/docs/concepts/"
+
+[[docs]]
+  name = "FAQ"
+  weight = 30
+  identifier = "explorer"
+  url = "/docs/concepts"
+
+#[[docs]]
+#  name = "Libraries"
+#  weigh = 40
+#  identifier = "libraries"
+#  url = "/docs/libraries"
 
 [[main]]
   name = "Docs"
   url = "/docs/prologue/introduction/"
   weight = 10
 
+
+#[[main]]
+#  name= "Concepts"
+#  url = "/concepts/"
+#  weight = 15
+
+#[[main]]
+#  name = "API"
+#  url = ""
+#  weight = 20
+
 [[main]]
   name = "Blog"
   url = "/blog/"
   weight = 20
-
-[[Explorer]]
-  name= "Explorer"
-  url = "/explorer/"
-  weight = 15
 
 [[social]]
   name = "Twitter"
@@ -38,7 +56,7 @@
   post = "v0.1.0"
   weight = 20
 
-# [[footer]]
-#   name = "Privacy"
-#   url = "/privacy-policy/"
-#   weight = 10
+[[footer]]
+  name = "Privacy"
+  url = "/privacy-policy/"
+  weight = 10
