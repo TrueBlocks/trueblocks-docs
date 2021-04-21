@@ -6,8 +6,8 @@ date: 2021-04-13T08:00:02-04:00
 lastmod: 2021-04-13T08:00:02-04:00
 draft: false
 weight: 50
-images: ["getting-erc20-transfer-events.jpg"]
-contributors: [Thomas Jay Rush]
+images: []
+contributors: ["Thomas Jay Rush"]
 ---
 
 A TrueBlocks recipe to display every ERC20 Transfer event from a given smart contract.
