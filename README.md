@@ -1,5 +1,5 @@
 
-If you want to generate state pages, just run `hugo` from the root directory. This will gen a file called `public`
+If you want to generate static pages, just run `hugo` from the root directory. This will gen a file called `public`
 
 To create a new post, run `hugo new <content-directory>/<subdirectory>/<name>.md`
 
