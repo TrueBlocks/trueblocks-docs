@@ -1,5 +1,5 @@
 ---
-title: "Running Against Mutliple Rpc Endpoints"
+title: "Running Against Multiple Rpc Endpoints"
 description: ""
 lead: ""
 date: 2021-04-21T17:13:04-04:00
@@ -11,12 +11,12 @@ contributors: ["Thomas Jay Rush"]
 menu: 
   blog:
     parent: ""
-weight: 999
+weight: 50
 toc: true
 
 ---
  
- One user asked if it was possible to run TrueBlocks against multiple RPC endpoints at the same time. This is short recipe to accomplish just that.
+One user asked if it was possible to run TrueBlocks against multiple RPC endpoints at the same time. This is short recipe to accomplish just that.
 
 ## Preliminaries
 
@@ -32,7 +32,7 @@ rpcProvider = "http://localhost:8545"
 cachePath = "~/.quickBlocks/cache"
 ```
 
-or something similar. This is standard TOML with a heading or group for each set of unique keys and key / value pairs defining the options. While each tool and application in TrueBlocks has its own configuration file, the main options are stored in the `quickBlocks.toml` file. See the documentation for more information.
+or something similar. This is a standard TOML with a heading or group for each set of unique keys and key / value pairs defining the options. While each tool and application in TrueBlocks has its own configuration file, the main options are stored in the `quickBlocks.toml` file. See the documentation for more information.
 
 ## Customizing the RPC Endpoint
 
