@@ -5,16 +5,16 @@
   url = "/docs/prologue/"
 
 [[docs]]
-  name = "Tools"
+  name = "Chifra Command line"
   weight = 20
-  identifier = "tools"
-  url = "/docs/concepts/"
+  identifier = "chifra"
+  url = "/docs/chifra/"
 
 [[docs]]
   name = "FAQ"
   weight = 30
   identifier = "explorer"
-  url = "/docs/concepts"
+  url = "/docs/faq"
 
 #[[docs]]
 #  name = "Libraries"
