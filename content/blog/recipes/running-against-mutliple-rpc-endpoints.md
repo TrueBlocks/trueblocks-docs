@@ -1,5 +1,5 @@
 ---
-title: "Running Against Multiple Rpc Endpoints"
+title: "Recipe: Running Against Multiple Rpc Endpoints"
 description: ""
 lead: ""
 date: 2021-04-21T17:13:04-04:00
