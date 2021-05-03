@@ -1,6 +1,6 @@
 ---
 title: "Installing TrueBlocks"
-description: "TrueBlocks works on Linux and Mac."
+description: "TrueBlocks works on Linux and Mac"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -8,7 +8,7 @@ images: []
 menu:
   docs:
     parent: "prologue"
-weight: 110
+weight: 0200
 toc: true
 ---
 
