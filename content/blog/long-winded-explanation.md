@@ -5,7 +5,7 @@ lead: "How TrueBlocks indexes the Ethereum blockchain"
 date: 2021-04-05T19:21:58-03:00
 lastmod: 2021-04-05T19:21:58-03:00
 draft: false
-weight: 50
+weight: 150
 images: []
 toc: true
 contributors: [Thomas Jay Rush]
