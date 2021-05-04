@@ -42,27 +42,33 @@ cmake ../src
 make -j
 ```
 
-The compilation should create executable files in `../bin`. Test this with
+The compilation will create a number of executables in `../bin`. Run this command
 
 ```shell
 ../bin/chifra --version
 ```
 
-You should get a valid version string.
+You should get a version string similar to the below
+
+```shell
+trueBlocks GHC-TrueBlocks//0.9.0-alpha-409aa9388-20210503
+```
+
+If not, review the above commands and make sure you didn't miss something. Please [create an issue](https://github.com/TrueBlocks/trueblocks-core/issues) if you continue to have trouble.
 
 ## Adding ./bin to your $PATH
 
-To make TrueBlocks easier to use, add `./trueblocks-core/bin` to your environment's $PATH. To find the full path of the `./bin` folder, do this:
+To make `chifra` easier to use, add `./trueblocks-core/bin` to your environment's $PATH. It's best to use the full path of the `./bin` folder. To find the full path, do this
 
 ```shell
 cd ../bin && pwd && cd -
 ```
 
-Add the result of that command to your $PATH.
+Export the result of that command to your shell's $PATH. Google may be of help here :-).
 
 ## Introducing chifra
 
-Like the `git` command, TrueBlocks has an overarching command called `chifra` that gives you access to all of the other TrueBlocks commands.
+Similar to `git`, TrueBlocks has an overarching command called `chifra` that gives you access to all of the other subcommands.
 
 Type:
 
@@ -70,21 +76,23 @@ Type:
 chifra
 ```
 
-You should see a long list of commands. You can get more help on any command with `chifra &lt;cmd&gt; --help.
+You will see a long list of commands.
 
-Let's focus first on the `status` command.
+You can get more help on any command with `chifra <cmd> --help`.
 
-Run this command:
+### Getting status
+
+Let's look at the first subcommand, called `status`.
 
 ```shell
-chifra status
+chifra status --terse
 ```
 
-If you get a good looking result, your installation is working. Congratulations. You can skip to the 'Using TrueBlocks' section below.
+If you get a bunch of JSON data, congratulations, your installation is working. You may skip ahead to the 'Using TrueBlocks' section below.
 
 ### -- Troubleshooting
 
-Depending on your setup, you may get the following error message when you run `chifra` commands:
+Depending on your setup, you may get the following error message when you run some `chifra` commands:
 
 ```shell
   Warning: A request to your Ethereum node (http://localhost:8545) resulted
@@ -92,14 +100,14 @@ Depending on your setup, you may get the following error message when you run `c
   rpcProvider by editing $CONFIG/trueblocks.toml.
 ```
 
-If you get this error, edit the configuration file mentioned. The file is very well documented, so refer to that file for further information.
+If you get this error, edit the configuration file mentioned. The file is well documented, so refer to that file for further information.
 
 When the `chifra status` command returns a valid response, you may move to the next section. If
 you continue to have trouble, join our [discord disscussion](https://discord.gg/kAFcZH2x7K).
 
 ## Using chifra
 
-If you've gotten this far, you're ready to use TrueBlocks. Please see the [Using TrueBlocks](/docs/prologue/using/) page for further information. In the meantime, run this command which shows every 10th block between the first and the 100,000th.
+If you've gotten this far, you're ready to use TrueBlocks. Run this command which shows every 10th block between the first and the 100,000th.
 
 ```shell
 chifra blocks 0-100000:10

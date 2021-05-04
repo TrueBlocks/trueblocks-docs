@@ -43,7 +43,7 @@ chifra <cmd> --help --verbose 2
 The `chifra` command gives you access to all of TrueBlocks' functionality. Get system status by typing
 
 ```shell
-chifra status
+chifra status --terse
 ```
 
 ## Getting Blockchain Data
