@@ -14,7 +14,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 50
+weight: 40
 toc: true
 ---
 ## chifra traces
