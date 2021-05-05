@@ -1,8 +1,8 @@
 ---
-title: "Shared"
+title: "Accounts"
 description: ""
 lead: ""
-date: 2021-04-29T10:26:20-03:00
+date: 2021-04-29T09:18:42-03:00
 lastmod:
   - :git
   - lastmod
@@ -13,15 +13,53 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 15
+weight: 10
 toc: true
 ---
+## chifra export
+
+This folder contains a TrueBlocks monitor. TrueBlocks monitors pull transactions from the Ethereum blockchain for a given (or a series of) Ethereum addresses.
+
+Below we present the command line interface to this tool, although the tool itself is not available under open source. While the tool is in active development, TrueBlocks monitors already produce very useful results. For example, we use TrueBlocks monitors to account for and analyze all transactions on a given smart contract. We present [this example](http://dao.quickblocks.io).
+
+Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more information.
+
+### Usage
+
+`Usage:`    chifra export [-p|-r|-l|-t|-C|-O|-a|-i|-R|-U|-v|-h] &lt;address&gt; [address...] [topics] [fourbytes]  
+`Purpose:`  Export full detail of transactions for one or more Ethereum addresses.
+
+`Where:`  
+
+| Short Cut | Option | Description |
+| -------: | :------- | :------- |
+|  | addrs | one or more addresses (0x...) to export (required) |
+|  | topics | filter by one or more logs topics (only for --logs option) |
+|  | fourbytes | filter by one or more fourbytes (only for transactions and trace options) |
+| -p | --appearances | export a list of appearances |
+| -r | --receipts | export receipts instead of transaction list |
+| -l | --logs | export logs instead of transaction list |
+| -t | --traces | export traces instead of transaction list |
+| -C | --accounting | export accounting records instead of transaction list |
+| -O | --tokens | export accounting for ERC 20 tokens (assumes ETH accounting as above) |
+| -a | --articulate | articulate transactions, traces, logs, and outputs |
+| -i | --cache_txs | write transactions to the cache (see notes) |
+| -R | --cache_traces | write traces to the cache (see notes) |
+| -U | --count | only available for --appearances mode, if present return only the number of records |
+| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -h | --help | display this help screen |
+
+`Notes:`
+
+- `addresses` must start with '0x' and be forty two characters long.
+
+**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
 
 ## chifra names
 
 `chifra names` lists the addresses found in your local node's keystore. It can be used to report your ether holdings, for example. It also lists known, named accounts from [chifra names](../ethName/README.md).
 
-One way to use this tool is to feed its output through the [chifra state](../getState/README.md) or [chifra tokens](../getTokenInfo/README.md). This will give you the balances of your ether holdings or token holings. For example, you can do these commands:
+One way to use this tool is to feed its output through the [chifra state](../getState/README.md) or [chifra tokens](../getTokens/README.md). This will give you the balances of your ether holdings or token holings. For example, you can do these commands:
 
 List accounts held in the local node's keystore:
 
@@ -43,9 +81,9 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
     chifra tokens `chifra names -a singular` `chifra names -n | xargs`
 
-#### Usage
+### Usage
 
-`Usage:`    chifra names [-e|-m|-l|-o|-c|-p|-n|-a|-s|-g|-v|-h] &lt;term&gt; [term...]  
+`Usage:`    chifra names [-e|-m|-l|-c|-p|-n|-a|-s|-g|-v|-h] &lt;term&gt; [term...]  
 `Purpose:`  Query addresses and/or names of well known accounts.
 
 `Where:`  
@@ -56,7 +94,6 @@ Using chifra names to find Singular's address, list tokens held by other token a
 | -e | --expand | expand search to include all fields (default searches name, address, and symbol only) |
 | -m | --match_case | do case-sensitive search |
 | -l | --all | include all accounts in the search |
-| -o | --owned | include personal accounts in the search |
 | -c | --custom | include your custom named accounts |
 | -p | --prefund | include prefund accounts |
 | -n | --named | include well know token and airdrop addresses in the search |
@@ -75,33 +112,13 @@ Using chifra names to find Singular's address, list tokens held by other token a
 - To customize the list of names add a `custom` section to the config file (see documentation).
 - Name file: `$CONFIG/names/names.tab`
 
-#### Other Options
-
-All **TrueBlocks** command-line tools support the following commands (although in some case, they have no meaning):
-
-    Command     |     Description
-    -----------------------------------------------------------------------------
-    --version   |   display the current version of the tool
-    --nocolor   |   turn off colored display
-    --wei       |   specify value in wei (the default)
-    --ether     |   specify value in ether
-    --dollars   |   specify value in US dollars
-    --raw       |   report JSON data from the node with minimal processing
-    --very_raw  |   report JSON data from node with zero processing
-    --fmt       |   export format (where appropriate). One of [none|txt|csv|json|api]
-    --to_file   |   write the results to a temporary file and return the filename
-    --output:fn |   write the results to file 'fn' and return the filename
-    --file:fn   |   specify multiple sets of command line options in a file.
-
-<small>*For the `--file:fn` option, place a series of valid command lines in a file and use the above options. In some cases, this option may significantly improve performance. A semi-colon at the start of a line makes that line a comment.*</small>
-
-**Source**: [`tools/ethNames`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/ethNames)
+**Source code**: [`tools/ethNames`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/ethNames)
 
 ## chifra abis
 
 `chifra abis` retrieves an ABI file either from a local cache, from the Ethereum Name Service (ENS), or from [Etherscan](http://etherscan.io). Once retrieved, `chifra abis` generates the classDefinition files needed by [makeClass](../makeClass/README.md) to generate a parselib for each [Ethereum address monitor](../../monitors/README.md).
 
-#### Usage
+### Usage
 
 `Usage:`    chifra abis [-c|-k|-f|-v|-h] &lt;address&gt; [address...]  
 `Purpose:`  Fetches the ABI for a smart contract.
@@ -121,24 +138,5 @@ All **TrueBlocks** command-line tools support the following commands (although i
 
 - Solidity files found in the local folder with the name '<address>.sol' are converted to an ABI prior to processing (and then removed).
 
-#### Other Options
+**Source code**: [`tools/grabABI`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/grabABI)
 
-All **TrueBlocks** command-line tools support the following commands (although in some case, they have no meaning):
-
-    Command     |     Description
-    -----------------------------------------------------------------------------
-    --version   |   display the current version of the tool
-    --nocolor   |   turn off colored display
-    --wei       |   specify value in wei (the default)
-    --ether     |   specify value in ether
-    --dollars   |   specify value in US dollars
-    --raw       |   report JSON data from the node with minimal processing
-    --very_raw  |   report JSON data from node with zero processing
-    --fmt       |   export format (where appropriate). One of [none|txt|csv|json|api]
-    --to_file   |   write the results to a temporary file and return the filename
-    --output:fn |   write the results to file 'fn' and return the filename
-    --file:fn   |   specify multiple sets of command line options in a file.
-
-<small>*For the `--file:fn` option, place a series of valid command lines in a file and use the above options. In some cases, this option may significantly improve performance. A semi-colon at the start of a line makes that line a comment.*</small>
-
-**Source**: [`tools/grabABI`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/grabABI)

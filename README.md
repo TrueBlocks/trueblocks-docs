@@ -12,7 +12,7 @@ To create a new post, run `hugo new <content-directory>/<subdirectory>/<name>.md
 
 ## How to add menu items
 
-Open up `menus.toml`.
+Open up `config/_default/menus.toml`.
 
 If you want to add a head section, add a config to [[main]]. 
 
