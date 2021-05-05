@@ -21,7 +21,7 @@ You may also be interested in the [TrueBlocks Explorer](https://github.com/TrueB
 
 ---
 
-**Golang**
+**Install Go**:
 
 For all operating systems, please follow [these instructions](https://golang.org/doc/install) to install `golang` on your system.
 
