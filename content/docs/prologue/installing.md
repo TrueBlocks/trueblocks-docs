@@ -17,6 +17,14 @@ You may also be interested in the [TrueBlocks Explorer](https://github.com/TrueB
 
 ## Installing Dependencies
 
+## Prerequisites
+
+---
+
+**Golang**
+
+For all operating systems, please follow [these instructions](https://golang.org/doc/install) to install `golang` on your system.
+
 **For Linux**:
 
 ```shell
@@ -32,6 +40,12 @@ brew install clang-format
 brew install jq
 ```
 
+We recommend that you run MacOS Big Sur or later for best results.
+
+**For Windows**:
+
+TrueBlocks does not currently support Windows builds.
+
 ## Compiling TrueBlocks
 
 ```shell
@@ -39,10 +53,14 @@ git clone -b develop git@github.com:TrueBlocks/trueblocks-core.git
 cd trueblocks-core
 mkdir build && cd build
 cmake ../src
-make -j
+make
 ```
 
-The compilation will create a number of executables in `../bin`. Run this command
+(You may use `make -j <ncores>` to parallelize the build. Replace `<ncores>` with the number of cores on your machine.)
+
+The compilation creates a number of executables in `../bin`.
+
+Run this command
 
 ```shell
 ../bin/chifra --version
@@ -54,17 +72,19 @@ You should get a version string similar to the below
 trueBlocks GHC-TrueBlocks//0.9.0-alpha-409aa9388-20210503
 ```
 
-If not, review the above commands and make sure you didn't miss something. Please [create an issue](https://github.com/TrueBlocks/trueblocks-core/issues) if you continue to have trouble.
+If not, review the above commands and make sure you didn't miss something. [Create an issue](https://github.com/TrueBlocks/trueblocks-core/issues) if you continue to have trouble.
 
 ## Adding ./bin to your $PATH
 
-To make `chifra` easier to use, add `./trueblocks-core/bin` to your environment's $PATH. It's best to use the full path of the `./bin` folder. To find the full path, do this
+`chifra` will only work if its underlying tools are not found in your $PATH.
+
+Add the full path to `./trueblocks-core/bin` to your shell's default environment. To find the full path, do this
 
 ```shell
 cd ../bin && pwd && cd -
 ```
 
-Export the result of that command to your shell's $PATH. Google may be of help here :-).
+Add the result of that command to your shell's $PATH. If you don't know what we mean, a Google search may be in order...
 
 ## Introducing chifra
 
