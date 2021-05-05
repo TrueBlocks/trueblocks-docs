@@ -16,7 +16,6 @@ menu:
 weight: 10
 toc: true
 ---
-Test
 ## chifra export
 
 This folder contains a TrueBlocks monitor. TrueBlocks monitors pull transactions from the Ethereum blockchain for a given (or a series of) Ethereum addresses.
@@ -84,7 +83,7 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
 ### Usage
 
-`Usage:`    chifra names [-e|-m|-l|-o|-c|-p|-n|-a|-s|-g|-v|-h] &lt;term&gt; [term...]  
+`Usage:`    chifra names [-e|-m|-l|-c|-p|-n|-a|-s|-g|-v|-h] &lt;term&gt; [term...]  
 `Purpose:`  Query addresses and/or names of well known accounts.
 
 `Where:`  
@@ -95,7 +94,6 @@ Using chifra names to find Singular's address, list tokens held by other token a
 | -e | --expand | expand search to include all fields (default searches name, address, and symbol only) |
 | -m | --match_case | do case-sensitive search |
 | -l | --all | include all accounts in the search |
-| -o | --owned | include personal accounts in the search |
 | -c | --custom | include your custom named accounts |
 | -p | --prefund | include prefund accounts |
 | -n | --named | include well know token and airdrop addresses in the search |
