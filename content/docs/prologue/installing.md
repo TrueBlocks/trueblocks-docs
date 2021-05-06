@@ -21,7 +21,7 @@ You may also be interested in the [TrueBlocks Explorer](https://github.com/TrueB
 
 ---
 
-**Install Go**:
+**Golang**:
 
 For all operating systems, please follow [these instructions](https://golang.org/doc/install) to install `golang` on your system.
 
@@ -76,7 +76,7 @@ If not, review the above commands and make sure you didn't miss something. [Crea
 
 ## Adding ./bin to your $PATH
 
-`chifra` will only work if its underlying tools are not found in your $PATH.
+`chifra` will only work if its underlying tools are found in your $PATH.
 
 Add the full path to `./trueblocks-core/bin` to your shell's default environment. To find the full path, do this
 
