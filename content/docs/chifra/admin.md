@@ -20,7 +20,7 @@ toc: true
 
 The `chifra pins` is not ready for prime time. Please return late.
 
-### Usage
+### usage
 
 `Usage:`    chifra pins [-c|-i|-f|-s|-v|-h]  
 `Purpose:`  Report on and manage the remotely pinned appearance index and associated bloom filters.
@@ -44,7 +44,7 @@ The `chifra scrape` app queries the rpcProvider you specify (or your local node 
 
 Using operating system tools such as Linux's `cron` you can easily maintain a  constantly fresh TrueBlocks database. Using TrueBlocks `display strings` technology, it is even easy to populate a regular web 2.0 database and from there a full featured website representing the full state of your smart contract.
 
-### Usage
+### usage
 
 `Usage:`    chifra scrape [-t|-n|-p|-s|-i|-R|-v|-h] mode  
 `Purpose:`  Decentralized blockchain scraper and block cache.
@@ -69,7 +69,7 @@ Using operating system tools such as Linux's `cron` you can easily maintain a  c
 
 The `chifra pins` is not ready for prime time. Please return late.
 
-### Usage
+### usage
 
 `Usage:`    chifra pins [-c|-i|-f|-s|-v|-h]  
 `Purpose:`  Report on and manage the remotely pinned appearance index and associated bloom filters.
@@ -91,7 +91,7 @@ The `chifra pins` is not ready for prime time. Please return late.
 
 The `chifra status` program allows one to  manage and explore [monitor cache files](../../monitors/README.md). You may list cache entries, check for duplicate or invalid cache entries (and optionally remove them). Use the tool with caution and please make sure to backup your data before proceeding.
 
-### Usage
+### usage
 
 `Usage:`    chifra status [-d|-t|-v|-h] &lt;mode&gt; [mode...]  
 `Purpose:`  Report on status of one or more TrueBlocks caches.

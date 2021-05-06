@@ -22,7 +22,7 @@ The `chifra blocks` tool retrieves Ethereum block data from a running node or, i
 
 The tool may also be used to double check that the results produced from the TrueBlocks cache and the results as retrieved directly from the running node are identical (modulo the fact that TrueBlocks does not store every data field from the node). You may accomplish this `check` with the --check option.
 
-### Usage
+### usage
 
 `Usage:`    chifra blocks [-e|-a|-u|-n|-c|-U|-v|-h] &lt;block&gt; [block...]  
 `Purpose:`  Returns block(s) from local cache or directly from a running node.
@@ -52,7 +52,7 @@ The tool may also be used to double check that the results produced from the Tru
 
 The `chifra transactions` tool retrieves transactions from the running Ethereum node (using the `--raw` option) or from TrueBlocks (the default). You may provide a transaction `hash`, a `blockNumber.transactionID` pair, or a `blockHash.transactionID` pair (or any combination) to specify the transaction(s).
 
-### Usage
+### usage
 
 `Usage:`    chifra transactions [-a|-t|-u|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction from the cache or the node.
@@ -81,7 +81,7 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 
 `chifra receipts` returns a transaction's receipt. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
 
-### Usage
+### usage
 
 `Usage:`    chifra receipts [-a|-l|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction's receipt from the cache or the node.
@@ -109,7 +109,7 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 
 `chifra logs` returns a transaction's logs. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
 
-### Usage
+### usage
 
 `Usage:`    chifra logs [-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction's logs from the cache or the node.
@@ -136,7 +136,7 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 
 `chifra traces` returns a transaction's traces. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
 
-### Usage
+### usage
 
 `Usage:`    chifra traces [-a|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction's traces from the cache or the node.
@@ -171,7 +171,7 @@ The values for `date` and `time` are specified in JSON format. The `hour`/`minut
 
 You may name your own blocks (for example, to denote the start of an ICO perhaps) by editing '$CONFIG/trueBlocks.toml' and placing `name=blockNum` pairs under the `[special]` section of that file (create the file if it is not already present, create the section if needed). Special blocks are detailed below.
 
-### Usage
+### usage
 
 `Usage:`    chifra when [-l|-t|-s|-v|-h] &lt; block | date &gt; [ block... | date... ]  
 `Purpose:`  Finds block based on date, blockNum, timestamp, or 'special'.
@@ -200,7 +200,7 @@ You may name your own blocks (for example, to denote the start of an ICO perhaps
   - byzantium (`4370000`), devcon3 (`4469339`), parityhack2 (`4501969`), kitties (`4605167`)
   - makerdao (`4620855`), devcon4 (`6610517`), uniswap (`6627917`), constantinople (`7280000`)
   - devcon5 (`8700401`), mcdai (`8928158`), istanbul (`9069000`), muirglacier (`9200000`)
-  - latest (``)
+  - berlin (`12244000`), latest (``)
 
 **Source code**: [`tools/whenBlock`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/whenBlock)
 

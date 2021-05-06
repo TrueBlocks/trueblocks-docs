@@ -14,14 +14,14 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 40
+weight: 50
 toc: true
 ---
 ## chifra traces
 
 `chifra traces` returns a transaction's traces. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
 
-### Usage
+### usage
 
 `Usage:`    chifra traces [-a|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction's traces from the cache or the node.
@@ -56,7 +56,7 @@ In `--byAcct` mode, **all items** in the `address_list` are assumed to be token 
 
 You may optionally specify one or more blocks at which to report.
 
-### Usage
+### usage
 
 `Usage:`    chifra tokens [-p|-b|-n|-v|-h] &lt;address&gt; &lt;address&gt; [address...] [block...]  
 `Purpose:`  Retrieve token balances for one or more address at given block(s).
