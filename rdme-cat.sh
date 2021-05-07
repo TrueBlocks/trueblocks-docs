@@ -6,7 +6,7 @@
 SOURCE=https://raw.githubusercontent.com/TrueBlocks/trueblocks-core/develop/docs
 READMES=$SOURCE/readmes
 INTROS=$READMES/intros
-CONTENT=content/docs/chifra/
+CONTENT=content/docs/chifra
 DATE=`date "+%FT%T"`
 
 #----------------------------------
@@ -155,4 +155,4 @@ curl -s $INTROS/other.md >> $OTHER &&\
 curl -s $READMES/tools/ethslurp/README.md >> $OTHER && \
 curl -s $READMES/tools/getQuotes/README.md >> $OTHER
 
-echo "Help text created..."
+echo "Pages built. To see what's changed, run  git diff content/docs/chifra"
