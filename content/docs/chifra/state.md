@@ -16,6 +16,7 @@ menu:
 weight: 30
 toc: true
 ---
+We separate out these few commands into a section called Chain State to distinguish it from blockchain data such as blocks and transactions. Chain state is what changes when blocks and transactions are processed. If you're running a non-archive node, you can query things such as balance and the byte code for smart contracts. If you have an archive node (such as TurboGeth), you can query historical state which comes in very handily when doing reconciliations.
 ## chifra traces
 
 `chifra traces` returns a transaction's traces. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
