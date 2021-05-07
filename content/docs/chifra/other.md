@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-05-07T11:22:35
+date: 2021-05-07T12:59:33
 lastmod:
   - :git
   - lastmod
@@ -17,31 +17,32 @@ weight: 50
 toc: true
 ---
 ## intro
-This section of commands collects together other possibly useful tools such as a rudimentary pricing tool, a quick way to open a blockchain explorer, and an older tool we used to build called EthSlurp which can be used to compare our results (favorabily, by the way) to EtherScan.
+This section of commands collects together other useful tools such as a rudimentary pricing tool, a quick 
+way to open a blockchain explorer, and an older tool we used to build called EthSlurp which may be used 
+to compare our results (favorabily, by the way) to EtherScan.
 ## chifra explore
 
-`chifra list` takes one or more addresses, queries the index of appearances, and builds a TrueBlocks 'monitor'. A monitor is a file that represents your interest in those particular addresses. The first time you create a monitor takes a few minutes, but the information is cached, so subsequent queries are much faster.
-
-Note that `chifra list` does not extract transactional data from the chain. This is accomplished with `chifra export`. In fact, `chifra list` is just a shortcut of the command `chifra export --appearances` and may be used interchangably.
+`chifra explore` opens Etherscan (and later other explorers - including our own) to the block, transaction hash, or Ethereum address you specify. It's a handy way to open EtherScan from the command line, nothing more.
 
 ### usage
 
-`Usage:`    chifra list &lt;address&gt; [address...]  
-`Purpose:`  List appearances for the given address(es).
+`Usage:`    chifra explore [ address | tx_hash | block_num ]  
+`Purpose:`  Opens Etherscan to either an address, a transaction hash, or a block number.
 
 `Where:`  
 
 | Hotkey | Option | Description |
 | -------: | :------- | :------- |
-|  | addrs | one or more addresses (0x...) to export (required) |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+|  | addrs | an Ethereum address |
+|  | tx_hash | a 32-byte transaction hash |
+|  | block_num | a block number |
 | -h | --help | display this help screen |
 
 `Notes:`
 
-- `addresses` must start with '0x' and be forty two characters long.
-
-**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+- An `addresses` must start with '0x' and be forty-two characters long.
+- A `tx_hash` must start with '0x' and be sixty-six characters long.
+- If a hash is provided, it is assumed to be a transaction hash.
 ## chifra slurp
 
 `chifra slurp` is one of our older command line tools. It even has its [own website](http://ethslurp.com) and [video tutorial](https://www.youtube.com/w atch?v=ZZDV1yAgces). While this tool is very useful, it has two significant flaws. First, it is not decentralized--in fact it is fully centralized, pulling its data from [http://etherscan.io](http://etherscan.io) as it does. The tool's second major flaw is that it does not pull every transaction from the chain for a given account as our [account monitors](../../monitors/README.md) do. This is because of `internal transactions` which, believe us, is too complicated to be worth taking the time to explain.
