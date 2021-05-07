@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:42-03:00
+date: 2021-05-07T09:05:57
 lastmod:
   - :git
   - lastmod
@@ -16,6 +16,8 @@ menu:
 weight: 40
 toc: true
 ---
+## Intro
+The Admin section of commands allows you to get the status of the system as well as control the creation of and sharing of the TrueBlocks index of appearances. It also provides a mechanism for serving the `chifra` subcommands as API endpoints.
 ## chifra pins
 
 The `chifra pins` is not ready for prime time. Please return late.

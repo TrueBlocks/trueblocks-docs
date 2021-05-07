@@ -1,8 +1,8 @@
 ---
-title: "Blockchain Data"
+title: "Chain Data"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:11-03:00
+date: 2021-05-07T09:05:57
 lastmod:
   - :git
   - lastmod
@@ -16,6 +16,8 @@ menu:
 weight: 20
 toc: true
 ---
+## Intro
+This group of commands focuses on extracting the various bit of blockchain data directly from the node. You may extract blocks, transactions, receipts, logs, and traces. Each tool has it own options, making getting exactly the data you want easy. You can even figure out when an Ethereum block occurred.
 ## chifra blocks
 
 The `chifra blocks` tool retrieves Ethereum block data from a running node or, if previously retrieved, the TrueBlocks cache. It optionally retrieves the hashes that denote the transactions in the block or the full transactional data as a default.

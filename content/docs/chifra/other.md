@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:48-03:00
+date: 2021-05-07T09:05:57
 lastmod:
   - :git
   - lastmod
@@ -16,6 +16,8 @@ menu:
 weight: 50
 toc: true
 ---
+## Intro
+This section of commands collects together other possibly useful tools such as a rudimentary pricing tool, a quick way to open a blockchain explorer, and an older tool we used to build called EthSlurp which can be used to compare our results (favorabily, by the way) to EtherScan.
 ## chifra slurp
 
 `chifra slurp` is one of our older command line tools. It even has its [own website](http://ethslurp.com) and [video tutorial](https://www.youtube.com/w atch?v=ZZDV1yAgces). While this tool is very useful, it has two significant flaws. First, it is not decentralized--in fact it is fully centralized, pulling its data from [http://etherscan.io](http://etherscan.io) as it does. The tool's second major flaw is that it does not pull every transaction from the chain for a given account as our [account monitors](../../monitors/README.md) do. This is because of `internal transactions` which, believe us, is too complicated to be worth taking the time to explain.

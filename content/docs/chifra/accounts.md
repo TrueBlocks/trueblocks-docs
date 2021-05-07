@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:42-03:00
+date: 2021-05-07T09:05:57
 lastmod:
   - :git
   - lastmod
@@ -16,6 +16,8 @@ menu:
 weight: 10
 toc: true
 ---
+## Intro
+This group of commands is the heart of TrueBlocks. They allow you to work with Ethereum addresses (or, as we call them, accounts). You may name addresses; grab the ABI file for an address; add, delete, clean or delete accounts, and especially list or export the transactions related to an address.
 ## chifra export
 
 This folder contains a TrueBlocks monitor. TrueBlocks monitors pull transactions from the Ethereum blockchain for a given (or a series of) Ethereum addresses.

@@ -1,8 +1,8 @@
 ---
-title: "State"
+title: "Chain State"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:48-03:00
+date: 2021-05-07T09:05:57
 lastmod:
   - :git
   - lastmod
@@ -16,34 +16,41 @@ menu:
 weight: 30
 toc: true
 ---
-## chifra traces
+## Intro
+We separate out these few commands into a section called Chain State to distinguish it from blockchain data such as blocks and transactions. Chain state is what changes when blocks and transactions are processed. If you're running a non-archive node, you can query things such as balance and the byte code for smart contracts. If you have an archive node (such as TurboGeth), you can query historical state which comes in very handily when doing reconciliations.
+## chifra state
 
-`chifra traces` returns a transaction's traces. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
+Retrieve the balance (in wei) of an address (or list of addresses) at a given block(s). You may specify multiple addresses and/or multiple blocks, but you must specify at least one address.
+
+This simple program may be used to query an Ethereum address to determine if it is a `smart contract` or simply a regular `external account`. It may also be used to retrieve the byte-code from an address (if present). Finally, it may be used to compare the byte code found at two addresses to determine if they hold identical code. You may specify multiple addresses on a line.
 
 ### usage
 
-`Usage:`    chifra traces [-a|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]  
-`Purpose:`  Retrieve a transaction's traces from the cache or the node.
+`Usage:`    chifra state [-p|-c|-n|-v|-h] &lt;address&gt; [address...] [block...]  
+`Purpose:`  Retrieve the balance of one or more address at the given block(s).
 
 `Where:`  
 
 | Short Cut | Option | Description |
 | -------: | :------- | :------- |
-|  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
-| -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
-| -d | --statediff | export stateDiff traces for the transaction(s) |
-| -c | --count | show the number of traces for the transaction only (fast) |
+|  | addrs | one or more addresses (0x...) from which to retrieve balances (required) |
+|  | blocks | an optional list of one or more blocks at which to report balances, defaults to 'latest' |
+| -p | --parts <val> | control which state to export, one or more of [none&#124;some*&#124;all&#124;balance&#124;nonce&#124;code&#124;storage&#124;deployed&#124;accttype] |
+| -c | --changes | only report a balance when it changes from one block to the next |
+| -n | --no_zero | suppress the display of zero balance accounts |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
 | -h | --help | display this help screen |
 
 `Notes:`
 
-- `transactions` is one or more space-separated identifiers which may be either a transaction hash, 
-  a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
-- This tool checks for valid input syntax, but does not check that the transaction requested exists.
+- `addresses` must start with '0x' and be forty two characters long.
+- `blocks` may be a space-separated list of values, a start-end range, a `special`, or any combination.
 - If the queried node does not store historical state, the results are undefined.
+- `special` blocks are detailed under `whenBlock --list`.
+- `balance` is the default mode. To select a single mode use `none` first, followed by that mode.
+- You may specify multiple `modes` on a single line.
 
-**Source code**: [`tools/getTraces`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getTraces)
+**Source code**: [`tools/getState`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getState)
 
 ## chifra tokens
 

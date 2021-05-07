@@ -1,21 +1,21 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 ## Runs from `trueblocks-core/docs/readmes`
 ## As we get better we can make this more robust, or rewrite it as something that makes more sense
 
+SOURCE=https://raw.githubusercontent.com/TrueBlocks/trueblocks-core/develop/docs
+READMES=$SOURCE/readmes
+INTROS=$READMES/intros
+DATE=`date "+%FT%T"`
 
+#----------------------------------
 ACCOUNTS=accounts.md
-ADMIN=admin.md
-DATA=data.md
-OTHER=other.md
-STATE=state.md
-
 cat << _EOF_ > $ACCOUNTS &&
 ---
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:42-03:00
+date: $DATE
 lastmod:
   - :git
   - lastmod
@@ -31,40 +31,20 @@ toc: true
 ---
 _EOF_
 
-cat apps/acctExport/README.md >> $ACCOUNTS &&\
-cat tools/ethNames/README.md >> $ACCOUNTS &&\
-cat tools/grabABI/README.md >> $ACCOUNTS
+echo "Building accounts page..."
+curl -s $INTROS/accounts.md >> $ACCOUNTS &&\
+curl -s $READMES/apps/acctExport/README.md >> $ACCOUNTS &&\
+curl -s $READMES/tools/ethNames/README.md >> $ACCOUNTS &&\
+curl -s $READMES/tools/grabABI/README.md >> $ACCOUNTS
 
-cat << _EOF_ > $ADMIN &&
----
-title: "Admin"
-description: ""
-lead: ""
-date: 2021-04-29T09:18:42-03:00
-lastmod:
-  - :git
-  - lastmod
-  - date
-  - publishDate
-draft: false
-images: []
-menu: 
-  docs:
-    parent: "chifra"
-weight: 30
-toc: true
----
-_EOF_
-cat apps/pinMan/README.md >> $ADMIN &&\
-cat apps/blockScrape/README.md >> $ADMIN &&\
-cat apps/cacheStatus/README.md >> $ADMIN 
-
+#----------------------------------
+DATA=chaindata.md
 cat << _EOF_ > $DATA &&
 ---
-title: "Data"
+title: "Chain Data"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:11-03:00
+date: $DATE
 lastmod:
   - :git
   - lastmod
@@ -79,20 +59,24 @@ weight: 20
 toc: true
 ---
 _EOF_
-cat tools/getBlocks/README.md >> $DATA && \
-cat tools/getTrans/README.md >> $DATA && \
-cat tools/getReceipts/README.md >> $DATA &&\
-cat tools/getLogs/README.md >> $DATA &&\
-cat tools/getTraces/README.md >> $DATA &&\
-cat tools/whenBlock/README.md >> $DATA &&\
 
+echo "Building chain data page..."
+curl -s $INTROS/chaindata.md >> $DATA &&\
+curl -s $READMES/tools/getBlocks/README.md >> $DATA && \
+curl -s $READMES/tools/getTrans/README.md >> $DATA && \
+curl -s $READMES/tools/getReceipts/README.md >> $DATA &&\
+curl -s $READMES/tools/getLogs/README.md >> $DATA &&\
+curl -s $READMES/tools/getTraces/README.md >> $DATA &&\
+curl -s $READMES/tools/whenBlock/README.md >> $DATA
+
+#----------------------------------
+STATE=chainstate.md
 cat << _EOF_ > $STATE &&
-
 ---
-title: "State"
+title: "Chain State"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:48-03:00
+date: $DATE
 lastmod:
   - :git
   - lastmod
@@ -103,22 +87,53 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 50
+weight: 30
 toc: true
 ---
 _EOF_
 
-cat tools/getTraces/README.md >> $STATE &&\
-cat tools/getTokens/README.md >> $STATE \
+echo "Building chain state page..."
+curl -s $INTROS/chainstate.md >> $STATE &&\
+curl -s $READMES/tools/getState/README.md >> $STATE &&\
+curl -s $READMES/tools/getTokens/README.md >> $STATE
 
+#----------------------------------
+ADMIN=admin.md
+cat << _EOF_ > $ADMIN &&
+---
+title: "Admin"
+description: ""
+lead: ""
+date: $DATE
+lastmod:
+  - :git
+  - lastmod
+  - date
+  - publishDate
+draft: false
+images: []
+menu: 
+  docs:
+    parent: "chifra"
+weight: 40
+toc: true
+---
+_EOF_
 
+echo "Building admin page..."
+curl -s $INTROS/admin.md >> $ADMIN &&\
+curl -s $READMES/apps/pinMan/README.md >> $ADMIN &&\
+curl -s $READMES/apps/blockScrape/README.md >> $ADMIN &&\
+curl -s $READMES/apps/cacheStatus/README.md >> $ADMIN 
 
+#----------------------------------
+OTHER=other.md
 cat << _EOF_ > $OTHER &&
 ---
 title: "Other"
 description: ""
 lead: ""
-date: 2021-04-29T09:18:48-03:00
+date: $DATE
 lastmod:
   - :git
   - lastmod
@@ -133,7 +148,10 @@ weight: 50
 toc: true
 ---
 _EOF_
-cat tools/ethslurp/README.md >> $OTHER && \
-cat tools/getQuotes/README.md >> $OTHER && \
-echo "test worked"
 
+echo "Building other page..."
+curl -s $INTROS/other.md >> $OTHER &&\
+curl -s $READMES/tools/ethslurp/README.md >> $OTHER && \
+curl -s $READMES/tools/getQuotes/README.md >> $OTHER
+
+echo "Help text created..."
