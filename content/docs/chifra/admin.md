@@ -13,7 +13,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 30
+weight: 40
 toc: true
 ---
 ## chifra pins

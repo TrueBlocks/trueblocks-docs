@@ -1,4 +1,3 @@
-
 ---
 title: "State"
 description: ""
@@ -14,7 +13,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 50
+weight: 30
 toc: true
 ---
 ## chifra traces
