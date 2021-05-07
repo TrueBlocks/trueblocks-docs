@@ -6,10 +6,11 @@
 SOURCE=https://raw.githubusercontent.com/TrueBlocks/trueblocks-core/develop/docs
 READMES=$SOURCE/readmes
 INTROS=$READMES/intros
+CONTENT=content/docs/chifra/
 DATE=`date "+%FT%T"`
 
 #----------------------------------
-ACCOUNTS=accounts.md
+ACCOUNTS=$CONTENT/accounts.md
 cat << _EOF_ > $ACCOUNTS &&
 ---
 title: "Accounts"
@@ -38,7 +39,7 @@ curl -s $READMES/tools/ethNames/README.md >> $ACCOUNTS &&\
 curl -s $READMES/tools/grabABI/README.md >> $ACCOUNTS
 
 #----------------------------------
-DATA=chaindata.md
+DATA=$CONTENT/chaindata.md
 cat << _EOF_ > $DATA &&
 ---
 title: "Chain Data"
@@ -70,7 +71,7 @@ curl -s $READMES/tools/getTraces/README.md >> $DATA &&\
 curl -s $READMES/tools/whenBlock/README.md >> $DATA
 
 #----------------------------------
-STATE=chainstate.md
+STATE=$CONTENT/chainstate.md
 cat << _EOF_ > $STATE &&
 ---
 title: "Chain State"
@@ -98,7 +99,7 @@ curl -s $READMES/tools/getState/README.md >> $STATE &&\
 curl -s $READMES/tools/getTokens/README.md >> $STATE
 
 #----------------------------------
-ADMIN=admin.md
+ADMIN=$CONTENT/admin.md
 cat << _EOF_ > $ADMIN &&
 ---
 title: "Admin"
@@ -127,7 +128,7 @@ curl -s $READMES/apps/blockScrape/README.md >> $ADMIN &&\
 curl -s $READMES/apps/cacheStatus/README.md >> $ADMIN 
 
 #----------------------------------
-OTHER=other.md
+OTHER=$CONTENT/other.md
 cat << _EOF_ > $OTHER &&
 ---
 title: "Other"
