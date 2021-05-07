@@ -22,7 +22,7 @@ toc: true
 
 While `chifra slurp` does have its shortcomings, it also provides some nice features. You can use it to pull all externally generated transactions against an account. You may also use the tool's fully customizable formatting options to export data into any format you wish. Visit the above referenced website for more information.
 
-### Usage
+### usage
 
 `Usage:`    chifra slurp [-t|-p|-v|-h] &lt;address&gt; [address...] [block...]  
 `Purpose:`  Fetches data from EtherScan for an arbitrary address.
@@ -48,7 +48,7 @@ While `chifra slurp` does have its shortcomings, it also provides some nice feat
 
 The `chifra quotes` tool provides Ethereum price data to various tools or for other purposes. Currently, `chifra quotes` retrieves data using the Poloniex API. In future versions, we intend to add other sources of pricing data and provide a mechanism to specify an averaging calculate given multiple price sources. Ultimately, we hope Ethereum/fiat price data appears under consensus, but until that time, **TrueBlocks** uses `chifra quotes`. Powered, in part, by Poloniex<sup>&reg;<sup>
 
-### Usage
+### usage
 
 `Usage:`    chifra quotes [-f|-p|-a|-e|-v|-h]  
 `Purpose:`  Freshen and/or display Ethereum price data.

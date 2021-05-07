@@ -24,7 +24,7 @@ Below we present the command line interface to this tool, although the tool itse
 
 Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more information.
 
-### Usage
+### usage
 
 `Usage:`    chifra export [-p|-r|-l|-t|-C|-O|-a|-i|-R|-U|-v|-h] &lt;address&gt; [address...] [topics] [fourbytes]  
 `Purpose:`  Export full detail of transactions for one or more Ethereum addresses.
@@ -81,7 +81,7 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
     chifra tokens `chifra names -a singular` `chifra names -n | xargs`
 
-### Usage
+### usage
 
 `Usage:`    chifra names [-e|-m|-l|-c|-p|-n|-a|-s|-g|-v|-h] &lt;term&gt; [term...]  
 `Purpose:`  Query addresses and/or names of well known accounts.
@@ -118,7 +118,7 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
 `chifra abis` retrieves an ABI file either from a local cache, from the Ethereum Name Service (ENS), or from [Etherscan](http://etherscan.io). Once retrieved, `chifra abis` generates the classDefinition files needed by [makeClass](../makeClass/README.md) to generate a parselib for each [Ethereum address monitor](../../monitors/README.md).
 
-### Usage
+### usage
 
 `Usage:`    chifra abis [-c|-k|-f|-v|-h] &lt;address&gt; [address...]  
 `Purpose:`  Fetches the ABI for a smart contract.
