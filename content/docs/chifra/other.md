@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-05-07T09:16:42
+date: 2021-05-07T11:22:35
 lastmod:
   - :git
   - lastmod
@@ -18,6 +18,30 @@ toc: true
 ---
 ## intro
 This section of commands collects together other possibly useful tools such as a rudimentary pricing tool, a quick way to open a blockchain explorer, and an older tool we used to build called EthSlurp which can be used to compare our results (favorabily, by the way) to EtherScan.
+## chifra explore
+
+`chifra list` takes one or more addresses, queries the index of appearances, and builds a TrueBlocks 'monitor'. A monitor is a file that represents your interest in those particular addresses. The first time you create a monitor takes a few minutes, but the information is cached, so subsequent queries are much faster.
+
+Note that `chifra list` does not extract transactional data from the chain. This is accomplished with `chifra export`. In fact, `chifra list` is just a shortcut of the command `chifra export --appearances` and may be used interchangably.
+
+### usage
+
+`Usage:`    chifra list &lt;address&gt; [address...]  
+`Purpose:`  List appearances for the given address(es).
+
+`Where:`  
+
+| Hotkey | Option | Description |
+| -------: | :------- | :------- |
+|  | addrs | one or more addresses (0x...) to export (required) |
+| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -h | --help | display this help screen |
+
+`Notes:`
+
+- `addresses` must start with '0x' and be forty two characters long.
+
+**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
 ## chifra slurp
 
 `chifra slurp` is one of our older command line tools. It even has its [own website](http://ethslurp.com) and [video tutorial](https://www.youtube.com/w atch?v=ZZDV1yAgces). While this tool is very useful, it has two significant flaws. First, it is not decentralized--in fact it is fully centralized, pulling its data from [http://etherscan.io](http://etherscan.io) as it does. The tool's second major flaw is that it does not pull every transaction from the chain for a given account as our [account monitors](../../monitors/README.md) do. This is because of `internal transactions` which, believe us, is too complicated to be worth taking the time to explain.
@@ -31,8 +55,8 @@ While `chifra slurp` does have its shortcomings, it also provides some nice feat
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | addrs | one or more addresses to slurp from Etherscan (required) |
 |  | blocks | an optional range of blocks to slurp |
 | -t | --types <val> | one or more types of transactions to request, one or more of [ext*&#124;int&#124;token&#124;nfts&#124;miner&#124;all] |
@@ -57,8 +81,8 @@ The `chifra quotes` tool provides Ethereum price data to various tools or for ot
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 | -f | --freshen | Freshen price database (append new data) |
 | -p | --period <val> | increment of display, one of [5&#124;15&#124;30&#124;60&#124;120*&#124;240&#124;1440&#124;10080&#124;hourly&#124;daily&#124;weekly] |
 | -a | --pair <str> | which price pair to freshen or list (see Poloniex) |

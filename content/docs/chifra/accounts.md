@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-05-07T09:16:42
+date: 2021-05-07T11:22:35
 lastmod:
   - :git
   - lastmod
@@ -18,7 +18,70 @@ toc: true
 ---
 ## intro
 This group of commands is the heart of TrueBlocks. They allow you to work with Ethereum addresses (or, as we call them, accounts). You may name addresses; grab the ABI file for an address; add, delete, clean or delete accounts, and especially list or export the transactions related to an address.
+## chifra list
+
+`chifra list` takes one or more addresses, queries the index of appearances, and builds a TrueBlocks 'monitor'. A monitor is a file that represents your interest in those particular addresses. The first time you create a monitor takes a few minutes, but the information is cached, so subsequent queries are much faster.
+
+Note that `chifra list` does not extract transactional data from the chain. This is accomplished with `chifra export`. In fact, `chifra list` is just a shortcut of the command `chifra export --appearances` and may be used interchangably.
+
+### usage
+
+`Usage:`    chifra list &lt;address&gt; [address...]  
+`Purpose:`  List appearances for the given address(es).
+
+`Where:`  
+
+| Short Cut | Option | Description |
+| -------: | :------- | :------- |
+|  | addrs | one or more addresses (0x...) to export (required) |
+| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -h | --help | display this help screen |
+
+`Notes:`
+
+- `addresses` must start with '0x' and be forty two characters long.
+
+**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
 ## chifra export
+
+This folder contains a TrueBlocks monitor. TrueBlocks monitors pull transactions from the Ethereum blockchain for a given (or a series of) Ethereum addresses.
+
+Below we present the command line interface to this tool, although the tool itself is not available under open source. While the tool is in active development, TrueBlocks monitors already produce very useful results. For example, we use TrueBlocks monitors to account for and analyze all transactions on a given smart contract. We present [this example](http://dao.quickblocks.io).
+
+Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more information.
+
+### usage
+
+`Usage:`    chifra export [-p|-r|-l|-t|-C|-O|-a|-i|-R|-U|-v|-h] &lt;address&gt; [address...] [topics] [fourbytes]  
+`Purpose:`  Export full detail of transactions for one or more Ethereum addresses.
+
+`Where:`  
+
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
+|  | addrs | one or more addresses (0x...) to export (required) |
+|  | topics | filter by one or more logs topics (only for --logs option) |
+|  | fourbytes | filter by one or more fourbytes (only for transactions and trace options) |
+| -p | --appearances | export a list of appearances |
+| -r | --receipts | export receipts instead of transaction list |
+| -l | --logs | export logs instead of transaction list |
+| -t | --traces | export traces instead of transaction list |
+| -C | --accounting | export accounting records instead of transaction list |
+| -O | --tokens | export accounting for ERC 20 tokens (assumes ETH accounting as above) |
+| -a | --articulate | articulate transactions, traces, logs, and outputs |
+| -i | --cache_txs | write transactions to the cache (see notes) |
+| -R | --cache_traces | write traces to the cache (see notes) |
+| -U | --count | only available for --appearances mode, if present return only the number of records |
+| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -h | --help | display this help screen |
+
+`Notes:`
+
+- `addresses` must start with '0x' and be forty two characters long.
+
+**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+
+## chifra monitors
 
 This folder contains a TrueBlocks monitor. TrueBlocks monitors pull transactions from the Ethereum blockchain for a given (or a series of) Ethereum addresses.
 
@@ -90,8 +153,8 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | terms | a space separated list of one or more search terms (required) |
 | -e | --expand | expand search to include all fields (default searches name, address, and symbol only) |
 | -m | --match_case | do case-sensitive search |
@@ -127,8 +190,8 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | addrs | list of one or more smart contracts whose ABI to grab from EtherScan (required) |
 | -c | --canonical | convert all types to their canonical represenation and remove all spaces from display |
 | -k | --known | load common 'known' ABIs from cache |

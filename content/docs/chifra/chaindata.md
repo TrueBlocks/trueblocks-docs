@@ -2,7 +2,7 @@
 title: "Chain Data"
 description: ""
 lead: ""
-date: 2021-05-07T09:16:42
+date: 2021-05-07T11:22:35
 lastmod:
   - :git
   - lastmod
@@ -31,8 +31,8 @@ The tool may also be used to double check that the results produced from the Tru
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | blocks | a space-separated list of one or more blocks to retrieve (required) |
 | -e | --hashes_only | display only transaction hashes, default is to display full transaction detail |
 | -a | --apps | display all address appearances included in the block |
@@ -61,8 +61,8 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
 | -t | --trace | display the transaction's trace |
@@ -90,8 +90,8 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
 | -l | --logs | display the receipt's logs |
@@ -118,8 +118,8 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
@@ -145,8 +145,8 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
 | -d | --statediff | export stateDiff traces for the transaction(s) |
@@ -180,8 +180,8 @@ You may name your own blocks (for example, to denote the start of an ICO perhaps
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | block_list | one or more dates, block numbers, hashes, or special named blocks (see notes) |
 | -l | --list | export a list of the 'special' blocks |
 | -t | --timestamps | ignore other options and generate timestamps only |

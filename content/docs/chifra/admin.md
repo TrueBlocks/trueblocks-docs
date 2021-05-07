@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-05-07T09:16:42
+date: 2021-05-07T11:22:35
 lastmod:
   - :git
   - lastmod
@@ -18,27 +18,50 @@ toc: true
 ---
 ## intro
 The Admin section of commands allows you to get the status of the system as well as control the creation of and sharing of the TrueBlocks index of appearances. It also provides a mechanism for serving the `chifra` subcommands as API endpoints.
-## chifra pins
+## chifra init
 
-The `chifra pins` is not ready for prime time. Please return late.
+`chifra list` takes one or more addresses, queries the index of appearances, and builds a TrueBlocks 'monitor'. A monitor is a file that represents your interest in those particular addresses. The first time you create a monitor takes a few minutes, but the information is cached, so subsequent queries are much faster.
+
+Note that `chifra list` does not extract transactional data from the chain. This is accomplished with `chifra export`. In fact, `chifra list` is just a shortcut of the command `chifra export --appearances` and may be used interchangably.
 
 ### usage
 
-`Usage:`    chifra pins [-c|-i|-f|-s|-v|-h]  
-`Purpose:`  Report on and manage the remotely pinned appearance index and associated bloom filters.
+`Usage:`    chifra list &lt;address&gt; [address...]  
+`Purpose:`  List appearances for the given address(es).
 
 `Where:`  
 
 | Short Cut | Option | Description |
 | -------: | :------- | :------- |
-| -c | --compare | report differences (if any) between the manifest and pinning service |
-| -i | --init | initialize the local index by downloading bloom filters from the pinning service |
-| -f | --freshen | freshen the manifest from the hash found at the smart contract |
-| -s | --sleep <double> | the number of seconds to sleep between requests during init (default .25) |
+|  | addrs | one or more addresses (0x...) to export (required) |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
 | -h | --help | display this help screen |
 
-**Source code**: [`apps/pinMan`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/pinMan)
+`Notes:`
+
+- `addresses` must start with '0x' and be forty two characters long.
+
+**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+## chifra status
+
+The `chifra status` program allows one to  manage and explore [monitor cache files](../../monitors/README.md). You may list cache entries, check for duplicate or invalid cache entries (and optionally remove them). Use the tool with caution and please make sure to backup your data before proceeding.
+
+### usage
+
+`Usage:`    chifra status [-d|-t|-v|-h] &lt;mode&gt; [mode...]  
+`Purpose:`  Report on status of one or more TrueBlocks caches.
+
+`Where:`  
+
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
+|  | modes | the type of status info to retrieve, one or more of [index&#124;monitors&#124;entities&#124;names&#124;abis&#124;caches&#124;some*&#124;all] |
+| -d | --details | include details about items found in monitors, slurps, abis, or price caches |
+| -t | --types <val> | for cache mode only, which type(s) of cache to report, one or more of [blocks&#124;transactions&#124;traces&#124;slurps&#124;prices&#124;all*] |
+| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -h | --help | display this help screen |
+
+**Source code**: [`apps/cacheStatus`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/cacheStatus)
 
 ## chifra scrape
 
@@ -53,8 +76,8 @@ Using operating system tools such as Linux's `cron` you can easily maintain a  c
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
 |  | mode | control the block and account scrapers, one of [run&#124;quit&#124;pause&#124;restart] (required) |
 | -t | --tool <val> | process the index, monitors, or both (none means process timestamps only), one or more of [monitors&#124;index*&#124;none&#124;both] |
 | -n | --n_blocks <num> | maximum number of blocks to process (defaults to 5000) |
@@ -67,24 +90,49 @@ Using operating system tools such as Linux's `cron` you can easily maintain a  c
 
 **Source code**: [`apps/blockScrape`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/blockScrape)
 
-## chifra status
+## chifra serve
 
-The `chifra status` program allows one to  manage and explore [monitor cache files](../../monitors/README.md). You may list cache entries, check for duplicate or invalid cache entries (and optionally remove them). Use the tool with caution and please make sure to backup your data before proceeding.
+`chifra list` takes one or more addresses, queries the index of appearances, and builds a TrueBlocks 'monitor'. A monitor is a file that represents your interest in those particular addresses. The first time you create a monitor takes a few minutes, but the information is cached, so subsequent queries are much faster.
+
+Note that `chifra list` does not extract transactional data from the chain. This is accomplished with `chifra export`. In fact, `chifra list` is just a shortcut of the command `chifra export --appearances` and may be used interchangably.
 
 ### usage
 
-`Usage:`    chifra status [-d|-t|-v|-h] &lt;mode&gt; [mode...]  
-`Purpose:`  Report on status of one or more TrueBlocks caches.
+`Usage:`    chifra list &lt;address&gt; [address...]  
+`Purpose:`  List appearances for the given address(es).
 
 `Where:`  
 
 | Short Cut | Option | Description |
 | -------: | :------- | :------- |
-|  | modes | the type of status info to retrieve, one or more of [index&#124;monitors&#124;entities&#124;names&#124;abis&#124;caches&#124;some*&#124;all] |
-| -d | --details | include details about items found in monitors, slurps, abis, or price caches |
-| -t | --types <val> | for cache mode only, which type(s) of cache to report, one or more of [blocks&#124;transactions&#124;traces&#124;slurps&#124;prices&#124;all*] |
+|  | addrs | one or more addresses (0x...) to export (required) |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
 | -h | --help | display this help screen |
 
-**Source code**: [`apps/cacheStatus`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/cacheStatus)
+`Notes:`
+
+- `addresses` must start with '0x' and be forty two characters long.
+
+**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+## chifra pins
+
+The `chifra pins` is not ready for prime time. Please return late.
+
+### usage
+
+`Usage:`    chifra pins [-c|-i|-f|-s|-v|-h]  
+`Purpose:`  Report on and manage the remotely pinned appearance index and associated bloom filters.
+
+`Where:`  
+
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
+| -c | --compare | report differences (if any) between the manifest and pinning service |
+| -i | --init | initialize the local index by downloading bloom filters from the pinning service |
+| -f | --freshen | freshen the manifest from the hash found at the smart contract |
+| -s | --sleep <double> | the number of seconds to sleep between requests during init (default .25) |
+| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -h | --help | display this help screen |
+
+**Source code**: [`apps/pinMan`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/pinMan)
 
