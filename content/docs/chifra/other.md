@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-05-07T12:59:33
+date: 2021-05-07T13:01:34
 lastmod:
   - :git
   - lastmod
@@ -20,6 +20,35 @@ toc: true
 This section of commands collects together other useful tools such as a rudimentary pricing tool, a quick 
 way to open a blockchain explorer, and an older tool we used to build called EthSlurp which may be used 
 to compare our results (favorabily, by the way) to EtherScan.
+## chifra quotes
+
+The `chifra quotes` tool provides Ethereum price data to various tools or for other purposes. Currently, `chifra quotes` retrieves data using the Poloniex API. In future versions, we intend to add other sources of pricing data and provide a mechanism to specify an averaging calculate given multiple price sources. Ultimately, we hope Ethereum/fiat price data appears under consensus, but until that time, **TrueBlocks** uses `chifra quotes`. Powered, in part, by Poloniex<sup>&reg;<sup>
+
+### usage
+
+`Usage:`    chifra quotes [-f|-p|-a|-e|-v|-h]  
+`Purpose:`  Freshen and/or display Ethereum price data.
+
+`Where:`  
+
+| Hotkey | Option | Description |
+| :----- | :----- | :---------- |
+| -f | --freshen | Freshen price database (append new data) |
+| -p | --period <val> | increment of display, one of [5&#124;15&#124;30&#124;60&#124;120*&#124;240&#124;1440&#124;10080&#124;hourly&#124;daily&#124;weekly] |
+| -a | --pair <str> | which price pair to freshen or list (see Poloniex) |
+| -e | --feed <val> | the feed for the price data, one of [poloniex*&#124;maker&#124;tellor] |
+| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -h | --help | display this help screen |
+
+`Notes:`
+
+- Valid pairs include any pair from the public Poloniex's API here: 
+  https://poloniex.com/public?command=returnCurrencies.
+- `Note`: Due to restrictions from Poloniex, this tool retrieves only 30 days of data 
+  at a time. You must repeatedly run this command until the data is up-to-date.
+
+**Source code**: [`tools/getQuotes`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getQuotes)
+
 ## chifra explore
 
 `chifra explore` opens Etherscan (and later other explorers - including our own) to the block, transaction hash, or Ethereum address you specify. It's a handy way to open EtherScan from the command line, nothing more.
@@ -70,33 +99,4 @@ While `chifra slurp` does have its shortcomings, it also provides some nice feat
 - Portions of this software are Powered by Etherscan.io APIs.
 
 **Source code**: [`tools/ethslurp`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/ethslurp)
-
-## chifra quotes
-
-The `chifra quotes` tool provides Ethereum price data to various tools or for other purposes. Currently, `chifra quotes` retrieves data using the Poloniex API. In future versions, we intend to add other sources of pricing data and provide a mechanism to specify an averaging calculate given multiple price sources. Ultimately, we hope Ethereum/fiat price data appears under consensus, but until that time, **TrueBlocks** uses `chifra quotes`. Powered, in part, by Poloniex<sup>&reg;<sup>
-
-### usage
-
-`Usage:`    chifra quotes [-f|-p|-a|-e|-v|-h]  
-`Purpose:`  Freshen and/or display Ethereum price data.
-
-`Where:`  
-
-| Hotkey | Option | Description |
-| :----- | :----- | :---------- |
-| -f | --freshen | Freshen price database (append new data) |
-| -p | --period <val> | increment of display, one of [5&#124;15&#124;30&#124;60&#124;120*&#124;240&#124;1440&#124;10080&#124;hourly&#124;daily&#124;weekly] |
-| -a | --pair <str> | which price pair to freshen or list (see Poloniex) |
-| -e | --feed <val> | the feed for the price data, one of [poloniex*&#124;maker&#124;tellor] |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
-| -h | --help | display this help screen |
-
-`Notes:`
-
-- Valid pairs include any pair from the public Poloniex's API here: 
-  https://poloniex.com/public?command=returnCurrencies.
-- `Note`: Due to restrictions from Poloniex, this tool retrieves only 30 days of data 
-  at a time. You must repeatedly run this command until the data is up-to-date.
-
-**Source code**: [`tools/getQuotes`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getQuotes)
 
