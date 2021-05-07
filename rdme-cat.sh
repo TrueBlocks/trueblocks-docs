@@ -26,7 +26,7 @@ weight: 10
 toc: true
 ---
 _EOF_
-
+cat intros/accounts.md >> $ACCOUNTS &&\
 cat apps/acctExport/README.md >> $ACCOUNTS &&\
 cat tools/ethNames/README.md >> $ACCOUNTS &&\
 cat tools/grabABI/README.md >> $ACCOUNTS &&\
@@ -52,6 +52,7 @@ weight: 20
 toc: true
 ---
 _EOF_
+cat intros/blockchaindata.md >> $DATA &&\
 cat tools/getBlocks/README.md >> $DATA && \
 cat tools/getTrans/README.md >> $DATA && \
 cat tools/getReceipts/README.md >> $DATA &&\
@@ -82,6 +83,7 @@ weight: 30
 toc: true
 ---
 _EOF_
+cat intros/state.md >> $STATE && \
 cat tools/getTraces/README.md >> $STATE &&\
 cat tools/getTokens/README.md >> $STATE &&\
 echo "${STATE} built" || echo "${STATE} not built"
@@ -106,13 +108,11 @@ weight: 40
 toc: true
 ---
 _EOF_
+cat intros/admin.md >> $ADMIN &&\
 cat apps/pinMan/README.md >> $ADMIN &&\
 cat apps/blockScrape/README.md >> $ADMIN &&\
 cat apps/cacheStatus/README.md >> $ADMIN &&\
-
 echo "${ADMIN} built" || echo "${ADMIN} not built"
-
-
 
 cat << _EOF_ > $OTHER &&
 ---
