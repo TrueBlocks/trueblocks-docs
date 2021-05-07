@@ -2,7 +2,7 @@
 title: "Chain Data"
 description: ""
 lead: ""
-date: 2021-05-07T09:05:57
+date: 2021-05-07T09:12:32
 lastmod:
   - :git
   - lastmod
@@ -16,7 +16,7 @@ menu:
 weight: 20
 toc: true
 ---
-## Intro
+## intro
 This group of commands focuses on extracting the various bit of blockchain data directly from the node. You may extract blocks, transactions, receipts, logs, and traces. Each tool has it own options, making getting exactly the data you want easy. You can even figure out when an Ethereum block occurred.
 ## chifra blocks
 

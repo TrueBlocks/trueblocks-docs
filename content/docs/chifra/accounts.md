@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-05-07T09:05:57
+date: 2021-05-07T09:12:32
 lastmod:
   - :git
   - lastmod
@@ -16,7 +16,7 @@ menu:
 weight: 10
 toc: true
 ---
-## Intro
+## intro
 This group of commands is the heart of TrueBlocks. They allow you to work with Ethereum addresses (or, as we call them, accounts). You may name addresses; grab the ABI file for an address; add, delete, clean or delete accounts, and especially list or export the transactions related to an address.
 ## chifra export
 
