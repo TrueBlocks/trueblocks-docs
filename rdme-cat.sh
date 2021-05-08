@@ -164,6 +164,6 @@ curl -s $READMES/tools/ethslurp/README.md >> $OTHER
 #----------------------------------
 APIHELP=$CONTENT/../help/api.html
 echo "Building api help file"
-curl -s $SOURCE/api.html >&APIHELP
+curl -s $SOURCE/api.html >$APIHELP
 
 echo "Pages built. To see what's changed, run  git diff content/docs/chifra"
