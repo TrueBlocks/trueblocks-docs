@@ -7,7 +7,8 @@ SOURCE=https://raw.githubusercontent.com/TrueBlocks/trueblocks-core/develop/docs
 READMES=$SOURCE/readmes
 INTROS=$READMES/intros
 CONTENT=content/docs/chifra
-DATE=`date "+%FT%T"`
+#DATE=`date "+%FT%T"`
+DATE="2021-05-08T01:35:20"
 
 #----------------------------------
 ACCOUNTS=$CONTENT/accounts.md
