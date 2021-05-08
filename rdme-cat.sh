@@ -33,11 +33,11 @@ toc: true
 _EOF_
 
 echo "Building accounts page..."
-curl -s $INTROS/accounts.md >> $ACCOUNTS &&\
-curl -s $READMES/apps/list.md >> $ACCOUNTS &&\
-curl -s $READMES/apps/acctExport/README.md >> $ACCOUNTS &&\
-curl -s $READMES/apps/monitors.md >> $ACCOUNTS &&\
-curl -s $READMES/tools/ethNames/README.md >> $ACCOUNTS &&\
+curl -s $INTROS/accounts.md >> $ACCOUNTS && \
+curl -s $READMES/apps/list.md >> $ACCOUNTS && \
+curl -s $READMES/apps/acctExport/README.md >> $ACCOUNTS && \
+curl -s $READMES/apps/monitors.md >> $ACCOUNTS && \
+curl -s $READMES/tools/ethNames/README.md >> $ACCOUNTS && \
 curl -s $READMES/tools/grabABI/README.md >> $ACCOUNTS
 
 #----------------------------------
@@ -64,12 +64,12 @@ toc: true
 _EOF_
 
 echo "Building chain data page..."
-curl -s $INTROS/chaindata.md >> $DATA &&\
+curl -s $INTROS/chaindata.md >> $DATA && \
 curl -s $READMES/tools/getBlocks/README.md >> $DATA && \
 curl -s $READMES/tools/getTrans/README.md >> $DATA && \
-curl -s $READMES/tools/getReceipts/README.md >> $DATA &&\
-curl -s $READMES/tools/getLogs/README.md >> $DATA &&\
-curl -s $READMES/tools/getTraces/README.md >> $DATA &&\
+curl -s $READMES/tools/getReceipts/README.md >> $DATA && \
+curl -s $READMES/tools/getLogs/README.md >> $DATA && \
+curl -s $READMES/tools/getTraces/README.md >> $DATA && \
 curl -s $READMES/tools/whenBlock/README.md >> $DATA
 
 #----------------------------------
@@ -96,8 +96,8 @@ toc: true
 _EOF_
 
 echo "Building chain state page..."
-curl -s $INTROS/chainstate.md >> $STATE &&\
-curl -s $READMES/tools/getState/README.md >> $STATE &&\
+curl -s $INTROS/chainstate.md >> $STATE && \
+curl -s $READMES/tools/getState/README.md >> $STATE && \
 curl -s $READMES/tools/getTokens/README.md >> $STATE
 
 #----------------------------------
@@ -124,12 +124,12 @@ toc: true
 _EOF_
 
 echo "Building admin page..."
-curl -s $INTROS/admin.md >> $ADMIN &&\
-curl -s $READMES/apps/init.md >> $ADMIN &&\
-curl -s $READMES/apps/cacheStatus/README.md >> $ADMIN 
-curl -s $READMES/apps/blockScrape/README.md >> $ADMIN &&\
-curl -s $READMES/apps/serve.md >> $ADMIN &&\
-curl -s $READMES/apps/pinMan/README.md >> $ADMIN &&\
+curl -s $INTROS/admin.md >> $ADMIN && \
+curl -s $READMES/apps/cacheStatus/README.md >> $ADMIN && \
+curl -s $READMES/apps/serve.md >> $ADMIN && \
+curl -s $READMES/apps/blockScrape/README.md >> $ADMIN && \
+curl -s $READMES/apps/init.md >> $ADMIN && \
+curl -s $READMES/apps/pinMan/README.md >> $ADMIN
 
 #----------------------------------
 OTHER=$CONTENT/other.md
@@ -155,7 +155,7 @@ toc: true
 _EOF_
 
 echo "Building other page..."
-curl -s $INTROS/other.md >> $OTHER &&\
+curl -s $INTROS/other.md >> $OTHER && \
 curl -s $READMES/tools/getQuotes/README.md >> $OTHER && \
 curl -s $READMES/tools/explore.md >> $OTHER && \
 curl -s $READMES/tools/ethslurp/README.md >> $OTHER
