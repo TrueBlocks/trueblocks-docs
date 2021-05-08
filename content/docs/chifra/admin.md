@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-05-07T12:59:33
+date: 2021-05-08T01:23:40
 lastmod:
   - :git
   - lastmod
@@ -55,9 +55,9 @@ The `chifra status` program allows one to  manage and explore [monitor cache fil
 
 | Hotkey | Option | Description |
 | :----- | :----- | :---------- |
-|  | modes | the type of status info to retrieve, one or more of [index&#124;monitors&#124;entities&#124;names&#124;abis&#124;caches&#124;some*&#124;all] |
+|  | modes | the type of status info to retrieve, one or more of *[ index \| monitors \| entities \| names \| abis \| caches \| some\* \| all ]* |
 | -d | --details | include details about items found in monitors, slurps, abis, or price caches |
-| -t | --types <val> | for cache mode only, which type(s) of cache to report, one or more of [blocks&#124;transactions&#124;traces&#124;slurps&#124;prices&#124;all*] |
+| -t | --types <val> | for cache mode only, which type(s) of cache to report, one or more of *[ blocks \| transactions \| traces \| slurps \| prices \| all\* ]* |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
 | -h | --help | display this help screen |
 
@@ -78,8 +78,8 @@ Using operating system tools such as Linux's `cron` you can easily maintain a  c
 
 | Hotkey | Option | Description |
 | :----- | :----- | :---------- |
-|  | mode | control the block and account scrapers, one of [run&#124;quit&#124;pause&#124;restart] (required) |
-| -t | --tool <val> | process the index, monitors, or both (none means process timestamps only), one or more of [monitors&#124;index*&#124;none&#124;both] |
+|  | mode | control the block and account scrapers, one of *[ run \| quit \| pause \| restart ]* (required) |
+| -t | --tool <val> | process the index, monitors, or both (none means process timestamps only), one or more of *[ monitors \| index\* \| none \| both ]* |
 | -n | --n_blocks <num> | maximum number of blocks to process (defaults to 5000) |
 | -p | --pin | pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node) |
 | -s | --sleep <double> | the number of seconds to sleep between passes (default 14) |

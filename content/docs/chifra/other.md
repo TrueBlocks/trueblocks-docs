@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-05-07T13:01:34
+date: 2021-05-08T01:23:40
 lastmod:
   - :git
   - lastmod
@@ -17,12 +17,11 @@ weight: 50
 toc: true
 ---
 ## intro
-This section of commands collects together other useful tools such as a rudimentary pricing tool, a quick 
-way to open a blockchain explorer, and an older tool we used to build called EthSlurp which may be used 
-to compare our results (favorabily, by the way) to EtherScan.
+
+This section of commands provides other useful tools such as a rudimentary pricing tool, a quick way to open a blockchain explorer, and an older tool called `ethslurp` which can help you compare our results (favorabily) with EtherScan's.
 ## chifra quotes
 
-The `chifra quotes` tool provides Ethereum price data to various tools or for other purposes. Currently, `chifra quotes` retrieves data using the Poloniex API. In future versions, we intend to add other sources of pricing data and provide a mechanism to specify an averaging calculate given multiple price sources. Ultimately, we hope Ethereum/fiat price data appears under consensus, but until that time, **TrueBlocks** uses `chifra quotes`. Powered, in part, by Poloniex<sup>&reg;<sup>
+The `chifra quotes` tool provides USD ($) price data to other tools and to the command line. Currently, `chifra quotes` retrieves its price data from the Poloniex API. In future versions, we will add other sources and provide a mechanism for fair averaging. Ultimately, as more of this type of price data becomes available on chain, we will use those source, but this is not yet implemented.
 
 ### usage
 
@@ -34,9 +33,9 @@ The `chifra quotes` tool provides Ethereum price data to various tools or for ot
 | Hotkey | Option | Description |
 | :----- | :----- | :---------- |
 | -f | --freshen | Freshen price database (append new data) |
-| -p | --period <val> | increment of display, one of [5&#124;15&#124;30&#124;60&#124;120*&#124;240&#124;1440&#124;10080&#124;hourly&#124;daily&#124;weekly] |
+| -p | --period <val> | increment of display, one of *[ 5 \| 15 \| 30 \| 60 \| 120\* \| 240 \| 1440 \| 10080 \| hourly \| daily \| weekly ]* |
 | -a | --pair <str> | which price pair to freshen or list (see Poloniex) |
-| -e | --feed <val> | the feed for the price data, one of [poloniex*&#124;maker&#124;tellor] |
+| -e | --feed <val> | the feed for the price data, one of *[ poloniex\* \| maker \| tellor ]* |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
 | -h | --help | display this help screen |
 
@@ -44,14 +43,14 @@ The `chifra quotes` tool provides Ethereum price data to various tools or for ot
 
 - Valid pairs include any pair from the public Poloniex's API here: 
   https://poloniex.com/public?command=returnCurrencies.
-- `Note`: Due to restrictions from Poloniex, this tool retrieves only 30 days of data 
+- Due to restrictions from Poloniex, this tool retrieves only 30 days of data 
   at a time. You must repeatedly run this command until the data is up-to-date.
 
 **Source code**: [`tools/getQuotes`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getQuotes)
 
 ## chifra explore
 
-`chifra explore` opens Etherscan (and later other explorers - including our own) to the block, transaction hash, or Ethereum address you specify. It's a handy way to open EtherScan from the command line, nothing more.
+`chifra explore` opens Etherscan (and other explorers -- including our own) to the block, transaction hash, or address you specify. It's a handy way to open EtherScan from the command line, nothing more.
 
 ### usage
 
@@ -69,14 +68,16 @@ The `chifra quotes` tool provides Ethereum price data to various tools or for ot
 
 `Notes:`
 
-- An `addresses` must start with '0x' and be forty-two characters long.
+- An `address` must start with '0x' and be forty-two characters long.
 - A `tx_hash` must start with '0x' and be sixty-six characters long.
 - If a hash is provided, it is assumed to be a transaction hash.
 ## chifra slurp
 
-`chifra slurp` is one of our older command line tools. It even has its [own website](http://ethslurp.com) and [video tutorial](https://www.youtube.com/w atch?v=ZZDV1yAgces). While this tool is very useful, it has two significant flaws. First, it is not decentralized--in fact it is fully centralized, pulling its data from [http://etherscan.io](http://etherscan.io) as it does. The tool's second major flaw is that it does not pull every transaction from the chain for a given account as our [account monitors](../../monitors/README.md) do. This is because of `internal transactions` which, believe us, is too complicated to be worth taking the time to explain.
+`chifra slurp` is the first tool we built in the Ethereum space. It even has its [own website](http://ethslurp.com).
 
-While `chifra slurp` does have its shortcomings, it also provides some nice features. You can use it to pull all externally generated transactions against an account. You may also use the tool's fully customizable formatting options to export data into any format you wish. Visit the above referenced website for more information.
+While it's useful, it has two shortcomings. First, it is fully centralized, pulling its data from [http://etherscan.io](http://etherscan.io). Second, is that it does not report every transaction for a given account. This is actually a shortcoming with EtherScan. It's too complicated to explain here, but see our blog.
+
+While `chifra slurp` has its shortcomings, it does provides some nice features. You may use it to pull any transaction initiated by an EOA for example or to explore mining rewards. Visit the above referenced website for more information.
 
 ### usage
 
@@ -89,7 +90,7 @@ While `chifra slurp` does have its shortcomings, it also provides some nice feat
 | :----- | :----- | :---------- |
 |  | addrs | one or more addresses to slurp from Etherscan (required) |
 |  | blocks | an optional range of blocks to slurp |
-| -t | --types <val> | one or more types of transactions to request, one or more of [ext*&#124;int&#124;token&#124;nfts&#124;miner&#124;all] |
+| -t | --types <val> | one or more types of transactions to request, one or more of *[ ext\* \| int \| token \| nfts \| miner \| all ]* |
 | -p | --appearances | show only the blocknumer.tx_id appearances of the exported transactions |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
 | -h | --help | display this help screen |

@@ -2,7 +2,7 @@
 title: "Chain State"
 description: ""
 lead: ""
-date: 2021-05-07T12:59:33
+date: 2021-05-08T01:23:40
 lastmod:
   - :git
   - lastmod
@@ -35,7 +35,7 @@ This simple program may be used to query an Ethereum address to determine if it 
 | :----- | :----- | :---------- |
 |  | addrs | one or more addresses (0x...) from which to retrieve balances (required) |
 |  | blocks | an optional list of one or more blocks at which to report balances, defaults to 'latest' |
-| -p | --parts <val> | control which state to export, one or more of [none&#124;some*&#124;all&#124;balance&#124;nonce&#124;code&#124;storage&#124;deployed&#124;accttype] |
+| -p | --parts <val> | control which state to export, one or more of *[ none \| some\* \| all \| balance \| nonce \| code \| storage \| deployed \| accttype ]* |
 | -c | --changes | only report a balance when it changes from one block to the next |
 | -n | --no_zero | suppress the display of zero balance accounts |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
@@ -73,7 +73,7 @@ You may optionally specify one or more blocks at which to report.
 | :----- | :----- | :---------- |
 |  | addrs | two or more addresses (0x...), the first is an ERC20 token, balances for the rest are reported (required) |
 |  | blocks | an optional list of one or more blocks at which to report balances, defaults to 'latest' |
-| -p | --parts <val> | one or more parts of the token information to retreive, one or more of [name&#124;symbol&#124;decimals&#124;totalSupply&#124;version&#124;none&#124;all*] |
+| -p | --parts <val> | one or more parts of the token information to retreive, one or more of *[ name \| symbol \| decimals \| totalSupply \| version \| none \| all\* ]* |
 | -b | --by_acct | consider each address an ERC20 token except the last, whose balance is reported for each token |
 | -n | --no_zero | suppress the display of zero balance accounts |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
