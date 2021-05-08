@@ -17,10 +17,10 @@ weight: 40
 toc: true
 ---
 ## intro
-The Admin section of commands allows you to get the status of the system as well as control the creation of and sharing of the TrueBlocks index of appearances. It also provides a mechanism for serving the `chifra` subcommands as API endpoints.
+The Admin section of commands allows you to get the status of the system as well as control the creation of, sharing of, and pinning of the TrueBlocks index of appearances. It also provides a mechanism for serving the `chifra` subcommands as API endpoints through the `chifra serve` command.
 ## chifra status
 
-The `chifra status` program allows one to  manage and explore [monitor cache files](../../monitors/README.md). You may list cache entries, check for duplicate or invalid cache entries (and optionally remove them). Use the tool with caution and please make sure to backup your data before proceeding.
+The `chifra status` program allows you to manage and explore the various TrueBlock caches. You may list all, some, or individual cache entries either as a summary or in full detail. The cache types are described in the `modes` option. There are caches for the address index, named addresses, abi files, as well as other things including blockchain data, address monitors and groups of address monitors called entities.
 
 ### usage
 
@@ -33,7 +33,7 @@ The `chifra status` program allows one to  manage and explore [monitor cache fil
 | :----- | :----- | :---------- |
 |  | modes | the type of status info to retrieve, one or more of *[ index \| monitors \| entities \| names \| abis \| caches \| some\* \| all ]* |
 | -d | --details | include details about items found in monitors, slurps, abis, or price caches |
-| -t | --types <val> | for cache mode only, which type(s) of cache to report, one or more of *[ blocks \| transactions \| traces \| slurps \| prices \| all\* ]* |
+| -t | --types <val> | for caches mode only, which type(s) of cache to report, one or more of *[ blocks \| transactions \| traces \| slurps \| prices \| all\* ]* |
 | -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
 | -h | --help | display this help screen |
 
@@ -41,28 +41,30 @@ The `chifra status` program allows one to  manage and explore [monitor cache fil
 
 ## chifra serve
 
-`chifra list` takes one or more addresses, queries the index of appearances, and builds a TrueBlocks 'monitor'. A monitor is a file that represents your interest in those particular addresses. The first time you create a monitor takes a few minutes, but the information is cached, so subsequent queries are much faster.
+`chifra serve` delivers all of the `chifra` commands, along with all of their options, as a JSON api using the GoLang program we call `flame`.
 
-Note that `chifra list` does not extract transactional data from the chain. This is accomplished with `chifra export`. In fact, `chifra list` is just a shortcut of the command `chifra export --appearances` and may be used interchangably.
+You may get help on the [API here](/docs/help/api.html). Although another way to get help to simply run `chifra --help` or `chifra <cmd> --help` to see routes and all the options for each route. See below for an example of converting a command line to an API url.
 
 ### usage
 
-`Usage:`    chifra list &lt;address&gt; [address...]  
-`Purpose:`  List appearances for the given address(es).
+`Usage:`    chifra serve  
+`Purpose:`  Present each chifra command along with all of its options as a JSON api.
 
 `Where:`  
 
-| Short Cut | Option | Description |
-| -------: | :------- | :------- |
-|  | addrs | one or more addresses (0x...) to export (required) |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
-| -h | --help | display this help screen |
+| Short Cut | Option    | Description                                 |
+| --------: | :-------- | :------------------------------------------ |
+|           | --port    | specify the server's port (default ":8080") |
+|        -v | --verbose | verbose level (between 0 and 10 inclusive)  |
+|        -h | --help    | display this help screen                    |
 
 `Notes:`
 
-- `addresses` must start with '0x' and be forty two characters long.
+- To use the API, first open a new terminal window and run `chifra serve`
+- Instead of the command line `chifra status index --details`, run `curl "http://localhost:8080/status?modes=index&details"`.
+- Treat other commands similarly.
 
-**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+**Source code**: [`go-apps/flame`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/go-apps/flame)
 ## chifra scrape
 
 The `chifra scrape` app queries the rpcProvider you specify (or your local node if none) using the RPC interface reading each block from any EVM-based blockchain. After extensive optimizations to the data, including <img width=500px align="right" src="docs/image.png"> determining each transaction's error status and expanding internal message calls, the blocks are stored in a speed-optimized database for fast retrieval. By doing as much work as possible prior to storage, TrueBlocks is able to achieve significant increases in speed of retrieval over the node.
