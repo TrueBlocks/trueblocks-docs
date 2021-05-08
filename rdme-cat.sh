@@ -34,7 +34,9 @@ _EOF_
 
 echo "Building accounts page..."
 curl -s $INTROS/accounts.md >> $ACCOUNTS &&\
+curl -s $READMES/apps/list.md >> $ACCOUNTS &&\
 curl -s $READMES/apps/acctExport/README.md >> $ACCOUNTS &&\
+curl -s $READMES/apps/monitors.md >> $ACCOUNTS &&\
 curl -s $READMES/tools/ethNames/README.md >> $ACCOUNTS &&\
 curl -s $READMES/tools/grabABI/README.md >> $ACCOUNTS
 
@@ -123,9 +125,11 @@ _EOF_
 
 echo "Building admin page..."
 curl -s $INTROS/admin.md >> $ADMIN &&\
-curl -s $READMES/apps/pinMan/README.md >> $ADMIN &&\
-curl -s $READMES/apps/blockScrape/README.md >> $ADMIN &&\
+curl -s $READMES/apps/init.md >> $ADMIN &&\
 curl -s $READMES/apps/cacheStatus/README.md >> $ADMIN 
+curl -s $READMES/apps/blockScrape/README.md >> $ADMIN &&\
+curl -s $READMES/apps/serve.md >> $ADMIN &&\
+curl -s $READMES/apps/pinMan/README.md >> $ADMIN &&\
 
 #----------------------------------
 OTHER=$CONTENT/other.md
@@ -152,7 +156,8 @@ _EOF_
 
 echo "Building other page..."
 curl -s $INTROS/other.md >> $OTHER &&\
-curl -s $READMES/tools/ethslurp/README.md >> $OTHER && \
-curl -s $READMES/tools/getQuotes/README.md >> $OTHER
+curl -s $READMES/tools/getQuotes/README.md >> $OTHER && \
+curl -s $READMES/tools/explore.md >> $OTHER && \
+curl -s $READMES/tools/ethslurp/README.md >> $OTHER
 
 echo "Pages built. To see what's changed, run  git diff content/docs/chifra"
