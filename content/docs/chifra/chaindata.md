@@ -40,13 +40,13 @@ The tool may also be used to double check that the results produced from the Tru
 | -n | --uniq_tx | display only uniq addresses found per transaction |
 | -c | --count | display counts of appearances (for --apps, --uniq, or --uniq_tx) or transactions |
 | -U | --uncles | display uncle blocks (if any) instead of the requested block |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
 
 - `blocks` is a space-separated list of values, a start-end range, a `special`, or any combination.
-- `special` blocks are detailed under `whenBlock --list`.
+- `special` blocks are detailed under `chifra when --list`.
 
 **Source code**: [`tools/getBlocks`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getBlocks)
 
@@ -67,7 +67,7 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
 | -t | --trace | display the transaction's trace |
 | -u | --uniq | display a list of uniq addresses found in this transaction |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -95,7 +95,7 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 |  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
 | -l | --logs | display the receipt's logs |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -122,7 +122,7 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 | :----- | :----- | :---------- |
 |  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -151,7 +151,7 @@ The `chifra transactions` tool retrieves transactions from the running Ethereum 
 | -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
 | -d | --statediff | export stateDiff traces for the transaction(s) |
 | -c | --count | show the number of traces for the transaction only (fast) |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -184,7 +184,7 @@ The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`
 | -l | --list | export a list of the 'special' blocks |
 | -t | --timestamps | ignore other options and generate timestamps only |
 | -s | --skip <num> | only applicable if --timestamps is on, the step between block numbers in the export |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`

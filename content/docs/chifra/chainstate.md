@@ -17,12 +17,17 @@ weight: 30
 toc: true
 ---
 ## intro
-We separate out these few commands into a section called Chain State to distinguish it from blockchain data such as blocks and transactions. Chain state is what changes when blocks and transactions are processed. If you're running a non-archive node, you can query things such as balance and the byte code for smart contracts. If you have an archive node (such as TurboGeth), you can query historical state which comes in very handily when doing reconciliations.
+
+The two tools in this group deal with the Ethereum Chain State which may be distinquished from Ethereum Chain Data such as blocks, transactions, or traces.
+
+There are two tools, `chifra state` and `chifra tokens`. The first allows you to query account balances, the byte code of a smart contract (if available), the nonce and other information about any address. The second tool, `chifra tokens`, deals with token balances and ERC20 tokens information (and soon ERC721 tokens).
+
+The amount of information you can retrieve from the node depends on what type of node you're running (`--tracing`, `archive`, `--tracing archive` or `full node`). Archive nodes and tracing allow you to query historical data and balances. Non-archive nodes work, but are much less informative.
 ## chifra state
 
-Retrieve the balance (in wei) of an address (or list of addresses) at a given block(s). You may specify multiple addresses and/or multiple blocks, but you must specify at least one address.
+Use this tool to retrieve the balance of an address (or list of addresses) at the given block (or blocks). Specify multiple addresses and/or multiple blocks if you wish, but you must specify at least one address. If no block is specified, the latest block is reported.
 
-This simple program may be used to query an Ethereum address to determine if it is a `smart contract` or simply a regular `external account`. It may also be used to retrieve the byte-code from an address (if present). Finally, it may be used to compare the byte code found at two addresses to determine if they hold identical code. You may specify multiple addresses on a line.
+You may also query to see if an address is a smart contract as well as retrieve a contract's byte code.
 
 ### usage
 
@@ -38,7 +43,7 @@ This simple program may be used to query an Ethereum address to determine if it 
 | -p | --parts <val> | control which state to export, one or more of *[ none \| some\* \| all \| balance \| nonce \| code \| storage \| deployed \| accttype ]* |
 | -c | --changes | only report a balance when it changes from one block to the next |
 | -n | --no_zero | suppress the display of zero balance accounts |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -46,7 +51,7 @@ This simple program may be used to query an Ethereum address to determine if it 
 - An `address` must start with '0x' and be forty-two characters long.
 - `blocks` may be a space-separated list of values, a start-end range, a `special`, or any combination.
 - If the queried node does not store historical state, the results are undefined.
-- `special` blocks are detailed under `whenBlock --list`.
+- `special` blocks are detailed under `chifra when --list`.
 - `balance` is the default mode. To select a single mode use `none` first, followed by that mode.
 - You may specify multiple `modes` on a single line.
 
@@ -54,13 +59,13 @@ This simple program may be used to query an Ethereum address to determine if it 
 
 ## chifra tokens
 
-Given the address of an ERC20 token contract, report token balances for one or more accounts. Alternatively, report token balances for multiple ERC20 contracts for a single account.
+Given the address of an ERC20 token contract, this tool reports token balances for one or more additional addresses. Alternatively, the tool can report the token balances for multiple ERC20 tokens for a single addresses.
 
-In normal operation the **first item** in the `address_list` is considered to be an ERC20 token contract whose balances are queried, whereas the remainder of the list is assumed to be accounts on which to report.
+In normal operation the **first item** in the `address_list` is assumed to be an ERC20 token contract whose balances are being queried, whereas the remainder of the list is assumed to be addresses on which to report.
 
-In `--byAcct` mode, **all items** in the `address_list` are assumed to be token contracts, except the last which is the account whose token balances are reported.
+In `--byAcct` mode, **all addresses** in the `address_list` are assumed to be ERC20 token contracts, except the final one which is the account whose token balances are reported.
 
-You may optionally specify one or more blocks at which to report.
+You may optionally specify one or more blocks at which to report. If no block is specified, the latest block is assumed. You may also optionally specify which parts of the token data to extract.
 
 ### usage
 
@@ -76,7 +81,7 @@ You may optionally specify one or more blocks at which to report.
 | -p | --parts <val> | one or more parts of the token information to retreive, one or more of *[ name \| symbol \| decimals \| totalSupply \| version \| none \| all\* ]* |
 | -b | --by_acct | consider each address an ERC20 token except the last, whose balance is reported for each token |
 | -n | --no_zero | suppress the display of zero balance accounts |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -85,7 +90,7 @@ You may optionally specify one or more blocks at which to report.
 - `blocks` may be a space-separated list of values, a start-end range, a `special`, or any combination.
 - If the token contract(s) from which you request balances are not ERC20 compliant, the results are undefined.
 - If the queried node does not store historical state, the results are undefined.
-- `special` blocks are detailed under `whenBlock --list`.
+- `special` blocks are detailed under `chifra when --list`.
 
 **Source code**: [`tools/getTokens`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getTokens)
 

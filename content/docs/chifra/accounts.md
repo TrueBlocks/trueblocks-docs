@@ -34,7 +34,7 @@ Note that `chifra list` does not extract transactional data from the chain. This
 | Short Cut | Option | Description |
 | -------: | :------- | :------- |
 |  | addrs | one or more addresses (0x...) to export (required) |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -72,7 +72,7 @@ Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more 
 | -i | --cache_txs | write transactions to the cache (see notes) |
 | -R | --cache_traces | write traces to the cache (see notes) |
 | -U | --count | only available for --appearances mode, if present return only the number of records |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -111,7 +111,7 @@ Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more 
 | -i | --cache_txs | write transactions to the cache (see notes) |
 | -R | --cache_traces | write traces to the cache (see notes) |
 | -U | --count | only available for --appearances mode, if present return only the number of records |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -165,7 +165,7 @@ Using chifra names to find Singular's address, list tokens held by other token a
 | -a | --addr | display only addresses in the results (useful for scripting) |
 | -s | --entities | display entity data |
 | -g | --tags | export the list of tags and subtags only |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
@@ -196,7 +196,7 @@ Using chifra names to find Singular's address, list tokens held by other token a
 | -c | --canonical | convert all types to their canonical represenation and remove all spaces from display |
 | -k | --known | load common 'known' ABIs from cache |
 | -f | --find <str> | try to search for a function declaration given a four byte code |
-| -v | --verbose | set verbose level. Either -v, --verbose or -v:n where 'n' is level |
+| -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
