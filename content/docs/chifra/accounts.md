@@ -59,7 +59,7 @@ By default, the results of the extraction are delivered to your console, however
 
 ### usage
 
-`Usage:`    chifra export [-p|-r|-l|-t|-C|-O|-a|-i|-R|-d|-m|-f|-y|-U|-c|-e|-s|-u|-v|-h] &lt;address&gt; [address...] [topics] [fourbytes]  
+`Usage:`    chifra export [-p|-r|-l|-t|-C|-O|-a|-i|-R|-U|-v|-h] &lt;address&gt; [address...] [topics] [fourbytes]  
 `Purpose:`  Export full detail of transactions for one or more Ethereum addresses.
 
 `Where:`  
@@ -78,19 +78,7 @@ By default, the results of the extraction are delivered to your console, however
 | -a | --articulate | articulate transactions, traces, logs, and outputs |
 | -i | --cache_txs | write transactions to the cache (see notes) |
 | -R | --cache_traces | write traces to the cache (see notes) |
-| -d | --skip_ddos | toggle skipping over 2016 dDos transactions ('on' by default) |
-| -m | --max_traces &lt;num&gt; | if --skip_ddos is on, this many traces defines what a ddos transaction is (default = 250) |
-| -f | --freshen | freshen but do not print the exported data |
-| -y | --factory | scan for contract creations from the given address(es) and report address of those contracts |
-|  | --emitter | for log export only, export only if one of the given export addresses emitted the event |
-|  | --source &lt;addr&gt; | for log export only, export only one of these addresses emitted the event |
-|  | --relevant | for log export only, if true export only logs relevant to one of the given export addresses |
 | -U | --count | only available for --appearances mode, if present return only the number of records |
-| -c | --first_record &lt;num&gt; | the first record to process |
-| -e | --max_records &lt;num&gt; | the maximum number of records to process before reporting |
-|  | --clean | clean (i.e. remove duplicate appearances) from all existing monitors |
-| -s | --staging | enable search of staging (not yet finalized) folder |
-| -u | --unripe | enable search of unripe (neither staged nor finalized) folder (assumes --staging) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
@@ -141,15 +129,29 @@ Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more 
 
 ## chifra names
 
-`chifra names` is a surprisingly useful tool. It allows one to associate textual names with Ethereum addresses. One may ask why this is necessary given that ENS exists. The answer is a single word: "privacy". ENS names are public. In many cases, users desire to keep personal addresses private. Try to do this on a website.
+`chifra names` lists the addresses found in your local node's keystore. It can be used to report your ether holdings, for example. It also lists known, named accounts from [chifra names](../ethName/README.md).
 
-Like `chifra abis`, this tool is useful from the command line but is primarily used in support of other tools, especially `chifra export` where naming addresses becomes the single best way to turn unintellagable blockchain data into understandable information.
+One way to use this tool is to feed its output through the [chifra state](../getState/README.md) or [chifra tokens](../getTokens/README.md). This will give you the balances of your ether holdings or token holings. For example, you can do these commands:
 
-The various options allow you to search and filter the results. The `entities` and `tags` options are in support of the TrueBlocks explorer.
+List accounts held in the local node's keystore:
 
-You may use the `chifra monitors` tool and the TrueBlocks explorer to manage (add, edit, delete) address-name associations.
+    chifra names
 
-A large collection of more than 7,500 names, gleened from various public sources, is installed with the software for your convienience. To see these publically exposed names, run `chifra names` with no options.
+List balances of those accounts (note 'xargs' puts the results on a single line):
+
+    chifra state --mode balance `chifra names -a | xargs`
+    
+List balances of the local node's accounts in US dollars:
+
+    chifra state --mode balance `chifra names -a | xargs` --dollars
+
+Using chifra names to find Singular's address, list token balances held by your accounts:
+
+    chifra tokens `chifra names -a singular` `chifra names | xargs`
+
+Using chifra names to find Singular's address, list tokens held by other token accounts:
+
+    chifra tokens `chifra names -a singular` `chifra names -n | xargs`
 
 ### usage
 
@@ -175,27 +177,22 @@ A large collection of more than 7,500 names, gleened from various public sources
 
 `Notes:`
 
-- The tool will accept up to three terms, each of which must match against any field in the database.
-- The `--match_case` option enables case sensitive matching.
+- With a single search term, the tool searches both `name` and `address`.
+- With two search terms, the first term must match the `address` field, and the second term must match the `name` field.
+- When there are two search terms, both must match.
+- The `--match_case` option requires case sensitive matching. It works with all other options.
+- To customize the list of names add a `custom` section to the config file (see documentation).
 - Name file: `$CONFIG/names/names.tab`
 
 **Source code**: [`tools/ethNames`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/ethNames)
 
 ## chifra abis
 
-`chifra abis` retrieves a smart contract's ABI file either from the current local folder, from the TrueBlocks cache, from [Etherscan](http://etherscan.io), or (in the future) from ENS and Sourcify.
-
-While this tool may be used from the command line or the API, its primary use is in support of the `--articulate` option of other tools such as `chifra export`.
-
-The `--known` option prints a list of standard and semi-standard function signatures such as the ERC20 standard, various OpenZeppelin functions, the base and pair Uniswap functions, etc.
-
-The `--find` option is experimental. It scans a cross of approx. 100,000 function names with approx. 700 function signatures, generating at each cross a four byte signature and looking for a match to the provided fourbyte. Very infrequently, this tool will find a match for an otherwise unknown fourbyte string.
-
-The `--sol` option will convert a single Solidity file found in the current folder into an ABI.
+`chifra abis` retrieves an ABI file either from a local cache, from the Ethereum Name Service (ENS), or from [Etherscan](http://etherscan.io). Once retrieved, `chifra abis` generates the classDefinition files needed by [makeClass](../makeClass/README.md) to generate a parselib for each [Ethereum address monitor](../../monitors/README.md).
 
 ### usage
 
-`Usage:`    chifra abis [-k|-s|-f|-v|-h] &lt;address&gt; [address...]  
+`Usage:`    chifra abis [-c|-k|-f|-v|-h] &lt;address&gt; [address...]  
 `Purpose:`  Fetches the ABI for a smart contract.
 
 `Where:`  
@@ -203,8 +200,8 @@ The `--sol` option will convert a single Solidity file found in the current fold
 | | Option | Description |
 | :----- | :----- | :---------- |
 |  | addrs | list of one or more smart contracts whose ABI to grab from EtherScan (required) |
+| -c | --canonical | convert all types to their canonical represenation and remove all spaces from display |
 | -k | --known | load common 'known' ABIs from cache |
-| -s | --sol &lt;str&gt; | file name of .sol file from which to create a new known abi (without .sol) |
 | -f | --find &lt;str&gt; | try to search for a function declaration given a four byte code |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
