@@ -34,11 +34,11 @@ TrueBlocks maintains caches for the index of address appearances, named addresse
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | modes | the type of status info to retrieve, one or more of *[ index \| monitors \| entities \| names \| abis \| caches \| some\* \| all ]* |
 | -d | --details | include details about items found in monitors, slurps, abis, or price caches |
-| -t | --types <val> | for caches mode only, which type(s) of cache to report, one or more of *[ blocks \| transactions \| traces \| slurps \| prices \| all\* ]* |
+| -t | --types &lt;val&gt; | for caches mode only, which type(s) of cache to report, one or more of *[ blocks \| transactions \| traces \| slurps \| prices \| all\* ]* |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
@@ -88,13 +88,13 @@ The scraper can scrape either the index only, previously created monitors only, 
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | mode | control the block and account scrapers, one of *[ run \| quit \| pause \| restart ]* (required) |
-| -t | --tool <val> | process the index, monitors, or both (none means process timestamps only), one or more of *[ monitors \| index\* \| none \| both ]* |
-| -n | --n_blocks <num> | maximum number of blocks to process (defaults to 5000) |
+| -t | --tool &lt;val&gt; | process the index, monitors, or both (none means process timestamps only), one or more of *[ monitors \| index\* \| none \| both ]* |
+| -n | --n_blocks &lt;num&gt; | maximum number of blocks to process (defaults to 5000) |
 | -p | --pin | pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node) |
-| -s | --sleep <double> | the number of seconds to sleep between passes (default 14) |
+| -s | --sleep &lt;double&gt; | the number of seconds to sleep between passes (default 14) |
 | -i | --cache_txs | write transactions to the cache (see notes) |
 | -R | --cache_traces | write traces to the cache (see notes) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
@@ -155,12 +155,12 @@ This tool is not yet ready for production use. Please return to this page later.
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 | -c | --compare | report differences (if any) between the manifest and pinning service |
 | -i | --init | initialize the local index by downloading bloom filters from the pinning service |
 | -f | --freshen | freshen the manifest from the hash found at the smart contract |
-| -s | --sleep <double> | the number of seconds to sleep between requests during init (default .25) |
+| -s | --sleep &lt;double&gt; | the number of seconds to sleep between requests during init (default .25) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 

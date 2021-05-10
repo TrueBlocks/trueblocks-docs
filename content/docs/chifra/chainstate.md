@@ -18,11 +18,11 @@ toc: true
 ---
 ## intro
 
-The two tools in this group deal with the Ethereum Chain State which may be distinquished from Ethereum Chain Data such as blocks, transactions, or traces.
+The two tools in this group deal with the Chain State such as balances and byte code which may be distinquished from Chain Data such as blocks, transactions, or traces.
 
-There are two tools, `chifra state` and `chifra tokens`. The first allows you to query account balances, the byte code of a smart contract (if available), the nonce and other information about any address. The second tool, `chifra tokens`, deals with token balances and ERC20 tokens information (and soon ERC721 tokens).
+The two tools are `chifra state` and `chifra tokens`. The first allows you to query account balances, the byte code of a smart contract (if available), the nonce and other information about an address. The second tool, `chifra tokens`, deals with ERC20 and ERC721 token balances and other data.
 
-The amount of information you can retrieve from the node depends on what type of node you're running (`--tracing`, `archive`, `--tracing archive` or `full node`). Archive nodes and tracing allow you to query historical data and balances. Non-archive nodes work, but are much less informative.
+**Note:** The amount of information available for retrieval depends on the type of node you run (`--tracing`, `archive`, `--tracing archive` or `full node`). Archive nodes and tracing allow you to query historical state (that is, state all the way back to the genesis block). TrueBlocks works with non-archive nodes, but they are much less informative.
 ## chifra state
 
 Use this tool to retrieve the balance of an address (or list of addresses) at the given block (or blocks). Specify multiple addresses and/or multiple blocks if you wish, but you must specify at least one address. If no block is specified, the latest block is reported.
@@ -36,11 +36,11 @@ You may also query to see if an address is a smart contract as well as retrieve 
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | addrs | one or more addresses (0x...) from which to retrieve balances (required) |
 |  | blocks | an optional list of one or more blocks at which to report balances, defaults to 'latest' |
-| -p | --parts <val> | control which state to export, one or more of *[ none \| some\* \| all \| balance \| nonce \| code \| storage \| deployed \| accttype ]* |
+| -p | --parts &lt;val&gt; | control which state to export, one or more of *[ none \| some\* \| all \| balance \| nonce \| code \| storage \| deployed \| accttype ]* |
 | -c | --changes | only report a balance when it changes from one block to the next |
 | -n | --no_zero | suppress the display of zero balance accounts |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
@@ -74,11 +74,11 @@ You may optionally specify one or more blocks at which to report. If no block is
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | addrs | two or more addresses (0x...), the first is an ERC20 token, balances for the rest are reported (required) |
 |  | blocks | an optional list of one or more blocks at which to report balances, defaults to 'latest' |
-| -p | --parts <val> | one or more parts of the token information to retreive, one or more of *[ name \| symbol \| decimals \| totalSupply \| version \| none \| all\* ]* |
+| -p | --parts &lt;val&gt; | one or more parts of the token information to retreive, one or more of *[ name \| symbol \| decimals \| totalSupply \| version \| none \| all\* ]* |
 | -b | --by_acct | consider each address an ERC20 token except the last, whose balance is reported for each token |
 | -n | --no_zero | suppress the display of zero balance accounts |
 | -v | --verbose | set verbose level (optional level defaults to 1) |

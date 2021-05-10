@@ -17,149 +17,177 @@ weight: 20
 toc: true
 ---
 ## intro
-This group of commands focuses on extracting the various bit of blockchain data directly from the node. You may extract blocks, transactions, receipts, logs, and traces. Each tool has it own options, making getting exactly the data you want easy. You can even figure out when an Ethereum block occurred.
+
+The commands in this group of tools focus on extracting raw blockchain data directly from the node. You may extract block data, transactional data, receipts, logs, and traces. Each tool has it own set of options, making getting exactly the data you want easy.
 ## chifra blocks
 
-The `chifra blocks` tool retrieves Ethereum block data from a running node or, if previously retrieved, the TrueBlocks cache. It optionally retrieves the hashes that denote the transactions in the block or the full transactional data as a default.
+The `chifra blocks` tool retrieves block data from your Ethereum node or, if previously cached, from the TrueBlocks cache. You may specify multiple blocks per invocation.
 
-The tool may also be used to double check that the results produced from the TrueBlocks cache and the results as retrieved directly from the running node are identical (modulo the fact that TrueBlocks does not store every data field from the node). You may accomplish this `check` with the --check option.
+By default, `chifra blocks` queries the full transactional details of the block (including receipts). You may optionally retreive only the transaction hashes in the block (which is signifcantly faster). Additionally, you may also use this tool to retrieve uncle blocks at a give height.
+
+Another useful feature of `chifra blocks` is the ability to extract address appearances from a block. TrueBlocks uses a similar feature internally to build its index of appearances. This type of data is very insightful when studying end user behaviour and chain-wide adoption analysis.
 
 ### usage
 
-`Usage:`    chifra blocks [-e|-a|-u|-n|-c|-U|-v|-h] &lt;block&gt; [block...]  
+`Usage:`    chifra blocks [-e|-U|-t|-a|-u|-n|-c|-o|-v|-h] &lt;block&gt; [block...]  
 `Purpose:`  Returns block(s) from local cache or directly from a running node.
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | blocks | a space-separated list of one or more blocks to retrieve (required) |
-| -e | --hashes_only | display only transaction hashes, default is to display full transaction detail |
-| -a | --apps | display all address appearances included in the block |
-| -u | --uniq | display only uniq addresses found per block |
-| -n | --uniq_tx | display only uniq addresses found per transaction |
-| -c | --count | display counts of appearances (for --apps, --uniq, or --uniq_tx) or transactions |
+| -e | --hashes | display only transaction hashes, default is to display full transaction detail |
 | -U | --uncles | display uncle blocks (if any) instead of the requested block |
+| -t | --trace | export the traces from the block as opposed to the block data |
+| -a | --apps | display all address appearances in the block |
+| -u | --uniq | display only uniq address appearances per block |
+| -n | --uniq_tx | display only uniq address appearances per transaction |
+| -c | --count | display counts of appearances (for --apps, --uniq, or --uniq_tx) or transactions |
+| -o | --cache | force a write of the block to the cache |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
 
 - `blocks` is a space-separated list of values, a start-end range, a `special`, or any combination.
+- `blocks` may be specified as either numbers or hashes.
 - `special` blocks are detailed under `chifra when --list`.
 
 **Source code**: [`tools/getBlocks`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getBlocks)
 
 ## chifra transactions
 
-The `chifra transactions` tool retrieves transactions from the running Ethereum node (using the `--raw` option) or from TrueBlocks (the default). You may provide a transaction `hash`, a `blockNumber.transactionID` pair, or a `blockHash.transactionID` pair (or any combination) to specify the transaction(s).
+The `chifra transactions` tool retrieves transactions directly from the Ethereum node (using the `--raw` option) or from the TrueBlocks cache (if present). You may specify multiple transaction identifiers per invocation. Unlike the Ethereum RPC, the reported transactions include the transaction's receipt and generated logs.
+
+The `--articulate` option fetches the ABI from each encountered smart contract (including those encountered in a trace--if the `--trace` option is enabled) to better describe the reported data.
+
+The `--trace` option attachs an array transaction traces to the output (if the node you're querying has --tracing enabled), while the `--uniq` option displays a list of uniq address appearances instead of the underlying data (including uniq addresses in traces if enabled).
 
 ### usage
 
-`Usage:`    chifra transactions [-a|-t|-u|-v|-h] &lt;tx_id&gt; [tx_id...]  
-`Purpose:`  Retrieve a transaction from the cache or the node.
+`Usage:`    chifra transactions [-a|-t|-u|-o|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Purpose:`  Retrieves one or more transactions from the cache or the node.
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
-|  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
-| -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
-| -t | --trace | display the transaction's trace |
-| -u | --uniq | display a list of uniq addresses found in this transaction |
+|  | transactions | a space-separated list of one or more transaction identifiers (required) |
+| -a | --articulate | articulate the retrieved data if ABIs can be found |
+| -t | --trace | include the transaction's traces in the results |
+| -u | --uniq | display a list of uniq addresses found in the transaction instead of the underlying data |
+| -o | --cache | force the results of the query into the tx cache (and the trace cache if applicable) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
 
-- `transactions` is one or more space-separated identifiers which may be either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
-- This tool checks for valid input syntax, but does not check that the transaction requested exists.
-- If the queried node does not store historical state, the results are undefined.
+- This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+- If the queried node does not store historical state, the results for most older transactions are undefined.
 
 **Source code**: [`tools/getTrans`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getTrans)
 
 ## chifra receipts
 
-`chifra receipts` returns a transaction's receipt. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
+`chifra receipts` returns the given transaction's receipt. You may specify multiple transaction identifiers per invocation.
+
+The `--articulate` option fetches the ABI from each encountered smart contract (including those encountered in a trace--if the `--trace` option is enabled) to better describe the reported data.
+
+Generally speaking, this tool is less useful than others as you may report the same data using `chifra transactions` and more focused data using `chifra logs`. It is included here for completeness, as the `receipt` is a fundamental data structure in Ethereum.
 
 ### usage
 
-`Usage:`    chifra receipts [-a|-l|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Usage:`    chifra receipts [-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction's receipt from the cache or the node.
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
-|  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
-| -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
-| -l | --logs | display the receipt's logs |
+|  | transactions | a space-separated list of one or more transaction identifiers (required) |
+| -a | --articulate | articulate the retrieved data if ABIs can be found |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
 
-- `transactions` is one or more space-separated identifiers which may be either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
-- This tool checks for valid input syntax, but does not check that the transaction requested exists.
-- If the queried node does not store historical state, the results may be undefined.
+- This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+- If the queried node does not store historical state, the results for most older transactions are undefined.
 
 **Source code**: [`tools/getReceipts`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getReceipts)
 
 ## chifra logs
 
-`chifra logs` returns a transaction's logs. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
+`chifra logs` returns the given transaction's logs. You may specify multiple transaction identifiers per invocation.
+
+The `--articulate` option fetches the ABI from each encountered smart contract to better describe the reported data. The `--topic` and `--source` options allow you to filter your results.
 
 ### usage
 
-`Usage:`    chifra logs [-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Usage:`    chifra logs [-t|-s|-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction's logs from the cache or the node.
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
-|  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
-| -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
+|  | transactions | a space-separated list of one or more transaction identifiers (required) |
+| -t | --topic &lt;hash&gt; | filter by one or more log topics (not implemented) |
+| -s | --source &lt;addr&gt; | export only if the given address emitted the event (not implemented) |
+| -a | --articulate | articulate the retrieved data if ABIs can be found |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
 
-- `transactions` is one or more space-separated identifiers which may be either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
-- This tool checks for valid input syntax, but does not check that the transaction requested exists.
-- If the queried node does not store historical state, the results may be undefined.
+- This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+- If the queried node does not store historical state, the results for most older transactions are undefined.
+- If you specify a 32-byte hash, it will be assumed to be a transaction hash, if the transaction is 
+  not found, it will be used as a topic.
 
 **Source code**: [`tools/getLogs`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getLogs)
 
 ## chifra traces
 
-`chifra traces` returns a transaction's traces. You may specify the logs you want using either a transaction hash (trans\_hash), a block hash plus transaction index (block\_hash.trans\_id), or a block number plus transaction index (block\_num.trans\_id).  
+The `chifra traces` tool retrieves a transaction's traces. You may specify multiple transaction identifiers per invocation. 
+
+The `--articulate` option fetches the ABI from each encountered smart contract to better describe the reported data.
+
+The `--filter` option calls your node's `trace_filter` routine (if available) using a bang-separated string of the same values used by `trace_fitler`.
 
 ### usage
 
-`Usage:`    chifra traces [-a|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Usage:`    chifra traces [-a|-f|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]  
 `Purpose:`  Retrieve a transaction's traces from the cache or the node.
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
-|  | transactions | a space-separated list of one or more transaction identifiers (tx_hash, bn.txID, blk_hash.txID) (required) |
-| -a | --articulate | articulate the transactions if an ABI is found for the 'to' address |
-| -d | --statediff | export stateDiff traces for the transaction(s) |
+|  | transactions | a space-separated list of one or more transaction identifiers (required) |
+| -a | --articulate | articulate the retrieved data if ABIs can be found |
+| -f | --filter &lt;str&gt; | call the node's `trace_filter` routine with bang-seperated filter |
+| -d | --statediff | export state diff traces (not implemented) |
 | -c | --count | show the number of traces for the transaction only (fast) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
 `Notes:`
 
-- `transactions` is one or more space-separated identifiers which may be either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
-- This tool checks for valid input syntax, but does not check that the transaction requested exists.
-- If the queried node does not store historical state, the results are undefined.
+- This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+- If the queried node does not store historical state, the results for most older transactions are undefined.
+- A bang seperated filter has the following fields (at least one of which is required) and is separated 
+  with a bang (!): fromBlk, toBlk, fromAddr, toAddr, after, count.
+- A state diff trace describes, for each modified address, what changed during that trace.
 
 **Source code**: [`tools/getTraces`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getTraces)
 
@@ -178,12 +206,12 @@ The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | block_list | one or more dates, block numbers, hashes, or special named blocks (see notes) |
 | -l | --list | export a list of the 'special' blocks |
 | -t | --timestamps | ignore other options and generate timestamps only |
-| -s | --skip <num> | only applicable if --timestamps is on, the step between block numbers in the export |
+| -s | --skip &lt;num&gt; | only applicable if --timestamps is on, the step between block numbers in the export |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
@@ -191,16 +219,6 @@ The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`
 
 - The block list may contain any combination of `number`, `hash`, `date`, special `named` blocks.
 - Dates must be formatted in JSON format: YYYY-MM-DD[THH[:MM[:SS]]].
-- You may customize the list of named blocks by editing $CONFIG/whenBlock.toml.
-- The following `named` blocks are currently configured:
-  - first (`0`), firstTrans (`46147`), firstContract (`50111`), iceage (`200000`)
-  - devcon1 (`543626`), homestead (`1150000`), daofund (`1428756`), daohack (`1718497`)
-  - daofork (`1920000`), devcon2 (`2286910`), tangerine (`2463000`), spurious (`2675000`)
-  - stateclear (`2717576`), eea (`3265360`), ens2 (`3327417`), parityhack1 (`4041179`)
-  - byzantium (`4370000`), devcon3 (`4469339`), parityhack2 (`4501969`), kitties (`4605167`)
-  - makerdao (`4620855`), devcon4 (`6610517`), uniswap (`6627917`), constantinople (`7280000`)
-  - devcon5 (`8700401`), mcdai (`8928158`), istanbul (`9069000`), muirglacier (`9200000`)
-  - berlin (`12244000`), latest (``)
 
 **Source code**: [`tools/whenBlock`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/whenBlock)
 

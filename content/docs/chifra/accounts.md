@@ -17,12 +17,17 @@ weight: 10
 toc: true
 ---
 ## intro
-This group of commands is the heart of TrueBlocks. They allow you to work with Ethereum addresses (or, as we call them, accounts). You may name addresses; grab the ABI file for an address; add, delete, clean or delete accounts, and especially list or export the transactions related to an address.
+
+This group of commands is at the heart of TrueBlocks. They allow you to produce and analyze transactional histories for a given Ethereum address.
+
+You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories to various formats including re-directing the output to remote or local databases.
 ## chifra list
 
-`chifra list` takes one or more addresses, queries the index of appearances, and builds a TrueBlocks 'monitor'. A monitor is a file that represents your interest in those particular addresses. The first time you create a monitor takes a few minutes, but the information is cached, so subsequent queries are much faster.
+`chifra list` takes one or more addresses, queries the index of appearances, and builds TrueBlocks monitors. A TrueBlocks monitor is a file that contains blockNumber.transactionId pairs (transaction identifiers) representing the history of the address.
 
-Note that `chifra list` does not extract transactional data from the chain. This is accomplished with `chifra export`. In fact, `chifra list` is just a shortcut of the command `chifra export --appearances` and may be used interchangably.
+Becuase TrueBlocks only extracts data from the Ethereum node when it's requested, the first time you list an address it takes about a minute. Subsequent queries are much faster because TrueBlocks caches the results.
+
+Note that `chifra list` only queries the index, it does not extract the full transactional details. You may use `chifra export` for that.
 
 ### usage
 
@@ -44,11 +49,13 @@ Note that `chifra list` does not extract transactional data from the chain. This
 **Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
 ## chifra export
 
-This folder contains a TrueBlocks monitor. TrueBlocks monitors pull transactions from the Ethereum blockchain for a given (or a series of) Ethereum addresses.
+The `chifra export` tools provides a major part of the functionality of the TrueBlocks system. Using the index of appearances created with `chifra scrape` and the list of transaction identifiers created with `chifra list`, `chifra export` completes the actual extraction of an address's transactional history from the node.
 
-Below we present the command line interface to this tool, although the tool itself is not available under open source. While the tool is in active development, TrueBlocks monitors already produce very useful results. For example, we use TrueBlocks monitors to account for and analyze all transactions on a given smart contract. We present [this example](http://dao.quickblocks.io).
+You may use a log's `topics`, the `fourbyte` values at the head of a transaction's input data, and/or a log's `source address` in order to filter your results.
 
-Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more information.
+You may also choose which portions of the Ethereum data structures (transactions, logs, traces, etc.) as you wish.
+
+By default, the results of the extraction are delivered to your console, however, you may export the results to any database (with a little bit of work). The format of the data, its content and its destination are up to you.
 
 ### usage
 
@@ -57,10 +64,10 @@ Please contact us at [sales@greathill.com](mailto:sales@greathill.com) for more 
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | addrs | one or more addresses (0x...) to export (required) |
-|  | topics | filter by one or more logs topics (only for --logs option) |
+|  | topics | filter by one or more log topics (only for --logs option) |
 |  | fourbytes | filter by one or more fourbytes (only for transactions and trace options) |
 | -p | --appearances | export a list of appearances |
 | -r | --receipts | export receipts instead of transaction list |
@@ -153,7 +160,7 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | terms | a space separated list of one or more search terms (required) |
 | -e | --expand | expand search to include all fields (default searches name, address, and symbol only) |
@@ -190,12 +197,12 @@ Using chifra names to find Singular's address, list tokens held by other token a
 
 `Where:`  
 
-| Hotkey | Option | Description |
+| | Option | Description |
 | :----- | :----- | :---------- |
 |  | addrs | list of one or more smart contracts whose ABI to grab from EtherScan (required) |
 | -c | --canonical | convert all types to their canonical represenation and remove all spaces from display |
 | -k | --known | load common 'known' ABIs from cache |
-| -f | --find <str> | try to search for a function declaration given a four byte code |
+| -f | --find &lt;str&gt; | try to search for a function declaration given a four byte code |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
