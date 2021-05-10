@@ -5,7 +5,7 @@
   url = "/docs/prologue/"
 
 [[docs]]
-  name = "Chifra Command line"
+  name = "Command line"
   weight = 20
   identifier = "chifra"
   url = "/docs/chifra/"
