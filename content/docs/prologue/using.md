@@ -61,7 +61,7 @@ chifra blocks 2001002
 Notice the full transactional details are included for each of the seven transactions in the block. You can show just the transaction hashes with
 
 ```shell
-chifra blocks 2001002 --hashes_only
+chifra blocks 2001002 --hashes
 ```
 
 Copy one of those transaction hashes and paste it into the next command
