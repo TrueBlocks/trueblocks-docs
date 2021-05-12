@@ -2,3 +2,7 @@ rdme-local.sh
 .DS_Store
 node_modules
 public
+
+.vscode/
+!.vscode/settings.json
+
