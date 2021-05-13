@@ -5,7 +5,6 @@ date: '2016-05-06T19:48:48.273Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/the-daos-first-big-decision-a71efe6c662a
 ---
 
 “The DAO” has been in existence for about a week, and besides the obvious pending decision concerning [slock.it’s proposal for the USN](http://download.slock.it/public/DAO/Proposal1.pdf), another major decision looms over the group. This decision will test the ability of, perhaps, as many as 10,000 people to come together, anonymously, and make a long-lasting decision. Let’s just say I’m a bit skeptical.

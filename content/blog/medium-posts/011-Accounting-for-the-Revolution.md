@@ -5,7 +5,6 @@ date: '2017-03-13T03:07:38.644Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/accounting-for-the-revolution-8822b28ccc16
 ---
 
 In recent weeks, the price of ether has risen from around $10.00 US dollars per ether to hovering around $20.00 US in recent days. Needless to say, this has caused a lot of [discussion](https://www.reddit.com/r/ethereum/comments/5yxlax/any_reason_why_we_shouldnt_half_the_gas_price_to/).
@@ -16,37 +15,37 @@ Before we began our search, we imposed a self-imposed rule. This rule was that w
 
 If you’ve ever tried to do this, you know that this means you should sit back and relax. Can you say: “slooooow”?
 
-Over the past year, we’ve been working on speeding up this data access in a fully-decentralized manner. We call our solution QuickBlocks.io. The word “quick” being operative. Written in C++, QuickBlocks is able to achieve speeds more than 200 times faster than the RPC. This allows us to efficiently produce answers to these questions (and many other things).
+Over the past year, we’ve been working on speeding up this data access in a fully-decentralized manner. We call our solution TrueBlocks. The word “quick” being operative. Written in C++, TrueBlocks is able to achieve speeds more than 200 times faster than the RPC. This allows us to efficiently produce answers to these questions (and many other things).
 
-The easiest way to explain QuickBlocks is to show you some code, and I will do that shortly, but first, I wanted to talk about…
+The easiest way to explain TrueBlocks is to show you some code, and I will do that shortly, but first, I wanted to talk about…
 
 #### Blockchain on a Stick™
 
-QuickBlocks scrapes, parses, pre-digests, and caches the entire Ethereum blockchain in a fully-decentralized manner. We make the claim that our work is so decentralized that we can store the entire chain — fully parsed and heavily optimized — on an external drive. We call this “Blockchain on a Stick™,” and we carry it around with us in our backpack wherever we go.
+TrueBlocks scrapes, parses, pre-digests, and caches the entire Ethereum blockchain in a fully-decentralized manner. We make the claim that our work is so decentralized that we can store the entire chain — fully parsed and heavily optimized — on an external drive. We call this “Blockchain on a Stick™,” and we carry it around with us in our backpack wherever we go.
 
 ![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-001.png)
 
-BlockChain on a Stick™ allows us to prove to potential clients that our solution is decentralized. We can, if we wish, disconnect from the Internet, and while QuickBlocks cannot access the latest blocks, it still works perfectly. That’s decentralized.
+BlockChain on a Stick™ allows us to prove to potential clients that our solution is decentralized. We can, if we wish, disconnect from the Internet, and while TrueBlocks cannot access the latest blocks, it still works perfectly. That’s decentralized.
 
-QuickBlocks uses the node’s RPC in the same way that `web3.js` does. After pre-processing the received data, we store each block, every transaction, every receipt, and every log in a local database. Before storing the data, we optimize the crap out of it in every way we can think. Our goal is this: quick!
+TrueBlocks uses the node’s RPC in the same way that `web3.js` does. After pre-processing the received data, we store each block, every transaction, every receipt, and every log in a local database. Before storing the data, we optimize the crap out of it in every way we can think. Our goal is this: quick!
 
 We retrieve each block and then, if it has transactions, we spin through each transaction asking for the transaction’s receipt. Given the receipt, we make a determination if the transaction needs to be traced. We trace transactions that may have finished in error. Additionally, we identify internal transactions that were initiated by the transaction and parse the input data field and the receipt’s logs.
 
 We do all of this pre-processing prior to storing the data, and because the blockchain is immutable, we only need to do this once. (This is not technically true because of chain re-organizations, but we won’t complicate matters by explaining how we handle this.) Every time we access the data thereafter, we are reading highly-optimized data intended specifically to be retrieved quickly.
 
-Another thing QuickBlocks does while storing the data is to store various levels of detail. (Yes. It uses more disc space, but it’s **_significantly_** faster.) This allows the developer to choose between higher speed given less detail verses lower speed if more detail is required. It’s the programmer’s choice. For the analysis below we chose the half-speed / half-detail version.
+Another thing TrueBlocks does while storing the data is to store various levels of detail. (Yes. It uses more disc space, but it’s **_significantly_** faster.) This allows the developer to choose between higher speed given less detail verses lower speed if more detail is required. It’s the programmer’s choice. For the analysis below we chose the half-speed / half-detail version.
 
-#### Programming QuickBlocks™
+#### Programming TrueBlocks™
 
-QuickBlocks is a C++ library and a series of applications. Below we show you the application code we wrote that gathered the data we needed to do our analysis. Below is the actual code. It’s pretty simple. As with all C++ code, we start with the `main` function:
+TrueBlocks is a C++ library and a series of applications. Below we show you the application code we wrote that gathered the data we needed to do our analysis. Below is the actual code. It’s pretty simple. As with all C++ code, we start with the `main` function:
 
 ![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-002.png)
 
-This function first initializes the QuickBlocks library and then decides on the start block and the number of blocks to visit. We chose to start at block 2,912,407 (the closest block to January 1, 2017). The function `getLatestBlock` returns the node’s latest block.
+This function first initializes the TrueBlocks library and then decides on the start block and the number of blocks to visit. We chose to start at block 2,912,407 (the closest block to January 1, 2017). The function `getLatestBlock` returns the node’s latest block.
 
-Next, we create a data structure that will store the result of visiting each block. This structure may be of any type — whatever is appropriate for your application. The code then calls into the QuickBlocks library function `forEveryNonEmptyBlockOnDisc` and finishes by making a final report.
+Next, we create a data structure that will store the result of visiting each block. This structure may be of any type — whatever is appropriate for your application. The code then calls into the TrueBlocks library function `forEveryNonEmptyBlockOnDisc` and finishes by making a final report.
 
-QuickBlocks has a number of interfaces for traversing blocks. For our purposes, we used the middle-of-the-road `forEveryNonEmptyBlockOnDisc`. This function gives full detail, but skips over blocks with no transactions (about 37% of all blocks).
+TrueBlocks has a number of interfaces for traversing blocks. For our purposes, we used the middle-of-the-road `forEveryNonEmptyBlockOnDisc`. This function gives full detail, but skips over blocks with no transactions (about 37% of all blocks).
 
 A similar function called `forEveryBlock` visits every block (including empty ones) in full detail. On the other end of the spectrum is the function `forEveryMiniBlockInMemory` which is super-fast but delivers a lot less data than the other methods. The function one uses depends on ones application.
 
@@ -60,7 +59,7 @@ At each non-empty block, the pointer to the arbitrary data is retrieved. In this
 
 The function first figures out when the block occurred. The function then determines if this is a new day. If it is, a report on the previous day is made. In this way, we accumulate and report on statistics once per day (see the data tables below).
 
-The function then grabs the price of ether in US dollars at the time of this block, that is, it grabs the block’s spot price. QuickBlocks gets this data from the Poloniex price API. (Okay — we admit it — we broke our own self-imposed rule! But we cache the price data so it still works when unplugged.)
+The function then grabs the price of ether in US dollars at the time of this block, that is, it grabs the block’s spot price. TrueBlocks gets this data from the Poloniex price API. (Okay — we admit it — we broke our own self-imposed rule! But we cache the price data so it still works when unplugged.)
 
 The function then spins through each transaction and prices the gas consumed by that transaction. Note, that we do not distinguish between in-error and successful transactions. Even if the transaction ended in error, the gas was expended, so we want to account for it.
 
@@ -99,11 +98,10 @@ Here we see an even more marked rise in the ‘penny’ price of a transaction. 
 #### Let’s Look at a Chart
 
 ![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-007.png)
-undefined
 
 I think you can see from the chart that through the month of January and into mid-February the price of a transaction in both ether (finneys) and dollars (cents) tracked each other quite closely.
 
-Near the end of February, we see the prices starting to diverge. We at QuickBlocks believe this is because the price of ether per US dollar changes much faster than the gasPrice miners are willing to accept to process a transaction. Furthermore, while both Parity and Mist allow the user to adjust the provided gasPrice, we don’t believe their default gasPrice changes effectively (although what the word ‘effectively’ means here is hard to say).
+Near the end of February, we see the prices starting to diverge. We at TrueBlocks believe this is because the price of ether per US dollar changes much faster than the gasPrice miners are willing to accept to process a transaction. Furthermore, while both Parity and Mist allow the user to adjust the provided gasPrice, we don’t believe their default gasPrice changes effectively (although what the word ‘effectively’ means here is hard to say).
 
 One can see the cost of gas per transaction in finneys lowering in recent days, but that price is not lowering as quickly as the price of ether vs. US dollar is rising, thus the divergence.
 
@@ -115,8 +113,8 @@ I live in America. I use US dollars every day. I don’t use ether every day. Wh
 
 #### Conclusion
 
-We are developing QuickBlocks because we want to Account for the Revolution™. We have a thousand ideas of what that might mean. Other people have done this sort of analysis before, however, many of those analyses suffer from one of two problems: (1) they are slow, or (2) the are centralized. QuickBlocks is both fast and fully decentralized.
+We are developing TrueBlocks because we want to Account for the Revolution™. We have a thousand ideas of what that might mean. Other people have done this sort of analysis before, however, many of those analyses suffer from one of two problems: (1) they are slow, or (2) the are centralized. TrueBlocks is both fast and fully decentralized.
 
-We know of an analysis that took more than 20 hours to scan just 15 days worth of DAO related data. (We confirmed this on our own machines). QuickBlocks ran through the above 70 days of data in less than four minutes. 20 hours for 15 days vs. 4 minutes for 70 days. Them is some quick blocks!
+We know of an analysis that took more than 20 hours to scan just 15 days worth of DAO related data. (We confirmed this on our own machines). TrueBlocks ran through the above 70 days of data in less than four minutes. 20 hours for 15 days vs. 4 minutes for 70 days. Them is some quick blocks!
 
-_If you like our work, please support us by sending a few ether (or parts of an ether) to our tip jar: 0xB97073B754660BB356DfE12f78aE366D77DBc80f. We offer all types of blockchain consulting, especially analysis and accounting services. Please find contact information on our website: http://quickblocks.io._
+_If you like our work, please support us by sending a few ether (or parts of an ether) to our tip jar: 0xf503017d7baf7fbc0fff7492b751025c6a78179b. We offer all types of blockchain consulting, especially analysis and accounting services. Please find contact information on our website: http://trueblocks.io._

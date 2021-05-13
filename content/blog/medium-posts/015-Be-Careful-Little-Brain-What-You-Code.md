@@ -5,7 +5,6 @@ date: '2017-08-03T21:49:06.904Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/be-careful-little-brain-what-you-code-6ad4d5fb9d9b
 ---
 
 When I was a kid, my mother used to send my brothers and me to vacation Bible school. Having children of my own, I’m pretty certain she did that to get rid of us for the summer. The experience had no lasting effect on me (thank God), but I remember a song we used to sing:

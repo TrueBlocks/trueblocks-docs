@@ -1,16 +1,15 @@
 ---
-title: QuickBlarks
+title: TrueBlarks
 lead: Ethereum data on crack
 date: '2019-01-21T22:18:40.107Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/quickblarks-62aa90169ff0
 ---
 
 I wanted to share with you (through a series of charts) what happens when one releases a world-class data scientist such as [Ed Mazurek](https://medium.com/u/d272dbeef59a) on fresh-baked Ethereum difficulty data.
 
-You get QuickBlarks (that’s a [portmanteau](https://www.google.com/search?q=define+portmanteau&rlz=1C5CHFA_enUS740US740&oq=define+portman&aqs=chrome.0.0j69i57j0l4.4375j1j7&sourceid=chrome&ie=UTF-8) of “QuickBlocks” and “R” in case you were wondering). If you don’t know about “R” and [R Studio](https://www.rstudio.com/), you should. It’s amazing.
+You get TrueBlarks (that’s a [portmanteau](https://www.google.com/search?q=define+portmanteau&rlz=1C5CHFA_enUS740US740&oq=define+portman&aqs=chrome.0.0j69i57j0l4.4375j1j7&sourceid=chrome&ie=UTF-8) of “TrueBlocks” and “R” in case you were wondering). If you don’t know about “R” and [R Studio](https://www.rstudio.com/), you should. It’s amazing.
 
 With little to no explanation, I am going to copy and paste the “R” code right next to the chart used to create it. Ask Ed what the code means.
 
@@ -68,8 +67,7 @@ difficulty %>%
 
 And here’s the first chart showing the `delta` in each block’s `difficulty` through the first 7.1 million blocks. It also shows, as a red line, the difficulty bomb. You can see it’s creeping up again.
 
-![](/blog/medium-posts/img/028-QuickBlarks-001.png)
-undefined
+![](/blog/medium-posts/img/028-TrueBlarks-001.png)
 
 The next chart, built with this code,
 
@@ -81,7 +79,7 @@ difficulty %>%
 
 shows the ‘responsiveness’ of the difficulty calc to its current situation. We calculate `sensitivity` by dividing `diff.delta` by `block.difficulty`. I’m not sure, but I think the jaggys come from the way the difficulty value is calculated. It snaps to the next nearest 10 seconds to adjust, so 10, 11, 12, … 19 all give the same adjustment, but 20, 21, 22, … give different adjustments.
 
-![](/blog/medium-posts/img/028-QuickBlarks-002.png)
+![](/blog/medium-posts/img/028-TrueBlarks-002.png)
 
 The next chart, generated from this “R” code,
 
@@ -95,8 +93,7 @@ shows the accumulated sum of the `diff.delta` values. You can clearly see the ba
 
 [Lane Rettig](https://medium.com/u/9f3988a56032) wondered if, because of the increased hash rate of the current chain, the effect of the difficulty bomb might be obscured. I’m not sure (I’m not sure of anything), but the wider spread of the difficulty on blocks since byzantium may indicate that his intuition was correct. Is the difficulty bomb hiding in the big black static?
 
-![](/blog/medium-posts/img/028-QuickBlarks-003.png)
-undefined
+![](/blog/medium-posts/img/028-TrueBlarks-003.png)
 
 In the following charts, we show some other shit made with some more “R” code. In this section, we calculate either the deltas of the means of the timestamps of the blocks or the means of the deltas of the timestamps of the blocks and we lay whatever that is against the previous charts (you’ll have to ask Ed if you want to understand it).
 
@@ -108,13 +105,11 @@ difficulty %>%
  geom\_line() +  
  facet\_wrap(facets = ‘vars’, scales = ‘free’, ncol = 1)
 
-![](/blog/medium-posts/img/028-QuickBlarks-004.png)
-undefined
+![](/blog/medium-posts/img/028-TrueBlarks-004.png)
 
 And now we’re just showing a whole bunch of crazy charts with cool looking black jaggies (hang in there, there’s some interesting stuff below).
 
-![](/blog/medium-posts/img/028-QuickBlarks-005.png)
-undefined
+![](/blog/medium-posts/img/028-TrueBlarks-005.png)
 
 The above chart was made with this nearly unintelligible code:
 
@@ -150,8 +145,7 @@ difficulty %>%
 
 The above code gives us this chart:
 
-![](/blog/medium-posts/img/028-QuickBlarks-006.png)
-undefined
+![](/blog/medium-posts/img/028-TrueBlarks-006.png)
 
 And here, I think, we’ve finally gotten to something interesting. Although, we’re not quite done.
 
@@ -161,11 +155,10 @@ What we see now, if we look closely enough, is that the little purple dots (curr
 
 Lane was right! This time, the effect of the difficulty bomb will be obscured and be less apparent than before. This may make its effect less obvious until it explodes. How soon will that be? When is the bomb coming? We’re already at period 41. The last bomb ([see this chart](https://medium.com/@tjayrush/ethereum-block-production-continues-to-slide-1b74a2123e3f)) started showing a slow down by now. The last bomb was already starting to speed up by now. I think that is true this time as well, but it’s hidden behind the heavier hash rate.
 
-![](/blog/medium-posts/img/028-QuickBlarks-007.png)
-undefined
+![](/blog/medium-posts/img/028-TrueBlarks-007.png)
 
 #### Conclusion
 
 It’s time to fork.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

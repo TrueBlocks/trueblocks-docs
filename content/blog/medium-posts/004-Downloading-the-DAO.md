@@ -5,7 +5,6 @@ date: '2016-06-10T18:43:27.918Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/downloading-the-dao-a004258c9b5f
 ---
 
 I am obsessed with the DAO. I spend a ridiculously large amount of time thinking about it, reading about it, and trying to figure it out. The most interesting thing to me is the data. The fact that the smallest transactions —both into and out of the DAO — are recorded forever is very interesting to me.
@@ -35,7 +34,6 @@ Given this data, the first thing I wanted to do was to separate out the ‘Token
 The Mist browser tells me that the token creation period ended at timeStamp = 146442600.
 
 ![](/blog/medium-posts/img/004-Downloading-the-DAO-001.png)
-undefined
 
 Every transaction on the Ethereum blockchain has a timeStamp. So I simply went into the spreadsheet and found the last transaction that happened before “closing time” and deleted the rest. I’ve since added a feature to EthSlurp to specify the earliest and/or latest timeStamp, block number, or date. I can now run this command:
 

@@ -5,7 +5,6 @@ date: '2018-08-13T16:48:42.759Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/a-short-take-on-decentralization-13f8fef6f445
 ---
 
 This is a very short take on something I’ve been thinking about for quite a while. “Why do I give a shit about decentralization? Should I compromise?” Here’s why I come down emphatically on the side of “Yes, I give a shit, and no you should never compromise!”.
@@ -36,6 +35,6 @@ No centralization is the only acceptable amount of centralization! Period.
 
 #### Support My Work
 
-I’m interested in your thoughts. Please clap for this article and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+I’m interested in your thoughts. Please clap for this article and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-**Thomas Jay Rush** owns the software company QBlocks whose primary project is also called QBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company QBlocks whose primary project is also called QBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

@@ -5,7 +5,6 @@ date: '2019-07-17T18:13:05.996Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/a-time-ordered-index-of-time-ordered-immutable-data-e28ced3417cc
 ---
 
 Did you ever notice that the only way to get the history of an Ethereum account is to visit a fully-centralized, database-driven, _old-fashioned_ web-2.0 website?
@@ -120,6 +119,6 @@ We will be rolling out, documenting, and writing about our work a lot over the n
 
 #### Support Our Work
 
-We’re interested in your thoughts. Please clap for us, tweet about us, and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+We’re interested in your thoughts. Please clap for us, tweet about us, and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
 Thomas Rush owns the software company TrueBlocks, LLC whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through the website.

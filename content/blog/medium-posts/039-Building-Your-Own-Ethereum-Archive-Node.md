@@ -5,7 +5,6 @@ date: '2020-08-13T18:21:08.933Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/building-your-own-ethereum-archive-node-72c014affc09
 ---
 
 This article is incomplete in the extreme.

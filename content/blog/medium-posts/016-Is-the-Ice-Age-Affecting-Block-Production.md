@@ -5,12 +5,11 @@ date: '2017-08-30T18:42:01.488Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/is-the-ice-age-effecting-block-production-4c943c835975
 ---
 
-This is just one of 100’s of questions we have about what is happening on the Ethereum blockchain. We’re developing QuickBlocks to help us answer these questions and more.
+This is just one of 100’s of questions we have about what is happening on the Ethereum blockchain. We’re developing TrueBlocks to help us answer these questions and more.
 
-[QuickBlocks](https://github.com/Great-Hill-Corporation/quickBlocks) is a set of software libraries, applications, and command line tools that provide fast, easy, fully-decentralized access to the Ethereum blockchain data. As part of preparing for our next release, we’ve written a a number of simple command line tools to test our code. One of these is called `whenBlock` which helped us answer the question above.
+[TrueBlocks](https://github.com/TrueBlocks/trueblocks-core) is a set of software libraries, applications, and command line tools that provide fast, easy, fully-decentralized access to the Ethereum blockchain data. As part of preparing for our next release, we’ve written a a number of simple command line tools to test our code. One of these is called `whenBlock` which helped us answer the question above.
 
 Here’s the help screen from `whenBlock`:
 
@@ -30,7 +29,7 @@ telling you exactly how far along the sync is. Knowing that the sync is stuck on
 
 #### Answering Questions
 
-The whole point of QuickBlocks is to allow end users to answer questions about the Ethereum blockchain. We aim to provide useful, scientific-quality information about the behaviour of the blockchain. Currently, one must rely either on a fully centralized solution such as [EtherScan](http://etherscan.io) to get data or do without the data altogether — or accumulate it oneself, which is not easy if one hopes to get the data before the end of the century. QuickBlocks aims to provide better data, faster, than EtherScan, and to do so way more quickly, and in a 100% decentralized manner.
+The whole point of TrueBlocks is to allow end users to answer questions about the Ethereum blockchain. We aim to provide useful, scientific-quality information about the behaviour of the blockchain. Currently, one must rely either on a fully centralized solution such as [EtherScan](http://etherscan.io) to get data or do without the data altogether — or accumulate it oneself, which is not easy if one hopes to get the data before the end of the century. TrueBlocks aims to provide better data, faster, than EtherScan, and to do so way more quickly, and in a 100% decentralized manner.
 
 We used `whenBlock` to create a list of the block heights at the end of each week since the inception of the Ethereum blockchain. Here’s the data:
 
@@ -55,10 +54,10 @@ A number of things become fairly obviously from the chart:
 
 There’s a lot more we could do to explore the effect of the difficulty bomb (for example, it would be interesting to see if the number of transactions processed has seen a commensurate decrease). Unfortunately, we have to go back to the salt mine of our programming environment to finish up the release. Stay tuned. We’ll post another post similar to this one in after the Byzantium hard fork. We should see a pretty large rise in the number of blocks per week.
 
-The data supporting this post was generated with QuickBlocks. Visit our [GitHub repo](https://github.com/Great-Hill-Corporation/quickBlocks/tree/master/src/other/articles).
+The data supporting this post was generated with TrueBlocks. Visit our [GitHub repo](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/other/articles).
 
-We’re interested in your thoughts. Please clap for us and then post your comments below. If you enjoy our work, please consider supporting us by sending a tip to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+We’re interested in your thoughts. Please clap for us and then post your comments below. If you enjoy our work, please consider supporting us by sending a tip to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-Join our slack at [http://quickblocks.slack.com.](http://quickblocks.slack.com.) There’s not a lot of people there, but hopefully there will be soon.
+Join our [discord server](https://discord.gg/RAz6DJ6xkf) There’s not a lot of people there, but hopefully there will be soon.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

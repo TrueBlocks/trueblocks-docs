@@ -5,7 +5,6 @@ date: '2016-07-13T03:44:29.907Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/knowing-the-future-and-proving-you-know-it-3add7a69d54c
 ---
 
 I’m building a piece of software called [EthSlurp](http://ethslurp.com). It’s a blockchain data scraper. It runs from the command line and takes various parameters such as an Ethereum contract address, an output format, a date and/or block range, and various other options.

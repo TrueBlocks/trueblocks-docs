@@ -5,7 +5,6 @@ date: '2020-08-15T11:44:23.336Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/ethereums-issuance-minerreward-3cad5b9a72ff
 ---
 
 Recently, there was a dustup on Crypto Twitter (started [here](https://twitter.com/pierre_rochard/status/1291522796410089474), carries on [here](https://twitter.com/hashtag/SupplyGate)) about Ethereum’s money supply. The claim was made that Ethereum’s money supply was not easily available, nor was it widely agreed upon.
@@ -110,4 +109,4 @@ I wish to thank Meriam Zandi for her help in this article.
 
 Help us continue our work. Visit our GitCoin grant page here: [https://gitcoin.co/grants/184/trueblocks](https://gitcoin.co/grants/184/trueblocks), and donate today.
 
-Or, if you’d rather not expose yourself to scrutiny, and you’d still like to donate, send ETH to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+Or, if you’d rather not expose yourself to scrutiny, and you’d still like to donate, send ETH to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.

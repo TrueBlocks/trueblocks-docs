@@ -5,7 +5,6 @@ date: '2019-06-10T01:50:36.918Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/counting-shit-on-ethereum-39844b37259c
 ---
 
 I like to count shit. I’ll count anything I can find. Cracks in the sidewalk. Pennies in a cup.
@@ -39,7 +38,7 @@ I work on a project called TrueBlocks, so I’ll use that to carry out the above
 
 \* — wait for a long time while the node syncs.
 
-For more information on running node, you’ll have to look online (or checkout [DAppNode](https://medium.com/u/8d628dbdf3c2), which makes running Ethereum nodes very easy). Instructions for downloading and running TrueBlocks is [here](https://github.com/Great-Hill-Corporation/quickBlocks/blob/develop/src/other/install/INSTALL.md).
+For more information on running node, you’ll have to look online (or checkout [DAppNode](https://medium.com/u/8d628dbdf3c2), which makes running Ethereum nodes very easy). Instructions for downloading and running TrueBlocks is [here](https://github.com/TrueBlocks/trueblocks-core/blob/develop/src/other/install/INSTALL.md).
 
 #### Building the Sample Code
 
@@ -47,8 +46,8 @@ Before we write the code to do the counting, we want to make sure you can build 
 
 \# Download TrueBlocks  
 git clone \\  
-    -b develop [https://github.com/Great-Hill-Corporation/quickBlocks](https://github.com/Great-Hill-Corporation/quickBlocks)  
-cd quickBlocks  
+    -b develop [https://github.com/TrueBlocks/trueblocks-core](https://github.com/TrueBlocks/trueblocks-core)  
+cd trueblocks-core  
 mkdir build  
 cd build  
 cmake ../src  
@@ -69,14 +68,13 @@ cd count\_shit
 make  
 ./bin/simple
 
-You should get some data for block 3,500,000 (assuming your node is synced that far). **Note:** if you don’t want to run your own node, you can edit a file called `~/.quickBlocks/quickBlocks.toml` and set the `rpcProvider` option to a remote node such as Infura. Be warned, though, if you do you will probably get locked out due to hitting their servers too hard — this is one of the benefits of running your own node — no rate limiting.
+You should get some data for block 3,500,000 (assuming your node is synced that far). **Note:** if you don’t want to run your own node, you can edit a file called `$CONFIG/trueblocks.toml` and set the `rpcProvider` option to a remote node such as Infura. Be warned, though, if you do you will probably get locked out due to hitting their servers too hard — this is one of the benefits of running your own node — no rate limiting.
 
 #### A Quick Review of the Sample Code
 
 Open the file`./samples/count_shit/simple.cpp` with your editor. It will look something like this:
 
 ![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-001.png)
-undefined
 
 A few things to notice:
 
@@ -93,26 +91,22 @@ Now we want to write the code to count function signatures. With little fanfare,
 The first section includes the `etherlib.h` header file and defines a few types that we will use to store the function signatures and then sort and report on what we find. Put this at the top of your file.
 
 ![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-002.png)
-undefined
 
 The next section is the `main` routine. Put this at the very bottom of your file. We will be inserting two functions between the declarations at the top of the file and the main function. In this way, we won’t have to forward declare the functions we need.
 
 ![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-003.png)
-undefined
 
 The `main` function, at line 35, declares a signature map to store the signatures, and line 36 calls the function `forEveryBlock` with the function `visitBlock` and a pointer to that map. `forEveryBlock` visits every block and calls the passed-in function on each block between the first block with a transaction `(frstTransactionBlock)` and the last available block on the chain. (We’ll look at `visitBlock` in a second.) `visitBlock` does the counting. Starting at line 38, we simply sort the gathered counts and present the top twenty results.
 
 The remaining functions do the real work. The first, `visitBlock` gets called…
 
 ![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-004.png)
-undefined
 
 …simply passing on the data pointer to every transaction in the block.
 
 The final function, and the one that does all the work, is called `visitTransaction`.
 
 ![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-005.png)
-undefined
 
 The first thing this function does is cast the data pointer back to a signature map. Some of the younger programmers who are reading this might look askance at this sort of type-safety violation, but at least one of our engineers (alright — it’s me) has been programming since 1981, so this is how we roll. It may be slightly unsafe, but it’s fast as shit.
 

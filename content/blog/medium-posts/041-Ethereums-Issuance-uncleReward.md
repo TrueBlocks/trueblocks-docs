@@ -5,7 +5,6 @@ date: '2020-08-15T12:13:31.684Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/ethereums-issuance-unclereward-72de71b0f9f6
 ---
 
 This the second in a series of two articles detailing Ethereum’s **issuance**. Read the [first part](https://medium.com/@tjayrush/ethereums-issuance-minerreward-3cad5b9a72ff), which discusses the `blockReward` calculation. Also, see [the code base](https://github.com/Great-Hill-Corporation/trueblocks-core/tree/develop/src/other/issuance) for the actual code. This article discusses the `uncleReward`.
@@ -118,7 +117,7 @@ I wish to thank Meriam Zandi for her help in this article.
 
 Help us continue our work. Visit our GitCoin grant page here: [https://gitcoin.co/grants/184/trueblocks](https://gitcoin.co/grants/184/trueblocks), and donate today.
 
-Or, if you’d rather not expose yourself to scrutiny, and you’d still like to donate, send ETH to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+Or, if you’d rather not expose yourself to scrutiny, and you’d still like to donate, send ETH to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
 #### Also, Read
 

@@ -5,7 +5,6 @@ date: '2018-04-20T23:11:49.781Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/how-many-tokens-do-you-have-eae7233676f1
 ---
 
 I was recently included [in a discussion](https://twitter.com/ricburton/status/986459891035525120) about why it’s so difficult to get ERC20 token balances (and other data) from the Ethereum blockchain. I thought I’d take a crack at answering the question.
@@ -39,17 +38,14 @@ So, distinguish between “external” and “internal” transactions. “Inter
 The majority of transactions on the Ethereum blockchain consist of one external account sending money (or a message) to another external account.
 
 ![](/blog/medium-posts/img/024-How-Many-ERC20-Tokens-Do-You-Have-002.png)
-undefined
 
 Many other transactions (also external) are sent from an external account to a smart contract. When you think of the transactions that are being hashed into a block, you are thinking of external transactions.
 
 ![](/blog/medium-posts/img/024-How-Many-ERC20-Tokens-Do-You-Have-003.png)
-undefined
 
 An internal transaction is a transfer of value (or a message call) that occurs as the result of a smart contract calling or sending money into other accounts.
 
 ![](/blog/medium-posts/img/024-How-Many-ERC20-Tokens-Do-You-Have-004.png)
-undefined
 
 As we saw earlier, keeping track of the “send” side of an internal transaction is simple. The smart contract itself, as it generates the call, can simply emit an event. This will alert both the sender and receiver that something has happened (for example, a token transfer or token mint happened). This is how almost all ERC20 token contract work. When someone buys a token or transfers a token, in addition to recording that fact inside the smart contract’s balance map, the smart contract emits an event. I say “most” token contracts work this way because there is no hard requirement in the ERC20 standard when tokens are minted.
 
@@ -79,7 +75,7 @@ Before this post runs into an infinite length, I’ll move on to the final word�
 
 Getting full and accurate account-specific list of transactions (and therefore token balances) from Ethereum is hard. It’s also slow. It is so slow, in fact, that it’s nearly unusable. One simply cannot replay the entire chain every time one wishes to account for a different address. There are some solutions, but none of them good.
 
-The two most obvious solutions are: (1) make a duplicate copy of the blockchain data including all traces and build a giant database index, or (2) keep the data on the node, do not duplicate it, and figure out some way to make scanning the chain palatable. (This is what QuickBlocks does. It’s not as fast as a database index, but it’s faster than a raw scan of the entire chain, and it’s tremendously smaller than duplicating the data and creating an index.)
+The two most obvious solutions are: (1) make a duplicate copy of the blockchain data including all traces and build a giant database index, or (2) keep the data on the node, do not duplicate it, and figure out some way to make scanning the chain palatable. (This is what TrueBlocks does. It’s not as fast as a database index, but it’s faster than a raw scan of the entire chain, and it’s tremendously smaller than duplicating the data and creating an index.)
 
 If one chooses the first path, one will almost certainly be forced to use some sort of gigantic cloud computer. The index alone will be many gigabytes. And it only gets bigger over time (can you say sharding?). Worse, you have to store duplicate data, and furthermore, 99% of the data you’re storing will never be used. You’re accounting for specific accounts, not the entire chain. Most likely, your customers are only interested in the data from their accounts.
 
@@ -97,6 +93,6 @@ I’ve now officially run out of words. If you’ve made it this far, I guess yo
 
 #### Support My Work
 
-We’re interested in your thoughts. Please clap for us and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+We’re interested in your thoughts. Please clap for us and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

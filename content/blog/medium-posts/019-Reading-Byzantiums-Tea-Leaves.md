@@ -5,7 +5,6 @@ date: '2017-10-02T01:43:50.040Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/byzantiums-difficulty-calculation-2cdef46f79d3
 ---
 
 I used to watch a television show called “Wall Street Week with Louis Rukeyser.” The host would frequently laugh at the way Alan Greenspan, the Chairman of the Federal Reserve, would testify in front of Congress. Rukeyser found it comical that we all had to “read the tea leaves” after Greenspan spoke.
@@ -72,8 +71,8 @@ In the next installment of this series, we will explore these questions and othe
 
 **Late Breaking News:** After publishing this article, I found this post [http://www.cahf.co/](http://www.cahf.co/). It seems maybe the Byzantium hard fork is a bit more contentious that I thought it might be.
 
-We’re interested in your thoughts. Please clap for us and then post your comments below. If you enjoy our work, consider supporting us by sending a tip to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+We’re interested in your thoughts. Please clap for us and then post your comments below. If you enjoy our work, consider supporting us by sending a tip to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-Join our slack at [http://quickblocks.slack.com.](http://quickblocks.slack.com.) There’s not a lot of members just yet, but we’re working on it.
+Join our [discord channel](https://discord.gg/RAz6DJ6xkf) There’s not a lot of members just yet, but we’re working on it.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

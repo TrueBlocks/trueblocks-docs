@@ -5,7 +5,6 @@ date: '2020-05-13T02:33:50.840Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/links-about-clr-radical-markets-gitcoin-4dd6c3040228
 ---
 
 *   [The Liberal Radicalism Mechanism for Producing Public Goods \[_Tabarrok_\]](https://marginalrevolution.com/marginalrevolution/2018/09/liberal-radicalism-mechanism-producing-public-goods.html "https://marginalrevolution.com/marginalrevolution/2018/09/liberal-radicalism-mechanism-producing-public-goods.html")

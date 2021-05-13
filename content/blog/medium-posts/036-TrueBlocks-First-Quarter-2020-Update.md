@@ -5,7 +5,6 @@ date: '2020-02-11T17:08:44.489Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/trueblocks-first-quarter-2020-update-a02740b25e5b
 ---
 
 This is short update on what we’ve been doing since receiving so many wonderful grants during the GitCoin CLR matching fandango. This money goes a long way. It allows one of us (Rush) to make a trip to EthDenver, where he will be judging some hacks. It has also paid for some much needed help developing the React frontend. If you donated (or even if you didn’t), and you’re in Denver this week, seek me out. I’ll be happy to share our latest work.
@@ -61,7 +60,7 @@ This is what we mean by User-Centric Blockchain Browsing™. If we didn’t inve
 
 #### EthDenver and Beyond
 
-We’re going to be in Denver this week, and we would be very pleased to share more of our work with you. Hit me up at my twitter account ([@quickblocks](http://twitter.com/@quickblocks)) or by email (see our website [http://quickblocks.io](http://quickblocks.io)). We’ll also be attending EthBerlin and Berlin Blockchain Week this year. Maybe we’ll have a chance to speak there.
+We’re going to be in Denver this week, and we would be very pleased to share more of our work with you. Hit me up at my twitter account ([@trueblocks](http://twitter.com/@trueblocks)) or by email (see our website [http://trueblocks.io](http://trueblocks.io)). We’ll also be attending EthBerlin and Berlin Blockchain Week this year. Maybe we’ll have a chance to speak there.
 
 ### Conclusion
 
@@ -69,6 +68,6 @@ When your application has but a single user, everything get simpler. You don’t
 
 Help us with out work. Visit our GitCoin grant page here: [https://gitcoin.co/grants/184/trueblocks](https://gitcoin.co/grants/184/trueblocks), and donate today.
 
-If you’d rather not expose yourself to scrutiny, and you’d still like to donate, send ETH to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+If you’d rather not expose yourself to scrutiny, and you’d still like to donate, send ETH to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
 Thanks for reading.

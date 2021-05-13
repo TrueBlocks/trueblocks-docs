@@ -5,7 +5,6 @@ date: '2017-05-30T19:58:51.709Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/the-real-flippening-668890d4a5ad
 ---
 
 My wife constantly tells me we should sell our Ethereum holdings, and I constantly resist. She wants to buy a new sewing machine. I want to wait until “The Flippening.”
@@ -19,7 +18,6 @@ So, maybe, “The Flippening” is like a quickening. Maybe it’s when Ethereum
 #### Bitcoin is a Bucket and the Bucket has a Hole
 
 ![](/blog/medium-posts/img/013-The-Real-Flippening-001.png)
-undefined
 
 Bitcoin is a bucket. It’s filled with something valuable. Without going into why (it has to do with developers), I think Bitcoin’s bucket has a hole in it. Bitcoin is leaking developers, and in most cases, I think, they are ending up in the Ethereum space. Why wouldn’t they? Ethereum is where all the excitement is and it’s not a pain in the ass to program. In the old days, I would have said it this way: “Why program in Cobol when you can program in C++?”
 
@@ -28,7 +26,6 @@ Bitcoin is a bucket. It’s filled with something valuable. Without going into w
 Have you ever seen a video of a school of sardines swimming peacefully, when all of a sudden, a yellow-finned tuna appears out of no-where and starts eating them up? Every individual sardine flees at exactly the same time. However, because they are so tightly packed, they are restrained in how they can move. No matter which direction they turn, they bump into another sardine. This causes them to move in what appears to be a coordinated blob, but it’s actually just individuals all of whom are rushing for the door.
 
 ![](/blog/medium-posts/img/013-The-Real-Flippening-002.png)
-undefined
 
 #### People Rush for Doors
 
@@ -64,6 +61,6 @@ The answer, obviously, is no. The mentality that has us all constantly pricing c
 
 I think, the “Real Flippening,” the one that my wife is going to have to wait for, is when people start pricing fiat currencies relative to a crypto instead of the other way around as we do today. What will the world be like when that happens?
 
-I’d love to hear your thoughts. Please make a comment below. If you enjoy my musings, support my work by sending ether to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+I’d love to hear your thoughts. Please make a comment below. If you enjoy my musings, support my work by sending ether to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

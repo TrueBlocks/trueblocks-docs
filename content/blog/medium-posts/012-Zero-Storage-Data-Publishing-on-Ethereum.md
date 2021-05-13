@@ -5,7 +5,6 @@ date: '2017-05-17T20:45:02.347Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/zero-storage-data-publishing-on-ethereum-1e0610d846d
 ---
 
 _What’s the cheapest way to publish data while maintaining an unchangeable, permanent record of having done so?_
@@ -20,11 +19,11 @@ Actually this second point may or may not be true, but one thing is true, if the
 
 ![](/blog/medium-posts/img/012-Zero-Storage-Data-Publishing-on-Ethereum-001.png)
 
-In this article we will recount our experience trying to create a simple one-way publisher-to-consumer data delivery smart contract. At the same time, we’ll explain an idea we have called _off-chain monitoring_ and how our project, [QuickBlocks](http://quickblocks.io)™, helps us use this idea to lessen the cost of running a smart contract.
+In this article we will recount our experience trying to create a simple one-way publisher-to-consumer data delivery smart contract. At the same time, we’ll explain an idea we have called _off-chain monitoring_ and how our project, [TrueBlocks](http://trueblocks.io)™, helps us use this idea to lessen the cost of running a smart contract.
 
 #### Off-Chain Monitoring
 
-QuickBlocks allows us to monitor Ethereum addresses in real time. We initiate a monitoring session with a simple command:
+TrueBlocks allows us to monitor Ethereum addresses in real time. We initiate a monitoring session with a simple command:
 
 chiffra init <monitor\_name>
 
@@ -38,7 +37,7 @@ If the monitor finds a transaction (either an external or an internal contract-t
 
 By default, the response is to simply display the transaction to the screen. However, we can modify the monitor code to do anything we want. For example, it could keep a daily list of transactions and email us a summary of the activity on the contract at the end of each day.
 
-QuickBlocks is a customizable, per-account, fully-decentralized blockchain scraper. This contrasts with centralized scrapers, such as the [EtherScan](http://etherscan.io), in that the data (once it arrives at the node) comes straight from the node as opposed to from a third party.
+TrueBlocks is a customizable, per-account, fully-decentralized blockchain scraper. This contrasts with centralized scrapers, such as the [EtherScan](http://etherscan.io), in that the data (once it arrives at the node) comes straight from the node as opposed to from a third party.
 
 The monitor programs do whatever we want them to do. For example, they can easily write transactions to a database (for later use in a website, for example). If a non-technical user, such as an accountant or auditor, needs the data, it can be written to an Excel spreadsheet. We’ve even written one monitor that duplicates the token account balances of an ICO — on the fly and off-chain.
 
@@ -46,7 +45,7 @@ The monitoring is done _locally_ and _off-chain_ and _per account_. The data is 
 
 ![](/blog/medium-posts/img/012-Zero-Storage-Data-Publishing-on-Ethereum-002.png)
 
-Monitors understand the data they are retrieving. By this we mean the monitor re-articulates the data in the language of the smart contract that created it. It does this by fetching the ABI file of the contract and using that to translate the node data. `**0xc9d27afe**` becomes `**vote.**` `**0x23b872dd**` becomes `**transferFrom(a, b)**`. QuickBlocks turns ugly blockchain data back into human readable and easily understood information.
+Monitors understand the data they are retrieving. By this we mean the monitor re-articulates the data in the language of the smart contract that created it. It does this by fetching the ABI file of the contract and using that to translate the node data. `**0xc9d27afe**` becomes `**vote.**` `**0x23b872dd**` becomes `**transferFrom(a, b)**`. TrueBlocks turns ugly blockchain data back into human readable and easily understood information.
 
 Recently, I was developing a smart contract, and I realized I was thinking about my work in a new way. I was writing my smart contract _anticipating_ that it would be monitored. The `monitor` component had become an integral part of the smart contract system I was writing.
 
@@ -59,7 +58,6 @@ You may have noticed that the price of ether has skyrocketed recently. Some peop
 Here’s a recent [comment on stack exchange](https://ethereum.stackexchange.com/questions/872/what-is-the-cost-to-store-1kb-10kb-100kb-worth-of-data-into-the-ethereum-block):
 
 ![](/blog/medium-posts/img/012-Zero-Storage-Data-Publishing-on-Ethereum-003.png)
-undefined
 
 While one can reduce the operating cost of a smart contract by [lowering the gas price](http://ethgasstation.info/) at each transaction, it still costs more than $1,000 to store a single MB of data. That cost has nearly doubled recently! Storing data directly on the blockchain is not, and never has been, a viable solution.
 
@@ -136,20 +134,20 @@ But more importantly, if the user claims we didn’t publish the data, we can pr
 
 #### Why Not Just Use Web3.0?
 
-You could. QuickBlocks does not replace Web 3.0. But we think it enhances it. There’s nothing stopping you from using Web 3.0 to accomplish the exact same task, unless, that is, your time and your desire to get complete data matters to you.
+You could. TrueBlocks does not replace Web 3.0. But we think it enhances it. There’s nothing stopping you from using Web 3.0 to accomplish the exact same task, unless, that is, your time and your desire to get complete data matters to you.
 
-Both QuickBlocks and Web 3.0 use the Ethereum node’s RPC interface to request and process the data. QuickBlocks improves on what is returned by the RPC in the following ways:
+Both TrueBlocks and Web 3.0 use the Ethereum node’s RPC interface to request and process the data. TrueBlocks improves on what is returned by the RPC in the following ways:
 
-*   QuickBlocks creates a cache so that the second and subsequent times one requests data, it is delivered 80–100 times faster. It’s also faster on the initial retrieval because it’s written in highly optimized C++ code.
-*   The initial transaction data returned by the RPC is incomplete. It does not include an ‘error’ flag. Nor does the returned data include contract-to-contract incoming transactions into an account. QuickBlocks corrects these shortcomings.
-*   The RPC returns un-articulated data (that is, bytes). Your Web 3.0 code must translate this hex data back into human readable form. QuickBlocks does this for you automatically (if given an ABI).
+*   TrueBlocks creates a cache so that the second and subsequent times one requests data, it is delivered 80–100 times faster. It’s also faster on the initial retrieval because it’s written in highly optimized C++ code.
+*   The initial transaction data returned by the RPC is incomplete. It does not include an ‘error’ flag. Nor does the returned data include contract-to-contract incoming transactions into an account. TrueBlocks corrects these shortcomings.
+*   The RPC returns un-articulated data (that is, bytes). Your Web 3.0 code must translate this hex data back into human readable form. TrueBlocks does this for you automatically (if given an ABI).
 
 #### Is There Anything Interesting Here?
 
 What we’ve described here is a data delivery system that stores zero data on the blockchain. And yet, the system is able to prove individual publishing events on a per user basis. Also, what was formerly a cost for the publisher, now may potentially be a source of income (see [filecoin](http://filecoin.io/)).
 
-Will it work? Maybe not, but we’re working on it. Join us at [GitHub](https://github.com/Great-Hill-Corporation/quickBlocks).
+Will it work? Maybe not, but we’re working on it. Join us at [GitHub](https://github.com/TrueBlocks/trueblocks-core).
 
-_If you find our work interesting and would like to learn more, please visit our website at (http://quickblocks.io). Sign up for our news feed. We’ll keep the ideas coming._
+_If you find our work interesting and would like to learn more, please visit our website at (http://trueblocks.io). Sign up for our news feed. We’ll keep the ideas coming._
 
-_Support out work?_ 0xB97073B754660BB356DfE12f78aE366D77DBc80f
+_Support our work?_ 0xf503017d7baf7fbc0fff7492b751025c6a78179b

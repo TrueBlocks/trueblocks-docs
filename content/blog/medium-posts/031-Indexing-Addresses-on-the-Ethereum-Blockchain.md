@@ -5,7 +5,6 @@ date: '2019-07-09T02:30:51.814Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/indexing-addresses-on-the-ethereum-blockchain-5c0806161eb9
 ---
 
 Given a blockchain, our goal was to create a list of every appearance of every address in any block on that chain. We define an “appearance” as either the use of the address in one of the common ‘address’ fields of a transaction (such as `to`, `from`, or `contractAddress`) or its use as data in one of the data fields in a transaction. We do not check numeric fields such as `value` or `gasUsed`.
@@ -57,6 +56,6 @@ We fell in love with the idea of `permissionless accounting` about four years ag
 
 #### Support My Work
 
-I’m interested in your thoughts. Please clap for us and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+I’m interested in your thoughts. Please clap for us and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-Thomas Jay Rush owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through the website.
+Thomas Jay Rush owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through the website.

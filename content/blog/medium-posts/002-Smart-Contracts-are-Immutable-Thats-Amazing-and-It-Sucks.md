@@ -5,8 +5,6 @@ date: '2016-05-13T18:46:17.693Z'
 draft: false
 categories: []
 keywords: []
-slug: >-
-  /@tjayrush/smart-contracts-are-immutable-thats-amazing-and-it-sucks-e0fbc7b0ec16
 ---
 
 Apparently there are two types of software engineers in the world. One type writes code, pushes it out into the world to see how it works, keeps track of the bugs, and then goes back to drawing board, re-writes the code, fixes the bugs, and re-releases. Write-release-fix, write-release-fix. A never-ending circle.
@@ -14,7 +12,6 @@ Apparently there are two types of software engineers in the world. One type writ
 The other type of software engineer seems to be able to write code once, and because it was carefully planned and carefully implemented, it runs correctly forever. Write-release-done.
 
 ![](/blog/medium-posts/img/002-Smart-Contracts-are-Immutable-Thats-Amazing-and-It-Sucks-001.png)
-undefined
 
 I should probably not admit this, but I am not this second type of programmer. At least, I didn’t used to be. Now that I’ve started learning the smart contract programming language (Solidity), I think I’m going to be forced to change my methodology.
 
@@ -33,7 +30,6 @@ The address of the newly deployed smart contract is created by hashing together 
 Because the nonce changes with each transaction (a contract deployment is a transaction) the resulting Ethereum addresses are unique. In fact, the way the hash function works, each new address is wildly different than the one before it. This is why I say that the smart contract runs forever and cannot be changed. Even if you wanted to (and I almost always do, given the way I write software), there is simply no way to re-deploy a contract to the same address.
 
 ![](/blog/medium-posts/img/002-Smart-Contracts-are-Immutable-Thats-Amazing-and-It-Sucks-002.jpg)
-undefined
 
 If the Internet worked the way Ethereum does, and I changed my website [http://ethrilleum.com](http://ethrilleum.com), the re-deployment would move my website to a new address. Who knows, perhaps [http://no-one-will-ever-find-me-again.com.](http://no-one-will-ever-find-me.com.)
 

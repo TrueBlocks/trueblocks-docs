@@ -6,7 +6,6 @@ date: '2016-06-21T03:09:42.095Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/a-clue-about-the-dao-attackers-location-912b9ff29f66
 ---
 
 I used EthSlurp to scrape every transaction from The DAO since its inception. This first chart shows those transactions distributed by hour. There are more than 121,000 transactions:
@@ -30,7 +29,6 @@ In an unrelated but similar post, Johannes Pfeffer provided a larger list of pos
 There were 1,084 transactions on these eleven accounts. I charted the same hourly distribution on both Suspect Set 1 and Suspect Set 2, and while I cannot say for certain, I think I see a pattern.
 
 ![](/blog/medium-posts/img/005-A-Clue-About-the-DAO-Attackers-Location-004.png)
-undefined
 
 Waking? Working? Sleeping?
 
@@ -39,7 +37,6 @@ One possibility is that this person gets up each morning, works on the blockchai
 However, a better explanation — as many readers have pointed out — may be that this person gets off of work at 6:00 PM, sits down to work on Ethereum around 7:00 PM local time, and then goes to bed around 1:00 or 2:00 AM. This would put them somewhere near the west coast of the United States or Canada.
 
 ![](/blog/medium-posts/img/005-A-Clue-About-the-DAO-Attackers-Location-005.png)
-undefined
 
 Of course, as with all things crypto, to know for sure is impossible. Is the information I’ve provided important or even pertinent? I don’t know. At least it’s something. I’d love to hear what you think. More information and the lists of transactions are here: [http://daodeepdive.com/data/hack\_data](http://daodeepdive.com/data/hack_data).
 

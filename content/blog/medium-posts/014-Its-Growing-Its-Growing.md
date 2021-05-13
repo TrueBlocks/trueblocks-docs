@@ -5,7 +5,6 @@ date: '2017-06-27T12:17:14.740Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/its-growing-it-s-growing-568cd06beb81
 ---
 
 I spend much of my free time on the [Ethereum Stack Exchange](https://ethereum.stackexchange.com/) answering questions about Solidity and asking questions about the Ethereum data, so I’m well aware which questions are most frequently asked.
@@ -18,9 +17,9 @@ But this post is not about syncing — it’s about what’s been happening 
 
 #### What Happens When the Masses Adopt?
 
-As many of my readers will know, there has been a huge increase in interest in the Ethereum blockchain over the last few months. We were curious what effect this attention has had on the size of the database (and therefore on the time to sync).The data we present below is based on the QuickBlocks database, which is different than the actual Ethereum data, but is representative of it.
+As many of my readers will know, there has been a huge increase in interest in the Ethereum blockchain over the last few months. We were curious what effect this attention has had on the size of the database (and therefore on the time to sync).The data we present below is based on the TrueBlocks database, which is different than the actual Ethereum data, but is representative of it.
 
-QuickBlocks ensures speed of access to its data through various techniques, one of which is how we store the data on disc. At the time of this article, there were 3,800,000 blocks on the current chain. QuickBlocks stores 1,000 blocks per file in each of 3,800 files, providing a compromise between speed of access and size on disc. We take advantage of this 1,000 block per file data to present the following chart.
+TrueBlocks ensures speed of access to its data through various techniques, one of which is how we store the data on disc. At the time of this article, there were 3,800,000 blocks on the current chain. TrueBlocks stores 1,000 blocks per file in each of 3,800 files, providing a compromise between speed of access and size on disc. We take advantage of this 1,000 block per file data to present the following chart.
 
 ![](/blog/medium-posts/img/014-Its-Growing-Its-Growing-001.png)
 
@@ -49,7 +48,6 @@ Another easy to obtain measure for the increased usage of the system is to count
 As one can see, recently the chain has experienced a sharp decrease in the number of empty blocks. This, we think, is indicative of the increased load on the system. On average, over the entire history of the chain, nearly 35% of all blocks contained no transactions. This number has recently dropped to near 10% of blocks.
 
 ![](/blog/medium-posts/img/014-Its-Growing-Its-Growing-003.png)
-undefined
 
 #### Conclusion
 
@@ -59,10 +57,10 @@ One of the charts I would to see is the rate of creation of new smart contracts.
 
 I fear that this second method of smart contract creation will ultimately turn out to be a serious problem in the future. The large scale creation of single-use or low-use smart contracts is like pollution. It simply cannot be the case that a growing number of smart contracts can increasingly be automatically creating an growing number of child smart contracts without a very bad outcome.
 
-With QuickBlocks we are attempting to build a system that allows us to see these overall trends. We need to know what’s happening on the entire system, and we need to pay attention to it because only by watching and studying what’s going on will we be able to anticipate future behavior of the system.
+With TrueBlocks we are attempting to build a system that allows us to see these overall trends. We need to know what’s happening on the entire system, and we need to pay attention to it because only by watching and studying what’s going on will we be able to anticipate future behavior of the system.
 
 I think we all better start paying more attention. And some of us should stop polluting the blockchain with poor decisions.
 
-I’d love to hear your thoughts. Please make a comment below. If you enjoy my musings, support my work by sending ether to our tip jar at 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+I’d love to hear your thoughts. Please make a comment below. If you enjoy my musings, support my work by sending ether to our tip jar at 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

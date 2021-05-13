@@ -5,13 +5,11 @@ date: '2018-05-07T19:21:58.751Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/mantras-for-decentralized-open-data-d02a93a58461
 ---
 
 I had a wonderful experience at [EdCon in Toronto](https://edcon.io/) this week. Mostly because of all the great new people I met and the many people I reacquainted myself with. The Ethereum community is freakin’ cool.
 
 ![](/blog/medium-posts/img/025-Mantras-for-Decentralized-Open-Data-001.jpg)
-undefined
 
 Here’s an example. In between speakers, the person sitting in front of me stood up, turned around, looked down at his seat and, using his pointing finger, counted the number of seats between him and the left isle. He then counted the number of seats between himself and the right isle. Finding that the right-most path was shorter, he existed the auditorium in that direction. He didn’t care which way he went — he cared only about being efficient.
 
@@ -46,7 +44,6 @@ These are my thoughts in no particular order, nor are they very well thought out
 #### Screech….
 
 ![](/blog/medium-posts/img/025-Mantras-for-Decentralized-Open-Data-002.jpg)
-undefined
 
 I suffer from triskaidekaphobia, not because I believe that 19 minus 6 is bad in itself, but because I believe in **quantum physics**. You can’t convince me that an irrational fear of the number following 12 is nonsense. You may be able to prove to me within any given epsilon that a fear of 10 plus 3 is silly, but the net benefit I get from engaging with 15 minus 2 is strictly less than any epsilon you may provide. So I choose to avoid it. We are all different.
 
@@ -56,6 +53,6 @@ Exit, stage left.
 
 #### Support My Work
 
-I’m interested in your thoughts. Please clap for us and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+I’m interested in your thoughts. Please clap for us and post your comments below. Consider supporting our work. Send us a small (or large) contribution to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

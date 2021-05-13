@@ -5,7 +5,6 @@ date: '2017-10-01T17:29:45.828Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/short-thoughts-on-difficulty-calc-8326143c92e8
 ---
 
 I found this text in [EIP 2](https://github.com/ethereum/EIPs/blob/c83a4aa8585d568d13e36e471e2f6b445896e6d6/EIPS/eip-2.md) of the Ethereum github repo. It’s from the justification section of the EIP. It explains some of the choices in the difficulty calculation code found here:

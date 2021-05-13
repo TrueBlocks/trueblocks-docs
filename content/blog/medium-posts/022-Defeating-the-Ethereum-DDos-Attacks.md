@@ -5,19 +5,17 @@ date: '2018-02-12T21:21:42.135Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/defeating-the-ethereum-ddos-attacks-d3d773a9a063
 ---
 
-I spend a lot of time looking at historical Ethereum transactional data. I do this by scanning the chain using [QuickBlocks](http://quickblocks.io).
+I spend a lot of time looking at historical Ethereum transactional data. I do this by scanning the chain using [TrueBlocks](http://trueblocks.io).
 
 ![](/blog/medium-posts/img/022-Defeating-the-Ethereum-DDos-Attacks-001.png)
-undefined
 
 If you’ve ever done this, you will be familiar with a certain set of transactions that take a very long time to process. These transactions happened between blocks 2,286,910 and 2,717,576. They are a pain in my a$$. [See here](https://ethereum.stackexchange.com/questions/9883/why-is-my-node-synchronization-stuck-extremely-slow-at-block-2-306-843/10453).
 
 In a surprisingly effective attack, some evil genius took advantage of an underpriced opcode to create millions of _dead_ Ethereum accounts. This had the effect of significantly bloating the state database, but more importantly for our purposes it created tons of transaction traces.
 
-Until recently, if we were scanning the Ethereum database (especially if we were scanning this section and looking at traces — which QuickBlocks does all the time), we had to wait many hours (perhaps even days) while Parity delivered the traces. We could have cached these traces, but our goal has always been to create a minimal impact on the target machine (this helps us stay decentralized), and we never write data without thinking about it careful. With the solution we present below, we can now effectively choose whether to scan, skip or cache these transactions. This post discusses how we did that and how we now routinely scan very quickly through this difficult portion of the data.
+Until recently, if we were scanning the Ethereum database (especially if we were scanning this section and looking at traces — which TrueBlocks does all the time), we had to wait many hours (perhaps even days) while Parity delivered the traces. We could have cached these traces, but our goal has always been to create a minimal impact on the target machine (this helps us stay decentralized), and we never write data without thinking about it careful. With the solution we present below, we can now effectively choose whether to scan, skip or cache these transactions. This post discusses how we did that and how we now routinely scan very quickly through this difficult portion of the data.
 
 #### Short History
 
@@ -27,7 +25,7 @@ The attacker created millions of useless accounts across thousands of transactio
 
 #### Let’s Go To The Data
 
-As I said, these troublesome transactions are especially annoying if you want to view the traces (which QuickBlocks does all the time). We struggled with this problem long enough. We needed a solution.
+As I said, these troublesome transactions are especially annoying if you want to view the traces (which TrueBlocks does all the time). We struggled with this problem long enough. We needed a solution.
 
 The first thing we did was to gather some data. We scanned the first 3,500,000 transactions. At each block, we looked at every transaction and counted the number of traces generated during that transaction. (This took a very long time).
 
@@ -112,12 +110,12 @@ const uint32\_t nSweepers = sizeof(sweepers) / sizeof(Address);
 
 #### What We’re Working On
 
-QuickBlocks is a software package that allows us to deliver much faster and more usable Ethereum blockchain data to our users. While this same task _can_ be accomplished by using (admittedly useful) 3rd party websites such as Etherscan, we are a fully-programmable and fully-decentralized solution. This means we’re writing software that runs on your machine.
+TrueBlocks is a software package that allows us to deliver much faster and more usable Ethereum blockchain data to our users. While this same task _can_ be accomplished by using (admittedly useful) 3rd party websites such as Etherscan, we are a fully-programmable and fully-decentralized solution. This means we’re writing software that runs on your machine.
 
-Running an Ethereum node is difficult enough. For this reason, we need to be certain that QuickBlocks imposes a minimal burden on the machine. A naive implementation would index the data and save a duplicate copy of the blockchain chain into a local database. QuickBlocks doesn’t do this. Instead, we accomplish speedy data (tens of times faster than querying the local node, hundreds of times faster than querying a remote node such as Infura, and nearly as fast as a 3rd party website API such as Etherscan) but do this by placing less than 3GB of additional data on the hard drive. We’re making progress every day and hope to start pushing out product soon.
+Running an Ethereum node is difficult enough. For this reason, we need to be certain that TrueBlocks imposes a minimal burden on the machine. A naive implementation would index the data and save a duplicate copy of the blockchain chain into a local database. TrueBlocks doesn’t do this. Instead, we accomplish speedy data (tens of times faster than querying the local node, hundreds of times faster than querying a remote node such as Infura, and nearly as fast as a 3rd party website API such as Etherscan) but do this by placing less than 3GB of additional data on the hard drive. We’re making progress every day and hope to start pushing out product soon.
 
 #### Support Our Work
 
-We’re interested in your thoughts. Please clap for us and post your comments below. Please consider supporting our work by sending a small tip to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+We’re interested in your thoughts. Please clap for us and post your comments below. Please consider supporting our work by sending a small tip to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

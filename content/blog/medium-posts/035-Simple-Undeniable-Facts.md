@@ -5,7 +5,6 @@ date: '2020-01-10T04:23:30.173Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/simple-undeniable-facts-2e74f0e71bd5
 ---
 
 One of the reasons I fell in love with blockchain tech way back in 2013 was because I felt that for the first time in history, engineers had created a system that could produced undeniable data. Undeniable access — yes, but more importantly, undeniably high-quality data. That was a paradigm shift.
@@ -15,7 +14,6 @@ While, technically, the data on a blockchain may be untrue, what is mathematical
 Bitcoin (and other blockchains) produces the best data the world has ever seen, and I think that this near-perfect data can usher in a better world. At least, that’s what I used to think…
 
 ![](/blog/medium-posts/img/035-Simple-Undeniable-Facts-001.jpg)
-undefined
 
 In this post, I will present a list of what I hope are obviously factually true statements. I want to explain a looming danger I see coming down the pike. To me, this looming danger looks a lot like an out-of-control, 18-wheeled tractor-trailer coming right for us.
 
@@ -127,4 +125,4 @@ We intend to write further about how TrueBlocks accomplishes the creation of the
 
 We’re please to announce we now have a GitCoin grant page here: [https://gitcoin.co/grants/184/trueblocks](https://gitcoin.co/grants/184/trueblocks). Donate today, during the CLR matching period, and we will get the added benefit of a larger matching grant. Even small amounts have a big impact.
 
-If you’d rather not expose yourself and you’d still like to donate in support of our work, send ETH to 0xB97073B754660BB356DfE12f78aE366D77DBc80f. Thanks for reading.
+If you’d rather not expose yourself and you’d still like to donate in support of our work, send ETH to 0xf503017d7baf7fbc0fff7492b751025c6a78179b. Thanks for reading.

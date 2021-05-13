@@ -5,8 +5,6 @@ date: '2016-08-25T01:49:11.876Z'
 draft: false
 categories: []
 keywords: []
-slug: >-
-  /@tjayrush/a-too-often-neglected-aspect-of-smart-contract-security-audibility-2dc78593120d
 ---
 
 ![](/blog/medium-posts/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-001.png)
@@ -52,7 +50,6 @@ This is one type of ‘auditing error’ or ‘logging error’ that I’ve iden
 As I mentioned above, for each function invocation, a transaction is laid down on the blockchain even in the case of an error. These ‘in error’ transactions are identified with a flag called ‘isError.’ An example of providing too much information in a function would be something like this:
 
 ![](/blog/medium-posts/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-003.png)
-undefined
 
 I think, in this case, the contract’s author is over-reporting. No new information is given by the two log entries reporting the failure. The transaction carries with it the _to_ and the _amount_ already, and the absence of the _logPaidOut_ message and the _isError_ flag indicates a failure. There’s a balance to be won in reporting for auditing purposes. Try not to pollute the audit trail by providing redundant information. You’ll just have to sift through it later.
 
@@ -69,7 +66,6 @@ Not providing enough information is not as bad as not providing any information 
 The worst type of auditing error is providing incorrect information. One possible example appears in a familiar contract that many of you may have already interacted with: The DAO post-fork withdraw contract. Here’s code from that contract:
 
 ![](/blog/medium-posts/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-004.png)
-undefined
 
 When I first looked at this, I was convinced this was an example of reporting incorrect log information, but I have been since corrected by Mr. Nick Johnson (see his comment below). I initially thought that if the _transferFrom_ call succeeded on the DAO but the _msg.sender.send_ failed an event would have been written during the _transferFrom_ call to the DAO’s log. Obviously, this would have been bad since the ether was not actually sent.
 

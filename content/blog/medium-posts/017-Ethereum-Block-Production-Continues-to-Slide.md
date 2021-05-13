@@ -5,7 +5,6 @@ date: '2017-09-09T18:46:20.487Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/ethereum-block-production-continues-to-slide-1b74a2123e3f
 ---
 
 Two weeks ago, we wrote [this Medium post](https://medium.com/@tjayrush/is-the-ice-age-effecting-block-production-4c943c835975) in which we describe the slowdown in per-week block production due to the Ice Age or Ethereum Difficulty Bomb. We thought it would be interesting to continue to watch the process as it unfolds. We wondered “Is the difficulty bomb having its desired effect”?
@@ -29,11 +28,10 @@ The inverse of the lowering of the number of blocks produced per period is the t
 #### Does “Less Blocks” Mean “Less Transactions”?
 
 ![](/blog/medium-posts/img/017-Ethereum-Block-Production-Continues-to-Slide-004.png)
-undefined
 
 Given tweets such as the one to the left and [this one](https://twitter.com/VitalikButerin/status/898726451637215232), which seem to contradict the idea that there are less blocks being produced, we wondered if “increasing transactions” and “less blocks” could both be true at the same time. If the number of transactions is increasing, and the number of blocks is decreasing, then the number transactions per block must be skyrocketing. We should be able to see this effect.
 
-In the following analysis we used QuickBlocks (running against a local node which was running on a **_laptop_** — QuickBlocks is fully decentralized, remember) to accumulate the number of externally-initiated transactions for each week between August 1, 2015 until Sept. 8, 2017. We wanted to see if a lessening of the number of blocks had any discernible effect on the number of transactions processed.
+In the following analysis we used TrueBlocks (running against a local node which was running on a **_laptop_** — TrueBlocks is fully decentralized, remember) to accumulate the number of externally-initiated transactions for each week between August 1, 2015 until Sept. 8, 2017. We wanted to see if a lessening of the number of blocks had any discernible effect on the number of transactions processed.
 
 Our hypothesis, before we completed the analysis, was that the number of transactions was increasing but maybe not as quickly as it would be without the difficulty bomb. We felt this might be true for two reasons: (1) the amount of interest in the Ethereum blockchain is exploding, and (2) there was probably capacity in the system.
 
@@ -67,12 +65,12 @@ Another pressure imposed on the miners, of course, is to accept the “forced up
 
 To what extent does the increasing number of transactions (and therefore the increasing transaction fees) offset the lost block rewards? On top of that, is the price of gas increasing or lessening, and what effect does that have on the situation? Furthermore, if the price of ether in US dollars is rising (as it has over the last few weeks), does that ameliorate the effect of the difficulty bomb?
 
-Even worse — can anyone ever possibly enumerate and untangle all the intertwined effects of these things influencing each other and how can QuickBlocks help?
+Even worse — can anyone ever possibly enumerate and untangle all the intertwined effects of these things influencing each other and how can TrueBlocks help?
 
-The data supporting this post was generated with QuickBlocks. Visit our [GitHub repo](https://github.com/Great-Hill-Corporation/quickBlocks/tree/master/src/other/articles).
+The data supporting this post was generated with TrueBlocks. Visit our [GitHub repo](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/other/articles).
 
-We’re interested in your thoughts. Please clap for us and then post your comments below. If you enjoy our work, please consider supporting us by sending a tip to 0xB97073B754660BB356DfE12f78aE366D77DBc80f.
+We’re interested in your thoughts. Please clap for us and then post your comments below. If you enjoy our work, please consider supporting us by sending a tip to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 
-Join our slack at [http://quickblocks.slack.com.](http://quickblocks.slack.com.) There’s not a lot of people there yet, but hopefully there will be soon.
+Join [dicord channel](https://discord.gg/RAz6DJ6xkf) There’s not a lot of people there yet, but hopefully there will be soon.
 
-**Thomas Jay Rush** owns the software company QuickBlocks whose primary project is also called QuickBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://www.quickblocks.io).
+**Thomas Jay Rush** owns the software company TrueBlocks whose primary project is also called TrueBlocks, a collection of software libraries and applications enabling real-time, per-block smart contract monitoring and analytics to the Ethereum blockchain. Contact him through [the website](http://trueblocks.io).

@@ -5,7 +5,6 @@ date: '2016-05-23T01:35:43.090Z'
 draft: false
 categories: []
 keywords: []
-slug: /@tjayrush/what-the-f-is-a-finney-8e727f29e77f
 ---
 
 When I was nine, my Dad took me to a Phillies baseball game for my birthday. I don’t remember the game, but I do remember that he yelled at me for not being careful with my money.
@@ -49,7 +48,6 @@ A _szabo_ is a trillion times larger than a wei, or about a million bushels of w
 Averaging these numbers (in other words, half your sandwiches are wheat and the other half are white), a szabo would yield about 61,000,000 loaves of bread. At twenty-two slices per loaf and two slices of bread per sandwich, it would cost only ten _szabo_s to make a peanut butter and jelly sandwich for every person living on the earth today (~five billion).
 
 ![](/blog/medium-posts/img/003-What-the-F-is-a-Finney-004.png)
-undefined
 
 A _finney_ is a thousand times larger than a szabo and a thousand times smaller than an ether. Or about one hundred and thirty four peanut butter and jelly sandwiches for every person on earth.
 
@@ -58,7 +56,6 @@ If wei was a grain of wheat, then an _ether_ would be 134,200 peanut butter and 
 Or, to put it one final way, if wei was a grain of wheat, an ether would be a single peanut butter and jelly sandwich the size of a kitchen for every person on earth.
 
 ![](/blog/medium-posts/img/003-What-the-F-is-a-Finney-005.png)
-undefined
 
 #### But Where Did the Name Finney Come From?
 
