@@ -32,7 +32,7 @@ You may also query to see if an address is a smart contract as well as retrieve 
 ### usage
 
 `Usage:`    chifra state [-p|-c|-n|-v|-h] &lt;address&gt; [address...] [block...]  
-`Purpose:`  Retrieve the balance of one or more address at the given block(s).
+`Purpose:`  Retrieve account balance(s) for one or more addresses at given block(s).
 
 `Where:`  
 
@@ -70,7 +70,7 @@ You may optionally specify one or more blocks at which to report. If no block is
 ### usage
 
 `Usage:`    chifra tokens [-p|-b|-n|-v|-h] &lt;address&gt; &lt;address&gt; [address...] [block...]  
-`Purpose:`  Retrieve token balances for one or more address at given block(s).
+`Purpose:`  Retrieve token balance(s) for one or more addresses at given block(s).
 
 `Where:`  
 

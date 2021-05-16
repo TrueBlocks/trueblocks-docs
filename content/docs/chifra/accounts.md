@@ -60,7 +60,7 @@ By default, the results of the extraction are delivered to your console, however
 ### usage
 
 `Usage:`    chifra export [-p|-r|-l|-t|-C|-O|-a|-i|-R|-y|-U|-c|-e|-v|-h] &lt;address&gt; [address...] [topics] [fourbytes]  
-`Purpose:`  Export full detail of transactions for one or more Ethereum addresses.
+`Purpose:`  Export full detail of transactions for one or more addresses.
 
 `Where:`  
 
@@ -136,7 +136,7 @@ You may use the TrueBlocks explorer to manage (add, edit, delete) address-name a
 ### usage
 
 `Usage:`    chifra names [-e|-m|-l|-c|-p|-n|-a|-s|-g|-v|-h] &lt;term&gt; [term...]  
-`Purpose:`  Query addresses and/or names of well known accounts.
+`Purpose:`  Query addresses or names of well known accounts.
 
 `Where:`  
 

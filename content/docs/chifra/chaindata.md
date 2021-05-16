@@ -30,7 +30,7 @@ Another useful feature of `chifra blocks` is the ability to extract address appe
 ### usage
 
 `Usage:`    chifra blocks [-e|-U|-t|-a|-u|-n|-c|-o|-v|-h] &lt;block&gt; [block...]  
-`Purpose:`  Returns block(s) from local cache or directly from a running node.
+`Purpose:`  Retrieve one or more blocks from the chain or local cache.
 
 `Where:`  
 
@@ -67,7 +67,7 @@ The `--trace` option attachs an array transaction traces to the output (if the n
 ### usage
 
 `Usage:`    chifra transactions [-a|-t|-u|-o|-v|-h] &lt;tx_id&gt; [tx_id...]  
-`Purpose:`  Retrieves one or more transactions from the cache or the node.
+`Purpose:`  Retrieve one or more transactions from the chain or local cache.
 
 `Where:`  
 
@@ -101,7 +101,7 @@ Generally speaking, this tool is less useful than others as you may report the s
 ### usage
 
 `Usage:`    chifra receipts [-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
-`Purpose:`  Retrieve a transaction's receipt from the cache or the node.
+`Purpose:`  Retrieve receipts for the given transaction(s).
 
 `Where:`  
 
@@ -130,7 +130,7 @@ The `--articulate` option fetches the ABI from each encountered smart contract t
 ### usage
 
 `Usage:`    chifra logs [-t|-s|-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
-`Purpose:`  Retrieve a transaction's logs from the cache or the node.
+`Purpose:`  Retrieve logs for the given transaction(s).
 
 `Where:`  
 
@@ -165,7 +165,7 @@ The `--filter` option calls your node's `trace_filter` routine (if available) us
 ### usage
 
 `Usage:`    chifra traces [-a|-f|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]  
-`Purpose:`  Retrieve a transaction's traces from the cache or the node.
+`Purpose:`  Retrieve traces for the given transaction(s).
 
 `Where:`  
 
@@ -202,7 +202,7 @@ The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`
 ### usage
 
 `Usage:`    chifra when [-l|-t|-s|-v|-h] &lt; block | date &gt; [ block... | date... ]  
-`Purpose:`  Finds block based on date, blockNum, timestamp, or 'special'.
+`Purpose:`  Find block(s) based on date, blockNum, timestamp, or 'special'.
 
 `Where:`  
 

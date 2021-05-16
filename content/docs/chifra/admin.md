@@ -30,7 +30,7 @@ TrueBlocks maintains caches for the index of address appearances, named addresse
 ### usage
 
 `Usage:`    chifra status [-d|-t|-v|-h] &lt;mode&gt; [mode...]  
-`Purpose:`  Report on status of one or more TrueBlocks caches.
+`Purpose:`  Report on the status of the TrueBlocks system.
 
 `Where:`  
 
@@ -84,7 +84,7 @@ The scraper can scrape either the index only, previously created monitors only, 
 ### usage
 
 `Usage:`    chifra scrape [-t|-n|-p|-s|-i|-R|-v|-h] mode  
-`Purpose:`  Decentralized blockchain scraper and block cache.
+`Purpose:`  Scan the chain and update the TrueBlocks index of appearances.
 
 `Where:`  
 
@@ -151,7 +151,7 @@ This tool is not yet ready for production use. Please return to this page later.
 ### usage
 
 `Usage:`    chifra pins [-c|-i|-f|-s|-v|-h]  
-`Purpose:`  Report on and manage the remotely pinned appearance index and associated bloom filters.
+`Purpose:`  Manage pinned index of appearances and associated bloom filters.
 
 `Where:`  
 
