@@ -7,11 +7,13 @@ lastmod: 2020-10-06T08:48:57+00:00
 draft: false
 images: []
 menu:
+{{A VARIABLE CAUSING FAILURE}}
   docs:
     parent: "prologue"
 weight: 0100
 toc: true
 ---
+
 
 1. The Ethereum node is broken. It is broken because it does not have an index of addresses. This makes it impossible to get the transactional history of an address directly from the node.
 
