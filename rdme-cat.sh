@@ -158,7 +158,7 @@ _EOF_
 echo "Building other page..."
 curl -s $INTROS/other.md >> $OTHER && \
 curl -s $READMES/tools/getQuotes/README.md >> $OTHER && \
-curl -s $READMES/tools/explore.md >> $OTHER && \
+curl -s $READMES/apps/fireStorm/README.md >> $OTHER && \
 curl -s $READMES/tools/ethslurp/README.md >> $OTHER
 
 echo "Pages built. To see what's changed, run  git diff content/docs/chifra"
