@@ -13,6 +13,7 @@ weight: 0100
 toc: true
 ---
 
+
 1. The Ethereum node is broken. It is broken because it does not have an index of addresses. This makes it impossible to get the transactional history of an address directly from the node.
 
 2. Indexes and content-addressable data stores such as IPFS do not play well together. This leads to directly to centralized (and old-fashioned) Web 2.0 data access through blockchain explorers which have already become the only way most users can get transactional histories of their own accounts. That's not decentralized.
