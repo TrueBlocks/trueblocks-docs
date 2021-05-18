@@ -12,7 +12,7 @@ weight: 0400
 toc: true
 ---
 
-We assume that you've already completed the [Installation](/docs/prologue/installing/) task. Please do so now before proceeding.
+This article assumes that you've already [Installed TrueBlocks core](/docs/prologue/installing/). If you haven't, please do so before proceeding.
 
 ## Introduction
 
@@ -24,13 +24,16 @@ In this article, we explain how you can get a copy of the TrueBlock index of app
 
 If you have access to an Ethereum tracing node such as TurboGeth, you can build the TrueBlocks index yourself. For information on that, please see our [Blog](/docs/blog/).
 
-For this page, we will take advantage of the fact that TrueBlocks, LLC (the company) produces the index and publishes it to IPFS. We do this for our own reasons -- our software doesn't work without it. We purposefully publish the index data to IPFS so that once our users have it, we can not take it back. This makes it impossible for us to hold our users hostage.
+For this page, we take advantage of the fact that TrueBlocks, LLC (the company) produces the index and publishes it to IPFS. We do this for our own reasons─our software doesn't work without it.
+We purposefully publish the index data to IPFS so that once our users have it, we can not take it back. This makes it impossible for us to hold our users hostage.
 
-Each time we publish an index chunk (and it's associated bloom filter) to IPFS, we add a record to a *manifest*. The manifest lists all of the index chunks and bloom filters.
+Each time we publish an index chunk (and its associated bloom filter) to IPFS, we add a record to a *manifest*. The manifest lists all of the index chunks and bloom filters.
 
-For the same reason as above (so we can't take it back), we publish the manifest to IPFS. This gives us an IPFS hash to the manifest which gives us a list of all the IPFS hashes of the entire address index. In other words, we've published immutable, irrevocable access to the entire index for anyone who has the hash of the manifest to use -- not only now but into the far foggy future. The manifest will be there forever. It's immutable data and it's permissionlessly, globally available.
+So we can't take it back, we publish the manifest to IPFS. This IPFS hash to the manifest gives us a list of all the IPFS hashes of the entire address index.
+In other words, we've published immutable, irrevocable access to the entire index for anyone who has the hash of the manifest to use─not only now but into the far foggy future.
+The manifest will be there forever. It's immutable data and it's permissionlessly, globally available.
 
-We go one step further -- we publish the hash of the manifest to a smart contract called [The Unchained Index](http://unchainedindex.io).
+We go one step further─we publish the hash of the manifest to a smart contract called [The Unchained Index](http://unchainedindex.io).
 
 ## Getting the Latest Manifest
 
@@ -74,7 +77,7 @@ Where:
   -g  (--tags)          export the list of tags and subtags only
 ```
 
-You can type `chifra names` to see all the addresses we've accumulated over the years. (Yes -- we can use ENS to enhance this search and we plan to in the near future.)
+You can type `chifra names` to see all the addresses we've accumulated over the years. (Yes─we can use ENS to enhance this search and we plan to in the near future.)
 
 Type
 
@@ -94,7 +97,7 @@ Copy and paste this response. We will need it. The next thing we need is the ABI
 chifra abis 0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd
 ```
 
-This will return the full ABI of the Unchained Index smart contract. You should be able to see a function called `manifestHash` with a four-byte signature of `0x337f3f32`.
+This returns the full ABI of the Unchained Index smart contract. You should be able to see a function called `manifestHash` with a four-byte signature of `0x337f3f32`.
 
 Now we're going to do something fun. Type this
 
@@ -127,6 +130,6 @@ curl -s "http://gateway.ipfs.io/ipfs/QmSJeyXsvNpyXprdfwL5JyiS39VLU7m1kQNun4uM5XQ
 
 ## Getting all the Blooms
 
-Additionally, we publish the IPFS hash of a manifest file -- which details all the hashes of all the chunks of the index along with all the bloom filters -- to a smart contract we call the *Unchained Index*.
+Additionally, we publish the IPFS hash of a manifest file to smart contract we call the *Unchained Index.* The mainfest file details all the hashes of all the chunks of the index along with all the bloom filters.
 
 [ UNDER CONSTRUCTION -- PLEASE RETURN LATER ]
