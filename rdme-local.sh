@@ -28,7 +28,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 10
+weight: 1100
 toc: true
 ---
 _EOF_
@@ -59,7 +59,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 20
+weight: 1200
 toc: true
 ---
 _EOF_
@@ -91,7 +91,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 30
+weight: 1300
 toc: true
 ---
 _EOF_
@@ -119,7 +119,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 40
+weight: 1400
 toc: true
 ---
 _EOF_
@@ -150,7 +150,7 @@ images: []
 menu: 
   docs:
     parent: "chifra"
-weight: 50
+weight: 1500
 toc: true
 ---
 _EOF_

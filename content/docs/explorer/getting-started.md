@@ -16,3 +16,5 @@ menu:
 weight: 2100
 toc: true
 ---
+
+<img src="../imgs/getting-started.png" width="800px" />

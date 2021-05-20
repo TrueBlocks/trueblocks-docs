@@ -10,3 +10,5 @@ menu:
 weight: 2500
 images: []
 ---
+
+<img src="../imgs/the-index.png" width="800px" />

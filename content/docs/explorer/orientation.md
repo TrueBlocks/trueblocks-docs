@@ -10,3 +10,5 @@ menu:
 weight: 2200
 images: []
 ---
+
+<img src="../imgs/orientation.png" width="800px" />

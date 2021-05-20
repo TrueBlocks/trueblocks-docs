@@ -16,9 +16,10 @@ menu:
 weight: 1200
 toc: true
 ---
-## intro
-
-The commands in this group of tools focus on extracting raw blockchain data directly from the node. You may extract block data, transactional data, receipts, logs, and traces. Each tool has it own set of options, making getting exactly the data you want easy.
+The chaindata tools extract raw blockchain data directly from the node.
+You may extract block data, transactional data, receipts, logs, and traces.
+Each tool has it own set of options, allowing you to get exactly the data that
+you want.
 ## chifra blocks
 
 The `chifra blocks` tool retrieves block data from your Ethereum node or, if previously cached, from the TrueBlocks cache. You may specify multiple blocks per invocation.

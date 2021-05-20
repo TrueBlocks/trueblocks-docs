@@ -16,11 +16,11 @@ menu:
 weight: 1400
 toc: true
 ---
-## intro
+With TrueBlocks' admin component, you can query the status of the system,
+and control the creation, sharing , and pinning of the TrueBlocks index of appearances.
 
-The Admin portion of TrueBlocks allows you to query the status of the system as well as control the creation of, sharing of, and pinning of the TrueBlocks index of appearances.
-
-It also provides a mechanism for serving the `chifra` subcommands as API endpoints through the `chifra serve` command. Each of these tools is described below.
+Through the `chifra serve` command, you can also serve `chifra` subcommands as API endpoints.
+You test this out from your `localhost` on our [API reference](https://www.tokenomics.io/api.html).
 ## chifra status
 
 The `chifra status` program allows you to manage the various TrueBlock caches. You may list all of the caches, some of the cache, or even individual caches either in terse or full detail. The cache of interest is specified with the `modes` option.

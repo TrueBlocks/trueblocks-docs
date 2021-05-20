@@ -10,3 +10,5 @@ menu:
 weight: 2400
 images: []
 ---
+
+<img src="../imgs/monitoring.png" width="800px" />

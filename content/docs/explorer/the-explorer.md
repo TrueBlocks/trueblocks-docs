@@ -10,3 +10,5 @@ menu:
 weight: 2600
 images: []
 ---
+
+<img src="../imgs/the-explorer.png" width="800px" />

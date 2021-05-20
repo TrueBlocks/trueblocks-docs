@@ -16,9 +16,15 @@ menu:
 weight: 1500
 toc: true
 ---
-## intro
+These commands call some useful miscellaneous tools:
+* `chifra quotes`, a rudimentary pricing tool,
+* `chifra explore` a quick way to open a blockchain explorer,
+* `ethslurp` an older tool that lets you call data from EtherScan. (This has issues of ceentralization and data quality, see explanation in its section).
 
-This section of commands documents useful tools such as a rudimentary pricing tool, a quick way to open a blockchain explorer, and an older tool called `ethslurp` which can help you compare our results (favorabily) with EtherScan's.
+{{< alert icon="👉" title="note about keys"
+text="Note: some of these tools, like `ethslurp`, require an EtherScan key." >}}
+[Follow these instructions to add a key to your config](docs/prologue/installing#3-update-the-configs-for-your-rpc-and-api-keys)
+
 ## chifra quotes
 
 The `chifra quotes` tool provides USD ($) price data to other tools and to the command line. Currently, `chifra quotes` retrieves its price data from the Poloniex API. In future versions, we will add other sources and provide a mechanism for fair averaging. Ultimately, as more of this type of price data becomes available on chain, we will use those source, but this is not yet implemented.
