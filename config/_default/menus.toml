@@ -33,15 +33,16 @@
 #  url = "/concepts/"
 #  weight = 15
 
-[[main]]
-  name = "API\u00A0Reference"
-  url = "https://www.tokenomics.io/api.html"
-  weight = 20
 
 [[main]]
   name = "Blog"
   url = "/blog/"
-  weight = 200
+  weight = 20
+
+[[main]]
+  name = "API\u00A0Reference"
+  url = "https://www.tokenomics.io/api.html"
+  weight = 999
 
 [[social]]
   name = "Twitter"
