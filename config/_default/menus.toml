@@ -11,10 +11,10 @@
   url = "/docs/chifra/"
 
 [[docs]]
-  name = "FAQ"
+  name = "Explorer"
   weight = 30
   identifier = "explorer"
-  url = "/docs/faq"
+  url = "/docs/explorer"
 
 #[[docs]]
 #  name = "Libraries"
