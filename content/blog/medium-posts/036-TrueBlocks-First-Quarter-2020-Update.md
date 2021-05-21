@@ -9,7 +9,7 @@ keywords: []
 
 This is short update on what we’ve been doing since receiving so many wonderful grants during the GitCoin CLR matching fandango. This money goes a long way. It allows one of us (Rush) to make a trip to EthDenver, where he will be judging some hacks. It has also paid for some much needed help developing the React frontend. If you donated (or even if you didn’t), and you’re in Denver this week, seek me out. I’ll be happy to share our latest work.
 
-We’ve accomplished three primary things so far this year: (1) nearly finished [trueblocks-core](http://github.com/Great-Hill-Corporation/trueblocks-core) (our backend), (2) made significant progress on the frontend ([trueblocks-docker](https://github.com/Great-Hill-Corporation/trueblocks-docker)), and (3) invented the idea of user-centered blockchain exploring.
+We’ve accomplished three primary things so far this year: (1) nearly finished [trueblocks-core](https://github.com/TrueBlocks/trueblocks-core) (our backend), (2) made significant progress on the frontend ([trueblocks-docker](https://github.com/TrueBlocks/trueblocks-docker)), and (3) invented the idea of user-centered blockchain exploring.
 
 #### Progress on the Backend
 

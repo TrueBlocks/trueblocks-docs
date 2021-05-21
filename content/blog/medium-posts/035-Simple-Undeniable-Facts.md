@@ -115,9 +115,9 @@ So off we go…
 8.  **Conclusion:** This naturally requires heavy users of the chain to download and pin much more data than regular users — this is a very desirable quality for a distributed system. It’s naturally fair.
 9.  Once one has the list of hashes, one has undeniable, fully-local, 100% private access to the bloom filters.
 10.  This gives one undeniable access to the minimal list of index chunks. This give undeniable and fully-local access to every transaction for an address.
-11.  The list of bloom filter hashes is [here](https://github.com/Great-Hill-Corporation/trueblocks-core/blob/master/src/other/install/ipfs-hashes/blooms.txt).
-12.  The list of IPFS hashes of the chunked appearance index is [here](https://github.com/Great-Hill-Corporation/trueblocks-core/blob/master/src/other/install/ipfs-hashes/finalized.txt).
-13.  **Conclusion:** The above two links and [the TrueBlocks software](http://github.com/Great-Hill-Corpration/trueblocks-core) gives everyone access to a full index of appearances of every addresses anywhere on the chain. This access comes _on your own local machine. From_ there, you can operate 100% privately and fully decentrally.
+11.  The list of bloom filter hashes is [here](https://github.com/TrueBlocks/trueblocks-core/blob/master/src/other/install/ipfs-hashes/blooms.txt).
+12.  The list of IPFS hashes of the chunked appearance index is [here](https://github.com/TrueBlocks/trueblocks-core/blob/master/src/other/install/ipfs-hashes/finalized.txt).
+13.  **Conclusion:** The above two links and [the TrueBlocks software](https://github.com/TrueBlocks/trueblocks-core) gives everyone access to a full index of appearances of every addresses anywhere on the chain. This access comes _on your own local machine. From_ there, you can operate 100% privately and fully decentrally.
 
 #### Conclusion
 

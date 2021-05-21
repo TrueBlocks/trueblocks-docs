@@ -63,7 +63,7 @@ I decided to document the fact that I knew this before anyone else. I did this i
 
 So what’s the big deal? Why does this prove anything? Click on the ‘Convert to Ascii’ button on that webpage. You will see the following message which I forever recorded on the blockchain:
 
-> On July 11, 2016 this contract (0xb656b2a9c3b2416437a811e07466ca712f5a5b5a) which is the DAO curator contract sent a transaction to the DarkDOA (0x304a554a310c7e546dfe434669c62820b7d83490) that added the DAO’s curator to the DarkDAO’s whitelist. Here’s the transaction ID: 0x9257c2e0a11de7b7427d4607f5908d6448278070bb73500139387930826fedc0. I am writing this to the blockchain before anything happens to demonstrate the power of [http://ethslurp.com](http://ethslurp.com) software by Great Hill.
+> On July 11, 2016 this contract (0xb656b2a9c3b2416437a811e07466ca712f5a5b5a) which is the DAO curator contract sent a transaction to the DarkDOA (0x304a554a310c7e546dfe434669c62820b7d83490) that added the DAO’s curator to the DarkDAO’s whitelist. Here’s the transaction ID: 0x9257c2e0a11de7b7427d4607f5908d6448278070bb73500139387930826fedc0. I am writing this to the blockchain before anything happens to demonstrate the power of [http://ethslurp.com](http://ethslurp.com) software by TrueBlocks, LLC.
 
 That was last night, July 11, 2016 at 8:58:05 PM UTC. This morning at 8:25 in the morning this tweet appeared from Stephen Taul: [https://twitter.com/stephantual/status/752886658211676160](https://twitter.com/stephantual/status/752886658211676160). I knew this 12 hours before it was announced.
 

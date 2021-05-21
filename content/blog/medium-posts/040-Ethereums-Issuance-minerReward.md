@@ -11,7 +11,7 @@ Recently, there was a dustup on Crypto Twitter (started [here](https://twitter.c
 
 News flash: Both of these claims are right.
 
-At one point, our project, TrueBlocks, was mentioned, so I thought I’d write an article (which has grown into [two articles](https://medium.com/@tjayrush/ethereums-issuance-unclereward-72de71b0f9f6) and [a code base](https://github.com/Great-Hill-Corporation/trueblocks-core/tree/develop/src/other/issuance)) exploring the issue.
+At one point, our project, TrueBlocks, was mentioned, so I thought I’d write an article (which has grown into [two articles](https://medium.com/@tjayrush/ethereums-issuance-unclereward-72de71b0f9f6) and [a code base](https://github.com/TrueBlocks/trueblocks-core/tree/develop/src/other/issuance)) exploring the issue.
 
 While the work we present here doesn’t necessarily make the numbers easier to get (fix the node!), the numbers are accurate to 18-decimal places and verified to the on-chain account balances at every block. We used TrueBlocks to do that.
 
@@ -19,7 +19,7 @@ While the work we present here doesn’t necessarily make the numbers easier to 
 
 To really dig in, we are going to go back to basics. In Ethereum, that means reading the Yellow Paper. We’ll look closely at Section 11.3, as that section describes the issuance of new ether, or as they call it, the Reward Application.
 
-I will present each sentence from Section 11.3 verbatim, and then show a copy of the equations associated with that sentence, then translate those equations into English. Finally we translate the equations into purposefully simplified `C++` code using **TrueBlocks**. **TrueBlocks** helps us extract and analyze the data as part of [the code base](https://github.com/Great-Hill-Corporation/trueblocks-core/tree/develop/src/other/issuance).
+I will present each sentence from Section 11.3 verbatim, and then show a copy of the equations associated with that sentence, then translate those equations into English. Finally we translate the equations into purposefully simplified `C++` code using **TrueBlocks**. **TrueBlocks** helps us extract and analyze the data as part of [the code base](https://github.com/TrueBlocks/trueblocks-core/tree/develop/src/other/issuance).
 
 #### Section 11.3
 

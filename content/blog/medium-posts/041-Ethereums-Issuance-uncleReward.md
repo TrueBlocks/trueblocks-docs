@@ -7,7 +7,7 @@ categories: []
 keywords: []
 ---
 
-This the second in a series of two articles detailing Ethereum’s **issuance**. Read the [first part](https://medium.com/@tjayrush/ethereums-issuance-minerreward-3cad5b9a72ff), which discusses the `blockReward` calculation. Also, see [the code base](https://github.com/Great-Hill-Corporation/trueblocks-core/tree/develop/src/other/issuance) for the actual code. This article discusses the `uncleReward`.
+This the second in a series of two articles detailing Ethereum’s **issuance**. Read the [first part](https://medium.com/@tjayrush/ethereums-issuance-minerreward-3cad5b9a72ff), which discusses the `blockReward` calculation. Also, see [the code base](https://github.com/TrueBlocks/trueblocks-core/tree/develop/src/other/issuance) for the actual code. This article discusses the `uncleReward`.
 
 #### Uncle Reward
 
@@ -85,9 +85,9 @@ We’ve shown that the `blockReward` and the `uncleReward` are not that complica
 
 Until now, we’ve shown this calculation for individual blocks. The only thing left to do is to roll through each block in the chain, accumulating the results for presentation.
 
-We use a `C++` accumulator class we call `CReconciliation`. The name implies an additional feature that we will discuss in the [README of the code base](https://github.com/Great-Hill-Corporation/trueblocks-core/tree/develop/src/other/issuance) where we ‘reconcile’ the expected or modeled values with actual account balances directly from the chain.
+We use a `C++` accumulator class we call `CReconciliation`. The name implies an additional feature that we will discuss in the [README of the code base](https://github.com/TrueBlocks/trueblocks-core/tree/develop/src/other/issuance) where we ‘reconcile’ the expected or modeled values with actual account balances directly from the chain.
 
-There have been other proposed scripts to the Crypto Twitter uproar. Those scripts only **_model_** the behavior of the chain. They do not validate or audit the behavior. We explain this auditing process in the [README](https://github.com/Great-Hill-Corporation/trueblocks-core/tree/develop/src/other/issuance).
+There have been other proposed scripts to the Crypto Twitter uproar. Those scripts only **_model_** the behavior of the chain. They do not validate or audit the behavior. We explain this auditing process in the [README](https://github.com/TrueBlocks/trueblocks-core/tree/develop/src/other/issuance).
 
 For now, we conclude this article with code that processes the rewards for each block.
 
