@@ -100,9 +100,9 @@ chifra export --logs --articulate --emitter --fmt csv 0x03fdcadc09559262f40f5ea6
 
 we now only see 3,317 events (again, at the time of this writing).
 
-## The Linux Philosophy
+## The unix philosophy
 
-Following the linux philosphy of stringing together a data pipeline...
+Following the unix philosphy of stringing together a data pipeline...
 
 First, let's look at the first line of the data in order to see the names of the data fields:
 
