@@ -1,3 +1,17 @@
+[[main]]
+  name = "Docs"
+  url = "/docs/prologue/introduction/"
+  weight = 10
+
+[[main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 20
+
+[[main]]
+  name = "API\u00A0Reference"
+  url = "https://www.tokenomics.io/api.html"
+  weight = 999
 [[docs]]
   name = "Prologue"
   weight = 10
@@ -16,33 +30,31 @@
   identifier = "explorer"
   url = "/docs/explorer"
 
-#[[docs]]
-#  name = "Libraries"
-#  weigh = 40
-#  identifier = "libraries"
-#  url = "/docs/libraries"
-
-[[main]]
-  name = "Docs"
-  url = "/docs/prologue/introduction/"
-  weight = 10
+[[blog]]
+  name = "Recipes"
+  weigh = 10
+  identifier = "recipes"
+  url = "/blog/recipes"
 
 
-#[[main]]
-#  name= "Concepts"
-#  url = "/concepts/"
-#  weight = 15
+[[blog]]
+  name = "Explainers"
+  weigh = 20
+  identifier = "explainers"
+  url = "/blog/explainers"
 
 
-[[main]]
-  name = "Blog"
-  url = "/blog/"
-  weight = 20
+[[blog]]
+  name = "Trueblocks Articles"
+  weigh = 20
+  identifier = "trueblocks"
+  url = "/blog/trueblocks"
 
-[[main]]
-  name = "API\u00A0Reference"
-  url = "https://www.tokenomics.io/api.html"
-  weight = 999
+[[blog]]
+  name = "Ethereum Articles"
+  weigh = 20
+  identifier = "ethereum"
+  url = "/blog/ethereum"
 
 [[social]]
   name = "Twitter"
