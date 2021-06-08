@@ -3,7 +3,11 @@ title: "Recipe: Getting Erc20 Transfer Events"
 description: "A method to extract ERC 20 Transfer events from a smart contract"
 lead: "How many Transfers?"
 date: 2021-04-13T08:00:02-04:00
-lastmod: 2021-04-13T08:00:02-04:00
+lastmod: .lastmod
+tags: ['recipes']
+menu: 
+  blog:
+    parent: "recipes"
 draft: false
 weight: 50
 images: []

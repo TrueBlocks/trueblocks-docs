@@ -74,7 +74,7 @@ You should get some data for block 3,500,000 (assuming your node is synced that 
 
 Open the file`./samples/count_shit/simple.cpp` with your editor. It will look something like this:
 
-![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-001.png)
+![](/blog/img/029-Counting-Shit-on-Ethereum-001.png)
 
 A few things to notice:
 
@@ -90,23 +90,23 @@ Now we want to write the code to count function signatures. With little fanfare,
 
 The first section includes the `etherlib.h` header file and defines a few types that we will use to store the function signatures and then sort and report on what we find. Put this at the top of your file.
 
-![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-002.png)
+![](/blog/img/029-Counting-Shit-on-Ethereum-002.png)
 
 The next section is the `main` routine. Put this at the very bottom of your file. We will be inserting two functions between the declarations at the top of the file and the main function. In this way, we won’t have to forward declare the functions we need.
 
-![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-003.png)
+![](/blog/img/029-Counting-Shit-on-Ethereum-003.png)
 
 The `main` function, at line 35, declares a signature map to store the signatures, and line 36 calls the function `forEveryBlock` with the function `visitBlock` and a pointer to that map. `forEveryBlock` visits every block and calls the passed-in function on each block between the first block with a transaction `(frstTransactionBlock)` and the last available block on the chain. (We’ll look at `visitBlock` in a second.) `visitBlock` does the counting. Starting at line 38, we simply sort the gathered counts and present the top twenty results.
 
 The remaining functions do the real work. The first, `visitBlock` gets called…
 
-![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-004.png)
+![](/blog/img/029-Counting-Shit-on-Ethereum-004.png)
 
 …simply passing on the data pointer to every transaction in the block.
 
 The final function, and the one that does all the work, is called `visitTransaction`.
 
-![](/blog/medium-posts/img/029-Counting-Shit-on-Ethereum-005.png)
+![](/blog/img/029-Counting-Shit-on-Ethereum-005.png)
 
 The first thing this function does is cast the data pointer back to a signature map. Some of the younger programmers who are reading this might look askance at this sort of type-safety violation, but at least one of our engineers (alright — it’s me) has been programming since 1981, so this is how we roll. It may be slightly unsafe, but it’s fast as shit.
 

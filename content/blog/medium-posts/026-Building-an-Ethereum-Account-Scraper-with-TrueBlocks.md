@@ -27,7 +27,7 @@ Here’s [instructions for installing and building TrueBlocks](https://github.co
 
 TrueBlocks is a C++ code library to make interacting with Ethereum easier. To get started, we need to write C++’s `main` function:
 
-![](/blog/medium-posts/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-001.png)
+![](/blog/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-001.png)
 
 There are a couple of things going on here. First, you must include TrueBlocks’ header file. We do this at `line 1`. Next, we forward declare a function that will be visited each time an address is encountered in a block. We make this forward declaration at `line 4`. The function must have that signature.
 
@@ -35,27 +35,27 @@ At `line 8`, we use the program’s first command line argument as the number of
 
 When the call to `getBlock` returns, `block` has been populated with the block data from the node. The next line, `line 11`, visits all parts of the block including each transaction, each receipt, each log, and each trace. As it visits the various parts of the block, it extracts each address it finds and calls the provided function. With each call it sends the following data:
 
-![](/blog/medium-posts/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-002.png)
+![](/blog/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-002.png)
 
 The first four data fields should are obvious. They represent where in the block the address was found. The fifth field, `reason`, details _exactly_ where the address was found. `Reason` will take on various values which are documented in the code.
 
 At `line 19`, we send the data to the screen which produces these results:
 
-![](/blog/medium-posts/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-003.png)
+![](/blog/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-003.png)
 
 This is a list of every address in the block, its transaction position, it trace position within the transaction (if applicable) and where the address was found. (There are 15 different places where an address might appear.)
 
 Next, we will make two changes to the code. First, we’re going to produce only a unique list of addresses (as opposed to every address encountered including dups as it currently does). Second, we will only print out addresses we’re interested in. We make the following changes to the code:
 
-![](/blog/medium-posts/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-004.png)
+![](/blog/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-004.png)
 
 We changed two things in the above code. First, we changed `line 11` to use the function `forEveryUniqueAddress` instead of `forEveryAddress`. This removes duplicates and reports only on the first appearance of an address within the block. The second change we made at `lines 20 and 21`. Here, we filter on particular addresses. This produces the following output.
 
-![](/blog/medium-posts/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-005.png)
+![](/blog/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-005.png)
 
 And now, I claim we’re done… but, let’s take it up a notch. Here’s the next version:
 
-![](/blog/medium-posts/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-006.png)
+![](/blog/img/026-Building-an-Ethereum-Account-Scraper-with-TrueBlocks-006.png)
 
 This takes two command line arguments: `startBlock` and `endBlock` and visits each block in the range and then visits each address in those blocks. And now, we think, you actually have a full-fledged _account scraper_. Go ahead and build you own _blockchain scraper_ if you want.
 

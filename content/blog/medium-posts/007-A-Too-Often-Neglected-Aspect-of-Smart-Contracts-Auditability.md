@@ -7,7 +7,7 @@ categories: []
 keywords: []
 ---
 
-![](/blog/medium-posts/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-001.png)
+![](/blog/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-001.png)
 
 In the wake of The Great DAO Debacle of 2016™, there have been many articles and blog posts concerning the need for the community to write more secure Solidity smart contracts.
 
@@ -37,7 +37,7 @@ During the execution of many of the transactions, events are also written to the
 
 Using a purposefully silly example, say you had a function that paid out ether to anyone who asked (obviously a ridiculous idea, intended only to entertain). A naive implementation might look something like this:
 
-![](/blog/medium-posts/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-002.png)
+![](/blog/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-002.png)
 
 In this case, a record of the transaction is laid on the blockchain as well as an event (or, as I think it would be better called, a log entry) would also be written with the same information.
 
@@ -49,7 +49,7 @@ This is one type of ‘auditing error’ or ‘logging error’ that I’ve iden
 
 As I mentioned above, for each function invocation, a transaction is laid down on the blockchain even in the case of an error. These ‘in error’ transactions are identified with a flag called ‘isError.’ An example of providing too much information in a function would be something like this:
 
-![](/blog/medium-posts/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-003.png)
+![](/blog/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-003.png)
 
 I think, in this case, the contract’s author is over-reporting. No new information is given by the two log entries reporting the failure. The transaction carries with it the _to_ and the _amount_ already, and the absence of the _logPaidOut_ message and the _isError_ flag indicates a failure. There’s a balance to be won in reporting for auditing purposes. Try not to pollute the audit trail by providing redundant information. You’ll just have to sift through it later.
 
@@ -65,7 +65,7 @@ Not providing enough information is not as bad as not providing any information 
 
 The worst type of auditing error is providing incorrect information. One possible example appears in a familiar contract that many of you may have already interacted with: The DAO post-fork withdraw contract. Here’s code from that contract:
 
-![](/blog/medium-posts/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-004.png)
+![](/blog/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-004.png)
 
 When I first looked at this, I was convinced this was an example of reporting incorrect log information, but I have been since corrected by Mr. Nick Johnson (see his comment below). I initially thought that if the _transferFrom_ call succeeded on the DAO but the _msg.sender.send_ failed an event would have been written during the _transferFrom_ call to the DAO’s log. Obviously, this would have been bad since the ether was not actually sent.
 

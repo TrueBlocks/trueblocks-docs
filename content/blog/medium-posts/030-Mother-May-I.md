@@ -15,18 +15,18 @@ In this article, we will play an imaginary game of Mother May I between a player
 
 One thing we think is clear: old-fashioned web 2.0 APIs such as Alethio and AmberData should not be the way we build out this new infrastructure. If we do, we will not end up with what we want. We will end up exactly where we already are: captured by huge, mega-data-gobbling, mega-corporations who watch everything we do and use that information to manipulate us.
 
-![](/blog/medium-posts/img/030-Mother-May-I-001.png)
+![](/blog/img/030-Mother-May-I-001.png)
 
 After this first interaction, the user does not have the actual data heshe wants, but heshe has the location of that data.
 
-![](/blog/medium-posts/img/030-Mother-May-I-002.png)
+![](/blog/img/030-Mother-May-I-002.png)
 
 The API does not deliver the actual data. The API delivers the location of the data on an immutable, content-addressable data store. The end user retrieves the data they want from that location thereby distributing it across the world. The user can respond to this in two ways:
 
-![](/blog/medium-posts/img/030-Mother-May-I-003.png)
+![](/blog/img/030-Mother-May-I-003.png)
 
 Even though we’ve educated the user that they should stop using data APIs arbitrarily since they will capture them, the user insists heshe wants to use one. Who are we to argue after that?
 
-![](/blog/medium-posts/img/030-Mother-May-I-004.png)
+![](/blog/img/030-Mother-May-I-004.png)
 
 Yes. We’re starting to think people have to be this radical when it comes to data APIs. The costs we pay are, we think, too high for the benefit. The last thing we want to do — now that we have a new paradigm brewing—is end up where we already are. Concern yourself with capturability, censorability, data validity, and availability.

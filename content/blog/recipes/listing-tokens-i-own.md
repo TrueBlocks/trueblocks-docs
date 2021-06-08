@@ -2,8 +2,12 @@
 title: "Recipe: List Tokens I Own"
 description: "A method to list token balances for an address from known ERC 20 tokens"
 lead: "What do I Own?"
+tags: ['recipes']
 date: 2021-04-13T08:00:02-04:00
-lastmod: 2021-04-13T08:00:02-04:00
+lastmod: .lastmod
+menu: 
+  blog:
+    parent: "recipes"
 draft: true
 weight: 50
 images: []

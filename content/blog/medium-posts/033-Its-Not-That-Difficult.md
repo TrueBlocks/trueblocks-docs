@@ -17,7 +17,7 @@ In this short article, I present a very simple — almost trivial — so
 
 I won’t explain the difficulty calculation in this article ([see my previous article](https://medium.com/@tjayrush/byzantiums-difficulty-calculation-2cdef46f79d3)). This image, which shows the calculation, appears in that article:
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-001.png)
+![](/blog/img/033-Its-Not-That-Difficult-001.png)
 
 Looking closely at this equation, notice that it is composed of two parts.
 
@@ -63,7 +63,7 @@ We’ll start by looking at the Ethereum hash rate.
 
 The data in the first chart comes from EtherScan. It shows _Daily Average Hash Rate_ for the Ethereum mainnet. I cannot vouch for this data, as I don’t know how it was created, but I assume it’s okay. Here’s a [link the data](https://etherscan.io/chart/hashrate).
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-002.png)
+![](/blog/img/033-Its-Not-That-Difficult-002.png)
 
 _Discussion:_
 
@@ -83,7 +83,7 @@ The first chart based on difficulty data shows data returned from Parity’s RPC
 
 Our first chart is pretty straight forward:
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-003.png)
+![](/blog/img/033-Its-Not-That-Difficult-003.png)
 
 _Discussion:_ The data was produced at block 8,920,000, and while “R” can pretty easily handle that many records, given the iterative nature of data exploration, we choose to sample one record out of every 100. This give us around 9,000 records which are presented in the above chart. The same grey vertical bars showing the hard forks in this chart as well.
 
@@ -95,7 +95,7 @@ The behavior of miners probably doesn’t change because of a difficult bomb dif
 
 Before we leave this chart, notice something else. Look carefully just prior to the Byzantium hard fork. You’ll see four or five single-line, vertical _jumps_ in difficulty level. In fact, the jumps are twice as large each time they appear as the previous time they appeared. These `jumps` are the time bombs. Let’s focus more on that area of the chart:
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-004.png)
+![](/blog/img/033-Its-Not-That-Difficult-004.png)
 
 _Discussion:_ We’ve inserted vertical lines at each 100,000-block boundary. Notice, just prior to the hard fork, the jumps in difficulty land exactly on the markers. In between the markers, the difficulty continues to go up, but nowhere near the speed as on the markers. The inter-explosion increases are consistent with the fact that the overall hash rate was raising very quickly at this time in 2017.
 
@@ -107,7 +107,7 @@ In the remaining charts in this article, our goal will be to separate the first 
 
 In the next chart, we look at the change in the difficulty between each successive block. That is `y(x) = diff_block_x — diff_block_x_minus_1.`
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-005.png)
+![](/blog/img/033-Its-Not-That-Difficult-005.png)
 
 _Discussion:_ As we mentioned above, `part A` of the calculation ‘hovers’ around a difficulty level geared towards ensuring 14 second blocks. This ‘hovering’ is revealed in the above chart by the red-blue nature of the data. The ‘grow’ part of the chart (red) represent positive changes in difficulty (i.e. difficulty gets higher, block production gets lower, and block times get slower). The ‘shrink’ values (blue) are negative (lower difficulty, faster blocks and more of them). The ‘adjustment’ hovers around zero. In other words, the calculation is trying to maintain ‘no change’ in block times. The `part A` calculation hones in on a value — 14 second block times.
 
@@ -123,7 +123,7 @@ Our final chart in this part of the paper is a chart showing the change in diffi
 
 Here’s the chart of per-block changes in difficulty over total difficulty:
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-006.png)
+![](/blog/img/033-Its-Not-That-Difficult-006.png)
 
 _Discussion:_ And now we can actually see why I said above that worrying about hash rate is counter-productive to a discussion of the difficulty bomb. You can see very clearly that until the time bomb ‘rears it’s head’ block production is not affected by increased (or lowered) hash rate. `Part A` of the equation maintains a steady state relative to block speed and production. Difficulty (on average and relative to itself) remains nearly unchanged up until the time bomb starts exploding.
 
@@ -141,17 +141,17 @@ The bomb is defined in the above equation as an additional value added to the en
 
 That is, two raised to a power. We can re-write this as `2 ** p` allowing `p = floor(current_block_no / 100,000)`. (We can ignore the -2 as it simply shifts the calculation to the left.) We’re left with a step function in `p` or `period`.
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-007.png)
+![](/blog/img/033-Its-Not-That-Difficult-007.png)
 
 Remember though, that the core developers have twice reset the bomb — this means, quite literally, that they reset the `period`. The `go` code works by creating a `fake block` to be used in the calculation. The `fake block` appears to be in the past, which resets the effect of the bomb. Here’s a corrected chart showing what’s really going on with the `period`:
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-008.png)
+![](/blog/img/033-Its-Not-That-Difficult-008.png)
 
 The true block number appears in red above and ranges from zero to 8,920,000. The `fake block` number (in green) tracks the real block number until Byzantium when it was reset 3,000,000 blocks to the past. It then runs parallel to the real block number until it gets reset again (this time by 5,000,000 blocks) at the Constantinople fork.
 
 Here’s a table recounting the resets. Do you see anything odd?
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-009.png)
+![](/blog/img/033-Its-Not-That-Difficult-009.png)
 
 The `fake block` after the Byzantium fork was 1,370,000 which, when integer divided by 100,000 gives a `period` of 13. That is, at each block an additional difficulty of `2**13` was added _after_ the hash rate adjustment. By the time of the Constantinople hard fork, the `period` was reset to 2,280,000 which translates to `period` of 22, an additional difficulty of `2**22`. This, I think, is why the time bomb is going off earlier than we anticipated. We didn’t reset it back far enough the last time.
 
@@ -163,7 +163,7 @@ There’s a very easy way to reset the time bomb to the right value each time we
 
 Because the time bomb dominates the slowing down of block production this will have effect of making the ‘head raising’ totally predicable. The calculation for `part B` is dependent only on the `fake block` number. If we had done that for the Constantinople fork, the time bomb would not be going off so soon.
 
-![](/blog/medium-posts/img/033-Its-Not-That-Difficult-010.png)
+![](/blog/img/033-Its-Not-That-Difficult-010.png)
 
 **Conclusion**
 

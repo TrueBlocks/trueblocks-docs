@@ -27,7 +27,7 @@ Notice the large number of transfers on May 28. That was the first day after the
 
 Notice also that the **_transferFrom_** functions (pink) were higher than the **_transfer_** functions in May. This again points to exchanges. Since Friday \[the 17th of June\], the direct calls to **_transfer_** are more numerous than to **_transferFrom_**. **_Transfer_** must be called directly by the account holder, so these are people acting on their own behalf.
 
-![](/blog/medium-posts/img/010-DAO-Token-Holders-Response-in-Charts-001.png)
+![](/blog/img/010-DAO-Token-Holders-Response-in-Charts-001.png)
 
 #### Exiting the DAO
 
@@ -35,7 +35,7 @@ A DAO token holder may exit the DAO in three ways: (1) by selling (and thereby t
 
 Calls to the **_newProposal_** function (method 2) are shown in the next chart. (Please note that the data I use does not distinguish between regular investment proposals and split proposals.) As you can clearly see, the number of proposals has increased significantly since the attack.
 
-![](/blog/medium-posts/img/010-DAO-Token-Holders-Response-in-Charts-002.png)
+![](/blog/img/010-DAO-Token-Holders-Response-in-Charts-002.png)
 
 The first question that came to my mind when I looked at this chart was _How many of these new proposals point to a smart contract with the same recursive-call bug? How many of these proposals will drain the DAO further?_
 
@@ -47,13 +47,13 @@ Selling on the market (**_transfer_**, **_transferFrom_**) and leaving via the s
 
 It appears that there are at least some people taking this path. This is revealed in the third and fourth charts below. The spike in voting on Friday and then again on Sunday, and secondly, the large increase in **_splitDAO_** function calls reveal people trying to jump ship on someone else’s split.
 
-![](/blog/medium-posts/img/010-DAO-Token-Holders-Response-in-Charts-003.png)
+![](/blog/img/010-DAO-Token-Holders-Response-in-Charts-003.png)
 
 Two different things are going on in this first chart. During the first few operational weeks of the DAO, there were a relatively high number of people voting — possibly out of a sense of excitement. This type of voting is different, I think, from the voting we see since Friday. The voting on Friday and Sunday were, I think, people trying to leave The DAO. The low number of votes on Saturday, I think, is because of the messaging from the White Hats instructing people to refrain from interacting with the software while they figured out what to tell us. There was an explicit post reddit.
 
 Most of the voting on Friday, I think, was by people scurrying to get off a sinking ship. The sad thing about rats leaving a ship is that they end up in the water where there is a not-insignificant chance of drowning anyway. This view is reinforced by the following chart.
 
-![](/blog/medium-posts/img/010-DAO-Token-Holders-Response-in-Charts-004.png)
+![](/blog/img/010-DAO-Token-Holders-Response-in-Charts-004.png)
 
 The increase in the number of calls to splitDAO as people started figuring out this third method of exiting The DAO is obvious. In a baby DAO, if you are not the initiator of the original split proposal, you will not be able to make new proposals in the child DAO. This is because you will be on the whitelist. This leaves you at a disavantage. Perhaps.
 

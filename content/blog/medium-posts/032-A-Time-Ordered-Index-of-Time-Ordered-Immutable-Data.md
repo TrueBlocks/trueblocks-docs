@@ -15,7 +15,7 @@ Recently we demoed a fully decentralized blockchain explorer built on TrueBlocks
 
 #### The Trouble With Time Ordered Data
 
-![](/blog/medium-posts/img/032-A-Time-Ordered-Index-of-Time-Ordered-Immutable-Data-001.png)
+![](/blog/img/032-A-Time-Ordered-Index-of-Time-Ordered-Immutable-Data-001.png)
 
 As everyone knows, blockchains are not databases. Blockchains are time-ordered logs of transactions. Each transaction is laid down on the chain as it happens, and it’s stored (at least conceptually) on disk in that same order. The time-ordered nature of the data makes it possible to fully represent each block (and the history of all blocks prior to that block) with a short, immutable hash. Time-ordered logs and immutable, hash-denominated data go together like math and poetry.
 
@@ -23,7 +23,7 @@ Using the Ethereum node’s RPC interface, TrueBlocks retrieves each block as it
 
 If we went no further than this — simply creating sorted lists of address appearances per block — that would actually produce a significant speedup compared to scanning the time-ordered log by itself. Of course, we want to do better than this. We can, for example, produce larger, consolidated, sorted lists which would be way faster to search than single blocks.
 
-![](/blog/medium-posts/img/032-A-Time-Ordered-Index-of-Time-Ordered-Immutable-Data-002.png)
+![](/blog/img/032-A-Time-Ordered-Index-of-Time-Ordered-Immutable-Data-002.png)
 
 Our scraper does exactly this. It keeps track of the total number of appearances it’s seen, and, as soon as there are a certain number of records (currently 500,000), combines them, sorts them by address, and stores the sorted index in a single, much larger, file.
 
@@ -61,7 +61,7 @@ The blockchain’s data is immutable. We not only need to resign ourselves to th
 
 To solve this problem, one simply has to stop adding items to the list (as TrueBlocks does by creating time-ordered chunks of account-ordered indexes of the time-ordered ledger). In this way, one gets a compromise between immutable data and an easily-searchable, indexed database. It turns out this is enough to build an API which is enough to support a whole suite of applications including a fully decentralized blockchain explorer:
 
-![](/blog/medium-posts/img/032-A-Time-Ordered-Index-of-Time-Ordered-Immutable-Data-003.png)
+![](/blog/img/032-A-Time-Ordered-Index-of-Time-Ordered-Immutable-Data-003.png)
 
 #### So What is TrueBlocks Delivering?
 

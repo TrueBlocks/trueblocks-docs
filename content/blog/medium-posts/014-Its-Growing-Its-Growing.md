@@ -21,7 +21,7 @@ As many of my readers will know, there has been a huge increase in interest in t
 
 TrueBlocks ensures speed of access to its data through various techniques, one of which is how we store the data on disc. At the time of this article, there were 3,800,000 blocks on the current chain. TrueBlocks stores 1,000 blocks per file in each of 3,800 files, providing a compromise between speed of access and size on disc. We take advantage of this 1,000 block per file data to present the following chart.
 
-![](/blog/medium-posts/img/014-Its-Growing-Its-Growing-001.png)
+![](/blog/img/014-Its-Growing-Its-Growing-001.png)
 
 Because we wished to study the data relative to previous activity, we first calculated the average size of a block for the 1,000 blocks between block 2,000,000 and 2,001,000. We then used this value as a divisor for each previous and subsequent 1,000 block average and charted the results. Viewing the data relative to a fixed mark accomplishes two things: (1) it smooths out the greatly varying data so as to better focus on overall trends, and (2) it allows us to more clearly see where the size of the data on the chain is coming from, and importantly where it’s going.
 
@@ -39,7 +39,7 @@ The area under the graph above is an important thing to consider. The slowing do
 
 Below is another chart presenting basically the same data but this time we present as a percent of the reference blocks. Here we see the effect is even more pronounced. The size of the 1,000 block groups for recent blocks is nearly 50% of the height of the DDOS attacks. This does not bode well for the future of syncing the chain in my opinion.
 
-![](/blog/medium-posts/img/014-Its-Growing-Its-Growing-002.png)
+![](/blog/img/014-Its-Growing-Its-Growing-002.png)
 
 #### The Number of Empty Blocks is Decreasing
 
@@ -47,7 +47,7 @@ Another easy to obtain measure for the increased usage of the system is to count
 
 As one can see, recently the chain has experienced a sharp decrease in the number of empty blocks. This, we think, is indicative of the increased load on the system. On average, over the entire history of the chain, nearly 35% of all blocks contained no transactions. This number has recently dropped to near 10% of blocks.
 
-![](/blog/medium-posts/img/014-Its-Growing-Its-Growing-003.png)
+![](/blog/img/014-Its-Growing-Its-Growing-003.png)
 
 #### Conclusion
 

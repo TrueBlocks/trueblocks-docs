@@ -11,23 +11,23 @@ Two weeks ago, we wrote [this Medium post](https://medium.com/@tjayrush/is-the-i
 
 The following chart is the one we presented two weeks ago. It shows the number of blocks produced each week since the inception of the Ethereum chain (August, 2015). The slowdown in block production is readily apparent.
 
-![](/blog/medium-posts/img/017-Ethereum-Block-Production-Continues-to-Slide-001.png)
+![](/blog/img/017-Ethereum-Block-Production-Continues-to-Slide-001.png)
 
 #### [Ruh Roh George Jeston!](http://www.urbandictionary.com/define.php?term=ruh%20roh)
 
 Here’s that same chart two weeks later:
 
-![](/blog/medium-posts/img/017-Ethereum-Block-Production-Continues-to-Slide-002.png)
+![](/blog/img/017-Ethereum-Block-Production-Continues-to-Slide-002.png)
 
 As you can see, the difficulty bomb — whose nominal purpose is to slow down block production — is working…very well. The number of blocks produced during the week ending September 8, 2017 was as low as it’s been since the inception of the chain. Interesting.
 
 The inverse of the lowering of the number of blocks produced per period is the time it takes to produce each block. Here, the exponential decrease in per-period block production is more apparent. In this chart we show the number of seconds it takes to create each block on average since inception. As you can see, after the Homestead fork, the number of seconds needed to produce a block hovered almost exactly on 14 seconds for more than a year. It’s been rapidly increasing since April when the difficulty bomb began. The step-wise behaviour of the increase is also apparent if one looks closely.
 
-![](/blog/medium-posts/img/017-Ethereum-Block-Production-Continues-to-Slide-003.png)
+![](/blog/img/017-Ethereum-Block-Production-Continues-to-Slide-003.png)
 
 #### Does “Less Blocks” Mean “Less Transactions”?
 
-![](/blog/medium-posts/img/017-Ethereum-Block-Production-Continues-to-Slide-004.png)
+![](/blog/img/017-Ethereum-Block-Production-Continues-to-Slide-004.png)
 
 Given tweets such as the one to the left and [this one](https://twitter.com/VitalikButerin/status/898726451637215232), which seem to contradict the idea that there are less blocks being produced, we wondered if “increasing transactions” and “less blocks” could both be true at the same time. If the number of transactions is increasing, and the number of blocks is decreasing, then the number transactions per block must be skyrocketing. We should be able to see this effect.
 
@@ -43,13 +43,13 @@ To keep this article short, we will present only the first of these three invest
 
 Below we present the number of transactions per block, which, as you can see, has recently increased significantly. The blocks are definitely getting fuller.
 
-![](/blog/medium-posts/img/017-Ethereum-Block-Production-Continues-to-Slide-005.png)
+![](/blog/img/017-Ethereum-Block-Production-Continues-to-Slide-005.png)
 
 The huge increase in the number of transactions per block is doubly intensified by the increase in interest in the Ethereum chain and the simultaneous lowering in the number of blocks per period. But looking at transactions per block doesn’t really show what we’re after, we needed one more chart (plus — we like making charts).
 
 This next chart is a bit surprising to be honest.
 
-![](/blog/medium-posts/img/017-Ethereum-Block-Production-Continues-to-Slide-006.png)
+![](/blog/img/017-Ethereum-Block-Production-Continues-to-Slide-006.png)
 
 It does clearly reveal why the previous chart shows such a huge increase in transactions per block. Half as many blocks…twice as many transactions…means four times as many transactions per block. While it is not clear without further information if the number of transactions would be higher in the absence of the difficulty bomb, there is a slight hint at a bumpiness in the uptick of adoption (as represented by number of transactions). One would think that increased adoption would be more smooth without the effect imposed by the difficulty bomb.
 

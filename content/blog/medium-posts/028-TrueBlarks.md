@@ -67,7 +67,7 @@ difficulty %>%
 
 And here’s the first chart showing the `delta` in each block’s `difficulty` through the first 7.1 million blocks. It also shows, as a red line, the difficulty bomb. You can see it’s creeping up again.
 
-![](/blog/medium-posts/img/028-TrueBlarks-001.png)
+![](/blog/img/028-TrueBlarks-001.png)
 
 The next chart, built with this code,
 
@@ -79,7 +79,7 @@ difficulty %>%
 
 shows the ‘responsiveness’ of the difficulty calc to its current situation. We calculate `sensitivity` by dividing `diff.delta` by `block.difficulty`. I’m not sure, but I think the jaggys come from the way the difficulty value is calculated. It snaps to the next nearest 10 seconds to adjust, so 10, 11, 12, … 19 all give the same adjustment, but 20, 21, 22, … give different adjustments.
 
-![](/blog/medium-posts/img/028-TrueBlarks-002.png)
+![](/blog/img/028-TrueBlarks-002.png)
 
 The next chart, generated from this “R” code,
 
@@ -93,7 +93,7 @@ shows the accumulated sum of the `diff.delta` values. You can clearly see the ba
 
 [Lane Rettig](https://medium.com/u/9f3988a56032) wondered if, because of the increased hash rate of the current chain, the effect of the difficulty bomb might be obscured. I’m not sure (I’m not sure of anything), but the wider spread of the difficulty on blocks since byzantium may indicate that his intuition was correct. Is the difficulty bomb hiding in the big black static?
 
-![](/blog/medium-posts/img/028-TrueBlarks-003.png)
+![](/blog/img/028-TrueBlarks-003.png)
 
 In the following charts, we show some other shit made with some more “R” code. In this section, we calculate either the deltas of the means of the timestamps of the blocks or the means of the deltas of the timestamps of the blocks and we lay whatever that is against the previous charts (you’ll have to ask Ed if you want to understand it).
 
@@ -105,11 +105,11 @@ difficulty %>%
  geom\_line() +  
  facet\_wrap(facets = ‘vars’, scales = ‘free’, ncol = 1)
 
-![](/blog/medium-posts/img/028-TrueBlarks-004.png)
+![](/blog/img/028-TrueBlarks-004.png)
 
 And now we’re just showing a whole bunch of crazy charts with cool looking black jaggies (hang in there, there’s some interesting stuff below).
 
-![](/blog/medium-posts/img/028-TrueBlarks-005.png)
+![](/blog/img/028-TrueBlarks-005.png)
 
 The above chart was made with this nearly unintelligible code:
 
@@ -145,7 +145,7 @@ difficulty %>%
 
 The above code gives us this chart:
 
-![](/blog/medium-posts/img/028-TrueBlarks-006.png)
+![](/blog/img/028-TrueBlarks-006.png)
 
 And here, I think, we’ve finally gotten to something interesting. Although, we’re not quite done.
 
@@ -155,7 +155,7 @@ What we see now, if we look closely enough, is that the little purple dots (curr
 
 Lane was right! This time, the effect of the difficulty bomb will be obscured and be less apparent than before. This may make its effect less obvious until it explodes. How soon will that be? When is the bomb coming? We’re already at period 41. The last bomb ([see this chart](https://medium.com/@tjayrush/ethereum-block-production-continues-to-slide-1b74a2123e3f)) started showing a slow down by now. The last bomb was already starting to speed up by now. I think that is true this time as well, but it’s hidden behind the heavier hash rate.
 
-![](/blog/medium-posts/img/028-TrueBlarks-007.png)
+![](/blog/img/028-TrueBlarks-007.png)
 
 #### Conclusion
 

@@ -13,7 +13,7 @@ While, technically, the data on a blockchain may be untrue, what is mathematical
 
 Bitcoin (and other blockchains) produces the best data the world has ever seen, and I think that this near-perfect data can usher in a better world. At least, that’s what I used to think…
 
-![](/blog/medium-posts/img/035-Simple-Undeniable-Facts-001.jpg)
+![](/blog/img/035-Simple-Undeniable-Facts-001.jpg)
 
 In this post, I will present a list of what I hope are obviously factually true statements. I want to explain a looming danger I see coming down the pike. To me, this looming danger looks a lot like an out-of-control, 18-wheeled tractor-trailer coming right for us.
 

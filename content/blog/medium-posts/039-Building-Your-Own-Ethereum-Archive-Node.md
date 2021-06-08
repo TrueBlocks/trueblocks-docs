@@ -17,17 +17,17 @@ After the pretty pictures, is the beginning of an article we started but never f
 
 #### Pictures of Components (and 2018 Prices) Needed to Run an Ethereum Archive Node
 
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-001.jpg)
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-002.jpg)
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-003.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-001.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-002.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-003.jpg)
 
 \[We recently added a second one of these in a Raid 0 configuration as the data needs of the archive node overtopped 4TB\]
 
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-004.jpg)
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-005.jpg)
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-006.jpg)
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-007.jpg)
-![](/blog/medium-posts/img/039-Building-Your-Own-Ethereum-Archive-Node-008.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-004.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-005.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-006.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-007.jpg)
+![](/blog/img/039-Building-Your-Own-Ethereum-Archive-Node-008.jpg)
 
 The above pictures and prices are of the components we used to build an Ubuntu machine that we use to run archive nodes. To be honest, these machines may be over built. Once they are synchronized, the easily keep up with the chain with little or no effort. We do not mine. There’s only one block every 14 seconds, so it’s not as if a lot is going on once the node is caught up.
 

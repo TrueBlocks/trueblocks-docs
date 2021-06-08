@@ -13,7 +13,7 @@ Blockchain-like technologies (that is, decentralizing, trustless technologies) b
 
 With this technology, we can now remove the need to trust the other party. The “need to trust“’” is why, in the prisoner’s dilemma, each individual is forced to choose her own self interest. The fact that each individual is aware that they have to trust the other party, but is also aware that they themselves can cheat, leads them to conclude that the only rational choice is to cheat.
 
-![](/blog/medium-posts/img/027-A-Short-Take-on-Decentralization-001.png)
+![](/blog/img/027-A-Short-Take-on-Decentralization-001.png)
 
 If the system is able to remove the need to trust, humans will (eventually) learn that the better choice in any given situation is cooperative action — which, in an odd way, has always been recognized as the better solution. Both prisoners know that they are better off if they cooperate, but they are unable to do it because they have to trust the other person.
 

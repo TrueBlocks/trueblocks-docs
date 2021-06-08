@@ -15,7 +15,7 @@ I think it comes down to four words: “Incoming”, “Internal”, “Transact
 
 I’ll start with the easiest word first: “Transaction.”
 
-![](/blog/medium-posts/img/024-How-Many-ERC20-Tokens-Do-You-Have-001.png)
+![](/blog/img/024-How-Many-ERC20-Tokens-Do-You-Have-001.png)
 
 Go into a bagel store. Buy a dozen bagels and get a receipt. Everything you need to know about your transaction is on the receipt. `Date`, `amount`, `sender` (`from`) and `recipient` (`to`). This is the same information you’ll find on every Ethereum transaction.
 
@@ -37,15 +37,15 @@ So, distinguish between “external” and “internal” transactions. “Inter
 
 The majority of transactions on the Ethereum blockchain consist of one external account sending money (or a message) to another external account.
 
-![](/blog/medium-posts/img/024-How-Many-ERC20-Tokens-Do-You-Have-002.png)
+![](/blog/img/024-How-Many-ERC20-Tokens-Do-You-Have-002.png)
 
 Many other transactions (also external) are sent from an external account to a smart contract. When you think of the transactions that are being hashed into a block, you are thinking of external transactions.
 
-![](/blog/medium-posts/img/024-How-Many-ERC20-Tokens-Do-You-Have-003.png)
+![](/blog/img/024-How-Many-ERC20-Tokens-Do-You-Have-003.png)
 
 An internal transaction is a transfer of value (or a message call) that occurs as the result of a smart contract calling or sending money into other accounts.
 
-![](/blog/medium-posts/img/024-How-Many-ERC20-Tokens-Do-You-Have-004.png)
+![](/blog/img/024-How-Many-ERC20-Tokens-Do-You-Have-004.png)
 
 As we saw earlier, keeping track of the “send” side of an internal transaction is simple. The smart contract itself, as it generates the call, can simply emit an event. This will alert both the sender and receiver that something has happened (for example, a token transfer or token mint happened). This is how almost all ERC20 token contract work. When someone buys a token or transfers a token, in addition to recording that fact inside the smart contract’s balance map, the smart contract emits an event. I say “most” token contracts work this way because there is no hard requirement in the ERC20 standard when tokens are minted.
 

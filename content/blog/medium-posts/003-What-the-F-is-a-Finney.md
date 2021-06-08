@@ -15,7 +15,7 @@ We were in the hot-dog line, and he asked me if I still had the money he gave me
 
 To make a blatant understatement — money is important.
 
-![](/blog/medium-posts/img/003-What-the-F-is-a-Finney-001.png)
+![](/blog/img/003-What-the-F-is-a-Finney-001.png)
 
 As early as 15,000 years ago, people used Anatolian obsidian as money. Since then, people have used copper, silver, gold, grains of wheat, and even sheep and cattle as money. Early laws such as _The Code of Hammurabi_ laid down rules for money such as the amount of interest one might charge, fines for wrongdoing, and even levels of compensation for various jobs. One culture even tried to use cow manure as money.
 
@@ -23,7 +23,7 @@ As early as 15,000 years ago, people used Anatolian obsidian as money. Since the
 
 “Sure. Here you go. Have a turd.”
 
-![](/blog/medium-posts/img/003-What-the-F-is-a-Finney-002.png)
+![](/blog/img/003-What-the-F-is-a-Finney-002.png)
 
 Certain materials obviously serve better as currency than others.
 
@@ -41,13 +41,13 @@ A _wei_ is the most basic unit in the ethereum world. It is worth 10^-18 of an e
 
 I know this is a little strange, but I actually looked this up — if a wei was a single grain of wheat, and a million grains of wheat make up a bushel, there would be one billion bushels of wei in a finney.
 
-![](/blog/medium-posts/img/003-What-the-F-is-a-Finney-003.png)
+![](/blog/img/003-What-the-F-is-a-Finney-003.png)
 
 A _szabo_ is a trillion times larger than a wei, or about a million bushels of wheat. According to the National Association of Wheat Growers (which has a surprisingly informative website), “\[a\] bushel of wheat yields 42…loaves of white bread or about 90…loaves of whole wheat.” (Who knew?)
 
 Averaging these numbers (in other words, half your sandwiches are wheat and the other half are white), a szabo would yield about 61,000,000 loaves of bread. At twenty-two slices per loaf and two slices of bread per sandwich, it would cost only ten _szabo_s to make a peanut butter and jelly sandwich for every person living on the earth today (~five billion).
 
-![](/blog/medium-posts/img/003-What-the-F-is-a-Finney-004.png)
+![](/blog/img/003-What-the-F-is-a-Finney-004.png)
 
 A _finney_ is a thousand times larger than a szabo and a thousand times smaller than an ether. Or about one hundred and thirty four peanut butter and jelly sandwiches for every person on earth.
 
@@ -55,7 +55,7 @@ If wei was a grain of wheat, then an _ether_ would be 134,200 peanut butter and 
 
 Or, to put it one final way, if wei was a grain of wheat, an ether would be a single peanut butter and jelly sandwich the size of a kitchen for every person on earth.
 
-![](/blog/medium-posts/img/003-What-the-F-is-a-Finney-005.png)
+![](/blog/img/003-What-the-F-is-a-Finney-005.png)
 
 #### But Where Did the Name Finney Come From?
 

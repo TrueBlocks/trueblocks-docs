@@ -17,7 +17,7 @@ Blockchain?
 
 Actually this second point may or may not be true, but one thing is true, if the blockchain is expensive, storing data is the reason why. Any data.
 
-![](/blog/medium-posts/img/012-Zero-Storage-Data-Publishing-on-Ethereum-001.png)
+![](/blog/img/012-Zero-Storage-Data-Publishing-on-Ethereum-001.png)
 
 In this article we will recount our experience trying to create a simple one-way publisher-to-consumer data delivery smart contract. At the same time, we’ll explain an idea we have called _off-chain monitoring_ and how our project, [TrueBlocks](http://trueblocks.io)™, helps us use this idea to lessen the cost of running a smart contract.
 
@@ -43,7 +43,7 @@ The monitor programs do whatever we want them to do. For example, they can easil
 
 The monitoring is done _locally_ and _off-chain_ and _per account_. The data is as fresh as a fall pear pulled directly from a tree.
 
-![](/blog/medium-posts/img/012-Zero-Storage-Data-Publishing-on-Ethereum-002.png)
+![](/blog/img/012-Zero-Storage-Data-Publishing-on-Ethereum-002.png)
 
 Monitors understand the data they are retrieving. By this we mean the monitor re-articulates the data in the language of the smart contract that created it. It does this by fetching the ABI file of the contract and using that to translate the node data. `**0xc9d27afe**` becomes `**vote.**` `**0x23b872dd**` becomes `**transferFrom(a, b)**`. TrueBlocks turns ugly blockchain data back into human readable and easily understood information.
 
@@ -57,7 +57,7 @@ You may have noticed that the price of ether has skyrocketed recently. Some peop
 
 Here’s a recent [comment on stack exchange](https://ethereum.stackexchange.com/questions/872/what-is-the-cost-to-store-1kb-10kb-100kb-worth-of-data-into-the-ethereum-block):
 
-![](/blog/medium-posts/img/012-Zero-Storage-Data-Publishing-on-Ethereum-003.png)
+![](/blog/img/012-Zero-Storage-Data-Publishing-on-Ethereum-003.png)
 
 While one can reduce the operating cost of a smart contract by [lowering the gas price](http://ethgasstation.info/) at each transaction, it still costs more than $1,000 to store a single MB of data. That cost has nearly doubled recently! Storing data directly on the blockchain is not, and never has been, a viable solution.
 

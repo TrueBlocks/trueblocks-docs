@@ -25,7 +25,7 @@ I will present each sentence from Section 11.3 verbatim, and then show a copy of
 
 We start with the introductory sentence of Section 11.3:
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-001.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-001.png)
 
 Since there are no equations, we will skip right to the English language re-write to get started:
 
@@ -43,7 +43,7 @@ We will call the second increase — to the account balance of the **benefic
 
 The next sentence in Section 11.3 of the Yellow Paper is the crux of the calculation. This sentence describes Ethereum’s **issuance** fully:
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-002.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-002.png)
 
 While this sentence is complete, it is terribly un-grammatical, making it difficult to understand.
 
@@ -55,37 +55,37 @@ Luckily, the two parts of this sentence correspond to the two types of balance i
 
 Looking at the first half of the second sentence of Section 11.3 (as corrected)…
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-003.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-003.png)
 
 …you should be able to see that this is referring only to the **beneficiary account** (that is, the winning miner). It says that the winning miner’s account balance is raised (i.e. coins are **_issued_** to**_)_** by an amount designated by`R-block` (which we call `baseReward` below) plus `1/32` of that amount for each uncle in the block.
 
 The Yellow Paper summarizes the production of this amount with two equations: Equation 161 and Equation 162. Equation 161 says:
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-004.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-004.png)
 
 where…
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-005.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-005.png)
 
 In words, Equation 161 says, “Omega is a function taking the current block and the state prior to the current block and transitioning to a new state which remains unchanged except for…what appears in Equation 162”:
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-006.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-006.png)
 
 where…
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-007.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-007.png)
 
 Equation 162 is saying the “the account balance of the beneficiary (miner) increases by the `baseReward` plus 1/32 of the `baseReward` for each uncle.”
 
 `baseReward` is defined in equation 166:
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-008.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-008.png)
 
 which is slightly wrong as it ignores the change in the block reward at the Byzantium hard fork (from 5 ether to 3) and then again at the Constantinople hard fork (from 3 ether to 2). This omission is accounted for in the code.
 
 All of the above mumbo-jumbo can be written in three lines of code:
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-009.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-009.png)
 
 Note that if there are no uncles, `blockReward` is identical to `baseReward`. If there are uncles, `blockReward` is increased by the `baseReward` multiplied by `1/32` for each uncle. Some people, including us, call this additional increase the `nephewReward`. (Appropriately, a block is sometimes called a `nephew` if it has an uncle.)
 
@@ -97,7 +97,7 @@ The two functions, `getUncleCount` and `getBlockReward`, (shown green in the cod
 
 The `getBlockReward` function is equally simple, as it is a constant function of `blockNumber`. Here’s the code for `getBlockReward`, which returns the result in wei:
 
-![](/blog/medium-posts/img/040-Ethereums-Issuance-minerReward-010.png)
+![](/blog/img/040-Ethereums-Issuance-minerReward-010.png)
 
 On review, this function would have better been called `getBaseReward`.
 

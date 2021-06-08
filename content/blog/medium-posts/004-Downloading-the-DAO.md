@@ -33,7 +33,7 @@ Given this data, the first thing I wanted to do was to separate out the ‘Token
 
 The Mist browser tells me that the token creation period ended at timeStamp = 146442600.
 
-![](/blog/medium-posts/img/004-Downloading-the-DAO-001.png)
+![](/blog/img/004-Downloading-the-DAO-001.png)
 
 Every transaction on the Ethereum blockchain has a timeStamp. So I simply went into the spreadsheet and found the last transaction that happened before “closing time” and deleted the rest. I’ve since added a feature to EthSlurp to specify the earliest and/or latest timeStamp, block number, or date. I can now run this command:
 
@@ -49,7 +49,7 @@ What I did was:
 2.  Before I did that, because the ‘value’ column is in ‘wei,’ I converted it to ether. I did this by adding a new column and dividing ‘value’ by 10¹⁸ (see [What the F is a Finney](https://medium.com/@tjayrush/what-the-f-is-a-finney-8e727f29e77f#.fcas67m6m)). I then summed the ‘ether’ column as well.
 3.  According to my downloaded list of transactions the total ether taken in during the creation was 11,980287.5826, which was higher than the number being reported by the Mist browser by 2.17%. Interestingly, though, this value was closer than the value reported by the DAOHub.org website. (I leave figuring that out as an exercise — \[Jun 11: this has since been explained, see comments below\]). The Etherscan.io website agrees pretty well with the Mist browser.
 
-![](/blog/medium-posts/img/004-Downloading-the-DAO-002.png)
+![](/blog/img/004-Downloading-the-DAO-002.png)
 
 #### Where to next?
 

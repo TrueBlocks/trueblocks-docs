@@ -7,4 +7,4 @@ categories: []
 keywords: []
 ---
 
-![](/blog/medium-posts/img/043-How-Safe-are-My-Private-Keys-001.png)
+![](/blog/img/043-How-Safe-are-My-Private-Keys-001.png)

@@ -23,7 +23,7 @@ It was just one of many things that didn’t make sense to me back then. I reali
 
 I had two experiences recently, both related the blockchain and both related to the idea of a person’s identity. The first one excited me. The second one made me think of that song.
 
-![](/blog/medium-posts/img/015-Be-Careful-Little-Brain-What-You-Code-001.png)
+![](/blog/img/015-Be-Careful-Little-Brain-What-You-Code-001.png)
 
 If you’ve done any reading about the blockchain you will have come upon the idea of putting a person’s identity on the blockchain (or her medical records, or his land records, or fill\_in\_the\_blank). It’s a deep, deep subject, but the idea is clear enough.
 
@@ -35,7 +35,7 @@ I was at a blockchain conference in Washington, DC last week. It was well attend
 
 Dr. Thomason began her talk by displaying a photograph of a place that had been ravaged by a tsunami. The image showed a _before and after_ view. In the _after_ view, everything had been wiped away. Roads, trees, buildings, people’s lives, people’s hopes, relationships, everything.
 
-![](/blog/medium-posts/img/015-Be-Careful-Little-Brain-What-You-Code-002.jpg)
+![](/blog/img/015-Be-Careful-Little-Brain-What-You-Code-002.jpg)
 
 Dr. Thomason pointed out that not only were the physical objects literally washed into the ocean, but something much more important was washed away as well. She asked those of us in the audience to raise our hands if we had ever had an “ah-ha” moment related to the blockchain. Many people raised their hands.
 
@@ -49,7 +49,7 @@ Dr. Thomason went on to explain the other work she was doing, all very interesti
 
 Much of the evidence of that early excitement was washed away the morning of June 17, 2016 with the DAO hack, then later in October of 2016 with the DDOS attacks, then every few weeks since then with these idiotic ICOs. (As if ICOs and a disruption of venture capital was the reason for the blockchain.)
 
-![](/blog/medium-posts/img/015-Be-Careful-Little-Brain-What-You-Code-003.jpg)
+![](/blog/img/015-Be-Careful-Little-Brain-What-You-Code-003.jpg)
 
 “Here’s my white paper. I have an idea that I can explain in a single Medium post. Please give me millions of dollars. Here’s some tokens…”
 

@@ -13,7 +13,7 @@ This the second in a series of two articles detailing Ethereum’s **issuance**.
 
 Previously, we looked at the ungrammatical second sentence in Section 11.3 of Ethereum’s Yellow Paper. In [the first article](https://medium.com/@tjayrush/ethereums-issuance-minerreward-3cad5b9a72ff), we discussed the first half of that sentence concerning `blockReward`. In this article we discuss the remaining half of that sentence (shown below) which details the `uncleReward`.
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-001.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-001.png)
 
 It would be more accurate for the Yellow Paper to say that the “beneficiary of **_each_** ommer gets rewarded…” as there may be more than one uncle in the block, each with a different miner. We call this reward the `uncleReward`.
 
@@ -25,7 +25,7 @@ The `uncleReward` is calculated from the block’s `baseReward` reduced by `1/8`
 
 Before we proceed, let’s take a small detour to look at the fourth sentence of Section 11.3, the only sentence we haven’t looked at yet. This sentence informs the calculation of `minerReward`.
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-002.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-002.png)
 
 This simplifies our concerns. It means we don’t have to keep track of previously applied rewards. The winner of a `blockReward` may also win one or more `uncleRewards` in the same block. Furthermore, a single miner may win both `uncleRewards` in the same block.
 
@@ -33,33 +33,33 @@ This simplifies our concerns. It means we don’t have to keep track of previous
 
 The `uncleReward` is described by the following set of three unnecessarily-complicated equations (163, 164, and 165):
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-003.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-003.png)
 
 We will look at each one separately. Starting with Equation 163:
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-004.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-004.png)
 
 where…
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-005.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-005.png)
 
 Translating Equation 163 into English, it says “For each uncle in the block’s uncle list (if any), the account of the uncle’s miner either (a) remains empty if it was previously empty and the `uncleReward` is zero, or (b) the account transitions to a new state (called `a-prime`) as per Equation 164”:
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-006.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-006.png)
 
 where…
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-007.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-007.png)
 
 This translates to English as, “The state of the account of the uncle’s miner after the block, `a-prime`, is the same as it was prior to the block except for the fact that balance has increased by the value _R_ (the `uncleReward`).
 
 And finally, Equation 165 defines the `uncleReward:`
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-008.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-008.png)
 
 where…
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-009.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-009.png)
 
 Translating this final bit to English: “The `uncleReward` is the `baseReward` lessened by `1/8` for each block that the uncle is distant from the present block.”
 
@@ -69,7 +69,7 @@ Note that the uncle’s `blockNumber` will always be less than the block’s `bl
 
 All of the above mumbo-jumbo fits nicely into this **TrueBlocks** code:
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-010.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-010.png)
 
 These calculations, at least to me, are much easier when written in code than they are in the Yellow Paper .
 
@@ -77,7 +77,7 @@ Note that `getUncleReward` needs to be called for each uncle in the block; there
 
 We accumulate the rewards for the uncles and return that value to the caller:
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-011.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-011.png)
 
 #### Rolling it Up
 
@@ -101,7 +101,7 @@ These functions are similar in nature to Javascript’s `map` and `reduce`. One 
 
 This tends to make the topmost code of a **TrueBlocks** app very minimal:
 
-![](/blog/medium-posts/img/041-Ethereums-Issuance-uncleReward-012.png)
+![](/blog/img/041-Ethereums-Issuance-uncleReward-012.png)
 
 One need only define the function `calcRewards`, which we’ve done throughout these two articles.
 

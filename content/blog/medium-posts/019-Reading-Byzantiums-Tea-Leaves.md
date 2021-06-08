@@ -19,7 +19,7 @@ If there is one distinguishing characteristic about this discussion, it is that 
 
 Okay, maybe there is some tea, but actually we care about source code...
 
-![](/blog/medium-posts/img/019-Reading-Byzantiums-Tea-Leaves-001.png)
+![](/blog/img/019-Reading-Byzantiums-Tea-Leaves-001.png)
 
 The above two lines (and a few related lines elsewhere) implement the per-block change in the mining reward. That’s pretty unambiguous.
 
@@ -37,7 +37,7 @@ The following conversation between the core developers and miners was completely
 
 > **Developers:** Block production on a per-day basis has been decreasing for months. After the fork, the per-day reward will bounce back. In fact, it will be higher. Three ether every 14 seconds is more than five ether every 25 seconds.\[The developers have a point here.\]
 
-![](/blog/medium-posts/img/019-Reading-Byzantiums-Tea-Leaves-002.png)
+![](/blog/img/019-Reading-Byzantiums-Tea-Leaves-002.png)
 
 > **Miners:** …but…but…that’s different…okay…there’s nothing we can do…
 
@@ -47,13 +47,13 @@ I think the developers are doing the right thing by lowering the block reward (I
 
 Let’s look at some tea leaves (so it’s math, so but let’s pretend it’s tea):
 
-![](/blog/medium-posts/img/019-Reading-Byzantiums-Tea-Leaves-003.png)
+![](/blog/img/019-Reading-Byzantiums-Tea-Leaves-003.png)
 
 Above is a description of how the difficulty is calculated at each block in the current code (pre-fork). You’ll notice there is no mention of the block reward. That’s because the block reward is in a different part of the code. [Learn more about the reasoning behind this calculation here.](https://medium.com/p/8326143c92e8/edit)
 
 Let’s look at what’s changed between Homestead and Byzantium. The following image is a visual difference between the pre- and post-fork code. (I simplified it for clarity.)
 
-![](/blog/medium-posts/img/019-Reading-Byzantiums-Tea-Leaves-004.png)
+![](/blog/img/019-Reading-Byzantiums-Tea-Leaves-004.png)
 
 There are only two changes to the post-fork code. First, there is a small change in `section A` that makes mining uncles less likely — (see [this article](https://bitslog.wordpress.com/2016/04/28/uncle-mining-an-ethereum-consensus-protocol-flaw/) and this [EIP 100](https://github.com/ethereum/EIPs/issues/100)) and, second, there is the resetting of the difficulty time bomb at `section B`.
 

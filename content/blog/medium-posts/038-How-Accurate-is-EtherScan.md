@@ -55,7 +55,7 @@ EtherScan provides [five account-related APIs](https://etherscan.io/apis#account
 
 Quite some time ago we built a tool called `ethslurp` that makes use of these endpoints:
 
-![](/blog/medium-posts/img/038-How-Accurate-is-EtherScan-001.png)
+![](/blog/img/038-How-Accurate-is-EtherScan-001.png)
 
 Given an address, `ethslurp` returns all the transactions where EtherScan says that address appears.
 
@@ -67,7 +67,7 @@ fromES 0x91c5fa6872f3a93b999843eaf06eb34a18a69a12\`
 
 produces these results:
 
-![](/blog/medium-posts/img/038-How-Accurate-is-EtherScan-002.png)
+![](/blog/img/038-How-Accurate-is-EtherScan-002.png)
 
 Notice that the five EtherScan endpoints deliver 31, 0, 26, 2, and 0 records respectively. Summed, in the line labeled ‘all’, this totals 59 records.
 
@@ -81,7 +81,7 @@ getTrace 8156524.14
 
 returns
 
-![](/blog/medium-posts/img/038-How-Accurate-is-EtherScan-003.png)
+![](/blog/img/038-How-Accurate-is-EtherScan-003.png)
 
 which I admit is a bit crazy looking, but it does contain the byte string for the given address (colored pink). It turns out that this transaction ended in a `revert`. This is probably why EtherScan doesn’t find it.
 

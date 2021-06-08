@@ -21,18 +21,18 @@ One thing to note. Every block is independent of every other block when it comes
 
 Examples follow…
 
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-001.png)
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-002.png)
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-003.png)
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-004.png)
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-005.png)
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-006.png)
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-007.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-001.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-002.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-003.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-004.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-005.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-006.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-007.png)
 
 Each of the above examples is relatively easy. The addresses “appear” in obvious places in the transaction such as `from`, `to`, or as the event sender data in a log. There are more difficult cases. For example, a simple token transfer or a multi-sig wallet interaction.
 
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-008.png)
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-009.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-008.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-009.png)
 
 The above examples, don’t explain everything. There are many, many edge cases and special cases. For example, if a smart contract reverts during its construction, the contract’s address is reported in the transaction receipt’s `contractAddress` field, but it does not appear anywhere in the transaction’s traces. In general, one can find every address by searching Parity’s traces and/or the event logs, but not in this case. There are other odd examples like this.
 
@@ -52,7 +52,7 @@ We’ll write about that in our next article.
 
 We fell in love with the idea of `permissionless accounting` about four years ago when we first heard [Joe Lubin](https://medium.com/u/20ec8468cfbe) discuss the idea of triple-entry accounting and radical transparency. We’ve been working on that idea ever since, and recently — not the least due to our Ethereum Foundation grant — we’ve been making great progress. Just a quick preview of an application we’re building on the index and then we’re done. We didn’t ask if it was okay!
 
-![](/blog/medium-posts/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-010.png)
+![](/blog/img/031-Indexing-Addresses-on-the-Ethereum-Blockchain-010.png)
 
 #### Support My Work
 

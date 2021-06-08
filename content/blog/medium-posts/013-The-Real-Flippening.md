@@ -17,7 +17,7 @@ So, maybe, “The Flippening” is like a quickening. Maybe it’s when Ethereum
 
 #### Bitcoin is a Bucket and the Bucket has a Hole
 
-![](/blog/medium-posts/img/013-The-Real-Flippening-001.png)
+![](/blog/img/013-The-Real-Flippening-001.png)
 
 Bitcoin is a bucket. It’s filled with something valuable. Without going into why (it has to do with developers), I think Bitcoin’s bucket has a hole in it. Bitcoin is leaking developers, and in most cases, I think, they are ending up in the Ethereum space. Why wouldn’t they? Ethereum is where all the excitement is and it’s not a pain in the ass to program. In the old days, I would have said it this way: “Why program in Cobol when you can program in C++?”
 
@@ -25,7 +25,7 @@ Bitcoin is a bucket. It’s filled with something valuable. Without going into w
 
 Have you ever seen a video of a school of sardines swimming peacefully, when all of a sudden, a yellow-finned tuna appears out of no-where and starts eating them up? Every individual sardine flees at exactly the same time. However, because they are so tightly packed, they are restrained in how they can move. No matter which direction they turn, they bump into another sardine. This causes them to move in what appears to be a coordinated blob, but it’s actually just individuals all of whom are rushing for the door.
 
-![](/blog/medium-posts/img/013-The-Real-Flippening-002.png)
+![](/blog/img/013-The-Real-Flippening-002.png)
 
 #### People Rush for Doors
 

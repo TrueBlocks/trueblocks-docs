@@ -13,7 +13,7 @@ Maybe my obsession with this has to do with something that happened to me in hig
 
 I’ve written software called TrueBlocks ([http://trueblocks.io](http://trueblocks.io)) that scans the Ethereum blockchain looking for interesting data. TrueBlocks allows me to easily summarize and accumulate data at each block. From there, I can make pretty pictures. Here is one such picture:
 
-![](/blog/medium-posts/img/021-Playing-with-Blocks-006.jpg)
+![](/blog/img/021-Playing-with-Blocks-006.jpg)
 
 Each dot on this chart summarizes two characteristics about groups of 10,000 blocks. We scanned the first 4,000,000 blocks on the Ethereum chain and summarized the number of non-empty blocks in each group vs. the average number of transactions in each group. This created 400 data points (4,000,000 / 10,000 = 400).
 
@@ -25,15 +25,15 @@ _The vertical axis_ shows the average number of transactions inside the non-empt
 
 We wondered if there was anything interesting to be gleaned from the data. Do you see anything? I something of a pattern, but I’m not sure I understand what it means. There appears to be three distinct groups in the data. The first one, I’ve marked with an **orange** line.
 
-![](/blog/medium-posts/img/021-Playing-with-Blocks-001.png)
+![](/blog/img/021-Playing-with-Blocks-001.png)
 
 The second group of data is the **purple** line.
 
-![](/blog/medium-posts/img/021-Playing-with-Blocks-002.png)
+![](/blog/img/021-Playing-with-Blocks-002.png)
 
 And the third is the **green** line.
 
-![](/blog/medium-posts/img/021-Playing-with-Blocks-003.png)
+![](/blog/img/021-Playing-with-Blocks-003.png)
 
 I hate to admit it, but I have no good explanation for why the data looks like this. I’ll give a possible explanation below, but I welcome any and all suggestions about other ways to look at it. Add your comments below.
 
@@ -45,7 +45,7 @@ I decided to look at a simpler problem: when were these blocks produced?
 
 The three charts above have no time component. To alleviate this problem, I colored the dots by block number. Here’s the same data above with the dots colored by block number.
 
-![](/blog/medium-posts/img/021-Playing-with-Blocks-004.png)
+![](/blog/img/021-Playing-with-Blocks-004.png)
 
 In this chart, earlier block numbers are colored yellow. The color tends toward dark red the higher the block number gets. Clearly, as the chain progressed, there was an early period with many empty blocks with relatively few transactions. Towards the middle of the chain’s lifespan (between December of 2016 and June of 2017, perhaps) there seems to have been a retreat.
 
@@ -63,7 +63,7 @@ Let’s see. Could it be…oh, I don’t know…could it be….the devil? Yes! *
 
 The DAO hack happened at block 1,718,497. Within days of the hack, the price dropped from $21.00 US to about $8.00. Three months later, there was the October 2016 DDos attack. You can see it in the spikiness around block 2,250,00. Did these two events cause a retreat in the activity on the chain? More empty blocks with less transactions per block? It seems likely to me.
 
-![](/blog/medium-posts/img/021-Playing-with-Blocks-005.png)
+![](/blog/img/021-Playing-with-Blocks-005.png)
 
 We’re interested in your thoughts. Please clap for us and post your comments below. Please consider supporting our work by sending a small tip to 0xf503017d7baf7fbc0fff7492b751025c6a78179b.
 

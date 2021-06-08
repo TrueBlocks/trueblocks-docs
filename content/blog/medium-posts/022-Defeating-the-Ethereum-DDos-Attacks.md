@@ -9,7 +9,7 @@ keywords: []
 
 I spend a lot of time looking at historical Ethereum transactional data. I do this by scanning the chain using [TrueBlocks](http://trueblocks.io).
 
-![](/blog/medium-posts/img/022-Defeating-the-Ethereum-DDos-Attacks-001.png)
+![](/blog/img/022-Defeating-the-Ethereum-DDos-Attacks-001.png)
 
 If you’ve ever done this, you will be familiar with a certain set of transactions that take a very long time to process. These transactions happened between blocks 2,286,910 and 2,717,576. They are a pain in my a$$. [See here](https://ethereum.stackexchange.com/questions/9883/why-is-my-node-synchronization-stuck-extremely-slow-at-block-2-306-843/10453).
 
@@ -33,7 +33,7 @@ From this data, we created a heat map showing how frequently certain numbers of 
 
 Light blue represents a small number of transactions in that portion of the chain with the given number of traces. Darker blue represents an increasing number of transactions in that section with the corresponding number of traces. At the top of the chart the dark blue rows represent transactions with anywhere between zero and ten traces. You can see that most transactions, across the entire history of the chain, have few traces. While early blocks seem to have more transactions with two traces, transactions in more recent blocks appear to have a growing number of traces. We think this indicates growing use of smart contracts compared to the eary chain.
 
-![](/blog/medium-posts/img/022-Defeating-the-Ethereum-DDos-Attacks-002.png)
+![](/blog/img/022-Defeating-the-Ethereum-DDos-Attacks-002.png)
 
 We suppose the early blocks with two (and the very early blocks with around 35) traces are experimentation on the early chain when the price of ether was miniscule.
 
@@ -47,17 +47,17 @@ It turns out, the solution to our problem was relatively simple. What we did is 
 
 Luckily, Parity’s RPC provides a function to query a single trace. We use that to decide if the transaction has or does not have a trace at a given location:
 
-![](/blog/medium-posts/img/022-Defeating-the-Ethereum-DDos-Attacks-003.png)
+![](/blog/img/022-Defeating-the-Ethereum-DDos-Attacks-003.png)
 
 For example, calling `hasTraceAt(hash, 4)` would return `true` if the transaction at `hash` had five or more traces (zero-based index).
 
 Next, we needed a way to get the number of traces given a transaction hash without querying the entire trace (again, querying the entire trace is exactly the problem). We wrote the following recursive binary search `getTraceCount` which finds the location where trace `n` exists but trace `n+1` does not. `n` is then returned as the number of traces in the transaction.
 
-![](/blog/medium-posts/img/022-Defeating-the-Ethereum-DDos-Attacks-004.png)
+![](/blog/img/022-Defeating-the-Ethereum-DDos-Attacks-004.png)
 
 From here, it was a simple matter to write the function `isSpam_2016_10` which returns `true` if the transaction has more than 1,500 traces and occurred during the period of interest. Our calling code can now be configured to decide which transactions to fully trace (and/or cache) without having to wait the “forever” amount of time for Parity to return the traces.
 
-![](/blog/medium-posts/img/022-Defeating-the-Ethereum-DDos-Attacks-005.png)
+![](/blog/img/022-Defeating-the-Ethereum-DDos-Attacks-005.png)
 
 The following list of accounts, while not definitive, were found to be in some way involved with the Ddos either through cleaning up process or through initiating them. We sometimes also use this list of accounts to simply skip over transactions if the the particular analysis requires that we do so. In some cases, we scan these accounts, in many cases we don’t.
 

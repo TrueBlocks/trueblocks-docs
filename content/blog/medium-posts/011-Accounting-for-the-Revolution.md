@@ -23,7 +23,7 @@ The easiest way to explain TrueBlocks is to show you some code, and I will do th
 
 TrueBlocks scrapes, parses, pre-digests, and caches the entire Ethereum blockchain in a fully-decentralized manner. We make the claim that our work is so decentralized that we can store the entire chain — fully parsed and heavily optimized — on an external drive. We call this “Blockchain on a Stick™,” and we carry it around with us in our backpack wherever we go.
 
-![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-001.png)
+![](/blog/img/011-Accounting-for-the-Revolution-001.png)
 
 BlockChain on a Stick™ allows us to prove to potential clients that our solution is decentralized. We can, if we wish, disconnect from the Internet, and while TrueBlocks cannot access the latest blocks, it still works perfectly. That’s decentralized.
 
@@ -39,7 +39,7 @@ Another thing TrueBlocks does while storing the data is to store various levels 
 
 TrueBlocks is a C++ library and a series of applications. Below we show you the application code we wrote that gathered the data we needed to do our analysis. Below is the actual code. It’s pretty simple. As with all C++ code, we start with the `main` function:
 
-![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-002.png)
+![](/blog/img/011-Accounting-for-the-Revolution-002.png)
 
 This function first initializes the TrueBlocks library and then decides on the start block and the number of blocks to visit. We chose to start at block 2,912,407 (the closest block to January 1, 2017). The function `getLatestBlock` returns the node’s latest block.
 
@@ -53,7 +53,7 @@ A similar function called `forEveryBlock` visits every block (including empty on
 
 If you’re familiar with C++, you’ve noticed that the bulk of the work is completed in the function `visitBlock`. Here is that function:
 
-![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-003.png)
+![](/blog/img/011-Accounting-for-the-Revolution-003.png)
 
 At each non-empty block, the pointer to the arbitrary data is retrieved. In this case, it’s a pointer to the instance of `CGasTracker` from `main`.
 
@@ -69,7 +69,7 @@ The function then spins through each transaction and prices the gas consumed by 
 
 What effect has the recent price increase had on the Ethereum community as a whole? The chart below shows the amount of Ether and US dollars spent each day during January of 2017:
 
-![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-004.png)
+![](/blog/img/011-Accounting-for-the-Revolution-004.png)
 
 On average, the Ethereum community spent slightly more than 34 ether per day during the month of January. Most of that month, the spot price hovered around $10.00 US per ether, it figures, then, that the average number of US dollars spent per day on gas was about $340 US dollars. Looking at it from the perspective of an average transaction, one can see that this translates to between 7/10 of a penny and 8/10 of a penny per transaction. (Note: we use finneys and cents as opposed to ethers and dollars because the numbers are too small otherwise. [A finney is 1/1000 of an ether.](https://medium.com/@tjayrush/what-the-f-is-a-finney-8e727f29e77f#.u0qs5u9iq))
 
@@ -77,7 +77,7 @@ This seemed low, but we checked it against EtherScan and [this posting from Bok]
 
 How about February?
 
-![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-005.png)
+![](/blog/img/011-Accounting-for-the-Revolution-005.png)
 
 Three things are changing here:
 
@@ -91,13 +91,13 @@ One may see the price in US dollars increasing per transaction in the `cents` co
 
 So what happened in March? Obviously, the expectation is that we will see an even more profound effect on the per transaction cost given the skyrocketing price of ether this month (the last day we analyzed was Saturday, March 11th).
 
-![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-006.png)
+![](/blog/img/011-Accounting-for-the-Revolution-006.png)
 
 Here we see an even more marked rise in the ‘penny’ price of a transaction. At the start of January, a transaction cost on average about 1/2 of one penny per transactions. Today, the price per transaction (in US dollars) is three times higher. The average price per transaction in finneys rises over the same time period, but not by three times over. This makes sense given the significant increase in the price of ether.
 
 #### Let’s Look at a Chart
 
-![](/blog/medium-posts/img/011-Accounting-for-the-Revolution-007.png)
+![](/blog/img/011-Accounting-for-the-Revolution-007.png)
 
 I think you can see from the chart that through the month of January and into mid-February the price of a transaction in both ether (finneys) and dollars (cents) tracked each other quite closely.
 

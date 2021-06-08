@@ -2,6 +2,7 @@
 title: "Recipe: Running Against Multiple Rpc Endpoints"
 description: ""
 lead: ""
+tags: ['recipes']
 date: 2021-04-21T17:13:04-04:00
 lastmod: 2021-04-21T17:13:04-04:00
 draft: false
@@ -10,7 +11,7 @@ images: ["running-against-mutliple-rpc-endpoints.jpg"]
 contributors: ["Thomas Jay Rush"]
 menu: 
   blog:
-    parent: ""
+    parent: "recipes"
 weight: 50
 toc: true
 

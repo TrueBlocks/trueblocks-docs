@@ -9,7 +9,7 @@ keywords: []
 
 I recently wrote a piece discussing how I [defeated the Ethereum DDos attack](https://medium.com/@tjayrush/defeating-the-ethereum-ddos-attacks-d3d773a9a063) using TrueBlocks. Doing this was important because it freed me from the pain of a slow RPC. Speed allows me to analyze the Ethereum data iteratively. I can find more interesting stuff.
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-001.png)
+![](/blog/img/023-The-Trace-Data-Problem-001.png)
 
 The Ethereum dataset is big (and growing). I want to be able to scan through the entire thing. I want to be able to do this on a laptop. This last fact makes it impossible for me to create a separate, independent copy of the data. If I want to do data analysis, I have to do it against the node’s data directly.
 
@@ -23,11 +23,11 @@ I scanned each of the first 5,000,000 blocks. At each block, I scanned all the t
 
 I scanned groups of 50,000 blocks at a time and incremented a trace counter each time the transaction had that number of traces. Below is the top-left corner of the data. Groups of blocks go across the top of the table. The number of transactions with the given number of traces appears in each cell. For example, in the first 50,000 block group, there were 1,871 transactions all of which created a single trace. Between blocks 150,000 and 200,000, there were 108 transactions that created exactly 11 traces (for a total of 1,980 traces — this will become important later).
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-002.png)
+![](/blog/img/023-The-Trace-Data-Problem-002.png)
 
 Here’s the top-right portion of the data along with totals for the number of transactions with that many traces and the corresponding percentage of all transactions this represents.
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-003.png)
+![](/blog/img/023-The-Trace-Data-Problem-003.png)
 
 As you can see, almost every transaction ever cast against the Ethereum blockchain created a single trace. (Transactions themselves generate one trace which explains why there are no zero-trace transactions.) 97.27% of all transactions either sent ether from one account to another or transacted against a smart contract but did not do anything further.
 
@@ -35,19 +35,19 @@ Every transaction cast against the chain from the outside is an external transac
 
 There is one group of transactions that created more (many more) than five traces. These are the 101,637 transactions (0.07%) DDos transactions from the Fall of 2016. Each of these transactions has more than 250 traces. We will look at these transactions next. First, let’s look at a 3-D picture:
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-004.png)
+![](/blog/img/023-The-Trace-Data-Problem-004.png)
 
 You can see the complete dominance of the one-trace transactions in red. But notice the two small red hills at the very rear of the chart. (The further back one looks on this chart, the more traces appeared in those transactions — the further right one looks, the higher the block number.) Also, notice the coloration of the ‘great plains.’ One can see the beginnings of a heat-map in the patchy colors in the plains (we will revisit this a bit later).
 
 Let’s spin the view around and look at it from behind:
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-005.png)
+![](/blog/img/023-The-Trace-Data-Problem-005.png)
 
 Here, you can see the same data from the other side. The dominance of the one-trace transactions (in red) is apparent here as well. And, also, you can start to see that as the chain matures, we are seeing a growing number of transactions with multiple traces.
 
 What happens if we remove the one-trace transactions so we can see more clearly? What do we see then?
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-006.png)
+![](/blog/img/023-The-Trace-Data-Problem-006.png)
 
 In the above chart, we’ve removed one-trace transactions. Every transaction here created at least one _internal transaction_ or _message call_. We are now starting to see the problem that I call **the Trace Data Problem**.
 
@@ -59,13 +59,13 @@ A transaction with a single trace generates that number of traces. A transaction
 
 Let’s look at a chart showing the number of traces per 50,000 block group as opposed to the number of transactions per group.
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-007.png)
+![](/blog/img/023-The-Trace-Data-Problem-007.png)
 
 We can see here why scanning the Ethereum blockchain — especially when one is looking at traces — is so onerous. To get through just 100,000 transactions, one must scan more than 138 million traces. This is why the RPC is so slow. (I suspect that this is also why it takes so long to sync the blockchain.)
 
 Let’s look at some numbers:
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-008.png)
+![](/blog/img/023-The-Trace-Data-Problem-008.png)
 
 In the first 5,000,000 blocks, there have been 305,605,032 traces created. Of those 138,665,661 (45.37%) were generated by the 101,637 transactions that were part of the DDos and its solution. This is an average of more than 3,000 traces per DDos-related transaction. The entire rest of the chain created 166,939,371 traces spread across 149,758,364 transactions — an average of slightly more than 1.1 trace per transaction.
 
@@ -77,7 +77,7 @@ In our next blog post, we will ignore both the Ddos attacks and the single-trace
 
 Do you see anything interesting? We do. We’ll write about that in our next installment.
 
-![](/blog/medium-posts/img/023-The-Trace-Data-Problem-009.png)
+![](/blog/img/023-The-Trace-Data-Problem-009.png)
 
 #### Support Our Work
 

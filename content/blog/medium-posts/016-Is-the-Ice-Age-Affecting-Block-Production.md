@@ -13,7 +13,7 @@ This is just one of 100’s of questions we have about what is happening on the 
 
 Here’s the help screen from `whenBlock`:
 
-![](/blog/medium-posts/img/016-Is-the-Ice-Age-Affecting-Block-Production-001.png)
+![](/blog/img/016-Is-the-Ice-Age-Affecting-Block-Production-001.png)
 
 `WhenBlock` allows you to find the block number given a particular date or, conversely, a date given a particular block number. It’s very straight-forward (and was simple to write), but it’s surprisingly useful. We use it a lot when we’re syncing a node. There is nothing worse than waiting for **Parity** or **Geth** to sync. They only report the number of the current block. This has absolutely no meaning and is astonishingly frustrating — if you don’t believe me, take a look at the Ethereum Stack Exchange website which has a constant stream of questions asking how long the sync will take.
 
@@ -23,7 +23,7 @@ If you’re waiting for the node to sync, you can type `whenBlock 2400000` on th
 
 telling you exactly how far along the sync is. Knowing that the sync is stuck on the October 2016 DDOS (which it almost always is) makes waiting for it to finish just a little bit more palatable.
 
-![](/blog/medium-posts/img/016-Is-the-Ice-Age-Affecting-Block-Production-002.png)
+![](/blog/img/016-Is-the-Ice-Age-Affecting-Block-Production-002.png)
 
 `WhenBlock` comes with a useful feature that lists so-called _special_ blocks. By default the _special_ blocks are those shown to the left, but you may add your own _special_ blocks to a configuration file. Perhaps you wish to keep track of when you deployed your amazing new ERC20 tokens. The `--verbose` `—-list` option reports on other interesting blocks, such as the deployment dates of prominent token launches.
 
@@ -33,11 +33,11 @@ The whole point of TrueBlocks is to allow end users to answer questions about th
 
 We used `whenBlock` to create a list of the block heights at the end of each week since the inception of the Ethereum blockchain. Here’s the data:
 
-![](/blog/medium-posts/img/016-Is-the-Ice-Age-Affecting-Block-Production-003.png)
+![](/blog/img/016-Is-the-Ice-Age-Affecting-Block-Production-003.png)
 
 Our goal was to see how the difficulty bomb was affecting the number of blocks created each week. Here’s the same data displayed in a pretty blue, orange, and green chart:
 
-![](/blog/medium-posts/img/016-Is-the-Ice-Age-Affecting-Block-Production-004.png)
+![](/blog/img/016-Is-the-Ice-Age-Affecting-Block-Production-004.png)
 
 A number of things become fairly obviously from the chart:
 

@@ -11,7 +11,7 @@ Apparently there are two types of software engineers in the world. One type writ
 
 The other type of software engineer seems to be able to write code once, and because it was carefully planned and carefully implemented, it runs correctly forever. Write-release-done.
 
-![](/blog/medium-posts/img/002-Smart-Contracts-are-Immutable-Thats-Amazing-and-It-Sucks-001.png)
+![](/blog/img/002-Smart-Contracts-are-Immutable-Thats-Amazing-and-It-Sucks-001.png)
 
 I should probably not admit this, but I am not this second type of programmer. At least, I didn’t used to be. Now that I’ve started learning the smart contract programming language (Solidity), I think I’m going to be forced to change my methodology.
 
@@ -29,7 +29,7 @@ The address of the newly deployed smart contract is created by hashing together 
 
 Because the nonce changes with each transaction (a contract deployment is a transaction) the resulting Ethereum addresses are unique. In fact, the way the hash function works, each new address is wildly different than the one before it. This is why I say that the smart contract runs forever and cannot be changed. Even if you wanted to (and I almost always do, given the way I write software), there is simply no way to re-deploy a contract to the same address.
 
-![](/blog/medium-posts/img/002-Smart-Contracts-are-Immutable-Thats-Amazing-and-It-Sucks-002.jpg)
+![](/blog/img/002-Smart-Contracts-are-Immutable-Thats-Amazing-and-It-Sucks-002.jpg)
 
 If the Internet worked the way Ethereum does, and I changed my website [http://ethrilleum.com](http://ethrilleum.com), the re-deployment would move my website to a new address. Who knows, perhaps [http://no-one-will-ever-find-me-again.com.](http://no-one-will-ever-find-me.com.)
 

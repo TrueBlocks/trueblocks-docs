@@ -19,7 +19,7 @@ It is important to note, before we begin, that our analysis is a “work-in-prog
 
 In the meantime, on with the analysis…
 
-![](/blog/medium-posts/img/008-A-Eulogy-for-The-DAO-Part-I-001.png)
+![](/blog/img/008-A-Eulogy-for-The-DAO-Part-I-001.png)
 
 #### Four Periods of “The DAO”
 
@@ -39,8 +39,8 @@ In the coming weeks we will be expanding on and completing this three-part serie
 
 To be honest we pushed this first article out a bit early because we wanted to finish it before DevCon2 in Shanghai. (We’re going!) If you wish to talk with us about our project, please [contact us](http://doa.trueblocks.io/usContact). In the meantime, here are two screen shots of coming attractions. We are busy analyzing and writing about each individual time period. We’ll have it out to you as soon as we can.
 
-![](/blog/medium-posts/img/008-A-Eulogy-for-The-DAO-Part-I-002.png)
-![](/blog/medium-posts/img/008-A-Eulogy-for-The-DAO-Part-I-003.png)
+![](/blog/img/008-A-Eulogy-for-The-DAO-Part-I-002.png)
+![](/blog/img/008-A-Eulogy-for-The-DAO-Part-I-003.png)
 
 #### Conclusion
 

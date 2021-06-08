@@ -9,7 +9,7 @@ keywords: []
 
 “The DAO” has been in existence for about a week, and besides the obvious pending decision concerning [slock.it’s proposal for the USN](http://download.slock.it/public/DAO/Proposal1.pdf), another major decision looms over the group. This decision will test the ability of, perhaps, as many as 10,000 people to come together, anonymously, and make a long-lasting decision. Let’s just say I’m a bit skeptical.
 
-![](/blog/medium-posts/img/001-The-DAOs-First-Big-Decision-001.png)
+![](/blog/img/001-The-DAOs-First-Big-Decision-001.png)
 
 The locus of discussion on all issues related to “The DAO” (which is not its official name) is [http://forum.daohub.org,](http://daohub.org,) which is the official-but-not-official home of “The DAO”, an organization-that-is-not-quite-an-organization.
 
@@ -25,7 +25,7 @@ The question I have is how this group will arrive at consensus. Let’s see. Hmm
 
 There have been suggestions that a smart contract should be written, and it be submitted as a proposal to the DAO in order for the group to vote on a name and subsequently design a logo. Perhaps that’s how it should work. Other‘s have suggested an online poll (while still others have pointed out that an online poll might get spammed). Others have hinted that someone should grab the DAO by the horns, declare the discussion over, pick a name, change the website, and start working on the logo. I’m not sure how it will work itself out, but I am very interested in the spectacle.
 
-![](/blog/medium-posts/img/001-The-DAOs-First-Big-Decision-002.png)
+![](/blog/img/001-The-DAOs-First-Big-Decision-002.png)
 
 Here’s a list of some of the issues that I think the DAO will be wrestling with over the next few months. I present them in no particular order:
 
