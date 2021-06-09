@@ -5,7 +5,7 @@ date: '2020-02-11T17:08:44.489Z'
 tags: ['articles']
 menu: 
   blog:
-    parent: "articles"
+    parent: "trueblocks"
 draft: false
 categories: []
 keywords: []

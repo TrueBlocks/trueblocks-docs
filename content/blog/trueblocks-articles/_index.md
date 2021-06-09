@@ -1,12 +1,12 @@
 ---
-title : "Recipes"
-description: "TrueBlocks recipes"
+title : "Articles"
+description: "TrueBlocks Articles"
 lead: ""
 date: 2020-10-06T08:48:45+00:00
 lastmod: .lastmod
 menu: 
   blog:
-    parent: "recipes"
+    parent: "trueblocks"
 draft: false
 images: []
 ---
