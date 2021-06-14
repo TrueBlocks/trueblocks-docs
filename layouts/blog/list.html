@@ -1,7 +1,13 @@
 {{ define "main" }}
 <div class="row justify-content-center">
   <div class="col-md-12 col-lg-10 col-xl-8">
-    <article>
+	<div class="row flex-xl-nowrap">
+		<div class="col-lg-5 col-xl-4 docs-sidebar">
+			<nav class="docs-links" aria-label="Main navigation">
+				{{ partial "sidebar/blog-menu.html" . }}
+			</nav>
+		</div>
+<article>
       <h1 class="text-center">{{ .Title }}</h1>
       <div class="text-center">{{ .Content }}</div>
 			<div class="card-list">
