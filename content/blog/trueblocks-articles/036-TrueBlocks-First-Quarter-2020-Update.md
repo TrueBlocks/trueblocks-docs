@@ -4,9 +4,10 @@ lead: What have we been up to in 2020
 date: '2020-02-11T17:08:44.489Z'
 categories:
 - Trueblocks
-tags: ['articles']
+tags: ['trueblocks']
 menu: 
-  blog
+  blog:
+    parent: "trueblocks"
 draft: false
 categories: []
 keywords: []

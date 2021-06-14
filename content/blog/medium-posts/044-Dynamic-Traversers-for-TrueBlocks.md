@@ -2,6 +2,13 @@
 title: Dynamic Traversers for TrueBlocks
 lead: Customized scraping of the index
 date: '2020-12-09T12:29:07.973Z'
+lastmod: .lastmod
+categories:
+- Trueblocks
+tags: ['trueblocks']
+menu:
+  blog:
+    parent: "trueblocks"
 draft: false
 categories: []
 keywords: []
