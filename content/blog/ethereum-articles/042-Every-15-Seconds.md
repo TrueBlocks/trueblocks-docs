@@ -2,10 +2,11 @@
 title: Every 15 Seconds…
 lead: Something special happens
 date: '2020-12-09T09:43:00.250Z'
+categories:
+- Ethereum
 tags: ['ethereum']
 menu: 
-  blog:
-    parent: "ethereum"
+  blog
 draft: false
 categories: []
 keywords: []

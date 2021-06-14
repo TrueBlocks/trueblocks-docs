@@ -2,10 +2,11 @@
 title: 'TrueBlocks: First Quarter 2020 Update'
 lead: What have we been up to in 2020
 date: '2020-02-11T17:08:44.489Z'
+categories:
+- Trueblocks
 tags: ['articles']
 menu: 
-  blog:
-    parent: "trueblocks"
+  blog
 draft: false
 categories: []
 keywords: []

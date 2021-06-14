@@ -4,10 +4,11 @@ description: "How TrueBlocks indexes the Ethereum blockchain."
 lead: "How TrueBlocks indexes the Ethereum blockchain"
 date: 2021-04-05T19:21:58-03:00
 lastmod: 2021-04-05T19:21:58-03:00
+categories:
+- explainers
 tags: ['explainers']
 menu: 
   blog:
-    parent: "explainers"
 draft: false
 weight: 150
 images: []
