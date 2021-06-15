@@ -3,7 +3,9 @@ title: Reading Byzantium’s Tea Leaves
 lead: Louis Rukeyser looks at the blockchain
 date: '2017-10-02T01:43:50.040Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

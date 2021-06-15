@@ -3,7 +3,9 @@ title: 'Ethereum’s Issuance: uncleReward'
 lead: Second in a series about issuance
 date: '2020-08-15T12:13:31.684Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 
@@ -121,32 +123,32 @@ Or, if you’d rather not expose yourself to scrutiny, and you’d still like to
 
 #### Also, Read
 
-*   The Best [Crypto Trading Bot](https://medium.com/coinmonks/crypto-trading-bot-c2ffce8acb2a)
-*   [Crypto Copy Trading Platforms](https://medium.com/coinmonks/top-10-crypto-copy-trading-platforms-for-beginners-d0c37c7d698c)
-*   The Best [Crypto Tax Software](https://medium.com/coinmonks/best-crypto-tax-tool-for-my-money-72d4b430816b)
-*   [Best Crypto Trading Platforms](https://medium.com/coinmonks/the-best-crypto-trading-platforms-in-2020-the-definitive-guide-updated-c72f8b874555)
-*   Best [Crypto Lending Platforms](https://medium.com/coinmonks/top-5-crypto-lending-platforms-in-2020-that-you-need-to-know-a1b675cec3fa)
-*   [Best Blockchain Analysis Tools](https://bitquery.io/blog/best-blockchain-analysis-tools-and-software)
-*   [Crypto arbitrage](https://medium.com/coinmonks/crypto-arbitrage-guide-how-to-make-money-as-a-beginner-62bfe5c868f6) guide: How to make money as a beginner
-*   Best [Crypto Charting Tool](https://medium.com/coinmonks/what-are-the-best-charting-platforms-for-cryptocurrency-trading-85aade584d80)
-*   [Ledger vs Trezor](https://medium.com/coinmonks/ledger-vs-trezor-best-hardware-wallet-to-secure-cryptocurrency-22c7a3fd391e)
-*   What are the [best books to learn about Bitcoin](https://medium.com/coinmonks/what-are-the-best-books-to-learn-bitcoin-409aeb9aff4b)?
-*   [3Commas Review](https://medium.com/coinmonks/3commas-review-an-excellent-crypto-trading-bot-2020-1313a58bec92)
-*   [AAX Exchange Review](https://medium.com/coinmonks/aax-exchange-review-2021-67c5ea09330c) | Referral Code, Trading Fee, Pros and Cons
-*   [Deribit Review](https://medium.com/coinmonks/deribit-review-options-fees-apis-and-testnet-2ca16c4bbdb2) | Options, Fees, APIs and Testnet
-*   [FTX Crypto Exchange Review](https://medium.com/coinmonks/ftx-crypto-exchange-review-53664ac1198f)
-*   [NGRAVE ZERO review](https://medium.com/coinmonks/ngrave-zero-review-c465cf8307fc)
-*   [Bybit Exchange Review](https://medium.com/coinmonks/bybit-exchange-review-dbd570019b71)
-*   [3Commas vs Cryptohopper](https://medium.com/coinmonks/cryptohopper-vs-3commas-vs-shrimpy-a2c16095b8fe)
-*   The Best Bitcoin [Hardware wallet](https://medium.com/coinmonks/the-best-cryptocurrency-hardware-wallets-of-2020-e28b1c124069?source=friends_link&sk=324dd9ff8556ab578d71e7ad7658ad7c)
-*   Best [monero wallet](https://blog.coincodecap.com/best-monero-wallets)
-*   [ledger nano s vs x](https://blog.coincodecap.com/ledger-nano-s-vs-x)
-*   [Bitsgap vs 3Commas vs Quadency](https://blog.coincodecap.com/bitsgap-3commas-quadency)
-*   [Ledger Nano S vs Trezor one vs Trezor T vs Ledger Nano X](https://blog.coincodecap.com/ledger-nano-s-vs-trezor-one-ledger-nano-x-trezor-t)
-*   [BlockFi vs Celsius](https://medium.com/coinmonks/blockfi-vs-celsius-vs-hodlnaut-8a1cc8c26630) vs Hodlnaut
-*   [Bitsgap review](https://medium.com/coinmonks/bitsgap-review-a-crypto-trading-bot-that-makes-easy-money-a5d88a336df2) — A Crypto Trading Bot That Makes Easy Money
-*   [Quadency Review](https://medium.com/coinmonks/quadency-review-a-crypto-trading-automation-platform-3068eaa374e1)\- A Crypto Trading Bot Made For Professionals
-*   [PrimeXBT Review](https://medium.com/coinmonks/primexbt-review-88e0815be858) | Leverage Trading, Fee and Covesting
-*   [Ellipal Titan Review](https://medium.com/coinmonks/ellipal-titan-review-85e9071dd029)
-*   [SecuX Stone Review](https://blog.coincodecap.com/secux-stone-hardware-wallet-review)
-*   [BlockFi Review](https://medium.com/coinmonks/blockfi-review-53096053c097) | Earn up to 8.6% interests on your Crypto
+* The Best [Crypto Trading Bot](https://medium.com/coinmonks/crypto-trading-bot-c2ffce8acb2a)
+* [Crypto Copy Trading Platforms](https://medium.com/coinmonks/top-10-crypto-copy-trading-platforms-for-beginners-d0c37c7d698c)
+* The Best [Crypto Tax Software](https://medium.com/coinmonks/best-crypto-tax-tool-for-my-money-72d4b430816b)
+* [Best Crypto Trading Platforms](https://medium.com/coinmonks/the-best-crypto-trading-platforms-in-2020-the-definitive-guide-updated-c72f8b874555)
+* Best [Crypto Lending Platforms](https://medium.com/coinmonks/top-5-crypto-lending-platforms-in-2020-that-you-need-to-know-a1b675cec3fa)
+* [Best Blockchain Analysis Tools](https://bitquery.io/blog/best-blockchain-analysis-tools-and-software)
+* [Crypto arbitrage](https://medium.com/coinmonks/crypto-arbitrage-guide-how-to-make-money-as-a-beginner-62bfe5c868f6) guide: How to make money as a beginner
+* Best [Crypto Charting Tool](https://medium.com/coinmonks/what-are-the-best-charting-platforms-for-cryptocurrency-trading-85aade584d80)
+* [Ledger vs Trezor](https://medium.com/coinmonks/ledger-vs-trezor-best-hardware-wallet-to-secure-cryptocurrency-22c7a3fd391e)
+* What are the [best books to learn about Bitcoin](https://medium.com/coinmonks/what-are-the-best-books-to-learn-bitcoin-409aeb9aff4b)?
+* [3Commas Review](https://medium.com/coinmonks/3commas-review-an-excellent-crypto-trading-bot-2020-1313a58bec92)
+* [AAX Exchange Review](https://medium.com/coinmonks/aax-exchange-review-2021-67c5ea09330c) | Referral Code, Trading Fee, Pros and Cons
+* [Deribit Review](https://medium.com/coinmonks/deribit-review-options-fees-apis-and-testnet-2ca16c4bbdb2) | Options, Fees, APIs and Testnet
+* [FTX Crypto Exchange Review](https://medium.com/coinmonks/ftx-crypto-exchange-review-53664ac1198f)
+* [NGRAVE ZERO review](https://medium.com/coinmonks/ngrave-zero-review-c465cf8307fc)
+* [Bybit Exchange Review](https://medium.com/coinmonks/bybit-exchange-review-dbd570019b71)
+* [3Commas vs Cryptohopper](https://medium.com/coinmonks/cryptohopper-vs-3commas-vs-shrimpy-a2c16095b8fe)
+* The Best Bitcoin [Hardware wallet](https://medium.com/coinmonks/the-best-cryptocurrency-hardware-wallets-of-2020-e28b1c124069?source=friends_link&sk=324dd9ff8556ab578d71e7ad7658ad7c)
+* Best [monero wallet](https://blog.coincodecap.com/best-monero-wallets)
+* [ledger nano s vs x](https://blog.coincodecap.com/ledger-nano-s-vs-x)
+* [Bitsgap vs 3Commas vs Quadency](https://blog.coincodecap.com/bitsgap-3commas-quadency)
+* [Ledger Nano S vs Trezor one vs Trezor T vs Ledger Nano X](https://blog.coincodecap.com/ledger-nano-s-vs-trezor-one-ledger-nano-x-trezor-t)
+* [BlockFi vs Celsius](https://medium.com/coinmonks/blockfi-vs-celsius-vs-hodlnaut-8a1cc8c26630) vs Hodlnaut
+* [Bitsgap review](https://medium.com/coinmonks/bitsgap-review-a-crypto-trading-bot-that-makes-easy-money-a5d88a336df2) — A Crypto Trading Bot That Makes Easy Money
+* [Quadency Review](https://medium.com/coinmonks/quadency-review-a-crypto-trading-automation-platform-3068eaa374e1)\- A Crypto Trading Bot Made For Professionals
+* [PrimeXBT Review](https://medium.com/coinmonks/primexbt-review-88e0815be858) | Leverage Trading, Fee and Covesting
+* [Ellipal Titan Review](https://medium.com/coinmonks/ellipal-titan-review-85e9071dd029)
+* [SecuX Stone Review](https://blog.coincodecap.com/secux-stone-hardware-wallet-review)
+* [BlockFi Review](https://medium.com/coinmonks/blockfi-review-53096053c097) | Earn up to 8.6% interests on your Crypto

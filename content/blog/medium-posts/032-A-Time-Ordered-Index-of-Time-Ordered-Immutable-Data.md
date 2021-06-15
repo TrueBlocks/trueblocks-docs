@@ -3,7 +3,9 @@ title: A Time Ordered Index of Time Ordered Immutable Data
 lead: Adventures in indexing the Ethereum blockchain
 date: '2019-07-17T18:13:05.996Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 

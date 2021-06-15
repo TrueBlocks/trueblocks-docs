@@ -3,7 +3,9 @@ title: It’s Not That Difficult
 lead: All about the Ethereum difficulty calculation
 date: '2019-11-24T07:10:44.272Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 
@@ -31,7 +33,7 @@ It’s possible, as I do below, to separate these two components. This makes it 
 
 As is usually true when dealing with data, we start by acquiring data. We used our own software library, TrueBlocks, to write the following code:
 
-#include “etherlib.h”  
+# include “etherlib.h”  
 int main(int argc, char \*argv\[\]) {  
     init\_etherlib();  
     for (int i = 0 ; i < getLatestBlock() ; i++) {  

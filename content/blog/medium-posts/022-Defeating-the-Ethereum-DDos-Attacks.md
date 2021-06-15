@@ -3,7 +3,9 @@ title: Defeating the Ethereum DDos Attacks
 lead: Ignoring things that can be ignored
 date: '2018-02-12T21:21:42.135Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 

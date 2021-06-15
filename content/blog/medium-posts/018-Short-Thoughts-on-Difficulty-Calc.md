@@ -3,7 +3,9 @@ title: Short Thoughts on Difficulty Calc
 lead: A short take
 date: '2017-10-01T17:29:45.828Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

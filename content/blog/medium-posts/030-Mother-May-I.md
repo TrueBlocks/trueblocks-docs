@@ -3,7 +3,9 @@ title: Mother May I?
 lead: A new way to think about data APIs
 date: '2019-06-24T19:40:19.363Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 

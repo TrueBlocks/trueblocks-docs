@@ -3,7 +3,9 @@ title: Mantras for Decentralized Open Data
 lead: Keep in mind what matters
 date: '2018-05-07T19:21:58.751Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 
@@ -27,19 +29,19 @@ These are my thoughts in no particular order, nor are they very well thought out
 
 #### Mantras for Decentralized Blockchain Data
 
-1.  All the data, for all the people, all of the time. None of the data if a user doesn’t need it.
-2.  Use only consented-to, provably-true data…
-3.  If you can’t do (3), use only data derived from consented-to, provably-true data…
-4.  If you can’t do (4), force the data provider to prove themselves.
-5.  Embrace the paradigm shift. The server is local. There is no server.
-6.  Break out of the browser, but stay behind the node. There’s a big wide desktop out there.
-7.  It’s easier to scale from decentralized to centralized than from centralized to decentralized.
-8.  Most users care only about their own accounts and a few smart contracts. Some users, care about everything. Every user cares about accounting.
-9.  The Ethereum node can be improved, and should be.
-10.  Immutable data has interesting properties, especially when tiny parts of it are stored by many people on content-addressable file systems.
-11.  Hashes are pointers to data. So are filenames. Pointers are good.
-12.  There will be a broad range of solutions because there are a broad range of needs.
-13.  …
+1. All the data, for all the people, all of the time. None of the data if a user doesn’t need it.
+2. Use only consented-to, provably-true data…
+3. If you can’t do (3), use only data derived from consented-to, provably-true data…
+4. If you can’t do (4), force the data provider to prove themselves.
+5. Embrace the paradigm shift. The server is local. There is no server.
+6. Break out of the browser, but stay behind the node. There’s a big wide desktop out there.
+7. It’s easier to scale from decentralized to centralized than from centralized to decentralized.
+8. Most users care only about their own accounts and a few smart contracts. Some users, care about everything. Every user cares about accounting.
+9. The Ethereum node can be improved, and should be.
+10. Immutable data has interesting properties, especially when tiny parts of it are stored by many people on content-addressable file systems.
+11. Hashes are pointers to data. So are filenames. Pointers are good.
+12. There will be a broad range of solutions because there are a broad range of needs.
+13. …
 
 #### Screech….
 

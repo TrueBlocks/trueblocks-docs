@@ -3,7 +3,9 @@ title: Be Careful Little Brain What You Code
 lead: Never tell them who you are
 date: '2017-08-03T21:49:06.904Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

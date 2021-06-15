@@ -3,7 +3,9 @@ title: 'Ethereum’s Issuance: minerReward'
 lead: First in a series about issuance
 date: '2020-08-15T11:44:23.336Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

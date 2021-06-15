@@ -3,7 +3,9 @@ title: A Short Take on Decentralization
 lead: How much compromise is too much?
 date: '2018-08-13T16:48:42.759Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

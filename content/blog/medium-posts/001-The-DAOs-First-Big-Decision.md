@@ -7,7 +7,6 @@ categories:
 - Ethereum
 tags: ['ethereum']
 draft: false
-categories: []
 keywords: []
 ---
 
@@ -33,10 +32,10 @@ There have been suggestions that a smart contract should be written, and it be s
 
 Here’s a list of some of the issues that I think the DAO will be wrestling with over the next few months. I present them in no particular order:
 
-1.  **Who’s In Charge.** There is no-one in charge. Of course, this is by design, but I’m anxious to see how this effects the group’s ability to come to a conclusion. How will the group help itself to move forward?
-2.  **Noise-to-Information Ratio.** The noise-to-information ratio on the forums is very high. Trying to extract a clear idea from such a large and diverse group of people, each with their own very well reasoned arguments, is difficult. Perhaps one of the early proposals to the DAO should be the development of a discussion-based software system tailored to DAOs. If the DAO outsources the creation of this software, perhaps it could later be sold or rented to other DAO’s as an income stream. The system should reflect each participant’s current DAO token holdings, but allow for both per-token weighted and per-participant weighted voting. Note: this is not my idea, but an idea put forward on one of the forums. Sorry for the lack of attribution.
-3.  **Is the Crowd Actually Wise?** It is not clear to me that the crowd will actually make good decisions. Even if the group does arrive at consensus, who’s to say that their choice will be a good one. Is the wisdom of the crowd — especially the wisdom of only 1,000 people — really the best? There is an obvious danger of group think, which in my experience almost always leads to bad decisions.
-4.  **Antagonism.** In any interaction between people those annoying human emotions seem to arise. While the discussions I’ve seen on the forums have been very congenial and polite, there’s always the danger of antagonism. There are definitely some posters who are “trolling” others. The above mentioned DAO-centric discussion system might benefit from being able to “vote trolls off the island.”
+1. **Who’s In Charge.** There is no-one in charge. Of course, this is by design, but I’m anxious to see how this effects the group’s ability to come to a conclusion. How will the group help itself to move forward?
+2. **Noise-to-Information Ratio.** The noise-to-information ratio on the forums is very high. Trying to extract a clear idea from such a large and diverse group of people, each with their own very well reasoned arguments, is difficult. Perhaps one of the early proposals to the DAO should be the development of a discussion-based software system tailored to DAOs. If the DAO outsources the creation of this software, perhaps it could later be sold or rented to other DAO’s as an income stream. The system should reflect each participant’s current DAO token holdings, but allow for both per-token weighted and per-participant weighted voting. Note: this is not my idea, but an idea put forward on one of the forums. Sorry for the lack of attribution.
+3. **Is the Crowd Actually Wise?** It is not clear to me that the crowd will actually make good decisions. Even if the group does arrive at consensus, who’s to say that their choice will be a good one. Is the wisdom of the crowd — especially the wisdom of only 1,000 people — really the best? There is an obvious danger of group think, which in my experience almost always leads to bad decisions.
+4. **Antagonism.** In any interaction between people those annoying human emotions seem to arise. While the discussions I’ve seen on the forums have been very congenial and polite, there’s always the danger of antagonism. There are definitely some posters who are “trolling” others. The above mentioned DAO-centric discussion system might benefit from being able to “vote trolls off the island.”
 
 These are just a few of the issues I see. I’m sure there will be many others. The biggest problem I see, though, is that the inevitable disappointment people will feel if their position is not accepted. Maybe this causes people to split from the DAO. Maybe it cause people to become more open minded and learn how to better defend their positions. Maybe it leads to civil war.
 

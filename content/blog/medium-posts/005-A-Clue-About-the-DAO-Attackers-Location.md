@@ -4,7 +4,9 @@ lead: Where in the world is he/she?
   This first chart shows those transactions distributed by…
 date: '2016-06-21T03:09:42.095Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

@@ -3,7 +3,9 @@ title: How Accurate is EtherScan?
 lead: WTF?
 date: '2020-06-12T03:59:52.871Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 
@@ -47,11 +49,11 @@ To try to solve this, TrueBlocks builds an index of every appearance we can find
 
 EtherScan provides [five account-related APIs](https://etherscan.io/apis#accounts) which we use in our testing:
 
-*   [Get a list of ‘Normal’ Transactions By Address](http://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken)
-*   [Get a list of ‘Internal’ Transactions by Address](http://api.etherscan.io/api?module=account&action=txlistinternal&address=0x2c1ba59d6f58433fb1eaee7d20b26ed83bda51a3&startblock=0&endblock=2702578&sort=asc&apikey=YourApiKeyToken)
-*   [Get a list of “ERC20 — Token Transfer Events” by Address](http://api.etherscan.io/api?module=account&action=tokentx&address=0x4e83362442b8d1bec281594cea3050c8eb01311c&startblock=0&endblock=999999999&sort=asc&apikey=YourApiKeyToken)
-*   [Get a list of “ERC721 — Token Transfer Events” by Address](http://api.etherscan.io/api?module=account&action=tokennfttx&address=0x6975be450864c02b4613023c2152ee0743572325&startblock=0&endblock=999999999&sort=asc&apikey=YourApiKeyToken)
-*   [Get \[a\] list of Blocks Mined by Address](https://api.etherscan.io/api?module=account&action=getminedblocks&address=0x9dd134d14d1e65f84b706d6f205cd5b1cd03a46b&blocktype=blocks&apikey=YourApiKeyToken)
+* [Get a list of ‘Normal’ Transactions By Address](http://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken)
+* [Get a list of ‘Internal’ Transactions by Address](http://api.etherscan.io/api?module=account&action=txlistinternal&address=0x2c1ba59d6f58433fb1eaee7d20b26ed83bda51a3&startblock=0&endblock=2702578&sort=asc&apikey=YourApiKeyToken)
+* [Get a list of “ERC20 — Token Transfer Events” by Address](http://api.etherscan.io/api?module=account&action=tokentx&address=0x4e83362442b8d1bec281594cea3050c8eb01311c&startblock=0&endblock=999999999&sort=asc&apikey=YourApiKeyToken)
+* [Get a list of “ERC721 — Token Transfer Events” by Address](http://api.etherscan.io/api?module=account&action=tokennfttx&address=0x6975be450864c02b4613023c2152ee0743572325&startblock=0&endblock=999999999&sort=asc&apikey=YourApiKeyToken)
+* [Get \[a\] list of Blocks Mined by Address](https://api.etherscan.io/api?module=account&action=getminedblocks&address=0x9dd134d14d1e65f84b706d6f205cd5b1cd03a46b&blocktype=blocks&apikey=YourApiKeyToken)
 
 Quite some time ago we built a tool called `ethslurp` that makes use of these endpoints:
 
@@ -101,11 +103,11 @@ Since we first published this article, a few people have asked us to further ana
 
 As a quick summary, the missing transactions appear to be of at least six types:
 
-*   `Input` data of both errored and completed transactions
-*   Log `topics` of both errored and completed transactions
-*   Log `data` of of both errored and completed transactions
-*   Output data of deeply embedded traces
-*   Uncle mining rewards
+* `Input` data of both errored and completed transactions
+* Log `topics` of both errored and completed transactions
+* Log `data` of of both errored and completed transactions
+* Output data of deeply embedded traces
+* Uncle mining rewards
 
 An example of the first type is this transaction:
 

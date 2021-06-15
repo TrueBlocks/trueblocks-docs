@@ -3,7 +3,9 @@ title: Ethereum Block Production Continues to Slide
 lead: All the news that's fit to blog about
 date: '2017-09-09T18:46:20.487Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

@@ -3,7 +3,9 @@ title: Counting Shit on Ethereum
 lead: Fun with blocks, transactions, and counters
 date: '2019-06-10T01:50:36.918Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 
@@ -33,8 +35,8 @@ In other words, count some shit.
 
 I work on a project called TrueBlocks, so I’ll use that to carry out the above simple process. Here’s what you would need to do to duplicate my effort:
 
-1.  Download, install, and run an Ethereum node\*
-2.  Download, install, and build TrueBlocks
+1. Download, install, and run an Ethereum node\*
+2. Download, install, and build TrueBlocks
 
 \* — wait for a long time while the node syncs.
 

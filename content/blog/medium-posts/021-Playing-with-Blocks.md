@@ -3,7 +3,9 @@ title: Playing with Blocks
 lead: And having fun while doing it
 date: '2017-12-08T22:29:22.988Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 

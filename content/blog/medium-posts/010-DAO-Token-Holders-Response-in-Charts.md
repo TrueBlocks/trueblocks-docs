@@ -3,7 +3,9 @@ title: DAO Token Holders’ Response (in Charts)
 lead: Created with TrueBlocks
 date: '2016-12-06T17:54:45.139Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

@@ -10,7 +10,6 @@ menu:
   blog:
     parent: "trueblocks"
 draft: false
-categories: []
 keywords: []
 ---
 

@@ -3,7 +3,9 @@ title: It’s Growing! It’s Growing!
 lead: Will it ever stop?
 date: '2017-06-27T12:17:14.740Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 
@@ -27,9 +29,9 @@ Because we wished to study the data relative to previous activity, we first calc
 
 A few things stand out:
 
-*   For most of 2016 and the first part of 2017, the average block size per 1,000 blocks remained relatively constant. This is indicated by the up and down nature at the middle of the chart.
-*   The DDOS attack during October 2016 is very clearly visible as is the effectiveness of the spurious dragon hard fork.
-*   I think we may be headed for trouble.
+* For most of 2016 and the first part of 2017, the average block size per 1,000 blocks remained relatively constant. This is indicated by the up and down nature at the middle of the chart.
+* The DDOS attack during October 2016 is very clearly visible as is the effectiveness of the spurious dragon hard fork.
+* I think we may be headed for trouble.
 
 #### Why Does the Sync Take So Long?
 

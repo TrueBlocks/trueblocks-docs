@@ -3,7 +3,9 @@ title: Downloading the DAO
 lead: Everything, all the time
 date: '2016-06-10T18:43:27.918Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 
@@ -45,9 +47,9 @@ Next, I wanted to verify that the total ether that was being reported by EthSlur
 
 What I did was:
 
-1.  I opened up the file creation.csv in Excel and summed the column labeled ‘value.’ My expectation was that this total would agree with the Mist browser, http://etherscan.io, and the http://daohub.org website.
-2.  Before I did that, because the ‘value’ column is in ‘wei,’ I converted it to ether. I did this by adding a new column and dividing ‘value’ by 10¹⁸ (see [What the F is a Finney](https://medium.com/@tjayrush/what-the-f-is-a-finney-8e727f29e77f#.fcas67m6m)). I then summed the ‘ether’ column as well.
-3.  According to my downloaded list of transactions the total ether taken in during the creation was 11,980287.5826, which was higher than the number being reported by the Mist browser by 2.17%. Interestingly, though, this value was closer than the value reported by the DAOHub.org website. (I leave figuring that out as an exercise — \[Jun 11: this has since been explained, see comments below\]). The Etherscan.io website agrees pretty well with the Mist browser.
+1. I opened up the file creation.csv in Excel and summed the column labeled ‘value.’ My expectation was that this total would agree with the Mist browser, <http://etherscan.io>, and the <http://daohub.org> website.
+2. Before I did that, because the ‘value’ column is in ‘wei,’ I converted it to ether. I did this by adding a new column and dividing ‘value’ by 10¹⁸ (see [What the F is a Finney](https://medium.com/@tjayrush/what-the-f-is-a-finney-8e727f29e77f#.fcas67m6m)). I then summed the ‘ether’ column as well.
+3. According to my downloaded list of transactions the total ether taken in during the creation was 11,980287.5826, which was higher than the number being reported by the Mist browser by 2.17%. Interestingly, though, this value was closer than the value reported by the DAOHub.org website. (I leave figuring that out as an exercise — \[Jun 11: this has since been explained, see comments below\]). The Etherscan.io website agrees pretty well with the Mist browser.
 
 ![](/blog/img/004-Downloading-the-DAO-002.png)
 

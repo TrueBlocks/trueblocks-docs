@@ -3,7 +3,9 @@ title: Announcing TrueBlocks®
 lead: Finally...
 date: '2017-10-29T18:07:27.150Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 
@@ -19,9 +21,9 @@ TrueBlocks is a collection of software libraries, open source command-line tools
 
 As part of our commitment to the Ethereum community, we offer fourteen open source command-line tools including:
 
-*   **getBalance** and **getTokenBal**: which report on ether and token balances respectively for one or more Ethereum address. Reporting for any of three denominations (ether, wei, or US dollar fiat) is a simple command line option.
-*   **getBlock**, **getTrans**, **getReceipt**, **getTrace**, **getLogs**, **getBloom**: each of which reports on a particular data structure given one or more block hashes, transaction hashes, block numbers/transaction id pairs, or any combination.
-*   **ethName**, **whenBlock**, **isContract**, and **whereBlock**: tools useful in retrieving information about Ethereum account names, when certain blocks occurred, whether or not certain blocks are cached or reside on the node, and whether or not an Ethereum address is a smart contract.
+* **getBalance** and **getTokenBal**: which report on ether and token balances respectively for one or more Ethereum address. Reporting for any of three denominations (ether, wei, or US dollar fiat) is a simple command line option.
+* **getBlock**, **getTrans**, **getReceipt**, **getTrace**, **getLogs**, **getBloom**: each of which reports on a particular data structure given one or more block hashes, transaction hashes, block numbers/transaction id pairs, or any combination.
+* **ethName**, **whenBlock**, **isContract**, and **whereBlock**: tools useful in retrieving information about Ethereum account names, when certain blocks occurred, whether or not certain blocks are cached or reside on the node, and whether or not an Ethereum address is a smart contract.
 
 #### Examples of Using the Command Line Tools
 

@@ -3,7 +3,9 @@ title: Knowing the Future and Proving You Know It
 lead: How blockchains can help
 date: '2016-07-13T03:44:29.907Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

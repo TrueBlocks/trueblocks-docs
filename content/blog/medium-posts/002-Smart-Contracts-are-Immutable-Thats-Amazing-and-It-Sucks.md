@@ -3,7 +3,9 @@ title: Smart Contracts are Immutable — That’s Amazing…and It Sucks
 lead: Write once, modify never
 date: '2016-05-13T18:46:17.693Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 
@@ -85,10 +87,10 @@ This still didn’t solve my problem entirely because the old contract was still
 
 I learned a couple of useful lessons as part of this adventure:
 
-*   Make sure to get your solidity code right the first time.
-*   Always include a ‘kill’ function in your code. If you don’t and the contract is what I would call a “eater of houses and homes,” it will run forever and drain your account. (You can, obviously, simply drain the account yourself, and then the contract will run out of gas each time it’s called — but that sounds like the act of a bad citizen).
-*   Carefully consider capturing email or other contact information from your clients in case you have to bring the contract down. In this way, you can at least let them know of the new re-deployment address.
-*   Build in an export / import capability so that any possible future transition to a new contract is easier. I might write a post later about that.
+* Make sure to get your solidity code right the first time.
+* Always include a ‘kill’ function in your code. If you don’t and the contract is what I would call a “eater of houses and homes,” it will run forever and drain your account. (You can, obviously, simply drain the account yourself, and then the contract will run out of gas each time it’s called — but that sounds like the act of a bad citizen).
+* Carefully consider capturing email or other contact information from your clients in case you have to bring the contract down. In this way, you can at least let them know of the new re-deployment address.
+* Build in an export / import capability so that any possible future transition to a new contract is easier. I might write a post later about that.
 
 I hope this short tale of my mis-adventures into the world of Solidity was entertaining. Let me know what you think in the comments section below. And visit my new and improved EEAR 2.0 when it becomes available. It no longer even pretends to share the revenue with the user, but at least it won’t bankrupt me the way version 1.0 was designed to do.
 

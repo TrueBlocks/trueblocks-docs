@@ -3,7 +3,9 @@ title: Building an Ethereum Account Scraper with TrueBlocks
 lead: First pass instructions
 date: '2018-07-06T20:21:50.377Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 

@@ -3,7 +3,9 @@ title: The Trace Data Problem
 lead: And why it matters
 date: '2018-02-21T00:31:37.214Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

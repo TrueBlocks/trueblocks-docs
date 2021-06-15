@@ -3,7 +3,9 @@ title: A Too-Often Neglected Aspect of Smart Contract Security Auditability
 lead: Write better Solidity events
 date: '2016-08-25T01:49:11.876Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

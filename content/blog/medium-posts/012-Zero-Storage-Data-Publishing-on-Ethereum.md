@@ -3,7 +3,9 @@ title: Zero-Storage Data Publishing on Ethereum
 lead: Taking advantage of off-chain monitoring
 date: '2017-05-17T20:45:02.347Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 
@@ -138,9 +140,9 @@ You could. TrueBlocks does not replace Web 3.0. But we think it enhances it. The
 
 Both TrueBlocks and Web 3.0 use the Ethereum node’s RPC interface to request and process the data. TrueBlocks improves on what is returned by the RPC in the following ways:
 
-*   TrueBlocks creates a cache so that the second and subsequent times one requests data, it is delivered 80–100 times faster. It’s also faster on the initial retrieval because it’s written in highly optimized C++ code.
-*   The initial transaction data returned by the RPC is incomplete. It does not include an ‘error’ flag. Nor does the returned data include contract-to-contract incoming transactions into an account. TrueBlocks corrects these shortcomings.
-*   The RPC returns un-articulated data (that is, bytes). Your Web 3.0 code must translate this hex data back into human readable form. TrueBlocks does this for you automatically (if given an ABI).
+* TrueBlocks creates a cache so that the second and subsequent times one requests data, it is delivered 80–100 times faster. It’s also faster on the initial retrieval because it’s written in highly optimized C++ code.
+* The initial transaction data returned by the RPC is incomplete. It does not include an ‘error’ flag. Nor does the returned data include contract-to-contract incoming transactions into an account. TrueBlocks corrects these shortcomings.
+* The RPC returns un-articulated data (that is, bytes). Your Web 3.0 code must translate this hex data back into human readable form. TrueBlocks does this for you automatically (if given an ABI).
 
 #### Is There Anything Interesting Here?
 
@@ -148,6 +150,6 @@ What we’ve described here is a data delivery system that stores zero data on t
 
 Will it work? Maybe not, but we’re working on it. Join us at [GitHub](https://github.com/TrueBlocks/trueblocks-core).
 
-_If you find our work interesting and would like to learn more, please visit our website at (http://trueblocks.io). Sign up for our news feed. We’ll keep the ideas coming._
+_If you find our work interesting and would like to learn more, please visit our website at (<http://trueblocks.io>). Sign up for our news feed. We’ll keep the ideas coming._
 
 _Support our work?_ 0xf503017d7baf7fbc0fff7492b751025c6a78179b

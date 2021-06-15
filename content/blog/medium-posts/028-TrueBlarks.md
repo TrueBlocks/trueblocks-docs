@@ -3,7 +3,9 @@ title: TrueBlarks
 lead: Ethereum data on crack
 date: '2019-01-21T22:18:40.107Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 
@@ -139,7 +141,7 @@ difficulty %>%
  sample\_n(sample\_size) %>%  
  ggplot(aes(y = diff.sensitivity, x = period, color=block.number)) +  
  scale\_colour\_gradient2(low = “red”, mid = “green”, high = “blue”, midpoint = byzantium.block, space = “Lab”, na.value = “grey50”, guide = “colourbar”) +  
- geom\_point(size = point\_size) +   
+ geom\_point(size = point\_size) +
  facet\_wrap(facets = ‘era’, nrow = 2) +  
  geom\_vline(xintercept = 41)
 

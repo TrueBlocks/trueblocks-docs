@@ -3,7 +3,9 @@ title: A Method to Diffuse the Ethereum Difficulty Bomb
 lead: Diffusing the bomb predictably with less angst
 date: '2019-11-26T14:05:33.691Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

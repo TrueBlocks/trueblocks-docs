@@ -3,7 +3,9 @@ title: A Eulogy for The DAO — Part II
 lead: Second in a series
 date: '2016-09-29T14:26:27.195Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

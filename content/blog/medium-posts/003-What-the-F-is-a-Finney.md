@@ -3,7 +3,9 @@ title: What the ‘F’ is a Finney?
 lead: And why do we care?
 date: '2016-05-23T01:35:43.090Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

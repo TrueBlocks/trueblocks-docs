@@ -3,7 +3,9 @@ title: Building Your Own Ethereum Archive Node
 lead: And why you may want to
 date: '2020-08-13T18:21:08.933Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 

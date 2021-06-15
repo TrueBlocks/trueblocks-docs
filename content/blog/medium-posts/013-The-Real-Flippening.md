@@ -3,7 +3,9 @@ title: The Real Flippening
 lead: Getting to Ether
 date: '2017-05-30T19:58:51.709Z'
 draft: false
-categories: []
+categories:
+- Ethereum
+tags: ['ethereum']
 keywords: []
 ---
 

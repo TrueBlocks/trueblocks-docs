@@ -3,7 +3,9 @@ title: Accounting for the Revolution™
 lead: Is it possible?
 date: '2017-03-13T03:07:38.644Z'
 draft: false
-categories: []
+categories:
+- Trueblocks
+tags: ['trueblocks']
 keywords: []
 ---
 
@@ -81,9 +83,9 @@ How about February?
 
 Three things are changing here:
 
-1.  The number of transactions per day (50,359) rose by about 10.1% over January. More people made more transactions.
-2.  The amount of ether spent per day (on average) rose by more than 10 ether per day (or a little over 30%). Part of that is due, obviously, to more transactions per day, but also the gasPrice in wei may have risen.
-3.  The amount of US dollars spent per day on average rose by nearly $200 dollars (57.97%) per day. Clearly, this has to do with both of the previous things plus the increased price of ether.
+1. The number of transactions per day (50,359) rose by about 10.1% over January. More people made more transactions.
+2. The amount of ether spent per day (on average) rose by more than 10 ether per day (or a little over 30%). Part of that is due, obviously, to more transactions per day, but also the gasPrice in wei may have risen.
+3. The amount of US dollars spent per day on average rose by nearly $200 dollars (57.97%) per day. Clearly, this has to do with both of the previous things plus the increased price of ether.
 
 It’s hard to untangle these three components, but you can get a glimpse of what’s going on by focusing on the `Finneys` and `cents` columns. While we leave it to the reader as an exercise to figure out why on the 13th, the 15th, and the 22nd finneys per transaction rose above 1.0000, one can see that the average number of finneys per transaction over the month remained relatively stable. In other words, the price (in ether) that miners accepted to process transactions didn’t adjust too much even though the amount of total income taken by all miners ($15,250.26 vs. $10,688.16) increased by nearly 42.68%.
 
@@ -117,4 +119,4 @@ We are developing TrueBlocks because we want to Account for the Revolution™. W
 
 We know of an analysis that took more than 20 hours to scan just 15 days worth of DAO related data. (We confirmed this on our own machines). TrueBlocks ran through the above 70 days of data in less than four minutes. 20 hours for 15 days vs. 4 minutes for 70 days. Them is some quick blocks!
 
-_If you like our work, please support us by sending a few ether (or parts of an ether) to our tip jar: 0xf503017d7baf7fbc0fff7492b751025c6a78179b. We offer all types of blockchain consulting, especially analysis and accounting services. Please find contact information on our website: http://trueblocks.io._
+_If you like our work, please support us by sending a few ether (or parts of an ether) to our tip jar: 0xf503017d7baf7fbc0fff7492b751025c6a78179b. We offer all types of blockchain consulting, especially analysis and accounting services. Please find contact information on our website: <http://trueblocks.io>._
