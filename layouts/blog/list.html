@@ -1,26 +1,19 @@
 {{ define "main" }}
 <div class="row justify-content-center">
-		<div class="col-lg-5 col-xl-4 docs-sidebar">
-			<nav class="docs-links" aria-label="Main navigation">
-				{{ partial "sidebar/blog-menu.html" . }}
-			</nav>
-		</div>
   <div class="col-md-12 col-lg-10 col-xl-8">
-	<div class="row flex-xl-nowrap">
-<article>
+    <article>
       <h1 class="text-center">{{ .Title }}</h1>
       <div class="text-center">{{ .Content }}</div>
 			<div class="card-list">
-				{{ $currentSection := .CurrentSection }}
-                                {{ range where .Site.RegularPages.ByDate.Reverse "Section" .Section }}
-					{{ if in (.RelPermalink | string) $currentSection.RelPermalink }}
-						<div class="card my-3">
-							<div class="card-body">
-								<a class="stretched-link" href="{{ .RelPermalink }}">{{ .Params.title | title }} &rarr;</a>
-							</div>
+				{{ range .Data.Pages -}}
+					<div class="card">
+						<div class="card-body">
+							<h2 class="h3"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
+							<p>{{ .Params.lead | safeHTML }}</p>
+							{{ partial "main/blog-meta.html" . -}}
 						</div>
-					{{ end }}
-				{{ end }}
+					</div>
+				{{ end -}}
 			</div>
     </article>
   </div>
