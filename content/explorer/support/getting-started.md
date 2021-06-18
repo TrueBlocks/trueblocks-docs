@@ -11,8 +11,8 @@ lastmod:
 draft: false
 images: []
 menu: 
-  docs:
-    parent: "explorer"
+  explorer:
+    parent: "support"
 weight: 2100
 toc: true
 ---
