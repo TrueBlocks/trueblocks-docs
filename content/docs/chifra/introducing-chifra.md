@@ -7,8 +7,8 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "prologue"
-weight: 0300
+    parent: "chifra"
+weight: 1000
 toc: true
 ---
 
@@ -22,7 +22,7 @@ chifra
 
 You will see a long list of commands similar to this
 
-<img src="/docs/prologue/introducing-chifra.png" alt="chifra screen" width="800"/>
+<img src="/docs/img/introducing-chifra.png" alt="chifra screen" width="800"/>
 
 ---
 You may get more help on any command by typing `chifra <cmd> --help`.

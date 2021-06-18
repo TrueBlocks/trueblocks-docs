@@ -7,14 +7,12 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "prologue"
-weight: 0400
+    parent: "chifra"
+weight: 1050
 toc: true
 ---
 
-We assume that you've already completed the [Installation](/docs/prologue/installing/) task. Please do so before proceeding.
-
-`chifra` is an over-arching for TrueBlocks much like `git` is for Git. All interactions with the TrueBlocks tools use the `chifra` command.
+A few more examples in more detail.
 
 ## Getting Help
 
