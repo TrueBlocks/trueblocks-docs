@@ -1,5 +1,5 @@
 ---
-title : "Do I need a node"
+title : "Do I need a node?"
 description: "A node is not required, but that's the only way use Trueblocks as it is intended."
 lead: ""
 date: 2020-10-06T08:48:45+00:00
@@ -14,7 +14,7 @@ weight: 0150
 ---
 
 If you want your queries to be totally private and as up-to-date as possible,
-then yes, you need a node.
+then _yes, you need a node_.
 We highly recommend Turbo-Geth.
 It's not as hard to set up many people think, but it does require two TBs of storage.
 
@@ -28,7 +28,7 @@ If you can't run a node, TrueBlocks offers two solution. You can either:
 * Build the index locally, but make quieries to a remote RPC.
 * Build the index from our IPFS manifest, but lose access to live data
 
-### Lose ownership: query using a live RPC
+### Lose ownership: query using a remote RPC
 
 If you need access to live data, you might decide it's worth it to build the
 TrueBlocks index from data provided by an RPC.
@@ -45,10 +45,10 @@ You can also build the index using our IPFS manifest. This is, by far, the
 route we recommend for users without nodes. Using IPFS provides huge
 privacy and performance benefits.
 
-* The index is immutable, so you know if it's been tampered with
+* The index is immutable, so you know whether it's been tampered with
 * The index is decentralized, so no one owns it
 * The query directly from your machine, so  it's lightning fast
-* Bloom filters mean only need to store the fraction of the blockchain: fraction you want to use 
+* We use bloom filters, so you need to store only the fraction of the blockchain that you are interested in 
 
 Of course, the problem is that we only publish to the IPFS periodically.
 This means our version doesn't contain the latest data.
