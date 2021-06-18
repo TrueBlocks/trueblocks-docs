@@ -5,14 +5,13 @@
 
 [[main]]
   name = "Explorer"
-  url = "/explorer"
+  url = "/explorer/intro/gui-for-trueblocks/"
   weight = 20
 
 [[main]]
   name = "Blog"
   url = "/blog/"
   weight = 30
-
 
 [[main]]
   name = "API\u00A0Reference"
