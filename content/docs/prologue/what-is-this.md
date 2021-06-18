@@ -33,18 +33,18 @@ is accurate.
 ## TrueBlocks provides this local index
 
 Trueblocks builds a local-index directly on your machine.
-It ships with large suite command line options to let you make the queries you
-want to make─addresses, names, ABIs, trueBlocks has you covered.
+It ships with large suite of command line options to let you make the queries you
+want to make─addresses, names, ABIs, etc.
 
-On top of the command line, we've also built a graphical interface, our [Explorer](#explorer)
-application. So you don't any special skills to use it.
+On top of the command line, we've also built a graphical interface, our [Explorer](/explorer)
+application. So you don't need any special technical skills to use TrueBlocks.
 
 ### And yes, it's ownerless
 
 TrueBlocks is open source. If you don't like something, you're free to modify the
 software, or fork it. 
 
-We also distribute copies of the index on IPFS, meaning that:
+We also distribute copies of the index on the IPFS, meaning that:
 * the data is immutable (i.e. we can't mess with it)
 * the data doesn't belong to anyone
 
@@ -54,14 +54,20 @@ Besides the philosophical benefits, TrueBlocks is straight up more performant.
 Some highlights:
 
 - Querying straight from your hard drive is _faster by many factors._
-- Binary cache makes subsequent queries _near instantaneaous_
+- Binary cache makes subsequent queries _near instantaneous_
 - _Blockchain storage shrinks from terrabytes to gigabytes_. 
-Bloom filters mean you store only the data you call.
-- _More precise._ You can articulate to resolve transactions on the byte level.
-- _Format agnostic_ TrueBlocks works on the bit level, so you can format data how you want. JSON, CSV, GRPC? Who cares?
+- Bloom filters mean _you store only the data you call_.
+- Articulate to resolve transactions on the byte level, so it's _more accurate_.
+- TrueBlocks works on the byte level, so you can format data how you want. JSON, CSV, gRPC? Who cares? _format agnostic_
 
 TrueBlocks performs so well because the design is 100% data first. We are lifelong
 hackers, and we agree with Linus:
 
 > Good programmers 
 > worry about data structures and their relationships. _[source](https://lwn.net/Articles/193245/)_
+
+## Great! But I want many more words.
+
+We've got more words for you. [This blog post covers these topics in much more detail](/blog/a-long-winded-explanation-of-trueblocks/).
+
+
