@@ -4,9 +4,15 @@
   weight = 10
 
 [[main]]
+  name = "Explorer"
+  url = "/explorer"
+  weight = 20
+
+[[main]]
   name = "Blog"
   url = "/blog/"
-  weight = 20
+  weight = 30
+
 
 [[main]]
   name = "API\u00A0Reference"
@@ -29,6 +35,18 @@
   weight = 30
   identifier = "explorer"
   url = "/docs/explorer"
+
+[[explorer]]
+  name = "A GUI for TrueBlocks"
+  weight = 2000
+  identifier = "explorer-intro"
+  url = "/explorer/intro"
+
+[[explorer]]
+  name = "Support"
+  weight = 2100
+  identifier = "support"
+  url = "/explorer/support"
 
 [[blog]]
   name = "Recipes"
