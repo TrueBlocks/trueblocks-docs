@@ -17,7 +17,7 @@ your local machine.
 
 ## Without a local index, Ethereum is not ownerless
 
-Ethereum is supposed to be ownerless, The blockchain is supposed to be transperant
+Ethereum is supposed to be ownerless. The blockchain is supposed to be transperant
 record of all transactions. Without an index, however, the blockchain is undiscoverable,
 like the internet would be without search engines. Or like being lost at sea.
 
