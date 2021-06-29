@@ -10,7 +10,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1400
@@ -29,10 +29,10 @@ TrueBlocks maintains caches for the index of address appearances, named addresse
 
 ### usage
 
-`Usage:`    chifra status [-d|-t|-v|-h] &lt;mode&gt; [mode...]  
+`Usage:`    chifra status [-d|-t|-v|-h] &lt;mode&gt; [mode...]
 `Purpose:`  Report on the status of the TrueBlocks system.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -55,10 +55,10 @@ Another way to get help to run `chifra --help` or `chifra <cmd> --help` on your 
 
 ### usage
 
-`Usage:`    chifra serve  
+`Usage:`    chifra serve
 `Purpose:`  Present each chifra command along with all of its options as a JSON api.
 
-`Where:`  
+`Where:`
 
 | Short Cut | Option    | Description                                 |
 | --------: | :-------- | :------------------------------------------ |
@@ -83,20 +83,17 @@ The scraper can scrape either the index only, previously created monitors only, 
 
 ### usage
 
-`Usage:`    chifra scrape [-t|-n|-p|-s|-i|-R|-v|-h] mode  
+`Usage:`    chifra scrape [-n|-p|-s|-v|-h] mode
 `Purpose:`  Scan the chain and update the TrueBlocks index of appearances.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
-|  | mode | control the block and account scrapers, one of *[ run \| quit \| pause \| restart ]* (required) |
-| -t | --tool &lt;val&gt; | process the index, monitors, or both (none means process timestamps only), one or more of *[ monitors \| index\* \| none \| both ]* |
+|  | mode | control the block scraper, one of *[ run \| quit \| pause \| restart ]* (required) |
 | -n | --n_blocks &lt;num&gt; | maximum number of blocks to process (defaults to 5000) |
 | -p | --pin | pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node) |
 | -s | --sleep &lt;double&gt; | the number of seconds to sleep between passes (default 14) |
-| -i | --cache_txs | write transactions to the cache (see notes) |
-| -R | --cache_traces | write traces to the cache (see notes) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
@@ -131,10 +128,10 @@ If you run `chifra init` and allow it to complete, the next time you run `chifra
 
 ### usage
 
-`Usage:`    chifra init  
+`Usage:`    chifra init
 `Purpose:`  Leech the bloom filters from IPFS by first downloading the pin manifest from a smart contract and then downloading the blooms. Optionally `--pin` the resulting download in order to share it with others.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -155,10 +152,10 @@ This tool is not yet ready for production use. Please return to this page later.
 
 ### usage
 
-`Usage:`    chifra pins [-l|-i|-k|-p|-v|-h]  
+`Usage:`    chifra pins [-l|-i|-k|-p|-v|-h]
 `Purpose:`  Manage pinned index of appearances and associated bloom filters.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
