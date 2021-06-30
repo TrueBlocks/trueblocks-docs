@@ -29,12 +29,6 @@
   identifier = "chifra"
   url = "/docs/chifra/"
 
-[[docs]]
-  name = "Explorer"
-  weight = 30
-  identifier = "explorer"
-  url = "/docs/explorer"
-
 [[explorer]]
   name = "A GUI for TrueBlocks"
   weight = 2000
@@ -42,10 +36,35 @@
   url = "/explorer/intro"
 
 [[explorer]]
-  name = "Support"
+  name = "Dashboard"
   weight = 2100
+  identifier = "dashboard"
+  url = "/explorer/dashboard"
+
+[[explorer]]
+  name = "names"
+  weight = 2200
+  identifier = "names"
+  url = "/explorer/names"
+
+[[explorer]]
+  name = "explorer"
+  weight = 2300
+  identifier = "explorer"
+  url = "/explorer/explorer"
+
+[[support]]
+  name = "support"
+  weight = 2400
   identifier = "support"
-  url = "/explorer/support"
+  url = "/explorer/explorer"
+
+[[explorer]]
+  name = "settings"
+  weight = 2500
+  identifier = "settings"
+  url = "/explorer/settings"
+
 
 [[blog]]
   name = "Recipes"
