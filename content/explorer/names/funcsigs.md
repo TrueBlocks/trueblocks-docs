@@ -1,8 +1,8 @@
 ---
-title: "Getting Started"
+title: "Funcsigs"
 description: ""
 lead: ""
-date: 2021-05-08T01:35:20
+date: 2021-06-30T12:25:57-03:00
 lastmod:
   - :git
   - lastmod
@@ -12,9 +12,8 @@ draft: false
 images: []
 menu: 
   explorer:
-    parent: "support"
-weight: 2100
+    parent: names
+weight: 2450
 toc: true
 ---
 
-<img src="../imgs/getting-started.png" width="800px" />
