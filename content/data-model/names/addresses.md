@@ -11,7 +11,7 @@ lastmod:
 draft: false
 images: []
 menu: 
-  explorer:
+  data:
     parent: names
 weight: 2100
 toc: true

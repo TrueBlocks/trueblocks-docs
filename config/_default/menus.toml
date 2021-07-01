@@ -9,14 +9,16 @@
   weight = 20
 
 [[main]]
-  name = "Blog"
-  url = "/blog/"
+  name = "Data\u00A0Model"
+  url= "/data-model/intro"
+  identifier = "data"
   weight = 30
 
 [[main]]
-  name = "API\u00A0Reference"
-  url = "https://www.tokenomics.io/api.html"
-  weight = 999
+  name = "Blog"
+  url = "/blog/"
+  weight = 40
+
 [[docs]]
   name = "Prologue"
   weight = 10
@@ -36,24 +38,6 @@
   url = "/explorer/intro"
 
 [[explorer]]
-  name = "Dashboard"
-  weight = 2100
-  identifier = "dashboard"
-  url = "/explorer/dashboard"
-
-[[explorer]]
-  name = "names"
-  weight = 2200
-  identifier = "names"
-  url = "/explorer/names"
-
-[[explorer]]
-  name = "explorer"
-  weight = 2300
-  identifier = "explorer"
-  url = "/explorer/explorer"
-
-[[support]]
   name = "support"
   weight = 2400
   identifier = "support"
@@ -65,6 +49,23 @@
   identifier = "settings"
   url = "/explorer/settings"
 
+[[data]]
+  name = "TrueBlocks Data"
+  weight = 2100
+  identifier = "dashboard"
+  url = "/data-model/dashboard"
+
+[[data]]
+  name = "names"
+  weight = 2200
+  identifier = "names"
+  url = "/data-model/names"
+
+[[data]]
+  name = "blockhain data"
+  weight = 2300
+  identifier = "explorer"
+  url = "/data-model/explorer"
 
 [[blog]]
   name = "Recipes"
@@ -104,6 +105,12 @@
   url = "https://github.com/trueblocks/trueblocks-core"
   post = "v0.1.0"
   weight = 20
+
+[[social]]
+  name = "API"
+  pre = "API\u00A0Reference"
+  url = "https://www.tokenomics.io/api.html"
+  weight = 31
 
 [[footer]]
   name = "Privacy"

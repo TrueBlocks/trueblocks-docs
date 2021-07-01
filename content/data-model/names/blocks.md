@@ -1,8 +1,8 @@
 ---
-title: "Overview"
+title: "Blocks"
 description: ""
 lead: ""
-date: 2021-06-30T12:12:58-03:00
+date: 2021-06-30T12:26:19-03:00
 lastmod:
   - :git
   - lastmod
@@ -11,9 +11,9 @@ lastmod:
 draft: false
 images: []
 menu: 
-  explorer:
-    parent: dashboard
-weight: 2000
+  data:
+    parent: names
+weight: 2100
 toc: true
 ---
 

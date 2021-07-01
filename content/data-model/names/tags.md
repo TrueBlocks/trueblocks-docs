@@ -1,8 +1,8 @@
 ---
-title: "Funcsigs"
+title: "Tags"
 description: ""
 lead: ""
-date: 2021-06-30T12:25:57-03:00
+date: 2021-06-30T12:25:51-03:00
 lastmod:
   - :git
   - lastmod
@@ -11,9 +11,9 @@ lastmod:
 draft: false
 images: []
 menu: 
-  explorer:
+  data:
     parent: names
-weight: 2450
+weight: 2300 
 toc: true
 ---
 

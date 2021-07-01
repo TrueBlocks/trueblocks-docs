@@ -1,8 +1,8 @@
 ---
-title: "Monitors"
+title: "Collections"
 description: ""
 lead: ""
-date: 2021-06-30T12:13:17-03:00
+date: 2021-06-30T12:13:24-03:00
 lastmod:
   - :git
   - lastmod
@@ -11,9 +11,9 @@ lastmod:
 draft: false
 images: []
 menu: 
-  explorer:
+  data:
     parent: dashboard
-weight: 2500
+weight: 2300
 toc: true
 ---
 

@@ -1,8 +1,8 @@
 ---
-title: "Collections"
+title: "Eventsigs"
 description: ""
 lead: ""
-date: 2021-06-30T12:13:24-03:00
+date: 2021-06-30T12:26:03-03:00
 lastmod:
   - :git
   - lastmod
@@ -11,9 +11,9 @@ lastmod:
 draft: false
 images: []
 menu: 
-  explorer:
-    parent: dashboard
-weight: 2300
+  data:
+    parent: names
+weight: 2500
 toc: true
 ---
 

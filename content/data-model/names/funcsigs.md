@@ -1,8 +1,8 @@
 ---
-title: "Indexes"
+title: "Funcsigs"
 description: ""
 lead: ""
-date: 2021-06-30T12:13:32-03:00
+date: 2021-06-30T12:25:57-03:00
 lastmod:
   - :git
   - lastmod
@@ -11,9 +11,9 @@ lastmod:
 draft: false
 images: []
 menu: 
-  explorer:
-    parent: dashboard
-weight: 2400
+  data:
+    parent: names
+weight: 2450
 toc: true
 ---
 
