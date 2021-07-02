@@ -4,11 +4,6 @@
   weight = 10
 
 [[main]]
-  name = "Explorer"
-  url = "/explorer/intro/gui-for-trueblocks/"
-  weight = 20
-
-[[main]]
   name = "Data\u00A0Model"
   url= "/data-model/intro"
   identifier = "data"
@@ -31,23 +26,12 @@
   identifier = "chifra"
   url = "/docs/chifra/"
 
-[[explorer]]
-  name = "A GUI for TrueBlocks"
-  weight = 2000
-  identifier = "explorer-intro"
-  url = "/explorer/intro"
+[[docs]]
+  name = "Explorer"
+  weight = 30
+  identifier = "explorer"
+  url = "/chifra/explorer"
 
-[[explorer]]
-  name = "support"
-  weight = 2400
-  identifier = "support"
-  url = "/explorer/explorer"
-
-[[explorer]]
-  name = "settings"
-  weight = 2500
-  identifier = "settings"
-  url = "/explorer/settings"
 
 [[data]]
   name = "TrueBlocks Data"
