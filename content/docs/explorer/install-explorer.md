@@ -1,22 +1,21 @@
 ---
-title: "Intro"
-description: "Explore the blockchain from a local app"
+title: "Install Explorer"
+description: ""
 lead: ""
-date: 2021-04-15T19:56:20-03:00
-lastmod: 2021-04-15T19:56:20-03:00
+date: 2021-07-02T08:01:07-03:00
+lastmod:
+  - :git
+  - lastmod
+  - date
+  - publishDate
 draft: false
 images: []
 menu: 
-  explorer:
-    parent: "explorer-intro"
+  docs:
+    parent: explorer
+weight: 3100
 toc: true
 ---
-
-Trueblocks Explorer is browser application that lets you explore the Ethereum blockchain.
-
-It runs locally, so you everything you do stays on your computer.
-
-## A quick install
 
 First, make sure that you have the `chifra-core` backend up and running,
 then run the application from [a clone of the explorer repo](https://github.com/TrueBlocks/trueblocks-explorer).
