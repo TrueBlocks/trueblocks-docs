@@ -23,3 +23,6 @@ TrueBlocks provides clarity in the great relations of the blockchain.
 But, to understand the relations, you have to understand what words, like "tokens", "ABI", and "names" mean.
 
 This reference describes the overarching data model.
+
+<img src="/data-model/data-model.png" alt="TrueBlocks is full of data that interrelates." width="700"/>
+
