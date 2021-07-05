@@ -18,8 +18,7 @@ This article assumes that you've already [Installed TrueBlocks core](/docs/prolo
 
 TrueBlocks builds an index of "every appearance of every address anywhere on the chain". With this index, we can build fully-local, 100% decentralized dApps such as the [TrueBlocks Explorer](https://github.com/TrueBlocks/trueblocks-explorer).
 
-In this article, we explain how you can get a copy of the TrueBlock index of appearances. We won't explain some of the engineering decisions we've made as that is not the point of this article. Please see our [
-](/blog/) for that type of information.
+In this article, we explain how you can get a copy of the TrueBlock index of appearances. We won't explain some of the engineering decisions we've made as that is not the point of this article. Please see our [Blog](/blog/) for that type of information.
 
 ## Building the Index
 
