@@ -34,22 +34,22 @@
 
 
 [[data]]
-  name = "TrueBlocks Data"
+  name = "The Data Model"
   weight = 2100
-  identifier = "dashboard"
-  url = "/data-model/dashboard"
+  identifier = "intro"
+  url = "/data-model/overview"
+
+[[data]]
+  name = "Explore, collect, enhance"
+  weight = 2200
+  identifier = "collections"
+  url = "/data-model/collections"
 
 [[data]]
   name = "names"
-  weight = 2200
+  weight = 2300
   identifier = "names"
   url = "/data-model/names"
-
-[[data]]
-  name = "blockhain data"
-  weight = 2300
-  identifier = "explorer"
-  url = "/data-model/explorer"
 
 [[blog]]
   name = "Recipes"
