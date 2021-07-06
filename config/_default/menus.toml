@@ -5,7 +5,7 @@
 
 [[main]]
   name = "Data\u00A0Model"
-  url= "/data-model/intro"
+  url= "/data-model/overview/intro"
   identifier = "data"
   weight = 30
 
@@ -30,24 +30,24 @@
   name = "Explorer"
   weight = 30
   identifier = "explorer"
-  url = "/chifra/explorer"
+  url = "/docs/explorer"
 
 
 [[data]]
   name = "The Data Model"
-  weight = 2100
+  weight = 10
   identifier = "intro"
-  url = "/data-model/overview"
+  url = "/data-model/overview/intro"
 
 [[data]]
-  name = "Explore, collect, enhance"
-  weight = 2200
+  name = "Trueblocks collections and monitors"
+  weight = 20
   identifier = "collections"
   url = "/data-model/collections"
 
 [[data]]
   name = "names"
-  weight = 2300
+  weight = 30
   identifier = "names"
   url = "/data-model/names"
 
