@@ -72,4 +72,4 @@ Play around with other options. See what you can do.
 
 By this point, you should have TrueBlocks properly installed and be able to get simple blockchain data from your node. All of the chifra commands should now work. The next section further introduces you to `chifra`.
 
-Please see the [Using Chifra](/docs/prologue/using/) page to proceed.
+Please see the [Using Chifra](/docs/prologue/using-chifra/) page to proceed.

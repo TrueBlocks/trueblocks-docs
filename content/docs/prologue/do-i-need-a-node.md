@@ -33,7 +33,7 @@ If you can't run a node, TrueBlocks offers two solution. You can either:
 If you need access to live data, you might decide it's worth it to build the
 TrueBlocks index from data provided by an RPC.
 In this case, you can just add the RPC's url and API key to your config,
-as [described in step 3 of our install instructions](installing-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys)
+as [described in step 3 of our install instructions](/docs/prologue/installing-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys)
 
 Of course now the queries depend on data provided by the RPC node.
 And not all nodes are equal.
