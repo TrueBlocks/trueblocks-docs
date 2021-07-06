@@ -1,8 +1,8 @@
 ---
-title: "Monitors"
+title: "Indexes"
 description: ""
 lead: ""
-date: 2021-06-30T12:13:17-03:00
+date: 2021-06-30T12:13:32-03:00
 lastmod:
   - :git
   - lastmod
@@ -12,8 +12,8 @@ draft: false
 images: []
 menu: 
   data:
-    parent: dashboard
-weight: 2500
+    parent: collections
+weight: 2400
 toc: true
 ---
 

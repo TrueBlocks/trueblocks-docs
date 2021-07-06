@@ -1,8 +1,8 @@
 ---
-title: "Traces"
+title: "Monitors"
 description: ""
 lead: ""
-date: 2021-07-01T12:15:51-03:00
+date: 2021-06-30T12:13:17-03:00
 lastmod:
   - :git
   - lastmod
@@ -12,7 +12,7 @@ draft: false
 images: []
 menu: 
   data:
-    parent: explorer
+    parent: collections
 weight: 2500
 toc: true
 ---

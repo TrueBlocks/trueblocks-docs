@@ -12,7 +12,7 @@ draft: false
 images: []
 menu: 
   data:
-    parent: dashboard
+    parent: collections
 weight: 2100
 toc: true
 ---

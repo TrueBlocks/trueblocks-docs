@@ -1,8 +1,8 @@
 ---
-title: "Logs"
+title: "Collections"
 description: ""
 lead: ""
-date: 2021-07-01T12:15:47-03:00
+date: 2021-06-30T12:13:24-03:00
 lastmod:
   - :git
   - lastmod
@@ -12,8 +12,8 @@ draft: false
 images: []
 menu: 
   data:
-    parent: explorer
-weight: 2400
+    parent: collections
+weight: 2300
 toc: true
 ---
 
