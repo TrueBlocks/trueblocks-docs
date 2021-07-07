@@ -112,7 +112,7 @@ What happened here? TrueBlocks queried the smart contract called Unchained Index
 Use this command to retrieve the manifest from IPFS:
 
 ```shell
-curl -s "http://gateway.ipfs.io/ipfs/<manifestHash> -o manifest.txt
+curl -s "http://gateway.ipfs.io/ipfs/<manifestHash>" -o manifest.txt
 ```
 
 If you look inside that file, you will see row upon row of three fields
