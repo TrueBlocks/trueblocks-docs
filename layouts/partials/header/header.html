@@ -1,11 +1,10 @@
 
 <div class="header-bar fixed-top"></div>
 <script>
-  if (localStorage.getItem('theme') === 'dark') {
+  if (localStorage.getItem('theme') === 'dark' || localStorage.getItem('theme') === null) {
     document.body.classList.add('dark');
   }
 </script>
-
 <header class="navbar fixed-top navbar-expand-md navbar-light">
   <div class="container">
     <input class="menu-btn order-0" type="checkbox" id="menu-btn">
