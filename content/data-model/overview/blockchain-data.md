@@ -161,3 +161,4 @@ This is a very powerful way to understand the story behind a smart contract.
 |transactionIndex||
 |type||
 |action|The object action|
+|result||
