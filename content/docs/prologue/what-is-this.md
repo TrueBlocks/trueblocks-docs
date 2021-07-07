@@ -47,8 +47,8 @@ Trueblocks builds a local index directly on your machine.
 It ships with large suite of command line options to let you make the queries you
 want to make─addresses, names, ABIs, etc.
 
-On top of the command line, TrueBlocks also provides a graphical interface,
-the [Explorer](/docs/explorer/gui-for-trueblocks) application.
+In addition to the command line, TrueBlocks also provides a graphical user interface
+with the [Explorer](/docs/explorer/gui-for-trueblocks) application.
 So you don't need any to be highly technical to use TrueBlocks.
 
 ### And yes, it's permissionless
