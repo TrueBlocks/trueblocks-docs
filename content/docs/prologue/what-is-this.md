@@ -67,7 +67,7 @@ Some highlights:
 
 - Querying straight from your hard drive is _faster by many factors._
 - Binary cache makes subsequent queries _nearly instantaneous_
-- Leaving the data on the chain until it's queried shrinks for the typical user from _terrabytes to gigabytes_.
+- Leaving the data on the chain until it's queried shrinks storage requirements for the typical user from _terrabytes to gigabytes_.
 - Bloom filters further reduce computation and storage overhead
 - Articulate to resolve transactions on the byte level, _turning byte streams into human-readable data._
 - _Format agnostic._ Receive data in JSON, CSV, plain text, etc.
