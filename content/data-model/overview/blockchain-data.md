@@ -1,7 +1,7 @@
 ---
 title: "Blockchain Data"
-description: ""
-lead: ""
+description: "Trublocks is build on blockchain data. This reference guides you."
+lead: "It all starts with transactions and addresses"
 date: 2021-07-06T10:43:22-03:00
 lastmod:
   - :git
@@ -16,9 +16,6 @@ menu:
 weight: 1200
 toc: true
 ---
-
-All TrueBlocks data is built on top of Ethereum data.
-It all starts with transactions and addressess...
 
 ## Transactions
 
@@ -99,6 +96,11 @@ This is a very powerful way to understand the story behind a smart contract.
 
 
 ## Receipts
+
+If a transaction is sent to the '0x0' address (i.e. to is 0x0),
+then that the input data is the source code (byte code) for a smart contract.
+In that case, the `contractAddress` of the receipt carries the address of the newly created smart contract.
+
 ### How to get receipts
 
 * **CLI**: 
@@ -116,7 +118,7 @@ This is a very powerful way to understand the story behind a smart contract.
 |contractAddress||
 |gasUsed||
 |logs|see [logs](#logs)|
-|status||
+|status|Whether the transaction was successful─ `1` indicates success, `0` failure ([_source_](https://eips.ethereum.org/EIPS/eip-658#specification).|
 
 ## Logs
 
