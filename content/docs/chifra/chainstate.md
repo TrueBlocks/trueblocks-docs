@@ -10,7 +10,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1300
@@ -36,10 +36,10 @@ You may also query to see if an address is a smart contract as well as retrieve 
 
 ### usage
 
-`Usage:`    chifra state [-p|-c|-n|-v|-h] &lt;address&gt; [address...] [block...]  
+`Usage:`    chifra state [-p|-c|-n|-v|-h] &lt;address&gt; [address...] [block...]
 `Purpose:`  Retrieve account balance(s) for one or more addresses at given block(s).
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -74,10 +74,10 @@ You may optionally specify one or more blocks at which to report. If no block is
 
 ### usage
 
-`Usage:`    chifra tokens [-p|-b|-n|-v|-h] &lt;address&gt; &lt;address&gt; [address...] [block...]  
+`Usage:`    chifra tokens [-p|-b|-n|-v|-h] &lt;address&gt; &lt;address&gt; [address...] [block...]
 `Purpose:`  Retrieve token balance(s) for one or more addresses at given block(s).
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |

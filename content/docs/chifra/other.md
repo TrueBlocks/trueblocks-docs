@@ -10,7 +10,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1500
@@ -31,10 +31,10 @@ The `chifra quotes` tool provides USD ($) price data to other tools and to the c
 
 ### usage
 
-`Usage:`    chifra quotes [-f|-p|-a|-e|-v|-h]  
+`Usage:`    chifra quotes [-f|-p|-a|-e|-v|-h]
 `Purpose:`  Freshen and/or display Ethereum price data.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -47,9 +47,9 @@ The `chifra quotes` tool provides USD ($) price data to other tools and to the c
 
 `Notes:`
 
-- Valid pairs include any pair from the public Poloniex's API here: 
+- Valid pairs include any pair from the public Poloniex's API here:
   https://poloniex.com/public?command=returnCurrencies.
-- Due to restrictions from Poloniex, this tool retrieves only 30 days of data 
+- Due to restrictions from Poloniex, this tool retrieves only 30 days of data
   at a time. You must repeatedly run this command until the data is up-to-date.
 
 **Source code**: [`tools/getQuotes`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getQuotes)
@@ -60,15 +60,16 @@ The `chifra quotes` tool provides USD ($) price data to other tools and to the c
 
 ### usage
 
-`Usage:`    chifra explore [-l|-v|-h] &lt;term&gt; [term...]  
+`Usage:`    chifra explore [-l|-g|-v|-h] &lt;term&gt; [term...]
 `Purpose:`  Open an explorer for a given address, block, or transaction.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
 |  | terms | one or more addresses, names, block, or transaction identifiers |
 | -l | --local | open the local TrueBlocks explorer |
+| -g | --google | search google excluding popular blockchain explorers |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
@@ -84,16 +85,16 @@ While `chifra slurp` has its shortcomings, it does provides some nice features. 
 
 ### usage
 
-`Usage:`    chifra slurp [-t|-p|-v|-h] &lt;address&gt; [address...] [block...]  
+`Usage:`    chifra slurp [-t|-p|-v|-h] &lt;address&gt; [address...] [block...]
 `Purpose:`  Fetch data from EtherScan for any address.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
 |  | addrs | one or more addresses to slurp from Etherscan (required) |
 |  | blocks | an optional range of blocks to slurp |
-| -t | --types &lt;val&gt; | one or more types of transactions to request, one or more of *[ ext\* \| int \| token \| nfts \| miner \| all ]* |
+| -t | --types &lt;val&gt; | one or more types of transactions to request, one or more of *[ ext\* \| int \| token \| nfts \| miner \| uncles \| all ]* |
 | -p | --appearances | show only the blocknumer.tx_id appearances of the exported transactions |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |

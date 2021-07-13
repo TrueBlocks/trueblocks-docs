@@ -10,7 +10,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1200
@@ -30,10 +30,10 @@ Another useful feature of `chifra blocks` is the ability to extract address appe
 
 ### usage
 
-`Usage:`    chifra blocks [-e|-U|-t|-a|-u|-n|-c|-o|-v|-h] &lt;block&gt; [block...]  
+`Usage:`    chifra blocks [-e|-U|-t|-a|-u|-n|-c|-o|-v|-h] &lt;block&gt; [block...]
 `Purpose:`  Retrieve one or more blocks from the chain or local cache.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -67,10 +67,10 @@ The `--trace` option attachs an array transaction traces to the output (if the n
 
 ### usage
 
-`Usage:`    chifra transactions [-a|-t|-u|-o|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Usage:`    chifra transactions [-a|-t|-u|-o|-v|-h] &lt;tx_id&gt; [tx_id...]
 `Purpose:`  Retrieve one or more transactions from the chain or local cache.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -84,7 +84,7 @@ The `--trace` option attachs an array transaction traces to the output (if the n
 
 `Notes:`
 
-- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash,
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
 - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
 - If the queried node does not store historical state, the results for most older transactions are undefined.
@@ -101,10 +101,10 @@ Generally speaking, this tool is less useful than others as you may report the s
 
 ### usage
 
-`Usage:`    chifra receipts [-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Usage:`    chifra receipts [-a|-v|-h] &lt;tx_id&gt; [tx_id...]
 `Purpose:`  Retrieve receipts for the given transaction(s).
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -115,7 +115,7 @@ Generally speaking, this tool is less useful than others as you may report the s
 
 `Notes:`
 
-- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash,
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
 - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
 - If the queried node does not store historical state, the results for most older transactions are undefined.
@@ -130,10 +130,10 @@ The `--articulate` option fetches the ABI from each encountered smart contract t
 
 ### usage
 
-`Usage:`    chifra logs [-t|-s|-a|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Usage:`    chifra logs [-t|-s|-a|-v|-h] &lt;tx_id&gt; [tx_id...]
 `Purpose:`  Retrieve logs for the given transaction(s).
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -146,18 +146,18 @@ The `--articulate` option fetches the ABI from each encountered smart contract t
 
 `Notes:`
 
-- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash,
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
 - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
 - If the queried node does not store historical state, the results for most older transactions are undefined.
-- If you specify a 32-byte hash, it will be assumed to be a transaction hash, if the transaction is 
+- If you specify a 32-byte hash, it will be assumed to be a transaction hash, if the transaction is
   not found, it will be used as a topic.
 
 **Source code**: [`tools/getLogs`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getLogs)
 
 ## chifra traces
 
-The `chifra traces` tool retrieves a transaction's traces. You may specify multiple transaction identifiers per invocation. 
+The `chifra traces` tool retrieves a transaction's traces. You may specify multiple transaction identifiers per invocation.
 
 The `--articulate` option fetches the ABI from each encountered smart contract to better describe the reported data.
 
@@ -165,10 +165,10 @@ The `--filter` option calls your node's `trace_filter` routine (if available) us
 
 ### usage
 
-`Usage:`    chifra traces [-a|-f|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]  
+`Usage:`    chifra traces [-a|-f|-d|-c|-v|-h] &lt;tx_id&gt; [tx_id...]
 `Purpose:`  Retrieve traces for the given transaction(s).
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
@@ -182,11 +182,11 @@ The `--filter` option calls your node's `trace_filter` routine (if available) us
 
 `Notes:`
 
-- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash, 
+- The `transactions` list may be one or more space-separated identifiers which are either a transaction hash,
   a blockNumber.transactionID pair, or a blockHash.transactionID pair, or any combination.
 - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
 - If the queried node does not store historical state, the results for most older transactions are undefined.
-- A bang seperated filter has the following fields (at least one of which is required) and is separated 
+- A bang seperated filter has the following fields (at least one of which is required) and is separated
   with a bang (!): fromBlk, toBlk, fromAddr, toAddr, after, count.
 - A state diff trace describes, for each modified address, what changed during that trace.
 
@@ -202,10 +202,10 @@ The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`
 
 ### usage
 
-`Usage:`    chifra when [-l|-t|-s|-v|-h] &lt; block | date &gt; [ block... | date... ]  
+`Usage:`    chifra when [-l|-t|-s|-v|-h] &lt; block | date &gt; [ block... | date... ]
 `Purpose:`  Find block(s) based on date, blockNum, timestamp, or 'special'.
 
-`Where:`  
+`Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
