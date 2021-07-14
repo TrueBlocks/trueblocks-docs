@@ -1,5 +1,5 @@
 ---
-title: "Monitors"
+title: "Admin"
 description: ""
 lead: ""
 date: 2021-06-30T12:13:17-03:00
