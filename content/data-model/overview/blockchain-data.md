@@ -38,30 +38,28 @@ This is a very powerful way to understand the story behind a smart contract.
 
 ### Reference of transaction fields
 
-|Field|Description|
-|:----|:-----------|
-|hash|The transaction's hash|
-|blockHash|The hash of the block the transaction belongs to||
-|blockNumber|The number of the block the transaction belongs to||
-|transactionIndex||
-|nonce|Number of transactions sent by user|
-|timestamp||
-|from|originating address|
-|to|recipient address|
-|value|Amount of Eth sent. If `0`, likely a smart contract. Try the `--articulate` option|
-|extraValue1||
-|extraValue2||
-|gas|The fee for a particular action|
-|gasPrice|The amount a user is willing to spend on a unit of gas (in Gwei)|
-|input|Information about the smart contract. Use the `--articulate` option to make the bytes human readable|
-|isError||
-|hasToken||
+|Field|Description|Type|
+|:----|:-----------|---|
+|hash|The transaction's hash|String|
+|blockHash|The hash of the block where the transaction appears|String|
+|blockNumber|The block where the transaction appears|number|
+|transactionIndex|The transaction's index position on the block|number|
+|nonce|Number of transactions sent by user|number|
+|timestamp|unix timestamp|number
+|from|originating address|string
+|to|recipient address|string
+|value|Amount of Eth sent. If `0`, likely a smart contract. Try the `--articulate` option|number
+|gas|The fee for a particular action|number|
+|gasPrice|The amount a user is willing to spend on a unit of gas (in Gwei)|number|
+|input|Information about the smart contract. Use the `--articulate` option to make the bytes human readable|string|
+|isError||boolean
+|hasToken||boolean
 |cachebits=CB_NONE||
 |reserved2||
 |receipt|[Receipt](#receipt) if transaction succeeds|
 |[traces](#traces)||
-|articulatedTx|A human readable articulation of the hash in the `input` field|
-|compressedTx (nowrite)||
+|articulatedTx|A human readable articulation of the hash in the `input` field|object
+|compressedTx (nowrite)||string
 |statements (nowrite)||
 |finalized (nowrite)||
 
@@ -77,8 +75,8 @@ This is a very powerful way to understand the story behind a smart contract.
 
 ### Reference of block fields
 
-|Field|description|
-|-----|-----------|
+|Field|description|type|
+|-----|-----------|----|
 |gasLimit||
 |gasUsed||
 |hash||
@@ -88,7 +86,7 @@ This is a very powerful way to understand the story behind a smart contract.
 |difficulty||
 |price||
 |finalized||
-|timestamp||
+|timestamp|unix timestamp|number
 |transactions||
 |tx_hashes (nowrite)||
 |name (nowrite)||
@@ -118,7 +116,7 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
 |contractAddress||
 |gasUsed||
 |logs|see [logs](#logs)|
-|status|Whether the transaction was successful─ `1` indicates success, `0` failure ([_source_](https://eips.ethereum.org/EIPS/eip-658#specification).|
+|status|Whether the transaction was successful.`1` indicates success, `0` failure ([_source_](https://eips.ethereum.org/EIPS/eip-658#specification).|
 
 ## Logs
 
