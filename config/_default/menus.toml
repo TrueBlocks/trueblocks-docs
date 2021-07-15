@@ -40,16 +40,10 @@
   url = "/data-model/overview/intro"
 
 [[data]]
-  name = "Trueblocks collections and monitors"
+  name = "Trueblocks gives the data a name"
   weight = 20
   identifier = "collections"
   url = "/data-model/collections"
-
-[[data]]
-  name = "names"
-  weight = 30
-  identifier = "names"
-  url = "/data-model/names"
 
 [[blog]]
   name = "Recipes"
