@@ -25,7 +25,7 @@ your machine. But you have to make a compromise somewhere else.
 
 If you can't run a node, TrueBlocks offers two solution. You can either:
 
-* Build the index locally, but make quieries to a remote RPC.
+* Build the index locally, but make queries to a remote RPC.
 * Build the index from our IPFS manifest, but lose access to live data
 
 ### Lose ownership: query using a remote RPC
