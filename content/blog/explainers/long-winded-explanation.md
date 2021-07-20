@@ -58,7 +58,7 @@ There are a number of other options (including exporting to csv and tab
 delimited data), but I will focus on just one that directly affects the
 issue of indexing the chain:
 
-`chifra blocks \--uniq_tx 12000000`
+`chifra blocks --uniq_tx 12000000`
 
 exports what we call 'every appearance of every address in the block'.
 'Appearance' here isan important concept. An 'appearance' includes
