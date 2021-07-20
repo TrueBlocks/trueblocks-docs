@@ -59,7 +59,7 @@ Once you finished installing (if you have trouble, join our discord server), try
 chifra init
 ```
 
-This will initialize the TrueBlocks indexes and downloads the most recent collection of bloom filters. Next, run
+This will initialize the TrueBlocks indexes and downloads the most recent collection of Bloom filters. Next, run
 a small test to see if things are working properly
 
 ```[shell]

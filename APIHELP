@@ -304,7 +304,7 @@
                   {
                     name: 'blooms',
                     in: 'query',
-                    description: 'process query by first using bloom filter and, if hit, downloading index chunk from remote',
+                    description: 'process query by first using Bloom filter and, if hit, downloading index chunk from remote',
                     required: false,
                     style: 'form',
                     explode: true,

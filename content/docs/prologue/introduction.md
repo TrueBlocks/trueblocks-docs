@@ -22,9 +22,9 @@ toc: true
 
 4. To solve this problem, the Ethereum node needs to index the blockchain. TrueBlocks builds this missing index. However, we don't want to build it and be able to later control it or limit access to it. That's where IPFS comes in. We build a chunked index (that is, periodically we stop adding data to the growing chunk). This allows us to store the chunk immutably on IPFS.
 
-5. Before storing the data, we add a bloom filter that covers the index chunk. We publish this immutable bloom filter to IPFS as well. The bloom filter is very small and speeds up the search of the chunked index by orders of magnitude.
+5. Before storing the data, we add a Bloom filter that covers the index chunk. We publish this immutable Bloom filter to IPFS as well. The Bloom filter is very small and speeds up the search of the chunked index by orders of magnitude.
 
-6. Because end-user machines have small hard drives and we wish to permissionlessly and irrevocably distribute the index, TrueBlocks only downloads the much smaller bloom filters to the end users machine on first install. Subsequent queries for an address first check the bloom filter and only download the associated full index chunk of there's a hit on the bloom filter. In this way, each user downloads only the portion of the index that is of interest to them.
+6. Because end-user machines have small hard drives and we wish to permissionlessly and irrevocably distribute the index, TrueBlocks only downloads the much smaller Bloom filters to the end users machine on first install. Subsequent queries for an address first check the Bloom filter and only download the associated full index chunk of there's a hit on the Bloom filter. In this way, each user downloads only the portion of the index that is of interest to them.
 
 7. Those who say it is impossible to index the Ethereum blockchain on small, desktop machines are wrong.
 

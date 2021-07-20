@@ -48,7 +48,7 @@ privacy and performance benefits.
 * The index is immutable, so you know whether it's been tampered with
 * The index is decentralized, so no one owns it
 * The query directly from your machine, so  it's lightning fast
-* We use bloom filters, so you need to store only the fraction of the blockchain that you are interested in 
+* We use Bloom filters, so you need to store only the fraction of the blockchain that you are interested in 
 
 Of course, the problem is that we only publish to the IPFS periodically.
 This means our version doesn't contain the latest data.
