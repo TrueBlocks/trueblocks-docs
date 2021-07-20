@@ -49,7 +49,7 @@ want to make─addresses, names, ABIs, etc.
 
 In addition to the command line, TrueBlocks also provides a graphical user interface
 with the [Explorer](/docs/explorer/gui-for-trueblocks) application.
-So you don't need any to be highly technical to use TrueBlocks.
+So you don't need to be highly technical to use TrueBlocks.
 
 ### And yes, it's permissionless
 
@@ -67,10 +67,10 @@ Some highlights:
 
 - Querying straight from your hard drive is _faster by many factors._
 - Binary cache makes subsequent queries _nearly instantaneous_
-- Leaving the data on the chain until it's queried shrinks storage requirements for the typical user from _terrabytes to gigabytes_.
+- Leaving the data on the chain until it's queried shrinks storage requirements for the typical user from _terabytes to gigabytes_.
 - Bloom filters further reduce computation and storage overhead
 - Articulate to resolve transactions on the byte level, _turning byte streams into human-readable data._
-- _Format agnostic._ Receive data in JSON, CSV, plain text, etc.
+- _Format-agnostic._ Receive data in JSON, CSV, plain text, etc.
 
 TrueBlocks performs so well because the design is 100% data first. We are lifelong
 hackers, and we agree with Linus:
