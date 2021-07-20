@@ -175,15 +175,15 @@ time-ordered log of indexes of a time-ordered log*.
 
 ### Bloom Filters
 
-Before I move on, a quick note about bloom filters. [[Bloom
+Before I move on, a quick note about Bloom filters. [[Bloom
 filters]{.ul}](https://en.wikipedia.org/wiki/Bloom_filter) are an
 amazing data structure that do an amazing thing. They represent, in a
 very compact form, set membership in a data set such as an index.
 
-After creating each **index chunk**, we also create a bloom filter in
+After creating each **index chunk**, we also create a Bloom filter in
 front of that chunk that represents the set membership. In addition to
 publishing the **index chunk** itself to IPFS, we publish the chunk's
-bloom filter. The bloom filter will be seen to be super useful in
+Bloom filter. The Bloom filter will be seen to be super useful in
 creating the system that we want to create \-- a system that allows us
 to distribute the index to our end users very efficiently.
 
@@ -193,7 +193,7 @@ The scraper, in addition to querying each block and extracting
 appearances of addresses continually inserts them into the currently
 active chunk. Each time it inserts new records, it decides if the index
 has grown "large enough". If the index is large enough, the scraper
-creates a new chunk, creates the corresponding bloom filter, and
+creates a new chunk, creates the corresponding Bloom filter, and
 publishes both of these files to IPFS, storing away the hash and then it
 begins accumulating the next chunk.
 
@@ -211,28 +211,28 @@ appearing in any given chunk. We will write about this fascinating issue
 later.
 
 Given a series of chunked indexes, each chunk of which has an associated
-bloom filter, we are now ready to get what we want\--a list of every
+Bloom filter, we are now ready to get what we want\--a list of every
 appearance for an address.
 
 ### Querying the Index
 
 Given any address, our applications query the index chunks by scanning
-through the bloom filters looking for hits. A bloom filter is a small
+through the Bloom filters looking for hits. A Bloom filter is a small
 and super fast method of determining set membership. If, upon query, the
-bloom filter returns 'yes' (it actually returns 'maybe'), then, and only
+Bloom filter returns 'yes' (it actually returns 'maybe'), then, and only
 then, do we search the much larger chunk.
 
-If the bloom filter *hits* (that is, it indicates that the address may
+If the Bloom filter *hits* (that is, it indicates that the address may
 be present in the chunk), we need to open and search the associated
 chunk.
 
-If the bloom filter *misses*, we may skip the index chunk. (A bloom
+If the Bloom filter *misses*, we may skip the index chunk. (A Bloom
 filter is never wrong when it says a data item does not belong to the
 set.) We estimate, for any given address for a 'typical' user, nearly
-90% of the bloom filters miss. This means that the query skips nearly
+90% of the Bloom filters miss. This means that the query skips nearly
 90% of the index chunks. This speeds up the search significantly.
 
-Note that the bloom filters are small enough, in total, to store in
+Note that the Bloom filters are small enough, in total, to store in
 memory. Additionally, because the index chunks are sorted by address,
 when we are forced to query the chunk, we can complete a very fast
 binary search looking for appearances.
@@ -296,8 +296,8 @@ chifra list 0xf503017d7baf7fbc0fff7492b751025c6a78179b
 ```
 
 If you run this command (and your scraper is caught up to the front of
-the chain), you will see that chifra scans the bloom filters, opening
-the index chunks only if the bloom filter hits.
+the chain), you will see that chifra scans the Bloom filters, opening
+the index chunks only if the Bloom filter hits.
 
 If the address appears in the chunk, chifra caches that appearance
 (again in a fixed-width binary file). The next time we list the
@@ -442,7 +442,7 @@ We've shown that:
 4)  In response to this impossibility, one must chunk the index (that
     > is, create a time-ordered log of indexes of a time-ordered log),
 
-5)  Placing a bloom filter in front of a chunked index wildly speeds up
+5)  Placing a Bloom filter in front of a chunked index wildly speeds up
     > the search of the index,
 
 6)  In order to properly work on an end user's machine, the system must
@@ -476,7 +476,7 @@ server. In Web 3.0 / content-addressable data environment, the more
 users the system gets, the more those users themselves help build and
 manage the infrastructure.
 
-If two people download and pin the TrueBlocks bloom filters on IPFS,
+If two people download and pin the TrueBlocks Bloom filters on IPFS,
 they are twice as likely to be found. This aspect of the system grows
 exponentially. The more users the system acquires, the more likely each
 new user is to find the data she's looking for (assuming all users are
@@ -496,8 +496,8 @@ small burden. Larger users carry a larger burden.
 *[Tiny Footprint]{.ul}*
 
 The footprint of the initial installation of the TrueBlocks system is
-small. Only the bloom filters need to be installed at first. As the user
-scans the bloom filters looking for address appearances, interesting
+small. Only the Bloom filters need to be installed at first. As the user
+scans the Bloom filters looking for address appearances, interesting
 chunks need to be downloaded from IPFS. Once downloaded, the chunk can
 then be searched and pinned on IPFS if the address is found thereby
 making that chunk more likely to be found in the future by other users.
@@ -520,12 +520,12 @@ system.
 In addition to all of the above, the TrueBlocks data is also provably
 true. We prove our data by inserting into the data itself the git commit
 hash of the software instructions (i.e. the code) that builds the index
-chunks and bloom filters. This hash is inserted into the manifest file
+chunks and Bloom filters. This hash is inserted into the manifest file
 that we use to report the location of the data to our software.
 
 The manifest is updated during the creation of each chunk by storing the
-IPFS hashes of the chunk and the associated bloom filter, adding the
-IPFS hash of the file format for both the chunk and the bloom filter and
+IPFS hashes of the chunk and the associated Bloom filter, adding the
+IPFS hash of the file format for both the chunk and the Bloom filter and
 the above mentioned git commit hash into the manifest. Each manifest
 includes a hash to the previous manifest, so the user may walk his/her
 way backwards through the data. We then store the manifest on IPFS as
@@ -534,7 +534,7 @@ smart contract. See the above mentioned UnchainedIndex website for more
 information.
 
 In this way, our end-user applications always know where to go on IPFS
-to get the bloom filters. The app simply queries the Unchained Index
+to get the Bloom filters. The app simply queries the Unchained Index
 smart contract to find the latest hash of the manifest. Upshot - zero
 cost to publish the data. Everyone has access to the data at all times
 if they have access to the Ethereum chain.

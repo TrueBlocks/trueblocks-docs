@@ -27,7 +27,7 @@ If you have access to an Ethereum tracing node such as TurboGeth, you can build 
 For this page, we take advantage of the fact that TrueBlocks, LLC (the company) produces the index and publishes it to IPFS. We do this for our own reasons─our software doesn't work without it.
 We purposefully publish the index data to IPFS so that once our users have it, we can not take it back. This makes it impossible for us to hold our users hostage.
 
-Each time we publish an index chunk (and its associated bloom filter) to IPFS, we add a record to a *manifest*. The manifest lists all of the index chunks and bloom filters.
+Each time we publish an index chunk (and its associated Bloom filter) to IPFS, we add a record to a *manifest*. The manifest lists all of the index chunks and Bloom filters.
 
 So we can't take it back, we publish the manifest to IPFS. This IPFS hash to the manifest gives us a list of all the IPFS hashes of the entire address index.
 In other words, we've published immutable, irrevocable access to the entire index for anyone who has the hash of the manifest to use─not only now but into the far foggy future.
@@ -130,6 +130,6 @@ curl -s "http://gateway.ipfs.io/ipfs/QmSJeyXsvNpyXprdfwL5JyiS39VLU7m1kQNun4uM5XQ
 
 ## Getting all the Blooms
 
-Additionally, we publish the IPFS hash of a manifest file to smart contract we call the *Unchained Index.* The mainfest file details all the hashes of all the chunks of the index along with all the bloom filters.
+Additionally, we publish the IPFS hash of a manifest file to smart contract we call the *Unchained Index.* The mainfest file details all the hashes of all the chunks of the index along with all the Bloom filters.
 
 [ UNDER CONSTRUCTION -- PLEASE RETURN LATER ]

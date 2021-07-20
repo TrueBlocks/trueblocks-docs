@@ -110,14 +110,14 @@ So off we go…
 1. Above, I mentioned an index of `appearances`. This index is needed so users know which blocks to look for.
 2. With TrueBlocks, we’ve already built the software that builds, hashes, pins, and queries the appearance index.
 3. After nearly 10,000,000 blocks, TrueBlocks has produced more than 3,500 snapshots of the appearance index. This index is immutable, compact, stored as a binary file both locally and in IPFS, and takes up about 35GB _on our hard drive_. TrueBlocks search it with 100% privacy.
-4. To lessen the size of the index, we went a step further and produced bloom filters of each snapshot. Just like the snapshots, the bloom filters are immutable, very compact, and pinned on IPFS. The bloom filters allow TrueBlocks to identify which chunks of index are needed. The bloom filters are only 1.5 GB (also in 3,500 files), making them even more accessible to regular users.
-5. We go even further than that. For both the bloom filters and the index chunks, we produce text files listing the hashes which we distribute as part of the software. The first time one runs TrueBlocks, it downloads 1.5 GB of bloom filters. It then starts a daemon to catches up to (and keep up to) the front of the chain.
-6. Using the bloom filters, the software queries (quickly) for a list of snapshots. The list of snapshots are then downloaded. For almost every address, this list is very, very small.
+4. To lessen the size of the index, we went a step further and produced Bloom filters of each snapshot. Just like the snapshots, the Bloom filters are immutable, very compact, and pinned on IPFS. The Bloom filters allow TrueBlocks to identify which chunks of index are needed. The Bloom filters are only 1.5 GB (also in 3,500 files), making them even more accessible to regular users.
+5. We go even further than that. For both the Bloom filters and the index chunks, we produce text files listing the hashes which we distribute as part of the software. The first time one runs TrueBlocks, it downloads 1.5 GB of Bloom filters. It then starts a daemon to catches up to (and keep up to) the front of the chain.
+6. Using the Bloom filters, the software queries (quickly) for a list of snapshots. The list of snapshots are then downloaded. For almost every address, this list is very, very small.
 7. For popular addresses (such as CryptoKitties, ENS, or DAI) the list of snapshots is very large. Nearly every chunk is of interest.
 8. **Conclusion:** This naturally requires heavy users of the chain to download and pin much more data than regular users — this is a very desirable quality for a distributed system. It’s naturally fair.
-9. Once one has the list of hashes, one has undeniable, fully-local, 100% private access to the bloom filters.
+9. Once one has the list of hashes, one has undeniable, fully-local, 100% private access to the Bloom filters.
 10. This gives one undeniable access to the minimal list of index chunks. This give undeniable and fully-local access to every transaction for an address.
-11. The list of bloom filter hashes is [here](https://github.com/TrueBlocks/trueblocks-core/blob/master/src/other/install/ipfs-hashes/blooms.txt).
+11. The list of Bloom filter hashes is [here](https://github.com/TrueBlocks/trueblocks-core/blob/master/src/other/install/ipfs-hashes/blooms.txt).
 12. The list of IPFS hashes of the chunked appearance index is [here](https://github.com/TrueBlocks/trueblocks-core/blob/master/src/other/install/ipfs-hashes/finalized.txt).
 13. **Conclusion:** The above two links and [the TrueBlocks software](https://github.com/TrueBlocks/trueblocks-core) gives everyone access to a full index of appearances of every addresses anywhere on the chain. This access comes _on your own local machine. From_ there, you can operate 100% privately and fully decentrally.
 

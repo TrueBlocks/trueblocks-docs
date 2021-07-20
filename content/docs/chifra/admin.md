@@ -101,9 +101,9 @@ The scraper can scrape either the index only, previously created monitors only, 
 
 Each time `chifra scrape` runs, it begins at the last block it completed (plus one) and decends as deeply as it can into the block's data. (This is why we need a `--tracing` node.) As address appearances are encountered, the system adds the appearance to a binary index. Periodically (at the end of the block containing the 2,000,000th appearance), the system consolidates a **chunk**.
 
-A **chunk** is a portion of the index containing approximately 2,000,000 records. As part of the consolidation, the scraper creates a bloom filter representing the chunk. The bloom filters are an order of magnitude or more smaller than the chunks. The system then pushes both the chunk and the bloom filter to IPFS. In this way, TrueBlocks creates an immutable, uncapturable index of appearances that can be used not only by TrueBlocks, but any member of the community who needs it. (Hint: we all need it.)
+A **chunk** is a portion of the index containing approximately 2,000,000 records. As part of the consolidation, the scraper creates a Bloom filter representing the chunk. The Bloom filters are an order of magnitude or more smaller than the chunks. The system then pushes both the chunk and the Bloom filter to IPFS. In this way, TrueBlocks creates an immutable, uncapturable index of appearances that can be used not only by TrueBlocks, but any member of the community who needs it. (Hint: we all need it.)
 
-Users of the [TrueBlocks Explorer](https://github.com/TrueBlocks/trueblocks-explorer) (or any other software, for that matter) subsequently downloads the bloom filters, queries them to determine which **chunks** need to be downloaded to the user's machine and thereby build a historical list of transacitons for a given address. This is accomplished while imposing a minimum amount of data on the end user's machine.
+Users of the [TrueBlocks Explorer](https://github.com/TrueBlocks/trueblocks-explorer) (or any other software, for that matter) subsequently downloads the Bloom filters, queries them to determine which **chunks** need to be downloaded to the user's machine and thereby build a historical list of transacitons for a given address. This is accomplished while imposing a minimum amount of data on the end user's machine.
 
 In future versions of the software, we will pin these shared chunks and blooms on end user's machines. They need the data for the software to operate and sharing it makes all user's better off. A naturally-born network effect.
 
@@ -118,7 +118,7 @@ Please see [this article](.) for more information about running the scraper and 
 
 ## chifra init
 
-When invoked, `chifra init` looks at a smart contract called **The Unchained Index** ([0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd](https://etherscan.io/address/0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd)). From this smart contract, it extracts a data item called `manifestHash`. The `manifestHash` is an IPFS hash that points to a file (a manifest) that contains every previously pinned bloom filter and index chunk. TrueBlocks periodically publishes the manifest's hash to the smart contract. This makes the entire index both available for our software to use and impossible for us to withhold. Both of these aspects of the manifest are included by design.
+When invoked, `chifra init` looks at a smart contract called **The Unchained Index** ([0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd](https://etherscan.io/address/0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd)). From this smart contract, it extracts a data item called `manifestHash`. The `manifestHash` is an IPFS hash that points to a file (a manifest) that contains every previously pinned Bloom filter and index chunk. TrueBlocks periodically publishes the manifest's hash to the smart contract. This makes the entire index both available for our software to use and impossible for us to withhold. Both of these aspects of the manifest are included by design.
 
 If you stop `chifra init` before it finishes, it will pick up against where it left off the next time you run it.
 
@@ -129,14 +129,14 @@ If you run `chifra init` and allow it to complete, the next time you run `chifra
 ### usage
 
 `Usage:`    chifra init
-`Purpose:`  Leech the bloom filters from IPFS by first downloading the pin manifest from a smart contract and then downloading the blooms. Optionally `--pin` the resulting download in order to share it with others.
+`Purpose:`  Leech the Bloom filters from IPFS by first downloading the pin manifest from a smart contract and then downloading the blooms. Optionally `--pin` the resulting download in order to share it with others.
 
 `Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
-| -i | --init | initialize local index by downloading bloom filters from pinning service |
-| -k | --init_all | initialize local index by downloading both bloom filters and index chunks |
+| -i | --init | initialize local index by downloading Bloom filters from pinning service |
+| -k | --init_all | initialize local index by downloading both Bloom filters and index chunks |
 | -p | --pin_locally | pin all local files in the index to an IPFS store (requires IPFS) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
@@ -153,15 +153,15 @@ This tool is not yet ready for production use. Please return to this page later.
 ### usage
 
 `Usage:`    chifra pins [-l|-i|-k|-p|-v|-h]
-`Purpose:`  Manage pinned index of appearances and associated bloom filters.
+`Purpose:`  Manage pinned index of appearances and associated Bloom filters.
 
 `Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
-| -l | --list | list the index and bloom filter hashes from local manifest or pinning service |
-| -i | --init | initialize local index by downloading bloom filters from pinning service |
-| -k | --init_all | initialize local index by downloading both bloom filters and index chunks |
+| -l | --list | list the index and Bloom filter hashes from local manifest or pinning service |
+| -i | --init | initialize local index by downloading Bloom filters from pinning service |
+| -k | --init_all | initialize local index by downloading both Bloom filters and index chunks |
 | -p | --pin_locally | pin all local files in the index to an IPFS store (requires IPFS) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
