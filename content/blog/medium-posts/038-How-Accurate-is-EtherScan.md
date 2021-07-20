@@ -21,7 +21,7 @@ How is this possible? Isn’t Ethereum supposed to be an 18-decimal-place accura
 
 The answer, of course, is that Ethereum always does balance.
 
-Why then is Mr. Green having trouble? It’s because he’s not using the Etheruem data directly. He’s using OPD (other people’s data). Very few of us are using data straight from the chain. We almost all of us get our Ethereum data from an API or a website. In the Ethereum ecosystem, this means either Infura or EtherScan.
+Why then is Mr. Green having trouble? It’s because he’s not using the Ethereum data directly. He’s using OPD (other people’s data). Very few of us are using data straight from the chain. We almost all of us get our Ethereum data from an API or a website. In the Ethereum ecosystem, this means either Infura or EtherScan.
 
 I, like Mr. Green, want those annoying little digits to behave themselves. I’m becoming increasingly concerned, especially as smart contracts become more and more complicated, about the fact that “Nothing ever balances.”
 
