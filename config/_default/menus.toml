@@ -93,4 +93,9 @@
 [[footer]]
   name = "Privacy"
   url = "/privacy-policy/"
-  weight = 10
+  weight = 30
+
+[[footer]]
+  name = "Improve these Docs"
+  url = "https://github.com/TrueBlocks/trueblocks-docs"
+  weight = 20
