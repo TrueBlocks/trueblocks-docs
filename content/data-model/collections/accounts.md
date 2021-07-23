@@ -71,16 +71,6 @@ Through tags, you can associate different objects together.
 Running `chifra --tags` lists all tags.
 
 
-## Collections are lists of accounts
-
-For example, a user might have a collection called "Jay's World" that includes the following accounts:
-* gitcoin account
-* Business account
-* personal ethereum account
-* wife's account
-
-
-Using collections allows you to monitor a series of accounts.
 
 ## ABIS
 

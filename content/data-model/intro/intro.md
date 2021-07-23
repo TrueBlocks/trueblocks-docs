@@ -11,7 +11,7 @@ lastmod:
 draft: false
 images: []
 menu: 
-  data-model:
+  data:
     parent: intro
 weight: 1000
 toc: true

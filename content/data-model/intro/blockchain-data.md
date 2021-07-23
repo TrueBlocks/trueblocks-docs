@@ -162,3 +162,20 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
 |type||
 |action|The object action|
 |result||
+
+
+## when block
+
+* **CLI**: 
+  * run `chifra when <block_id>`.
+  * [See the command's documentation](/docs/chifra/chaindata/#chifra-when)
+* **API**: 
+  * [Calls to `/when`](https://www.tokenomics.io/api.html#/ChainData/chaindata-when)
+* **Explorer**
+
+When a block appeared, in unix and human readable format:
+|Field|description|
+|-----|-----------|
+|blockNumber|number of block|
+|timestamp|unix time|
+|date|Human readable date|
