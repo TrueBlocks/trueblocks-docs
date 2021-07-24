@@ -37,7 +37,7 @@
   name = "The Data Model"
   weight = 10
   identifier = "intro"
-  url = "/data-model/overview/intro"
+  url = "/data-model/intro/intro"
 
 [[data]]
   name = "Trueblocks gives the data a name"
