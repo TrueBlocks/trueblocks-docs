@@ -40,7 +40,7 @@
   url = "/data-model/intro/intro"
 
 [[data]]
-  name = "Trueblocks gives the data a name"
+  name = "Reference of Data fields"
   weight = 20
   identifier = "collections"
   url = "/data-model/collections"
