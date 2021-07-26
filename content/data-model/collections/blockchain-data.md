@@ -12,10 +12,13 @@ draft: false
 images: []
 menu: 
   data:
-    parent: intro
-weight: 1200
+    parent: collections
+weight: 2050
 toc: true
 ---
+_These fields describe the output of various Trueblocks blockchain queries.
+For information about how to refine these queries, see
+[the corresponding CLI section](/docs/chifra/chaindata/)_
 
 ## Transactions
 
