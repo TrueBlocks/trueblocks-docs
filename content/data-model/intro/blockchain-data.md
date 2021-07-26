@@ -65,6 +65,10 @@ This is a very powerful way to understand the story behind a smart contract.
 
 ## Blocks
 
+`chifra blocks` returns top level data specified block. You can also include
+an array for the blocks' transactions.
+
+
 ### How to get blocks
 
 * **CLI**: 
@@ -77,21 +81,18 @@ This is a very powerful way to understand the story behind a smart contract.
 
 |Field|description|type|
 |-----|-----------|----|
-|gasLimit||
-|gasUsed||
-|hash||
-|blockNumber||
-|parentHash||
-|miner||
-|difficulty||
+|gasLimit|The maximum price that a user is willing to spend on an operation (in Eth|number|
+|gasUsed|The amount of gas used|number|
+|hash|the hash for that block|string
+|blockNumber|The block where the transaction appears|number|
+|parentHash||string|
+|miner|address of blocks miner|string|
+|difficulty||number|
 |price||
-|finalized||
-|timestamp|unix timestamp|number
-|transactions||
-|tx_hashes (nowrite)||
-|name (nowrite)||
-|light (nowrite)||
-
+|finalized||boolean|
+|timestamp|unix timestamp|number|
+|transactionscnt|number of transactions|number|
+|transactions|Array of [transactions](#transactions)|object|
 
 ## Receipts
 
@@ -113,9 +114,9 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
 
 |Field|description|
 |-----|-----------|
-|contractAddress||
-|gasUsed||
-|logs|see [logs](#logs)|
+|contractAddress|address of the contract|string|
+|gasUsed|amount of gas used in transaction|number|
+|logs|see [logs](#logs)|object|
 |status|Whether the transaction was successful.`1` indicates success, `0` failure ([_source_](https://eips.ethereum.org/EIPS/eip-658#specification).|
 
 ## Logs
@@ -131,13 +132,21 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
 
 ### Reference of log fields
 
-|Field|description|
-|-----|-----------|
-|address|
-|logIndex|
-|topics|
-|data|
-|types|
+|Field|description|type|
+|-----|-----------|----|
+|address||string|
+|logIndex|position on log|number|
+|topics|||
+|data|||
+|types|||
+|blocknumber|Block where this log was|number|
+|transactionindex|| Integer of the transaction's index position in the block.|number|
+|logindex| Integer of the event index position in the block.|number|
+|address|origniating address|string|
+|topic|||
+|data|||
+|type|||
+|compressedlog|
 
 ## Traces
 ### How to get traces
@@ -149,17 +158,17 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
   * [Calls to `/traces`](https://www.tokenomics.io/api.html#/ChainData/chaindata-traces)
 * **Explorer**
 
-### Reference of transaction fields
+### Reference of trace fields
 
-|Field|description|
-|-----|-----------|
-|blockHash||
-|blockNumber||
+|Field|description|type|
+|-----|-----------|---|
+|blockHash|Hash of the block where this transaction was|string
+|blockNumber|Number of the block where this transaction was|number|
 |subtraces||
 |traceAddress||
-|transactionHash||
-|transactionIndex||
-|type||
+|transactionHash|hash of the transaction||
+|transactionindex|Integer of the transaction's index position in the block.|number|
+|type|||
 |action|The object action|
 |result||
 
@@ -174,8 +183,8 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
 * **Explorer**
 
 When a block appeared, in unix and human readable format:
-|Field|description|
-|-----|-----------|
-|blockNumber|number of block|
-|timestamp|unix time|
-|date|Human readable date|
+|Field|description|type|
+|-----|-----------|----|
+|blockNumber|number of block|number|
+|timestamp|unix time|number|
+|date|Human readable date|string|	
