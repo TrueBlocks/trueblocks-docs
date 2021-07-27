@@ -27,7 +27,7 @@ What really interests us is the stories behind this data--questions like:
 
 Broadly, the data TrueBlocks provides divides into two categories
 
-* [Blockchain data](../blockchain-data/)).
+* [Blockchain data](../blockchain-data/)
 * [Account-organized data](../accounts)
 
 The account-organized data describes things like account collections, account
