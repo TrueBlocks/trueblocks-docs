@@ -88,11 +88,10 @@ an array for the blocks' transactions.
 |gasUsed|The amount of gas used|number|
 |hash|the hash for that block|string
 |blockNumber|The block where the transaction appears|number|
-|parentHash||string|
+|parentHash|The hash of the previous block|string|
 |miner|address of blocks miner|string|
-|difficulty||number|
-|price||
-|finalized||boolean|
+|difficulty|the computational difficulty at this block|number|
+|finalized|Whether Trueblocks will continue querying the chain for this block|boolean|
 |timestamp|unix timestamp|number|
 |transactionscnt|number of transactions|number|
 |transactions|Array of [transactions](#transactions)|object|
@@ -124,6 +123,8 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
 
 ## Logs
 
+Logs are only ever created by smart contracts.
+
 ### How to get logs
 
 * **CLI**: 
@@ -137,19 +138,21 @@ In that case, the `contractAddress` of the receipt carries the address of the ne
 
 |Field|description|type|
 |-----|-----------|----|
-|address||string|
-|logIndex|position on log|number|
-|topics|||
+|address|the smart contract that emitted this log|string|
+|logIndex|the log's position relative to the block|number|
+|topics|hash of the signature of an event in the log|array|
 |data|||
 |types|||
 |blocknumber|Block where this log was|number|
-|transactionindex|| Integer of the transaction's index position in the block.|number|
+|transactionindex|| Integer of the transaction's index position in the block|number|
 |logindex| Integer of the event index position in the block.|number|
 |address|origniating address|string|
 |topic|||
 |data|||
 |type|||
 |compressedlog|
+
+<!---emitter is used in chifra export --->
 
 ## Traces
 ### How to get traces

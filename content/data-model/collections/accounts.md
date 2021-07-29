@@ -82,14 +82,14 @@ Running `chifra --tags` lists all tags.
 
 |Field|Description|Type (format)|
 |----|------------|--------------|
-name||string 
-type||string 
-abi_source||string 
-anonymous||boolean
-constant||boolean
-stateMutability||string 
-signature||string 
-encoding||string 
+|name||string 
+|type||string 
+|abi_source||string 
+|anonymous||boolean
+|constant||boolean
+|stateMutability||string 
+|signature||string 
+|encoding|The hash of the signature of the event or the function|string|
 message (nowrite)||string 
 inputs|Input fields, see below°|array
 outputs|Output fields, see below*|array
