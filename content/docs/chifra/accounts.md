@@ -79,7 +79,7 @@ By default, the results of the extraction are delivered to your console, however
 | -y | --factory | scan for contract creations from the given address(es) and report address of those contracts |
 |  | --emitter | for log export only, export only if one of the given export addresses emitted the event |
 |  | --source &lt;addr&gt; | for log export only, export only one of these addresses emitted the event |
-|  | --relevant | for log export only, if true export only logs relevant to one of the given export addresses |
+|  | --relevant | for log and accounting export only, if true export only logs relevant to one of the given export addresses |
 | -U | --count | only available for --appearances mode, if present return only the number of records |
 | -c | --first_record &lt;num&gt; | the first record to process |
 | -e | --max_records &lt;num&gt; | the maximum number of records to process before reporting |
@@ -127,7 +127,7 @@ Use the `--remove` command to permanently remove a monitor from your computer. T
 
 Like `chifra abis`, this tool is useful from the command line but is primarily used in support of other tools, especially `chifra export` where naming addresses becomes the single best way to turn unintellagable blockchain data into understandable information.
 
-The various options allow you to search and filter the results. The `entities` and `tags` options are used primarily by the TrueBlocks explorer.
+The various options allow you to search and filter the results. The `collections` and `tags` options are used primarily by the TrueBlocks explorer.
 
 You may use the TrueBlocks explorer to manage (add, edit, delete) address-name associations.
 
@@ -148,7 +148,7 @@ You may use the TrueBlocks explorer to manage (add, edit, delete) address-name a
 | -p | --prefund | include prefund accounts |
 | -n | --named | include well know token and airdrop addresses in the search |
 | -a | --addr | display only addresses in the results (useful for scripting) |
-| -s | --entities | display entity data |
+| -s | --collections | display collections data |
 | -g | --tags | export the list of tags and subtags only |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |

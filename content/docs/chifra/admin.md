@@ -25,7 +25,7 @@ You test this out from your `localhost` on our [API reference](https://www.token
 
 The `chifra status` program allows you to manage the various TrueBlock caches. You may list all of the caches, some of the cache, or even individual caches either in terse or full detail. The cache of interest is specified with the `modes` option.
 
-TrueBlocks maintains caches for the index of address appearances, named addresses, abi files, as well as other data including blockchain data, address monitors, and groups of address monitors called entities.
+TrueBlocks maintains caches for the index of address appearances, named addresses, abi files, as well as other data including blockchain data, address monitors, and groups of address monitors called collections.
 
 ### usage
 
@@ -36,7 +36,7 @@ TrueBlocks maintains caches for the index of address appearances, named addresse
 
 | | Option | Description |
 | :----- | :----- | :---------- |
-|  | modes | the type of status info to retrieve, one or more of *[ index \| monitors \| entities \| names \| abis \| caches \| some\* \| all ]* |
+|  | modes | the type of status info to retrieve, one or more of *[ index \| monitors \| collections \| names \| abis \| caches \| some\* \| all ]* |
 | -d | --details | include details about items found in monitors, slurps, abis, or price caches |
 | -t | --types &lt;val&gt; | for caches mode only, which type(s) of cache to report, one or more of *[ blocks \| transactions \| traces \| slurps \| prices \| all\* ]* |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
@@ -83,14 +83,13 @@ The scraper can scrape either the index only, previously created monitors only, 
 
 ### usage
 
-`Usage:`    chifra scrape [-n|-p|-s|-v|-h] mode
+`Usage:`    chifra scrape [-n|-p|-s|-v|-h]
 `Purpose:`  Scan the chain and update the TrueBlocks index of appearances.
 
 `Where:`
 
 | | Option | Description |
 | :----- | :----- | :---------- |
-|  | mode | control the block scraper, one of *[ run \| quit \| pause \| restart ]* (required) |
 | -n | --n_blocks &lt;num&gt; | maximum number of blocks to process (defaults to 5000) |
 | -p | --pin | pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node) |
 | -s | --sleep &lt;double&gt; | the number of seconds to sleep between passes (default 14) |
