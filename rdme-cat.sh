@@ -25,7 +25,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1100
@@ -56,7 +56,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1200
@@ -88,7 +88,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1300
@@ -116,7 +116,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1400
@@ -147,7 +147,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "chifra"
 weight: 1500
