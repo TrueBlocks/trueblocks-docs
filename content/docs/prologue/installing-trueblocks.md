@@ -56,7 +56,7 @@ TrueBlocks requires Go version 1.12.x or later.
 ### 1. Compile
 
 ```shell
-git clone -b develop git@github.com:TrueBlocks/trueblocks-core.git
+git clone -b develop https://github.com/trueblocks/trueblocks-core
 cd trueblocks-core
 mkdir build && cd build
 cmake ../src
