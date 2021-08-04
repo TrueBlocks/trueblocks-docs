@@ -25,5 +25,5 @@ But, to understand the relations, you have to understand what words, like "token
 
 This reference describes the overarching data model.
 
-<img src="/data-model/data-model.png" alt="TrueBlocks is full of data that interrelates." width="700"/>
+<img src="/data-model/data-model-600.png" alt="TrueBlocks is full of data that interrelates." width="600"/>
 
