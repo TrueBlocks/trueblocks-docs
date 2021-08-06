@@ -33,9 +33,9 @@ Accounts are a combination of an`address`, a `name`, and optional other data
 
 ### Account fields
 
-|Field|Description|Type (format)|required|example|
-|----|------------|--------------|-------|-------|
-|name|A user-set text string to identify the address|string|required|Trueblocks|
+|Field|Description|Type (format)|
+|----|------------|--------------|
+|name|A user-set text string to identify the address|string|
 |address|The address of the account|string|required|
 |tags|String to link account with other data|string|
 symbol|ticker-like symbol to identify an account|string|
