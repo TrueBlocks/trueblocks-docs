@@ -1,6 +1,6 @@
 ---
 title: "Enhanced Ethereum Data"
-description: ""
+description: "Underlying all Ethereum data─and therefore all TrueBlocks data─is a set of inter-related data models."
 lead: ""
 date: 2021-07-01T11:40:11-03:00
 lastmod:
