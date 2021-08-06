@@ -8,7 +8,7 @@ lastmod:
   - lastmod
   - date
   - publishDate
-draft: false
+draft: true
 images: []
 menu: 
   data:
