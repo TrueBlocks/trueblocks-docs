@@ -1,6 +1,7 @@
 ---
-title: "Using Chifra"
+title: "Some Chifra Examples"
 description: "How to Use TrueBlocks to Get Useful Data"
+lead: "How to Use TrueBlocks to Get Useful Data"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -132,8 +133,12 @@ See [Getting ERC20 Transfer Events](/blog/recipe-getting-erc20-transfer-events/)
 
 There are many other `chifra` commands including `list` and `export` that we still study next. Other commands allow you to `serve` a JSON API presenting each command as an API route, `init` which pulls parts of the index data from IPFS, and `scrape` which builds the index.
 
-## Conclusion
+## Getting into more detail
 
-See our [Blog](/blog/) for some example recipes for accomplishing various tasks. Also, see the [help pages](/docs/chifra/) for each individual tool.
+In the following sections, each command is presented with its options and in more detail. In addition,
 
-In the next section, we discuss the [Indexing Appearances]()
+* Our [blog has a few longer "recipes"](/blog/recipes)for accomplishing various tasks.
+* Our [data model reference](/data-model/intro/intro/) describes the fields that are returned with each command
+
+
+
