@@ -10,7 +10,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-menu: 
+menu:
   data:
     parent: collections
 weight: 2100
@@ -26,82 +26,70 @@ For information about how to refine these queries, see
 
 ## Accounts
 
-_Accounts_ link an address to a known entity.
+_Accounts_ link an address to a name.
 
-Accounts are a combination of an`address`, a `name`, and optional other data
-
+Accounts are a combination of an`address`, a `name`, and optionally other data. Where possible, this information is queried directly from the blockchain, however in many cases the information was gathered from various websites over the years. For example, every time people say "Show me your address, and we will airdrop some tokens" on Twitter, we copy and paste all those addresses. If you're going to DOX yourselves, we're going to notice. Sorry. Not sorry.
 
 ### Account fields
 
-|Field|Description|Type (format)|
-|----|------------|--------------|
-|name|A user-set text string to identify the address|string|
-|address|The address of the account|string|required|
-|tags|String to link account with other data|string|
-symbol|ticker-like symbol to identify an account|string|
-source| Text indicating origin of `name`-`address` association|string
-is_custom|Whether the name is custom set by user (if `false`, the name shipped with the default `names.tab` folder) |boolean
-is_prefund|	|boolean
-is_contract|Whether the account is a smart contract|boolean|
-is_erc20|Whether the account conforms to the [ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)|boolean|
-|is_erc721|Whether the account conforms to the [ERC721 non-fungible token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/)|boolean
-
-
+| Field       | Description                                                                     | Type    |
+| ----------- | ------------------------------------------------------------------------------- | ------- |
+| name        | a user-set text string identifying the address                                  | string  |
+| address     | The address of the named account                                                | address |
+| tags        | a string catagorizing addresses by type                                         | string  |
+| symbol      | ticker-like symbol to identify an account (always acquired on-chain)            | string  |
+| source      | text indicating where we found the `name`-`address` association                 | string  |
+| is_custom   | `true` for private names not to be shared publically, `false` otherwise         | boolean |
+| is_prefund  | `true` if this address was a recipient in the genesis block, `false` otherwise. | boolean |
+| is_contract | `true` if this address is a smart contract, `false` otherwise                   | boolean |
+| is_erc20    | `true` if this address is an ERC20 token, `false` otherwise                     | boolean |
+| is_erc721   | `true` if this address is an ERC721 token, `false` otherwise                    | boolean |
 
 ## Monitors actively update collections
 
-If you try to locally monitor every account on a blockchain, you will quickly encounter
-storage issues.
-To allow you to watch _only the accounts you are interested in_, TrueBlocks offers a data called a monitor.
+Monitors are [Accounts](#account), but they have the special quality that the user has told us explicitly that they are interested in 'monitoring' the activity on the given address. He/she may do that by running either `chifra list` or `chifra export` on the address. Doing so creates a monitor for that address. See the Account data description above for information on the data fields of a monitor.
 
-A _Monitor_ is an [account](#account) or [collection](#collection) that
-TrueBlocks continually watches for new transactions.
+Monitors can also be [Collections](#collection) of Accounts that are similar to straight up Account monitors but monitor multiple addresses at a time.
 
 ### Monitor Fields
 
-Running `chifra monitor` returns an array of objects, with the following fields
+See Account fields above.
 
-|Field|Description|Type (format)|
-|----|------------|--------------|
-|address|The address of the monitor|string|
-|blockNumber|The block where the transaction appears|number|
-|transactionindex|The transaction's index position on the block|number|
+## Tags
 
+Tags allow you to assign categories to Accounts. Separate tags with a colon (:) when adding new names.
 
-## Tags let you create associations
-
-Through tags, you can associate different objects together.
-
-Running `chifra --tags` lists all tags.
-
-
+Running `chifra --tags` will list all currently available tags.
 
 ## ABIS
 
+For more information on ABIs please see any relevant Ethereum documentation, particularly that documentation related to Solidity coding. The fields or the ABI are mostly identical to the fields you will find in that documentation.
+
 ### ABI fields
 
-|Field|Description|Type (format)|
-|----|------------|--------------|
-|name||string 
-|type||string 
-|abi_source||string 
-|anonymous||boolean
-|constant||boolean
-|stateMutability||string 
-|signature||string 
-|encoding|The hash of the signature of the event or the function|string|
-message (nowrite)||string 
-inputs|Input fields, see below°|array
-outputs|Output fields, see below*|array
+| Field           | Description                                               | Type         |
+| --------------- | --------------------------------------------------------- | ------------ |
+| name            | the name of the function or event being described         | string       |
+| type            | one of `function` or `event`                              | string       |
+| abi_source      | the source of the ABI file (frequently EtherScan)         | string       |
+| anonymous       | unused                                                    | boolean      |
+| constant        | unused                                                    | boolean      |
+| stateMutability | unused                                                    | string       |
+| signature       | the Solidity function signature excluding parameter names | string       |
+| encoding        | the hash of the signature of the event or function        | hash         |
+| inputs          | the input fields to the function or event                 | object array |
+| outputs         | the output fields of the function or event                | object array |
 
 ° **Input/Output fields**
 
-|Field|Description|Type (format)|
-|----|------------|--------------|
-|type||string|
-|name||string|
-|internalType||string|
+| Field        | Description                                                                       | Type        |
+| ------------ | --------------------------------------------------------------------------------- | ----------- |
+| type         | the data type (see Solidity docs) of the parameter                                | string      |
+| name         | the name of the parameter                                                         | string      |
+| internalType | if the parameter is a struct, this is the object string for the underlying struct | JSON string |
 
-## Funcssigs
+## Function Signatures
 
-## Event sigs
+## Event Signatures
+
+Both of these data structures are identical to the above ABI fields. When articulating a transaction, event, or trace the ABI file is basically just an array of function and event types.
