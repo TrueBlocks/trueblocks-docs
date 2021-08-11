@@ -1,7 +1,8 @@
 ---
 title : "Do I need a node?"
 description: "A node is not required, but that's the only way use Trueblocks as it is intended."
-lead: ""
+lead: "If you want your queries to be totally private and as up-to-date as possible,
+then yes, you need a node. But, downloading an index from the IPFS is a pretty good compromise."
 date: 2020-10-06T08:48:45+00:00
 lastmod: 2020-10-06T08:48:45+00:00
 draft: false
@@ -13,43 +14,45 @@ menu:
 weight: 0150
 ---
 
-If you want your queries to be totally private and as up-to-date as possible,
-then _yes, you need a node_.
-We highly recommend Turbo-Geth.
-It's not as hard to set up many people think, but it does require two TBs of storage.
+And if you have a node, its preferably with Erigon.
 
-Even if you're not running a node, TrueBlocks can still build a local index on
-your machine. But you have to make a compromise somewhere else.
+Some benefits of TrueBlocks can be realized only when a user has their own node.
+Having a node lets users:
 
-## Without a node, you must choose between privacy and live blockhain data
+* Limit queries to the node on their machine
+* Use the node to build a local index
+* Query data directly from the top of the chain
 
-If you can't run a node, TrueBlocks offers two solution. You can either:
+Setting up a node is not as hard as many people think, but it does require two TBs of storage
+and some good hardware.
 
-* Build the index locally, but make queries to a remote RPC.
-* Build the index from our IPFS manifest, but lose access to live data
+If you want to build your own index, plan for a few days and run `chifra scrape`.
+Before doing so, you probably want to read the relevant section in the
+["How Can I Get the Index"](./how-can-i-get-the-index) article,
+and [the `scrape` command documentation](../../chifra/admin#chifra-scrape).
 
-### Lose ownership: query using a remote RPC
+Fortunately, TrueBlocks also publishes the index on the IPFS,
+which lets you access it locally without running a node.
 
-If you need access to live data, you might decide it's worth it to build the
-TrueBlocks index from data provided by an RPC.
-In this case, you can just add the RPC's url and API key to your config,
-as [described in step 3 of our install instructions](/docs/prologue/installing-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys)
+## Without a node, you can download the index from the IPFS
 
-Of course now the queries depend on data provided by the RPC node.
-And not all nodes are equal.
-If you do go this route, Archive nodes are the best choice for Trueblocks.
+Downloading the IPFS manifest is a good option for many users:
 
-### Lose live data: build the index with our IPFS index
+* The initial time to get started is much faster
+* The index occupies only the space you need, (between 1 and 80GB)
+* You can verify its correctness with the TrueBlocks source code
+* You can own the index on your local machine (though you still need to query remote RPCs for transaction data).
 
-You can also build the index using our IPFS manifest. This is, by far, the
-route we recommend for users without nodes. Using IPFS provides huge
-privacy and performance benefits.
+There are two commands to download the index, `chifra init` and `chifra pins`.
+The pros and cons of each approach are outlined in the
+["How Can I Get the Index?"](./how-can-i-get-the-index) article.
 
-* The index is immutable, so you know whether it's been tampered with
-* The index is decentralized, so no one owns it
-* The query directly from your machine, so  it's lightning fast
-* We use Bloom filters, so you need to store only the fraction of the blockchain that you are interested in 
+### Drawbacks of using the IPFS manifest
 
-Of course, the problem is that we only publish to the IPFS periodically.
-This means our version doesn't contain the latest data.
+The drawbacks of using the IPFS manifest are the opposite of the benefits
+of building an index from your own node:
+
+* You still must query transaction data from remote RPCs
+* You must trust the data TrueBlocks publishes (though you can verify the build)
+* You can only query up to the last time TrueBlocks published the manifest
 
