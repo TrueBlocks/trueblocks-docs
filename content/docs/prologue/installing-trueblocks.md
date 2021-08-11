@@ -19,6 +19,11 @@ To use the core tools of TrueBlocks, you need to go through a few installation s
 2. Add `trueblock-core/bin` to your shell PATH.
 3. Update configs for your RPC endpoints and API keys
 
+_Optional steps:_
+
+4. To use all features, get your index.
+5. To explore the data visually, install the explorer application.
+
 ## Install
 
 The following instructions walk you through these steps with a bit more context.
@@ -26,10 +31,10 @@ If you have any trouble, you might want to jump to the corresponding section in 
 
 ### 0. Install dependencies
 
-**Install golang** with [these instructions from the GoLang website](https://golang.org/doc/install).
+1. Install Go with [these instructions from the GoLang website](https://golang.org/doc/install).
 TrueBlocks requires Go version 1.12.x or later.
 
-**Install the other prereqs** with your cli:
+2. Install the other prereqs with your CLI:
 
 * For Linux:
 
@@ -55,6 +60,8 @@ TrueBlocks requires Go version 1.12.x or later.
 
 ### 1. Compile
 
+1.1 Clone the repo and compile
+
 ```shell
 git clone -b develop https://github.com/trueblocks/trueblocks-core
 cd trueblocks-core
@@ -65,9 +72,7 @@ make
 
 _(You may use `make -j <ncores>` to parallelize the build. Replace `<ncores>` with the number of cores on your machine.)_
 
-#### Test build
-
-To test your install, run this command
+1.2 Test your install with this command
 
 ```shell
 ../bin/chifra --version
@@ -88,7 +93,7 @@ For guidance, see the [corresponding section in troubleshooting](#adding-bin-to-
 
 ### 3. Update the configs for your RPC and API keys
 
-To add your RPC endpoints and API keys, add these lines to `trueBlocks.toml` under `[settings]`:
+3.1 To add your RPC endpoints and API keys, add these lines to `trueBlocks.toml` under `[settings]`:
 
 ```toml
 [settings]
@@ -96,6 +101,8 @@ rpcProvider = "<url-to-rpc-endpoint>"
 etherscan_key = "<key>"
 ```
 
+The location of your config file depends on your OS and your environment
+settings.
 For help, see [Where is my config file?](#where-is-my-config-file).
 
 By default, TrueBlocks checks for an RPC on `http://localhost:8545/`.
@@ -104,16 +111,31 @@ If you are using an external RPC, you to need add its endpoint.
 Similarly, [some tools have an `--articulate` option](https://docs.trueblocks.io/docs/chifra/chaindata/),
 which requires an EtherScan API key.
 
-The location of your config file depends on your OS and your environment
-settings. Again, for more details, see the [corresponding section in troubleshooting](#Where-is-my-config).
-
-#### Test Install
-
-Run a chifra command! This one returns data about block 100.
+3.2 Test the install with a chifra command! This one returns data about block 100.
 
 ```shell
 chifra blocks 100
 ```
+
+### 4. Get your index
+
+When you query basic transaction data, you don't need an index.
+However, most people want to explore entire histories of addresses, calls, and traces.
+Doing that requires an index.
+
+There are multiple options, which the [How Can I Get the Index?](../how-can-i-get-the-index)
+article covers in more detail.
+
+No matter what method, getting the index will take somewhere between 10 minutes and a few days.
+So you might want to play around with some [chifra blockchain commands](../../chifra/chaindata) first.
+
+### 5. Build the explorer app
+
+If you live in the terminal, the preceding instructions have already given you what you need.
+
+Most people prefer to explore data visually. To do that, you need
+[to install the Explorer browser application](../install-explorer).
+
 
 ## Troubleshooting
 
@@ -121,7 +143,7 @@ Here are some problems users have run into at each step. If you're still having 
 
 ### Dependencies
 
-#### How do I check my Go version
+#### How do I check my Go version?
 
 ```shell
 go version
@@ -134,7 +156,7 @@ TrueBlocks needs version 1.12.x or later.
 #### No version outputted
 
 From the top of the trueblocks-core repo, check your version with `bin/chifra --version`.
-If nothing ouputs, then the build has failed.
+If nothing outputs, then the build has failed.
 Please make sure you’ve reviewed the commands in steps 0 and 1.
 If you continue to have trouble, create an issue.
 
@@ -153,7 +175,7 @@ If you are confused, a Google search may be in order…
 
 ### Adding configs
 
-#### Where is my config file
+#### Where is my config file?
 
 TrueBlocks follows the [XDG base directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) spec.
 
@@ -166,8 +188,15 @@ By default, this is:
 If the config is not there, someone has set a value your default data directory!
 Run `echo $XDG_DATA_HOME`, and hopefully you'll know what to do :-).
 
-## Conclusion
+#### How do I add a remote RPC?
 
-On this page, we've shown you how to install TrueBlocks and have gotten you started running `chifra`.
-`chifra` is the overarching command for all TrueBlocks tools.
-The next section further introduces you to `chifra`.
+In your config file, the specific RPC path will differ depending on the service.
+
+Here's an example for Infura and EtherScan, with `<key_value>` being replaced by a hash string.
+
+```toml
+[settings]
+rpcProvider = "https://mainnet.infura.io/v3/<key_value>"
+etherscan_key = "<key_value>"
+```
+
