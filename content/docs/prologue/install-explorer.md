@@ -1,7 +1,7 @@
 ---
-title: "Install Explorer"
-description: ""
-lead: ""
+title: "Install the Explorer Browser app"
+description: "Explorer is the GUI frontend for TrueBlocks "
+lead: "Explorer is the GUI frontend for TrueBlocks"
 date: 2021-07-02T08:01:07-03:00
 lastmod:
   - :git
@@ -12,8 +12,8 @@ draft: false
 images: []
 menu: 
   docs:
-    parent: explorer
-weight: 3100
+    parent: prologue
+weight: 700
 toc: true
 ---
 
