@@ -1,7 +1,7 @@
 ---
 title: "Some Chifra Examples"
-description: "How to Use TrueBlocks to Get Useful Data"
-lead: "How to Use TrueBlocks to Get Useful Data"
+description: "How to use TrueBlocks to get useful data"
+lead: "How to use TrueBlocks to get useful data."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -129,11 +129,9 @@ You'll see additional (and much more easy to understand) data. In particular, yo
 
 See [Getting ERC20 Transfer Events](/blog/recipe-getting-erc20-transfer-events/) for an example of using articulation.
 
-## Other Commands
+## Links to more detail
 
 There are many other `chifra` commands including `list` and `export` that we still study next. Other commands allow you to `serve` a JSON API presenting each command as an API route, `init` which pulls parts of the index data from IPFS, and `scrape` which builds the index.
-
-## Getting into more detail
 
 In the following sections, each command is presented with its options and in more detail. In addition,
 
