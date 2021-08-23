@@ -27,7 +27,7 @@ toc: true
 
 ## Getting the index without running a node
 
-If you're not running your own node (or your don't feel like waiting), you may download all or part of a pre-built index from IPFS.
+If you're not running your own node (or you don't feel like waiting), you can download all or part of a pre-built index from IPFS.
 
 To do this, you have two options:
 
@@ -63,7 +63,7 @@ When you run `chifra init`, TrueBlocks downloads a set of Bloom filters from the
 
 ### Use chifra pins --init_all to get the entirity of the index
 
-To get the entirity of the appearance index, run `chifra pins --init_all`.
+To get the entirety of the appearance index, run `chifra pins --init_all`.
 
 If you use this command and don't run `chifra scrape`, you will have to update the index periodically by running the command again. ([Read about the finding the latest manifest](#Supplementary-how-can-I-see-when-the-manifest-was-last-published)).
 
@@ -79,9 +79,11 @@ The initialization is very similar to the `init` process described in the previo
 
 However, while `chifra init` downloads only the Bloom filters, downloading the index chunks only after a user queries for an address, `chifra pins --init_all` _downloads all index chunks up front_.
 
-While this process takes much longer (perhaps hours), when you query a particular address in the future, TrueBlocks no longer has to download anything, therefore, the query is significantly faster. In other words, the first time you run `chifra export <transaction>`, the process is much faster than it is if you initialize with `chifra init` alone.
+While this process takes much longer (perhaps hours), when you query a particular address in the future, TrueBlocks no longer has to download anything.
+Therefore, the query is significantly faster.
+In other words, the first time you run `chifra export <transaction>`, the process is much faster than it is if you initialize with `chifra init` alone.
 
-As is true of the previous methos, if you enable caching, subsequent queries for the same address return almost instantly.
+As is true of the previous methods, if you enable caching, subsequent queries for the same address return almost instantly.
 
 ## Use chifra scrape to build your own index
 
@@ -99,13 +101,13 @@ The end result of `chifa scrape` is the same as the end result of `chifra pins -
 
 (One note: It's possible to run against any RPC endpoint -- remote or local -- but because the TrueBlocks scraper hits the node continually and very aggressively, you will probably get rate-limited against a shared RPC server such as Infura.)
 
-A good explanation of this whole process requires a long form article. For now, the curious may look at the best documentation available which is the `src` directory of the source code.
+A good explanation of this whole process requires a long form article. For now, the curious may look at the best documentation available, the `src` directory of the source code.
 
 ## One final note on building / making the index
 
-You may, if you wish, mix and match the above methods.
+You can, if you wish, mix and match the above methods.
 
-For example, you may initially download only the Bloom filters with `chifra init` and then start up `chifra scrape` in the background. This would allow you to get started quickly but stay up to the front of the chain. Of course, as with everything, there's a tradeoff. You will be storing a few MB every time a new chunk is created (about three times a day). In return, it's way faster to query and the index stay up to the chain.
+For example, you can initially download only the Bloom filters with `chifra init` and then start up `chifra scrape` in the background. This would allow you to get started quickly but stay up to the front of the chain. Of course, as with everything, there's a tradeoff. You will be storing a few MB every time a new chunk is created (about three times a day). In return, it's way faster to query and the index stay up to the chain.
 
 Alternatively, you may choose to scrape (i.e. build) the index yourself and share it with others by pinning it on IPFS. In this case, you're being a good citizen and making the whole ecosystem better off becuase you're sharing you index.
 
@@ -115,7 +117,7 @@ You can download the index (either with `chifra init` or `chifra pins --init_all
 
 If you are using one of the `init` options, you may wish to know how 'fresh' your index is.
 
-We (that is, TrueBlocks) tries to publish the manifest frequently (weekly?), but you can always check. The eventual goal of to publish the manifest each time a new chunk is produced (about two or three times a day). But this is `gas-expensive`, so we would need to secure funding for that process. We welcome donations, peers and alternative indexers to participate!.
+TrueBlocks tries to publish the manifest frequently (weekly?), but you can always check. The eventual goal of to publish the manifest each time a new chunk is produced (about two or three times a day). But this is `gas-expensive`, so we would need to secure funding for that process. We welcome donations, peers and alternative indexers to participate!.
 
 You can find the most [recent manifest here](https://etherscan.io/address/0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd#readContract). (Open the `manifestHash` record.)
 
@@ -133,8 +135,8 @@ This outputs something like this:
 012909804-012912694     QmSQvJ5GPyc8juthKgvMaonxm2t2m939MphyMhBRuHKJzt  QmVCZdXD9EMU9jR6HKp8V1bC74DQDCzGurLxnK6KnbV2LP
 ```
 
-The first field of the output provides the block range for the latest chunk. So, you could see when the last range was published by running `chifra when`
-on the last record:
+The first field of the output provides the block range for the latest chunk. So, you could see when the last block of the latest
+range was published by running `chifra when` on the last record:
 
 ```shell
 $chifra when 012912694
