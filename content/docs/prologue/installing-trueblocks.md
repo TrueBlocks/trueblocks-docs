@@ -160,7 +160,7 @@ If nothing outputs, then the build has failed.
 Please make sure you’ve reviewed the commands in steps 0 and 1.
 If you continue to have trouble, create an issue.
 
-### Adding bin to path
+### Adding `bin` to PATH
 
 Add the full path to `trueblocks-core/bin` to your shell’s default environment.
 To find the full path, run this from the top of the `trueblocks-core` directory.
@@ -171,6 +171,12 @@ cd bin && pwd && cd -
 
 Add the result of that command to your shell’s `$PATH`.
 How you do that depends on your system.
+In Bash, you're probably going to put something like this in your `.bashrc`:
+
+```shell
+export PATH=${PATH}:</path/to/trueblocks-core/directory>/bin
+```
+
 If you are confused, a Google search may be in order…
 
 ### Adding configs
