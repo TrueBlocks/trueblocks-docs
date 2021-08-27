@@ -108,7 +108,7 @@ For help, see [Where is my config file?](#where-is-my-config-file).
 By default, TrueBlocks checks for an RPC on `http://localhost:8545/`.
 If you are running a local node on a different port, simply change the port.
 If you are using an external RPC, you to need add its endpoint.
-Similarly, [some tools have an `--articulate` option](https://docs.trueblocks.io/docs/chifra/chaindata/),
+Similarly, [some tools have an `--articulate` option](/docs/chifra/chaindata/),
 which requires an EtherScan API key.
 
 3.2 Test the install with a chifra command! This one returns data about block 100.

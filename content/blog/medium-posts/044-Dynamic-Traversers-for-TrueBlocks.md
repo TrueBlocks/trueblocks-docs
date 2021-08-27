@@ -49,7 +49,7 @@ then everything we’re building will be for naught.
 
 ## Using TrueBlocks to get Permissionless Data
 
-We assume you’ve read some of our [previous articles](http://docs.trueblocks.io/blog) concerning how TrueBlocks
+We assume you’ve read some of our [previous articles](/blog) concerning how TrueBlocks
 creates and publishes an index of address appearances. We won’t rehash that in this article.
 
 To proceed, visit the installation instructions for downloading and installing TrueBlocks: [http://github.com/TrueBlocks/trueblocks-core.](http://github.com/TrueBlocks/trueblocks-core.)
