@@ -1,2 +1,2 @@
-baseurl = "https://docs.trueblocks.io/"
+baseurl = "/"
 canonifyURLs = true

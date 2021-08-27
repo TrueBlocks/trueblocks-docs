@@ -1,4 +1,4 @@
-baseurl = "https://docs.trueblocks.io/"
+baseurl = "/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
