@@ -87,7 +87,7 @@
 [[social]]
   name = "API"
   pre = "API\u00A0Reference"
-  url = "https://www.tokenomics.io/api.html"
+  url = "/api.html"
   weight = 31
 
 [[footer]]
