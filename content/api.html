@@ -1,0 +1,1577 @@
+<!doctype html>
+<html>
+  <head>
+    <title>TrueBlocks API</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>TrueBlocks API</h1>
+    <div class="app-desc">An API for accessing cached Ethereum blockchain data and accounts</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="jrush@quickblocks.io">jrush@quickblocks.io</a></div>
+    <div class="app-desc">Version: 0.8.04</div>
+    
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Accounts">Accounts</a></h4>
+  <ul>
+  <li><a href="#accountsAbis"><code><span class="http-method">get</span> /abis</code></a></li>
+  <li><a href="#accountsExport"><code><span class="http-method">get</span> /export</code></a></li>
+  <li><a href="#accountsList"><code><span class="http-method">get</span> /list</code></a></li>
+  <li><a href="#accountsMonitors"><code><span class="http-method">get</span> /monitors</code></a></li>
+  <li><a href="#accountsNames"><code><span class="http-method">get</span> /names</code></a></li>
+  </ul>
+  <h4><a href="#Admin">Admin</a></h4>
+  <ul>
+  <li><a href="#adminPins"><code><span class="http-method">get</span> /pins</code></a></li>
+  <li><a href="#adminScrape"><code><span class="http-method">get</span> /scrape</code></a></li>
+  <li><a href="#adminStatus"><code><span class="http-method">get</span> /status</code></a></li>
+  </ul>
+  <h4><a href="#ChainData">ChainData</a></h4>
+  <ul>
+  <li><a href="#chaindataBlocks"><code><span class="http-method">get</span> /blocks</code></a></li>
+  <li><a href="#chaindataLogs"><code><span class="http-method">get</span> /logs</code></a></li>
+  <li><a href="#chaindataReceipts"><code><span class="http-method">get</span> /receipts</code></a></li>
+  <li><a href="#chaindataTraces"><code><span class="http-method">get</span> /traces</code></a></li>
+  <li><a href="#chaindataTransactions"><code><span class="http-method">get</span> /transactions</code></a></li>
+  <li><a href="#chaindataWhen"><code><span class="http-method">get</span> /when</code></a></li>
+  </ul>
+  <h4><a href="#ChainState">ChainState</a></h4>
+  <ul>
+  <li><a href="#chainstateState"><code><span class="http-method">get</span> /state</code></a></li>
+  <li><a href="#chainstateTokens"><code><span class="http-method">get</span> /tokens</code></a></li>
+  </ul>
+  <h4><a href="#Other">Other</a></h4>
+  <ul>
+  <li><a href="#otherQuotes"><code><span class="http-method">get</span> /quotes</code></a></li>
+  <li><a href="#otherSlurp"><code><span class="http-method">get</span> /slurp</code></a></li>
+  </ul>
+
+  <h1><a name="Accounts">Accounts</a></h1>
+  <div class="method"><a name="accountsAbis"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /abis</code></pre></div>
+    <div class="method-summary">Fetches the ABI for a smart contract. (<span class="nickname">accountsAbis</span>)</div>
+    <div class="method-notes">Fetches the ABI for a smart contract.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">addrs (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; list of one or more smart contracts whose ABI to grab from EtherScan </div>      <div class="param">known (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; load common &#x27;known&#x27; ABIs from cache </div>      <div class="param">sol (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; file name of .sol file from which to create a new known abi (without .sol) </div>      <div class="param">find (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; try to search for a function declaration given a four byte code </div>      <div class="param">source (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; show the source of the ABI information </div>      <div class="param">classes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; generate classDefinitions folder and class definitions </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="accountsExport"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /export</code></pre></div>
+    <div class="method-summary">Export full detail of transactions for one or more addresses. (<span class="nickname">accountsExport</span>)</div>
+    <div class="method-notes">Export full detail of transactions for one or more addresses.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">addrs (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more addresses (0x...) to export </div>      <div class="param">topics (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; filter by one or more log topics (only for --logs option) </div>      <div class="param">fourbytes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; filter by one or more fourbytes (only for transactions and trace options) </div>      <div class="param">appearances (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export a list of appearances </div>      <div class="param">receipts (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export receipts instead of transaction list </div>      <div class="param">statements (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for use with --accounting option only, export only reconciliation statements </div>      <div class="param">logs (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export logs instead of transaction list </div>      <div class="param">traces (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export traces instead of transaction list </div>      <div class="param">accounting (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export accounting records instead of transaction list </div>      <div class="param">articulate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; articulate transactions, traces, logs, and outputs </div>      <div class="param">cache_txs (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; write transactions to the cache (see notes) </div>      <div class="param">cache_traces (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; write traces to the cache (see notes) </div>      <div class="param">skip_ddos (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; toggle skipping over 2016 dDos transactions (&#x27;on&#x27; by default) </div>      <div class="param">max_traces (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; if --skip_ddos is on, this many traces defines what a ddos transaction is (default &#x3D; 250) </div>      <div class="param">freshen (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; freshen but do not print the exported data </div>      <div class="param">factory (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; scan for contract creations from the given address(es) and report address of those contracts </div>      <div class="param">emitter (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for log export only, export only if one of the given export addresses emitted the event </div>      <div class="param">source (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for log export only, export only one of these addresses emitted the event </div>      <div class="param">relevant (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for log and accounting export only, if true export only logs relevant to one of the given export addresses </div>      <div class="param">count (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; only available for --appearances mode, if present return only the number of records </div>      <div class="param">first_block (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; first block to process (inclusive) </div>      <div class="param">last_block (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; last block to process (inclusive) </div>      <div class="param">first_record (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; the first record to process </div>      <div class="param">max_records (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; the maximum number of records to process before reporting </div>      <div class="param">clean (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; clean (i.e. remove duplicate appearances) from all existing monitors </div>      <div class="param">staging (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; enable search of staging (not yet finalized) folder </div>      <div class="param">unripe (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; enable search of unripe (neither staged nor finalized) folder (assumes --staging) </div>      <div class="param">load (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a comma separated list of dynamic traversers to load </div>      <div class="param">reversed (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; produce results in reverse chronological order </div>      <div class="param">by_date (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; produce results sorted by date (default is to report by address) </div>      <div class="param">summarize_by (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for --accounting only, summarize reconciliations by this time period </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="accountsList"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /list</code></pre></div>
+    <div class="method-summary">List every appearance of an address anywhere on the chain. (<span class="nickname">accountsList</span>)</div>
+    <div class="method-notes">List every appearance of an address anywhere on the chain.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">addrs (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more addresses (0x...) to list </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="accountsMonitors"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /monitors</code></pre></div>
+    <div class="method-summary">Add, remove, clean, and list address monitors. (<span class="nickname">accountsMonitors</span>)</div>
+    <div class="method-notes">Add, remove, clean, and list address monitors.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">addrs (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more addresses (0x...) to list </div>      <div class="param">delete (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; delete a previously created monitor (or undelete if already deleted) </div>      <div class="param">remove (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; remove a previously deleted monitor </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="accountsNames"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /names</code></pre></div>
+    <div class="method-summary">Query addresses or names of well known accounts. (<span class="nickname">accountsNames</span>)</div>
+    <div class="method-notes">Query addresses or names of well known accounts.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">terms (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a space separated list of one or more search terms </div>      <div class="param">expand (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; expand search to include all fields (default searches name, address, and symbol only) </div>      <div class="param">match_case (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; do case-sensitive search </div>      <div class="param">all (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; include all accounts in the search </div>      <div class="param">custom (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; include your custom named accounts </div>      <div class="param">prefund (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; include prefund accounts </div>      <div class="param">named (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; include well know token and airdrop addresses in the search </div>      <div class="param">addr (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display only addresses in the results (useful for scripting) </div>      <div class="param">collections (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display collections data </div>      <div class="param">tags (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export the list of tags and subtags only </div>      <div class="param">to_custom (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for editCmd only, is the edited name a custom name or not </div>      <div class="param">clean (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; clean the data (addrs to lower case, sort by addr) </div>      <div class="param">autoname (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; an address assumed to be a token, added automatically to names database if true </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Admin">Admin</a></h1>
+  <div class="method"><a name="adminPins"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pins</code></pre></div>
+    <div class="method-summary">Manage pinned index of appearances and associated Bloom filters. (<span class="nickname">adminPins</span>)</div>
+    <div class="method-notes">Manage pinned index of appearances and associated Bloom filters.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">list (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; list the index and Bloom filter hashes from local manifest or pinning service </div>      <div class="param">init (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; initialize local index by downloading Bloom filters from pinning service </div>      <div class="param">init_all (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; initialize local index by downloading both Bloom filters and index chunks </div>      <div class="param">sleep (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; the number of seconds to sleep between requests during init (default .25) </div>      <div class="param">remote (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; applicable only to --list mode, recover the manifest from pinning service </div>      <div class="param">pin_locally (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; pin all local files in the index to an IPFS store (requires IPFS) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminScrape"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /scrape</code></pre></div>
+    <div class="method-summary">Scan the chain and update the TrueBlocks index of appearances. (<span class="nickname">adminScrape</span>)</div>
+    <div class="method-notes">Scan the chain and update the TrueBlocks index of appearances.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">n_blocks (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; maximum number of blocks to process (defaults to 5000) </div>      <div class="param">n_block_procs (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; number of block channels for blaze </div>      <div class="param">n_addr_procs (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; number of address channels for blaze </div>      <div class="param">pin (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node) </div>      <div class="param">sleep (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; the number of seconds to sleep between passes (default 14) </div>      <div class="param">quit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; quit the program if it&#x27;s running </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminStatus"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /status</code></pre></div>
+    <div class="method-summary">Report on the status of the TrueBlocks system. (<span class="nickname">adminStatus</span>)</div>
+    <div class="method-notes">Report on the status of the TrueBlocks system.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">modes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; the type of status info to retrieve </div>      <div class="param">details (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; include details about items found in monitors, slurps, abis, or price caches </div>      <div class="param">types (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for caches mode only, which type(s) of cache to report </div>      <div class="param">depth (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; for cache mode only, number of levels deep to report </div>      <div class="param">report (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; show a summary of the current status of TrueBlocks (deprecated) </div>      <div class="param">terse (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; show a terse summary report </div>      <div class="param">migrate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; either effectuate or test to see if a migration is necessary </div>      <div class="param">get_config (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; returns JSON data of the editable configuration file items </div>      <div class="param">set_config (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; accepts JSON in an env variable and writes it to configuration files </div>      <div class="param">test_start (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; first block to process (inclusive -- testing only) </div>      <div class="param">test_end (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; last block to process (inclusive -- testing only) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="ChainData">ChainData</a></h1>
+  <div class="method"><a name="chaindataBlocks"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /blocks</code></pre></div>
+    <div class="method-summary">Retrieve one or more blocks from the chain or local cache. (<span class="nickname">chaindataBlocks</span>)</div>
+    <div class="method-notes">Retrieve one or more blocks from the chain or local cache.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">blocks (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a space-separated list of one or more blocks to retrieve </div>      <div class="param">hashes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display only transaction hashes, default is to display full transaction detail </div>      <div class="param">uncles (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display uncle blocks (if any) instead of the requested block </div>      <div class="param">trace (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export the traces from the block as opposed to the block data </div>      <div class="param">apps (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display all address appearances in the block </div>      <div class="param">uniq (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display only uniq address appearances per block </div>      <div class="param">uniq_tx (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display only uniq address appearances per transaction </div>      <div class="param">count (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display counts of appearances (for --apps, --uniq, or --uniq_tx) or transactions </div>      <div class="param">cache (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; force a write of the block to the cache </div>      <div class="param">list (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; summary list of blocks running backwards from latest block minus num </div>      <div class="param">list_count (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; the number of blocks to report for --list option </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="chaindataLogs"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /logs</code></pre></div>
+    <div class="method-summary">Retrieve logs for the given transaction(s). (<span class="nickname">chaindataLogs</span>)</div>
+    <div class="method-notes">Retrieve logs for the given transaction(s).</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">transactions (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a space-separated list of one or more transaction identifiers </div>      <div class="param">topic (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; filter by one or more log topics (not implemented) </div>      <div class="param">source (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export only if the given address emitted the event (not implemented) </div>      <div class="param">articulate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; articulate the retrieved data if ABIs can be found </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="chaindataReceipts"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /receipts</code></pre></div>
+    <div class="method-summary">Retrieve receipts for the given transaction(s). (<span class="nickname">chaindataReceipts</span>)</div>
+    <div class="method-notes">Retrieve receipts for the given transaction(s).</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">transactions (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a space-separated list of one or more transaction identifiers </div>      <div class="param">articulate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; articulate the retrieved data if ABIs can be found </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="chaindataTraces"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /traces</code></pre></div>
+    <div class="method-summary">Retrieve traces for the given transaction(s). (<span class="nickname">chaindataTraces</span>)</div>
+    <div class="method-notes">Retrieve traces for the given transaction(s).</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">transactions (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a space-separated list of one or more transaction identifiers </div>      <div class="param">articulate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; articulate the retrieved data if ABIs can be found </div>      <div class="param">filter (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; call the node&#x27;s &lt;code&gt;trace_filter&lt;/code&gt; routine with bang-seperated filter </div>      <div class="param">statediff (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export state diff traces (not implemented) </div>      <div class="param">count (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; show the number of traces for the transaction only (fast) </div>      <div class="param">skip_ddos (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; skip over the 2016 ddos during export (&#x27;on&#x27; by default) </div>      <div class="param">max (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; if --skip_ddos is on, this many traces defines what a ddos transaction is (default &#x3D; 250) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="chaindataTransactions"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /transactions</code></pre></div>
+    <div class="method-summary">Retrieve one or more transactions from the chain or local cache. (<span class="nickname">chaindataTransactions</span>)</div>
+    <div class="method-notes">Retrieve one or more transactions from the chain or local cache.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">transactions (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a space-separated list of one or more transaction identifiers </div>      <div class="param">articulate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; articulate the retrieved data if ABIs can be found </div>      <div class="param">trace (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; include the transaction&#x27;s traces in the results </div>      <div class="param">uniq (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; display a list of uniq addresses found in the transaction instead of the underlying data </div>      <div class="param">cache (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; force the results of the query into the tx cache (and the trace cache if applicable) </div>      <div class="param">reconcile (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; reconcile the transaction as per the provided address </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="chaindataWhen"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /when</code></pre></div>
+    <div class="method-summary">Find block(s) based on date, blockNum, timestamp, or &#x27;special&#x27;. (<span class="nickname">chaindataWhen</span>)</div>
+    <div class="method-notes">Find block(s) based on date, blockNum, timestamp, or &#x27;special&#x27;.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">block_list (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more dates, block numbers, hashes, or special named blocks (see notes) </div>      <div class="param">list (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; export a list of the &#x27;special&#x27; blocks </div>      <div class="param">timestamps (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; ignore other options and generate timestamps only </div>      <div class="param">check (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; available only with --timestamps option, checks the validity of the timestamp data </div>      <div class="param">fix (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; available only with --timestamps option, fixes incorrect timestamps if found </div>      <div class="param">skip (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; only applicable if --timestamps is on, the step between block numbers in the export </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="ChainState">ChainState</a></h1>
+  <div class="method"><a name="chainstateState"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /state</code></pre></div>
+    <div class="method-summary">Retrieve account balance(s) for one or more addresses at given block(s). (<span class="nickname">chainstateState</span>)</div>
+    <div class="method-notes">Retrieve account balance(s) for one or more addresses at given block(s).</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">addrs (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more addresses (0x...) from which to retrieve balances </div>      <div class="param">blocks (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; an optional list of one or more blocks at which to report balances, defaults to &#x27;latest&#x27; </div>      <div class="param">parts (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; control which state to export </div>      <div class="param">changes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; only report a balance when it changes from one block to the next </div>      <div class="param">no_zero (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; suppress the display of zero balance accounts </div>      <div class="param">call (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; a bang-separated string consisting of address!4-byte!bytes </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="chainstateTokens"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /tokens</code></pre></div>
+    <div class="method-summary">Retrieve token balance(s) for one or more addresses at given block(s). (<span class="nickname">chainstateTokens</span>)</div>
+    <div class="method-notes">Retrieve token balance(s) for one or more addresses at given block(s).</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">addrs2 (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; two or more addresses (0x...), the first is an ERC20 token, balances for the rest are reported </div>      <div class="param">blocks (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; an optional list of one or more blocks at which to report balances, defaults to &#x27;latest&#x27; </div>      <div class="param">parts (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more parts of the token information to retreive </div>      <div class="param">by_acct (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; consider each address an ERC20 token except the last, whose balance is reported for each token </div>      <div class="param">no_zero (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; suppress the display of zero balance accounts </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Other">Other</a></h1>
+  <div class="method"><a name="otherQuotes"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /quotes</code></pre></div>
+    <div class="method-summary">Freshen and/or display Ethereum price data. (<span class="nickname">otherQuotes</span>)</div>
+    <div class="method-notes">Freshen and/or display Ethereum price data.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">freshen (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Freshen price database (append new data) </div>      <div class="param">period (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; increment of display </div>      <div class="param">pair (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; which price pair to freshen or list (see Poloniex) </div>      <div class="param">feed (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; the feed for the price data </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="otherSlurp"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /slurp</code></pre></div>
+    <div class="method-summary">Fetch data from EtherScan for any address. (<span class="nickname">otherSlurp</span>)</div>
+    <div class="method-notes">Fetch data from EtherScan for any address.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">addrs (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more addresses to slurp from Etherscan </div>      <div class="param">blocks (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; an optional range of blocks to slurp </div>      <div class="param">types (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; one or more types of transactions to request </div>      <div class="param">appearances (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; show only the blocknumer.tx_id appearances of the exported transactions </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#response">response</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+}, {
+  "data" : [ {
+    "$ref" : "#/components/schemas/scrape_response"
+  }, {
+    "$ref" : "#/components/schemas/trans_response"
+  } ],
+  "error" : [ "error 1", "error 2" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    status of the scraper
+        
+    <h4 class="field-label">400</h4>
+    bad input parameter
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#response"><code>response</code></a></li>
+    <li><a href="#scrape_response"><code>scrape_response</code></a></li>
+    <li><a href="#trans_response"><code>trans_response</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="response"><code>response</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: [{&quot;$ref&quot;:&quot;#/components/schemas/scrape_response&quot;},{&quot;$ref&quot;:&quot;#/components/schemas/trans_response&quot;}]</span></div>
+<div class="param">error (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: [&quot;error 1&quot;,&quot;error 2&quot;]</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="scrape_response"><code>scrape_response</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="trans_response"><code>trans_response</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
