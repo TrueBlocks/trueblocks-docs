@@ -9,5 +9,5 @@ hugo
 find public -exec touch {} ';'
 
 # copy the files to the server
-scp -pr public/* $USER@trueblocks.io:/home/$USER/Websites/trueblocks.io/
+rsync -rv --update public/ $USER@trueblocks.io:/home/$USER/Websites/trueblocks.io/
 
