@@ -1012,9 +1012,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        blockNumber:
+                          $ref: '#/components/schemas/blockNumber'
+                        timestamp:
+                          $ref: '#/components/schemas/timestamp'
+                        date:
+                          $ref: '#/components/schemas/date'
         "400":
           description: bad input parameter
   /state:
