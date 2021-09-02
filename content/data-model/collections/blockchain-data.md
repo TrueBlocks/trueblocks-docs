@@ -53,7 +53,7 @@ This is a very powerful way to understand the story behind a smart contract.
 | from              | the address from which this transaction was sent                                                               | address      |
 | to                | the recipient address for this transaction                                                                     | address      |
 | value             | the amount of wei sent with this transactions                                                                  | wei          |
-| gas               | the amount of gas the sending is willing to spend on this transaction                                          | wei          |
+| gas               | the amount of gas the sender is willing to spend on this transaction                                          | wei          |
 | gasPrice          | the number of wei per unit of gas used the sender is willing to spend                                          | wei          |
 | input             | byte data either containing a message or funcational data for a smart contracts. See the `--articulate` option | bytes        |
 |                   |                                                                                                                |              |
@@ -113,12 +113,12 @@ If the `to` address of a transaction is `0x0`, the `input` data is considered to
 
 ### Reference of receipt fields
 
-| Field           | Description                                                                                                       | Type         |
-| --------------- | ----------------------------------------------------------------------------------------------------------------- | ------------ |
-| status          | `1` if the transaction suceeded, `0` otherwise ([_source_](https://eips.ethereum.org/EIPS/eip-658#specification)). | boolean      |
-| contractAddress | the address of the newly created contract, if any                                                                 | address      |
-| gasUsed         | the amount of gas used by this transaction                                                                        | wei          |
-| logs            | a possibly empty array of [logs](#logs)                                                                           | object array |
+| Field           | Description                                       | Type         |
+| --------------- | --------------------------------------------------| ------------ |
+| status          | `1` if the transaction suceeds, `0` otherwise     | number      |
+| contractAddress | the address of the newly created contract, if any | address      |
+| gasUsed         | the amount of gas used by this transaction        | wei          |
+| logs            | a possibly empty array of [logs](#logs)           | object array |
 
 ## Logs
 
