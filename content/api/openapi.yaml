@@ -1604,7 +1604,7 @@ components:
       type: object
       properties:
         gasLimit:
-          $ref: '#components/schemas/gasLimit'
+          $ref: '#/components/schemas/gasLimit'
         hash:
           $ref: '#/components/schemas/blockHash'
         blockNumber:
