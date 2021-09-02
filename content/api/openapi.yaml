@@ -1,9 +1,10 @@
-openapi: 3.0.0
+openapi: 3.0.3
 info:
   title: TrueBlocks API
   description: An API for accessing cached Ethereum blockchain data and accounts
   contact:
     email: jrush@quickblocks.io
+    url: https://trueblocks.io
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -11,8 +12,6 @@ info:
 servers:
 - url: http://localhost:8080
   description: Local endpoints
-- url: https://virtserver.swaggerhub.com/trueblocks/TrueBlocks/0.8.04
-  description: SwaggerHub API Auto Mocking
 tags:
 - name: Accounts
   description: Access and cache transactional data
@@ -689,9 +688,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:  
+                  data:
+                    type: array
+                    description: array of blocks
+                    items:
+                      $ref: '#/components/schemas/block'
         "400":
           description: bad input parameter
   /transactions:
@@ -1593,8 +1595,72 @@ components:
           items:
             type: string
     scrape_response:
+      example: "we're updating this response with real data"
       type: string
-      example: Scrape response
     trans_response:
+      example: "we're updating this response with real data"
       type: string
-      example: Trans response
+    block:
+      type: object
+      properties:
+        gasLimit:
+          $ref: '#components/schemas/gasLimit'
+        hash:
+          $ref: '#/components/schemas/blockHash'
+        blockNumber:
+          $ref: '#/components/schemas/blockNumber'
+        parentHash:
+          $ref: '#/components/schemas/parentHash'
+        miner:
+          $ref: '#/components/schemas/miner'
+        difficulty:
+          $ref: '#/components/schemas/difficulty'
+        timestamp:
+          $ref: '#/components/schemas/timestamp'
+        baseFeePerGas:
+          $ref: '#/components/schemas/baseFeePerGas'
+        finalized:
+          $ref: '#/components/schemas/finalized'
+    gasLimit:
+      type: number
+      format: wei
+      example: 5000
+      description: "the system-wide maximum amount of gas permitted in this block"
+    blockHash:
+      type: string
+      format: hash
+      description: "The hash of the current block"
+      example: "0xf12869a900c2fd345f9d6a93e25e6118fd7f99f2b04bff6da59c8bc4218a1e98"
+    blockNumber:
+      example: 10021
+      type: number
+      format: blockNum
+      description: the number of the block
+    parentHash:
+      type: string
+      example: "0x66fc978cfe3d0d0dee8590600f9955c6ae658b8cda1573a0793b95841f9231c9"
+      format: hash
+      description: hash of previous block
+    miner: 
+      example: "0xf927a40c8b7f6e07c5af7fa2155b4864a4112b13"
+      description: Address of block's winning miner
+      type: string
+      format: address
+    difficulty:
+     description: "The computational difficulty at this block"
+     format: bigint
+     type: number
+     example: 598133194256,
+    timestamp:
+      description: "the unix timestamp of the object"
+      type: number
+      format: timestamp
+      example: 1438335038
+    baseFeePerGas:
+      type: number
+      example: 0
+    finalized:
+      description: "a flag indicating if TrueBlocks considers this block final"
+      type: boolean
+      example: true
+ 
