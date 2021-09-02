@@ -688,7 +688,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:  
+                properties:
                   data:
                     type: array
                     description: array of blocks
@@ -863,7 +863,7 @@ paths:
                 properties:
                   data:
                     type: array
-                    description: array of logs                  
+                    description: array of logs
                     items:
                       $ref: '#/components/schemas/logs'
         "400":
@@ -1651,28 +1651,31 @@ components:
         gasUsed:
           $ref: '#/components/schemas/gasUsed'
         logs:
-          $ref: '#/components/schemas/logs'  
+          type: array
+          description: possibly empty array of logs
+          items:
+            $ref: '#/components/schemas/logs'
     transactions:
       type: object
       properties:
         hash:
-          $ref: '#/components/schemas/hash' 
+          $ref: '#/components/schemas/hash'
         blockHash:
-          $ref: '#/components/schemas/hash' 
+          $ref: '#/components/schemas/hash'
         blockNumber:
           $ref: '#/components/schemas/blockNumber'
         transactionIndex:
           $ref: '#/components/schemas/transactionIndex'
         nonce:
-          $ref: '#/components/schemas/nonce' 
+          $ref: '#/components/schemas/nonce'
         timestamp:
-          $ref: '#/components/schemas/timestamp' 
+          $ref: '#/components/schemas/timestamp'
         from:
           $ref: '#/components/schemas/from'
         to:
           $ref: '#/components/schemas/to'
         value:
-          $ref: '#/components/schemas/value' 
+          $ref: '#/components/schemas/value'
         gas:
           $ref: '#/components/schemas/gasPrice'
         input:
@@ -1776,7 +1779,7 @@ components:
       example: "0x66fc978cfe3d0d0dee8590600f9955c6ae658b8cda1573a0793b95841f9231c9"
       format: hash
       description: hash of previous block
-    miner: 
+    miner:
       example: "0xf927a40c8b7f6e07c5af7fa2155b4864a4112b13"
       description: Address of block's winning miner
       type: string
@@ -1798,6 +1801,10 @@ components:
       description: "a flag indicating if TrueBlocks considers this block final"
       type: boolean
       example: true
+    date:
+      description: "Human readable version of timestamp"
+      example: "2015-07-30 15:34:53 UTC"
+      type: string
     status:
       type: boolean
       description: >
@@ -1811,9 +1818,7 @@ components:
       type: number
       format: wei
     logs:
-      description: a possibly empty array of logs
-      type: array
-      format: object
+      type: object
       properties:
         blockNumber:
           $ref: "#/components/schemas/blockNumber"
@@ -1824,14 +1829,14 @@ components:
           allOf:
             - $ref: "#/components/schemas/address"
         logIndex:
-          description: > 
+          description: >
             the zero-indexed position of this log relative to the block
           example: 354
         topics:
           description: The first topic hashes event signature of the log, up to 3 additional index parameters may appear
           type: array
           maximum: 4
-          example: 
+          example:
            [
             "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
             "0x000000000000000000000000cfa5b526105ec86d893f24bc173b1d4166979f54",
