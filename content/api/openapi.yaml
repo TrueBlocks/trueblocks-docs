@@ -760,9 +760,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    description: "array of transactions"
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/transactions'
         "400":
           description: bad input parameter
   /receipts:
@@ -797,9 +800,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    description: array of receipts
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/receipts'
         "400":
           description: bad input parameter
   /logs:
@@ -854,9 +860,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    type: array
+                    description: array of logs                  
+                    items:
+                      $ref: '#/components/schemas/logs'
         "400":
           description: bad input parameter
   /traces:
@@ -1606,7 +1615,7 @@ components:
         gasLimit:
           $ref: '#/components/schemas/gasLimit'
         hash:
-          $ref: '#/components/schemas/blockHash'
+          $ref: '#/components/schemas/hash'
         blockNumber:
           $ref: '#/components/schemas/blockNumber'
         parentHash:
@@ -1617,19 +1626,136 @@ components:
           $ref: '#/components/schemas/difficulty'
         timestamp:
           $ref: '#/components/schemas/timestamp'
+        transactions:
+          $ref: '#/components/schemas/transactions'
         baseFeePerGas:
           $ref: '#/components/schemas/baseFeePerGas'
         finalized:
           $ref: '#/components/schemas/finalized'
+    receipts:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/status'
+        contractAddress:
+          $ref: '#/components/schemas/contractAddress'
+        gasUsed:
+          $ref: '#/components/schemas/gasUsed'
+        logs:
+          $ref: '#/components/schemas/logs'  
+    transactions:
+      type: object
+      properties:
+        hash:
+          $ref: '#/components/schemas/hash' 
+        blockHash:
+          $ref: '#/components/schemas/hash' 
+        blockNumber:
+          $ref: '#/components/schemas/blockNumber'
+        transactionIndex:
+          $ref: '#/components/schemas/transactionIndex'
+        nonce:
+          $ref: '#/components/schemas/nonce' 
+        timestamp:
+          $ref: '#/components/schemas/timestamp' 
+        from:
+          $ref: '#/components/schemas/from'
+        to:
+          $ref: '#/components/schemas/to'
+        value:
+          $ref: '#/components/schemas/value' 
+        gas:
+          $ref: '#/components/schemas/gasPrice'
+        input:
+          $ref: '#/components/schemas/input'
+        receipt:
+          $ref: '#/components/schemas/receipt'
+        traces:
+          type: array
+          description: "array of trace objects"
+          $ref: '#/components/schemas/traces'
+        statements:
+          type: array
+          description: "array of reconciliations"
+          items:
+            $ref: '#/components/schemas/reconciliations'
+        articulatedTx:
+          $ref: "#/components/schemas/articulatedTx"
+        hasToken:
+          $ref: "#/components/schemas/hasToken"
+        finalized:
+          $ref: "#/components/schemas/finalized"
+    articulatedTx:
+      type: object
+      description: "a human readable articulation of the input field"
+    compressedTx:
+      type: string
+      example: "0x3d18b912 ( )"
+      description: "truncated, more readable version of the articulation"
+    reconciliations:
+      type: object
+    traces:
+      type: object
+    receipt:
+      type: object
+    transactionIndex:
+     example: 305
+     type: number
+     description: "the transaction’s zero-indexed position in the block"
+    nonce:
+      example: 232
+      type: number
+      description: "sequence number of the transactions sent by the sender"
+    from:
+      description: "address from which transaction originated"
+      allOf:
+        - $ref: "#/components/schemas/address"
+    to:
+      description: "address from which transaction originated"
+      allOf:
+       - $ref: "#/components/schemas/address"
+    address:
+      description: The address of the named account
+      type: string
+      format: address
+      example: "0xf503017d7baf7fbc0fff7492b751025c6a78179b"
+    value:
+      example: 0
+      type: number
+      format: wei
+      description: the amount of wei sent with this transactions
+    gas:
+      example: 158660
+      type: number
+      format: wei
+      description: " 	the amount of gas the sender is willing to spend on this transaction"
+    gasPrice:
+      example: 63525836552
+      type: number
+      format: wei
+      description: "gasPrice 	the number of wei per unit of gas used the sender is willing to spend"
+    maxFeePerGas:
+      example: 107596001741
+      type: number
+    maxPriorityFeePerGas:
+      example: 2000000000
+      type: number
+    input:
+      example: "0x3d18b912"
+      description:  "byte data either containing a message or funcational data for a smart contracts. See the --articulate "
+      type: string
+    hasToken:
+      example: 0
+      type: number
     gasLimit:
       type: number
       format: wei
       example: 5000
       description: "the system-wide maximum amount of gas permitted in this block"
-    blockHash:
+    hash:
       type: string
       format: hash
-      description: "The hash of the current block"
+      description: "The hash of the current transaction or block"
       example: "0xf12869a900c2fd345f9d6a93e25e6118fd7f99f2b04bff6da59c8bc4218a1e98"
     blockNumber:
       example: 10021
@@ -1663,4 +1789,67 @@ components:
       description: "a flag indicating if TrueBlocks considers this block final"
       type: boolean
       example: true
- 
+    status:
+      type: boolean
+      description: >
+        "`1` if the transaction suceeded, `0` otherwise"
+    contractAddress:
+      description:  the address of the newly created contract, if any
+      type: string
+      format: address
+    gasUsed:
+      description: the amount of gas used by this transaction
+      type: number
+      format: wei
+    logs:
+      description: a possibly empty array of logs
+      type: array
+      format: object
+      properties:
+        blockNumber:
+          $ref: "#/components/schemas/blockNumber"
+        transactionIndex:
+          $ref: "#/components/schemas/transactionIndex"
+        address:
+          description: the smart contract that emitted this log
+          allOf:
+            - $ref: "#/components/schemas/address"
+        logIndex:
+          description: > 
+            the zero-indexed position of this log relative to the block
+          example: 354
+        topics:
+          description: The first topic hashes event signature of the log, up to 3 additional index parameters may appear
+          type: array
+          maximum: 4
+          example: 
+           [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000cfa5b526105ec86d893f24bc173b1d4166979f54",
+            "0x000000000000000000000000f503017d7baf7fbc0fff7492b751025c6a78179b"
+           ]
+        data:
+          description: any remaining un-indexed parameters to the event
+          type: string
+          format: bytes
+          example: "0x000000000000000000000000000000000000000000000001456b4ee641bd3ff6"
+        articulatedLog:
+          description: a human-readable version of the topic and data fields
+          type: object
+          properties:
+            name:
+              type: string
+              example: "Transfer"
+            inputs:
+              type: object
+              properties:
+                _amount:
+                  example: "23448922635686985718"
+                _from:
+                  $ref: "#/components/schemas/from"
+                _to:
+                  $ref: "#/components/schemas/to"
+        compressedLog:
+          description: a truncated, more readable version of the articulation
+          type: string
+          example: "Transfer(0xcfa5b526105ec86d893f24bc173b1d4166979f54 /*_from*/, 0xf503017d7baf7fbc0fff7492b751025c6a78179b /*_to*/, 23448922635686985718 /*_amount*/); "
