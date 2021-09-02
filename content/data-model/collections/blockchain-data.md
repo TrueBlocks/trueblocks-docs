@@ -115,7 +115,7 @@ If the `to` address of a transaction is `0x0`, the `input` data is considered to
 
 | Field           | Description                                                                                                       | Type         |
 | --------------- | ----------------------------------------------------------------------------------------------------------------- | ------------ |
-| status          | `1` is the transaction suceeded, `0` otherwise ([_source_](https://eips.ethereum.org/EIPS/eip-658#specification). | boolean      |
+| status          | `1` if the transaction suceeded, `0` otherwise ([_source_](https://eips.ethereum.org/EIPS/eip-658#specification)). | boolean      |
 | contractAddress | the address of the newly created contract, if any                                                                 | address      |
 | gasUsed         | the amount of gas used by this transaction                                                                        | wei          |
 | logs            | a possibly empty array of [logs](#logs)                                                                           | object array |
