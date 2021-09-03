@@ -189,7 +189,7 @@ The location of `trueBlocks.toml` (and all other configs) depends on the value o
 By default, this is:
 
 * On linux at `~/.local/share/trueblocks`
-* On mac at `~/Library/Application/Support/TrueBlocks`
+* On mac at `~/Library/Application Support/TrueBlocks`
 
 If the config is not there, someone has set a value your default data directory!
 Run `echo $XDG_DATA_HOME`, and hopefully you'll know what to do :-).
