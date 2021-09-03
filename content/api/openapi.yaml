@@ -941,9 +941,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    type: array
+                    description: "array of trace objects"
+                    items:
+                      $ref: '#/components/schemas/traces'
         "400":
           description: bad input parameter
   /when:
@@ -1602,9 +1605,6 @@ components:
       properties:
         data:
           type: object
-          example:
-          - $ref: '#/components/schemas/scrape_response'
-          - $ref: '#/components/schemas/trans_response'
         error:
           type: array
           example:
@@ -1612,12 +1612,6 @@ components:
           - error 2
           items:
             type: string
-    scrape_response:
-      example: "we're updating this response with real data"
-      type: string
-    trans_response:
-      example: "we're updating this response with real data"
-      type: string
     block:
       type: object
       properties:
@@ -1682,10 +1676,6 @@ components:
           $ref: '#/components/schemas/input'
         receipt:
           $ref: '#/components/schemas/receipt'
-        traces:
-          type: array
-          description: "array of trace objects"
-          $ref: '#/components/schemas/traces'
         statements:
           type: array
           description: "array of reconciliations"
@@ -1693,6 +1683,8 @@ components:
             $ref: '#/components/schemas/reconciliations'
         articulatedTx:
           $ref: "#/components/schemas/articulatedTx"
+        compressedTx:
+          $ref: "#/components/schemas/compressedTx"
         hasToken:
           $ref: "#/components/schemas/hasToken"
         finalized:
@@ -1705,8 +1697,6 @@ components:
       example: "0x3d18b912 ( )"
       description: "truncated, more readable version of the articulation"
     reconciliations:
-      type: object
-    traces:
       type: object
     receipt:
       type: object
@@ -1740,7 +1730,7 @@ components:
       example: 158660
       type: number
       format: wei
-      description: " 	the amount of gas the sender is willing to spend on this transaction"
+      description: the maximum number of gas allowed for this action
     gasPrice:
       example: 63525836552
       type: number
@@ -1788,7 +1778,7 @@ components:
      description: "The computational difficulty at this block"
      format: bigint
      type: number
-     example: 598133194256,
+     example: 598133194256
     timestamp:
       description: "the unix timestamp of the object"
       type: number
@@ -1867,3 +1857,78 @@ components:
           description: a truncated, more readable version of the articulation
           type: string
           example: "Transfer(0xcfa5b526105ec86d893f24bc173b1d4166979f54 /*_from*/, 0xf503017d7baf7fbc0fff7492b751025c6a78179b /*_to*/, 23448922635686985718 /*_amount*/); "
+    traces:
+      type: object
+      properties:   
+        blockHash:
+          $ref: "#/components/schemas/hash"
+        blockNumber:
+          $ref: "#/components/schemas/blockNumber"
+        transactionHash:
+          description: the transaction's hash
+          type: string
+          format: hash
+        transactionIndex:
+          $ref: "#components/schemas/transactionIndex"
+        traceAddress:
+          description: a particular trace's address in the trace tree
+          type: string
+        subTraces:
+          description: the number of children traces that the trace hash
+          type: number
+        type:
+          description: the type of the trace
+          type: string
+        action:
+          $ref: "#/components/schemas/traceAction"
+        result:
+          $ref: "#/components/schemas/traceResult"
+    traceAction:
+      description: the trace action object
+      type: object
+      properties:
+        from:
+         description: the smart contract that called the trace
+         allOf:
+           - $ref: '#/components/schemas/address'
+        to:
+          description: the smart contract that the trace calls
+          allOf:
+            - $ref: '#/components/schemas/address'
+        gas:
+          $ref: "#/components/schemas/gas"
+        input:
+          description: an encoded version of the function call.
+          type: string
+          format: bytes
+        callType:
+          description: the type of call
+          type: string
+        refundAddress:
+          description: if the call type is self-destruct, the address to which the refund is sent
+          allOf:
+            - $ref: '#/components/schemas/address'
+        articulatedTrace:
+          description: A human-readable version of the trace action’s input and the result’s output
+          type: object
+        compressedTrace:
+          description: a truncated, more readable version of the articulation
+          type: string
+    traceResult:
+      description: the trace result
+      type: object
+      properties:
+        newContract:
+          description: Address of new contract, if any
+          allOf:
+            - $ref: "#/components/schemas/address"
+        code:
+          description: if this trace is creating a new smart contract, the byte code of that contract
+          type: string
+          format: bytes
+        gasUsed:
+          $ref: "#/components/schemas/gasUsed"
+        output:
+          description: the result of the call of this trace
+          type: string
+          format: byte
