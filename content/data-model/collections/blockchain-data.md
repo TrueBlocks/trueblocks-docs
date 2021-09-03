@@ -143,8 +143,6 @@ Logs appear in a possibly empty array in the transaction's receipt. They are onl
 | logIndex         | the zero-indexed position of this log relative to the block                                       | number             |
 | topics           | the first topic hashes event signature of the log, up to 3 additional index parameters may appear | hash array (max 4) |
 | data             | any remaining un-indexed parameters to the event                                                  | bytes              |
-| address          | the originating or emitting smart contract address of the log                                     | string             |
-|                  |                                                                                                   |                    |
 | articulatedLog   | a human-readable version of the `topic` and `data` fields                                         | object             |
 | compressedLog    | a truncated, more readable version of the articulation                                            | string             |
 
@@ -225,7 +223,7 @@ When a block appeared, in unix and human readable format:
 | ----------- | ---------------------------------------- | --------- |
 | blockNumber | the block number of the containing block | blknum    |
 | timestamp   | the block's unix timestamp               | timestamp |
-| date        | human readable date at the timestamp     | date      |
+| date        | human readable version of the timestamp  | date      |
 
 ## Reconciliations
 
