@@ -1,6 +1,6 @@
 [[main]]
   name = "Docs"
-  url = "/docs/prologue/what-is-this"
+  url = "/docs/"
   weight = 10
 
 [[main]]
