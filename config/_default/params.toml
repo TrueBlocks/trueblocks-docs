@@ -49,6 +49,6 @@ editPage = false
   flexSearch = true
   darkMode = true
   bootStrapJs = false
-  breadCrumb = true
+  breadCrumb = false
   highLight = true
   kaTex = false
