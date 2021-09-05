@@ -3,6 +3,8 @@
 ## Runs from `trueblocks-core/docs/readmes`
 ## As we get better we can make this more robust, or rewrite it as something that makes more sense
 
+echo "Freshening README files from trueblocks-core"
+
 SOURCE=$HOME/Development/trueblocks-core/docs
 READMES=$SOURCE/readmes
 INTROS=$READMES/intros
@@ -33,7 +35,7 @@ toc: true
 ---
 _EOF_
 
-echo "Building accounts page..."
+echo "    Building accounts page..."
 cat $INTROS/accounts.md >> $ACCOUNTS && \
 cat $READMES/apps/list.md >> $ACCOUNTS && \
 cat $READMES/apps/acctExport/README.md >> $ACCOUNTS && \
@@ -64,7 +66,7 @@ toc: true
 ---
 _EOF_
 
-echo "Building chain data page..."
+echo "    Building chain data page..."
 cat $INTROS/chaindata.md >> $DATA && \
 cat $READMES/tools/getBlocks/README.md >> $DATA && \
 cat $READMES/tools/getTrans/README.md >> $DATA && \
@@ -96,7 +98,7 @@ toc: true
 ---
 _EOF_
 
-echo "Building chain state page..."
+echo "    Building chain state page..."
 cat $INTROS/chainstate.md >> $STATE && \
 cat $READMES/tools/getState/README.md >> $STATE && \
 cat $READMES/tools/getTokens/README.md >> $STATE
@@ -124,7 +126,7 @@ toc: true
 ---
 _EOF_
 
-echo "Building admin page..."
+echo "    Building admin page..."
 cat $INTROS/admin.md >> $ADMIN && \
 cat $READMES/apps/cacheStatus/README.md >> $ADMIN && \
 cat $READMES/apps/serve.md >> $ADMIN && \
@@ -155,10 +157,11 @@ toc: true
 ---
 _EOF_
 
-echo "Building other page..."
+echo "    Building other page..."
 cat $INTROS/other.md >> $OTHER && \
 cat $READMES/tools/getQuotes/README.md >> $OTHER && \
 cat $READMES/apps/fireStorm/README.md >> $OTHER && \
 cat $READMES/tools/ethslurp/README.md >> $OTHER
 
-echo "Pages built. To see what's changed, run  git diff content/docs/chifra"
+echo "    README files updated."
+echo
