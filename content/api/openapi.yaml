@@ -1981,6 +1981,12 @@ components:
       type: number
       format: wei
       description: "gasPrice 	the number of wei per unit of gas used the sender is willing to spend"
+    maxFeePerGas:
+      example: 107596001741
+      type: number
+    maxPriorityFeePerGas:
+      example: 2000000000
+      type: number
     input:
       example: "0x3d18b912"
       description:  "byte data either containing a message or funcational data for a smart contracts. See the --articulate "

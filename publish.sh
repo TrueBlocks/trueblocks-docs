@@ -7,7 +7,7 @@ if ! which redoc-cli > /dev/null; then
   echo "You need redoc-cli to build the API docs. Skipping API..."
   else
     redoc-cli bundle \
-    --options.disableGoogleFont=true\
+    --options.disableGoogleFont=true \
     content/api/openapi.yaml -o content/api/index.html
 fi
   
@@ -24,8 +24,15 @@ hugo --cleanDestinationDir \
 || { echo "The build failed. Exiting..." ; exit 3; } 
 
 # touch all the files just because
-#find public -exec touch {} ';'
+# find public -exec touch {} ';'
+
+# without this line, diff content/api/openapi.yaml public/api/openapi.yaml
+# shows that the public/api/openapi.yaml document shows its out of date
+diff content/api/openapi.yaml public/api/openapi.yaml
 
 # copy the files to the server
-rsync -rv --update public/ "$USER"@trueblocks.io:/home/"$USER"/Websites/trueblocks.io/
+echo "Copying to trueblocks webserver..."
+rsync --quiet -rv --update public/ "$USER"@trueblocks.io:/home/"$USER"/Websites/trueblocks.io/
+
+echo "Done."
 
