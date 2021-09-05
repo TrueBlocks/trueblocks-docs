@@ -6,6 +6,7 @@
 echo "Freshening README files from trueblocks-core"
 
 SOURCE=$HOME/Development/trueblocks-core/docs
+DATA_MODEL=$SOURCE/content/data-model
 READMES=$SOURCE/content/readmes
 INTROS=$READMES/intros
 CONTENT=content/docs/chifra
@@ -164,4 +165,8 @@ cat $READMES/apps/fireStorm/README.md >> $OTHER && \
 cat $READMES/tools/ethslurp/README.md >> $OTHER
 
 echo "    README files updated."
+
+echo "    Copying data model pages."
+cp -pR $DATA_MODEL/* content/data-model/collections/
+
 echo
