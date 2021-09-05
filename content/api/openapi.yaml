@@ -3,26 +3,23 @@ info:
   title: TrueBlocks API
   description: >
     A REST layer over the TrueBlocks application. With `chifra serve`, you can
-    run this on your own machine, and make calls to local host. 
-    
-    ### Before you begin. 
-    
-    * [Install the trueblocks-core application] on your machine, change your configs as needed.  
-    
-    * Run `chifra serve`  
-    
-    ### How to make calls
-    
+    run this on your own machine, and make calls to local host.
+
+    ## Before you begin.
+    * [Install the trueblocks-core application] on your machine, change your configs as needed.
+    * Run `chifra serve`
+
+    ## How to make calls
+  
     By default, all calls are to localhost:8080. All options and flags are passed
     through query parameters. Like the endpoints, the query parameters are exact
     translations of the chifra cli application. These commands [have their own
     documentation page](https://trueblocks.io/docs/chifra/introducing-chifra/).
-    
+
     For detailed descriptions of fields, see [the data model reference](/data-model/intro/intro).
-    
+
     ### Examples
-    
-    Some examples here.
+
   contact:
     email: jrush@trueblocks.io
     url: https://www.trueblocks.io
@@ -70,8 +67,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                example:
+                  {
+                    "data": [
+                      {
+                        "blockNumber": 8854723,
+                        "transactionIndex": 61,
+                        "address": "0xf503017d7baf7fbc0fff7492b751025c6a78179b",
+                        "name": "TrueBlocks 2020 Wallet 0xf503"
+                      }
+                    ]
+                  }
         "400":
           description: bad input parameter
   /export:
@@ -358,8 +364,37 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                example: {
+                  "data": [
+                    {
+                      "hash": "0x1a898c5448b37f693343917ea40b7ad1c43b28a4ddd37af1bd6d0bb4a0c99891",
+                      "blockHash": "0x1d7f60b34bad8ce0ba5e49e3845c7a62ba8db440b81f8df98ec6349c4d28ca8e",
+                      "blockNumber": 8854723,
+                      "transactionIndex": 61,
+                      "timestamp": 1572639538,
+                      "from": "0xbb984f85bd52d78eb2fbf2c5598bae7abb98c5bc",
+                      "to": "0xf503017d7baf7fbc0fff7492b751025c6a78179b",
+                      "value": 5e+18,
+                      "gas": 21000,
+                      "gasPrice": 10000000000,
+                      "maxFeePerGas": 0,
+                      "maxPriorityFeePerGas": 0,
+                      "isError": 0,
+                      "hasToken": 0,
+                      "receipt": {
+                        "contractAddress": "0x0",
+                        "gasUsed": 21000,
+                        "effectiveGasPrice": 10000000000,
+                        "status": 1
+                      },
+                      "compressedTx": "0x ( )",
+                      "gasCost": 210000000000000,
+                      "gasUsed": 21000,
+                      "date": "2019-11-01 20:18:58 UTC",
+                      "ether": 5
+                    }
+                  ]
+                }
         "400":
           description: bad input parameter
   /monitors:
@@ -529,10 +564,16 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
-                  $ref: '#/components/schemas/response'
-        "400":
-          description: bad input parameter
+                example:   
+                  {"data": [{
+                    "tags": "50-Tokens:ERC20",
+                    "address": "0xfe5f141bf94fe84bc28ded0ab966c16b17490657",
+                    "name": "LibraToken",
+                    "symbol": "LBA",
+                    "source": "On chain",
+                    "decimals": 18,
+                    "description": "Decentralized lending infrastructure facilitating open access to credit networks on Ethereum."
+                  }]}  
   /abis:
     get:
       tags:
@@ -599,8 +640,38 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                example:
+                 {"data":[
+                  {"name": "PairCreated",
+                   "type": "event",
+                   "stateMutability": "nonpayable",
+                   "signature": "PairCreated(address,address,address,uint256)",
+                   "encoding": "0x0d3648bd0f6ba80134a33ba9275ac585d9d315f0ad8355cddefde31afa28d0e9",
+                   "inputs": [
+                     {
+                       "type": "address",
+                       "name": "token0",
+                       "indexed": true,
+                       "internalType": "address"
+                     },
+                     {
+                       "type": "address",
+                       "name": "token1",
+                       "indexed": true,
+                       "internalType": "address"
+                     },
+                     {
+                       "type": "address",
+                       "name": "pair",
+                       "internalType": "address"
+                     },
+                     {
+                       "type": "uint256",
+                       "name": "val_0",
+                       "internalType": "uint256"
+                     }
+                   ]
+                 }]}
         "400":
           description: bad input parameter
   /blocks:
@@ -709,9 +780,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    type: array
+                    description: array of blocks
+                    items:
+                      $ref: '#/components/schemas/block'
         "400":
           description: bad input parameter
   /transactions:
@@ -778,9 +852,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    description: "array of transactions"
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/transactions'
         "400":
           description: bad input parameter
   /receipts:
@@ -815,9 +892,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    description: array of receipts
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/receipts'
         "400":
           description: bad input parameter
   /logs:
@@ -872,9 +952,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    type: array
+                    description: array of logs
+                    items:
+                      $ref: '#/components/schemas/logs'
         "400":
           description: bad input parameter
   /traces:
@@ -950,9 +1033,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    type: array
+                    description: "array of trace objects"
+                    items:
+                      $ref: '#/components/schemas/traces'
         "400":
           description: bad input parameter
   /when:
@@ -1029,9 +1115,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        blockNumber:
+                          $ref: '#/components/schemas/blockNumber'
+                        timestamp:
+                          $ref: '#/components/schemas/timestamp'
+                        date:
+                          $ref: '#/components/schemas/date'
         "400":
           description: bad input parameter
   /state:
@@ -1113,9 +1208,16 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                example: 
+                  {
+                  "data": [
+                    {
+                      "blockNumber": 13154749,
+                      "balance": 29930129965150564000,
+                      "address": "0xf503017d7baf7fbc0fff7492b751025c6a78179b",
+                      "ether": 29.930129965150567
+                    }
+                  ]}
         "400":
           description: bad input parameter
   /tokens:
@@ -1189,9 +1291,21 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                example:
+                  {
+                   "data": [
+                     {
+                       "holder": "0xf503017d7baf7fbc0fff7492b751025c6a78179b",
+                       "balance": "400",
+                       "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+                       "name": "Uniswap",
+                       "symbol": "UNI",
+                       "decimals": 18,
+                       "is_contract": true,
+                       "is_erc20": true,
+                       "is_erc721": false
+                     }
+                       ]}
         "400":
           description: bad input parameter
   /status:
@@ -1330,9 +1444,25 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/response'
+                example:
+                  {
+                  "data": [
+                    {
+                      "client_version": "erigon/2021.09.2/linux-amd64/go1.16.3",
+                      "trueblocks_version": "GHC-TrueBlocks//0.12.1-alpha-7ac3196d7-20210903",
+                      "rpc_provider": "http://localhost:23456",
+                      "config_path": "/Users/user/Library/Application Support/TrueBlocks/",
+                      "cache_path": "/Users/user/Library/Application Support/TrueBlocks/cache/",
+                      "index_path": "/Users/user/Development/trueblocks-index/wild.0/unchained/",
+                      "is_testing": false,
+                      "is_docker": false,
+                      "is_archive": true,
+                      "is_tracing": true,
+                      "has_eskey": true,
+                      "has_pinkey": true,
+                      "date": "2021-09-03 19:38:19 UTC"
+                    }
+                  ]}
         "400":
           description: bad input parameter
   /scrape:
@@ -1394,6 +1524,16 @@ paths:
                   $ref: '#/components/schemas/response'
         "400":
           description: bad input parameter
+  /init:
+    get:
+      summary: init
+      operationId: admin-init
+      description:
+        There is no response from chifra init. It only downloads
+        Bloom and index files from IPFS and reports to the screen.
+      responses:
+        "200":
+           description: no response
   /pins:
     get:
       tags:
