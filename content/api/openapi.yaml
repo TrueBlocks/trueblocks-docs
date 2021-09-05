@@ -10,16 +10,16 @@ info:
     * Run `chifra serve`
 
     ## How to make calls
-    
+  
     By default, all calls are to localhost:8080. All options and flags are passed
     through query parameters. Like the endpoints, the query parameters are exact
     translations of the chifra cli application. These commands [have their own
     documentation page](https://trueblocks.io/docs/chifra/introducing-chifra/).
-  
+
     For detailed descriptions of fields, see [the data model reference](/data-model/intro/intro).
-  
+
     ### Examples
-    
+
   contact:
     email: jrush@quickblocks.io
     url: https://trueblocks.io
@@ -46,7 +46,7 @@ paths:
     get:
       tags:
       - Accounts
-      summary: List accounts
+      summary: List every appearance of an address anywhere on the chain.
       description: List every appearance of an address anywhere on the chain.
       operationId: accounts-list
       parameters:
@@ -84,7 +84,7 @@ paths:
     get:
       tags:
       - Accounts
-      summary: Export account details
+      summary: Export full detail of transactions for one or more addresses.
       description: Export full detail of transactions for one or more addresses.
       operationId: accounts-export
       parameters:
@@ -401,7 +401,7 @@ paths:
     get:
       tags:
       - Accounts
-      summary: Monitor
+      summary: Add, remove, clean, and list address monitors.
       description: Add, remove, clean, and list address monitors.
       operationId: accounts-monitors
       parameters:
@@ -446,7 +446,7 @@ paths:
     get:
       tags:
       - Accounts
-      summary: Names
+      summary: Query addresses or names of well known accounts.
       description: Query addresses or names of well known accounts.
       operationId: accounts-names
       parameters:
@@ -578,7 +578,7 @@ paths:
     get:
       tags:
       - Accounts
-      summary: ABIs
+      summary: Fetches the ABI for a smart contract.
       description: Fetches the ABI for a smart contract.
       operationId: accounts-abis
       parameters:
@@ -678,7 +678,7 @@ paths:
     get:
       tags:
       - ChainData
-      summary: Get blocks
+      summary: Retrieve one or more blocks from the chain or local cache.
       description: Retrieve one or more blocks from the chain or local cache.
       operationId: chaindata-blocks
       parameters:
@@ -792,7 +792,7 @@ paths:
     get:
       tags:
       - ChainData
-      summary: Get transactions
+      summary: Retrieve one or more transactions from the chain or local cache.
       description: Retrieve one or more transactions from the chain or local cache.
       operationId: chaindata-transactions
       parameters:
@@ -864,7 +864,7 @@ paths:
     get:
       tags:
       - ChainData
-      summary: Get receipts
+      summary: Retrieve receipts for the given transaction(s).
       description: Retrieve receipts for the given transaction(s).
       operationId: chaindata-receipts
       parameters:
@@ -904,7 +904,7 @@ paths:
     get:
       tags:
       - ChainData
-      summary: Get logs
+      summary: Retrieve logs for the given transaction(s).
       description: Retrieve logs for the given transaction(s).
       operationId: chaindata-logs
       parameters:
@@ -964,7 +964,7 @@ paths:
     get:
       tags:
       - ChainData
-      summary: Get Traces
+      summary: Retrieve traces for the given transaction(s).
       description: Retrieve traces for the given transaction(s).
       operationId: chaindata-traces
       parameters:
@@ -1045,7 +1045,7 @@ paths:
     get:
       tags:
       - ChainData
-      summary: Get block date
+      summary: Find block(s) based on date, blockNum, timestamp, or 'special'.
       description: Find block(s) based on date, blockNum, timestamp, or 'special'.
       operationId: chaindata-when
       parameters:
@@ -1078,7 +1078,7 @@ paths:
           type: boolean
       - name: check
         in: query
-        description: available only with --timestamps option, checks the validity of the timestamp data
+        description: available only with --timestamps, checks the validity of the timestamp data
         required: false
         style: form
         explode: true
@@ -1086,7 +1086,15 @@ paths:
           type: boolean
       - name: fix
         in: query
-        description: available only with --timestamps option, fixes incorrect timestamps if found
+        description: available only with --timestamps, fixes incorrect timestamps if any
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: count
+        in: query
+        description: available only with --timestamps, returns the number of timestamps in the cache
         required: false
         style: form
         explode: true
@@ -1125,7 +1133,7 @@ paths:
     get:
       tags:
       - ChainState
-      summary: Get account balance(s)
+      summary: Retrieve account balance(s) for one or more addresses at given block(s).
       description: Retrieve account balance(s) for one or more addresses at given block(s).
       operationId: chainstate-state
       parameters:
@@ -1216,7 +1224,7 @@ paths:
     get:
       tags:
       - ChainState
-      summary: Get token balance(s)
+      summary: Retrieve token balance(s) for one or more addresses at given block(s).
       description: Retrieve token balance(s) for one or more addresses at given block(s).
       operationId: chainstate-tokens
       parameters:
@@ -1304,7 +1312,7 @@ paths:
     get:
       tags:
       - Admin
-      summary: Report TrueBlocks status
+      summary: Report on the status of the TrueBlocks system.
       description: Report on the status of the TrueBlocks system.
       operationId: admin-status
       parameters:
@@ -1465,30 +1473,6 @@ paths:
       description: Scan the chain and update the TrueBlocks index of appearances.
       operationId: admin-scrape
       parameters:
-      - name: n_blocks
-        in: query
-        description: maximum number of blocks to process (defaults to 5000)
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: number
-      - name: n_block_procs
-        in: query
-        description: number of block channels for blaze
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: number
-      - name: n_addr_procs
-        in: query
-        description: number of address channels for blaze
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: number
       - name: pin
         in: query
         description: pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node)
@@ -1505,14 +1489,30 @@ paths:
         explode: true
         schema:
           type: number
-      - name: quit
+      - name: n_blocks
         in: query
-        description: quit the program if it's running
+        description: maximum number of blocks to process (default 2000)
         required: false
         style: form
         explode: true
         schema:
-          type: boolean
+          type: number
+      - name: n_block_procs
+        in: query
+        description: number of concurrent block channels for blaze
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      - name: n_addr_procs
+        in: query
+        description: number of concurrent address channels for blaze
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
       responses:
         "200":
           description: status of the scraper
@@ -1538,7 +1538,7 @@ paths:
     get:
       tags:
       - Admin
-      summary: Manage pins
+      summary: Manage pinned index of appearances and associated Bloom filters.
       description: Manage pinned index of appearances and associated Bloom filters.
       operationId: admin-pins
       parameters:
@@ -1605,7 +1605,7 @@ paths:
     get:
       tags:
       - Other
-      summary: Get Ethereum price data.
+      summary: Freshen and/or display Ethereum price data.
       description: Freshen and/or display Ethereum price data.
       operationId: other-quotes
       parameters:
