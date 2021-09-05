@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # freshen the readme files
-./rdme-local.sh
+./copy-from-core.sh
 
 if ! which redoc-cli > /dev/null; then
   echo "You need redoc-cli to build the API docs. Skipping API..."
