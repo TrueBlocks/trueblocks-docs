@@ -7,6 +7,7 @@ echo "Freshening README files from trueblocks-core"
 
 SOURCE=$HOME/Development/trueblocks-core/docs
 DATA_MODEL=$SOURCE/content/data-model
+API=$SOURCE/content/api
 READMES=$SOURCE/content/readmes
 INTROS=$READMES/intros
 CONTENT=content/docs/chifra
@@ -167,6 +168,10 @@ cat $READMES/tools/ethslurp/README.md >> $OTHER
 echo "    README files updated."
 
 echo "    Copying data model pages."
-cp -pR $DATA_MODEL/* content/data-model/collections/
+cp -fpR $DATA_MODEL/* content/data-model/collections/
+
+echo "    Copying API YAML file."
+# cp -fp $API/openapi.yaml content/api/
+echo "    NOT COPIED"
 
 echo
