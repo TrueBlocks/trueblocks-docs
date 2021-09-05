@@ -6,7 +6,7 @@
 echo "Freshening README files from trueblocks-core"
 
 SOURCE=$HOME/Development/trueblocks-core/docs
-READMES=$SOURCE/readmes
+READMES=$SOURCE/content/readmes
 INTROS=$READMES/intros
 CONTENT=content/docs/chifra
 #DATE=`date "+%FT%T"`
