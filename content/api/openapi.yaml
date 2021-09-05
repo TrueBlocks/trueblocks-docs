@@ -5,9 +5,9 @@ info:
     email: jrush@trueblocks.io
     url: https://www.trueblocks.io
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 0.8.04
+    name: GPL 3.0
+    url: http://www.gnu.org/licenses/
+  version: 0.12.1-alpha
   description: >
 
    A REST layer over the TrueBlocks application. With `chifra serve`, you can
@@ -64,7 +64,6 @@ info:
     in the  "Accounts" collection.
 
     Of course, caches occupy local storage. So cache wisely.
-
 servers:
   - url: http://localhost:8080
     description: Local endpoints
