@@ -105,7 +105,7 @@ TrueBlocks finds 180 appearances.
 
 The above command returns something like this:
 
-![Long list of unique blocks](unit-blocks.png){width="6.5in" height="2.4027777777777777in"}
+![Long list of unique blocks](/blog/explainers/unit-blocks.png){width="6.5in" height="2.4027777777777777in"}
 
 Perhaps you can see the start of an index of appearances in the above
 output.
@@ -144,16 +144,16 @@ are probably familiar. That is because the data is immutable and we want
 to keep it that way. We want to make sure we preserve the Ethereum
 data's immutability if possible.
 
-A blockchain is a time ordered log of transactions. (We've written about
+A blockchain is a time ordered log of transactions. ([We've written about
 this
-[here](https://medium.com/coinmonks/a-time-ordered-index-of-time-ordered-immutable-data-e28ced3417cc)).
+here](https://medium.com/coinmonks/a-time-ordered-index-of-time-ordered-immutable-data-e28ced3417cc)).
 The addresses that appear in each transaction are, as a result,
 interspersed. This is a good thing. Because the data is time ordered, it
 can be made immutable. As each crumb in the trail of crumbs is laid
 down, if one ties the crumb to the previous crumbs (with a cryptographic
 hash), the data cannot be altered. In other words, the time-ordered
 blockchain data is
-immutable.![A color coded index](index-sort-of.png){width="2.8177088801399823in"
+immutable.![A color coded index](./blog/explainers/index-sort-of.png){width="2.8177088801399823in"
 height="3.1057403762029745in"}
 
 This is what we all love about blockchain data.
@@ -165,8 +165,7 @@ no longer sorted by time. The data is sorted by whatever is being
 indexed. In our case, this means the index is sorted by address (below,
 color represents addresses):
 
-![Address and index address](index-colors.png){width="2.8229166666666665in"
-height="3.098934820647419in"}
+![Address and index address](/blog/explainers/index-colors.png)
 
 If one is building a time-ordered log, one may simply append new records
 to the end of the list, leaving the previous data untouched. If, on the
