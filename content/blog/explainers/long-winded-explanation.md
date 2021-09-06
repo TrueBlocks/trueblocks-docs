@@ -7,7 +7,7 @@ lastmod: 2021-04-05T19:21:58-03:00
 categories:
 - explainers
 tags: ['explainers']
-menu: 
+menu:
   blog:
 draft: false
 weight: 150
@@ -40,7 +40,7 @@ You can see a bunch of interesting tools. We'll start with one called
 ### A Simple Tool: chifra blocks
 
 Just to get us started I'm going to discuss a very simple tool called
-### chifra blocks**. Like many of the TrueBlocks tools, **chifra blocks
+**chifra blocks**. Like many of the TrueBlocks tools, **chifra blocks**
 is in some ways a front-end for the *eth_getBlock\** RPC calls. For
 example, one may run:
 
@@ -61,7 +61,7 @@ issue of indexing the chain:
 `chifra blocks --uniq_tx 12000000`
 
 exports what we call 'every appearance of every address in the block'.
-'Appearance' here isan important concept. An 'appearance' includes
+'Appearance' here is an important concept. An 'appearance' includes
 obvious things, such as when an address appears as the *from* or *to*
 address in a transaction, but there are many other ways an address may
 be an appearance.
@@ -92,9 +92,9 @@ The next tool I'd like to discuss is called **chifra scrape**, which,
 like the chain, runs continually. Each time **chifra scrape** runs, it
 looks for new blocks and with each new block, it does a very simple
 thing: it runs the above **\--uniq_tx** command against the block to
-extract the list of address appearances in that block.Unlike **chifra
+extract the list of address appearances in that block. Unlike **chifra
 blocks** which simply outputs the list of appearances to the screen,
-### chifra scrape** stores the addresses in a file on the end user's
+**chifra scrape** stores the addresses in a file on the end user's
 machine.
 
 An important note: the TrueBlocks index is built on the end user's
@@ -119,7 +119,7 @@ data's immutability if possible.
 
 A blockchain is a time ordered log of transactions. (We've written about
 this
-[[here]{.ul}](https://medium.com/coinmonks/a-time-ordered-index-of-time-ordered-immutable-data-e28ced3417cc)).
+[here](https://medium.com/coinmonks/a-time-ordered-index-of-time-ordered-immutable-data-e28ced3417cc)).
 The addresses that appear in each transaction are, as a result,
 interspersed. This is a good thing. Because the data is time ordered, it
 can be made immutable. As each crumb in the trail of crumbs is laid
@@ -175,8 +175,8 @@ time-ordered log of indexes of a time-ordered log*.
 
 ### Bloom Filters
 
-Before I move on, a quick note about Bloom filters. [[Bloom
-filters]{.ul}](https://en.wikipedia.org/wiki/Bloom_filter) are an
+Before I move on, a quick note about Bloom filters. [Bloom
+filters](https://en.wikipedia.org/wiki/Bloom_filter) are an
 amazing data structure that do an amazing thing. They represent, in a
 very compact form, set membership in a data set such as an index.
 
@@ -263,15 +263,17 @@ immediately do a fast binary search for the address. Each record in the
 array is 20 bytes wide for the address and four bytes each of the
 blockNumber and transactionIndex. In C++:
 
-*struct* [CAddressRecord_base]{.ul} {
+```cpp
+struct CAddressRecord_base {
 
-[uint8_t]{.ul} bytes\[20\];
+uint8_t bytes[20];
 
-[uint32_t]{.ul} offset;
+uint32_t offset;
 
-[uint32_t]{.ul} cnt;
+uint32_t cnt;
 
 };
+```
 
 A bit old-fashioned, but extremely fast and portable.
 
@@ -286,7 +288,7 @@ we'll remove the address from any caches just to make sure we're not?
 starting from a known place:
 
 ```shell
-chifra monitors \--delete 0xf503017d7baf7fbc0fff7492b751025c6a78179b
+chifra monitors --delete 0xf503017d7baf7fbc0fff7492b751025c6a78179b
 ```
 
 Next, we list the appearances for this address:
@@ -371,7 +373,7 @@ to fully understand any given transaction. If we\'re doing accounting
 (Ether or token accounting), we also extract the transaction\'s traces,
 but only if they are needed to make the accounting reconcile.
 
-There are a number of very useful options to the **chifra export
+There are a number of very useful options to the **chifra export**
 command:
 
 1.  **\--appearances** list only the appearances for the address
@@ -398,7 +400,7 @@ Note that all the **chifra** tools provide a few very helpful options
 such as exporting its data as either **json** (the default), `csv`, or
 `txt`. The flexibility of the output allows us to support many uses
 such as our GitCoin data dump site
-([[https://tokenomics.io/gitcoin/]{.ul}](https://tokenomics.io/gitcoin/)),
+([https://tokenomics.io/gitcoin/](https://tokenomics.io/gitcoin/)),
 or send it over an API to a front end application as we do for our
 TrueBlocks Explorer application (using the **chifra serve** option).
 
@@ -461,11 +463,11 @@ above discussion. They are included here as a placeholder and a promise
 for future articles.
 
 *[TrueBlocks gets better with more users - a natural network
-effect]{.ul}*
+effect]*
 
 TrueBlocks is able to share the index it builds at near-zero cost, as
 explained on this website:
-[[https://unchainedindex.io]{.ul}](https://unchainedindex.io).
+[https://unchainedindex.io](https://unchainedindex.io).
 Additionally, the way we store the index on IPFS means the system gets
 better and cheaper as more and more users use the system. This is
 opposite to the way current web economics work. Currently, with a
@@ -483,7 +485,7 @@ new user is to find the data she's looking for (assuming all users are
 pinning the data they use), and users will pin the data because they
 want to have it FOR THEMSELVES.
 
-*[Heavy Users Carry a Heavier Burden. Light Users a Lighter One.]{.ul}*
+*[Heavy Users Carry a Heavier Burden. Light Users a Lighter One.]*
 
 One of the natural outcomes of the way our system works is that heavy
 users\--those that appear in almost every block\--will naturally
@@ -493,7 +495,7 @@ only interact once in a while. For example, our address only appears in
 around 40 chunks. This seems naturally fair to us. Small users carry a
 small burden. Larger users carry a larger burden.
 
-*[Tiny Footprint]{.ul}*
+*[Tiny Footprint]*
 
 The footprint of the initial installation of the TrueBlocks system is
 small. Only the Bloom filters need to be installed at first. As the user
@@ -504,7 +506,7 @@ making that chunk more likely to be found in the future by other users.
 Furthermore, the end user will have the file locally, making it
 significantly faster.
 
-*[Users Store More than Just Their Own Data]{.ul}*
+*[Users Store More than Just Their Own Data]*
 
 Another aspect of the system is that each user stores a little bit more
 data than he/she needs for his/her direct needs. Some systems that we
@@ -515,7 +517,7 @@ tiny bit more data than they actually need. In this way redundancy is
 increased and the whole system improves as each new user joins the
 system.
 
-*[TrueBlocks Data is Provably True]{.ul}*
+*[TrueBlocks Data is Provably True]*
 
 In addition to all of the above, the TrueBlocks data is also provably
 true. We prove our data by inserting into the data itself the git commit
@@ -538,4 +540,3 @@ to get the Bloom filters. The app simply queries the Unchained Index
 smart contract to find the latest hash of the manifest. Upshot - zero
 cost to publish the data. Everyone has access to the data at all times
 if they have access to the Ethereum chain.
-
