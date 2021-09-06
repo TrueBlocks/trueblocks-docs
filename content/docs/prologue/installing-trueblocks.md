@@ -1,5 +1,5 @@
 ---
-title: "How to Install TrueBlocks"
+title: "Install TrueBlocks"
 description: "TrueBlocks works on Linux and Mac"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
