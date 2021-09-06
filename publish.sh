@@ -6,32 +6,29 @@
 name=$1
 
 # freshen the readme files
-#./copy-from-core.sh
-
-if ! which redoc-cli > /dev/null; then
-  echo "You need redoc-cli to build the API docs. Skipping API..."
-else
-  redoc-cli bundle \
-    --options.disableGoogleFont=true \
-    content/api/openapi.yaml -o content/api/index.html
-fi
-  
+#./copy-from-core.sh 
 
 if ! which rsync > /dev/null; then
 	echo "You need rysnc to run this script"
         exit 2
 fi
 
-
 # build the static site into ./public folder
 hugo --cleanDestinationDir \
 || { echo "The build failed. Exiting..." ; exit 3; } 
 
-echo
-
+if ! which redoc-cli > /dev/null; then
+  echo "You need redoc-cli to build the API docs. Skipping API..."
+else
+  echo "building API site..."
+  redoc-cli bundle \
+  --options.disableGoogleFont=true \
+  content/api/openapi.yaml -o public/api/index.html
+fi
 
 # copy the files to the server if the user presents a user id
 echo "Copying to trueblocks webserver..."
-rsync --quiet -rv --update public/ "$name"@trueblocks.io:/home/"$name"/Websites/trueblocks.io/
+rsync --quiet -rv \
+--update public/ "$name"@trueblocks.io:/home/"$name"/Websites/trueblocks.io/
 
 echo "Done."
