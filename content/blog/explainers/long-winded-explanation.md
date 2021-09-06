@@ -32,7 +32,34 @@ The first thing I want to discuss is a command line program we've
 written called **chifra**. Like git, **chifra** is an overarching tool
 that gives access to many other tools. Here's the help screen:
 
-![](media/image1.png){width="6.5in" height="3.6666666666666665in"}
+```txt
+ ACCOUNTS
+  list          list every appearance of an address anywhere on the chain
+  export        export full detail of transactions for one or more addresses
+  monitors      add, remove, clean, and list address monitors
+  names         query addresses or names of well known accounts
+  abis          fetches the ABI for a smart contract
+CHAIN DATA
+  blocks        retrieve one or more blocks from the chain or local cache
+  transactions  retrieve one or more transactions from the chain or local cache
+  receipts      retrieve receipts for the given transaction(s)
+  logs          retrieve logs for the given transaction(s)
+  traces        retrieve traces for the given transaction(s)
+  when          find block(s) based on date, blockNum, timestamp, or 'special'
+CHAIN STATE
+  state         retrieve account balance(s) for one or more addresses at given block(s)
+  tokens        retrieve token balance(s) for one or more addresses at given block(s)
+ADMIN
+  status        report on the status of the TrueBlocks system
+  serve         serve the TrueBlocks API using the flame server
+  scrape        scan the chain and update the TrueBlocks index of appearances
+  init          initialize the index of appearances by downloading Bloom filters
+  pins          manage pinned index of appearances and associated Bloom filters
+OTHER
+  quotes        freshen and/or display Ethereum price data
+  explore       open an explorer for a given address, block, or transaction
+  slurp         fetch data from EtherScan for any address
+```
 
 You can see a bunch of interesting tools. We'll start with one called
 **chifra blocks**.
@@ -78,7 +105,7 @@ TrueBlocks finds 180 appearances.
 
 The above command returns something like this:
 
-![](media/image2.png){width="6.5in" height="2.4027777777777777in"}
+![Long list of unique blocks](unit-blocks.png){width="6.5in" height="2.4027777777777777in"}
 
 Perhaps you can see the start of an index of appearances in the above
 output.
@@ -126,7 +153,7 @@ can be made immutable. As each crumb in the trail of crumbs is laid
 down, if one ties the crumb to the previous crumbs (with a cryptographic
 hash), the data cannot be altered. In other words, the time-ordered
 blockchain data is
-immutable.![](media/image4.png){width="2.8177088801399823in"
+immutable.![A color coded index](index-sort-of.png){width="2.8177088801399823in"
 height="3.1057403762029745in"}
 
 This is what we all love about blockchain data.
@@ -138,7 +165,7 @@ no longer sorted by time. The data is sorted by whatever is being
 indexed. In our case, this means the index is sorted by address (below,
 color represents addresses):
 
-![](media/image3.png){width="2.8229166666666665in"
+![Address and index address](index-colors.png){width="2.8229166666666665in"
 height="3.098934820647419in"}
 
 If one is building a time-ordered log, one may simply append new records
