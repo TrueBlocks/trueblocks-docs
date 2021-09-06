@@ -16,8 +16,6 @@ toc: true
 contributors: [Thomas Jay Rush]
 ---
 
-## Long Winded Explanation of TrueBlocks
-
 Recently, I was engaged in a tweetstorm with Nick Johnson, for whom I
 have deep, deep respect. The storm was about the topic of indexing the
 Ethereum blockchain. As is usually the case with my tweetstorms, I don't
@@ -26,7 +24,7 @@ thought I'd take a moment during the lull to better explain myself. So
 this is an explanation for Nick (and anyone else who's listening) about
 how TrueBlocks indexes the Ethereum blockchain.
 
-### Chifra
+## Chifra
 
 The first thing I want to discuss is a command line program we've
 written called **chifra**. Like git, **chifra** is an overarching tool
@@ -64,7 +62,7 @@ OTHER
 You can see a bunch of interesting tools. We'll start with one called
 **chifra blocks**.
 
-### A Simple Tool: chifra blocks
+## A Simple Tool: chifra blocks
 
 Just to get us started I'm going to discuss a very simple tool called
 **chifra blocks**. Like many of the TrueBlocks tools, **chifra blocks**
@@ -110,7 +108,7 @@ The above command returns something like this:
 Perhaps you can see the start of an index of appearances in the above
 output.
 
-### Scraping
+## Scraping
 
 Ethereum is continually producing data. Every 14 seconds a new block
 appears.
@@ -136,7 +134,7 @@ address that appears anywhere in that block, and stores those addresses
 for later lightning-fast querying. Pretty standard stuff, but there's a
 serious twist.
 
-### A Sort-Of Index
+## A Sort-Of Index
 
 **chifra scrape** builds an index─sort of. I say "sort of" because
 the index isn't the traditional Web 2.0 database index with which you
@@ -158,7 +156,7 @@ height="3.1057403762029745in"}
 
 This is what we all love about blockchain data.
 
-### An Index is not a Time-Ordered Log
+## An Index is not a Time-Ordered Log
 
 An index contains the same data as the time ordered log, but the data is
 no longer sorted by time. The data is sorted by whatever is being
@@ -191,7 +189,7 @@ change the IPFS location of the index file. However, we must continually
 add new records to the index in order to be able to query right up to
 the head of the chain.
 
-### Here's the solution:** after a certain amount of data has accumulated
+## Here's the solution:** after a certain amount of data has accumulated
 in the index we stop adding new records and create what we call an
 **index chunk**. We can then add that **chunk** to IPFS, and begin a new
 chunk.
@@ -199,7 +197,7 @@ chunk.
 A weird way to say the same thing is to say that we are creating *a
 time-ordered log of indexes of a time-ordered log*.
 
-### Bloom Filters
+## Bloom Filters
 
 Before I move on, a quick note about Bloom filters. [Bloom
 filters](https://en.wikipedia.org/wiki/Bloom_filter) are an
@@ -213,7 +211,7 @@ Bloom filter. The Bloom filter will be seen to be super useful in
 creating the system that we want to create \-- a system that allows us
 to distribute the index to our end users very efficiently.
 
-### Back to the Scraper
+## Back to the Scraper
 
 The scraper, in addition to querying each block and extracting
 appearances of addresses continually inserts them into the currently
@@ -240,7 +238,7 @@ Given a series of chunked indexes, each chunk of which has an associated
 Bloom filter, we are now ready to get what we want\--a list of every
 appearance for an address.
 
-### Querying the Index
+## Querying the Index
 
 Given any address, our applications query the index chunks by scanning
 through the Bloom filters looking for hits. A Bloom filter is a small
@@ -273,7 +271,7 @@ single user, one may do things that do not work on web servers.
 
 Ah, the beauty of local-first software.
 
-### Fixed-Width Binary Data is Fast!
+## Fixed-Width Binary Data is Fast!
 
 There's another thing that makes the index search lightning fast, That
 is that we store the **index chunks** directly as bytes of fixed-width
@@ -303,7 +301,7 @@ uint32_t cnt;
 
 A bit old-fashioned, but extremely fast and portable.
 
-### Using the Index
+## Using the Index
 
 Once in possession of the chunked index we can finally use TrueBlocks to
 do what we want to do: query for a list of every appearance of an
@@ -359,7 +357,7 @@ else's) addresses. (As long as they have enough room on their computer's
 hard drive \-- the point being that the size of the hard drive should be
 the decision of the end user, not the system designer.)
 
-### What to do with a List of Appearances?
+## What to do with a List of Appearances?
 
 Now that we have a list of appearances, what can we do with it?
 
@@ -432,12 +430,12 @@ TrueBlocks Explorer application (using the **chifra serve** option).
 
 This is what we mean by decentralization.
 
-### Upshot
+## Upshot
 
 I respect Nick Johnson immensely, but he\'s incorrect. It is possible to
 index the Ethereum blockchain effectively on a small machine.
 
-### Extending the Ethereum Node using Turbo Geth
+## Extending the Ethereum Node using Turbo Geth
 
 Last summer, we spent time looking closely at the TurboGeth codebase. As
 a result, we got super excited about the possibility of our work being
@@ -455,7 +453,7 @@ synchronization stages. Effectively, this is what the TrueBlocks
 TurboGeth stage and we intend to do that as soon as we have the
 opportunity.
 
-### Summary
+## Summary
 
 We've shown that:
 
@@ -482,7 +480,7 @@ We've shown that:
 8)  Indexing the Ethereum blockchain is a small data problem, not a big
     > data problem
 
-### Closing Remarks
+## Closing Remarks
 
 Following is a list of ideas and concepts that did not fit well in the
 above discussion. They are included here as a placeholder and a promise
