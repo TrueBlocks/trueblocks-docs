@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+# if user provides a user id, push ./public to the website
+[ -z "$1" ] && echo "Add ssh name to publish the site..." && exit 1
+
+name=$1
+
 # freshen the readme files
-./copy-from-core.sh
+#./copy-from-core.sh
 
 if ! which redoc-cli > /dev/null; then
   echo "You need redoc-cli to build the API docs. Skipping API..."
@@ -17,7 +22,6 @@ if ! which rsync > /dev/null; then
         exit 2
 fi
 
-USER=$1
 
 # build the static site into ./public folder
 hugo --cleanDestinationDir \
@@ -25,11 +29,9 @@ hugo --cleanDestinationDir \
 
 echo
 
-# if user provides a user id, push ./public to the website
-[ -z "$1" ] && echo "Add ssh name to publish the site..." && exit 1
 
 # copy the files to the server if the user presents a user id
 echo "Copying to trueblocks webserver..."
-rsync --quiet -rv --update public/ "$USER"@trueblocks.io:/home/"$USER"/Websites/trueblocks.io/
+rsync --quiet -rv --update public/ "$name"@trueblocks.io:/home/"$name"/Websites/trueblocks.io/
 
 echo "Done."
