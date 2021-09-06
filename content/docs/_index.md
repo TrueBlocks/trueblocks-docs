@@ -79,7 +79,7 @@ Some highlights:
 - _Format-agnostic._ Receive data in JSON, CSV, plain text, etc.
 
 TrueBlocks performs so well because the design is 100% data first. We are lifelong
-hackers, and we agree with [Linus Torvaalds when he
+hackers, and we agree with [Linus Torvalds when he
 said](https://lwn.net/Articles/193245/):
 
 > In fact, I'm a huge proponent of designing your code around the data, rather than the other way around
@@ -87,5 +87,3 @@ said](https://lwn.net/Articles/193245/):
 ## Great! But I want many more words.
 
 We've got more words for you. [This blog post covers these topics in much more detail](/blog/a-long-winded-explanation-of-trueblocks/).
-
-
