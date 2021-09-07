@@ -76,7 +76,7 @@ an array for the blocks' transactions.
 - **CLI**:
   - [See the command's documentation](/docs/chifra/chaindata/#chifra-blocks)
 - **API**:
-  - [Calls to `/transactions`](/api#operation/chaindata-blocks)
+  - [Calls to `/blocks`](/api#operation/chaindata-blocks)
 - **Explorer**
 
 ### Reference of block fields
