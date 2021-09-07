@@ -9,8 +9,7 @@ lastmod:
   - date
   - publishDate
 draft: false
-url: "/data-model"
-alias: "data-model/intro/intro"
+url: "/data-model/intro"
 images: []
 menu: 
   data:
