@@ -7,4 +7,6 @@ draft: false
 images: []
 ---
 
-Reference pages about Working with Ethereum and TrueBlocks-collected data.
+Reference pages about working with Ethereum and TrueBlocks-collected data.
+[Jump to the data model introduction](./intro)
+
