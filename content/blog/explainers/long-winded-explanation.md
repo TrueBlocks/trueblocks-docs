@@ -7,7 +7,7 @@ lastmod: 2021-04-05T19:21:58-03:00
 categories:
 - explainers
 tags: ['explainers']
-menu: 
+menu:
   blog:
 draft: false
 weight: 150
@@ -15,8 +15,6 @@ images: []
 toc: true
 contributors: [Thomas Jay Rush]
 ---
-
-## Long Winded Explanation of TrueBlocks
 
 Recently, I was engaged in a tweetstorm with Nick Johnson, for whom I
 have deep, deep respect. The storm was about the topic of indexing the
@@ -26,21 +24,48 @@ thought I'd take a moment during the lull to better explain myself. So
 this is an explanation for Nick (and anyone else who's listening) about
 how TrueBlocks indexes the Ethereum blockchain.
 
-### Chifra
+## Chifra
 
 The first thing I want to discuss is a command line program we've
 written called **chifra**. Like git, **chifra** is an overarching tool
 that gives access to many other tools. Here's the help screen:
 
-![](media/image1.png){width="6.5in" height="3.6666666666666665in"}
+```txt
+ ACCOUNTS
+  list          list every appearance of an address anywhere on the chain
+  export        export full detail of transactions for one or more addresses
+  monitors      add, remove, clean, and list address monitors
+  names         query addresses or names of well known accounts
+  abis          fetches the ABI for a smart contract
+CHAIN DATA
+  blocks        retrieve one or more blocks from the chain or local cache
+  transactions  retrieve one or more transactions from the chain or local cache
+  receipts      retrieve receipts for the given transaction(s)
+  logs          retrieve logs for the given transaction(s)
+  traces        retrieve traces for the given transaction(s)
+  when          find block(s) based on date, blockNum, timestamp, or 'special'
+CHAIN STATE
+  state         retrieve account balance(s) for one or more addresses at given block(s)
+  tokens        retrieve token balance(s) for one or more addresses at given block(s)
+ADMIN
+  status        report on the status of the TrueBlocks system
+  serve         serve the TrueBlocks API using the flame server
+  scrape        scan the chain and update the TrueBlocks index of appearances
+  init          initialize the index of appearances by downloading Bloom filters
+  pins          manage pinned index of appearances and associated Bloom filters
+OTHER
+  quotes        freshen and/or display Ethereum price data
+  explore       open an explorer for a given address, block, or transaction
+  slurp         fetch data from EtherScan for any address
+```
 
 You can see a bunch of interesting tools. We'll start with one called
 **chifra blocks**.
 
-### A Simple Tool: chifra blocks
+## A Simple Tool: chifra blocks
 
 Just to get us started I'm going to discuss a very simple tool called
-### chifra blocks**. Like many of the TrueBlocks tools, **chifra blocks
+**chifra blocks**. Like many of the TrueBlocks tools, **chifra blocks**
 is in some ways a front-end for the *eth_getBlock\** RPC calls. For
 example, one may run:
 
@@ -61,7 +86,7 @@ issue of indexing the chain:
 `chifra blocks --uniq_tx 12000000`
 
 exports what we call 'every appearance of every address in the block'.
-'Appearance' here isan important concept. An 'appearance' includes
+'Appearance' here is an important concept. An 'appearance' includes
 obvious things, such as when an address appears as the *from* or *to*
 address in a transaction, but there are many other ways an address may
 be an appearance.
@@ -78,12 +103,12 @@ TrueBlocks finds 180 appearances.
 
 The above command returns something like this:
 
-![](media/image2.png){width="6.5in" height="2.4027777777777777in"}
+![Long list of unique blocks](/blog/explainers/unit-blocks.png){width="6.5in" height="2.4027777777777777in"}
 
 Perhaps you can see the start of an index of appearances in the above
 output.
 
-### Scraping
+## Scraping
 
 Ethereum is continually producing data. Every 14 seconds a new block
 appears.
@@ -92,9 +117,9 @@ The next tool I'd like to discuss is called **chifra scrape**, which,
 like the chain, runs continually. Each time **chifra scrape** runs, it
 looks for new blocks and with each new block, it does a very simple
 thing: it runs the above **\--uniq_tx** command against the block to
-extract the list of address appearances in that block.Unlike **chifra
+extract the list of address appearances in that block. Unlike **chifra
 blocks** which simply outputs the list of appearances to the screen,
-### chifra scrape** stores the addresses in a file on the end user's
+**chifra scrape** stores the addresses in a file on the end user's
 machine.
 
 An important note: the TrueBlocks index is built on the end user's
@@ -109,7 +134,7 @@ address that appears anywhere in that block, and stores those addresses
 for later lightning-fast querying. Pretty standard stuff, but there's a
 serious twist.
 
-### A Sort-Of Index
+## A Sort-Of Index
 
 **chifra scrape** builds an index─sort of. I say "sort of" because
 the index isn't the traditional Web 2.0 database index with which you
@@ -117,29 +142,28 @@ are probably familiar. That is because the data is immutable and we want
 to keep it that way. We want to make sure we preserve the Ethereum
 data's immutability if possible.
 
-A blockchain is a time ordered log of transactions. (We've written about
+A blockchain is a time ordered log of transactions. ([We've written about
 this
-[[here]{.ul}](https://medium.com/coinmonks/a-time-ordered-index-of-time-ordered-immutable-data-e28ced3417cc)).
+here](https://medium.com/coinmonks/a-time-ordered-index-of-time-ordered-immutable-data-e28ced3417cc)).
 The addresses that appear in each transaction are, as a result,
 interspersed. This is a good thing. Because the data is time ordered, it
 can be made immutable. As each crumb in the trail of crumbs is laid
 down, if one ties the crumb to the previous crumbs (with a cryptographic
 hash), the data cannot be altered. In other words, the time-ordered
 blockchain data is
-immutable.![](media/image4.png){width="2.8177088801399823in"
+immutable.![A color coded index](./blog/explainers/index-sort-of.png){width="2.8177088801399823in"
 height="3.1057403762029745in"}
 
 This is what we all love about blockchain data.
 
-### An Index is not a Time-Ordered Log
+## An Index is not a Time-Ordered Log
 
 An index contains the same data as the time ordered log, but the data is
 no longer sorted by time. The data is sorted by whatever is being
 indexed. In our case, this means the index is sorted by address (below,
 color represents addresses):
 
-![](media/image3.png){width="2.8229166666666665in"
-height="3.098934820647419in"}
+![Address and index address](/blog/explainers/index-colors.png)
 
 If one is building a time-ordered log, one may simply append new records
 to the end of the list, leaving the previous data untouched. If, on the
@@ -165,7 +189,7 @@ change the IPFS location of the index file. However, we must continually
 add new records to the index in order to be able to query right up to
 the head of the chain.
 
-### Here's the solution:** after a certain amount of data has accumulated
+## Here's the solution:** after a certain amount of data has accumulated
 in the index we stop adding new records and create what we call an
 **index chunk**. We can then add that **chunk** to IPFS, and begin a new
 chunk.
@@ -173,10 +197,10 @@ chunk.
 A weird way to say the same thing is to say that we are creating *a
 time-ordered log of indexes of a time-ordered log*.
 
-### Bloom Filters
+## Bloom Filters
 
-Before I move on, a quick note about Bloom filters. [[Bloom
-filters]{.ul}](https://en.wikipedia.org/wiki/Bloom_filter) are an
+Before I move on, a quick note about Bloom filters. [Bloom
+filters](https://en.wikipedia.org/wiki/Bloom_filter) are an
 amazing data structure that do an amazing thing. They represent, in a
 very compact form, set membership in a data set such as an index.
 
@@ -187,7 +211,7 @@ Bloom filter. The Bloom filter will be seen to be super useful in
 creating the system that we want to create \-- a system that allows us
 to distribute the index to our end users very efficiently.
 
-### Back to the Scraper
+## Back to the Scraper
 
 The scraper, in addition to querying each block and extracting
 appearances of addresses continually inserts them into the currently
@@ -214,7 +238,7 @@ Given a series of chunked indexes, each chunk of which has an associated
 Bloom filter, we are now ready to get what we want\--a list of every
 appearance for an address.
 
-### Querying the Index
+## Querying the Index
 
 Given any address, our applications query the index chunks by scanning
 through the Bloom filters looking for hits. A Bloom filter is a small
@@ -247,7 +271,7 @@ single user, one may do things that do not work on web servers.
 
 Ah, the beauty of local-first software.
 
-### Fixed-Width Binary Data is Fast!
+## Fixed-Width Binary Data is Fast!
 
 There's another thing that makes the index search lightning fast, That
 is that we store the **index chunks** directly as bytes of fixed-width
@@ -263,19 +287,21 @@ immediately do a fast binary search for the address. Each record in the
 array is 20 bytes wide for the address and four bytes each of the
 blockNumber and transactionIndex. In C++:
 
-*struct* [CAddressRecord_base]{.ul} {
+```cpp
+struct CAddressRecord_base {
 
-[uint8_t]{.ul} bytes\[20\];
+uint8_t bytes[20];
 
-[uint32_t]{.ul} offset;
+uint32_t offset;
 
-[uint32_t]{.ul} cnt;
+uint32_t cnt;
 
 };
+```
 
 A bit old-fashioned, but extremely fast and portable.
 
-### Using the Index
+## Using the Index
 
 Once in possession of the chunked index we can finally use TrueBlocks to
 do what we want to do: query for a list of every appearance of an
@@ -286,7 +312,7 @@ we'll remove the address from any caches just to make sure we're not?
 starting from a known place:
 
 ```shell
-chifra monitors \--delete 0xf503017d7baf7fbc0fff7492b751025c6a78179b
+chifra monitors --delete 0xf503017d7baf7fbc0fff7492b751025c6a78179b
 ```
 
 Next, we list the appearances for this address:
@@ -331,7 +357,7 @@ else's) addresses. (As long as they have enough room on their computer's
 hard drive \-- the point being that the size of the hard drive should be
 the decision of the end user, not the system designer.)
 
-### What to do with a List of Appearances?
+## What to do with a List of Appearances?
 
 Now that we have a list of appearances, what can we do with it?
 
@@ -371,7 +397,7 @@ to fully understand any given transaction. If we\'re doing accounting
 (Ether or token accounting), we also extract the transaction\'s traces,
 but only if they are needed to make the accounting reconcile.
 
-There are a number of very useful options to the **chifra export
+There are a number of very useful options to the **chifra export**
 command:
 
 1.  **\--appearances** list only the appearances for the address
@@ -398,18 +424,18 @@ Note that all the **chifra** tools provide a few very helpful options
 such as exporting its data as either **json** (the default), `csv`, or
 `txt`. The flexibility of the output allows us to support many uses
 such as our GitCoin data dump site
-([[https://tokenomics.io/gitcoin/]{.ul}](https://tokenomics.io/gitcoin/)),
+([https://tokenomics.io/gitcoin/](https://tokenomics.io/gitcoin/)),
 or send it over an API to a front end application as we do for our
 TrueBlocks Explorer application (using the **chifra serve** option).
 
 This is what we mean by decentralization.
 
-### Upshot
+## Upshot
 
 I respect Nick Johnson immensely, but he\'s incorrect. It is possible to
 index the Ethereum blockchain effectively on a small machine.
 
-### Extending the Ethereum Node using Turbo Geth
+## Extending the Ethereum Node using Turbo Geth
 
 Last summer, we spent time looking closely at the TurboGeth codebase. As
 a result, we got super excited about the possibility of our work being
@@ -427,7 +453,7 @@ synchronization stages. Effectively, this is what the TrueBlocks
 TurboGeth stage and we intend to do that as soon as we have the
 opportunity.
 
-### Summary
+## Summary
 
 We've shown that:
 
@@ -454,18 +480,18 @@ We've shown that:
 8)  Indexing the Ethereum blockchain is a small data problem, not a big
     > data problem
 
-### Closing Remarks
+## Closing Remarks
 
 Following is a list of ideas and concepts that did not fit well in the
 above discussion. They are included here as a placeholder and a promise
 for future articles.
 
 *[TrueBlocks gets better with more users - a natural network
-effect]{.ul}*
+effect]*
 
 TrueBlocks is able to share the index it builds at near-zero cost, as
 explained on this website:
-[[https://unchainedindex.io]{.ul}](https://unchainedindex.io).
+[https://unchainedindex.io](https://unchainedindex.io).
 Additionally, the way we store the index on IPFS means the system gets
 better and cheaper as more and more users use the system. This is
 opposite to the way current web economics work. Currently, with a
@@ -483,7 +509,7 @@ new user is to find the data she's looking for (assuming all users are
 pinning the data they use), and users will pin the data because they
 want to have it FOR THEMSELVES.
 
-*[Heavy Users Carry a Heavier Burden. Light Users a Lighter One.]{.ul}*
+*[Heavy Users Carry a Heavier Burden. Light Users a Lighter One.]*
 
 One of the natural outcomes of the way our system works is that heavy
 users\--those that appear in almost every block\--will naturally
@@ -493,7 +519,7 @@ only interact once in a while. For example, our address only appears in
 around 40 chunks. This seems naturally fair to us. Small users carry a
 small burden. Larger users carry a larger burden.
 
-*[Tiny Footprint]{.ul}*
+*[Tiny Footprint]*
 
 The footprint of the initial installation of the TrueBlocks system is
 small. Only the Bloom filters need to be installed at first. As the user
@@ -504,7 +530,7 @@ making that chunk more likely to be found in the future by other users.
 Furthermore, the end user will have the file locally, making it
 significantly faster.
 
-*[Users Store More than Just Their Own Data]{.ul}*
+*[Users Store More than Just Their Own Data]*
 
 Another aspect of the system is that each user stores a little bit more
 data than he/she needs for his/her direct needs. Some systems that we
@@ -515,7 +541,7 @@ tiny bit more data than they actually need. In this way redundancy is
 increased and the whole system improves as each new user joins the
 system.
 
-*[TrueBlocks Data is Provably True]{.ul}*
+*[TrueBlocks Data is Provably True]*
 
 In addition to all of the above, the TrueBlocks data is also provably
 true. We prove our data by inserting into the data itself the git commit
@@ -538,4 +564,3 @@ to get the Bloom filters. The app simply queries the Unchained Index
 smart contract to find the latest hash of the manifest. Upshot - zero
 cost to publish the data. Everyone has access to the data at all times
 if they have access to the Ethereum chain.
-

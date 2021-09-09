@@ -1,5 +1,5 @@
 ---
-title: "How Can I Get the Index?"
+title: "Get the Index"
 description: "There are three ways to get the index. Each way involves some
 tradeoff between initialization time, storage use, and local access."
 lead: "After you install the core TrueBlocks utilities, you can access the index in three ways.

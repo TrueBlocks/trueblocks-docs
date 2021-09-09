@@ -13,7 +13,7 @@ images: []
 menu:
   docs:
     parent: "chifra"
-weight: 1200
+weight: 1300
 toc: true
 ---
 The chaindata tools extract raw blockchain data directly from the node.
@@ -37,14 +37,14 @@ Another useful feature of `chifra blocks` is the ability to extract address appe
 
 | | Option | Description |
 | :----- | :----- | :---------- |
-|  | blocks | a space-separated list of one or more blocks to retrieve (required) |
+|  | blocks | a space-separated list of one or more block identifiers (required) |
 | -e | --hashes | display only transaction hashes, default is to display full transaction detail |
 | -U | --uncles | display uncle blocks (if any) instead of the requested block |
 | -t | --trace | export the traces from the block as opposed to the block data |
-| -a | --apps | display all address appearances in the block |
-| -u | --uniq | display only uniq address appearances per block |
-| -n | --uniq_tx | display only uniq address appearances per transaction |
-| -c | --count | display counts of appearances (for --apps, --uniq, or --uniq_tx) or transactions |
+| -a | --apps | display only the list of address appearances in the block |
+| -u | --uniq | display only the list of uniq address appearances in the block |
+| -n | --uniq_tx | display only the list of uniq address appearances in each transaction |
+| -c | --count | display the number of the lists of appearances for --apps, --uniq, or --uniq_tx |
 | -o | --cache | force a write of the block to the cache |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
@@ -67,7 +67,7 @@ The `--trace` option attachs an array transaction traces to the output (if the n
 
 ### usage
 
-`Usage:`    chifra transactions [-a|-t|-u|-o|-r|-v|-h] &lt;tx_id&gt; [tx_id...]
+`Usage:`    chifra transactions [-a|-t|-u|-r|-o|-v|-h] &lt;tx_id&gt; [tx_id...]
 `Purpose:`  Retrieve one or more transactions from the chain or local cache.
 
 `Where:`
@@ -78,8 +78,8 @@ The `--trace` option attachs an array transaction traces to the output (if the n
 | -a | --articulate | articulate the retrieved data if ABIs can be found |
 | -t | --trace | include the transaction's traces in the results |
 | -u | --uniq | display a list of uniq addresses found in the transaction instead of the underlying data |
-| -o | --cache | force the results of the query into the tx cache (and the trace cache if applicable) |
 | -r | --reconcile &lt;address&gt; | reconcile the transaction as per the provided address |
+| -o | --cache | force the results of the query into the tx cache (and the trace cache if applicable) |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 
@@ -191,6 +191,11 @@ The `--filter` option calls your node's `trace_filter` routine (if available) us
   with a bang (!): fromBlk, toBlk, fromAddr, toAddr, after, count.
 - A state diff trace describes, for each modified address, what changed during that trace.
 
+`Configurable Items:`
+
+`skip_ddos`: skip over the 2016 ddos during export ('on' by default).
+`max`: if --skip_ddos is on, this many traces defines what a ddos transaction is (default = 250).
+
 **Source code**: [`tools/getTraces`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getTraces)
 
 ## chifra when
@@ -203,7 +208,7 @@ The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`
 
 ### usage
 
-`Usage:`    chifra when [-l|-t|-s|-v|-h] &lt; block | date &gt; [ block... | date... ]
+`Usage:`    chifra when [-l|-t|-v|-h] &lt; block | date &gt; [ block... | date... ]
 `Purpose:`  Find block(s) based on date, blockNum, timestamp, or 'special'.
 
 `Where:`
@@ -213,7 +218,6 @@ The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`
 |  | block_list | one or more dates, block numbers, hashes, or special named blocks (see notes) |
 | -l | --list | export a list of the 'special' blocks |
 | -t | --timestamps | ignore other options and generate timestamps only |
-| -s | --skip &lt;num&gt; | only applicable if --timestamps is on, the step between block numbers in the export |
 | -v | --verbose | set verbose level (optional level defaults to 1) |
 | -h | --help | display this help screen |
 

@@ -3,9 +3,6 @@
   <div class="col-md-12 col-lg-10 col-xl-8">
     <article>
       <h1 class="text-center">{{ .Title }}</h1>
-      <div class="text-center">
-       {{ .Params.lead | safeHTML }}
-      </div> 
       <div>{{ .Content }}</div>
 			<div class="card-list">
 				{{ range .Data.Pages -}}

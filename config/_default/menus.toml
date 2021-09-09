@@ -1,11 +1,11 @@
 [[main]]
   name = "Docs"
-  url = "/docs/prologue/what-is-this"
+  url = "/docs/"
   weight = 10
 
 [[main]]
   name = "Data\u00A0Model"
-  url= "/data-model/intro/intro"
+  url= "/data-model/intro"
   identifier = "data"
   weight = 30
 
