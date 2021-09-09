@@ -42,8 +42,10 @@ If you need help with a step, see the [installation's troubleshooting section](h
 2. Add `trueblocks-core/bin` to your shell PATH.
 
 3. Find your TrueBlocks configuration directory. It should either be at the location of `$XDG_DATA_HOME`, or:
+    
     * On linux at `~/.local/share/trueblocks`
-    * On mac at `~/Library/Application/Support/TrueBlocks`
+    * On mac at `~/Library/Application Support/TrueBlocks`
+
 4. In the configuration directory, edit `trueblocks.toml` to add your RPC and API keys. It should look something like this:
 ```toml
 [settings]
