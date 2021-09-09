@@ -13,7 +13,6 @@ weight: 0200
 toc: true
 ---
 
-
 <!---
 The links in this section are hard coded so that can be pasted into the
 directory README.
@@ -27,9 +26,10 @@ If you need help with a step, see the [installation's troubleshooting section](h
 
 0. Install dependencies
     - &#9745; [Install Go, version 1.12x or later](https://golang.org/doc/install).
-    - &#9745; Install the other dependencies with your command line `build-essential` `git` `cmake` `python` `python-dev` `libcurl3-dev` `clang-format` `jq`.
-
+    - &#9745; Install the other dependencies with your command line: `build-essential` `git` `cmake` `python` `python-dev` `libcurl3-dev` `clang-format` `jq`.
+<br/><br/>
 1. Compile from the codebase
+
     ```shell
     git clone -b develop https://github.com/trueblocks/trueblocks-core
     cd trueblocks-core
@@ -37,29 +37,33 @@ If you need help with a step, see the [installation's troubleshooting section](h
     cmake ../src
     make
     ```
-    _(You may use `make -j nproc` to parallelize the build. Replace `<ncores>` with the number of cores on your machine.)_
+    _(You may use `make -j nproc` to parallelize the build.)_
 
 2. Add `trueblocks-core/bin` to your shell PATH.
 
-3. Find your TrueBlocks configuration directory. It should either be at the location of `$XDG_DATA_HOME`, or:
+3. Find your TrueBlocks configuration directory. It should be in either `$XDG_DATA_HOME`, or:
     
     * On linux at `~/.local/share/trueblocks`
     * On mac at `~/Library/Application Support/TrueBlocks`
-
+<br/><br/>
 4. In the configuration directory, edit `trueblocks.toml` to add your RPC and API keys. It should look something like this:
-```toml
-[settings]
-rpcProvider = "<url-to-rpc-endpoint>"
-etherscan_key = "<key>"
-```
-6. Test a command!
-```shell
-chifra blocks 12345
-```
+
+    ```toml
+    [settings]
+    rpcProvider = "<url-to-rpc-endpoint>"
+    etherscan_key = "<key>"
+    ```
+5. Test a command!
+
+    ```shell
+    chifra blocks 12345
+    ```
+
 ### Optional steps
 
-7. To make deep data queries, [get the index](https://trueblocks.io/docs/prologue/how-can-i-get-the-index/)
-8. To explore the data visually, [install the explorer application](https://trueblocks.io/docs/prologue/install-explorer/).
+
+6. To make deep data queries, [get the index](https://trueblocks.io/docs/prologue/how-can-i-get-the-index/)
+7. To explore the data visually, [install the explorer application](https://trueblocks.io/docs/prologue/install-explorer/).
 
 ## Troubleshooting
 
