@@ -106,7 +106,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: an array of appearances
                     type: array
                     items:
                       $ref: "#/components/schemas/appearance"
@@ -556,10 +555,9 @@ paths:
               schema:
                 properties:
                   data:
-                    description: an array of abi definitions
                     type: array
                     items:
-                      $ref: "#/components/schemas/abis"
+                      $ref: "#/components/schemas/abi"
                 example:
                   {
                     "data": [
@@ -775,7 +773,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: "array of transactions"
                     type: array
                     items:
                       $ref: "#/components/schemas/transaction"
@@ -816,7 +813,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: array of receipts
                     type: array
                     items:
                       $ref: "#/components/schemas/receipt"
@@ -880,7 +876,6 @@ paths:
                 properties:
                   data:
                     type: array
-                    description: array of logs
                     items:
                       $ref: "#/components/schemas/log"
         "400":
@@ -945,7 +940,6 @@ paths:
                 properties:
                   data:
                     type: array
-                    description: "array of trace objects"
                     items:
                       $ref: "#/components/schemas/trace"
         "400":
@@ -1077,7 +1071,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: an array of state objects
                     type: array
                     items:
                       $ref: "#/components/schemas/state"
@@ -1174,7 +1167,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: an array of token state objects
                     type: array
                     items:
                       $ref: "#/components/schemas/token"
@@ -1326,7 +1318,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: "array of pins"
                     type: array
                     items:
                       $ref: "#/components/schemas/pin"
@@ -1381,7 +1372,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: "array of pins"
                     type: array
                     items:
                       $ref: "#/components/schemas/pin"
@@ -1414,7 +1404,7 @@ paths:
       operationId: other-quotes
       parameters:
         - name: freshen
-          description: Freshen price database (append new data)
+          description: Freshen price database
           required: false
           style: form
           in: query
@@ -1469,7 +1459,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: "array of quotes"
                     type: array
                     items:
                       $ref: "#/components/schemas/quote"
@@ -1554,7 +1543,6 @@ paths:
               schema:
                 properties:
                   data:
-                    description: "array of transactions"
                     type: array
                     items:
                       $ref: "#/components/schemas/transaction"
@@ -2083,7 +2071,7 @@ components:
         is_erc721:
           type: boolean
           description: "`true` if the address is an ERC720, `false` otherwise"
-    abis:
+    abi:
       type: object
       description: "a collection of function and event definitions as described elsewhere in the Ethereum system"
     function:
