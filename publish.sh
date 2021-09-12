@@ -5,9 +5,6 @@
 
 name=$1
 
-# freshen the readme files
-#./copy-from-core.sh 
-
 if ! which rsync > /dev/null; then
 	echo "You need rysnc to run this script"
         exit 2

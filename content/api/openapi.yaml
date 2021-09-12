@@ -1730,6 +1730,33 @@ components:
     monitor:
       description: "an address that is being (or has been) monitored"
       type: object
+      properties:
+        nApps:
+          type: number
+          format: blknum
+          description: "the number of appearances for this monitor"
+        firstApp:
+          type: number
+          format: blknum
+          description: "the first block at which this address appears"
+        latestApp:
+          type: number
+          format: blknum
+          description: "the latest block at which this address appears"
+        sizeInBytes:
+          type: number
+          format: uint64
+          description: "the size of this monitor on disc"
+        tags:
+          type: string
+          description: "the tag given to this address"
+        address:
+          type: string
+          format: address
+          description: "the address being monitored"
+        is_custom:
+          type: boolean
+          description: "`true` if this address is customized"
     name:
       type: object
       properties:
@@ -1781,11 +1808,42 @@ components:
     parameter:
       description: "a parameter to a function or event"
       type: object
+      properties:
+        type:
+          type: string
+          description: "the type of this parameter"
+        name:
+          type: string
+          description: "the name of this parameter"
+        str_default:
+          type: string
+          description: "the defaul value of this parameter, if any"
+        indexed:
+          type: boolean
+          description: "`true` if this parameter is indexed"
+        internalType:
+          type: string
+          description: "for composite types, the interal type of the parameter"
+        components:
+          type: array
+          items:
+            $ref: "#/components/schemas/parameter"
+          description: "for composite types, the parameters making up the composite"
     pin:
       type: object
       properties:
-        items:
-          $ref: "#/components/schemas/pin"
+        fileName:
+          type: string
+          example: "013142464-013145212"
+          description: "for each chunk, the range of blocks contained in that chunk"
+        bloomHash:
+          type: ipfshash
+          example: "QmXHjjY...HDqvWT"
+          description: "the IPFS hash of the bloom filter at that range"
+        indexHash:
+          type: ipfshash
+          example: "QmTbYpR...qWLj44"
+          description: "the IPFS hash of the index chunk at that range"
     quote:
       type: object
       properties:
@@ -2040,6 +2098,8 @@ components:
           description: "the zero-indexed position of the transaction in the block"
         traceAddress:
           type: array
+          items:
+            $ref: "#/components/schemas/string"
           description: "a particular trace's address in the trace tree"
         subtraces:
           type: number
@@ -2071,36 +2131,30 @@ components:
       type: object
       properties:
         from:
+          type: string
+          format: address
           description: "address from which the trace was sent"
-          type: string
-          format: address
         to:
-          description: "address to which the trace was sent"
           type: string
           format: address
+          description: "address to which the trace was sent"
         gas:
-          type: number
+          type: string
           format: gas
-          example: 158660
-          description: the maximum number of gas allowed for this trace
+          example: "158660"
+          description: "the maximum number of gas allowed for this trace"
         input:
-          description: an encoded version of the function call.
           type: string
           format: bytes
+          description: "an encoded version of the function call"
         callType:
-          description: the type of call
           type: string
+          description: "the type of call"
         refundAddress:
           type: string
           format: address
-          example: "0xf503017d7baf7fbc0fff7492b751025c6a78179b"
-          description: if the call type is self-destruct, the address to which the refund is sent
-        articulatedTrace:
-          description: A human-readable version of the trace action’s input and the result’s output
-          type: object
-        compressedTrace:
-          description: a truncated, more readable version of the articulation
-          type: string
+          example: "0xf503...179b"
+          description: "if the call type is self-destruct, the address to which the refund is sent"
     traceResult:
       description: "the trace result"
       type: object
@@ -2226,6 +2280,8 @@ components:
       format: hash
       description: "The 32-byte hash"
       example: "0xf128...1e98"
+    string:
+      type: string
     topic:
       type: string
       format: bytes
