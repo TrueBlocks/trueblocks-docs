@@ -2,7 +2,6 @@ publish-jay.sh
 .DS_Store
 node_modules
 public
-content/api/index.html
 .vscode/
 !.vscode/settings.json
 
