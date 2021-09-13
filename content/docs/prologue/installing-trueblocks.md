@@ -25,7 +25,7 @@ If you need help with a step, see the [installation's troubleshooting section](h
 ## Quick Install
 
 0. Install dependencies
-    - &#9745; [Install Go, version 1.12x or later](https://golang.org/doc/install).
+    - &#9745; [Install the latest version of Go](https://golang.org/doc/install).
     - &#9745; Install the other dependencies with your command line: `build-essential` `git` `cmake` `python` `python-dev` `libcurl3-dev` `clang-format` `jq`.
 <br/><br/>
 1. Compile from the codebase
@@ -41,18 +41,21 @@ If you need help with a step, see the [installation's troubleshooting section](h
 
 2. Add `trueblocks-core/bin` to your shell PATH.
 
-3. Find your TrueBlocks configuration directory. It should be in either `$XDG_DATA_HOME`, or:
-    
+3. Find your TrueBlocks configuration directory. It should be in one of these places:
+
     * On linux at `~/.local/share/trueblocks`
     * On mac at `~/Library/Application Support/TrueBlocks`
+    * If you've configured it, wherever the location of `$XDG_DATA_HOME` is
 <br/><br/>
-4. In the configuration directory, edit `trueblocks.toml` to add your RPC and API keys. It should look something like this:
+
+4. In the configuration directory, edit `trueblocks.toml` to add your RPC and
+API keys. It should look something like this:
 
     ```toml
     [settings]
     rpcProvider = "<url-to-rpc-endpoint>"
-    etherscan_key = "<key>"
     ```
+
 5. Test a command!
 
     ```shell
@@ -104,6 +107,24 @@ TrueBlocks needs version 1.12.x or later.
   ```
 ### Compiling
 
+#### How many cores can I use to make TrueBlocks?
+
+When you run `make`, you can speed up the build by parallelizing with
+
+```shell
+make -j <ncores>
+```
+
+Where `<ncores>` represents the number of cores to devote to the job.
+How many cores can you use? That depends on many factors. A handy tool is `nproc`,
+which identifies the machine's number of available processing units.
+
+If you have `nproc` installed, you can safely parallelize the build with this command
+
+```shell
+make -j `nproc`
+```
+
 #### How do I know if compilation was successful?
 
 From the `trueblocks-core` directory, test your install with this command:
@@ -150,13 +171,15 @@ If you are running a local node on a different port, simply change the port.
 #### How do I add external RPCs and etherscan?
 
 If you are using an external RPC, you to need add its endpoint.
-Similarly, [some tools have an `--articulate` option](/docs/chifra/chaindata/),
-which requires an EtherScan API key.
-
+Similarly, for deep exploration of ABI data, [some tool interfaces have an
+`--articulate` option](/docs/chifra/chaindata/).
+The `articulate` option requires an EtherScan API key.
+We are working on removing this centralized dependency.
 
 In your config file, the specific RPC path will differ depending on the service.
 
-Here’s an example for Infura and EtherScan, with <key_value> being replaced by a hash string.
+Here’s an example for Infura and EtherScan, with <key_value> being replaced by a
+hash string.
 
 ```TOML
 [settings]
@@ -173,6 +196,7 @@ Doing that requires an index.
 There are multiple options, which the [How Can I Get the Index?](../how-can-i-get-the-index)
 article covers in more detail.
 
-No matter what method, getting the index will take somewhere between 10 minutes and a few days.
-So you might want to play around with some [chifra blockchain commands](../../chifra/chaindata) first.
+No matter what method, getting the index will take somewhere between 10 minutes
+and a few days. So you might want to play around with some [chifra blockchain
+commands](../../chifra/chaindata) first.
 
