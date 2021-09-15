@@ -20,9 +20,9 @@ toc: true
 The Admin component allows you to query the status of the TrueBlocks system. You may query the status; query for information about TrueBlocks caches; control the creation, sharing, and pinning of the TrueBlocks index of appearances; and even serve the data through an API. See our [API documentation](/api) for more information.
 
 ## Status
-
+<!---
 TEXT ABOUT STATUS
-
+---->
 ### How to get status
 
 - **CLI**:
@@ -55,9 +55,9 @@ TEXT ABOUT STATUS
 | ts | the timestamp when this status data was produced | timestamp |
 
 ## PinnedChunk
-
+<!----
 TEXT ABOUT PINNED CHUNKS
-
+----->
 ### How to get pinnedchunks
 
 - **CLI**:
