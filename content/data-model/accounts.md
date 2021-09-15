@@ -22,9 +22,9 @@ TrueBlocks Data collections are built progressively. Each grouping comprises a b
 _These fields describe the output of various Trueblocks account queries. For information about how to refine these queries, see [the corresponding CLI section](/docs/chifra/accounts/)_
 
 ## Appearance
-
+<!-----
 TEXT ABOUT APPEARANCES
-
+---->
 ### Fields
 
 | Field | Description | Type |
@@ -140,9 +140,9 @@ For more information on ABIs please see any relevant Ethereum documentation, par
 | interfaces | the list of events and functions on this abi | CFunctionArray |
 
 ## Function
-
-TEXT FOR FUNCTIONS
-
+<!-----
+TEXT ABOUT FUNCTIONS
+------>
 ### Fields
 
 | Field | Description | Type |
@@ -155,9 +155,9 @@ TEXT FOR FUNCTIONS
 | outputs | the output parameters to the function&#44; if any | CParameterArray |
 
 ## Parameter
-
-TEXT FOR PARAMETERS
-
+<!---
+TEXT ABOUT PARAMETERS
+---->
 ### Fields
 
 | Field | Description | Type |
