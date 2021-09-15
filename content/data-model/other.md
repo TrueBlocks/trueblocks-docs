@@ -28,9 +28,9 @@ text="Note: some of these tools, like `ethslurp`, require an EtherScan key." >}}
 
 
 ## Quote
-
+<!----
 TEXT ABOUT PRICE QUOTES
-
+----->
 ### How to get price quotes
 
 - **CLI**:
