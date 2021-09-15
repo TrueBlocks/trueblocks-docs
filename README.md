@@ -1,7 +1,21 @@
+To develop on this site, you need `npm` and `hugo`.
 
-If you want to generate static pages, just run `hugo` from the root directory. This will gen a file called `public`
+To run locally:
 
-To create a new post, run `hugo new <content-directory>/<subdirectory>/<name>.md`
+1. Install npm dependencies
+ 
+```shell
+npm install
+```
+
+2. serve hugo to local host
+
+```shell
+hugo server
+```
+
+We have a few customizations, but all the hard work for creating this theme was done by the good people at Doks:
+https://github.com/h-enk/doks/
 
 ## Important directories:
 
