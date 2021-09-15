@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-06-30T12:13:03-03:00
+date: 2021-09-15T09:03:19
 lastmod:
   - :git
   - lastmod
@@ -22,6 +22,7 @@ TrueBlocks Data collections are built progressively. Each grouping comprises a b
 _These fields describe the output of various Trueblocks account queries. For information about how to refine these queries, see [the corresponding CLI section](/docs/chifra/accounts/)_
 
 ## Appearance
+
 <!-----
 TEXT ABOUT APPEARANCES
 ---->
@@ -77,6 +78,7 @@ Accounts are a combination of an`address`, a `name`, and optionally other data. 
 | is_contract | `true` if the address is a smart contract&#44; `false` otherwise | bool |
 | is_erc20 | `true` if the address is an ERC20&#44; `false` otherwise | bool |
 | is_erc721 | `true` if the address is an ERC720&#44; `false` otherwise | bool |
+
 
 ## Reconciliation
 
@@ -158,6 +160,7 @@ TEXT ABOUT FUNCTIONS
 <!---
 TEXT ABOUT PARAMETERS
 ---->
+
 ### Fields
 
 | Field | Description | Type |
@@ -168,6 +171,7 @@ TEXT ABOUT PARAMETERS
 | indexed | `true` if this parameter is indexed | bool |
 | internalType | for composite types&#44; the interal type of the parameter | string |
 | components | for composite types&#44; the parameters making up the composite | CParameterArray |
+
 ## Base types
 
 In these docs, sometimes Trueblocks mentions a type format that is more

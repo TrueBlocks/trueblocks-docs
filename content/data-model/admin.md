@@ -23,6 +23,7 @@ The Admin component allows you to query the status of the TrueBlocks system. You
 <!---
 TEXT ABOUT STATUS
 ---->
+
 ### How to get status
 
 - **CLI**:
@@ -58,6 +59,7 @@ TEXT ABOUT STATUS
 <!----
 TEXT ABOUT PINNED CHUNKS
 ----->
+
 ### How to get pinnedchunks
 
 - **CLI**:

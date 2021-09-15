@@ -3,6 +3,7 @@ title: "Chain Data"
 description: ""
 lead: ""
 date: 2021-06-30T12:13:03-03:00
+
 lastmod:
   - :git
   - lastmod
@@ -181,6 +182,7 @@ Other than the first trace which is the trace of the transaction itself, traces 
 | input | an encoded version of the function call | bytes |
 | callType | the type of call | string |
 | refundAddress | if the call type is self-destruct&#44; the address to which the refund is sent | address |
+
 
 ## TraceResult
 

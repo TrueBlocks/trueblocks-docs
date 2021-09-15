@@ -61,6 +61,7 @@ The balance of an address at a given block.
 | is_contract | `true` if the address is a smart contract&#44; `false` otherwise | bool |
 | is_erc20 | `true` if the address is an ERC20&#44; `false` otherwise | bool |
 | is_erc721 | `true` if the address is an ERC720&#44; `false` otherwise | bool |
+
 ## Base types
 
 In these docs, sometimes Trueblocks mentions a type format that is more
