@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-09-15T09:03:19
+date: 2021-06-30T12:13:03-03:00
 lastmod:
   - :git
   - lastmod
@@ -28,8 +28,9 @@ text="Note: some of these tools, like `ethslurp`, require an EtherScan key." >}}
 
 
 ## Quote
-
+<!----
 TEXT ABOUT PRICE QUOTES
+----->
 
 ### How to get price quotes
 

@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-09-15T09:03:19
+date: 2021-06-30T12:13:03-03:00
 lastmod:
   - :git
   - lastmod
@@ -20,8 +20,9 @@ toc: true
 The Admin component allows you to query the status of the TrueBlocks system. You may query the status; query for information about TrueBlocks caches; control the creation, sharing, and pinning of the TrueBlocks index of appearances; and even serve the data through an API. See our [API documentation](/api) for more information.
 
 ## Status
-
+<!---
 TEXT ABOUT STATUS
+---->
 
 ### How to get status
 
@@ -55,8 +56,9 @@ TEXT ABOUT STATUS
 | ts | the timestamp when this status data was produced | timestamp |
 
 ## PinnedChunk
-
+<!----
 TEXT ABOUT PINNED CHUNKS
+----->
 
 ### How to get pinnedchunks
 
@@ -70,7 +72,7 @@ TEXT ABOUT PINNED CHUNKS
 
 | Field | Description | Type |
 |-------|-------------|------|
-| fileName | for each chunk, the range of blocks contained in that chunk | string |
+| fileName | for each chunk&#44; the range of blocks contained in that chunk | string |
 | bloomHash | the IPFS hash of the bloom filter at that range | ipfshash |
 | indexHash | the IPFS hash of the index chunk at that range | ipfshash |
 ## Base types
