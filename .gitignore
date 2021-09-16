@@ -4,4 +4,4 @@ node_modules
 public
 .vscode/
 !.vscode/settings.json
-
+content/api/index.html
