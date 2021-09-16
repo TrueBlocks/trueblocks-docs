@@ -2,7 +2,7 @@
 title: "Chain State"
 description: ""
 lead: ""
-date: 2021-06-30T12:13:03-03:00
+date: 2021-09-16T08:22:30
 lastmod:
   - :git
   - lastmod
@@ -13,14 +13,13 @@ images: []
 menu:
   data:
     parent: "collections"
-weight: 1600
+weight: 1400
 toc: true
 ---
 
 These commands compare the balance of an address against a particular token or block.
 
-_For information about how to refine balance queries, see
-[the corresponding CLI section](/docs/chifra/chainstate/)_
+_Each data structure is created by one or more tools which are detailed below_
 
 ## State
 
@@ -55,13 +54,12 @@ The balance of an address at a given block.
 | holder | the address for which we are reporting the token balance | address |
 | balance | the balance at the address at the given block height | wei |
 | address | description: the address of the token contract being queried | address |
-| name | the name of the token contract&#44; if available | string |
+| name | the name of the token contract, if available | string |
 | symbol | the symbol for this token contract | string |
 | decimals | the number of decimals for the token contract | uint64 |
-| is_contract | `true` if the address is a smart contract&#44; `false` otherwise | bool |
-| is_erc20 | `true` if the address is an ERC20&#44; `false` otherwise | bool |
-| is_erc721 | `true` if the address is an ERC720&#44; `false` otherwise | bool |
-
+| is_contract | `true` if the address is a smart contract, `false` otherwise | bool |
+| is_erc20 | `true` if the address is an ERC20, `false` otherwise | bool |
+| is_erc721 | `true` if the address is an ERC720, `false` otherwise | bool |
 ## Base types
 
 In these docs, sometimes Trueblocks mentions a type format that is more

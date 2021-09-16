@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-06-30T12:13:03-03:00
+date: 2021-09-16T08:31:41
 lastmod:
   - :git
   - lastmod
@@ -13,11 +13,13 @@ images: []
 menu:
   data:
     parent: "collections"
-weight: 1200
+weight: 1700
 toc: true
 ---
 
-The Admin component allows you to query the status of the TrueBlocks system. You may query the status; query for information about TrueBlocks caches; control the creation, sharing, and pinning of the TrueBlocks index of appearances; and even serve the data through an API. See our [API documentation](/api) for more information.
+The Admin component allows you to query the status of the TrueBlocks system. You may query the status; query for information about TrueBlocks caches; control the creation, sharing, and pinning of the TrueBlocks index of appearances; and even serve the data through an API.
+
+_Each data structure is created by one or more tools which are detailed below_
 
 ## Status
 <!---
@@ -72,7 +74,7 @@ TEXT ABOUT PINNED CHUNKS
 
 | Field | Description | Type |
 |-------|-------------|------|
-| fileName | for each chunk&#44; the range of blocks contained in that chunk | string |
+| fileName | for each chunk, the range of blocks contained in that chunk | string |
 | bloomHash | the IPFS hash of the bloom filter at that range | ipfshash |
 | indexHash | the IPFS hash of the index chunk at that range | ipfshash |
 ## Base types
