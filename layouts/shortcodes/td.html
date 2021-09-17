@@ -1,0 +1,5 @@
+{{ $htmlTd := .Inner | markdownify }}
+{{ $old := "<td>" }}
+{{ $new := printf "<td nowrap>" }}
+{{ $htmlTd := replace $htmlTd $old $new }}
+{{ $htmlTd | safeHTML }}
