@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-09-17T07:00:16
+date: 2021-09-17T23:10:00
 lastmod:
   - :git
   - lastmod
@@ -25,12 +25,12 @@ _Each data structure is created by one or more tools which are detailed below_
 
 ## Monitor
 
-A Monitor is a list of [Appearances](/data-model/accounts/#appearance) associated with a given address along with various details about those Appearances. A Monitor is created when a user expresses interest in an address by calling either [chifra list](/docs/chifra/accounts/#chifra-list) or [chifra export](/docs/chifra/accounts/#chifra-export) tool (or querying thier associated APIs).
+A Monitor is a list of [Appearances](/data-model/accounts/#appearance) associated with a given address along with various details about those appearances. A monitor is created when a user expresses interest in an address by calling either [chifra list](/docs/chifra/accounts/#chifra-list) or [chifra export](/docs/chifra/accounts/#chifra-export) tool (or querying thier associated APIs).
 
-Once created, a Monitor may be periodically *freshened* by calling either `chifra list` or `chifra export` again, however, it is also possible to keep a Monitor fresh continually by calling [chifra serve --monitor](). This tool watches the front of the chain and repeatedly calls `chifra list`.
+Once created, a monitor may be periodically *freshened* by calling either `chifra list` or `chifra export`, however, it is also possible to freshen a monitor continually with [chifra scrape --monitors](/docs/chifra/admin/#chifra-scrape). This tool watches the front of the chain and repeatedly calls `chifra list`.
 
+Below is a list of the data fields for monitors. Following that are the commands that produce or manage monitors.  
 ### Fields
-
 | Field       | Description                                    | Type    |
 | ----------- | ---------------------------------------------- | ------- |
 | nApps       | the number of appearances for this monitor     | blknum  |
@@ -41,17 +41,21 @@ Once created, a Monitor may be periodically *freshened* by calling either `chifr
 | address     | the address being monitored                    | address |
 | is_custom   | `true` if this address is customized           | bool    |
 
-| **Tools**                                                          |                                                |
-| ------------------------------------------------------------------ | ---------------------------------------------- |
-| [chifra status monitors](/docs/chifra/admin/#chifra-status)        | report on all existing monitors                |
-| [chifra list &lt;address&gt;](/docs/chifra/admin/#chifra-status)   | create or freshen a Monitor                    |
-| [chifra export &lt;address&gt;](/docs/chifra/admin/#chifra-status) | create or freshen and then report on a Monitor |
+| **Tools**                                                   |                                                              |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| [chifra status monitors](/docs/chifra/admin/#chifra-status) | report on the status of the TrueBlocks system                |
+| [chifra list](/docs/chifra/accounts/#chifra-list)           | list appearances for one or more addresses                   |
+| [chifra export](/docs/chifra/accounts/#chifra-export)       | export full detail of transactions for one or more addresses |
+
 
 ## Appearance
 
-<!-- An appearance is  -->
-### Fields
+An appearance is a pointer (`blknum, tx_id` pair) into the blockchain indicating where a particular address appears. This includes obvioius locations such as `to` or `from` as well as esoteric locations such as deep inside a tenth-level trace or as the miner of an uncle block. The primary goal of TrueBlocks is to indentify every appearance for any address on the chain.
 
+The TrueBlocks [index of appearances](/data-model/the-index/) (created by [chifra scrape](/docs/chifra/admin/#chifra-scrape)) makes the production of such a list possible. Appearances are stored in [Monitors](http://localhost:1313/data-model/accounts/#monitor).
+
+Below is a list of the data fields for appearances. Following that are the commands that produce or manage appearances.  
+### Fields
 | Field            | Description                                               | Type      |
 | ---------------- | --------------------------------------------------------- | --------- |
 | blockNumber      | the number of the block                                   | blknum    |
@@ -61,6 +65,12 @@ Once created, a Monitor may be periodically *freshened* by calling either `chifr
 | timestamp        | the timestamp for this appearance                         | timestamp |
 | date             | the date represented by the timestamp                     | string    |
 
+| **Tools**                                                 |                                                              |
+| --------------------------------------------------------- | ------------------------------------------------------------ |
+| [chifra list](/docs/chifra/accounts/#chifra-list)         | list appearances for one or more addresses                   |
+| [chifra export](/docs/chifra/accounts/#chifra-export)     | export full detail of transactions for one or more addresses |
+| [chifra monitors](/docs/chifra/accounts/#chifra-monitors) | delete, undelete, and remove previously created monitors     |
+
 ## Reconciliation
 
 When exported with the `--accounting` option from `chifra export`, each transaction will have field called `statements`. Statements are an array for reconciliations. All such exported transactions will have at least one reconcilation (for ETH), however, many will have additional reconciliations for other assets (such as ERC20 and ERC721 tokens).
@@ -69,8 +79,8 @@ Because DeFi is essentially swaps and trades around ERC20s, and because and 'pro
 
 Reconciliations are relative to an `accountedFor` address. For this reason, the same transaction will probably have different reconciliations depending on the `accountedFor` address. Consider a simple transfer of ETH from one address to another. Obviously, the sender's and the recipient's reconciliations will differ (in opposite proportion to each other). The `accountedFor` address is always present as the `assetAddress` in the first reconciliation of the statements array.
 
+Below is a list of the data fields for reconciliations. Following that are the commands that produce or manage reconciliations.  
 ### Fields
-
 | Field               | Description                                                                                                     | Type      |
 | ------------------- | --------------------------------------------------------------------------------------------------------------- | --------- |
 | blockNumber         | the number of the block                                                                                         | blknum    |
@@ -107,19 +117,23 @@ Reconciliations are relative to an `accountedFor` address. For this reason, the 
 | endBalDiff          | a calculated field -- endBal - endBalCalc, if non-zero, the reconciliation failed                               | int256    |
 | reconciled          | a calculated field -- true if `endBal === endBalCalc` and `begBal === prevBlkBal`. `false` otherwise.           | bool      |
 
-**Note on intra-block transactions**: In many cases two or more transactions requiring a reconciliation may occur in a single block. Becuase the Ethereum blockchain only provides balance queries at the end of blocks, it is not possible to query for the balance of an asset at the end of transactions for which there are other following transactions in the block nor for the beginning balance for which there are transactions prior to the given transaction in the same block. In these cases, TrueBlocks simulates the beginning and ending balance as needed and adds `partial` to the `reconciliationType`.
+**Notes**
 
-**Note on spotPrice**: If the `spotPrice` is available from an on-chain source (such as UniSwap), then it represents the ETH/DAI value at the time of the transaction if the reconcilation is for ETH. For other assets, the `spotPrice` represents the asset's value relative to `ETH`, so to price a non-ETH asset in US dollars, one would need to convert first to `ETH` then to dollars. If a price is not available on-chain, the `spotPrice` will be zero and the caller is encouraged to get the price for the asset from other sources.
+**Intra-block transactions**: In many cases two or more transactions requiring a reconciliation may occur in a single block. Becuase the Ethereum blockchain only provides balance queries at the end of blocks, it is not possible to query for the balance of an asset at the end of transactions for which there are other following transactions in the block nor for the beginning balance for which there are transactions prior to the given transaction in the same block. In these cases, TrueBlocks simulates the beginning and ending balance as needed and adds `partial` to the `reconciliationType`.
+
+**Spot Price**: If the `spotPrice` is available from an on-chain source (such as UniSwap), then it represents the ETH/DAI value at the time of the transaction if the reconcilation is for ETH. For other assets, the `spotPrice` represents the asset's value relative to `ETH`, so to price a non-ETH asset in US dollars, one would need to convert first to `ETH` then to dollars. If a price is not available on-chain, the `spotPrice` will be zero and the caller is encouraged to get the price for the asset from other sources.
 
 
 ## Name
 
-_Accounts_ link an address to a name.
+TrueBlocks allows you to associate a human-readable name with an address. This feature goes a long way towards making the blockchain data one extracts with a [Monitor](/data-model/accounts/#monitor) much more readable.
 
-Accounts are a combination of an`address`, a `name`, and optionally other data. Where possible, this information is queried directly from the blockchain, however in many cases the information was gathered from various websites over the years. For example, every time people say "Show me your address, and we will airdrop some tokens" on Twitter, we copy and paste all those addresses. If you're going to DOX yourselves, we're going to notice. Sorry. Not sorry.
+Unlike the blockchain data itself, which is globally available and impossible to censor, the association of names with address is not on chain (excepting ENS, which, while fine, is imcomplete). TrueBlocks allows you to name addresses of interest to you and either share those names (through an on-chain mechanism) or keep them private if you so desire.
 
+Over the years, we've paid careful attention to the 'airwaves' and have collected together a 'starter-set' of named addresses which is available through the [chifra names](/docs/chifra/accounts/#chifra-names) command line. For example, every time people say "Show me your address, and we will airdrop some tokens" on Twitter, we copy and paste all those addresses. We figure if you're going to DOX yourselves, we might as well take advantage of it. Sorry...not sorry.
+
+Below is a list of the data fields for names. Following that are the commands that produce or manage names.  
 ### Fields
-
 | Field       | Description                                                                         | Type    |
 | ----------- | ----------------------------------------------------------------------------------- | ------- |
 | tags        | colon separated list of tags                                                        | string  |
@@ -136,23 +150,38 @@ Accounts are a combination of an`address`, a `name`, and optionally other data. 
 | is_erc20    | `true` if the address is an ERC20, `false` otherwise                                | bool    |
 | is_erc721   | `true` if the address is an ERC720, `false` otherwise                               | bool    |
 
+| **Tools**                                           |                                                 |
+| --------------------------------------------------- | ----------------------------------------------- |
+| [chifra names](/docs/chifra/accounts/#chifra-names) | query addresses or names of well known accounts |
+
+
 ## Abi
 
-For more information on ABIs please see any relevant Ethereum documentation, particularly that documentation related to Solidity coding. The fields or the ABI are mostly identical to the fields you will find in that documentation.
+An ABI describes an Application Binary Interface -- in other words, the [Function]() and Event signatures for a given smart contract. Along with [Names]() the use of ABIs goes a very long way towards making your Etheruem data much more understandable.
 
+Similar to names of addresses, ABI files are not available on-chain which means they must be acquired somewhere. Unfortantely, the Ethereum community has not yet understand that EtherScan is not a good place to store this very important information. For this reason, TrueBlocks uses EtherScan to acquire ABI files and therefor one needs to get an EtherScan API key to use this function.
+
+Below is a list of the data fields for abis. Following that are the commands that produce or manage abis.  
 ### Fields
-
 | Field      | Description                                  | Type           |
 | ---------- | -------------------------------------------- | -------------- |
 | address    | the smart contract that implements this abi  | address        |
 | interfaces | the list of events and functions on this abi | CFunctionArray |
 
+| **Tools**                                         |                                      |
+| ------------------------------------------------- | ------------------------------------ |
+| [chifra abis](/docs/chifra/accounts/#chifra-abis) | fetches the ABI for a smart contract |
+
+**Notes**
+
+See the `chifra abis` command line for information about getting an EtherScan key.
+
 ## Function
 
-<!-- TEXT FOR FUNCTIONS -->
+ABI files are derived from the Solidity source code of a smart contract by extracting the canonical function and event signatures in a JSON structure. The function signatures are hashed (using keccak) into four-byte encodings for functions and 32-byte encodings for events. Because the blockchain only deals with byte data, TrueBlocks needs a way to decode the bytes back into the human-readable function and event signatures. We call this process `--articulate`. Most TrueBlocks commands provide an `--articulate` option. See the commands themselves for more information.
 
+Below is a list of the data fields for functions. Following that are the commands that produce or manage functions.  
 ### Fields
-
 | Field     | Description                                             | Type            |
 | --------- | ------------------------------------------------------- | --------------- |
 | name      | the name of the interface                               | string          |
@@ -162,12 +191,18 @@ For more information on ABIs please see any relevant Ethereum documentation, par
 | inputs    | the input parameters to the function, if any            | CParameterArray |
 | outputs   | the output parameters to the function, if any           | CParameterArray |
 
+| **Tools**                                             |                                                              |
+| ----------------------------------------------------- | ------------------------------------------------------------ |
+| [chaindata commands](/docs/chifra/chaindata/)         | various commands dealing with blockchain data                |
+| [chifra export](/docs/chifra/accounts/#chifra-export) | export full detail of transactions for one or more addresses |
+
+
 ## Parameter
 
 <!-- TEXT FOR PARAMETERS -->
 
+Below is a list of the data fields for parameters. Following that are the commands that produce or manage parameters.  
 ### Fields
-
 | Field        | Description                                                 | Type            |
 | ------------ | ----------------------------------------------------------- | --------------- |
 | type         | the type of this parameter                                  | string          |
