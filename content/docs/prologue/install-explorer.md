@@ -20,14 +20,17 @@ toc: true
 First, make sure that you have the `chifra-core` backend up and running,
 then run the application from [a clone of the explorer repo](https://github.com/TrueBlocks/trueblocks-explorer).
 
-### PreReqs.
+## Before you begin
 
-1. Set up the trueblocks backend using the [chifra installation instructions](/docs/prologue/installing-trueblocks)
-2. In a terminal window, run the command `chifra serve`
+&#9745; Set up the trueblocks backend using the [chifra installation instructions](/docs/prologue/installing-trueblocks)
 
-### Install from the repo
+&#9745; In a terminal window, run the command `chifra serve`
 
-In a new terminal (keep the `chifra serve` process running)
+## Install
+
+Keep the `chifra serve` process running.
+
+Then, in a new terminal, run these commands:
 
 1. git clone git@github.com:TrueBlocks/trueblocks-explorer.git
 2. cd trueblocks-explorer
