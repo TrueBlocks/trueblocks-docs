@@ -52,3 +52,11 @@ jobs:
           remote_host: ${{ secrets.HOST }}
           remote_user: ${{ secrets.HOST_USER }}
           remote_key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Test Failure
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+          severity: error
+          details: Test Failed!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
