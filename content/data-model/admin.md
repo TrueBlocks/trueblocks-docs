@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-09-18T09:10:08
+date: 2021-09-20T13:27:50
 lastmod:
   - :git
   - lastmod
@@ -33,7 +33,7 @@ _Each data structure is created by one or more tools which are detailed below_
 - **API**:
   - [Calls to `/transactions`](/api#operation/chaindata-transactions)
 
-Below is a list of the data fields for status. Following that are the commands that produce or manage status.
+Status data is made of the following data fields:
 
 | Field              | Description                                                         | Type      |
 | ------------------ | ------------------------------------------------------------------- | --------- |
@@ -56,7 +56,6 @@ Below is a list of the data fields for status. Following that are the commands t
 | has_pinkey         | `true` if a Pinata API key is present                               | bool      |
 | ts                 | the timestamp when this status data was produced                    | timestamp |
 
----
 
 ## PinnedChunk
 
@@ -70,7 +69,7 @@ Below is a list of the data fields for status. Following that are the commands t
 - **API**:
   - [Calls to `/pins`](/api#operation/admin-pins)
 
-Below is a list of the data fields for pinnedchunks. Following that are the commands that produce or manage pinnedchunks.
+Pinnedchunk data is made of the following data fields:
 
 | Field     | Description                                                 | Type     |
 | --------- | ----------------------------------------------------------- | -------- |
@@ -78,12 +77,9 @@ Below is a list of the data fields for pinnedchunks. Following that are the comm
 | bloomHash | the IPFS hash of the bloom filter at that range             | ipfshash |
 | indexHash | the IPFS hash of the index chunk at that range              | ipfshash |
 
----
 
 ## Manifest
 
-
-Below is a list of the data fields for manifests. Following that are the commands that produce or manage manifests.
 
 | Field       | Description                                                     | Type              |
 | ----------- | --------------------------------------------------------------- | ----------------- |
@@ -92,8 +88,6 @@ Below is a list of the data fields for manifests. Following that are the command
 | firstPin    | the block number of the first pin in the manifest (always zero) | blknum            |
 | lastPin     | the most recent block included in this manifest                 | blknum            |
 | pins        | a list of all the pins in the unchained index                   | CPinnedChunkArray |
-
----
 
 ## Base types
 

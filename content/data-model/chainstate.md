@@ -2,7 +2,7 @@
 title: "Chain State"
 description: ""
 lead: ""
-date: 2021-09-18T09:10:08
+date: 2021-09-20T13:27:50
 lastmod:
   - :git
   - lastmod
@@ -28,7 +28,7 @@ The balance of an address at a given block.
 * CLI: [chifra state](/docs/chifra/chainstate/#chifra-state)
 * [API](/api#operation/chainstate-state)
 
-Below is a list of the data fields for states. Following that are the commands that produce or manage states.
+State data is made of the following data fields:
 
 | Field       | Description                                                                                     | Type    |
 | ----------- | ----------------------------------------------------------------------------------------------- | ------- |
@@ -42,14 +42,13 @@ Below is a list of the data fields for states. Following that are the commands t
 | accttype    | the type of the address at the given block                                                      | string  |
 | ether       | the balance of the address in ethers                                                            | double  |
 
----
 
 ## Token
 
 * CLI: [chifra tokens](/docs/chifra/chainstate/#chifra-tokens)
 * [API](/api#operation/chainstate-tokens)
 
-Below is a list of the data fields for tokens. Following that are the commands that produce or manage tokens.
+Token data is made of the following data fields:
 
 | Field       | Description                                                  | Type    |
 | ----------- | ------------------------------------------------------------ | ------- |
@@ -63,7 +62,6 @@ Below is a list of the data fields for tokens. Following that are the commands t
 | is_erc20    | `true` if the address is an ERC20, `false` otherwise         | bool    |
 | is_erc721   | `true` if the address is an ERC720, `false` otherwise        | bool    |
 
----
 
 ## Base types
 
