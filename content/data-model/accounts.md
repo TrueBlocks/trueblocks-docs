@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-09-20T13:27:50
+date: 2021-09-20T18:07:02
 lastmod:
   - :git
   - lastmod
@@ -83,6 +83,11 @@ When exported with the `--accounting` option from `chifra export`, each transact
 Because DeFi is essentially swaps and trades around ERC20s, and because and 'programmable money' allows for unlimited actions to happen under a single transaction,many times a transaction has four or five reconciliations.
 
 Reconciliations are relative to an `accountedFor` address. For this reason, the same transaction will probably have different reconciliations depending on the `accountedFor` address. Consider a simple transfer of ETH from one address to another. Obviously, the sender's and the recipient's reconciliations will differ (in opposite proportion to each other). The `accountedFor` address is always present as the `assetAddress` in the first reconciliation of the statements array.
+
+The following commands produce and manage reconciliations:
+
+| Tools |     |
+| ----- | --- |
 
 Reconciliation data is made of the following data fields:
 
@@ -214,9 +219,8 @@ Parameters are a constituant part of a [Function or Event](/data-model/accounts/
 
 The following commands produce and manage parameters:
 
-| Tools                                             |                                      |
-| ------------------------------------------------- | ------------------------------------ |
-| [chifra abis](/docs/chifra/accounts/#chifra-abis) | fetches the ABI for a smart contract |
+| Tools |     |
+| ----- | --- |
 
 Parameter data is made of the following data fields:
 

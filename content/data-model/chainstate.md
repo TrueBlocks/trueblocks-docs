@@ -2,7 +2,7 @@
 title: "Chain State"
 description: ""
 lead: ""
-date: 2021-09-20T13:27:50
+date: 2021-09-20T18:07:02
 lastmod:
   - :git
   - lastmod
@@ -22,6 +22,11 @@ These commands compare the balance of an address against a particular token or b
 _Each data structure is created by one or more tools which are detailed below_
 
 ## State
+
+The following commands produce and manage states:
+
+| Tools |     |
+| ----- | --- |
 
 The balance of an address at a given block.
 
@@ -44,6 +49,11 @@ State data is made of the following data fields:
 
 
 ## Token
+
+The following commands produce and manage tokens:
+
+| Tools |     |
+| ----- | --- |
 
 * CLI: [chifra tokens](/docs/chifra/chainstate/#chifra-tokens)
 * [API](/api#operation/chainstate-tokens)

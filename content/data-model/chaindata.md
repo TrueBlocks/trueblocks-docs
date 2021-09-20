@@ -2,7 +2,7 @@
 title: "Chain Data"
 description: ""
 lead: ""
-date: 2021-09-20T13:27:50
+date: 2021-09-20T18:10:40
 lastmod:
   - :git
   - lastmod
@@ -25,6 +25,11 @@ _Each data structure is created by one or more tools which are detailed below_
 
 `chifra blocks` returns top level data specified block. You can also include
 an array for the blocks' transactions.
+
+The following commands produce and manage blocks:
+
+| Tools |     |
+| ----- | --- |
 
 ### How to get blocks
 
@@ -57,6 +62,11 @@ Most of the fields that TrueBlocks returns are standard to all eth transaction.
 However, one field is very interesting: `articulatedTx` provides a human readable output of the `input` field.
 
 This is a very powerful way to understand the story behind a smart contract.
+
+The following commands produce and manage transactions:
+
+| Tools |     |
+| ----- | --- |
 
 ### How to get transactions
 
@@ -97,6 +107,11 @@ Receipts record the amount of gas used for a transaction among other things. If 
 
 If the `to` address of a transaction is `0x0`, the `input` data is considered to be the the source code (byte code) of a smart contract. In this case, if the creation of the contract succeeds, the `contractAddress` field of the receipt carries the address of the newly created contract.
 
+The following commands produce and manage receipts:
+
+| Tools |     |
+| ----- | --- |
+
 ### How to get receipts
 
 - **CLI**:
@@ -118,6 +133,11 @@ Receipt data is made of the following data fields:
 ## Log
 
 Logs appear in a possibly empty array in the transaction's receipt. They are only created if the underlying transaction suceeded. In the case where the transaction failed, no logs will appear in the receipt. Logs are only ever generated during transactions whose `to` address is a smart contract.
+
+The following commands produce and manage logs:
+
+| Tools |     |
+| ----- | --- |
 
 ### How to get logs
 
@@ -146,6 +166,11 @@ Log data is made of the following data fields:
 The deepest layer of the Ethereum data is the trace. Every transaction has at least one trace which is itself a record of the transaction. If the `to` address of the transaction is a smart contract, other traces may appear, if, for example, that smart contract calls other smart contracts.
 
 Traces may be arbitrarily deep (up to the gasLimit) and ultimately represent a tree of function calls. Some transactions have 100s of traces. The format of the trace is similar to the transaction itself have a trace `action` (which contains `from`, `to`, `value` like the transaction) and the trace `result` (containing `gasUsed` like the receipt).
+
+The following commands produce and manage traces:
+
+| Tools |     |
+| ----- | --- |
 
 ### How to get traces
 
@@ -176,6 +201,11 @@ Trace data is made of the following data fields:
 
 Other than the first trace which is the trace of the transaction itself, traces represent calls into smart contracts. Because of this, `trace actions` closely resemble the fields of the [transaction](#transactions).
 
+The following commands produce and manage traceactions:
+
+| Tools |     |
+| ----- | --- |
+
 Traceaction data is made of the following data fields:
 
 | Field         | Description                                                                | Type    |
@@ -192,6 +222,11 @@ Traceaction data is made of the following data fields:
 
 As mentioned above, other than the first trace, traces represent calls into other smart contracts. Because of this, the trace results closely resembles the fields of the [receipt](#receipts).
 
+The following commands produce and manage traceresults:
+
+| Tools |     |
+| ----- | --- |
+
 Traceresult data is made of the following data fields:
 
 | Field       | Description                                                                    | Type    |
@@ -203,6 +238,11 @@ Traceresult data is made of the following data fields:
 
 
 ## DatedBlock
+
+The following commands produce and manage datedblocks:
+
+| Tools |     |
+| ----- | --- |
 
 ### How to get when blocks
 

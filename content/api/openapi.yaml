@@ -15,7 +15,7 @@ info:
 
     ## How to use this API
 
-    This API's endpoints are exact translations of the commands used by the `chifra`
+    This API's endpoints are exact translations of the commands used by the chifra
     CLI application, and the query parameters mirror the commands' options and
     flags. If you want details, [the commands have their own documentation page](/docs/chifra/introducing-chifra/).
 
@@ -1259,7 +1259,9 @@ paths:
                     description: This data model carries information about the TrueBlocks system including both the API server and the local binary caches
                     type: array
                     items:
-                      $ref: "#/components/schemas/status"
+                      oneOf:
+                        - $ref: "#/components/schemas/status"
+                        - $ref: "#/components/schemas/cache"
                 example:
                   {
                     "data":
@@ -2385,6 +2387,28 @@ components:
           type: number
           format: timestamp
           description: "the timestamp when this status data was produced"
+    cache:
+      description: "The cache data model carries information about the various local binary caches"
+      type: object
+      properties:
+        type:
+          type: string
+          description: "the type of the cache (one of the nine different types)"
+        path:
+          type: string
+          description: "the physical path to the cache on the hard drive"
+        nFiles:
+          type: number
+          format: uint64
+          description: "the number of files in the cache"
+        nFolders:
+          type: number
+          format: uint64
+          description: "the number of subfolders in the cache"
+        sizeInBytes:
+          type: number
+          format: uint64
+          description: "the size of the cache in bytes"
     pinnedChunk:
       description: "the IPFS hashes of the index chunk and its associated Bloom filter for the given block range"
       type: object

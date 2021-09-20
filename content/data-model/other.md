@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-09-20T13:27:50
+date: 2021-09-20T18:07:02
 lastmod:
   - :git
   - lastmod
@@ -30,7 +30,10 @@ _Each data structure is created by one or more tools which are detailed below_
 
 ## Quote
 
-<!-- TEXT ABOUT PRICE QUOTES -->
+The following commands produce and manage quotes:
+
+| Tools |     |
+| ----- | --- |
 
 ### How to get price quotes
 
