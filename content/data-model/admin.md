@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-09-20T18:36:15
+date: 2021-09-20T20:43:38
 lastmod:
   - :git
   - lastmod
@@ -76,18 +76,14 @@ Cache data is made of the following data fields:
 
 ## PinnedChunk
 
+The TrueBlocks index scraper periodically creates a chunked portion of the index so that it can be more easily stored in a content-addresable data store such as IPFS. We call these periodically-created chunks, PinnedChunks. The format of said item is described here. A pinned chunk is effectively a relational table relating all of the addresses appearing in the chunk with a list of appearances appearing in the chunk.
+
 The following commands produce and manage pinnedchunks:
 
-| Tools |     |
-| ----- | --- |
-
-### How to get pinnedchunks
-
-- **CLI**:
-  - Run `chifra pins <options>`
-  - [See the command's documentation](/docs/chifra/admin/#chifra-pins)
-- **API**:
-  - [Calls to `/pins`](/api#operation/admin-pins)
+| Tools                                              |                                                                 |
+| -------------------------------------------------- | --------------------------------------------------------------- |
+| [chifra scrape](/docs/chifra/admin/#chifra-scrape) | scan the chain and update the TrueBlocks index of appearances   |
+| [chifra pins](/docs/chifra/admin/#chifra-pins)     | manage pinned index of appearances and associated Bloom filters |
 
 Pinnedchunk data is made of the following data fields:
 
@@ -100,6 +96,16 @@ Pinnedchunk data is made of the following data fields:
 
 ## Manifest
 
+The Manifest details the index of appearance's PinnedChunks. Each record in the Manifest details the block range represented by the chunk as well as the IPFS hash of the index chunk along with the associated IPFS hash for the Bloom filter of the chunk. The manifest itself is also pushed to IPFS and the IPFS of the hash of the manifest is published periodically to the Unchained Index smart contract.
+
+The following commands produce and manage manifests:
+
+| Tools                                              |                                                                 |
+| -------------------------------------------------- | --------------------------------------------------------------- |
+| [chifra scrape](/docs/chifra/admin/#chifra-scrape) | scan the chain and update the TrueBlocks index of appearances   |
+| [chifra pins](/docs/chifra/admin/#chifra-pins)     | manage pinned index of appearances and associated Bloom filters |
+
+Manifest data is made of the following data fields:
 
 | Field       | Description                                                     | Type              |
 | ----------- | --------------------------------------------------------------- | ----------------- |
@@ -108,6 +114,7 @@ Pinnedchunk data is made of the following data fields:
 | firstPin    | the block number of the first pin in the manifest (always zero) | blknum            |
 | lastPin     | the most recent block included in this manifest                 | blknum            |
 | pins        | a list of all the pins in the unchained index                   | CPinnedChunkArray |
+
 
 ## Base types
 

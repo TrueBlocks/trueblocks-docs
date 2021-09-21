@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-09-20T18:07:02
+date: 2021-09-20T20:00:14
 lastmod:
   - :git
   - lastmod
@@ -36,6 +36,7 @@ The following commands produce and manage monitors:
 | [chifra status monitors](/docs/chifra/admin/#chifra-status) | report on the status of the TrueBlocks system                |
 | [chifra list](/docs/chifra/accounts/#chifra-list)           | list appearances for one or more addresses                   |
 | [chifra export](/docs/chifra/accounts/#chifra-export)       | export full detail of transactions for one or more addresses |
+| [chifra monitors](/docs/chifra/accounts/#chifra-monitors)   | delete, undelete, and remove previously created monitors     |
 
 Monitor data is made of the following data fields:
 
@@ -58,11 +59,10 @@ The TrueBlocks [index of appearances](/data-model/the-index/) (created by [chifr
 
 The following commands produce and manage appearances:
 
-| Tools                                                     |                                                              |
-| --------------------------------------------------------- | ------------------------------------------------------------ |
-| [chifra list](/docs/chifra/accounts/#chifra-list)         | list appearances for one or more addresses                   |
-| [chifra export](/docs/chifra/accounts/#chifra-export)     | export full detail of transactions for one or more addresses |
-| [chifra monitors](/docs/chifra/accounts/#chifra-monitors) | delete, undelete, and remove previously created monitors     |
+| Tools                                                 |                                                              |
+| ----------------------------------------------------- | ------------------------------------------------------------ |
+| [chifra list](/docs/chifra/accounts/#chifra-list)     | list appearances for one or more addresses                   |
+| [chifra export](/docs/chifra/accounts/#chifra-export) | export full detail of transactions for one or more addresses |
 
 Appearance data is made of the following data fields:
 
@@ -169,7 +169,7 @@ Name data is made of the following data fields:
 
 ## Abi
 
-An ABI describes an Application Binary Interface -- in other words, the [Function]() and Event signatures for a given smart contract. Along with [Names]() the use of ABIs goes a very long way towards making your Etheruem data much more understandable.
+An ABI describes an Application Binary Interface -- in other words, the [Function](/data-model/other/#function) and Event signatures for a given smart contract. Along with [Names](/data-model/accounts/#names) the use of ABIs goes a very long way towards making your Etheruem data much more understandable.
 
 Similar to names of addresses, ABI files are not available on-chain which means they must be acquired somewhere. Unfortantely, the Ethereum community has not yet understand that EtherScan is not a good place to store this very important information. For this reason, TrueBlocks uses EtherScan to acquire ABI files and therefor one needs to get an EtherScan API key to use this function.
 
@@ -189,50 +189,6 @@ Abi data is made of the following data fields:
 **Notes**
 
 See the `chifra abis` command line for information about getting an EtherScan key.
-
-## Function
-
-ABI files are derived from the Solidity source code of a smart contract by extracting the canonical function and event signatures in a JSON structure. The function signatures are hashed (using keccak) into four-byte encodings for functions and 32-byte encodings for events. Because the blockchain only deals with byte data, TrueBlocks needs a way to decode the bytes back into the human-readable function and event signatures. We call this process `--articulate`. Most TrueBlocks commands provide an `--articulate` option. See the commands themselves for more information.
-
-The following commands produce and manage functions:
-
-| Tools                                                 |                                                              |
-| ----------------------------------------------------- | ------------------------------------------------------------ |
-| [chaindata commands](/docs/chifra/chaindata/)         | various commands dealing with blockchain data                |
-| [chifra export](/docs/chifra/accounts/#chifra-export) | export full detail of transactions for one or more addresses |
-
-Function data is made of the following data fields:
-
-| Field     | Description                                             | Type            |
-| --------- | ------------------------------------------------------- | --------------- |
-| name      | the name of the interface                               | string          |
-| type      | the type of the interface, either 'event' or 'function' | string          |
-| signature | the canonical signature of the interface                | string          |
-| encoding  | the signature encoded with keccak                       | string          |
-| inputs    | the input parameters to the function, if any            | CParameterArray |
-| outputs   | the output parameters to the function, if any           | CParameterArray |
-
-
-## Parameter
-
-Parameters are a constituant part of a [Function or Event](/data-model/accounts/#function). The parameters of a function are each individual value passed into the function. Along with the function's name, the parameters types (once canonicalized) are used to create a function's four byte signature (or an event's 32-byte signature). Parameters are important to TrueBlocks because we use them as part of the ABI decoding and the `--articulate` process to conver the blockchain's bytes into human-readable text.
-
-The following commands produce and manage parameters:
-
-| Tools |     |
-| ----- | --- |
-
-Parameter data is made of the following data fields:
-
-| Field        | Description                                                 | Type            |
-| ------------ | ----------------------------------------------------------- | --------------- |
-| type         | the type of this parameter                                  | string          |
-| name         | the name of this parameter                                  | string          |
-| str_default  | the defaul value of this parameter, if any                  | string          |
-| indexed      | `true` if this parameter is indexed                         | bool            |
-| internalType | for composite types, the interal type of the parameter      | string          |
-| components   | for composite types, the parameters making up the composite | CParameterArray |
-
 
 ## Base types
 
