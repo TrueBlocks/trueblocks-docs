@@ -3,5 +3,8 @@
   {{ range first 10 .Site.Taxonomies.tags.ByCount }}
     <li><a href="/tags/{{ .Name | urlize }}">{{ .Name }}</a> ({{ .Count }})</li>
   {{ end }}
+    {{ range (.GetTerms "tags") }}
+        <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+    {{ end }}
 </ul>
 

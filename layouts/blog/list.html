@@ -6,6 +6,11 @@
 				{{ partial "sidebar/blog-menu.html" . }}
 			</nav>
 		</div>
+		{{ if ne .Params.toc false -}}
+		<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+			{{ partial "sidebar/blog-summary.html" . }}
+		</nav>
+		{{ end -}}
 		{{ if .Params.toc -}}
 		<main class="docs-content col-lg-11 col-xl-9">
 		{{ else -}}
@@ -20,10 +25,7 @@
 					</ol>
 				</nav>
 			{{ end }}
-  <div class="row justify-content-center">
-    <article>
        <h1 class="text-center">{{ .Title }}</h1>
-        <p class="text-center">{{ .Params.lead | safeHTML }}</p>
 				{{ $paginator := .Paginate (.Data.Pages) -}}
 				{{ range $paginator.Pages -}}
 					<div class="card">
@@ -36,6 +38,4 @@
 				{{ end -}}
 				{{ $.Scratch.Set "paginator" true }}
 				{{ template "_internal/pagination.html" . }}
-    </article>
-  </div>
 {{ end }}
