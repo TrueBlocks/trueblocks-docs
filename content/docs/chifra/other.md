@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2021-09-19T01:48:55
+date: 2021-09-24T10:16:59
 lastmod:
   - :git
   - lastmod
@@ -41,7 +41,7 @@ The `chifra quotes` tool provides USD ($) price data to other tools and to the c
 | -------- | -------------------------------- | ---------------------------------------------------------------------------------------------- |
 | &#8208;f | &#8208;&#8208;freshen            | Freshen price database                                                                         |
 | &#8208;p | &#8208;&#8208;period &lt;val&gt; | increment of display, one of [5, 15, 30, 60, 120, 240,<br/>1440, 10080, hourly, daily, weekly] |
-| &#8208;a | &#8208;&#8208;pair &lt;str&gt;   | which price pair to freshen or list (see Poloniex)                                             |
+| &#8208;a | &#8208;&#8208;pair string        | which price pair to freshen or list (see Poloniex)                                             |
 | &#8208;e | &#8208;&#8208;feed &lt;val&gt;   | the feed for the price data, one of [poloniex, maker,<br/>tellor]                              |
 | &#8208;x | &#8208;&#8208;fmt &lt;val&gt;    | export format, one of [none, json, txt, csv, api]                                              |
 | &#8208;v | &#8208;&#8208;verbose            | set verbose level (optional level defaults to 1)                                               |
@@ -63,20 +63,18 @@ The `chifra quotes` tool provides USD ($) price data to other tools and to the c
 
 ### usage
 
-`Usage:`    chifra explore [-l|-g|-v|-h] &lt;term&gt; [term...]  
-`Purpose:`  Open an explorer for a given address, block, or transaction.
+`Usage:`    chifra explore [-l|-g|-h] &lt;term&gt; [term...]  
+`Purpose:`  Open an explorer for one or more addresses, blocks, or transactions.
 
 `Where:`
 
 {{<td>}}
-|          | Option                        | Description                                                         |
-| -------- | ----------------------------- | ------------------------------------------------------------------- |
-|          | terms                         | one or more addresses, names, block, or transaction<br/>identifiers |
-| &#8208;l | &#8208;&#8208;local           | open the local TrueBlocks explorer                                  |
-| &#8208;g | &#8208;&#8208;google          | search google excluding popular blockchain explorers                |
-| &#8208;x | &#8208;&#8208;fmt &lt;val&gt; | export format, one of [none, json, txt, csv, api]                   |
-| &#8208;v | &#8208;&#8208;verbose         | set verbose level (optional level defaults to 1)                    |
-| &#8208;h | &#8208;&#8208;help            | display this help screen                                            |
+|          | Option               | Description                                                         |
+| -------- | -------------------- | ------------------------------------------------------------------- |
+|          | terms                | one or more addresses, names, block, or transaction<br/>identifiers |
+| &#8208;l | &#8208;&#8208;local  | open the local TrueBlocks explorer                                  |
+| &#8208;g | &#8208;&#8208;google | search google excluding popular blockchain explorers                |
+| &#8208;h | &#8208;&#8208;help   | display this help screen                                            |
 {{</td>}}
 
 **Source code**: [`apps/fireStorm`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/fireStorm)
