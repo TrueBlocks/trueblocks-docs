@@ -60,3 +60,7 @@ jobs:
           severity: error
           details: Test Failed!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Report job status
+        run: |
+          echo "This job's status is ${{ job.status }}"
