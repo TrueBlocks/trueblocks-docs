@@ -39,8 +39,8 @@ alert = false
 alertText = "Like Doks? <a class=\"alert-link\" href=\"https://github.com/TrueBlocks/trueblocks-core/stargazers\">Star on GitHub</a>. Thanks!</a>"
 
 # Edit Page
-docsRepo = "https://github.com/TrueBlocks/trueblocks-core/"
-editPage = false
+docsRepo = "https://github.com/TrueBlocks/trueblocks-docs"
+editPage = true
 
 [options]
   lazySizes = true
