@@ -11,6 +11,7 @@ lastmod:
   - date
   - publishDate
 draft: false
+alias: "/docs/prologue/how-can-i-get-the-index"
 images: []
 menu: 
   docs:

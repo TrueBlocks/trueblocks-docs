@@ -9,6 +9,7 @@ lastmod:
   - date
   - publishDate
 draft: false
+alias: "/docs/prologue/install-explorer"
 images: []
 menu: 
   docs:
