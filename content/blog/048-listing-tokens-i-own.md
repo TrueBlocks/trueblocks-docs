@@ -6,11 +6,10 @@ categories:
 - Recipes
 tags: ['recipes']
 date: 2021-04-13T08:00:02-04:00
-lastmod: .lastmod
 menu: 
   blog:
     parent: "recipes"
-draft: true
+draft: false
 weight: 50
 images: []
 contributors: ["Thomas Jay Rush"]
