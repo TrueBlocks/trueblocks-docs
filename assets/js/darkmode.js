@@ -1,38 +1,12 @@
-const mode = document.getElementById('mode');
+document.getElementById('mode').addEventListener('click', () => {
 
-if (mode !== null) {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+});
 
-    if (event.matches) {
+if (localStorage.getItem('theme') === 'dark') {
 
-      localStorage.setItem('theme', 'dark');
-      document.documentElement.setAttribute('data-dark-mode', '');
-
-    } else {
-
-      localStorage.setItem('theme', 'light');
-      document.documentElement.removeAttribute('data-dark-mode');
-
-    }
-
-  })
-
-  mode.addEventListener('click', () => {
-
-    document.documentElement.toggleAttribute('data-dark-mode');
-    localStorage.setItem('theme', document.documentElement.hasAttribute('data-dark-mode') ? 'dark' : 'light');
-
-  });
-
-  if (localStorage.getItem('theme') === 'dark') {
-
-    document.documentElement.setAttribute('data-dark-mode', '');
-
-  } else {
-
-    document.documentElement.removeAttribute('data-dark-mode');
-
-  }
+  document.body.classList.add('dark');
 
 }
