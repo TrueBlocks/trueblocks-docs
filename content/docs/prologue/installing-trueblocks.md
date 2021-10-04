@@ -1,15 +1,16 @@
 ---
-title: "Install TrueBlocks"
+title: "1. Install TrueBlocks"
 description: "TrueBlocks works on Linux and Mac"
 lead: "TrueBlocks runs on Linux and Mac. There is no official Windows support. Some users have had success using WSL─you're on your own!"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
-alias: "/docs/prologue/installing-trueblocks"
+alias:
+  - "/docs/prologue/installing-trueblocks"
 menu:
   docs:
-    parent: "prologue"
+    parent: "install"
 weight: 0200
 toc: true
 ---

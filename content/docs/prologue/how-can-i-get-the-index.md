@@ -1,5 +1,5 @@
 ---
-title: "Get the Index"
+title: "2. Get the Index"
 description: "There are three ways to get the index. Each way involves some
 tradeoff between initialization time, storage use, and local access."
 lead: "After you install the core TrueBlocks utilities, you can access the index in three ways.
@@ -11,11 +11,12 @@ lastmod:
   - date
   - publishDate
 draft: false
-alias: "/docs/prologue/how-can-i-get-the-index"
+alias:
+ - "/docs/prologue/how-can-i-get-the-index"
 images: []
 menu: 
   docs:
-    parent: prologue
+    parent: install
 weight: 550	
 toc: true
 ---
