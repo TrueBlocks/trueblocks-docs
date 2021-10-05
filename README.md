@@ -42,7 +42,7 @@ The more "weight", the farther to the left it will be.
 Then change some files in `layouts`. Check out the files the template owner changed here.
 https://github.com/atwriter/new_doks_site/pull/1
 
-If you want to add a subsection, add [[<section-name>>]]
+If you want to add a subsection, it will look like this under `[[<section-name>]]`
 
 ```
 [[docs]]
