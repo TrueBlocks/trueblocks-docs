@@ -202,3 +202,20 @@ No matter what method, getting the index will take somewhere between 10 minutes
 and a few days. So you might want to play around with some [chifra blockchain
 commands](../../chifra/chaindata) first.
 
+### What if my node doesn't have tracing or archiving? {#no-tracing}
+
+If you don't have a node with tracing or archiving, you might get an error
+when you run some chifra commands. Something like
+
+> ` --accounting requires historical balances. The RPC server does not have them. Quitting...`
+
+TrueBlocks lets you disable these checks.
+
+To disable, make a file in your TrueBlocks config directory called `blockScrape.toml`.
+Add the following settings:
+
+```toml
+[requires]
+tracing = false
+archive = false
+```
