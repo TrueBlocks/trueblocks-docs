@@ -5,9 +5,6 @@ date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: true	
 images: []
-menu:
-  docs:
-    parent: "prologue"
 weight: 0500
 toc: true
 ---
