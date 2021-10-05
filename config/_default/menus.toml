@@ -34,8 +34,8 @@
 [[docs]]
   name = "After installation"
   weight = 20
-  identifier = "after"
-  url = "/docs/after-install/"
+  identifier = "using"
+  url = "/docs/using/"
 
 [[docs]]
   name = "Command line"

@@ -1,0 +1,10 @@
+REDIRECTS:
+
+Old > new
+/docs/chifra/introducing-chifra > /docs/using/introducing-chifra 
+/docs/chifra/using-chifra > /docs/using/using-chifra
+
+/docs/prologue/installing-trueblocks.md > /docs/install/install-trueblocks
+/docs/prologue/how-can-i-get-the-index.md > /docs/install/get-the-index
+/docs/prologue/install-explorer.md > /docs/install/install-explorer
+
