@@ -96,7 +96,7 @@ Quote data is made of the following data fields:
 
 ## Base types
 
-The above documentation mentions the following basic data types.
+This documentation mentions the following basic data types.
 
 | Type      | Description                                     | Notes          |
 | --------- | ----------------------------------------------- | -------------- |
