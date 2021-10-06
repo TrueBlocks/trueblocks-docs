@@ -1,5 +1,5 @@
 ---
-title: "Install the Explorer Browser app"
+title: "3. Install the explorer app"
 description: "Explorer is the GUI frontend for TrueBlocks "
 lead: "Explorer is the GUI frontend for TrueBlocks"
 date: 2021-07-02T08:01:07-03:00
@@ -9,10 +9,12 @@ lastmod:
   - date
   - publishDate
 draft: false
+alias:
+  - "/docs/prologue/install-explorer"
 images: []
 menu: 
   docs:
-    parent: prologue
+    parent: install
 weight: 700
 toc: true
 ---

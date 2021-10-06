@@ -26,8 +26,20 @@
   url = "/docs/prologue/"
 
 [[docs]]
-  name = "Command line"
+  name = "Install"
+  weight = 15
+  identifier = "install"
+  url = "/docs/install/"
+
+[[docs]]
+  name = "After installation"
   weight = 20
+  identifier = "using"
+  url = "/docs/using/"
+
+[[docs]]
+  name = "Command line"
+  weight = 30
   identifier = "chifra"
   url = "/docs/chifra/"
 

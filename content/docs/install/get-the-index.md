@@ -1,5 +1,5 @@
 ---
-title: "Get the Index"
+title: "2. Get the index"
 description: "There are three ways to get the index. Each way involves some
 tradeoff between initialization time, storage use, and local access."
 lead: "After you install the core TrueBlocks utilities, you can access the index in three ways.
@@ -11,10 +11,12 @@ lastmod:
   - date
   - publishDate
 draft: false
+alias:
+ - "/docs/prologue/how-can-i-get-the-index"
 images: []
 menu: 
   docs:
-    parent: prologue
+    parent: install
 weight: 550	
 toc: true
 ---
@@ -23,7 +25,7 @@ toc: true
 | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | minimize the size of the data stored locally and you want to get started faster...                                                   | slower first-time queries on new addresses, an index that's slightly behind the head of the chain, an index created by someone else...         | [`chifra init`](#use-init-to-get-only-the-chunks-you-query)       |
 | maximize the speed of first-time queries for new addresses...                                                                        | longer initial setup time, ~70 GB of local storage, an index that's slightly behind the head of the chain, an index created by someone else... | [`chifra pins --init_all`](#use_init_all-to-get-all-index-chunks) |
-| have a fully-local index, built directly from your own node, that stays up with the chain and maximizes the speed of your queries... | two to three days setup time and running your own local tracing / archive node (such as dAppnode)....                                          | [`chifra scrape`](#use-scrape-to-build-your-own-index)            |
+| have a fully-local index, built directly from your own node, that stays up with the chain and maximizes the speed of your queries... | two to three days setup time and running your own local node (such as dAppnode)....                                          | [`chifra scrape`](#use-scrape-to-build-your-own-index)            |
 
 ## Getting the index without running a node
 
@@ -87,6 +89,12 @@ As is true of the previous methods, if you enable caching, subsequent queries fo
 
 ## Use chifra scrape to build your own index
 
+
+> 👉 **Note**:
+> If you don't have a node with tracing or archiving, `scrape` exits by default.
+> You can still use scrape, but you need to
+<a href="../install-trueblocks#no-tracing">open your config and disable these checks</a></p>
+
 To build your own index without any downloading, run `chifra scrape`.
 
 For detailed instructions, see the [`chifra scrape` command documentation](../../chifra/admin#chifra-scrape).
@@ -103,13 +111,14 @@ The end result of `chifa scrape` is the same as the end result of `chifra pins -
 
 A good explanation of this whole process requires a long form article. For now, the curious may look at the best documentation available, the `src` directory of the source code.
 
+
 ## One final note on building / making the index
 
 You can, if you wish, mix and match the above methods.
 
 For example, you can initially download only the Bloom filters with `chifra init` and then start up `chifra scrape` in the background. This would allow you to get started quickly but stay up to the front of the chain. Of course, as with everything, there's a tradeoff. You will be storing a few MB every time a new chunk is created (about three times a day). In return, it's way faster to query and the index stay up to the chain.
 
-Alternatively, you may choose to scrape (i.e. build) the index yourself and share it with others by pinning it on IPFS. In this case, you're being a good citizen and making the whole ecosystem better off becuase you're sharing you index.
+Alternatively, you may choose to scrape (i.e. build) the index yourself and share it with others by pinning it on IPFS. In this case, you're being a good citizen and making the whole ecosystem better off because you're sharing you index.
 
 You can download the index (either with `chifra init` or `chifra pins --init_all`) and pin that data (with the `--pin_locally` flag) as a way to share with the community, and then turn on the scraper. All options are available as a way to maximize the usefulness of the tool.
 

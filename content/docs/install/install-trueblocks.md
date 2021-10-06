@@ -1,14 +1,16 @@
 ---
-title: "Install TrueBlocks"
+title: "1. Install TrueBlocks"
 description: "TrueBlocks works on Linux and Mac"
 lead: "TrueBlocks runs on Linux and Mac. There is no official Windows support. Some users have had success using WSL─you're on your own!"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
+alias:
+  - "/docs/prologue/installing-trueblocks"
 menu:
   docs:
-    parent: "prologue"
+    parent: "install"
 weight: 0200
 toc: true
 ---
@@ -200,3 +202,20 @@ No matter what method, getting the index will take somewhere between 10 minutes
 and a few days. So you might want to play around with some [chifra blockchain
 commands](../../chifra/chaindata) first.
 
+### What if my node doesn't have tracing or archiving? {#no-tracing}
+
+If you don't have a node with tracing or archiving, you might get an error
+when you run some chifra commands. Something like
+
+> ` --accounting requires historical balances. The RPC server does not have them. Quitting...`
+
+TrueBlocks lets you disable these checks.
+
+To disable, make a file in your TrueBlocks config directory called `blockScrape.toml`.
+Add the following settings:
+
+```toml
+[requires]
+tracing = false
+archive = false
+```

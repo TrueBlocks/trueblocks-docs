@@ -1,5 +1,5 @@
 ---
-title: "Introducing Chifra"
+title: "Introducing chifra"
 description: "First introduction to chifra"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -7,7 +7,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "chifra"
+    parent: "using"
 weight: 1000
 toc: true
 ---

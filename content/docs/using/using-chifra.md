@@ -1,5 +1,5 @@
 ---
-title: "Some Chifra Examples"
+title: "Some chifra examples"
 description: "How to use TrueBlocks to get useful data"
 lead: "How to use TrueBlocks to get useful data."
 date: 2020-11-16T13:59:39+01:00
@@ -8,7 +8,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "chifra"
+    parent: "using"
 weight: 1050
 toc: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Data Model"
+title: "Data model"
 description: "The TrueBlocks data model"
 lead: "The Trueblocks data model"
 date: 2020-10-06T08:49:55+00:00

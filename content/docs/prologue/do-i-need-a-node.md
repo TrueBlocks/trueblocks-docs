@@ -4,8 +4,8 @@ description: "A node is not required, but that's the only way use Trueblocks as 
 lead: "If you want your queries to be totally private and as up-to-date as possible,
 then yes, you need a node. But, downloading an index from the IPFS is a pretty good compromise."
 date: 2020-10-06T08:48:45+00:00
-lastmod: 2020-10-06T08:48:45+00:00
 draft: false
+alias: "/docs/prologue/do-i-need-a-node"
 images: []
 menu:
   docs:
