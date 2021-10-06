@@ -1,8 +1,8 @@
 ---
-title: "Chain State"
+title: "Chain state"
 description: ""
 lead: ""
-date: 2021-10-03T19:59:18
+date: 2021-10-05T21:57:04
 lastmod:
   - :git
   - lastmod
@@ -34,7 +34,7 @@ Use this tool to retrieve the balance of an address (or list of addresses) at th
 
 You may also query to see if an address is a smart contract as well as retrieve a contract's byte code.
 
-```[plaintext]
+```[yaml]
 Purpose:
   Retrieve account balance(s) for one or more addresses at given block(s).
 
@@ -77,7 +77,7 @@ In `--byAcct` mode, **all addresses** in the `address_list` are assumed to be ER
 
 You may optionally specify one or more blocks at which to report. If no block is specified, the latest block is assumed. You may also optionally specify which parts of the token data to extract.
 
-```[plaintext]
+```[yaml]
 Purpose:
   Retrieve token balance(s) for one or more addresses at given block(s).
 

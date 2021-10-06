@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-10-03T19:59:18
+date: 2021-10-05T21:57:04
 lastmod:
   - :git
   - lastmod
@@ -26,7 +26,7 @@ The Admin component allows you to query the status of the TrueBlocks system. You
 
 Another way to get help to run `chifra --help` or `chifra <cmd> --help` on your command line. See below for an example of converting command line options to a call to the API. There's a one-to-one correspondence between the command line tools and options and the API routes and their options.
 
-```[plaintext]
+```[yaml]
 Purpose:
   Serve the TrueBlocks API using the flame server.
 
@@ -56,7 +56,7 @@ The `chifra scrape` application creates TrueBlocks' index of address appearances
 
 The scraper can scrape either the index only, previously created monitors only, both, or neither. If you specify `none`, timestamps will be scraped but nothing else. If you're scraping monitors, you may tell the system to cache traces and transactions. This will speed up access, but take addition hard drive space. You may also adjust the speed of operation on different machines with the `--sleep` and `--n_blocks` options. Finally, you may choose to optionally `--pin` each new chunk to IPFS.
 
-```[plaintext]
+```[yaml]
 Purpose:
   Scan the chain and update the TrueBlocks index of appearances.
 
@@ -103,15 +103,15 @@ Certain parts of the system (`chifra list` and `chifra export` for example) if y
 
 If you run `chifra init` and allow it to complete, the next time you run `chifra scrape`, it will start where `init` finished. This means that only the blooms will be stored on your hard drive. Subsequent scraping will produce both chunks and blooms, although you can, if you wish delete chunks that are not being used. You may periodically run `chifra init` if you prefer not to scrape.
 
-```[plaintext]
+```[yaml]
 Purpose:
-  Initialize the index of appearances by downloading Bloom filters.
+  Initialize the TrueBlocks system by downloading from IPFS.
 
 Usage:
   chifra init [flags]
 
 Flags:
-  -a, --all   download full index chunks as well as Bloom filter
+  -a, --all   in addition to Bloom filters, download full index chunks
 
 Global Flags:
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
@@ -120,6 +120,7 @@ Global Flags:
 
 Notes:
   - chifra init is an alias for the chifra pins --init command.
+  - See chifra pins --help for more information.
 ```
 
 **Source code**: [`apps/pinMan`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/pinMan)
@@ -128,19 +129,21 @@ Notes:
 
 This tool is not yet ready for production use. Please return to this page later.
 
-```[plaintext]
+```[yaml]
 Purpose:
-  Manage pinned index of appearances and associated Bloom filters.
+  Manage pinned index of appearances and associated blooms.
 
 Usage:
   chifra pins [flags]
 
 Flags:
-  -l, --list      list the index and Bloom filter hashes from local manifest or pinning service
-  -i, --init      initialize index of appearances by downloading Bloom filters from pinning service
-  -f, --freshen   freshen index of appearances using the same mode from most recent --init
-  -a, --all       for --init and --freshen modes only, download full index chunks as well as Bloom filter
-  -S, --share     pin downloaded files to your local IPFS store, that is, share them (requires IPFS)
+  -l, --list          list the bloom and index hashes from local cache or IPFS
+  -i, --init          download the blooms or index chunks from IPFS
+  -f, --freshen       check for new bloom or index chunks and download if available
+  -a, --all           in addition to Bloom filters, download full index chunks
+  -S, --share         share downloaded data by pinning it to IPFS (the IPFS daemon must be running)
+  -r, --remote        for --list mode only, recover the manifest from IPFS via UnchainedIndex smart contract
+  -s, --sleep float   throttle requests by this many seconds (.25 seconds delay between requests by default) (default 0.25)
 
 Global Flags:
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
@@ -148,8 +151,10 @@ Global Flags:
   -v, --verbose      enable verbose (increase detail with --log_level)
 
 Notes:
+  - The --freshen option is similar to --init, but checks UnchainedIndex first.
   - One of --list, --init, or --freshen is required.
-  - the --share option only works if the IPFS executable is in your path.
+  - The --share option only works if the IPFS daemon is running.
+  - Re-run chifra init as you wish. It will repair or freshen the index.
 ```
 
 **Source code**: [`apps/pinMan`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/pinMan)

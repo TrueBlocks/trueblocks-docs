@@ -193,7 +193,7 @@ See the `chifra abis` command line for information about getting an EtherScan ke
 
 ## Base types
 
-The above documentation mentions the following basic data types.
+This documentation mentions the following basic data types.
 
 | Type      | Description                                     | Notes          |
 | --------- | ----------------------------------------------- | -------------- |

@@ -1,8 +1,8 @@
 ---
-title: "Chain State"
+title: "Chain state"
 description: ""
 lead: ""
-date: 2021-09-29T17:33:01
+date: 2021-10-05T21:53:25
 lastmod:
   - :git
   - lastmod
@@ -75,7 +75,7 @@ Token data is made of the following data fields:
 
 ## Base types
 
-The above documentation mentions the following basic data types.
+This documentation mentions the following basic data types.
 
 | Type      | Description                                     | Notes          |
 | --------- | ----------------------------------------------- | -------------- |
