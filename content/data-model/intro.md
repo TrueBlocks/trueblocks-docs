@@ -22,11 +22,6 @@ toc: true
 
 ## Blockchain + people = TrueBlocks-enhanced data
 
-Broadly, the data TrueBlocks provides divides into two categories:
-
-* [Blockchain data](../blockchain-data/)
-* [Account-organized data](../accounts)
-
 On its own Ethereum blockchain data is just a boring blob of bytes.
 What really interests us are the stories behind this data--questions like:
 * What addresses were involved?

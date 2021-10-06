@@ -28,8 +28,8 @@ and some good hardware.
 
 If you want to build your own index, plan for a few days and run `chifra scrape`.
 Before doing so, you probably want to read the relevant section in the
-["How Can I Get the Index"](./how-can-i-get-the-index) article,
-and [the `scrape` command documentation](../../chifra/admin#chifra-scrape).
+["How Can I Get the Index"](/docs/install/get-the-index) article,
+and [the `scrape` command documentation](/docs/chifra/admin#chifra-scrape).
 
 Fortunately, TrueBlocks also publishes the index on the IPFS,
 which lets you access it locally without running a node.
@@ -45,7 +45,7 @@ Downloading the IPFS manifest is a good option for many users:
 
 There are two commands to download the index, `chifra init` and `chifra pins`.
 The pros and cons of each approach are outlined in the
-["How Can I Get the Index?"](./how-can-i-get-the-index) article.
+["How Can I Get the Index?"](/docs/install/get-the-index) article.
 
 ### Drawbacks of using the IPFS manifest
 

@@ -54,7 +54,7 @@ It ships with large suite of command line options to let you make the queries yo
 want to make─addresses, names, ABIs, etc.
 
 In addition to the command line, TrueBlocks also provides a graphical user interface
-with the [Explorer](/docs/explorer/gui-for-trueblocks) application.
+with the [Explorer application](/docs/install/install-explorer).
 So you don't need to be highly technical to use TrueBlocks.
 
 ### And yes, it's permissionless

@@ -22,7 +22,7 @@ directory README.
 
 These instructions assume you can navigate directories with the command line
 and edit configuration files.
-If you need help with a step, see the [installation's troubleshooting section](https://trueblocks.io/docs/prologue/installing-trueblocks/#troubleshooting).
+If you need help with a step, see the [installation's troubleshooting section](https://trueblocks.io/docs/install/install-trueblocks/#troubleshooting).
 
 ## Quick Install
 
@@ -67,8 +67,8 @@ API keys. It should look something like this:
 ### Optional steps
 
 
-6. To make deep data queries, [get the index](https://trueblocks.io/docs/prologue/how-can-i-get-the-index/)
-7. To explore the data visually, [install the explorer application](https://trueblocks.io/docs/prologue/install-explorer/).
+6. To make deep data queries, [get the index](/docs/prologue/get-the-index/)
+7. To explore the data visually, [install the explorer application](/docs/install/install-explorer/).
 
 ## Troubleshooting
 
@@ -195,12 +195,12 @@ When you query basic transaction data, you don't need an index.
 However, most people want to explore entire histories of addresses, calls, and traces.
 Doing that requires an index.
 
-There are multiple options, which the [How Can I Get the Index?](../how-can-i-get-the-index)
+There are multiple options, which the [How Can I Get the Index?](/docs/install/get-the-index)
 article covers in more detail.
 
 No matter what method, getting the index will take somewhere between 10 minutes
 and a few days. So you might want to play around with some [chifra blockchain
-commands](../../chifra/chaindata) first.
+commands](/docs/chifra/chaindata) first.
 
 ### What if my node doesn't have tracing or archiving? {#no-tracing}
 
