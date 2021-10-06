@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2021-10-05T21:57:04
+date: 2021-10-05T22:20:10
 lastmod:
   - :git
   - lastmod
@@ -26,7 +26,7 @@ The Admin component allows you to query the status of the TrueBlocks system. You
 
 Another way to get help to run `chifra --help` or `chifra <cmd> --help` on your command line. See below for an example of converting command line options to a call to the API. There's a one-to-one correspondence between the command line tools and options and the API routes and their options.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Serve the TrueBlocks API using the flame server.
 
@@ -56,7 +56,7 @@ The `chifra scrape` application creates TrueBlocks' index of address appearances
 
 The scraper can scrape either the index only, previously created monitors only, both, or neither. If you specify `none`, timestamps will be scraped but nothing else. If you're scraping monitors, you may tell the system to cache traces and transactions. This will speed up access, but take addition hard drive space. You may also adjust the speed of operation on different machines with the `--sleep` and `--n_blocks` options. Finally, you may choose to optionally `--pin` each new chunk to IPFS.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Scan the chain and update the TrueBlocks index of appearances.
 
@@ -103,7 +103,7 @@ Certain parts of the system (`chifra list` and `chifra export` for example) if y
 
 If you run `chifra init` and allow it to complete, the next time you run `chifra scrape`, it will start where `init` finished. This means that only the blooms will be stored on your hard drive. Subsequent scraping will produce both chunks and blooms, although you can, if you wish delete chunks that are not being used. You may periodically run `chifra init` if you prefer not to scrape.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Initialize the TrueBlocks system by downloading from IPFS.
 
@@ -129,7 +129,7 @@ Notes:
 
 This tool is not yet ready for production use. Please return to this page later.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Manage pinned index of appearances and associated blooms.
 

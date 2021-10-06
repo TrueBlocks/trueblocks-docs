@@ -2,7 +2,7 @@
 title: "Chain data"
 description: ""
 lead: ""
-date: 2021-10-05T21:57:04
+date: 2021-10-05T22:20:10
 lastmod:
   - :git
   - lastmod
@@ -28,7 +28,7 @@ By default, `chifra blocks` queries the full transactional details of the block 
 
 Another useful feature of `chifra blocks` is the ability to extract address appearances from a block. TrueBlocks uses a similar feature internally to build its index of appearances. This type of data is very insightful when studying end user behavior and chain-wide adoption analysis.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Retrieve one or more blocks from the chain or local cache.
 
@@ -69,7 +69,7 @@ The `--articulate` option fetches the ABI from each encountered smart contract (
 
 Generally speaking, this tool is less useful than others as you may report the same data using `chifra transactions` and more focused data using `chifra logs`. It is included here for completeness, as the `receipt` is a fundamental data structure in Ethereum.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Retrieve receipts for the given transaction(s).
 
@@ -101,7 +101,7 @@ Notes:
 
 The `--articulate` option fetches the ABI from each encountered smart contract to better describe the reported data. The `--topic` and `--source` options allow you to filter your results.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Retrieve logs for the given transaction(s).
 
@@ -138,7 +138,7 @@ The `--articulate` option fetches the ABI from each encountered smart contract t
 
 The `--filter` option calls your node's `trace_filter` routine (if available) using a bang-separated string of the same values used by `trace_fitler`.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Retrieve traces for the given transaction(s).
 
@@ -177,7 +177,7 @@ In the first case, supply a block number or hash and the date and time of that b
 
 The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`second` are optional, and if omitted, default to zero in each case. Block numbers may be specified as either integers or hexadecimal number or block hashes. You may specify any number of dates and/or blocks per invocation.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Find block(s) based on date, blockNum, timestamp, or 'special'.
 

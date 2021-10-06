@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-10-05T21:57:04
+date: 2021-10-05T22:20:10
 lastmod:
   - :git
   - lastmod
@@ -28,7 +28,7 @@ Because TrueBlocks only extracts data from the Ethereum node when it's requested
 
 Note that `chifra list` only queries the index, it does not extract the full transactional details. You may use `chifra export` for that.
 
-```[yaml]
+```[plaintext]
 Purpose:
   List every appearance of an address anywhere on the chain.
 
@@ -59,7 +59,7 @@ You may also choose which portions of the Ethereum data structures (`--transacti
 
 By default, the results of the extraction are delivered to your console, however, you may export the results to any database (with a little bit of work). The format of the data, its content and its destination are up to you.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Export full detail of transactions for one or more addresses.
 
@@ -109,7 +109,7 @@ You may use the `--delete` command to delete (or undelete if already deleted) an
 
 Use the `--remove` command to permanently remove a monitor from your computer. This is an irreversible operation.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Add, remove, clean, and list address monitors.
 
@@ -145,7 +145,7 @@ The various options allow you to search and filter the results. The `collections
 
 You may use the TrueBlocks explorer to manage (add, edit, delete) address-name associations.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Query addresses or names of well known accounts.
 
@@ -190,7 +190,7 @@ The `--find` option is experimental. It scans a cross of approx. 100,000 functio
 
 The `--sol` option will convert a single Solidity file found in the current folder into an ABI.
 
-```[yaml]
+```[plaintext]
 Purpose:
   Fetches the ABI for a smart contract.
 
