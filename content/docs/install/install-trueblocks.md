@@ -67,7 +67,7 @@ API keys. It should look something like this:
 ### Optional steps
 
 
-6. To make deep data queries, [get the index](/docs/prologue/get-the-index/)
+6. To make deep data queries, [get the index](/docs/install/get-the-index/)
 7. To explore the data visually, [install the explorer application](/docs/install/install-explorer/).
 
 ## Troubleshooting
