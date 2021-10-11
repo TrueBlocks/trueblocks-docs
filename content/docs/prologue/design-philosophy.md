@@ -8,7 +8,7 @@ lastmod:
   - lastmod
   - date
   - publishDate
-draft: true
+draft: false
 images: []
 menu: 
   docs:
@@ -19,18 +19,18 @@ toc: true
 
 ## The three commandments
 
-1. **Provide access to accurate data**
+1.  **Let users query this data without asking third-parties for permission.**
 
-    If the blockchain data is not accurate, what good is the blockchain? 
-
-2.  **Let users query this data without asking third-parties for permission.**
-
-    If you can only access blockchain data through a third party (e.g. a cloud provider),
+    If you can access blockchain data only through a third party (e.g. a cloud provider),
     is the data really decentralized?
+
+2. **Provide accurate access, to underived, consented-to, pure immutable data.**
+
+    If the blockchain data is not accurate, what good is the blockchain?
 
 3. **Perform well on small machines**
 
-    If an application requires commercial-grade computer infrastructure,
+    If an application requires web-scale computer infrastructure,
     does it really support decentralization?
 
 ## How TrueBlocks prioritizes design features
@@ -47,9 +47,9 @@ They underlie every single commit made to the TrueBlocks code base.
 
 |Core design values| What they mean in practice matter|
 |--------------|---------------------------------|
-| Decentralization| very end users should not need to rely on anyone other than themselves|
+| Decentralization| No one should have to rely on anyone other than themselves for data. This including users who want data at the very end of the data journey|
 | Performance| TrueBlocks should be fast on small machines, and provide options for minimal disc footprints|
-| Preserves integrity of data| Blockchain data is mutually-agreed upon, consented-to,|
+| Preserves integrity of data| Blockchain data is mutually-agreed upon and consented-to. Don't tamper with it.|
 
 ### Very important values
 
@@ -58,19 +58,19 @@ the core design features.
 
 |Very important values| What they mean in practice|
 |--------------|---------------------------------|
-|Transparency|The application code must be open-source; every person gets permissionless access to all the data they want|
+|Transparency|Every person gets permissionless access to all the data they want; the application should be open source, letting users verify the data|
 |Reproducibility|Required for transparency and decentralization|
 |Stability|It should run forever with zero downtime|
 
 ### Important values
 
 These values are important, and TrueBlocks tries to maximize these values wherever possible.
-However, if we have to make a tradeoff, these values come after the core vaules 
+However, if we have to make a tradeoff, these values come after the core values.
 
 | Important values | What they mean in practice                                          |
 |------------------|------------------------------------------------------------------------|
 | Robustness       | App should work forever without needing to be futzed with              |
-| Approachability  | Easy to understand how it works, easy to understand how to get started |
+| Approachability  | Easy to understand how it works; easy to understand how to get started |
 | Simplicity       | Related to Approachability                                             |
 | Extensibility    | Others should be able to add to it                                     |
 | Maintainability  | Ideally requires no maintenance                                        |
@@ -89,8 +89,8 @@ While TrueBlocks does not _try_ to sacrifice these values, they are not core con
 | Mensurability    | For internal use only, so less of a concern                                                                                             |
 | Portability      | Depends on programming language, so not a concern                                                                                       |
 | Safety           | Not really. Consented to data is safe.     |
-| Security         | Not really. Out of our code's purview other than basic software security. We hold no special data, as our data is the consented to data. Reproducible consented to data is reproducibly safe. App runs on local machine. If that's compromised, TrueBlocks is not their biggest concern. |
-| Thoroughness     | The application should do one thing perfectly -- reconciliations                                                                                     |
+| Security         | Not really. Out of our code's purview other than basic software security. We hold no special data: our data is consented-to data. Reproducible, consented-to data is reproducibly safe. The app runs on local machines. If the local machine is compromised, TrueBlocks is not the user's biggest security concern. |
+| Thoroughness     | The application should do one thing perfectly -- reconciliations  |
 
 _This ranking of values was inspired by [a talk given by Bryan Cantrill in 2018](https://www.youtube.com/watch?v=2wZ1pCpJUIM)._
 
