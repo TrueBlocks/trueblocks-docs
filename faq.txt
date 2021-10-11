@@ -1,0 +1,53 @@
+> Have a question: can I start using `chifra serve`  when I am in the middle of 
+`chifra scrape`
+
+ ?
+dawid
+ — 
+Yesterday at 10:07 AM
+Yes you can, but you won’t get complete data
+tjayrush
+ — 
+Yesterday at 11:19 AM
+Slight addendum. You'll get complete data for all tools other than chifra export and chifra list because only these two are dependent on the index which is being created by chifra scrape. For those two tools, you'll get as data as far along as the scraper is in its scan.
+
+
+
+> Have a question related to chain-reorgs, when using chifra scrape - how if any reorg is handled ?
+
+Another freaking excellent question. I have to write about this one at some point. (@Dodson, can you copy this response out somewhere and save it for later?)
+
+We can't stay up to the very front of the chain because it changes all the time. I don't have solid numbers, but the chain reorgs many many times a day. For the reason, we consider three different types of data when scraping. We call the 'green', 'yellow', or 'red,' and just like a traffic light you can 'move forward', 'be cautious', or 'proceed at high risk' with the data.
+Ro Ma
+ — 
+Today at 5:43 PM
+I am considering to implement something related to this issue, for now I have an idea to use geth, since it has RPC notification related to reorg ( as far as I understand ). So another small store + index only for last hour of data, that knows how to handle  reorgs. Interesting what about erigon & reorgs ...
+tjayrush
+ — 
+Today at 5:52 PM
+The 'green' results of the scrape are at least 28 blocks old (about six minutes). This is an arbitrary number, but about 1.5 times longer than an article we found where Vitalik says one should wait around four minutes for 'effective finality.' Of course, it's not perfect -- the chain can revert hundreds of blocks, but we have to stop looking at some point. One reason we thing this is okay is because we do a 'reconciliation'. Which means we use regular accounting procedures to 'double check the double checking.' It's kind of the best we can do.
+
+The 'yellow' results get put in a folder we call 'ripe' which means that the scraper will 'reconsider' the blocks one more time before moving them to the 'staging' folder. A block in the 'staging' folder is 'green', but has not yet been 'consolidated' (i.e. put into a binary chunk and published to IPFS). 'Yellow' blocks are at least six blocks old (around 1.5 minutes), but less than 28 blocks.
+
+'Red' blocks are stored in the 'unripe' folder and are less than six blocks old. You can expect them to change without notice.
+
+Here's a ridiculously hurried graphic that I just threw together:
+Attachment file type: acrobat
+Red-Yellow-Green.pdf
+29.90 KB
+tjayrush
+ — 
+Today at 6:01 PM
+If you run TEST_MODE=true chifra export --help you will see some additional hidden options -- in particular, --staging and --unripe (now that I'm writing this it appears there's a missing --ripe option.
+
+If you add no additional option chifra export will export only from the consolidated data (i.e. green and consolidated -- the chunked data). 
+
+If you run chifra export --staging, it will output only data from the staging folder (i.e. green, but not yet consolidated).
+
+If you run chifra export --unripe, it should output only red data, but I'm skeptical. (I think this may be a bug -- it may actually output yellow data.)
+
+We don't have this option, but if you run chifra export --ripe it should export yellow data only.
+
+There is no option currently to export everything. And I can see that we should have an option to export --pending, although that is not yet implemented either.
+
+(Sorry for the long-windedness. I'm writing this in detail, so I can copy it into an issue.)
