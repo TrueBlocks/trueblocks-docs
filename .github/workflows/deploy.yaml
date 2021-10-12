@@ -17,7 +17,7 @@ jobs:
           node-version: '16'
           cache: 'npm'
 
-      - name: link checker:
+      - name: link checker
         uses: JustinBeckwith/linkinator-action@v1
         with:
           paths:
