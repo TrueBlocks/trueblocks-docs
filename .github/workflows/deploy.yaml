@@ -16,6 +16,16 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
+
+      - name: link checker:
+        uses: JustinBeckwith/linkinator-action@v1
+        with:
+          paths:
+            - content/docs
+            - content/data-model
+            - content/blog
+          recurse: true
+          
       - name: Install dependencies
         run: npm install
 
