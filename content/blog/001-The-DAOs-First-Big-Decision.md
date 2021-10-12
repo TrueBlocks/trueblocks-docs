@@ -14,7 +14,7 @@ keywords: []
 
 ![](/blog/img/001-The-DAOs-First-Big-Decision-001.png)
 
-The locus of discussion on all issues related to “The DAO” (which is not its official name) is [http://forum.daohub.org,](http://daohub.org,) which is the official-but-not-official home of “The DAO”, an organization-that-is-not-quite-an-organization.
+The locus of discussion on all issues related to “The DAO” (which is not its official name) is [http://forum.daohub.org,](http://daohub.org) which is the official-but-not-official home of “The DAO”, an organization-that-is-not-quite-an-organization.
 
 _As you can tell — I’m having difficulty figuring out exactly what the DAO is. It’s difficult because this is a brand new thing that has not existed before in the world. There are simply no words yet. I slip into imprecise language in this post, please forgive me._
 

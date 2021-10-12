@@ -33,7 +33,8 @@ The argument goes something like this: billions of people do not have a reliable
 
 #### The Evidence Was Washed Away
 
-I was at a blockchain conference in Washington, DC last week. It was well attended, had tons of great speakers, and was overflowing with people engaged in the blockchain space. Being in Washington, DC, there was, of course, a lot of discussion about regulation, recent SEC rulings, and other lawyerly things. But the most impressive speaker for me was a layman. She was from Australia. Her name was [Dr. Jane Thomason](http://www.abtassociates.com/About-Us/Our-People/Officers/Jane-Thomason,-B-S-W-,-M-P-H-,-Ph-D.aspx).
+I was at a blockchain conference in Washington, DC last week. It was well attended, had tons of great speakers, and was overflowing with people engaged in the blockchain space. Being in Washington, DC, there was, of course, a lot of discussion about regulation, recent SEC rulings, and other lawyerly things. But the most impressive speaker for me was a layman. She was from Australia. Her name was
+[Dr. Jane Thomason](https://drjanethomason.net/)
 
 Dr. Thomason began her talk by displaying a photograph of a place that had been ravaged by a tsunami. The image showed a _before and after_ view. In the _after_ view, everything had been wiped away. Roads, trees, buildings, people’s lives, people’s hopes, relationships, everything.
 

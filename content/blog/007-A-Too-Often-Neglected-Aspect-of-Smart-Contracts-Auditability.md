@@ -27,13 +27,13 @@ It’s not necessary for me to spell out in detail what happened to The DAO. Let
 
 > **Unattributed pseudo-quote from Ethereum’s founding fathers:** The Ethereum blockchain is immutable (not in the sense that once a transaction is processed it will never change, but more in the sense that this is how we would like you to think of it…)”
 
-All of this is water under the bridge, but ever since the hack, I’ve been trying to re-create what happened with the DAO. I’ve been trying to verify that the number of tokens purchased was correctly recorded. I’ve been monitoring the DAO Withdraw contract to see how much of the community’s ether has been successfully returned. [Not as much as you might think.](http://www.coindesk.com/25-million-of-dao-ether-still-remain-one-month-after-hard-fork/) I’ve also been [monitoring the DAO’s curators](http://daodeepdive.com/data/curator_watch.html).
+All of this is water under the bridge, but ever since the hack, I’ve been trying to re-create what happened with the DAO. I’ve been trying to verify that the number of tokens purchased was correctly recorded. I’ve been monitoring the DAO Withdraw contract to see how much of the community’s ether has been successfully returned. [Not as much as you might think.](http://www.coindesk.com/25-million-of-dao-ether-still-remain-one-month-after-hard-fork/) I’ve also been monitoring the DAO’s curators.
 
 My two sources of information are the transactions initiated against the DAO, and the events generated as a result of those transactions. I’m finding recreating what happened to be very difficult because there appears to be a significant amount of missing or difficult-to-come-by information.
 
 #### The Need for Auditability
 
-Every user-initiated interaction with a smart contract creates a transaction on the Ethereum blockchain. These transactions are easily tracked on popular websites such as [http://etherscan.io](http://etherscan.io.). A transaction is created even if a function’s execution fails (for example, because it ran out of gas).
+Every user-initiated interaction with a smart contract creates a transaction on the Ethereum blockchain. These transactions are easily tracked on popular websites such as [http://etherscan.io](http://etherscan.io). A transaction is created even if a function’s execution fails (for example, because it ran out of gas).
 
 During the execution of many of the transactions, events are also written to the blockchain; however, as we shall see, this is not always the case.
 
@@ -43,7 +43,10 @@ Using a purposefully silly example, say you had a function that paid out ether t
 
 In this case, a record of the transaction is laid on the blockchain as well as an event (or, as I think it would be better called, a log entry) would also be written with the same information.
 
-Notice, however, that there is a mistake here. Besides the obvious fact that anyone who wanted to could simply take all the ether, the function writes a log entry to the blockchain even if ‘send’ call fails. The contract’s author has neglected to check the return value of ‘send’. Before you scoff at this example, take a look at [this line from the White Hat ETC Refund contract](https://github.com/BitySA/whetcwithdraw/commit/731b6c0f31f2c4781411f47e2248895c696ea65b#diff-6abf7d6326637cc6a3023c6de66a5196L174). Before it was fixed, it did exactly this.
+Notice, however, that there is a mistake here. Besides the obvious fact that anyone who wanted to could simply take all the ether, the function writes a log entry to the blockchain even if ‘send’ call fails. The contract’s author has neglected to check the return value of ‘send’. Before you scoff at this example, take a look at this line from the White Hat ETC Refund contract.
+Before it was fixed, it did exactly this.
+_Edit: this commit is gone now. It used to be here._
+https://github.com/BitySA/whetcwithdraw/commit/731b6c0f31f2c4781411f47e2248895c696ea65b#diff-6abf7d6326637cc6a3023c6de66a5196L1.
 
 This is one type of ‘auditing error’ or ‘logging error’ that I’ve identified as I’ve tried to understand exactly what’s been going on with the DAO. I present a few more in order of increasing severity.
 
