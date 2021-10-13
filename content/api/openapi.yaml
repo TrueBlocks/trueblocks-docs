@@ -1308,12 +1308,40 @@ paths:
       tags:
         - Admin
       summary: Scrape index
-      description: Scan the chain and update the TrueBlocks index of appearances.
+      description: Scan the chain and update (and optionally pin) the TrueBlocks index of appearances.
       operationId: admin-scrape
       parameters:
+        - name: modes
+          description: which scraper(s) to control (indexer is default)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - indexer
+                - monitors
+                - both
+        - name: action
+          description: command to apply to the specified scrape
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: string
+            enum:
+              - toggle
+              - run
+              - restart
+              - pause
+              - quit
         - name: pin
           description: >
-            pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node)
+            pin chunks (and blooms) to IPFS as they are created (requires pinning service)
           required: false
           style: form
           in: query
@@ -1321,7 +1349,7 @@ paths:
           schema:
             type: boolean
         - name: n_blocks
-          description: maximum number of blocks to process
+          description: maximum number of blocks to process per pass
           required: false
           style: form
           in: query
@@ -1475,6 +1503,60 @@ paths:
                       }
                     ]
                   }
+        "400":
+          description: bad input parameter
+  /chunks:
+    get:
+      tags:
+        - Admin
+      summary: Manage chunks
+      description: Manage and investigate chunks and bloom filters.
+      operationId: admin-chunks
+      parameters:
+        - name: list
+          description: list the bloom and index hashes from local cache or IPFS
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: check
+          description: check the validity of the chunk or bloom
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: extract
+          description: show the contents of the chunk or bloom filters
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: stats
+          description: for the --list option only, display statistics about each chunk or bloom
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: returns the requested data
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: 
+                    type: array
+                    items:
+                      
         "400":
           description: bad input parameter
   /quotes:
