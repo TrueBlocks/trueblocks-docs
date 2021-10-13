@@ -25,7 +25,7 @@ I think the answer to that question is a resounding “No.” Ask yourself how y
 Ethereum blockchain. There’s only two answers: (1) you visit a block explorer, or (2) you go to website built
 by the developers of the dApp you’re using.
 
-You want to know what’s going on with your ENS names? You go to [http://ens.domain](http://ens.domain) (a website).
+You want to know what’s going on with your ENS names? You go to https://ens.domains (a website).
 
 You want to know how your GitCoin grant is doing? You go to [http://gitcoin.co](http://gitcoin.co.) (another website).
 
@@ -52,7 +52,7 @@ then everything we’re building will be for naught.
 We assume you’ve read some of our [previous articles](/blog) concerning how TrueBlocks
 creates and publishes an index of address appearances. We won’t rehash that in this article.
 
-To proceed, visit the installation instructions for downloading and installing TrueBlocks: [http://github.com/TrueBlocks/trueblocks-core.](http://github.com/TrueBlocks/trueblocks-core.)
+To proceed, visit the installation instructions for downloading and installing TrueBlocks: [http://github.com/TrueBlocks/trueblocks-core](http://github.com/TrueBlocks/trueblocks-core).
 Once you finished installing (if you have trouble, join our discord server), try this:
 
 ```[shell]
