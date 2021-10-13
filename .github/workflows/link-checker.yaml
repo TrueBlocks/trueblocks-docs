@@ -19,4 +19,7 @@ jobs:
         run: git checkout deploy
       
       - name: Install linkinator
-        run: sudo npm install -g linkinator && linkinator -r docs/ papers/ index.html data-model/ api/
+        run: sudo npm install -g linkinator
+
+      - name: check links
+        run: linkinator -r docs/ papers/ index.html data-model/ api/ --skip http://localhost:23456/
