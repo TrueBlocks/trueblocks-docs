@@ -1,14 +1,25 @@
-name: Check Markdown links
-
-on: push
+name: Check deploy links
+on:
+  push:
+    branches: [ deploy ]
 
 jobs:
-  markdown-link-check:
+  linkinator:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: gaurav-nelson/github-action-markdown-link-check@v1
-      with:
-        use-quiet-mode: 'yes'
-        use-verbose-mode: 'yes'
-        folder-path: 'content/docs, content/blog, content/data-model'
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - name: Install linkinator
+        run: npm install linkinator
+        
+      - name: checkout deploy
+        run: git checkout deploy
+        
+      - name: check links
+        run: linkinator -r docs/ papers/ index.html data-model/ api/
