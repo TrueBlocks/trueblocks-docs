@@ -1,7 +1,7 @@
 name: Check deploy links
 on:
   push:
-    branches: [ master ]
+    branches: [ deploy ]
 
 jobs:
   linkinator:
