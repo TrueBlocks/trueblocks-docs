@@ -58,20 +58,31 @@ The scraper can scrape either the index only, previously created monitors only, 
 
 ```[plaintext]
 Purpose:
-  Scan the chain and update the TrueBlocks index of appearances.
+  Scan the chain and update (and optionally pin) the TrueBlocks index of appearances.
 
 Usage:
-  chifra scrape [flags]
+  chifra scrape [flags] [mode...]
+
+Arguments:
+  modes - which scraper(s) to control (indexer is default)
+	One or more of [ indexer | monitors | both ]
 
 Flags:
-  -p, --pin             pin new chunks (and blooms) to IPFS (requires Pinata key and running IPFS node)
-  -s, --sleep float     the number of seconds to sleep between passes (default 14)
-  -n, --n_blocks uint   maximum number of blocks to process (default 2000)
+  -a, --action string   command to apply to the specified scrape
+                        One of [ toggle | run | restart | pause | quit ]
+  -s, --sleep float     seconds to sleep between scraper passes (default 14)
+  -p, --pin             pin chunks (and blooms) to IPFS as they are created (requires pinning service)
+  -n, --n_blocks uint   maximum number of blocks to process per pass (default 2000)
 
 Global Flags:
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
   -h, --help         display this help screen
   -v, --verbose      enable verbose (increase detail with --log_level)
+
+Notes:
+  - if no mode is presented, chifra scrape indexer --action run is assumed.
+  - the --pin and --publish options require an API to the pinning service.
+  - the --n_* related options allow you to tune the scrapers.
 ```
 
 ### explainer
@@ -92,6 +103,31 @@ Please see [this article](.) for more information about running the scraper and 
 
 
 **Source code**: [`apps/blockScrape`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/blockScrape)
+
+## chifra chunks
+
+This tool is not yet ready for production use. Please return to this page later.
+
+```[plaintext]
+Purpose:
+  Manage and investigate chunks and bloom filters.
+
+Usage:
+  chifra chunks [flags]
+
+Flags:
+  -l, --list      list the bloom and index hashes from local cache or IPFS
+  -c, --check     check the validity of the chunk or bloom
+  -e, --extract   show the contents of the chunk or bloom filters
+  -s, --stats     for the --list option only, display statistics about each chunk or bloom
+
+Global Flags:
+  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -h, --help         display this help screen
+  -v, --verbose      enable verbose (increase detail with --log_level)
+```
+
+**Source code**: [`apps/chunkMan`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chunkMan)
 
 ## chifra init
 
