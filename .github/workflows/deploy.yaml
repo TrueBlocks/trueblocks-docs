@@ -63,10 +63,7 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           
       - name: Install linkinator
-        run: npm install linkinator
-
-      - name: check links
-        run: linkinator -r docs/ papers/ index.html data-model/ api/
+        run: npm install linkinator && linkinator -r docs/ papers/ index.html data-model/ api/
 
       - name: Report job status
         run: |
