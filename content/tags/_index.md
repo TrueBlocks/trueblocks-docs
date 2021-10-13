@@ -1,5 +1,5 @@
 ---
-title : "All"
+title : "All tags"
 description: "Build a local-first index of the Ethereum Blockchain."
 lead: "Lightweight, local-first index of the full Ethereum Blockchain."
 date: 2020-10-06T08:47:36+00:00
