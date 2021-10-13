@@ -1,7 +1,7 @@
 name: Check deploy links
 on:
   push:
-    branches: [ deploy ]
+    branches: [ master ]
 
 jobs:
   linkinator:
@@ -15,11 +15,8 @@ jobs:
           node-version: '16'
           cache: 'npm'
 
-      - name: Install linkinator
-        run: npm install linkinator
-        
       - name: checkout deploy
         run: git checkout deploy
-        
-      - name: check links
-        run: linkinator -r docs/ papers/ index.html data-model/ api/
+      
+      - name: Install linkinator
+        run: sudo npm install -g linkinator && linkinator -r docs/ papers/ index.html data-model/ api/
