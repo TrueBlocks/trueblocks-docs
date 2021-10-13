@@ -62,8 +62,6 @@ jobs:
           details: Test Failed!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           
-      - name: Install linkinator
-        run: sudo npm install -g linkinator && linkinator -r docs/ papers/ index.html data-model/ api/
 
       - name: Report job status
         run: |
