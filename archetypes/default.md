@@ -8,12 +8,11 @@ lastmod:
   - lastmod
   - date
   - publishDate
-draft: true
 images: []
-menu: 
-  "":
-    parent: {{ .Dir }}
-weight: 999
+weight: 10
 toc: true
+draft: true
+tags: []
+contributors: []
 ---
 
