@@ -135,7 +135,7 @@ There are many other `chifra` commands including `list` and `export` that we sti
 
 In the following sections, each command is presented with its options and in more detail. In addition,
 
-* Our [blog has a few longer "recipes"](/blog/recipes)for accomplishing various tasks.
+* Our [blog has a few longer "recipes"](/tags/recipes)for accomplishing various tasks.
 * Our [data model reference](/data-model/intro/) describes the fields that are returned with each command
 
 
