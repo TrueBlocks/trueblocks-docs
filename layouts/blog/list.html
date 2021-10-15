@@ -26,7 +26,7 @@
 				</nav>
 			{{ end }}
        <h1 class="text-center">{{ .Title }}</h1>
-				{{ $paginator := .Paginate (.Data.Pages) -}}
+				{{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") -}}
 				{{ range $paginator.Pages -}}
 					<div class="card">
 						<div class="card-body">
