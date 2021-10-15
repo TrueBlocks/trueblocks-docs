@@ -1,10 +1,14 @@
-name: Check deploy links
+name: Check links on site
+
+# Only trigger, when deploy workflow succeeds
 on:
-  push:
-    branches: [ master ]
+  workflow_run:
+    workflows: ["hugo rsync"]
+    types:
+      - completed
 
 jobs:
-  linkinator:
+  run_linkinator:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
