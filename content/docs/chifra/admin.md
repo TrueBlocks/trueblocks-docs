@@ -127,7 +127,9 @@ Global Flags:
   -v, --verbose      enable verbose (increase detail with --log_level)
 ```
 
+<!---
 **Source code**: [`apps/chunkMan`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chunkMan)
+---->
 
 ## chifra init
 
