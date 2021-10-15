@@ -1,11 +1,7 @@
 name: Check links on site
-
-# Only trigger, when deploy workflow succeeds
 on:
-  workflow_run:
-    workflows: ["hugo rsync"]
-    types:
-      - completed
+  push:
+    branches: [ master ]
 
 jobs:
   run_linkinator:
@@ -26,4 +22,4 @@ jobs:
         run: npm install -g linkinator
 
       - name: check links
-        run: linkinator -r docs/ papers/ index.html data-model/ api/ --skip http://localhost:23456/
+        run: sleep 5m ; linkinator -r docs/ papers/ index.html data-model/ api/ --skip http://localhost:23456/
