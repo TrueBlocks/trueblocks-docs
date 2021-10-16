@@ -103,7 +103,7 @@ TrueBlocks finds 180 appearances.
 
 The above command returns something like this:
 
-![Long list of unique blocks](/blog/2021/uniq-blocks.png){width="6.5in" height="2.4027777777777777in"}
+![Long list of unique blocks](/blog/2021/uniq-blocks.png)
 
 Perhaps you can see the start of an index of appearances in the above
 output.
@@ -153,8 +153,7 @@ hash), the data cannot be altered. In other words, the time-ordered
 blockchain data is
 immutable.
 
-![A color coded index](/blog/2021/index-sort-of.png){width="2.8177088801399823in"
-height="3.1057403762029745in"}
+![A color coded index](/blog/2021/index-sort-of.png)
 
 This is what we all love about blockchain data.
 
