@@ -25,7 +25,7 @@
 					</ol>
 				</nav>
 			{{ end }}
-       <h1 class="text-center">{{ .Title }}</h1>
+       <h1>{{ .Title }}</h1>
 				{{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") -}}
 				{{ range $paginator.Pages -}}
 					<div class="card">
