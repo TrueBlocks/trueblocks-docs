@@ -2,6 +2,8 @@ name: Check links on site
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
+    branches: [ master ]
 
 jobs:
   run_linkinator:
