@@ -1,6 +1,9 @@
-Badges:
+### GitHub Actions:
+
 [![hugo rsync](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy.yaml)
 [![Check links on site](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/link-checker.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/link-checker.yaml)
+
+### Contributing
 
 To develop on this site, you need `npm` and `hugo`.
 
