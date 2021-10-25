@@ -18,9 +18,6 @@ menu:
       prologue
 ---
 
-TrueBlocks builds and publishes an index that lets you explore the Ethereum
-blockchain from your local machine.
-
 ## Without a local index, Ethereum is not really permissionless
 
 More specifically, without an index, Ethereum cannot effectively serve
