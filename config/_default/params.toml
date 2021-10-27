@@ -6,7 +6,7 @@ titleSeparator = "-"
 titleAddition = "Light, local index of the Ethereum blockchain"
 description = "Ethereum as it was meant to be: local-first, P2P, and accurate queries to all the data you’ll ever need."
 ## Open Graph + Twitter Cards
-images = ["trueblocks.png"]
+images = ["https://trueblocks.io/trueblocks.png"]
 twitterSite = "TrueBlocks"
 twitterCreator = "TrueBlocks"
 ogLocale = "en_US"
