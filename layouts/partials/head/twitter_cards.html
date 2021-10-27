@@ -1,6 +1,6 @@
 {{ with $.Params.images -}}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{{ $.RelPermalink }}{{ index . 0 }}">
+  <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1194382672677789696/m4BXxMFL_400x400.jpg">
 {{ else -}}
   {{ $images := $.Resources.ByType "image" -}}
   {{ $featured := $images.GetMatch "*feature*" -}}
