@@ -12,8 +12,8 @@
     <meta name="twitter:image" content="{{ $featured.RelPermalink }}">
   {{ else -}}
     {{ with $.Site.Params.images -}}
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:image" content="{{ index . 0 | relURL }}">
+      <meta name="twitter:card" content="https://trueblocks.io/trueblocks.png">
+      <meta name="twitter:image" content="https://trueblocks.io/trueblocks.png">
     {{ else -}}
       <meta name="twitter:card" content="summary">
     {{ end -}}
