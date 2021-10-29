@@ -1,6 +1,6 @@
 ---
 title: "User contribution: Trueblocks Plotter"
-description: ""
+description: "A user-built tool that queries and plots Ethereum data"
 lead: "A user-built tool that queries and plots Ethereum data"
 date: 2021-10-29T18:10:28-04:00
 lastmod:
