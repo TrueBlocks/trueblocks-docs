@@ -18,7 +18,7 @@ jobs:
           cache: 'npm'
 
       - name: checkout deploy
-        run: sleep 5m; git checkout deploy
+        run: sleep 3m; git checkout deploy
       
       - name: Install linkinator
         run: npm install -g linkinator
