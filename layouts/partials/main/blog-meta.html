@@ -6,8 +6,11 @@
 </p>
 <p>
   <small>
-  Category: {{ range (.GetTerms "tags") }}
-  <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+Tags: 
+{{ with (.GetTerms "tags") }}
+  {{ range $i, $t := . }}
+    {{ if $i }},&nbsp;{{ end }}<a href="{{ $t.Permalink }}">{{ $t.LinkTitle }}</a>
   {{ end }}
+{{ end }}
   </small>
 </p>
