@@ -18,10 +18,10 @@ jobs:
           cache: 'npm'
 
       - name: checkout deploy
-        run: git checkout deploy
+        run: sleep 3m; git checkout deploy
       
       - name: Install linkinator
         run: npm install -g linkinator
 
       - name: check links
-        run: sleep 5m ; linkinator -r docs/ papers/ index.html data-model/ api/ --skip http://localhost:23456/
+        run: linkinator -r docs/ papers/ index.html data-model/ api/ --skip http://localhost:23456/
