@@ -30,16 +30,19 @@ If you need help with a step, see the [installation's troubleshooting section](h
     - &#9745; [Install the latest version of Go](https://golang.org/doc/install).
     - &#9745; Install the other dependencies with your command line: `build-essential` `git` `cmake` `python` `python-dev` `libcurl3-dev` `clang-format` `jq`.
 <br/><br/>
-1. Compile from the codebase
+1. Clone the repo and compile from the codebase.
 
+   <small>_While TrueBlocks is still alpha, use the `develop` branch (we hope to release beta by January, 2022)._</small>
     ```shell
     git clone -b develop https://github.com/trueblocks/trueblocks-core
     cd trueblocks-core
+    git checkout develop
     mkdir build && cd build
     cmake ../src
     make
     ```
-    _(You may use `make -j nproc` to parallelize the build.)_
+    
+    <small>_(You may use `make -j nproc` to parallelize the build.)_</small>
 
 2. Add `trueblocks-core/bin` to your shell PATH.
 
