@@ -1,5 +1,5 @@
 ---
-title : "What is this?"
+title : "About TrueBlocks"
 description: "TrueBlocks Docs"
 lead: "TrueBlocks builds and publishes an index that lets you explore the Ethereum blockchain from your local machine."
 date: 2020-10-06T08:48:23+00:00

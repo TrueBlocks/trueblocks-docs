@@ -1,7 +1,7 @@
 ---
 title: "1. Install TrueBlocks"
 description: "TrueBlocks works on Linux and Mac"
-lead: "TrueBlocks runs on Linux and Mac. There is no official Windows support. Some users have had success using WSL─you're on your own!"
+lead: "TrueBlocks runs on Linux and Mac. We do not support Windows"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -20,15 +20,20 @@ The links in this section are hard coded so that can be pasted into the
 directory README.
 -->
 
-These instructions assume you can navigate directories with the command line
-and edit configuration files.
-If you need help with a step, see the [installation's troubleshooting section](https://trueblocks.io/docs/install/install-trueblocks/#troubleshooting).
+These instructions assume you can navigate the command line and edit configuration files.
+If you need help with a particular step, see the [installation's troubleshooting section](/docs/install/install-trueblocks/#troubleshooting).
 
 ## Quick Install
 
-0. Install dependencies
-    - &#9745; [Install the latest version of Go](https://golang.org/doc/install).
-    - &#9745; Install the other dependencies with your command line: `build-essential` `git` `cmake` `python` `python-dev` `libcurl3-dev` `clang-format` `jq`.
+0.  Update GoLang installation
+    - `go --version`
+    - *If your version is less than 1.14,* [install Go](/docs/install/install-trueblocks/#how-do-i-check-my-go-version)
+
+<br/>
+
+1. Check other build dependancies or install
+   
+    - &#9745; [Install the other dependencies](/docs/install/install-trueblocks/#how-do-i-install-packages-on-the-command-line)
 <br/><br/>
 1. Compile from the codebase
 
@@ -86,7 +91,7 @@ Run this command
 go version
 ```
 
-TrueBlocks needs version 1.12.x or later.
+TrueBlocks needs version 1.12.x or later. If you to install or update Go, [see here](https://golang.org/doc/install).
 
 
 #### How do I install packages on the command line?
