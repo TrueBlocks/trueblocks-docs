@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2021-11-07T12:45:23
+date: 2021-11-18T22:52:20
 lastmod:
   - :git
   - lastmod
@@ -39,15 +39,13 @@ Arguments:
   addrs - one or more addresses (0x...) to list (required)
 
 Flags:
-  -U, --count   present only the number of records
-
-Global Flags:
+  -U, --count        present only the number of records
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
   -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 ```
 
-**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+**Source code**: [`internal/list`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/list)
 
 ## chifra export
 
@@ -73,11 +71,12 @@ Arguments:
 
 Flags:
   -p, --appearances         export a list of appearances
-  -r, --receipts            export receipts instead of transaction list
-  -A, --statements          for use with --accounting option only, export only reconciliation statements
-  -l, --logs                export logs instead of transaction list
-  -t, --traces              export traces instead of transaction list
-  -C, --accounting          export accounting records instead of transaction list
+  -r, --receipts            export receipts instead of transactional data
+  -l, --logs                export logs instead of transactional data
+  -t, --traces              export traces instead of transactional data
+  -A, --statements          export reconciliations instead of transactional data (requires --accounting option)
+  -n, --neighbors           export the neighbors of the given address
+  -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
   -a, --articulate          articulate transactions, traces, logs, and outputs
   -i, --cache               write transactions to the cache (see notes)
   -R, --cache_traces        write traces to the cache (see notes)
@@ -89,19 +88,19 @@ Flags:
       --emitter strings     for log export only, export only logs if emitted by one of these address(es)
       --topic strings       for log export only, export only logs with this topic(s)
       --clean               clean (i.e. remove duplicate appearances) from all existing monitors
-
-Global Flags:
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
-  -v, --verbose      enable verbose (increase detail with --log_level)
+  -x, --fmt string          export format, one of [none|json*|txt|csv|api]
+  -v, --verbose             enable verbose (increase detail with --log_level)
+  -h, --help                display this help screen
 
 Notes:
   - An address must start with '0x' and be forty-two characters long.
+  - Articulating the export means turn the EVM's byte data into human-readable text (if possible).
   - For the --logs option, you may optionally specify one or more --emmitter, one or more --topics, or both.
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
+  - Neighbors include every address that appears in any transaction in which the export address also appears.
 ```
 
-**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+**Source code**: [`internal/export`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export)
 
 ## chifra monitors
 
@@ -128,18 +127,16 @@ Flags:
       --delete        delete a monitor, but do not remove it
       --undelete      undelete a previously deleted monitor
       --remove        remove a previously deleted monitor
-
-Global Flags:
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
-  -v, --verbose      enable verbose (increase detail with --log_level)
+  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
 Notes:
   - An address must start with '0x' and be forty-two characters long.
   - If no address is presented to the --clean command, all monitors will be cleaned.
 ```
 
-**Source code**: [`apps/acctExport`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/acctExport)
+**Source code**: [`internal/monitors`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/monitors)
 
 ## chifra names
 
@@ -171,18 +168,16 @@ Flags:
   -a, --addr          display only addresses in the results (useful for scripting)
   -s, --collections   display collections data
   -g, --tags          export the list of tags and subtags only
-
-Global Flags:
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
-  -v, --verbose      enable verbose (increase detail with --log_level)
+  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
 Notes:
   - The tool will accept up to three terms, each of which must match against any field in the database.
   - The --match_case option enables case sensitive matching.
 ```
 
-**Source code**: [`tools/ethNames`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/ethNames)
+**Source code**: [`internal/names`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/names)
 
 ## chifra abis
 
@@ -210,16 +205,14 @@ Flags:
   -k, --known          load common 'known' ABIs from cache
   -s, --sol            extract the abi definition from the provided .sol file(s)
   -f, --find strings   search for function or event declarations given a four- or 32-byte code(s)
-
-Global Flags:
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
-  -v, --verbose      enable verbose (increase detail with --log_level)
+  -x, --fmt string     export format, one of [none|json*|txt|csv|api]
+  -v, --verbose        enable verbose (increase detail with --log_level)
+  -h, --help           display this help screen
 
 Notes:
   - For the --sol option, place the solidity files in the current working folder.
   - Search for either four byte signatures or event signatures with the --find option.
 ```
 
-**Source code**: [`tools/grabABI`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/grabABI)
+**Source code**: [`internal/abis`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis)
 

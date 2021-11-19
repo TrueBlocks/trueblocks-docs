@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 0.15.0-alpha
+  version: 0.16.1-alpha
   description: >
 
     A REST layer over the TrueBlocks application. With `chifra serve`, you can
@@ -199,7 +199,23 @@ paths:
           schema:
             type: boolean
         - name: receipts
-          description: export receipts instead of transaction list
+          description: export receipts instead of transactional data
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: logs
+          description: export logs instead of transactional data
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: traces
+          description: export traces instead of transactional data
           required: false
           style: form
           in: query
@@ -208,23 +224,15 @@ paths:
             type: boolean
         - name: statements
           description: >
-            for use with --accounting option only, export only reconciliation statements
+            export reconciliations instead of transactional data (requires --accounting option)
           required: false
           style: form
           in: query
           explode: true
           schema:
             type: boolean
-        - name: logs
-          description: export logs instead of transaction list
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: traces
-          description: export traces instead of transaction list
+        - name: neighbors
+          description: export the neighbors of the given address
           required: false
           style: form
           in: query
@@ -232,7 +240,8 @@ paths:
           schema:
             type: boolean
         - name: accounting
-          description: export accounting records instead of transaction list
+          description: >
+            attach accounting records to the exported data (applies to transactions export only)
           required: false
           style: form
           in: query
@@ -754,7 +763,7 @@ paths:
           schema:
             type: boolean
         - name: apps
-          description: display only the list of address appearances in the block
+          description: display a list of uniq address appearances in the block
           required: false
           style: form
           in: query
@@ -762,15 +771,7 @@ paths:
           schema:
             type: boolean
         - name: uniq
-          description: display only the list of uniq address appearances in the block
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: uniq_tx
-          description: display only the list of uniq address appearances in each transaction
+          description: display a list of uniq address appearances per transaction
           required: false
           style: form
           in: query
@@ -810,8 +811,7 @@ paths:
               type: string
               format: topic_t
         - name: count
-          description: >
-            display the number of the lists of appearances for --apps, --uniq, or --uniq_tx
+          description: display the number of the lists of appearances for --addrs or --uniq
           required: false
           style: form
           in: query
@@ -883,8 +883,7 @@ paths:
           schema:
             type: boolean
         - name: uniq
-          description: >
-            display a list of uniq addresses found in the transaction instead of the underlying data
+          description: display a list of uniq addresses found in the transaction
           required: false
           style: form
           in: query
@@ -1609,14 +1608,6 @@ paths:
             items:
               type: string
               format: blknum_t
-        - name: list
-          description: list the bloom and index hashes from local cache or IPFS
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
         - name: check
           description: check the validity of the chunk or bloom
           required: false

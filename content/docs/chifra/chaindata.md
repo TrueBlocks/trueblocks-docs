@@ -2,7 +2,7 @@
 title: "Chain data"
 description: ""
 lead: ""
-date: 2021-11-06T17:52:53
+date: 2021-11-18T22:52:20
 lastmod:
   - :git
   - lastmod
@@ -39,19 +39,16 @@ Arguments:
   blocks - a space-separated list of one or more block identifiers (required)
 
 Flags:
-  -e, --hashes    display only transaction hashes, default is to display full transaction detail
-  -U, --uncles    display uncle blocks (if any) instead of the requested block
-  -t, --trace     export the traces from the block as opposed to the block data
-  -s, --apps      display only the list of address appearances in the block
-  -u, --uniq      display only the list of uniq address appearances in the block
-  -n, --uniq_tx   display only the list of uniq address appearances in each transaction
-  -c, --count     display the number of the lists of appearances for --apps, --uniq, or --uniq_tx
-  -o, --cache     force a write of the block to the cache
-
-Global Flags:
+  -e, --hashes       display only transaction hashes, default is to display full transaction detail
+  -U, --uncles       display uncle blocks (if any) instead of the requested block
+  -t, --trace        export the traces from the block as opposed to the block data
+  -s, --apps         display a list of uniq address appearances in the block
+  -u, --uniq         display a list of uniq address appearances per transaction
+  -c, --count        display the number of the lists of appearances for --addrs or --uniq
+  -o, --cache        force a write of the block to the cache
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
   -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
 Notes:
   - blocks is a space-separated list of values, a start-end range, a special, or any combination.
@@ -63,7 +60,7 @@ Notes:
   - Large block ranges may crash the node, use --big_range to specify a larger range.
 ```
 
-**Source code**: [`tools/getBlocks`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getBlocks)
+**Source code**: [`internal/blocks`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/blocks)
 
 ## chifra receipts
 
@@ -85,11 +82,9 @@ Arguments:
 
 Flags:
   -a, --articulate   articulate the retrieved data if ABIs can be found
-
-Global Flags:
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
   -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
 Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
@@ -97,7 +92,7 @@ Notes:
   - If the queried node does not store historical state, the results for most older transactions are undefined.
 ```
 
-**Source code**: [`tools/getReceipts`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getReceipts)
+**Source code**: [`internal/receipts`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/receipts)
 
 ## chifra logs
 
@@ -117,11 +112,9 @@ Arguments:
 
 Flags:
   -a, --articulate   articulate the retrieved data if ABIs can be found
-
-Global Flags:
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
   -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
 Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
@@ -130,7 +123,7 @@ Notes:
   - If you specify a 32-byte hash, it will be assumed to be a transaction hash, if the transaction is not found, it will be used as a topic.
 ```
 
-**Source code**: [`tools/getLogs`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getLogs)
+**Source code**: [`internal/logs`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/logs)
 
 ## chifra traces
 
@@ -155,11 +148,9 @@ Flags:
   -f, --filter string   call the node's trace_filter routine with bang-separated filter
   -d, --statediff       export state diff traces (not implemented)
   -c, --count           show the number of traces for the transaction only (fast)
-
-Global Flags:
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
-  -v, --verbose      enable verbose (increase detail with --log_level)
+  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
 
 Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
@@ -169,7 +160,7 @@ Notes:
   - A state diff trace describes, for each modified address, what changed during that trace.
 ```
 
-**Source code**: [`tools/getTraces`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/getTraces)
+**Source code**: [`internal/traces`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/traces)
 
 ## chifra when
 
@@ -192,16 +183,14 @@ Arguments:
 Flags:
   -l, --list         export a list of the 'special' blocks
   -t, --timestamps   ignore other options and generate timestamps only
-
-Global Flags:
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -h, --help         display this help screen
   -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
 Notes:
   - The block list may contain any combination of number, hash, date, special named blocks.
   - Dates must be formatted in JSON format: YYYY-MM-DD[THH[:MM[:SS]]].
 ```
 
-**Source code**: [`tools/whenBlock`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/tools/whenBlock)
+**Source code**: [`internal/when`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/when)
 
