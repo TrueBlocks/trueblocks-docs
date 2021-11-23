@@ -97,7 +97,7 @@ paths:
             type: array
             items:
               type: string
-              format: address_t
+              format: address
         - name: count
           description: present only the number of records
           required: false
