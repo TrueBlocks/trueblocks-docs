@@ -13,7 +13,7 @@ images: []
 weight: 10
 toc: true
 draft: false
-tags: ['user-contributed']
+tags: ['community']
 contributors: ['Perama']
 ---
 
