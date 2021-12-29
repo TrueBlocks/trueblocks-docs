@@ -50,7 +50,7 @@ If you're running against mutliple chains, you may place any of these files in t
 
 ### Configuration Files
 
-<div style="padding:2px;padding-left:10px;background-color:green">trueBlocks.toml (all tools)</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">trueBlocks.toml (all tools)</div>
 
 | Item            | Description / Default                                              |
 | --------------- | ------------------------------------------------------------------ |
@@ -65,14 +65,14 @@ If you're running against mutliple chains, you may place any of these files in t
 | [dev]           |                                                                    |
 | debug_curl      | Increases log level for curl commands<br />false                   |
 
-<div style="padding:2px;padding-left:10px;background-color:green">All tools (in each file)</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">All tools (in each file)</div>
 
 | Item/Default | Description                                 |
 | ------------ | ------------------------------------------- |
 | [display]    |                                             |
 | format       | Customizes default output of tool<br/>empty |
 
-<div style="padding:2px;padding-left:10px;background-color:green">acctExport.toml for chifra export</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">acctExport.toml for chifra export</div>
 
 | Item/Default        | Description                                                                                                                         |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -100,7 +100,7 @@ If you're running against mutliple chains, you may place any of these files in t
 | list                | If `[exclusions]enabled` is `true`, exclude this list of addresses from extractions<br />empty                                      |
 
 <a href="#C4"></a>
-<div style="padding:2px;padding-left:10px;background-color:green">blockScrape.toml for chifra scrape</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">blockScrape.toml for chifra scrape</div>
 
 | Item/Default          | Description                                                                                   |
 | --------------------- | --------------------------------------------------------------------------------------------- |
@@ -121,7 +121,7 @@ If you're running against mutliple chains, you may place any of these files in t
 | [dev]                 |                                                                                               |
 | ipfs_gateway          | The default IPFS gateway endpoint for `chifra init`<br />https://ipfs.unchainedindex.io/ipfs/ |
 
-<div style="padding:2px;padding-left:10px;background-color:green">chunkMan.toml for chifra chunks</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">chunkMan.toml for chifra chunks</div>
 
 | Item/Default      | Description                                                        |
 | ----------------- | ------------------------------------------------------------------ |
@@ -129,7 +129,7 @@ If you're running against mutliple chains, you may place any of these files in t
 | [enabled]         |                                                                    |
 | download_manifest | If true, download the index manifest prior to processing<br />true |
 
-<div style="padding:2px;padding-left:10px;background-color:green">getTraces.toml for chifra traces</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">getTraces.toml for chifra traces</div>
 
 | Item/Default | Description                                                                           |
 | ------------ | ------------------------------------------------------------------------------------- |
@@ -138,7 +138,7 @@ If you're running against mutliple chains, you may place any of these files in t
 | skip_ddos    | If true, skip over September 2016 dDos transactions<br />true                         |
 | max          | If `skip_ddos` is `true`, this number of traces defines a 'dDos' transaction<br />250 |
 
-<div style="padding:2px;padding-left:10px;background-color:green">ethslurp.toml for chifra slurp</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">ethslurp.toml for chifra slurp</div>
 
 *See the source code for information on customizing this tool -- this legacy code does not comply with other tools.*
 
@@ -146,7 +146,7 @@ If you're running against mutliple chains, you may place any of these files in t
 
 The following tools are documented, but customizing them is not supported. If you change something here, and you break your installation, please don't tell us we didn't warn you.
 
-<div style="padding:2px;padding-left:10px;background-color:green">testRunner.toml for testRunner</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">testRunner.toml for testRunner</div>
 
 | Item/Default      | Description                                                                                                 |
 | ----------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -158,7 +158,7 @@ The following tools are documented, but customizing them is not supported. If yo
 | test_epoch        | The epoch to report in the performance testing tool - usually tracks current version<br />E-<VERSION_MINOR> |
 | copy_path         | An alternate path to which to copy performance results                                                      |
 
-<div style="padding:2px;padding-left:10px;background-color:green">makeClass.toml for makeClass</div>
+<div style="padding:2px;padding-left:10px;background-color:green;color:white">makeClass.toml for makeClass</div>
 
 | Item/Default | Description                                                                                                          |
 | ------------ | -------------------------------------------------------------------------------------------------------------------- |
