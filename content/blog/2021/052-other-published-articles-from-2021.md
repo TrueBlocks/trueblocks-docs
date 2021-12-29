@@ -1,18 +1,16 @@
 ---
-title: "Other Published Articles from 2021"
-lead: "A few articles published on my Medium Blog"
-date: 2021-12-30T18:10:28-04:00
+title: Other Published Articles from 2021
+lead: A few articles published on my Medium Blog
+date: '2021-12-30T18:10:28-04:00'
 categories:
 - Trueblocks
 tags: ['trueblocks']
-menu: 
-  blog:
-    parent: "trueblocks"
+weight: 50
+toc: true
 draft: false
 categories: []
 keywords: []
 ---
-
 
 Here's links to a few other articles we published in 2021 on Medium.
 
