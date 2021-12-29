@@ -1,20 +1,18 @@
 ---
 title: "Other Published Articles from 2021"
-description: "A few articles published on my Medium Blog"
 lead: "A few articles published on my Medium Blog"
 date: 2021-12-30T18:10:28-04:00
-lastmod:
-  - :git
-  - lastmod
-  - date
-  - publishDate
-images: []
-weight: 10
-toc: true
+categories:
+- Trueblocks
+tags: ['trueblocks']
+menu: 
+  blog:
+    parent: "trueblocks"
 draft: false
-tags: ["trueblocks"]
-contributors: ["Thomas Jay Rush"]
+categories: []
+keywords: []
 ---
+
 
 Here's links to a few other articles we published in 2021 on Medium.
 
