@@ -102,9 +102,9 @@ chifra export --logs --articulate --emitter --fmt csv 0x03fdcadc09559262f40f5ea6
 
 we now only see 3,317 events (again, at the time of this writing).
 
-## The unix philosophy
+## The Unix philosophy
 
-Following the unix philosphy of stringing together a data pipeline...
+Following the Unix philosphy of stringing together a data pipeline...
 
 First, let's look at the first line of the data in order to see the names of the data fields:
 
@@ -194,7 +194,8 @@ Additionally, understand that the TrueBlocks API mirrors exactly the command lin
 For example, the above command-line query could be re-written as a curl command thus
 
 ```[bash]
-curl "http://localhost:8080/export?addrs=0x03fdcadc09559262f40f5ea61c720278264eb1da&logs&articulate&fmt=csv&max_records=10000"  | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer | wc
+curl "http://localhost:8080/export?addrs=0x03fdcadc09559262f40f5ea61c720278264eb1da&logs&articulate&fmt=csv&max_records=10000" \
+ | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer | wc
 ```
 
 Notice (1) prepend addresses and other positional parameters with the item's name (in this case, `addrs`) and (2) attach the `max_records=10000` option, as the API only returns 250 records by default.
