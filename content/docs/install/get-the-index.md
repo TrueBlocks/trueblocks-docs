@@ -24,7 +24,7 @@ toc: true
 | If you want to...                                                                                                                    | and you don't mind...                                                                                                                          | then use...                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | minimize the size of the data stored locally and you want to get started faster...                                                   | slower first-time queries on new addresses, an index that's slightly behind the head of the chain, an index created by someone else...         | [`chifra init`](#use-init-to-get-only-the-chunks-you-query)       |
-| maximize the speed of first-time queries for new addresses...                                                                        | longer initial setup time, ~70 GB of local storage, an index that's slightly behind the head of the chain, an index created by someone else... | [`chifra pins --init_all`](#use_init_all-to-get-all-index-chunks) |
+| maximize the speed of first-time queries for new addresses...                                                                        | longer initial setup time, ~70 GB of local storage, an index that's slightly behind the head of the chain, an index created by someone else... | [`chifra init --all`](#use_init_all-to-get-all-index-chunks) |
 | have a fully-local index, built directly from your own node, that stays up with the chain and maximizes the speed of your queries... | two to three days setup time and running your own local node (such as dAppnode)....                                          | [`chifra scrape`](#use-scrape-to-build-your-own-index)            |
 
 ## Getting the index without running a node
@@ -34,7 +34,7 @@ If you're not running your own node (or you don't feel like waiting), you can do
 To do this, you have two options:
 
 - run `chifra init` to download only the Bloom filters. Then, as you query individual addresses, TrueBlocks will download the much-larger index chunks (_faster now, slower later_)
-- run `chifra pins --init_all` to download both the Bloom filters and the index chunks all at once (_slower now, faster later_)
+- run `chifra init --all` to download both the Bloom filters and the index chunks all at once (_slower now, faster later_)
 
 ### Use chifra init to get a subset of the data
 
@@ -48,7 +48,7 @@ For more information, see the [`chifra init` command documentation](/docs/chifra
 
 **Storage use**: In this scenario, since you only download the Bloom filters, the space required is about 1GB. Subsequently, as you download individual chunk, each chunk occupies about 25MB.
 
-The number of index chunks you download depends entirely on the addresses you query. Of course, if you query a lightly used address, very few chunks will be downloaded. However, if you query are heavily used address, such as UniSwap, nearly every chunk will be downloaded. This is by design. In the later case, you would probably be better off using `chifra pins --init_all` to begin with.
+The number of index chunks you download depends entirely on the addresses you query. Of course, if you query a lightly used address, very few chunks will be downloaded. However, if you query are heavily used address, such as UniSwap, nearly every chunk will be downloaded. This is by design. In the later case, you would probably be better off using `chifra init --all` to begin with.
 
 - For typical addresses (e.g. personal accounts), storage is somewhere between 50 to 500 MB
 - For more active addresses, storage may be as much as 1 or 2 GB
@@ -63,9 +63,9 @@ When you run `chifra init`, TrueBlocks downloads a set of Bloom filters from the
 3. Given the list of `appearances`, TrueBlocks pulls the full transacitonal history of the account from any (remote or local) RPC endpoint.
 4. During the query, you may instruct TrueBlocks to cache the response locally, making future queries for this same address nearly instantaneous.
 
-### Use chifra pins --init_all to get the entirity of the index
+### Use chifra init --all to get the entirity of the index
 
-To get the entirety of the appearance index, run `chifra pins --init_all`.
+To get the entirety of the appearance index, run `chifra init --all`.
 
 If you use this command and don't run `chifra scrape`, you will have to update the index periodically by running the command again. ([Read about the finding the latest manifest](#Supplementary-how-can-I-see-when-the-manifest-was-last-published)).
 
@@ -79,7 +79,7 @@ For detailed instructions, see the [`chifra pins` documentation](/docs/chifra/ad
 
 The initialization is very similar to the `init` process described in the previous section.
 
-However, while `chifra init` downloads only the Bloom filters, downloading the index chunks only after a user queries for an address, `chifra pins --init_all` _downloads all index chunks up front_.
+However, while `chifra init` downloads only the Bloom filters, downloading the index chunks only after a user queries for an address, `chifra init --all` _downloads all index chunks up front_.
 
 While this process takes much longer (perhaps hours), when you query a particular address in the future, TrueBlocks no longer has to download anything.
 Therefore, the query is significantly faster.
@@ -105,7 +105,7 @@ For detailed instructions, see the [`chifra scrape` command documentation](/docs
 
 **How it works**:
 
-The end result of `chifa scrape` is the same as the end result of `chifra pins --init_all`. However, the process is crucially different: rather than downloading the index that we publish (that is, trusting us), `chifra scrape` _builds the index on your local machine connecting only with your local-running RPC endpoint_, which means if you trust your own setup, you can trust the data.
+The end result of `chifa scrape` is the same as the end result of `chifra init --all`. However, the process is crucially different: rather than downloading the index that we publish (that is, trusting us), `chifra scrape` _builds the index on your local machine connecting only with your local-running RPC endpoint_, which means if you trust your own setup, you can trust the data.
 
 (One note: It's possible to run against any RPC endpoint -- remote or local -- but because the TrueBlocks scraper hits the node continually and very aggressively, you will probably get rate-limited against a shared RPC server such as Infura.)
 
@@ -120,7 +120,7 @@ For example, you can initially download only the Bloom filters with `chifra init
 
 Alternatively, you may choose to scrape (i.e. build) the index yourself and share it with others by pinning it on IPFS. In this case, you're being a good citizen and making the whole ecosystem better off because you're sharing you index.
 
-You can download the index (either with `chifra init` or `chifra pins --init_all`) and pin that data (with the `--pin_locally` flag) as a way to share with the community, and then turn on the scraper. All options are available as a way to maximize the usefulness of the tool.
+You can download the index (either with `chifra init` or `chifra init --all`) and pin that data (with the `--pin_locally` flag) as a way to share with the community, and then turn on the scraper. All options are available as a way to maximize the usefulness of the tool.
 
 ## Supplementary: how can I see when the manifest was last published?
 
