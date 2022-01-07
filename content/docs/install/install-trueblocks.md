@@ -206,8 +206,8 @@ Doing that requires an index.
 There are multiple options, which the [How Can I Get the Index?](/docs/install/get-the-index)
 article covers in more detail.
 
-No matter what method, getting the index will take somewhere between 10 minutes
-and a few days. So you might want to play around with some [chifra blockchain
+No matter what method, downloading or creating the index will take somewhere between a few minutes
+and a day or two. So you might want to play around with some [chifra blockchain
 commands](/docs/chifra/chaindata) first.
 
 ### What if my node doesn't have tracing or archiving? {#no-tracing}
