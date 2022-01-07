@@ -25,6 +25,21 @@
 				</nav>
 			{{ end }}
 			<h1>{{ .Title }}</h1>
+                        <div class="date">
+                          {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
+                          {{ $publishDate := .PublishDate }}
+                          <small>
+                          <em>Published on: {{ T "publish_date" }} </em>{{ $publishDate.Format $dateFormat }}
+                          {{ with .Lastmod }}
+                            {{ if gt . $publishDate }}
+                              
+                              <em>Last edited:{{ T "last_updated" }} </em>{{ .Format $dateFormat }}
+                          </small>
+                            <br>
+                             </p>
+                            {{ end }}
+                          {{ end }}
+                        </div>
 			<p class="lead">{{ .Params.lead | safeHTML }}</p>
 			{{ partial "main/headline-hash.html" .Content }}
 			{{ if .Site.Params.editPage -}}
@@ -35,6 +50,7 @@
 			{{ else -}}
 				<div class="my-n3"></div>
 			{{ end -}}
+
 		</main>
 	</div>
 {{ end }}
