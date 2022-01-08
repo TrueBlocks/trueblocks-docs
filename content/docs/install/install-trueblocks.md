@@ -27,7 +27,7 @@ If you need help with a particular step, see the [installation's troubleshooting
 
 0.  Update GoLang installation
     - `go --version`
-    - *If your version is less than 1.14,* [install Go](/docs/install/install-trueblocks/#how-do-i-check-my-go-version)
+    - *If your version is less than 1.16,* [install Go](/docs/install/install-trueblocks/#how-do-i-check-my-go-version)
 
 <br/>
 
@@ -94,7 +94,7 @@ Run this command
 go version
 ```
 
-TrueBlocks needs version 1.12.x or later. If you to install or update Go, [see here](https://golang.org/doc/install).
+TrueBlocks needs version 1.16.x or later. If you to install or update Go, [see here](https://golang.org/doc/install).
 
 
 #### How do I install packages on the command line?
