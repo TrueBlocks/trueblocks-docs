@@ -55,7 +55,7 @@ If you need help with a particular step, see the [installation's troubleshooting
 
     * On linux at `~/.local/share/trueblocks`
     * On mac at `~/Library/Application Support/TrueBlocks`
-    * If you've configured it, wherever the location of `$XDG_DATA_HOME` is
+    * If you've configured it, wherever the location of `$XDG_CONFIG_HOME` is
 <br/><br/>
 
 4. In the configuration directory, edit `trueblocks.toml` to add your RPC and
@@ -171,56 +171,93 @@ export PATH=${PATH}:</path/to/trueblocks-core/directory>/bin
 
 If you are confused, a Google search may be in order…
 
-### Configuring RPCs
+### Configuration
 
-#### How do I add my local RPC?
+#### Where is the configuration?
 
-By default, TrueBlocks checks for an RPC on `http://localhost:8545/`.
-If you are running a local node on a different port, simply change the port.
+Where your configuration folder is depends on your operating system
+and environment.
 
-#### How do I add external RPCs and etherscan?
+  - If `XDG_CONFIG_HOME` is set, your configuration is there
+  - Otherwise, on Linux: `~/.local/share/trueblocks`
+  - Otherwise, on Mac: `~/Library/Application Support/TrueBlocks`
+  - Otherwise, you're out of luck--we only support Linux and Mac
 
-If you are using an external RPC, you to need add its endpoint.
-Similarly, for deep exploration of ABI data, [some tool interfaces have an
-`--articulate` option](/docs/chifra/chaindata/).
-The `articulate` option requires an EtherScan API key.
-We are working on removing this centralized dependency.
+The primary or base configuration file (`trueBlocks.toml`) must exist at one
+of the above locations for `chifra` to work.
 
-In your config file, the specific RPC path will differ depending on the service.
+With the recent addition of support for multi-chain, there has arisen the need
+for per-chain configuration as well (for example, values such as `rpcProvider` or
+`remoteExplorer` are unique per chain).
 
-Here’s an example for Infura and EtherScan, with <key_value> being replaced by a
-hash string.
+This issue is discussed here [TODO: PLACE_HOLDER](#).
+
+#### How do I specify an RPC endpoint?
+
+By default, TrueBlocks looks for the RPC at `http://localhost:8545/`.
+
+If you are using a remote RPC such as Infura or your own local RPC at
+a different port, you will need to modify that value.
+
+As is true of all configuration values, you coudl use an environment
+variable as described above, but you may also edit `trueBlocks.toml`.
+
+The format of that file is documented [TODO: PLACE_HOLDER](#).
+
+#### How do I add a EtherScan key?
+
+Some small part of TrueBlocks requires an EtherScan API key. In particular
+this is the [`--articulate` option](/docs/chifra/chaindata/). We are working
+hard to remove this centralized dependency, but in the mean time you
+may get a warning of a missing key.
+
+Here’s an example of a remote RPC for Infura and an EtherScan API key.
+***Warning: see the note below***
 
 ```TOML
 [settings]
-rpcProvider = "https://mainnet.infura.io/v3/<key_value>"
+default_chain=mainnet
 etherscan_key = "<key_value>"
+
+[mainnet]
+rpcProvider = "https://mainnet.infura.io/v3/<key_value>"
 ```
 
-### Why should I get an index?
+***Note:*** Until mutli-chain is fully supported, put the `rpcProvider` value
+in the `[settings]` group.
 
-When you query basic transaction data, you don't need an index.
-However, most people want to explore entire histories of addresses, calls, and traces.
-Doing that requires an index.
+***Note:*** The EtherScan key is not *per-chain*.
 
-There are multiple options, which the [How Can I Get the Index?](/docs/install/get-the-index)
-article covers in more detail.
+### Why do I need the index of appearances?
 
-No matter what method, downloading or creating the index will take somewhere between a few minutes
-and a day or two. So you might want to play around with some [chifra blockchain
-commands](/docs/chifra/chaindata) first.
+If you're only querying basic block or transaction data, you don't really
+need the index of appearances. 
+
+However, most of our users with to explore the entire history of their own
+addresses. If you wish to do that, you will need the index.
+
+There are multiple options for getting the index, which the
+[How Can I Get the Index?](/docs/install/get-the-index) article covers
+in more detail.
+
+No matter which method you use, downloading or creating the index will take
+somewhere between a few minutes and a day or two. So you might want to play
+around with some [chifra blockchain commands](/docs/chifra/chaindata) first.
 
 ### What if my node doesn't have tracing or archiving? {#no-tracing}
 
-If you don't have a node with tracing or archiving, you might get an error
-when you run some chifra commands. Something like
+If the node you're running does not support OpenEthereum style tracing or it
+is not an archive node, you may get an error telling you such.
+
+Something like
 
 > ` --accounting requires historical balances. The RPC server does not have them. Quitting...`
 
-TrueBlocks lets you disable these checks.
+You may disable this warning by editing a configuration file. Find the file
+called `blockScrape.toml` in your configuration folder (in a multi-chain environment
+this will be in the chain-specific config file, otherwise at the top level).
 
-To disable, make a file in your TrueBlocks config directory called `blockScrape.toml`.
-Add the following settings:
+Add the following setting to the file (which you may create if it doesn't exist):
 
 ```toml
 [requires]
