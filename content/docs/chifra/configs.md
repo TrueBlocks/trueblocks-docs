@@ -20,22 +20,30 @@ Many of the `chifra` commands allow you to customize their behaviour through con
 
 ### Environment Variables
 
-Each command-line option may be overridden by exporting an environment variable in your shell prior to running `chifra`. The name of the environment variable is as follows:
+Each command-line option may be overridden by exporting an environment variable in your shell prior to running a `chifra` command.
 
-1. The environment variable name is `ALL_UPPER_CASE`
-2. The name preserves underbars in the `configuration_item_name`
-3. The name starts with the name of the `group` the item belongs to
+The name of those environment variables is as follows:
 
-So, for example, the command:
+1. The environment variable is `ALL_UPPER_CASE`
+2. The environment variable name preserves underbars in the `item_name`
+3. The name of the variable starts with the `group` the item belongs to
+
+For example: `GROUP_ITEM_NAME`.
+
+A more concrete example might be:
 
 ```
 export SETTINGS_RPCPROVIDER=http://localhost:9876
 chifra blocks 100
 ```
 
-uses the alternate RPC provider you've specified.
+which would cause `chifra` to use an alternate rpcProvider without having to edit the configuration file.
 
-This feature comes in handy when build shell scripts that automate various tasks with `chifra`.
+This feature comes in handy when build shell scripts to automate various tasks with `chifra`.
+
+### Where Are Configuration Files Stored?
+
+Please see [TODO: PLACE_HODLER](#) for more information.
 
 ### Separate Files
 
