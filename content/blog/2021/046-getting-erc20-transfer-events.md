@@ -194,11 +194,11 @@ Additionally, understand that the TrueBlocks API mirrors exactly the command lin
 For example, the above command-line query could be re-written as a curl command thus
 
 ```[bash]
-curl "http://localhost:8080/export?addrs=0x03fdcadc09559262f40f5ea61c720278264eb1da&logs&articulate&fmt=csv&max_records=10000" \
+curl "http://localhost:8080/export?addrs=0x03fdcadc09559262f40f5ea61c720278264eb1da&logs&articulate&fmt=csv&maxRecords=10000" \
  | tr '"' ' ' | cut -d',' -f1,2,11-100 | grep Transfer | wc
 ```
 
-Notice (1) prepend addresses and other positional parameters with the item's name (in this case, `addrs`) and (2) attach the `max_records=10000` option, as the API only returns 250 records by default.
+Notice (1) prepend addresses and other positional parameters with the item's name (in this case, `addrs`) and (2) attach the `maxRecords=10000` option, as the API only returns 250 records by default.
 
 The API produces `json` data by default, so you must include the `fmt=csv` option to your curl command if you wish to pipe the data through a command line tool such as `cut`, `head`, `sed` or `grep` (unless you use the JSON parser `jq` which is highly recommended for JSON data wrangling).
 
