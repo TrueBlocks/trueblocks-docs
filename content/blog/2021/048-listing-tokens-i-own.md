@@ -15,7 +15,7 @@ images: []
 contributors: ["Thomas Jay Rush"]
 ---
 
-A TrueBlocks recipe to query ERC 20 token balances for an address.
+A TrueBlocks recipe to show ERC 20 token balances for an address.
 
 **Note:** The following assumes you have a copy of (either by having built it yourself or downloaded it) the TrueBlocks Appearance Index.
 

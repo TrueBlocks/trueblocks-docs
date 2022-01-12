@@ -16,7 +16,7 @@ images: []
 contributors: ["Thomas Jay Rush"]
 ---
 
-A TrueBlocks recipe to display every ERC20 Transfer event from a given smart contract.
+A TrueBlocks recipe to show every ERC20 Transfer event from a given smart contract.
 
 **Note:** The following assumes you have a copy of (either by having built it yourself or downloaded it) the TrueBlocks Appearance Index. These instructions also assume that the address you're querying is an ERC 20 smart contract.
 
