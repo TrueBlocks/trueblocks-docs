@@ -18,6 +18,8 @@ tags: ["community"]
 
 One of our users ([Magnus Hansson](https://magnushansson.xyz/)) has written an excellent article on how to install all three of [Erigon](https://github.com/ledgerwatch/erigon), Erigon's RPC, and [TrueBlocks](http://github.com/TrueBlocks/trueblocks-core) as serives on Ubuntu.
 
+[How to set up Erigon, Erigon’s RPC and TrueBlocks as services](https://magnushansson.xyz/blog_posts/crypto_defi/2022-01-10-Erigon-Trueblocks)
+
 Not only that -- the blog post is visually wonderful as well.
 
 Thanks Magnus. Looking for some amazing data science from this quarter. Cheers.
