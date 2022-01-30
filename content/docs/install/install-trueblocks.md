@@ -26,7 +26,7 @@ If you need help with a particular step, see the [installation's troubleshooting
 ## Quick Install
 
 0.  Update GoLang installation
-    - `go --version`
+    - `go version`
     - *If your version is less than 1.16,* [install Go](/docs/install/install-trueblocks/#how-do-i-check-my-go-version)
 
 <br/>
