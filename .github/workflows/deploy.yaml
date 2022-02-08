@@ -43,7 +43,7 @@ jobs:
           publish_branch: deploy
 
       - name: checkout deploy
-        run: git checkout deploy
+        run: git checkout -f deploy
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.1
