@@ -18,54 +18,56 @@ menu:
       prologue
 ---
 
-## Without a local index, Ethereum is not really permissionless
+## Permissionless?
 
-More specifically, without an index, Ethereum cannot effectively serve
-desktop applications the type of data that the applications need.
+Blockchains are supposed to be permissionless. But, are they?
 
-Ethereum is supposed to be permissionless. The blockchain is supposed to be a
-record of all transactions. Without an index, however, the blockchain is undiscoverable,
-like the internet would be without search engines. Or like being lost at sea...
+In one sense, "Yes." Anyone may interact with a blockchain. All you need is a wallet and access to an RPC...wait...that's not permissionless.
 
-<img src="/docs/img/steam-boat-off-a-harbor.jpg" alt="The term cybernetics stems from the Greek κυβερνήτης (kybernētēs, steersman, governor, pilot, or rudder)When Norman Weiner coined the word, he was fascinated in the control of systems. Who controls Ethereum?" width="500"/>
+It's worse than that. You can't see your own history of transactions without visiting a website. "Please Mr. Blockchain Explorer...please may I see my transactions?"
 
-Of course, you can register with an Ethereum block explorer, like EtherScan,
-and access the blockchain remotely.
-The trouble is that these resources are shared by many users,
-which entails an anti-privacy sequence:
+It's as if you're lost at sea...
 
-1. To prevent any user from using more than their fair share, the service
-needs to limit each user's usage
-2. Because of (1), the service needs to identify each user
-3. Because of (2), the service is no longer private, especially as each user
-likely queries the same set of addresses each time they visit.
+<img src="/docs/img/steam-boat-off-a-harbor.jpg" alt="Who's stearing this boat?" width="500"/>
 
-Furthermore, just like searching the internet with Google,
-you consent to any query logging or datamining that the service wants to do,
-and you can't even be sure the data is accurate.
+---
+Anyone can visit EtherScan for free. And, they give us (give us!) anything we want. But do you think they're not watching? Do you think they're not connecting your Ethereum address to your IP address? Why wouldn't they?
 
-## TrueBlocks provides this local index
+Websites are inherently the wrong solution for decentralized data:
 
-Trueblocks builds a local index directly on your machine.
-It ships with large suite of command line options to let you make the queries you
-want to make─addresses, names, ABIs, etc.
+1. To prevent selfish users from using more than their fair share, the website must limit your usage (permissionless?)
+2. The only way to accomplish (1) is to identify each user (private?)
+3. If (2) happens, it's trivial to attach that identification to an address (we all visit the same addresses repeatedly).
+4. Connecting IP address to name is already trivial on the internet.
 
-In addition to the command line, TrueBlocks also provides a graphical user interface
-with the [Explorer application](/docs/install/install-explorer).
-So you don't need to be highly technical to use TrueBlocks.
+It may not be true now, but do you want the big data people to know how you spend your money? Everyone knows this is going to happen. At TrueBlocks, we ask "why not fix it now?"
 
-### And yes, it's permissionless
+## TrueBlocks provides a possible solution
 
-TrueBlocks is open source. If you don't like something, you're free to modify the
-software, or fork it.
+We think there's a two-part problem:
+
+(1) Blockchains are difficult to run,  
+(2) Even if one runs a blockchain, getting data from that chain is hard to do.
+
+Trueblocks solves the second problem making the first problem less onerous.
+
+TrueBlocks builds a local index of addresses on your machine. This allows you to quickly find every appearance of any of your own accounts without exposing your interest in those address to anyone else. 
+
+TrueBlocks ships with large suite of command line tools to let you make exactly the queries you want to make. In addition to the command line, TrueBlocks provides a server tool that delivers this information to your applications. We've also built an interface with our open source [Account Explorer](/docs/install/install-explorer).
+
+### Automatically Sharing the Index
+
+TrueBlocks is open source. If you don't like something, you're free to modify the software, or fork it.
 
 We also distribute copies of the index on the IPFS, meaning that:
+
 * the data is immutable (i.e. we can't mess with it)
 * the data doesn't belong to anyone
 
 ## The index provides huge engineering advantages
 
 Besides the philosophical benefits, TrueBlocks is straight up more performant.
+
 Some highlights:
 
 - Querying straight from your hard drive is _faster by many factors._

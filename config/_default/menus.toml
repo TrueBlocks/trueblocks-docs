@@ -110,6 +110,6 @@ url = "/privacy-policy/"
 weight = 30
 
 [[footer]]
-name = "Improve these Docs"
+name = "Improve the docs"
 url = "https://github.com/TrueBlocks/trueblocks-docs"
 weight = 20
