@@ -13,7 +13,7 @@ images: []
 menu: 
   docs:
     parent: prologue
-weight: 999
+weight: 0100
 toc: true
 ---
 
@@ -45,30 +45,30 @@ make the application best serve our core values.
 These core design features are _imperative_.
 They underlie every single commit made to the TrueBlocks code base.
 
-|Core design values| What they mean in practice matter|
-|--------------|---------------------------------|
-| Decentralization| No one should have to rely on anyone other than themselves for data. This including users who want data at the very end of the data journey|
-| Performance| TrueBlocks should be fast on small machines, and provide options for minimal disc footprints|
-| Preserves integrity of data| Blockchain data is mutually-agreed upon and consented-to. Don't tamper with it.|
+| Core design values          | What they mean in practice matter                                                                                                           |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Decentralization            | No one should have to rely on anyone other than themselves for data. This including users who want data at the very end of the data journey |
+| Performance                 | TrueBlocks should be fast on small machines, and provide options for minimal disc footprints                                                |
+| Preserves integrity of data | Blockchain data is mutually-agreed upon and consented-to. Don't tamper with it.                                                             |
 
 ### Very important values
 
 These values are particularly important. They are naturally necessary to achieving
 the core design features.
 
-|Very important values| What they mean in practice|
-|--------------|---------------------------------|
-|Transparency|Every person gets permissionless access to all the data they want; the application should be open source, letting users verify the data|
-|Reproducibility|Required for transparency and decentralization|
-|Stability|It should run forever with zero downtime|
+| Very important values | What they mean in practice                                                                                                              |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Transparency          | Every person gets permissionless access to all the data they want; the application should be open source, letting users verify the data |
+| Reproducibility       | Required for transparency and decentralization                                                                                          |
+| Stability             | It should run forever with zero downtime                                                                                                |
 
 ### Important values
 
 These values are important, and TrueBlocks tries to maximize these values wherever possible.
 However, if we have to make a tradeoff, these values come after the core values.
 
-| Important values | What they mean in practice                                          |
-|------------------|------------------------------------------------------------------------|
+| Important values | What they mean in practice                                             |
+| ---------------- | ---------------------------------------------------------------------- |
 | Robustness       | App should work forever without needing to be futzed with              |
 | Approachability  | Easy to understand how it works; easy to understand how to get started |
 | Simplicity       | Related to Approachability                                             |
@@ -80,17 +80,17 @@ However, if we have to make a tradeoff, these values come after the core values.
 
 While TrueBlocks does not _try_ to sacrifice these values, they are not core concerns.
 
-| Not a priority   |                                                  Why these values aren't emphasized                                                                                       |
-|------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| Compatibility    | Depends on programming languages that we use, so not a concern                                                                                       |
-| Composability    | Not really a concern                                                                                                                    |
-| Expressiveness   | Not a concern, readable commands more important                                                                                             |
-| Interoperability | Only care about data being platform-independent. Production of the index needs to create something that is useful outside of TrueBlocks                                                  |
-| Mensurability    | For internal use only, so less of a concern                                                                                             |
-| Portability      | Depends on programming language, so not a concern                                                                                       |
-| Safety           | Not really. Consented to data is safe.     |
+| Not a priority   | Why these values aren't emphasized                                                                                                                                                                                                                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Compatibility    | Depends on programming languages that we use, so not a concern                                                                                                                                                                                                                                                      |
+| Composability    | Not really a concern                                                                                                                                                                                                                                                                                                |
+| Expressiveness   | Not a concern, readable commands more important                                                                                                                                                                                                                                                                     |
+| Interoperability | Only care about data being platform-independent. Production of the index needs to create something that is useful outside of TrueBlocks                                                                                                                                                                             |
+| Mensurability    | For internal use only, so less of a concern                                                                                                                                                                                                                                                                         |
+| Portability      | Depends on programming language, so not a concern                                                                                                                                                                                                                                                                   |
+| Safety           | Not really. Consented to data is safe.                                                                                                                                                                                                                                                                              |
 | Security         | Not really. Out of our code's purview other than basic software security. We hold no special data: our data is consented-to data. Reproducible, consented-to data is reproducibly safe. The app runs on local machines. If the local machine is compromised, TrueBlocks is not the user's biggest security concern. |
-| Thoroughness     | The application should do one thing perfectly -- reconciliations  |
+| Thoroughness     | The application should do one thing perfectly -- reconciliations                                                                                                                                                                                                                                                    |
 
 _This ranking of values was inspired by [a talk given by Bryan Cantrill in 2018](https://www.youtube.com/watch?v=2wZ1pCpJUIM)._
 
