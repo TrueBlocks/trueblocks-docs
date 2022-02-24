@@ -43,6 +43,12 @@ name = "Command line"
 url = "/docs/chifra/"
 weight = 30
 
+[[docs]]
+identifier = "explorer"
+name = "Explorer"
+url = "/docs/explorer/"
+weight = 30
+
 [[data]]
 identifier = "intro"
 name = "The Data Model"
