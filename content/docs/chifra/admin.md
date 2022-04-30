@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2022-02-01T17:28:27
+date: 2022-04-30T13:40:54
 lastmod:
   - :git
   - lastmod
@@ -71,20 +71,20 @@ Arguments:
 	One or more of [ indexer | monitors | both ]
 
 Flags:
-  -a, --action string    command to apply to the specified scrape
-                         One of [ toggle | run | restart | pause | quit ]
-  -s, --sleep float      seconds to sleep between scraper passes (default 14)
-  -p, --pin              pin chunks (and blooms) to IPFS as they are created (requires pinning service)
-  -u, --publish          after pinning the chunk, publish it to UnchainedIndex
-  -n, --block_cnt uint   maximum number of blocks to process per pass (default 2000)
-  -x, --fmt string       export format, one of [none|json*|txt|csv|api]
-  -v, --verbose          enable verbose (increase detail with --log_level)
-  -h, --help             display this help screen
-
-Notes:
-  - if no mode is presented, chifra scrape indexer --action run is assumed.
-  - the --pin and --publish options require an API to the pinning service.
-  - the --n_* related options allow you to tune the scrapers.
+  -a, --action string         command to apply to the specified scrape
+                              One of [ toggle | run | restart | pause | quit ]
+  -s, --sleep float           seconds to sleep between scraper passes (default 14)
+  -p, --pin                   pin chunks (and blooms) to IPFS as they are created (requires pinning service)
+  -u, --publish               after pinning the chunk, publish it to UnchainedIndex
+  -z, --blaze                 invoke the blaze scraper to process blocks
+  -n, --block_cnt uint        maximum number of blocks to process per pass (default 2000)
+  -b, --block_chan_cnt uint   number of concurrent block processing channels (default 10)
+  -d, --addr_chan_cnt uint    number of concurrent address processing channels (default 20)
+  -l, --start_block uint      first block to visit (available only for blaze scraper)
+  -r, --ripe_block uint       blocks prior to this value are written to 'ripe' folder (available only for blaze scraper)
+  -x, --fmt string            export format, one of [none|json*|txt|csv|api]
+  -v, --verbose               enable verbose (increase detail with --log_level)
+  -h, --help                  display this help screen
 ```
 
 ### explainer
@@ -118,14 +118,11 @@ Usage:
   chifra chunks [flags] <block> [block...]
 
 Arguments:
-  blocks - an optional list of blocks to process
+  blocks - optional list of blocks to intersect with chunk ranges
 
 Flags:
-  -c, --check            check the validity of the chunk or bloom
   -e, --extract string   show some or all of the contents of the chunk or bloom filters
-                         One of [ header | addr_table | app_table | chunks | blooms ]
-  -s, --stats            for the --list option only, display statistics about each chunk or bloom
-  -a, --save             for the --extract option only, save the entire chunk to a similarly named file as well as display
+                         One of [ stats | pins | blooms | index | header | addresses | appearances ]
   -x, --fmt string       export format, one of [none|json*|txt|csv|api]
   -v, --verbose          enable verbose (increase detail with --log_level)
   -h, --help             display this help screen
@@ -160,8 +157,7 @@ Flags:
   -h, --help         display this help screen
 
 Notes:
-  - chifra init is an alias for the chifra pins --init command.
-  - See chifra pins --help for more information.
+  - Re-run chifra init as often as you wish. It will repair or freshen the index.
 ```
 
 **Source code**: [`internal/init`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/init)
@@ -178,14 +174,11 @@ Usage:
   chifra pins [flags]
 
 Flags:
-  -l, --list          list the bloom and index hashes from local cache or IPFS
-  -i, --init          download the blooms or index chunks from IPFS
-  -a, --all           in addition to Bloom filters, download full index chunks
-  -S, --share         share downloaded data by pinning it to IPFS (the IPFS daemon must be running)
-  -s, --sleep float   throttle requests by this many seconds (default 0.25)
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
-  -v, --verbose       enable verbose (increase detail with --log_level)
-  -h, --help          display this help screen
+  -i, --init         download the blooms or index chunks from IPFS
+  -a, --all          in addition to Bloom filters, download full index chunks
+  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
 Notes:
   - One of --list or --init is required.
