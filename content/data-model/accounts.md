@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2022-02-10T19:56:40
+date: 2022-05-01T21:04:10
 lastmod:
   - :git
   - lastmod
@@ -192,6 +192,15 @@ Abi data is made of the following data fields:
 
 See the `chifra abis` command line for information about getting an EtherScan key.
 
+
+## ListStats
+
+
+| Field    | Description                                               | Type    |
+| -------- | --------------------------------------------------------- | ------- |
+| address  | the address for this count                                | address |
+| nRecords | the number of appearances for the given address           | uint64  |
+| fileSize | the size of the monitor file containing those appearances | uint64  |
 
 ## Base types
 

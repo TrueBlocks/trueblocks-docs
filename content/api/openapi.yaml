@@ -130,7 +130,7 @@ paths:
               schema:
                 properties:
                   data:
-                    description: a single appearance of an address anywhere in the chain in the form of blockNumber.transactionIndex
+                    description: data of the appropriate type from a single appearance of an address or the count of same
                     type: array
                     items:
                       oneOf:
@@ -390,12 +390,13 @@ paths:
               schema:
                 properties:
                   data:
-                    description: a single appearance of an address anywhere in the chain in the form of blockNumber.transactionIndex
+                    description: data of the appropriate type from a single appearance of an address or the count of same
                     type: array
                     items:
                       oneOf:
                         - $ref: "#/components/schemas/appearance"
                         - $ref: "#/components/schemas/reconciliation"
+                        - $ref: "#/components/schemas/listStats"
                         - $ref: "#/components/schemas/transaction"
                         - $ref: "#/components/schemas/receipt"
                         - $ref: "#/components/schemas/log"
@@ -440,7 +441,7 @@ paths:
     get:
       tags:
         - Accounts
-      summary: Manage Monitors
+      summary: Manage monitors
       description: Add, remove, clean, and list address monitors.
       operationId: accounts-monitors
       parameters:
@@ -463,35 +464,6 @@ paths:
           explode: true
           schema:
             type: boolean
-      responses:
-        "200":
-          description: returns the requested data
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    description: A local file indicating a user's interest in an address. Includes caches for reconicilations, transactions and appearances as well as an optional association to named account
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/monitor"
-        "400":
-          description: bad input parameter
-    delete:
-      summary: Delete, undelete, or remove a monitor
-      operationId: accounts-monitors
-      parameters:
-        - name: addrs
-          description: one or more addresses (0x...) to process
-          required: true
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: array
-            items:
-              type: string
-              format: address
         - name: delete
           description: delete a monitor, but do not remove it
           required: false
@@ -518,9 +490,18 @@ paths:
             type: boolean
       responses:
         "200":
-          description: Deleted
-        "404":
-          description: id not found
+          description: returns the requested data
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: A local file indicating a user's interest in an address. Includes caches for reconicilations, transactions and appearances as well as an optional association to named account
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/monitor"
+        "400":
+          description: bad input parameter
   /names:
     get:
       tags:
@@ -613,47 +594,6 @@ paths:
           explode: true
           schema:
             type: boolean
-      responses:
-        "200":
-          description: returns the requested data
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    description: an association between a name and address for use throughout TrueBlocks
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/name"
-                example:
-                  [
-                    {
-                      "tags": "50-Tokens:ERC20",
-                      "address": "0xfe5f141bf94fe84bc28ded0ab966c16b17490657",
-                      "name": "LibraToken",
-                      "symbol": "LBA",
-                      "source": "On chain",
-                      "decimals": 18,
-                      "description": "Decentralized lending infrastructure facilitating open access to credit networks on Ethereum.",
-                    },
-                  ]
-        "400":
-          description: bad input parameter
-    delete:
-      summary: Delete, undelete, or remove a monitor
-      operationId: accounts-monitors
-      parameters:
-        - name: addrs
-          description: one or more addresses (0x...) to process
-          required: true
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: array
-            items:
-              type: string
-              format: address
         - name: delete
           description: delete a monitor, but do not remove it
           required: false
@@ -680,9 +620,30 @@ paths:
             type: boolean
       responses:
         "200":
-          description: Deleted
-        "404":
-          description: id not found
+          description: returns the requested data
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: an association between a name and address for use throughout TrueBlocks
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/name"
+                example:
+                  [
+                    {
+                      "tags": "50-Tokens:ERC20",
+                      "address": "0xfe5f141bf94fe84bc28ded0ab966c16b17490657",
+                      "name": "LibraToken",
+                      "symbol": "LBA",
+                      "source": "On chain",
+                      "decimals": 18,
+                      "description": "Decentralized lending infrastructure facilitating open access to credit networks on Ethereum.",
+                    },
+                  ]
+        "400":
+          description: bad input parameter
   /abis:
     get:
       tags:
@@ -1505,20 +1466,6 @@ paths:
                 - indexer
                 - monitors
                 - both
-        - name: action
-          description: command to apply to the specified scrape
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: string
-            enum:
-              - toggle
-              - run
-              - restart
-              - pause
-              - quit
         - name: sleep
           description: seconds to sleep between scraper passes
           required: false
@@ -1530,14 +1477,6 @@ paths:
         - name: pin
           description: >
             pin chunks (and blooms) to IPFS as they are created (requires pinning service)
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: publish
-          description: after pinning the chunk, publish it to UnchainedIndex
           required: false
           style: form
           in: query
@@ -1871,7 +1810,7 @@ components:
           type: boolean
           description: "`true` if deleted, `false` otherwise"
     appearance:
-      description: "a single appearance of an address anywhere in the chain in the form of blockNumber.transactionIndex"
+      description: "data of the appropriate type from a single appearance of an address or the count of same"
       type: object
       properties:
         blockNumber:
@@ -2086,6 +2025,22 @@ components:
         isErc721:
           type: boolean
           description: "`true` if the address is an ERC720, `false` otherwise"
+    listStats:
+      description: "data of the appropriate type from a single appearance of an address or the count of same"
+      type: object
+      properties:
+        address:
+          type: string
+          format: address
+          description: "the address for this count"
+        nRecords:
+          type: number
+          format: uint64
+          description: "the number of appearances for the given address"
+        fileSize:
+          type: number
+          format: uint64
+          description: "the size of the monitor file containing those appearances"
     block:
       description: "block data directly from the blockchain"
       type: object
@@ -2799,17 +2754,6 @@ components:
           type: string
           example: "Byzantium"
           description: "the name of the block for some named 'special' blocks"
-    listStats:
-      description: "`list` statistics"
-      type: object
-      properties:
-        address:
-          type: string
-          format: address
-        nRecords:
-          type: number
-        fileSize:
-          type: number
     response:
       required:
         - result

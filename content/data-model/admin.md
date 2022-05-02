@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2022-04-30T16:17:37
+date: 2022-04-30T18:36:34
 lastmod:
   - :git
   - lastmod
@@ -83,7 +83,7 @@ The following commands produce and manage pinnedchunks:
 | Tools                                              |                                                                 |
 | -------------------------------------------------- | --------------------------------------------------------------- |
 | [chifra scrape](/docs/chifra/admin/#chifra-scrape) | scan the chain and update the TrueBlocks index of appearances   |
-| [chifra pins](/docs/chifra/admin/#chifra-pins)     | manage pinned index of appearances and associated Bloom filters |
+| [chifra chunks](/docs/chifra/admin/#chifra-chunks) | manage pinned index of appearances and associated Bloom filters |
 
 Pinnedchunk data is made of the following data fields:
 
