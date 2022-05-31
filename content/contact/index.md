@@ -7,4 +7,4 @@ draft: true
 images: []
 ---
 
-{{< email user="tjayrush" domain="quickblocks.io" >}}
+{{< email user="jrush" domain="quickblocks.io" >}}

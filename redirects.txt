@@ -8,3 +8,4 @@ Old > new
 /docs/prologue/how-can-i-get-the-index.md > /docs/install/get-the-index
 /docs/prologue/install-explorer.md > /docs/install/install-explorer
 
+/data-model/the-index.md > /data-model/unchained-index.md
