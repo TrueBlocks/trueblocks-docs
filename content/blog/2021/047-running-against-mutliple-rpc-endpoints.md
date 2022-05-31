@@ -22,19 +22,19 @@ One user asked if it was possible to run TrueBlocks against multiple RPC endpoin
 
 ## Preliminaries
 
-The first thing to understand is that the TrueBlocks core runs against a local configuration file stored in your $HOME folder called `$HOME/.quickBlocks/quickBlocks.toml`. It's an almost ridiculously simple file.
+The first thing to understand is that the TrueBlocks core runs against a local configuration file stored in your $HOME folder called `$HOME/.local/share/TrueBlocks/trueBlocks.toml`. It's an almost ridiculously simple file.
 
-The file gets created and populated with default values the first time you build TrueBlocks. When you do `cmake ../src` and then `make` in the build folder of the TrueBlocks repo, you can look inside the file `$HOME/.quickBlocks/quickBlocks.toml`.
+The file gets created and populated with default values the first time you build TrueBlocks. When you do `cmake ../src` and then `make` in the build folder of the TrueBlocks repo, you can look inside the file `$HOME/.local/share/trueblocks/trueBlocks.toml`.
 
 You will see something like this:
 
 ```[toml]
 [settings]
 rpcProvider = "http://localhost:8545"
-cachePath = "~/.quickBlocks/cache"
+cachePath = "~/.local/share/trueblocks/trueBlocks/cache/mainnet/"
 ```
 
-or something similar. This is a standard TOML with a heading or group for each set of unique keys and key / value pairs defining the options. While each tool and application in TrueBlocks has its own configuration file, the main options are stored in the `quickBlocks.toml` file. See the documentation for more information.
+or something similar. This is a standard TOML with a heading or group for each set of unique keys and key / value pairs defining the options. While each tool and application in TrueBlocks has its own configuration file, the main options are stored in the `trueBlocks.toml` file. See the documentation for more information.
 
 ## Customizing the RPC Endpoint
 
