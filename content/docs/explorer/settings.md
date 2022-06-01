@@ -19,7 +19,7 @@ toc: true
 
 ### Scrapers
 
-Text about Scrapers and such
+Text about Scrapers
 
 ### Indexes
 
