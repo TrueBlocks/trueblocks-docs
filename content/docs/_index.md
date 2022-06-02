@@ -1,7 +1,7 @@
 ---
-title : "About TrueBlocks"
+title : "Problem Statement"
 description: "TrueBlocks Docs"
-lead: "TrueBlocks builds and publishes an index that lets you explore the Ethereum blockchain from your local machine."
+lead: "Are blockchains really meeting their promise?"
 date: 2020-10-06T08:48:23+00:00
 lastmod:
   - :git
@@ -10,79 +10,75 @@ lastmod:
   - publishDate
 draft: false
 images: []
-alias: ["/docs/prologue/what-is-this/"]
-weight: 001
 menu:
   docs:
-    parent:
-      prologue
+    parent: prologue
+weight: 0101
+toc: true
 ---
 
-## Permissionless?
+If you're like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
+access to the most accurate and agreed-upon data ever produced. Near perfect data.
 
-Blockchains are supposed to be permissionless. But, are they?
-
-In one sense, "Yes." Anyone may interact with a blockchain. All you need is a wallet and access to an RPC...wait...that's not permissionless.
-
-It's worse than that. You can't see your own history of transactions without visiting a website. "Please Mr. Blockchain Explorer...please may I see my transactions?"
-
-It's as if you're lost at sea...
+But in reality, it's as if we're just lost at sea. Awash in bytes.
 
 <img src="/docs/img/steam-boat-off-a-harbor.jpg" alt="Who's stearing this boat?" width="500"/>
 
+## World-wide
+
+Blockchains are supposed to be world-wide. Are they? Yes, they are.
+
+## Permissionless
+
+Blockchains are supposed to be permissionless. Are they? Not really.
+
+## Accurate
+
+Blockchains are supposed to be accurate. Are they? Well...on-chain they are, but
+off-chain, not even close. Ask any crypto-accountant.
+
+## Problem statement
+
+It is true that anyone may send a transaction to a blockchain. All one needs is a wallet and access to an RPC...
+wait...access to an RPC...is that permissionless? Unless you're running your own node, no, it's not.
+
+It's worse than that. Not only must you ask permission to send a transaction, you must
+ask permission to see the results. "Please Mr. Massive Blockchain Explorer in the Sky...
+please may I see my transactions? Oh, and by the way, you're not watching me are you?"
+
+Worse even yet, have you ever actually tried to deeply understand what the blockchain explorer
+is showing you? And why, after paying hundreds of dollars, does you crypto tax report have
+massive, obvious errors?
+
+TrueBlocks can't solve the first problem -- eventually you're going to have to provide your
+own access if you want the true benefits of decentralization. Luckily there are emerging
+solutions such as [dAppNode](https://dappnode.io/) and [Avado](https://ava.do/).
+
+TrueBlocks can, however, solve the other two problems -- accurate, private access to your
+own transactions.
+
 ---
-Anyone can visit EtherScan for free. And, they give us (give us!) anything we want. But do you think they're not watching? Do you think they're not connecting your Ethereum address to your IP address? Why wouldn't they?
+Like Infura, anyone may visit EtherScan. That is true. Both of those systems are kind enough to
+give us (give us!) whatever we ask for. But how long do you think it will take before they realize
+(hint: they've already have) how valuable thier position in the ecosystem is? Do you think they're
+not paying attention to what you're doing? Do you think they're not connecting your Ethereum address
+to your IP address? I would be if I were them.
 
-Websites are inherently the wrong solution for decentralized data:
+Websites and APIs are inherently the wrong solution for decentralized data for a number of reasons:
 
-1. To prevent selfish users from using more than their fair share, the website must limit your usage (permissionless?)
-2. The only way to accomplish (1) is to identify each user (private?)
-3. If (2) happens, it's trivial to attach that identification to an address (we all visit the same addresses repeatedly).
-4. Connecting IP address to name is already trivial on the internet.
+1. They can see who you are because your browser tells them your IP address (not private!).
+2. Because their resources are shared among many users, they must protect thier system by rate limiting you (not permissionless!)
+   1. They use you IP address to rate limit you - that is, they know who you are each time you arrive
+3. Every time you visit EtherScan or use Infura, you do it with the same Ethereum address
+4. They know who you are -- they know your address -- they know your spending habits -- that's terrible for you
 
-It may not be true now, but do you want the big data people to know how you spend your money? Everyone knows this is going to happen. At TrueBlocks, we ask "why not fix it now?"
+Websites and APIs are terrible for you. If you think your privacy is being invaded today, wait until you start
+telling them, with near perfect data, exactly what you spend your money on.
 
-## TrueBlocks provides a possible solution
+We all see this coming. No-one seems to want to do anything about it. In fact, we see an increasingly competitive
+environment to provide you ingress and egress to the chain.
 
-We think there's a two-part problem:
+## Solution
 
-(1) Blockchains are difficult to run,  
-(2) Even if one runs a blockchain, getting data from that chain is hard to do.
+[dAppNode](https://dappnode.io/), [Erigon](https://github.com/ledgerwatch/erigon) and TrueBlocks.
 
-Trueblocks solves the second problem making the first problem less onerous.
-
-TrueBlocks builds a local index of addresses on your machine. This allows you to quickly find every appearance of any of your own accounts without exposing your interest in those address to anyone else. 
-
-TrueBlocks ships with large suite of command line tools to let you make exactly the queries you want to make. In addition to the command line, TrueBlocks provides a server tool that delivers this information to your applications. We've also built an interface with our open source [Account Explorer](/docs/install/install-explorer).
-
-### Automatically Sharing the Index
-
-TrueBlocks is open source. If you don't like something, you're free to modify the software, or fork it.
-
-We also distribute copies of the index on the IPFS, meaning that:
-
-* the data is immutable (i.e. we can't mess with it)
-* the data doesn't belong to anyone
-
-## The index provides huge engineering advantages
-
-Besides the philosophical benefits, TrueBlocks is straight up more performant.
-
-Some highlights:
-
-- Querying straight from your hard drive is _faster by many factors._
-- Binary cache makes subsequent queries _nearly instantaneous_
-- Leaving the data on the chain until it's queried shrinks storage requirements for the typical user from _terabytes to gigabytes_.
-- Bloom filters further reduce computation and storage overhead
-- Articulate to resolve transactions on the byte level, _turning byte streams into human-readable data._
-- _Format-agnostic._ Receive data in JSON, CSV, plain text, etc.
-
-TrueBlocks performs so well because the design is 100% data first. We are lifelong
-hackers, and we agree with [Linus Torvalds when he
-said](https://lwn.net/Articles/193245/):
-
-> In fact, I'm a huge proponent of designing your code around the data, rather than the other way around
-
-## Great! But I want many more words.
-
-We've got more words for you. [This blog post covers these topics in much more detail](/blog/a-long-winded-explanation-of-trueblocks/).

@@ -11,7 +11,8 @@ menu:
   docs:
     parent:
       prologue
-weight: 0200
+weight: 0401
+toc: true
 ---
 
 And if you are running your own node, TrueBlocks works best with Erigon.
