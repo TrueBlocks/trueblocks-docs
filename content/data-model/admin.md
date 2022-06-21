@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2022-05-02T07:09:41
+date: 2022-06-20T19:11:15
 lastmod:
   - :git
   - lastmod
@@ -111,13 +111,13 @@ The following commands produce and manage manifests:
 
 Manifest data is made of the following data fields:
 
-| Field       | Description                                                     | Type              |
-| ----------- | --------------------------------------------------------------- | ----------------- |
-| indexFormat | IPFS cid of file describing the file format of an index chunk   | string            |
-| bloomFormat | IPFS cid of file describing the associated bloom filter         | string            |
-| firstPin    | the block number of the first pin in the manifest (always zero) | blknum            |
-| lastPin     | the most recent block included in this manifest                 | blknum            |
-| pins        | a list of all the pins in the unchained index                   | CPinnedChunkArray |
+| Field     | Description                                                           | Type              |
+| --------- | --------------------------------------------------------------------- | ----------------- |
+| version   | the version string hashed into the chunk data                         | string            |
+| chain     | the chain to which this manifest belongs                              | string            |
+| schemas   | IPFS cid of file describing the schemas for the various databases     | ipfshash          |
+| databases | IPFS cid of file containing CIDs for the various databases            | ipfshash          |
+| chunks    | a list of the IPFS hashes of all of the chunks in the unchained index | CPinnedChunkArray |
 
 
 ## Chain
@@ -132,7 +132,7 @@ Manifest data is made of the following data fields:
 | apiProvider    | A valid API provider for the explorer                            | string |
 | remoteExplorer | A remote explorer for the chain such as EtherScan                | string |
 | localExplorer  | The local explorer for the chain (typically TrueBlocks Explorer) | string |
-| pinGateway     | An IPFS gateway for pinning the index if enabled                 | string |
+| ipfsGateway    | An IPFS gateway for pinning the index if enabled                 | string |
 
 ## CacheEntry
 
