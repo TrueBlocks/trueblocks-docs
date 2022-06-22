@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 0.37.0-beta
+  version: 0.37.1-beta
   description: >
 
     A REST layer over the TrueBlocks application. With `chifra serve`, you can
@@ -1452,7 +1452,6 @@ paths:
                           "cachePath": "~/Library/Application Support/TrueBlocks/cache/",
                           "indexPath": "~/Library/Application Support/TrueBlocks/unchained/",
                           "isTesting": false,
-                          "isDocker": false,
                           "isArchive": true,
                           "isTracing": true,
                           "hasEskey": true,
@@ -2589,9 +2588,6 @@ components:
         isApi:
           type: boolean
           description: "`true` if the server is running in API mode"
-        isDocker:
-          type: boolean
-          description: "`true` if running under a docker image"
         isScraping:
           type: boolean
           description: "`true` if the index scraper is running"
