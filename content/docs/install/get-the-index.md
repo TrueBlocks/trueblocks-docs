@@ -135,7 +135,7 @@ Each pin has a given block range, which you can check yourself using `chifra`.
 For example, see the last manifest record by running
 
 ```shell
-chifra pins --list | tail -n 1
+chifra chunks manifest --fmt txt | tail -n 1
 ```
 
 This outputs something like this:
@@ -148,7 +148,9 @@ The first field of the output provides the block range for the latest chunk. So,
 range was published by running `chifra when` on the last record:
 
 ```shell
-$chifra when 012912694
+$chifra when 12912694
 blocknumber     timestamp       date    name
 12912694        1627451435      2021-07-28 05:50:35 UTC
 ```
+
+(Remember to remove the leading zero from the block number.)
