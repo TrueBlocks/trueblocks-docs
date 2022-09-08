@@ -152,5 +152,3 @@ $chifra when 12912694
 blocknumber     timestamp       date    name
 12912694        1627451435      2021-07-28 05:50:35 UTC
 ```
-
-(Remember to remove the leading zero from the block number.)

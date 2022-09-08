@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2022-06-21T13:02:38
+date: 2022-08-27T13:27:35
 lastmod:
   - :git
   - lastmod
@@ -90,7 +90,7 @@ Pinnedchunk data is made of the following data fields:
 
 | Field     | Description                                                 | Type     |
 | --------- | ----------------------------------------------------------- | -------- |
-| fileName  | for each chunk, the range of blocks contained in that chunk | string   |
+| range     | for each chunk, the range of blocks contained in that chunk | string   |
 | bloomHash | the IPFS hash of the bloom filter at that range             | ipfshash |
 | indexHash | the IPFS hash of the index chunk at that range              | ipfshash |
 | firstApp  | the first appearance in the chunk                           | blknum   |
