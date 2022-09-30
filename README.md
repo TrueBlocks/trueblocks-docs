@@ -65,7 +65,7 @@ When you create content, you probably want to create corresponding directories i
 
 ## Contributing
 
-We love contributors. Please see information about our [work flow](https://github.com/TrueBlocks/trueblocks-core/blob/master/docs/BRANCHING.md) before proceeding.
+We love contributors. Please see information about our [work flow](https://github.com/TrueBlocks/trueblocks-core/blob/develop/docs/BRANCHING.md) before proceeding.
 
 1. Fork this repository into your own repo.
 2. Create a branch: `git checkout -b <branch_name>`.
