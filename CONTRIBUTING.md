@@ -6,6 +6,8 @@
 
 [Branching Conventions](https://github.com/TrueBlocks/trueblocks-core/blob/master/docs/BRANCHING.md)
 
+Note: For this documentation repo, we do not have a `develop` branch. Make your PR against `master`.
+
 #### **Did you find a bug?**
 
 * **Do not open up a GitHub issue if the bug is a security vulnerability in TrueBlocks**. Contact through our website instead.
