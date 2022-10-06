@@ -60,15 +60,15 @@ own transactions.
 ---
 Like Infura, anyone may visit EtherScan. That is true. Both of those systems are kind enough to
 give us (give us!) whatever we ask for. But how long do you think it will take before they realize
-(hint: they've already have) how valuable thier position in the ecosystem is? Do you think they're
+(hint: they've already have) how valuable their position in the ecosystem is? Do you think they're
 not paying attention to what you're doing? Do you think they're not connecting your Ethereum address
 to your IP address? I would be if I were them.
 
 Websites and APIs are inherently the wrong solution for decentralized data for a number of reasons:
 
 1. They can see who you are because your browser tells them your IP address (not private!).
-2. Because their resources are shared among many users, they must protect thier system by rate limiting you (not permissionless!)
-   1. They use you IP address to rate limit you - that is, they know who you are each time you arrive
+2. Because their resources are shared among many users, they must protect their system by rate limiting you (not permissionless!)
+   1. They use your IP address to rate limit you - that is, they know who you are each time you arrive
 3. Every time you visit EtherScan or use Infura, you do it with the same Ethereum address
 4. They know who you are -- they know your address -- they know your spending habits -- that's terrible for you
 
