@@ -1310,7 +1310,7 @@ paths:
       description: Retrieve token balance(s) for one or more addresses at given block(s).
       operationId: chainstate-tokens
       parameters:
-        - name: addrs
+        - name: addrs2
           description: >
             two or more addresses (0x...), the first is an ERC20 token, balances for the rest are reported
           required: true
