@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2022-09-03T10:11:05
+date: 2022-10-08T19:54:08
 lastmod:
   - :git
   - lastmod
@@ -40,7 +40,7 @@ Usage:
 
 Flags:
   -p, --port string   specify the server's port (default ":8080")
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
   -v, --verbose       enable verbose (increase detail with --log_level)
   -h, --help          display this help screen
 
@@ -71,7 +71,7 @@ Flags:
   -i, --pin              pin new chunks (requires locally-running IPFS daemon or --remote)
   -m, --remote           pin new chunks to the gateway (requires pinning service keys)
   -s, --sleep float      seconds to sleep between scraper passes (default 14)
-  -x, --fmt string       export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string       export format, one of [none|json*|txt|csv]
   -v, --verbose          enable verbose (increase detail with --log_level)
   -h, --help             display this help screen
 ```
@@ -90,7 +90,7 @@ Each of the following additional configurable command line options are available
 | first&lowbar;snap  | uint64       | 0            | the first block at which snap_to_grid is enabled |
 | unripe&lowbar;dist | uint64       | 28           | the distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe |
 | channel&lowbar;count | uint64       | 20           | number of concurrent processing channels |
-| allow&lowbar;missing | bool         | false        | do not report errors for blockchains that contain blocks with zero addresses |
+| allow&lowbar;missing | bool         | true         | do not report errors for blockchains that contain blocks with zero addresses |
 
 
 These items may be set in three ways, each overridding the preceeding method:
@@ -146,7 +146,7 @@ Flags:
   -m, --remote            prior to processing, retreive the manifest from the Unchained Index smart contract
   -b, --belongs strings   in index mode only, checks the address(es) for inclusion in the given index chunk
   -s, --sleep float       for --remote pinning only, seconds to sleep between API calls
-  -x, --fmt string        export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string        export format, one of [none|json*|txt|csv]
   -v, --verbose           enable verbose (increase detail with --log_level)
   -h, --help              display this help screen
 
@@ -188,7 +188,7 @@ Usage:
 Flags:
   -a, --all           in addition to Bloom filters, download full index chunks
   -s, --sleep float   seconds to sleep between downloads
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
   -v, --verbose       enable verbose (increase detail with --log_level)
   -h, --help          display this help screen
 
