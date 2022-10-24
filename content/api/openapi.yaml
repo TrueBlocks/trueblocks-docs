@@ -975,7 +975,7 @@ paths:
             enum:
               - from
               - to
-        - name: reconcile
+        - name: statements
           description: reconcile the transaction as per the provided address
           required: false
           style: form
@@ -1251,7 +1251,7 @@ paths:
                 - balance
                 - nonce
                 - code
-                - storage
+                - proxy
                 - deployed
                 - accttype
         - name: changes
@@ -1309,7 +1309,7 @@ paths:
                           "balance": 258843698360318500,
                           "nonce": 115,
                           "code": "0x",
-                          "storage": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                          "proxy": "0xd9db270c1b5e3bd161e8c8503c55ceabee709552",
                           "address": "0xa1e4380a3b1f749673e270229993ee55f35663b4",
                           "deployed": 0,
                           "accttype": "EOA",
@@ -1946,6 +1946,10 @@ components:
           type: string
           format: int256
           description: "the transaction fee reward if the miner is the accountedFor address"
+        spotPrice:
+          type: number
+          format: double
+          description: "The on-chain price in USD (or if a token in ETH, or zero) at the time of the transaction"
         minerUncleRewardIn:
           type: string
           format: int256
@@ -1954,10 +1958,6 @@ components:
           type: string
           format: int256
           description: "at block zero (0) only, the amount of genesis income for the accountedFor address"
-        spotPrice:
-          type: number
-          format: double
-          description: "The on-chain price in USD (or if a token in ETH, or zero) at the time of the transaction"
         priceSource:
           type: string
           description: "The on-chain source from which the spot price was taken"
@@ -1984,13 +1984,13 @@ components:
           type: string
           format: int256
           description: "a calculated field -- totalIn - totalOut"
+        reconciliationType:
+          type: string
+          description: "One of regular, traces, prevdiff-partial, partial-nextdiff, or `partial-partial`"
         endBalCalc:
           type: string
           format: int256
           description: "a calculated field -- begBal + amountNet"
-        reconciliationType:
-          type: string
-          description: "One of regular, traces, prevdiff-partial, partial-nextdiff, or `partial-partial`"
         endBalDiff:
           type: string
           format: int256
@@ -1998,6 +1998,14 @@ components:
         reconciled:
           type: boolean
           description: "a calculated field -- true if `endBal === endBalCalc` and `begBal === prevBlkBal`. `false` otherwise."
+        transactionHash:
+          type: string
+          format: hash
+          description: "the hash of the transaction that triggered this reconciliation"
+        date:
+          type: string
+          format: date
+          description: "the date of this transaction"
     name:
       description: "an association between a name and address for use throughout TrueBlocks"
       type: object
@@ -2127,11 +2135,6 @@ components:
       description: "the transaction data for a given transaction directly from the blockchain"
       type: object
       properties:
-        gasPrice:
-          type: string
-          format: gas
-          example: "63525836552"
-          description: "the number of wei per unit of gas the sender is willing to spend"
         hash:
           type: string
           format: hash
@@ -2180,6 +2183,11 @@ components:
           format: gas
           example: "158660"
           description: "the maximum number of gas allowed for this transaction"
+        gasPrice:
+          type: string
+          format: gas
+          example: "63525836552"
+          description: "the number of wei per unit of gas the sender is willing to spend"
         input:
           type: string
           format: bytes
@@ -2423,6 +2431,16 @@ components:
           format: blknum
           example: 10021
           description: "the block number at which this state was taken"
+        address:
+          type: string
+          format: address
+          example: "0xa1e4...63b4"
+          description: "the address of the state being queried"
+        proxy:
+          type: string
+          format: address
+          example: "0xa1e4...63b4"
+          description: "if this is a proxy, this is the proxied-to address"
         balance:
           type: string
           format: wei
@@ -2438,16 +2456,6 @@ components:
           format: bytes
           example: "0x"
           description: "the byte code at the address (if this is a smart contract)"
-        storage:
-          type: string
-          format: bytes
-          example: "0x0000...0000"
-          description: "this field is un-implemented and current returns the first storage location in a smart contract"
-        address:
-          type: string
-          format: address
-          example: "0xa1e4...63b4"
-          description: "the address of the state being queried"
         deployed:
           type: number
           format: blknum
