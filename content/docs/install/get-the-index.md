@@ -124,31 +124,8 @@ You can download the index (either with `chifra init` or `chifra init --all`) an
 
 ## Supplementary: how can I see when the manifest was last published?
 
-If you are using one of the `init` options, you may wish to know how 'fresh' your index is.
+To view the latest manifest published by TrueBlocks (note that there may be other publishers), pass our publisher id: `0xf503017d7baf7fbc0fff7492b751025c6a78179b` and the string `mainnet` to the `manifestHashMap()` method of the UnchainedIndex_V2 contract at https://etherscan.io/address/0x0c316b7042b419d07d343f2f4f5bd54ff731183d#readContract. This will return the `LATEST_IPFS_HASH` of the manifest. To fetch the manifest, use an IPFS client and `ipfs get <LATEST_IPFS_HASH>` or a gateway (such as the one TrueBlocks maintains) `https://ipfs.unchainedindex.io/ipfs/LATEST_IPFS_HASH`.
 
-TrueBlocks tries to publish the manifest frequently (weekly?), but you can always check. The eventual goal of to publish the manifest each time a new chunk is produced (about two or three times a day). But this is `gas-expensive`, so we would need to secure funding for that process. We welcome donations, peers and alternative indexers to participate!.
+Edit the resulting file to see the latest published data.
 
-You can find the most [recent manifest here](https://etherscan.io/address/0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd#readContract). (Open the `manifestHash` record.)
-
-Each pin has a given block range, which you can check yourself using `chifra`.
-
-For example, see the last manifest record by running
-
-```shell
-chifra chunks manifest --fmt txt | tail -n 1
-```
-
-This outputs something like this:
-
-```
-012909804-012912694     QmSQvJ5GPyc8juthKgvMaonxm2t2m939MphyMhBRuHKJzt  QmVCZdXD9EMU9jR6HKp8V1bC74DQDCzGurLxnK6KnbV2LP
-```
-
-The first field of the output provides the block range for the latest chunk. So, you could see when the last block of the latest
-range was published by running `chifra when` on the last record:
-
-```shell
-$chifra when 12912694
-blocknumber     timestamp       date    name
-12912694        1627451435      2021-07-28 05:50:35 UTC
-```
+Alternatively, you may always use `chifra chunks manifest` to see where the latest published index is at.
