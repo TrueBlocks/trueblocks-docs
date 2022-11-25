@@ -2,7 +2,7 @@
 title: "Chain data"
 description: ""
 lead: ""
-date: 2022-10-19T07:38:40
+date: 2022-11-23T12:59:12
 lastmod:
   - :git
   - lastmod
@@ -83,16 +83,16 @@ Arguments:
   transactions - a space-separated list of one or more transaction identifiers (required)
 
 Flags:
-  -a, --articulate          articulate the retrieved data if ABIs can be found
-  -t, --trace               include the transaction's traces in the results
-  -u, --uniq                display a list of uniq addresses found in the transaction
-  -f, --flow string         for the uniq option only, export only from or to (including trace from or to)
-                            One of [ from | to ]
-  -A, --statements string   reconcile the transaction as per the provided address
-  -o, --cache               force the results of the query into the tx cache (and the trace cache if applicable)
-  -x, --fmt string          export format, one of [none|json*|txt|csv]
-  -v, --verbose             enable verbose (increase detail with --log_level)
-  -h, --help                display this help screen
+  -a, --articulate           articulate the retrieved data if ABIs can be found
+  -t, --trace                include the transaction's traces in the results
+  -u, --uniq                 display a list of uniq addresses found in the transaction
+  -f, --flow string          for the uniq option only, export only from or to (including trace from or to)
+                             One of [ from | to ]
+  -A, --account_for string   reconcile the transaction as per the provided address
+  -o, --cache                force the results of the query into the tx cache (and the trace cache if applicable)
+  -x, --fmt string           export format, one of [none|json*|txt|csv]
+  -v, --verbose              enable verbose (increase detail with --log_level)
+  -h, --help                 display this help screen
 
 Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
@@ -187,7 +187,7 @@ Flags:
   -a, --articulate      articulate the retrieved data if ABIs can be found
   -f, --filter string   call the node's trace_filter routine with bang-separated filter
   -d, --statediff       export state diff traces (not implemented)
-  -c, --count           show the number of traces for the transaction only (fast)
+  -U, --count           show the number of traces for the transaction only (fast)
   -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
@@ -223,6 +223,10 @@ Arguments:
 Flags:
   -l, --list         export a list of the 'special' blocks
   -t, --timestamps   display or process timestamps
+  -U, --count        with --timestamps only, returns the number of timestamps in the cache
+  -r, --repair       with --timestamps only, repairs block(s) in the block range by re-querying from the chain
+  -c, --check        with --timestamps only, checks the validity of the timestamp data
+      --update       with --timestamps only, bring the timestamp database forward to the latest block
   -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
