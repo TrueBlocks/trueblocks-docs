@@ -24,7 +24,7 @@ toc: true
 
 On its own blockchain data is an unintelligable blob of binary bytes. But, we all know there
 is an amazing collection of deeply interesting information contained therein. Thousands of 
-people are trading, voting, expressing thier preferences, making markets for valueless
+people are trading, voting, expressing their preferences, making markets for valueless
 items every minute.
 
 What interests us about this data are answers to questions such as:
