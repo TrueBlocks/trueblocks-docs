@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2022-12-18T23:36:19
+date: 2022-12-20T15:25:42
 lastmod:
   - :git
   - lastmod
@@ -212,17 +212,17 @@ Transfer data is made of the following data fields:
 | encoding         | The four-byte encoding of the transaction's function call                                      | string    |
 
 
-## ListStats
+## AppearanceCount
 
-The `listStats` data model is used mostly by the frontend explorer application. It carries various information about the monitor data for an address.
+The `appearanceCount` data model is used mostly by the frontend explorer application. It carries various information about the monitor data for an address.
 
-The following commands produce and manage listStats:
+The following commands produce and manage appearancecounts:
 
 | Tools                                             |                                            |
 | ------------------------------------------------- | ------------------------------------------ |
 | [chifra list](/docs/chifra/accounts/#chifra-list) | list appearances for one or more addresses |
 
-Liststats data is made of the following data fields:
+Appearancecount data is made of the following data fields:
 
 | Field    | Description                                               | Type    |
 | -------- | --------------------------------------------------------- | ------- |
