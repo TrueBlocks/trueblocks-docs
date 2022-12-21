@@ -14,7 +14,7 @@ images: []
 
 The chifra command provides access to all the applications and tools available:
 
-```
+```[shell]
 Purpose:
   Access to all TrueBlocks tools (chifra <cmd> --help for more).
 
