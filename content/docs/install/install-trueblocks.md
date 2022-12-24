@@ -102,7 +102,7 @@ TrueBlocks needs version 1.16.x or later. If you to install or update Go, [see h
 * For Linux
 
   ```shell
-  sudo apt install build-essential git cmake python python-dev libcurl3-dev clang-format jq
+  sudo apt install build-essential git cmake ninja-build python3 python3-dev libcurl4-openssl-dev clang-format jq
   ```
 
 * For Mac:
@@ -110,7 +110,7 @@ TrueBlocks needs version 1.16.x or later. If you to install or update Go, [see h
   _For best results, we recommend running MacOS Big Sur or later._
 
   ```shell
-  brew install cmake
+  brew install cmake ninja
   brew install git
   brew install clang-format
   brew install jq

@@ -2,7 +2,7 @@
 title: "Chain data"
 description: ""
 lead: ""
-date: 2022-06-01T15:21:39
+date: 2022-12-20T20:40:22
 lastmod:
   - :git
   - lastmod
@@ -20,6 +20,7 @@ The TrueBlocks tools extract raw blockchain data directly from the node.
 You may extract block data, transactional data, receipts, logs, and traces.
 Each tool has it own set of options, allowing you to get exactly the data that
 you want.
+<!-- markdownlint-disable MD041 -->
 ## chifra blocks
 
 The `chifra blocks` tool retrieves block data from your Ethereum node or, if previously cached, from the TrueBlocks cache. You may specify multiple blocks per invocation.
@@ -39,16 +40,18 @@ Arguments:
   blocks - a space-separated list of one or more block identifiers (required)
 
 Flags:
-  -e, --hashes       display only transaction hashes, default is to display full transaction detail
-  -U, --uncles       display uncle blocks (if any) instead of the requested block
-  -t, --trace        export the traces from the block as opposed to the block data
-  -s, --apps         display a list of uniq address appearances in the block
-  -u, --uniq         display a list of uniq address appearances per transaction
-  -c, --count        display the number of the lists of appearances for --addrs or --uniq
-  -o, --cache        force a write of the block to the cache
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+  -e, --hashes        display only transaction hashes, default is to display full transaction detail
+  -c, --uncles        display uncle blocks (if any) instead of the requested block
+  -t, --trace         export the traces from the block as opposed to the block data
+  -s, --apps          display a list of uniq address appearances in the block
+  -u, --uniq          display a list of uniq address appearances per transaction
+  -f, --flow string   for the uniq and apps options only, export only from or to (including trace from or to)
+                      One of [ from | to | reward ]
+  -U, --count         display the number of the lists of appearances for --addrs or --uniq
+  -o, --cache         force a write of the block to the cache
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
 Notes:
   - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
@@ -62,6 +65,7 @@ Notes:
 
 **Source code**: [`internal/blocks`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/blocks)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra transactions
 
 The `chifra transactions` tool retrieves transactions directly from the Ethereum node (using the `--raw` option) or from the TrueBlocks cache (if present). You may specify multiple transaction identifiers per invocation. Unlike the Ethereum RPC, the reported transactions include the transaction's receipt and generated logs.
@@ -81,14 +85,16 @@ Arguments:
   transactions - a space-separated list of one or more transaction identifiers (required)
 
 Flags:
-  -a, --articulate         articulate the retrieved data if ABIs can be found
-  -t, --trace              include the transaction's traces in the results
-  -u, --uniq               display a list of uniq addresses found in the transaction
-  -r, --reconcile string   reconcile the transaction as per the provided address
-  -o, --cache              force the results of the query into the tx cache (and the trace cache if applicable)
-  -x, --fmt string         export format, one of [none|json*|txt|csv|api]
-  -v, --verbose            enable verbose (increase detail with --log_level)
-  -h, --help               display this help screen
+  -a, --articulate           articulate the retrieved data if ABIs can be found
+  -t, --trace                include the transaction's traces in the results
+  -u, --uniq                 display a list of uniq addresses found in the transaction
+  -f, --flow string          for the uniq option only, export only from or to (including trace from or to)
+                             One of [ from | to ]
+  -A, --account_for string   reconcile the transaction as per the provided address
+  -o, --cache                force the results of the query into the tx cache (and the trace cache if applicable)
+  -x, --fmt string           export format, one of [none|json*|txt|csv]
+  -v, --verbose              enable verbose (increase detail with --log_level)
+  -h, --help                 display this help screen
 
 Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
@@ -98,6 +104,7 @@ Notes:
 
 **Source code**: [`internal/transactions`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/transactions)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra receipts
 
 `chifra receipts` returns the given transaction's receipt. You may specify multiple transaction identifiers per invocation.
@@ -118,7 +125,7 @@ Arguments:
 
 Flags:
   -a, --articulate   articulate the retrieved data if ABIs can be found
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
@@ -130,6 +137,7 @@ Notes:
 
 **Source code**: [`internal/receipts`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/receipts)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra logs
 
 `chifra logs` returns the given transaction's logs. You may specify multiple transaction identifiers per invocation.
@@ -148,7 +156,7 @@ Arguments:
 
 Flags:
   -a, --articulate   articulate the retrieved data if ABIs can be found
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
@@ -161,6 +169,7 @@ Notes:
 
 **Source code**: [`internal/logs`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/logs)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra traces
 
 The `chifra traces` tool retrieves a transaction's traces. You may specify multiple transaction identifiers per invocation.
@@ -183,8 +192,8 @@ Flags:
   -a, --articulate      articulate the retrieved data if ABIs can be found
   -f, --filter string   call the node's trace_filter routine with bang-separated filter
   -d, --statediff       export state diff traces (not implemented)
-  -c, --count           show the number of traces for the transaction only (fast)
-  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
+  -U, --count           show the number of traces for the transaction only (fast)
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
 
@@ -198,6 +207,7 @@ Notes:
 
 **Source code**: [`internal/traces`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/traces)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra when
 
 The `chifra when` tool answers one of two questions: (1) "At what date and time did a given block occur?" or (2) "What block occurred at or before a given date and time?"
@@ -218,13 +228,18 @@ Arguments:
 
 Flags:
   -l, --list         export a list of the 'special' blocks
-  -t, --timestamps   ignore other options and generate timestamps only
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -t, --timestamps   display or process timestamps
+  -U, --count        with --timestamps only, returns the number of timestamps in the cache
+  -r, --repair       with --timestamps only, repairs block(s) in the block range by re-querying from the chain
+  -c, --check        with --timestamps only, checks the validity of the timestamp data
+      --update       with --timestamps only, bring the timestamp database forward to the latest block
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
 Notes:
   - The block list may contain any combination of number, hash, date, special named blocks.
+  - Block numbers, timestamps, or dates in the future are estimated with 13 second blocks.
   - Dates must be formatted in JSON format: YYYY-MM-DD[THH[:MM[:SS]]].
 ```
 

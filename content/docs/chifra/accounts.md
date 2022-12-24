@@ -2,7 +2,7 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2022-05-29T07:16:47
+date: 2022-12-20T20:40:22
 lastmod:
   - :git
   - lastmod
@@ -20,6 +20,7 @@ This group of commands is at the heart of TrueBlocks. They allow you to produce 
 
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories to various formats,
 This includes re-directing output to remote or local databases.
+<!-- markdownlint-disable MD041 -->
 ## chifra list
 
 `chifra list` takes one or more addresses, queries the index of appearances, and builds TrueBlocks monitors. A TrueBlocks monitor is a file that contains blockNumber.transactionId pairs (transaction identifiers) representing the history of the address.
@@ -39,10 +40,15 @@ Arguments:
   addrs - one or more addresses (0x...) to list (required)
 
 Flags:
-  -U, --count        display only the count of records for each monitor
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+  -U, --count               display only the count of records for each monitor
+  -n, --no_zero             suppress the display of zero appearance accounts
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
+  -F, --first_block uint    first block to export (inclusive, ignored when freshening)
+  -L, --last_block uint     last block to export (inclusive, ignored when freshening)
+  -x, --fmt string          export format, one of [none|json*|txt|csv]
+  -v, --verbose             enable verbose (increase detail with --log_level)
+  -h, --help                display this help screen
 
 Notes:
   - No other options are permitted when --silent is selected.
@@ -50,6 +56,7 @@ Notes:
 
 **Source code**: [`internal/list`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/list)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra export
 
 The `chifra export` tools provides a major part of the functionality of the TrueBlocks system. Using the index of appearances created with `chifra scrape` and the list of transaction identifiers created with `chifra list`, `chifra export` completes the actual extraction of an address's transactional history from the node.
@@ -77,25 +84,26 @@ Flags:
   -r, --receipts            export receipts instead of transactional data
   -l, --logs                export logs instead of transactional data
   -t, --traces              export traces instead of transactional data
-  -A, --statements          export reconciliations instead of transactional data (requires --accounting option)
   -n, --neighbors           export the neighbors of the given address
   -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
+  -A, --statements          for the accounting options only, export only statements
   -a, --articulate          articulate transactions, traces, logs, and outputs
   -i, --cache               write transactions to the cache (see notes)
   -R, --cache_traces        write traces to the cache (see notes)
   -U, --count               only available for --appearances mode, if present, return only the number of records
-  -c, --first_record uint   the first record to process
-  -e, --max_records uint    the maximum number of records to process before reporting (default 250)
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
       --relevant            for log and accounting export only, export only logs relevant to one of the given export addresses
       --emitter strings     for log export only, export only logs if emitted by one of these address(es)
       --topic strings       for log export only, export only logs with this topic(s)
-      --asset strings       for the statements option only, export only reconciliations for this asset
-  -y, --factory             scan for contract creations from the given address(es) and report address of those contracts
-  -s, --staging             export transactions labeled staging (i.e. older than 28 blocks but not yet consolidated)
+      --asset strings       for the accounting options only, export statements only for this asset
+  -f, --flow string         for the accounting options only, export statements with incoming, outgoing, or zero value
+                            One of [ in | out | zero ]
+  -y, --factory             for --traces only, report addresses created by (or self-destructed by) the given address(es)
   -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
   -F, --first_block uint    first block to process (inclusive)
   -L, --last_block uint     last block to process (inclusive)
-  -x, --fmt string          export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string          export format, one of [none|json*|txt|csv]
   -v, --verbose             enable verbose (increase detail with --log_level)
   -h, --help                display this help screen
 
@@ -105,17 +113,21 @@ Notes:
   - For the --logs option, you may optionally specify one or more --emitter, one or more --topics, or both.
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
+  - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
 ```
 
 **Source code**: [`internal/export`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra monitors
 
-A TrueBlocks monitor is simply a file on your computer that represents the transactional history of a given Ethereum address. Monitors do not exist until you indicate your interest in a certain address. (See `chifra list`.)
+A TrueBlocks monitor tool has two purposes. The first is to `--watch` a set of addresses. This function is in its early stages and will be better explained elsewhere. Please see an example of what one may do with `chifra monitors --watch` [here](https://tokenomics.io/).
 
-You may use the `--delete` command to delete (or undelete if already deleted) an address. The monitor is not removed from your computer if you delete it. It is just marked as deleted making it invisible to the TrueBlocks explorer.
+A "monitor" is simply a file on a hard drive that represents the transactional history of a given Ethereum address. Monitors are very small, being only the `<block_no><tx_id>` pair representing each appearance of an address. Monitor files are only created when a user expresses interest in a particular address. In this way, TrueBlock is able to continue to work on small desktop or even laptop computers. (See `chifra list`.)
 
-Use the `--remove` command to permanently remove a monitor from your computer. This is an irreversible operation.
+You may use the `--delete` command to delete (or `--undelete` if already deleted) an address. The monitor is not removed from your computer if you delete it. It is just marked as being deleted making it invisible to the TrueBlocks explorer.
+
+Use the `--remove` command to permanently remove a monitor from your computer. This is an irreversible operation and requires the monitor to have been previously deleted.
 
 ```[plaintext]
 Purpose:
@@ -125,31 +137,37 @@ Usage:
   chifra monitors [flags] <address> [address...]
 
 Arguments:
-  addrs - one or more addresses (0x...) to process (required)
+  addrs - one or more addresses (0x...) to process
 
 Flags:
-      --clean        clean (i.e. remove duplicate appearances) from monitors
-      --delete       delete a monitor, but do not remove it
-      --undelete     undelete a previously deleted monitor
-      --remove       remove a previously deleted monitor
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+      --clean         clean (i.e. remove duplicate appearances) from monitors
+      --delete        delete a monitor, but do not remove it
+      --undelete      undelete a previously deleted monitor
+      --remove        remove a previously deleted monitor
+      --decache       removes a monitor and all associated data from the cache
+      --list          list monitors in the cache (--verbose for more detail)
+      --watch         continually scan for new blocks and extract data for monitored addresses
+  -s, --sleep float   seconds to sleep between monitor passes (default 14)
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
 Notes:
   - An address must start with '0x' and be forty-two characters long.
   - If no address is presented to the --clean command, all monitors will be cleaned.
+  - The --decache option will remove all cache items (blocks, txs, traces, recons) for the given address(es).
 ```
 
 **Source code**: [`internal/monitors`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/monitors)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra names
 
 `chifra names` is a surprisingly useful tool. It allows one to associate textual names with Ethereum addresses. One may ask why this is necessary given that ENS exists. The answer is a single word: "privacy". ENS names are public. In many cases, users desire to keep personal addresses private. Try to do this on a website.
 
 Like `chifra abis`, this tool is useful from the command line but is primarily used in support of other tools, especially `chifra export` where naming addresses becomes the single best way to turn unintelligible blockchain data into understandable information.
 
-The various options allow you to search and filter the results. The `collections` and `tags` options are used primarily by the TrueBlocks explorer.
+The various options allow you to search and filter the results. The `tags` option is used primarily by the TrueBlocks explorer.
 
 You may use the TrueBlocks explorer to manage (add, edit, delete) address-name associations.
 
@@ -164,18 +182,17 @@ Arguments:
   terms - a space separated list of one or more search terms (required)
 
 Flags:
-  -e, --expand        expand search to include all fields (search name, address, and symbol otherwise)
-  -m, --match_case    do case-sensitive search
-  -l, --all           include all accounts in the search
-  -c, --custom        include your custom named accounts
-  -p, --prefund       include prefund accounts
-  -n, --named         include well know token and airdrop addresses in the search
-  -a, --addr          display only addresses in the results (useful for scripting)
-  -s, --collections   display collections data
-  -g, --tags          export the list of tags and subtags only
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
-  -v, --verbose       enable verbose (increase detail with --log_level)
-  -h, --help          display this help screen
+  -e, --expand       expand search to include all fields (search name, address, and symbol otherwise)
+  -m, --match_case   do case-sensitive search
+  -l, --all          include all accounts in the search
+  -c, --custom       include your custom named accounts
+  -p, --prefund      include prefund accounts
+  -n, --named        include well know token and airdrop addresses in the search
+  -a, --addr         display only addresses in the results (useful for scripting)
+  -g, --tags         export the list of tags and subtags only
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
+  -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
 Notes:
   - The tool will accept up to three terms, each of which must match against any field in the database.
@@ -184,6 +201,7 @@ Notes:
 
 **Source code**: [`internal/names`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/names)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra abis
 
 `chifra abis` retrieves ABI files for the given address(es). It searches for the ABI in this order: the current local folder, the TrueBlocks cache, [Etherscan](http://etherscan.io), or (in the future) ENS and Sourcify.
@@ -210,7 +228,8 @@ Flags:
   -k, --known          load common 'known' ABIs from cache
   -s, --sol            extract the abi definition from the provided .sol file(s)
   -f, --find strings   search for function or event declarations given a four- or 32-byte code(s)
-  -x, --fmt string     export format, one of [none|json*|txt|csv|api]
+  -n, --hint strings   for the --find option only, provide hints to speed up the search
+  -x, --fmt string     export format, one of [none|json*|txt|csv]
   -v, --verbose        enable verbose (increase detail with --log_level)
   -h, --help           display this help screen
 

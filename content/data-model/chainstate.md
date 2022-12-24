@@ -2,7 +2,7 @@
 title: "Chain state"
 description: ""
 lead: ""
-date: 2022-02-10T20:02:12
+date: 2022-12-21T12:20:58
 lastmod:
   - :git
   - lastmod
@@ -17,13 +17,15 @@ weight: 1400
 toc: true
 ---
 
-These commands compare the balance of an address against a particular token or block.
+The data structures produced by tools in the Chain State category provide details on the balances (ERC20 or ETH) of an address against a particular token or block. Additionally, direct access to a smart contract's state may be queries with the `chirfa state` tool. Data structures in that case are specific to the particular smart contract.
 
-_Each data structure is created by one or more tools which are detailed below_
+Each data structure is created by one or more tools which are detailed below
 
-## State
+## EthState
 
-The following commands produce and manage states:
+The `state` object displays information about the type of account associated with an address, the block the address first appeared on the chain, the proxy address if the address is a proxied smart contract as well as account balance and a few other things.
+
+The following commands produce and manage ethstates:
 
 | Tools |     |
 | ----- | --- |
@@ -33,22 +35,30 @@ The balance of an address at a given block.
 * CLI: [chifra state](/docs/chifra/chainstate/#chifra-state)
 * [API](/api#operation/chainstate-state)
 
-State data is made of the following data fields:
+Ethstate data is made of the following data fields:
 
-| Field       | Description                                                                                     | Type    |
-| ----------- | ----------------------------------------------------------------------------------------------- | ------- |
-| blockNumber | the block number at which this state was taken                                                  | blknum  |
-| balance     | the balance at the address at the given block height                                            | wei     |
-| nonce       | the nonce of the address at the given block height                                              | uint64  |
-| code        | the byte code at the address (if this is a smart contract)                                      | bytes   |
-| storage     | this field is un-implemented and current returns the first storage location in a smart contract | bytes   |
-| address     | the address of the state being queried                                                          | address |
-| deployed    | the block number at which this smart contract was deployed (if a smart contact)                 | blknum  |
-| accttype    | the type of the address at the given block                                                      | string  |
+| Field       | Description                                                                     | Type    |
+| ----------- | ------------------------------------------------------------------------------- | ------- |
+| blockNumber | the block number at which this state was taken                                  | blknum  |
+| address     | the address of the state being queried                                          | address |
+| proxy       | if this is a proxy, this is the proxied-to address                              | address |
+| balance     | the balance at the address at the given block height                            | wei     |
+| nonce       | the nonce of the address at the given block height                              | uint64  |
+| code        | the byte code at the address (if this is a smart contract)                      | bytes   |
+| deployed    | the block number at which this smart contract was deployed (if a smart contact) | blknum  |
+| accttype    | the type of the address at the given block                                      | string  |
 
+## EthCall
 
-## Result
+For the `chifra state --call` tool, the `result` is the result returned by the call to the smart contract. This is the decoded `output` value of the smart contract call.
 
+The following commands produce and manage ethcalls:
+
+| Tools                                                 |                                                                         |
+| ----------------------------------------------------- | ----------------------------------------------------------------------- |
+| [chifra state](/docs/chifra/chainstate/#chifra-state) | retrieve account balance(s) for one or more addresses at given block(s) |
+
+Ethcall data is made of the following data fields:
 
 | Field            | Description                                                                     | Type      |
 | ---------------- | ------------------------------------------------------------------------------- | --------- |
@@ -61,30 +71,29 @@ State data is made of the following data fields:
 | compressedResult | the compressed version of the result of the call to the contract                | string    |
 | deployed         | the block number at which this smart contract was deployed (if a smart contact) | blknum    |
 
-## Token
+## TokenBalanceRecord
 
-The following commands produce and manage tokens:
+The data model displays the token balance records for the `chifra tokens` tool.
 
-| Tools |     |
-| ----- | --- |
+The following commands produce and manage tokenbalancerecords:
 
-* CLI: [chifra tokens](/docs/chifra/chainstate/#chifra-tokens)
-* [API](/api#operation/chainstate-tokens)
+| Tools                                                 |                                                                       |
+| ----------------------------------------------------- | --------------------------------------------------------------------- |
+| [chifra tokens](/docs/chifra/accounts/#chifra-tokens) | retrieve token balance(s) for one or more addresses at given block(s) |
 
-Token data is made of the following data fields:
+Tokenbalancerecord data is made of the following data fields:
 
 | Field      | Description                                                  | Type    |
 | ---------- | ------------------------------------------------------------ | ------- |
 | holder     | the address for which we are reporting the token balance     | address |
 | balance    | the balance at the address at the given block height         | wei     |
-| address    | description: the address of the token contract being queried | address |
+| address    | the address of the token contract being queried              | address |
 | name       | the name of the token contract, if available                 | string  |
 | symbol     | the symbol for this token contract                           | string  |
 | decimals   | the number of decimals for the token contract                | uint64  |
 | isContract | `true` if the address is a smart contract, `false` otherwise | bool    |
 | isErc20    | `true` if the address is an ERC20, `false` otherwise         | bool    |
 | isErc721   | `true` if the address is an ERC720, `false` otherwise        | bool    |
-
 
 ## Base types
 

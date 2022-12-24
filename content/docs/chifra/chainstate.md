@@ -2,7 +2,7 @@
 title: "Chain state"
 description: ""
 lead: ""
-date: 2022-06-01T15:21:39
+date: 2022-12-20T20:31:10
 lastmod:
   - :git
   - lastmod
@@ -28,6 +28,7 @@ The second tool, `chifra tokens`, deals with ERC20 and ERC721 token balances and
 {{< alert icon="👉" title="info depends on node"
 text="Note: The amount of information you can retrieve depends on the type of node you run. Archive nodes and tracing allow you to query historical state (that is, all the way back to the genesis block). TrueBlocks works with non-archive nodes, but they are much less informative."
 >}}
+<!-- markdownlint-disable MD041 -->
 ## chifra state
 
 Use this tool to retrieve the balance of an address (or list of addresses) at the given block (or blocks). Specify multiple addresses and/or multiple blocks if you wish, but you must specify at least one address. If no block is specified, the latest block is reported.
@@ -47,10 +48,10 @@ Arguments:
 
 Flags:
   -p, --parts strings   control which state to export
-                        One or more of [ none | some | all | balance | nonce | code | storage | deployed | accttype ]
+                        One or more of [ none | some | all | balance | nonce | code | proxy | deployed | accttype ]
   -c, --changes         only report a balance when it changes from one block to the next
   -n, --no_zero         suppress the display of zero balance accounts
-  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
 
@@ -65,6 +66,7 @@ Notes:
 
 **Source code**: [`internal/state`](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/state)
 
+<!-- markdownlint-disable MD041 -->
 ## chifra tokens
 
 Given the address of an ERC20 token contract, this tool reports token balances for one or more additional addresses. Alternatively, the tool can report the token balances for multiple ERC20 tokens for a single addresses.
@@ -91,7 +93,7 @@ Flags:
                         One or more of [ name | symbol | decimals | totalSupply | version | none | all ]
   -b, --by_acct         consider each address an ERC20 token except the last, whose balance is reported for each token
   -n, --no_zero         suppress the display of zero balance accounts
-  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
 
