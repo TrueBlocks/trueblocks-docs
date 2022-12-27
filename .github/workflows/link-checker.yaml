@@ -1,9 +1,9 @@
 name: Check links on site
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   run_linkinator:

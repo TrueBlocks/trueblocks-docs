@@ -1,11 +1,11 @@
 name: hugo rsync
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
