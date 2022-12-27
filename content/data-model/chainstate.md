@@ -2,7 +2,7 @@
 title: "Chain state"
 description: ""
 lead: ""
-date: 2022-12-21T12:20:58
+date: 2022-12-27T17:19:49
 lastmod:
   - :git
   - lastmod
@@ -19,7 +19,7 @@ toc: true
 
 The data structures produced by tools in the Chain State category provide details on the balances (ERC20 or ETH) of an address against a particular token or block. Additionally, direct access to a smart contract's state may be queries with the `chirfa state` tool. Data structures in that case are specific to the particular smart contract.
 
-Each data structure is created by one or more tools which are detailed below
+Each data structure is created by one or more tools which are detailed below.
 
 ## EthState
 
@@ -71,17 +71,17 @@ Ethcall data is made of the following data fields:
 | compressedResult | the compressed version of the result of the call to the contract                | string    |
 | deployed         | the block number at which this smart contract was deployed (if a smart contact) | blknum    |
 
-## TokenBalanceRecord
+## TokenBalance
 
 The data model displays the token balance records for the `chifra tokens` tool.
 
-The following commands produce and manage tokenbalancerecords:
+The following commands produce and manage tokenbalances:
 
 | Tools                                                 |                                                                       |
 | ----------------------------------------------------- | --------------------------------------------------------------------- |
 | [chifra tokens](/docs/chifra/accounts/#chifra-tokens) | retrieve token balance(s) for one or more addresses at given block(s) |
 
-Tokenbalancerecord data is made of the following data fields:
+Tokenbalance data is made of the following data fields:
 
 | Field      | Description                                                  | Type    |
 | ---------- | ------------------------------------------------------------ | ------- |
