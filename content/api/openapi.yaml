@@ -1481,7 +1481,7 @@ paths:
               schema:
                 properties:
                   data:
-                    description: on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block height
+                    description: on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block
                     type: array
                     items:
                       $ref: "#/components/schemas/tokenBalance"
@@ -2722,7 +2722,7 @@ components:
           example: 8901011
           description: "the block number at which this smart contract was deployed (if a smart contact)"
     tokenBalance:
-      description: "on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block height"
+      description: "on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block"
       type: object
       properties:
         holder:
