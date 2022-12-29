@@ -2,7 +2,7 @@
 title: "Admin"
 description: ""
 lead: ""
-date: 2022-12-20T19:50:09
+date: 2022-12-28T01:35:20
 lastmod:
   - :git
   - lastmod
@@ -19,7 +19,7 @@ toc: true
 
 The data models produced by the tools in the Admin category relate to scraping the chain, producing the Unchained Index, and querying the configuration of the system. Additional data related to sharing the indexes via IPFS and pinning the same are also produced by tools in this category.
 
-Each data structure is created by one or more tools which are detailed below
+Each data structure is created by one or more tools which are detailed below.
 
 ## Status
 
@@ -180,6 +180,23 @@ Chunkaddresses data is made of the following data fields:
 | offset  | The offset into the appearance table of the first record for this address | uint64     |
 | count   | The number of records in teh appearance table for this address            | uint64     |
 
+## ChunkAppearances
+
+The `appearances` data model is the second of two tables inside of the Unchained Index chunks. The other is the `addresses` table which relates the addresses in that table to this table via the `offset` and `count` fields.
+
+The following commands produce and manage chunkAppearances:
+
+| Tools                                              |                                                                 |
+| -------------------------------------------------- | --------------------------------------------------------------- |
+| [chifra chunks](/docs/chifra/admin/#chifra-chunks) | manage pinned index of appearances and associated Bloom filters |
+
+Chunkappearances data is made of the following data fields:
+
+| Field            | Description                              | Type   |
+| ---------------- | ---------------------------------------- | ------ |
+| blockNumber      | The block number of this appearance      | uint64 |
+| transactionIndex | The transaction index of this appearance | uint64 |
+
 ## ChunkStats
 
 The `stats` data model is produced by `chifra chunks` and brings together various statistical information such as average number of addresses in an Unchained Index chunk among other information.
@@ -207,23 +224,6 @@ Chunkstats data is made of the following data fields:
 | appsPerBlock  | the average number of appearances per block      | double |
 | appsPerAddr   | the average number of appearances per address    | double |
 | ratio         | the ratio of appearances to addresses            | double |
-
-## ChunkAppearances
-
-The `appearances` data model is the second of two tables inside of the Unchained Index chunks. The other is the `addresses` table which relates the addresses in that table to this table via the `offset` and `count` fields.
-
-The following commands produce and manage chunkAppearances:
-
-| Tools                                              |                                                                 |
-| -------------------------------------------------- | --------------------------------------------------------------- |
-| [chifra chunks](/docs/chifra/admin/#chifra-chunks) | manage pinned index of appearances and associated Bloom filters |
-
-Chunkappearances data is made of the following data fields:
-
-| Field            | Description                              | Type   |
-| ---------------- | ---------------------------------------- | ------ |
-| blockNumber      | The block number of this appearance      | uint64 |
-| transactionIndex | The transaction index of this appearance | uint64 |
 
 ## Chain
 
@@ -280,9 +280,36 @@ The following commands produce and manage cacheentrys:
 Cacheentry data is made of the following data fields:
 
 | Field   | Description | Type    |
-| ------- | --- | ------- |
-| address |     | address |
-| name    |     | string  |
+| ------- | ----------- | ------- |
+| address |             | address |
+| name    |             | string  |
+
+## IndexCacheItem
+
+The `indexCacheItem` is used to present a single Unchained Index chunk in the Explorer app.
+
+The following commands produce and manage indexcacheitems:
+
+| Tools                                              |                                                               |
+| -------------------------------------------------- | ------------------------------------------------------------- |
+| [chifra config](/docs/chifra/admin/#chifra-config) | report on and edit the configuration of the TrueBlocks system |
+
+Indexcacheitem data is made of the following data fields:
+
+| Field          | Description                                          | Type      |
+| -------------- | ---------------------------------------------------- | --------- |
+| nAddrs         | the number of addresses in this chunk                | uint32    |
+| nApps          | the number of appearances in this chunk              | uint32    |
+| firstApp       | the first appearance in this chunk                   | blknum    |
+| latestApp      | the last appeaerance in this chunk                   | blknum    |
+| firstTs        | the first timestamp in this chunk                    | timestamp |
+| latestTs       | the last timestamp in this chunk                     | timestamp |
+| filename       | the filename of this chunk                           | string    |
+| fileDate       | the file date of this chunk                          | datetime  |
+| indexSizeBytes | the size in bytes of the index portion of this chunk | uint32    |
+| indexHash      | the IPFS hash of the index portion of this chunk     | ipfshash  |
+| bloomSizeBytes | the size in bytes of the bloom filter for this chunk | uint32    |
+| bloomHash      | the IPFS has of the bloom filter for this chunk      | ipfshash  |
 
 ## Base types
 
@@ -293,9 +320,11 @@ This documentation mentions the following basic data types.
 | address   | a 20-byte hexadecimal string starting with '0x' | lowercase      |
 | blknum    | an alias for a uint64                           |                |
 | bool      | a value either `true`, `false`, `1`, or `0`     |                |
+| datetime  | a JSON formatted date                           | as a string    |
 | double    | a floating point number of double precision     |                |
 | hash      | a 32-byte hexadecimal string starting with '0x' | lowercase      |
 | ipfshash  | a multi-hash produced by IPFS                   | mixed-case     |
 | string    | a normal character string                       |                |
 | timestamp | a 64-bit unsigned integer                       | Unix timestamp |
+| uint32    | a 32-bit unsigned integer                       |                |
 | uint64    | a 64-bit unsigned integer                       |                |

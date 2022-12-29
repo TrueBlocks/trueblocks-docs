@@ -2,7 +2,7 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2022-12-20T19:50:09
+date: 2022-12-25T09:26:39
 lastmod:
   - :git
   - lastmod
@@ -22,11 +22,10 @@ The following commands provide useful miscellaneous tools:
 - `chifra explore` a quick way to open a blockchain explorer,
 - `ethslurp` an older tool that lets you call data from EtherScan. (This has issues of centralization and data quality, see explanation in its section).
 
-{{< alert icon="👉" title="note about keys"
-text="Note: some of these tools, like `ethslurp`, require an EtherScan key." >}}
-[Follow these instructions to add a key to your config](/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys)
+Note: some of these tools, such as `ethslurp`, require an EtherScan key. [Follow these instructions to add a key to
+your config](/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys).
 
-Each data structure is created by one or more tools which are detailed below
+Each data structure is created by one or more tools which are detailed below.
 
 ## Function
 
@@ -76,7 +75,7 @@ Parameter data is made of the following data fields:
 
 This documentation mentions the following basic data types.
 
-| Type      | Description                                     | Notes          |
-| --------- | ----------------------------------------------- | -------------- |
-| bool      | a value either `true`, `false`, `1`, or `0`     |                |
-| string    | a normal character string                       |                |
+| Type   | Description                                 | Notes |
+| ------ | ------------------------------------------- | ----- |
+| bool   | a value either `true`, `false`, `1`, or `0` |       |
+| string | a normal character string                   |       |
