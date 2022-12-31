@@ -57,7 +57,7 @@ weight = 10
 
 [[data]]
 identifier = "collections"
-name = "Reference of Data fields"
+name = "Model Groups"
 url = "/data-model/collections"
 weight = 20
 
