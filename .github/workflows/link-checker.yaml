@@ -24,4 +24,4 @@ jobs:
         run: npm install -g linkinator
 
       - name: check links
-        run: linkinator -r docs/ papers/ index.html data-model/ api/ --skip http://localhost:23456/ --skip https://tokenomics.io
+        run: linkinator -r docs/ papers/ index.html data-model/ api/ --skip http://localhost:23456/ --skip https://tokenomics.io --skip etherscan.io
