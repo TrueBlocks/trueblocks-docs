@@ -10,7 +10,7 @@ To develop on this site, you need `npm` and `hugo`.
 To run locally:
 
 1. Install npm dependencies
- 
+
 ```shell
 npm install
 ```
@@ -26,24 +26,25 @@ https://github.com/h-enk/doks/
 
 ## Important directories:
 
-* The Homepage is in the `layouts/index.html`
-* Content templates go in `archetypes`
-* `layouts` contains all information about templates
-* `config/_default/menus.toml` contains the structure for the overall menu and the section menus
+- The Homepage is in the `layouts/index.html`
+- Content templates go in `archetypes`
+- `layouts` contains all information about templates
+- `config/_default/menus.toml` contains the structure for the overall menu and the section menus
 
 ## How to add menu items
 
 Open up `config/_default/menus.toml`.
 
-If you want to add a head section, add a config to [[main]]. 
+If you want to add a head section, add a config to [[main]].
 
-``` TOML 
-[[main]]   
+```TOML
+[[main]]
   name = "Docs"
   url = "/docs/prologue/introduction/"
   weight = 10
 
 ```
+
 The more "weight", the farther to the left it will be.
 
 Then change some files in `layouts`. Check out the files the template owner changed here.
@@ -70,7 +71,7 @@ We love contributors. Please see information about our [work flow](https://githu
 1. Fork this repository into your own repo.
 2. Create a branch: `git checkout -b <branch_name>`.
 3. Make changes to your local branch and commit them to your forked repo: `git commit -m '<commit_message>'`
-4. Push back to the original branch: `git push origin TrueBlocks/trueblocks-core`
+4. Push back to the original branch: `git push origin TrueBlocks/trueblocks-docs`
 5. Create the pull request.
 
 ## Contact
