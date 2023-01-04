@@ -1,5 +1,24 @@
 <!doctype html>
 <html lang="{{ .Site.LanguageCode | default "en" }}">
+  <style>
+    /*
+    https://stackoverflow.com/questions/46004182/how-to-make-a-bootstrap-4-column-100-width
+    lg: 960px,
+		xl: 1240px,
+		xxl: 1320px
+    */
+    element {
+      max-width: 100%;
+    }
+    .col-xl-9 {
+      min-width: calc(100% - 248px - 330px);
+      max-width: 100%;
+    }
+    .col-lg-4 {
+      min-width: 248px; /* 992 * 4 / 16 = 248 */
+      max-width: 248px; /* 992 * 4 / 16 = 248 */
+    }
+  </style>
   {{ partial "head/head.html" . }}
   {{ if eq .Kind "home" -}}
     {{ .Scratch.Set "class" "home" -}}
@@ -14,7 +33,7 @@
   {{ end -}}
   <body class="{{ .Scratch.Get "class" }}">
     {{ partial "header/header.html" . }}
-    <div class="wrap container" role="document">
+    <div class="wrap container-fluid" role="document">
       <div class="content">
         {{ block "main" . }}{{ end }}
       </div>

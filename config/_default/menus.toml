@@ -106,7 +106,7 @@ weight = 20
 
 [[social]]
 name = "API"
-pre = "API\u00A0Reference"
+pre = "API"
 url = "/api"
 weight = 31
 
