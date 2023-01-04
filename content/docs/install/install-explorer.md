@@ -1,5 +1,5 @@
 ---
-title: "Install TrueBlocks explorer"
+title: "Install the Explorer"
 description: "Explorer is the GUI frontend for TrueBlocks "
 lead: "Explorer is the GUI frontend for TrueBlocks"
 date: 2021-07-02T08:01:07-03:00

@@ -1,3 +1,21 @@
+---
+title: "Better Token Accounting"
+description: "Information about how we account for tokens"
+lead: "Information about how we account for tokens"
+date: 2021-12-23T18:10:28-04:00
+lastmod:
+  - :git
+  - lastmod
+  - date
+  - publishDate
+images: []
+weight: 10
+toc: true
+draft: false
+contributor: ["rush"]
+tags: ["trueblocks"]
+---
+
 Eth accounting is identical
 Token accounting is improved in these ways:
 
@@ -22,4 +40,3 @@ What we need to do yet
 
 Example of Fake Fishing
    0xecd28a36f7811cf4bfa965f00ccbdf68dc6eccf70410525a5c2696ab30b05035 on account 0x153b95d138bb0c7a217dbc337e7de68f575ee8fb.txt
-   
