@@ -67,11 +67,17 @@ apiKey = "<your Etherscan api key>"   # optional
 ...
 ```
 
-- You should be able to now run the following command, which should return this data:
+## Testing the install
+
+If you've installed things properly, you should be able to now run the following command, which should return this data:
 
 ```[shell]
-prompt]> chifra blocks 12
+chifra blocks 12
+```
 
+You should get results similar to these:
+
+```[shell]
 {
   "data": [
     {
@@ -90,9 +96,13 @@ prompt]> chifra blocks 12
 }
 ```
 
-- Assuming the above works, you're system is properly installed. If not, see the [TroubleShooting section](/docs/install/install-troubleshooting). There's a lot left to learn. Have fun:
+- Assuming the above works, you're system is properly installed. If not, see the [TroubleShooting section](/docs/install/install-troubleshooting).
 
-  - [To use the Unchained Index](/docs/install/get-the-index/)
-  - [To explore some examples](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples)
-  - [To view some data science recipies](/tags/recipes/)
-  - [To use the explorer application](/docs/install/install-explorer/).
+## More information
+
+There's a lot left to learn. Have fun:
+
+  - [Using the Unchained Index](/docs/install/get-the-index/)
+  - [Explore some coding examples](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples)
+  - [View data science recipies](/tags/recipes/)
+  - [Use the explorer application](/docs/install/install-explorer/)
