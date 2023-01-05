@@ -24,7 +24,7 @@ toc: true
 <font color=red><b>Are you here for the OpenData Community Hackathon?</b></font>
 
 - [Install docker version and get the Unchained Index](https://github.com/TrueBlocks/trueblocks-docker)
-- After tha, some example usage: [here](https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1), [here](http://localhost:1313/tags/recipes/), [here](https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7), and [here](https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259)
+- After that, some example usage: [here](https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1), [here](http://localhost:1313/tags/recipes/), [here](https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7), and [here](https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259)
 
 <p><big><big>&#8593</big></big></p>
 
