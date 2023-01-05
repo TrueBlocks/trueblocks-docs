@@ -17,6 +17,23 @@ weight: 0101
 toc: true
 ---
 
+## OpenData Community Hackathon 2023
+
+<p><big><big>&#8595</big></big></p>
+
+<font color=red><b>Are you here for the OpenData Community Hackathon?</b></font>
+
+- [Install docker version and get the Unchained Index](https://github.com/TrueBlocks/trueblocks-docker)
+- Some examples: [here](https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1), [here](http://localhost:1313/tags/recipes/), [here](https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7), and [here](https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259)
+
+<p><big><big>&#8593</big></big></p>
+
+## OpenData Community Hackathon 2023
+
+------
+
+## Introduction
+
 If you're like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
 access to the most accurate and agreed-upon data ever produced. Near perfect data.
 
