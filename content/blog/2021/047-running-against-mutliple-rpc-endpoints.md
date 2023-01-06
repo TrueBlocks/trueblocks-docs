@@ -1,10 +1,13 @@
 ---
-title: "Recipe: Running Against Multiple Rpc Endpoints"
-description: ""
-lead: ""
+title: "Running Against Multiple Rpc Endpoints"
+description: "Running Against Multiple Rpc Endpoints"
+lead: "Can I run against different RPC endpoints?"
 categories:
-- Recipes
-tags: ['recipes']
+- Tutorials
+tags: ['tutorials']
+menu: 
+  blog:
+    parent: "tutorials"
 date: 2021-04-21T17:13:04-04:00
 lastmod: 2021-04-21T17:13:04-04:00
 draft: false

@@ -3,12 +3,12 @@ title: "Recipe: List Tokens I Own"
 description: "A method to list token balances for an address from known ERC 20 tokens"
 lead: "What do I Own?"
 categories:
-- Recipes
-tags: ['recipes']
+- Tutorials
+tags: ['tutorials']
 date: 2021-04-13T08:00:02-04:00
 menu: 
   blog:
-    parent: "recipes"
+    parent: "tutorials"
 draft: true
 weight: 50
 images: []
@@ -133,28 +133,28 @@ chifra export --logs --articulate --fmt csv 0x03fdcadc09559262f40f5ea61c72027826
 
 which produces the following table
 
-| Count |       Event      |
-|-------|------------------|
-|  3135 | Transfer         |
-|  1325 | Sync             |
-|  1214 | Swap             |
-|  1075 | Approval         |
-|   485 | Deposit          |
-|   350 | Withdrawal       |
-|   272 | Claimed          |
-|    90 | Mint             |
-|    84 | Staked           |
-|    42 | Withdrawn        |
-|    21 | Burn             |
-|     6 | Sent             |
-|     5 | RoleGranted      |
-|     2 | TransferSingle   |
-|     2 | RoleAdminChanged |
-|     1 | Trade            |
-|     1 | PairCreated      |
-|     1 | OrderPlaced      |
-|     1 | Fill             |
-|     1 | EthPurchase      |
+| Count | Event            |
+| ----- | ---------------- |
+| 3135  | Transfer         |
+| 1325  | Sync             |
+| 1214  | Swap             |
+| 1075  | Approval         |
+| 485   | Deposit          |
+| 350   | Withdrawal       |
+| 272   | Claimed          |
+| 90    | Mint             |
+| 84    | Staked           |
+| 42    | Withdrawn        |
+| 21    | Burn             |
+| 6     | Sent             |
+| 5     | RoleGranted      |
+| 2     | TransferSingle   |
+| 2     | RoleAdminChanged |
+| 1     | Trade            |
+| 1     | PairCreated      |
+| 1     | OrderPlaced      |
+| 1     | Fill             |
+| 1     | EthPurchase      |
 
 ## How Many Transfers?
 

@@ -1,20 +1,18 @@
 ---
-title: "Recipe: Monthly Token Balances"
-description: "Finding all token balances for every month for an address"
-lead: "Finding all token balances for every month for an address"
+title: "Monthly Token Balances"
+description: "Recipe: Monthly Token Balances"
+lead: "Can I create a list of token balances by month?"
 date: 2023-01-06T02:00:02-04:00
 categories:
-- Recipes
-tags: ['recipes']
+- Tutorials
+tags: ['tutorials']
 menu: 
   blog:
-    parent: "recipes"
+    parent: "tutorials"
 draft: false
 weight: 50
 images: []
 contributors: ["Thomas Jay Rush"]
 ---
 
-A TrueBlocks recipe to show how to get monthly token balances.
-
-[Follow this link](https://tjayrush.medium.com/recipe-monthly-token-balances-ff6a302fda80).
+- [Read Creating Monthly Token Balances](https://tjayrush.medium.com/recipe-monthly-token-balances-ff6a302fda80)

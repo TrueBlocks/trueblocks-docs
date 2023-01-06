@@ -62,16 +62,10 @@ url = "/data-model/collections"
 weight = 20
 
 [[blog]]
-identifier = "recipes"
-name = "Recipes"
-url = "/blog/recipes"
+identifier = "tutorials"
+name = "Tutorials"
+url = "/blog/tutorials"
 weigh = 10
-
-[[blog]]
-identifier = "explainers"
-name = "Explainers"
-url = "/blog/explainers"
-weigh = 20
 
 [[blog]]
 identifier = "trueblocks"
