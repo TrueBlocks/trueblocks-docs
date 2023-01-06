@@ -40,13 +40,17 @@ make                   # may be faster with make -j <nproc>
 
 - Add `./trueblocks-core/bin` to your shell's $PATH. Check Google if you don't know what this means.
 
-- Type `chifra config --paths`. This will produce a display similar to the following (ignore any errors). Note the `$CONFIG` paths.
+- Type `chifra config`. This will produce a display similar to the following (ignore any errors). Note the `$CONFIG` paths.
 
 ```[shell]
-chifra status --paths:
-  Config: $HOME/Library/Application Support/TrueBlocks/
-  Cache : $HOME/Library/Application Support/TrueBlocks/cache/mainnet
-  Index : $HOME/Library/Application Support/TrueBlocks/unchained/mainnet
+chifra config:
+  2023/01/06 07:10:40 Client:       Geth/v1.10.26-stable-e5eb32ac/linux-amd64/go1.18.8 (archive, not tracing)
+  2023/01/06 07:10:40 TrueBlocks:   GHC-TrueBlocks//0.50.0-beta-c2f810cee-20221222 (eskey, pinkey)
+  2023/01/06 07:10:40 RPC Provider: https://localhost:8545 - mainnet (1,1)
+  2023/01/06 07:10:40 Config Path:  $HOME/.local/share/trueblocks/
+  2023/01/06 07:10:40 Cache Path:   $HOME/.local/share/trueblocks/cache/mainnet/
+  2023/01/06 07:10:40 Index Path:   $HOME/.local/share/trueblocks/unchained/mainnet/
+  2023/01/06 07:10:40 Progress:     16347655, 16037114, 16037114, 16037114, ts: 16038197
 ```
 
 - Next, edit a configuration file called `$CONFIG/trueBlocks.toml`. Edit this file and locate the `[chains.mainnet]` section. Add a valid RPC endpoint. If you don't know what this means, search Google.
