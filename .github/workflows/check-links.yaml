@@ -1,9 +1,9 @@
 name: Check links on site
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   workflow_dispatch:
-    branches: [ main, develop ]
+    branches: [ main ]
 
 jobs:
   run_linkinator:
@@ -24,4 +24,6 @@ jobs:
         run: npm install -g linkinator
 
       - name: check links
-        run: linkinator -r docs/ papers/ index.html chifra/ data-model/ api/ --skip http://localhost:23456/ --skip https://tokenomics.io --skip etherscan.io
+        run: linkinator -r index.html \
+          docs/ papers/ chifra/ data-model/ api/ \
+          --skip localhost:23456 --skip tokenomics.io --skip etherscan.io
