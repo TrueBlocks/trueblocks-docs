@@ -20,7 +20,7 @@ Every `chifra` sub-command comes with an associated help page. To get help for `
 chifra
 ```
 
-A long list of commands should show. (If you have trouble, see the [Installation](/docs/install/install-trueblocks/) page.)
+A long list of commands should show. (If you have trouble, see the [Installation](/docs/install/install-core/) page.)
 
 To get help for a specific command, type
 

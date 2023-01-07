@@ -24,7 +24,7 @@ then run the application from [a clone of the explorer repo](https://github.com/
 
 ## Before you begin
 
-&#9745; Set up the trueblocks backend using the [chifra installation instructions](/docs/install/install-trueblocks)
+&#9745; Set up the trueblocks backend using the [chifra installation instructions](/docs/install/install-core)
 
 &#9745; In a terminal window, run the command `chifra serve`
 

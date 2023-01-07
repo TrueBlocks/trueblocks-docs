@@ -41,7 +41,7 @@ You should to this now. Buy a dAppNode, plug it in, and enjoy the benefits of ru
 
 It is our strong beleif that the Ethereum RPC is broken. It's missing something. An index by address.
 
-The goal of TrueBlocks is to provide exactly that missing peice. We call our solution the [Unchained Index](/docs/install/get-the-index/).
+The goal of TrueBlocks is to provide exactly that missing peice. We call our solution the [Unchained Index](/docs/install/build-unchained-index/).
 
 The Unchained Index is created locally on your machine -- on the dAppNode. As a direct result of being local, the index has a number of amazing qualities:
 
@@ -62,7 +62,7 @@ In it's best incarnation, TrueBlocks runs locally against your own locally runni
 
 To ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using [chifra init](/docs/chifra/admin/#chifra-init). Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the "holder of all data" which eventually leads to winner-take-all like Google. We want to purposfully avoid that. 
 
-This whole process is [better explained here](/docs/install/get-the-index/).
+This whole process is [better explained here](/docs/install/build-unchained-index/).
 
 ## Unchained Index provides huge advantages
 

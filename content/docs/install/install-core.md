@@ -1,5 +1,5 @@
 ---
-title: "Install Core"
+title: "Installing Core"
 description: "TrueBlocks works on Linux and Mac"
 lead: "TrueBlocks runs on Linux and Mac. We do not support Windows."
 date: 2020-11-16T13:59:39+01:00
@@ -26,7 +26,7 @@ If you need help with a particular step, see the [installation's troubleshooting
 
 - Install or upgrade the build dependancies: _git_, _cmake_, _ninja_, _curl_, _python_, _clang-format_, _jq_
 
-  - [Install dependencies](/docs/install/install-trueblocks/#how-do-i-install-packages-on-the-command-line)
+  - [Install dependencies](/docs/install/install-core/#how-do-i-install-packages-on-the-command-line)
 <br><br>
 - Clone the repo and compile the executable:
 
@@ -102,7 +102,7 @@ You should get results similar to these:
 
 There's a lot left to learn. Have fun:
 
-  - [Using the Unchained Index](/docs/install/get-the-index/)
+  - [Using the Unchained Index](/docs/install/build-unchained-index/)
   - [Explore some coding examples](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples)
   - [View data science recipies](/tags/tutorials/)
   - [Use the explorer application](/docs/install/install-explorer/)

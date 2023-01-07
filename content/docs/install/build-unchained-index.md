@@ -1,5 +1,5 @@
 ---
-title: "Build the Index"
+title: "Unchained Index"
 description: "There are three ways to get the index. Each way involves some
 tradeoff between initialization time, storage use, and local access."
 lead: "After you install the core TrueBlocks utilities, you can access the index in three ways.
@@ -13,6 +13,7 @@ lastmod:
 draft: false
 alias:
  - "/docs/prologue/how-can-i-get-the-index"
+ - "/docs/install/get-the-index"
 images: []
 menu: 
   docs:
@@ -93,7 +94,7 @@ As is true of the previous methods, if you enable caching, subsequent queries fo
 > 👉 **Note**:
 > If you don't have a node with tracing or archiving, `scrape` exits by default.
 > You can still use scrape, but you need to
-<a href="/docs/install/install-trueblocks#no-tracing">open your config and disable these checks</a></p>
+<a href="/docs/install/install-core#no-tracing">open your config and disable these checks</a></p>
 
 To build your own index without any downloading, run `chifra scrape`.
 

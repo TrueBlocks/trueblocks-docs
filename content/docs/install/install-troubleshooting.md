@@ -176,7 +176,7 @@ However, most of our users with to explore the entire history of their own
 addresses. If you wish to do that, you will need the index.
 
 There are multiple options for getting the index, which the
-[How Can I Get the Index?](/docs/install/get-the-index) article covers
+[How Can I Get the Index?](/docs/install/build-unchained-index) article covers
 in more detail.
 
 No matter which method you use, downloading or creating the index will take

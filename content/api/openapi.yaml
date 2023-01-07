@@ -23,7 +23,7 @@ info:
 
       ### Before you begin
 
-    1. [Install the trueblocks-core application](/docs/install/install-trueblocks/)
+    1. [Install the trueblocks-core application](/docs/install/install-core/)
       on your machine, change your configs as needed.
     2. Run `chifra daemon`
 
