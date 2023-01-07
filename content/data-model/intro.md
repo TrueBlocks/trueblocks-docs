@@ -2,7 +2,10 @@
 title: "Blockchain data"
 description: "Ethereum consists of multiple different data models. TrueBlocks exposes them all."
 lead: "Ethereum consists of multiple different data models. TrueBlocks exposes them all."
-date: 2021-07-01T11:40:11-03:00
+lastmod:
+  - :git
+  - lastmod
+  - publishDate
 draft: false
 url: "/data-model/intro"
 images: []

@@ -29,53 +29,53 @@ weight = 200
     url = "/chifra/commands"
     weight = 20
 
-[[main]]
-identifier = "docker"
-name = "Docker"
-url = "/docker/introduction"
-weight = 400
-    [[docker]]
-    identifier = "introduction"
-    name = "docker"
-    url = "/docker/introduction"
-    weight = 10
-    [[docker]]
-    identifier = "dappnode"
-    name = "DappNode"
-    url = "/docker/dappnode"
-    weight = 20
-
-[[main]]
-identifier = "explorer"
-name = "Explorer"
-url = "/explorer/introduction"
-weight = 300
-    [[explorer]]
-    identifier = "introduction"
-    name = "explorer"
-    url = "/explorer/introduction"
-    weight = 10
-    [[explorer]]
-    identifier = "pages"
-    name = "pages"
-    url = "/explorer/pages"
-    weight = 20
-
-[[main]]
-identifier = "sdks"
-name = "SDKs"
-url = "/sdks/introduction"
-weight = 400
-    [[sdks]]
-    identifier = "introduction"
-    name = "sdks"
-    url = "/sdks/introduction"
-    weight = 10
-    [[sdks]]
-    identifier = "langauges"
-    name = "Langauges"
-    url = "/sdks/langauges"
-    weight = 20
+#[[main]]
+#identifier = "docker"
+#name = "Docker"
+#url = "/docker/introduction"
+#weight = 400
+#    [[docker]]
+#    identifier = "introduction"
+#    name = "docker"
+#    url = "/docker/introduction"
+#    weight = 10
+#    [[docker]]
+#    identifier = "dappnode"
+#    name = "DappNode"
+#    url = "/docker/dappnode"
+#    weight = 20
+#
+#[[main]]
+#identifier = "explorer"
+#name = "Explorer"
+#url = "/explorer/introduction"
+#weight = 300
+#    [[explorer]]
+#    identifier = "introduction"
+#    name = "explorer"
+#    url = "/explorer/introduction"
+#    weight = 10
+#    [[explorer]]
+#    identifier = "pages"
+#    name = "pages"
+#    url = "/explorer/pages"
+#    weight = 20
+#
+#[[main]]
+#identifier = "sdks"
+#name = "SDKs"
+#url = "/sdks/introduction"
+#weight = 400
+#    [[sdks]]
+#    identifier = "introduction"
+#    name = "sdks"
+#    url = "/sdks/introduction"
+#    weight = 10
+#    [[sdks]]
+#    identifier = "langauges"
+#    name = "Langauges"
+#    url = "/sdks/langauges"
+#    weight = 20
 
 [[main]]
 identifier = "data"
@@ -100,7 +100,7 @@ weight = 600
 
 [[main]]
 name = "Papers"
-url = "/papers/"
+url = "/papers"
 weight = 700
     [[papers]]
     name = "Papers"
