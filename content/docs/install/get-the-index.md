@@ -1,5 +1,5 @@
 ---
-title: "Build the Unchained Index"
+title: "Build the Index"
 description: "There are three ways to get the index. Each way involves some
 tradeoff between initialization time, storage use, and local access."
 lead: "After you install the core TrueBlocks utilities, you can access the index in three ways.
@@ -21,11 +21,11 @@ weight: 0300
 toc: true
 ---
 
-| If you want to...                                                                                                                    | and you don't mind...                                                                                                                          | then use...                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| minimize the size of the data stored locally and you want to get started faster...                                                   | slower first-time queries on new addresses, an index that's slightly behind the head of the chain, an index created by someone else...         | [`chifra init`](#use-init-to-get-only-the-chunks-you-query)  |
-| maximize the speed of first-time queries for new addresses...                                                                        | longer initial setup time, ~70 GB of local storage, an index that's slightly behind the head of the chain, an index created by someone else... | [`chifra init --all`](#use_init_all-to-get-all-index-chunks) |
-| have a fully-local index, built directly from your own node, that stays up with the chain and maximizes the speed of your queries... | two to three days setup time and running your own local node (such as dAppnode)....                                                            | [`chifra scrape`](#use-scrape-to-build-your-own-index)       |
+| If you want...                                                                           | and you don't mind...                                                                                                                                | then use...                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| to minimize the size of the data stored locally and<br>you want to get started faster... | slower first-time queries on new addresses, an index<br>that's slightly behind the head of the chain, an index<br>created by someone else...         | [`chifra init`](#use-init-to-get-only-the-chunks-you-query)  |
+| to maximize the speed of first-time queries for<br>new addresses...                      | longer initial setup time, ~70 GB of local storage, an<br>index that's slightly behind the head of the chain, an<br>index created by someone else... | [`chifra init --all`](#use_init_all-to-get-all-index-chunks) |
+| have a locally-running node and wish to build<br>the index yourself...                   | two to three days setup time and running your own<br>local node (such as dAppnode)....                                                               | [`chifra scrape`](#use-scrape-to-build-your-own-index)       |
 
 ## Getting the index without running a node
 

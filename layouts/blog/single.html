@@ -15,16 +15,9 @@
 		{{ else -}}
 		<main class="docs-content col-lg-11 col-xl-9 mx-xl-auto">
 		{{ end -}}
-			{{ if .Site.Params.options.breadCrumb -}}
-				<!-- https://discourse.gohugo.io/t/breadcrumb-navigation-for-highly-nested-content/27359/6 -->
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						{{ partial "main/breadcrumb" . -}}
-						<li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
-					</ol>
-				</nav>
-			{{ end }}
 			<h1>{{ .Title }}</h1>
+			<p class="lead">{{ .Params.lead | safeHTML }}</p>
+			{{ partial "main/headline-hash.html" .Content }}
                         <div class="date">
                           {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
                           {{ $publishDate := .PublishDate }}
@@ -32,7 +25,6 @@
                           <em>Published on: {{ T "publish_date" }} </em>{{ $publishDate.Format $dateFormat }}
                           {{ with .Lastmod }}
                             {{ if gt . $publishDate }}
-                              
                               <em>Last edited:{{ T "last_updated" }} </em>{{ .Format $dateFormat }}
                           </small>
                             <br>
@@ -40,8 +32,6 @@
                             {{ end }}
                           {{ end }}
                         </div>
-			<p class="lead">{{ .Params.lead | safeHTML }}</p>
-			{{ partial "main/headline-hash.html" .Content }}
 			{{ if .Site.Params.editPage -}}
 				{{ partial "main/edit-page.html" . }}
 			{{ end -}}
@@ -50,7 +40,6 @@
 			{{ else -}}
 				<div class="my-n3"></div>
 			{{ end -}}
-
 		</main>
 	</div>
 {{ end }}

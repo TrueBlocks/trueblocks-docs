@@ -1,5 +1,5 @@
 ---
-title: "Install TrueBlocks Core"
+title: "Install Core"
 description: "TrueBlocks works on Linux and Mac"
 lead: "TrueBlocks runs on Linux and Mac. We do not support Windows."
 date: 2020-11-16T13:59:39+01:00

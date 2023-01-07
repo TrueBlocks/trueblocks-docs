@@ -1,7 +1,7 @@
 ---
-title : "Problem Statement"
+title : "Introduction"
 description: "TrueBlocks Docs"
-lead: "Are blockchains really meeting their promise?"
+lead: ""
 date: 2020-10-06T08:48:23+00:00
 lastmod:
   - :git
@@ -17,22 +17,23 @@ weight: 0101
 toc: true
 ---
 
-## OpenData Community Hackathon 2023
-
-<p><big><big>&#8595</big></big></p>
-
 <font color=red><b>Are you here for the OpenData Community Hackathon?</b></font>
 
-- [Install docker version and get the Unchained Index](https://github.com/TrueBlocks/trueblocks-docker)
-- After that, some example usage: [here](https://trueblocks.io/blog/recipe-getting-erc20-transfer-events/), [here](https://trueblocks.io/tags/tutorials/), [here](https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7), and [here](https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259), [here](https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1)
+- [Install the docker version and download (or build) the Unchained Index](https://github.com/TrueBlocks/trueblocks-docker)
+- Tutorials:
+  - [Showing ERC20 transfers on the token contract](http://localhost:1313/blog/showing-erc-20-transfers/)
+  - [Listing contracts created by an address (including UniSwap)](https://tjayrush.medium.com/recipe-factories-ce78fa4c5f5b)
+  - [Monthly ERC20 token balance for one or more addresses](http://localhost:1313/blog/monthly-token-balances/)
+  - [Calling into smart contracts with `chifra state`](https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7)
+  - [The Rent is Too Damn High](https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259)
+  - [Commanding the Line](https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1)
 
 <p><big><big>&#8593</big></big></p>
 
-## OpenData Community Hackathon 2023
-
 ------
+Are blockchains really meeting their promise?
 
-## Introduction
+## Problem Statement
 
 If you're like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
 access to the most accurate and agreed-upon data ever produced. Near perfect data.

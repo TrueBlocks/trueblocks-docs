@@ -1,83 +1,106 @@
 [[main]]
-name = "Docs"
+name = "Introduction"
 url = "/docs/"
 weight = 10
 
+    [[docs]]
+    identifier = "prologue"
+    name = "Prologue"
+    url = "/docs/prologue/"
+    weight = 10
+
+    [[docs]]
+    identifier = "install"
+    name = "Install"
+    url = "/docs/install/"
+    weight = 15
+
+[[main]]
+identifier = "chifra"
+name = "Chifra"
+url = "/chifra/introduction"
+weight = 30
+
+    [[chifra]]
+    identifier = "introduction"
+    name = "chifra"
+    url = "/chifra/introduction"
+    weight = 10
+
+    [[chifra]]
+    identifier = "commands"
+    name = "Commands"
+    url = "/chifra/commands"
+    weight = 20
+
+[[main]]
+identifier = "explorer"
+name = "Explorer"
+url = "/explorer/introduction"
+weight = 30
+
+    [[explorer]]
+    identifier = "introduction"
+    name = "explorer"
+    url = "/explorer/introduction"
+    weight = 10
+
+    [[explorer]]
+    identifier = "pages"
+    name = "pages"
+    url = "/explorer/pages"
+    weight = 20
+
+[[main]]
+identifier = "docker"
+name = "Docker"
+url = "/docker/introduction"
+weight = 35
+
+    [[docker]]
+    identifier = "introduction"
+    name = "docker"
+    url = "/docker/introduction"
+    weight = 10
+
+    [[docker]]
+    identifier = "dappnode"
+    name = "DappNode"
+    url = "/docker/dappnode"
+    weight = 20
+
 [[main]]
 identifier = "data"
-name = "Data\u00A0Model"
+name = "Data Model"
 url = "/data-model/intro"
-weight = 30
+weight = 40
+
+    [[data]]
+    identifier = "intro"
+    name = "Data Model"
+    url = "/data-model/intro"
+    weight = 10
+
+    [[data]]
+    identifier = "collections"
+    name = "Models"
+    url = "/data-model/collections"
+    weight = 20
 
 [[main]]
 name = "Blog"
 url = "/blog/"
-weight = 40
+weight = 50
 
 [[main]]
 name = "Papers"
-url = "/papers"
-weight = 50
+url = "/papers/"
+weight = 60
 
-[[docs]]
-identifier = "prologue"
-name = "Prologue"
-url = "/docs/prologue/"
-weight = 10
-
-[[docs]]
-identifier = "install"
-name = "Install"
-url = "/docs/install/"
-weight = 15
-
-[[docs]]
-identifier = "using"
-name = "After installation"
-url = "/docs/using/"
-weight = 20
-
-[[docs]]
-identifier = "chifra"
-name = "Command line"
-url = "/docs/chifra/"
-weight = 30
-
-[[docs]]
-identifier = "explorer"
-name = "Explorer"
-url = "/docs/explorer/"
-weight = 30
-
-[[data]]
-identifier = "intro"
-name = "The Data Model"
-url = "/data-model/intro/intro"
-weight = 10
-
-[[data]]
-identifier = "collections"
-name = "Model Groups"
-url = "/data-model/collections"
-weight = 20
-
-[[blog]]
-identifier = "tutorials"
-name = "Tutorials"
-url = "/blog/tutorials"
-weigh = 10
-
-[[blog]]
-identifier = "trueblocks"
-name = "Trueblocks Articles"
-url = "/blog/trueblocks"
-weigh = 20
-
-[[blog]]
-identifier = "ethereum"
-name = "Ethereum Articles"
-url = "/blog/ethereum"
-weigh = 20
+    [[papers]]
+    name = "Papers"
+    url = "/papers/2023"
+    weight = 50
 
 [[social]]
 name = "Twitter"
@@ -105,11 +128,11 @@ url = "/api"
 weight = 31
 
 [[footer]]
+name = "Improve docs"
+url = "https://github.com/TrueBlocks/trueblocks-docs"
+weight = 20
+
+[[footer]]
 name = "Privacy"
 url = "/privacy-policy/"
 weight = 30
-
-[[footer]]
-name = "Improve the docs"
-url = "https://github.com/TrueBlocks/trueblocks-docs"
-weight = 20

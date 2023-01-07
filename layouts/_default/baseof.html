@@ -41,9 +41,6 @@
     {{ block "sidebar-prefooter" . }}{{ end }}
     {{ block "sidebar-footer" . }}{{ end }}
     {{ partial "footer/footer.html" . }}
-    {{ if and .IsHome .Site.Params.alert }}
-      {{ partial "footer/alert.html" . }}
-    {{ end }}
     {{ partial "footer/script-footer.html" . }}
   </body>
 </html>
