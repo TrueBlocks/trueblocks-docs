@@ -9,263 +9,319 @@ menu:
 weight: 1000
 toc: true
 ---
-
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-The primary tool of TrueBlocks is `chifra export`. This tool extracts, directly from the chain,
-entire transactional histories for one or more addresses and presents that information for use
-outside the blockchain. The results of this extraction is stored in a data structure called a
-[Monitor](/data-model/accounts/#monitor).
+This group of commands is at the heart of TrueBlocks. They allow you to produce and analyze
+transactional histories for a given Ethereum address.
 
-Monitors collect together [Appearances](/data-model/accounts/#appearance) (`blknum.tx_id` pairs)
-along with additional information such as [Reconciliations](/data-model/accounts/#reconciliation)
-(18-decimal place accurate accounting for each asset transfer), [Names](/data-model/accounts/#names)
-(associations of human-readable names with addresses), and [Abis](/data-model/accounts/#abis)
-which track the "meaning" of each transaction through its [Functions](/data-model/accounts/#function)
-and [Parameters](/data-model/accounts/#parameters).
+You may also name addresses; grab the ABI file for a given address; add, delete, and remove
+monitors, and, most importantly, export transactional histories to various formats, This
+includes re-directing output to remote or local databases.
+## chifra list
 
-Each data structure is created by one or more tools which are detailed below.
+<!-- markdownlint-disable MD041 -->
+`chifra list` takes one or more addresses, queries the index of appearances, and builds TrueBlocks
+monitors. A TrueBlocks monitor is a file that contains blockNumber.transactionId pairs (transaction
+identifiers) representing the history of the address.
 
-## Appearance
+Because TrueBlocks only extracts data from the Ethereum node when it's requested, the first time
+you list an address it takes about a minute. Subsequent queries are much faster because TrueBlocks
+caches the results.
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-An appearance is a pointer (`blknum, tx_id` pair) into the blockchain indicating where a
-particular address appears. This includes obvious locations such as `to` or `from` as well
-as esoteric locations such as deep inside a tenth-level trace or as the miner of an uncle block.
-The primary goal of TrueBlocks is to identify every appearance for any address on the chain.
+Note that `chifra list` only queries the index, it does not extract the full transactional details.
+You may use `chifra export` for that.
 
-The TrueBlocks [index of appearances](/data-model/the-index/) (created by [chifra scrape](/docs/chifra/admin/#chifra-scrape))
-makes the production of such a list possible. Appearances are stored in [Monitors](/data-model/accounts/#monitor).
+```[plaintext]
+Purpose:
+  List every appearance of an address anywhere on the chain.
 
-The following commands produce and manage Appearances:
+Usage:
+  chifra list [flags] <address> [address...]
 
-- [chifra list](/docs/chifra/accounts/#chifra-list)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+Arguments:
+  addrs - one or more addresses (0x...) to list (required)
 
-Appearances consist of the following fields:
+Flags:
+  -U, --count               display only the count of records for each monitor
+  -n, --no_zero             suppress the display of zero appearance accounts
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
+  -F, --first_block uint    first block to export (inclusive, ignored when freshening)
+  -L, --last_block uint     last block to export (inclusive, ignored when freshening)
+  -x, --fmt string          export format, one of [none|json*|txt|csv]
+  -v, --verbose             enable verbose (increase detail with --log_level)
+  -h, --help                display this help screen
 
-| Field            | Description                                             | Type      |
-| ---------------- | ------------------------------------------------------- | --------- |
-| address          | the address of the appearance                           | address   |
-| blockNumber      | the number of the block                                 | blknum    |
-| transactionIndex | the index of the transaction in the block               | blknum    |
-| traceIndex       | the zero-based index of the trace in the transaction    | blknum    |
-| reason           | the location in the data where the appearance was found | string    |
-| name             | the name of the address, if found                       | string    |
-| timestamp        | the timestamp for this appearance                       | timestamp |
-| date             | the date represented by the timestamp                   | string    |
+Notes:
+  - No other options are permitted when --silent is selected.
+```
 
-## Reconciliation
+Data models produced by this tool:
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-When exported with the `--accounting` option from `chifra export`, each transaction will have field
-called `statements`. Statements are an array for reconciliations. All such exported transactions
-will have at least one reconciliation (for ETH), however, many will have additional reconciliations
-for other assets (such as ERC20 and ERC721 tokens).
+- [appearance](/data-model/accounts/#appearance)
+- [monitor](/data-model/accounts/#monitor)
+- [appearancecount](/data-model/accounts/#appearancecount)
 
-Because DeFi is essentially swaps and trades around ERC20s, and because and 'programmable money'
-allows for unlimited actions to happen under a single transaction, many times a transaction has
-four or five reconciliations.
+Links:
 
-Reconciliations are relative to an `accountedFor` address. For this reason, the same transaction
-will probably have different reconciliations depending on the `accountedFor` address. Consider a
-simple transfer of ETH from one address to another. Obviously, the sender's and the recipient's
-reconciliations will differ (in opposite proportion to each other). The `accountedFor` address
-is always present as the `assetAddress` in the first reconciliation of the statements array.
+- [api docs](/api/#operation/accounts-list)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/list)
 
-The following commands produce and manage Reconciliations:
+## chifra export
 
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+<!-- markdownlint-disable MD041 -->
+The `chifra export` tools provides a major part of the functionality of the TrueBlocks system. Using
+the index of appearances created with `chifra scrape` and the list of transaction identifiers
+created with `chifra list`, `chifra export` completes the actual extraction of an address's transactional
+history from the node.
 
-Reconciliations consist of the following fields:
+You may use `topics`, `fourbyte` values at the start of a transaction's input data, and/or a log's
+`source address` or `emitter` to filter the results.
 
-| Field               | Description                                                                                                                                    | Type      |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| blockNumber         | the number of the block                                                                                                                        | blknum    |
-| transactionIndex    | the zero-indexed position of the transaction in the block                                                                                      | blknum    |
-| logIndex            | the zero-indexed position the log in the block, if applicable                                                                                  | blknum    |
-| transactionHash     | the hash of the transaction that triggered this reconciliation                                                                                 | hash      |
-| timestamp           | the Unix timestamp of the object                                                                                                               | timestamp |
-| date                | a calculated field -- the date of this transaction                                                                                             | datetime  |
-| assetAddr           | 0xeeee...eeee for ETH reconciliations, the token address otherwise                                                                             | address   |
-| assetSymbol         | either ETH, WEI, or the symbol of the asset being reconciled as extracted from the chain                                                       | string    |
-| decimals            | The value of `decimals` from an ERC20 contract or, if ETH or WEI, then 18                                                                      | uint64    |
-| spotPrice           | The on-chain price in USD (or if a token in ETH, or zero) at the time of the transaction                                                       | double    |
-| priceSource         | The on-chain source from which the spot price was taken                                                                                        | string    |
-| accountedFor        | the address being accounted for in this reconciliation                                                                                         | address   |
-| sender              | the initiator of the transfer (the sender)                                                                                                     | address   |
-| recipient           | the receiver of the transfer (the recipient)                                                                                                   | address   |
-| begBal              | the beginning balance of the asset prior to the transaction                                                                                    | int256    |
-| amountNet           | a calculated field -- totalIn - totalOut                                                                                                       | int256    |
-| endBal              | the on-chain balance of the asset (see notes about intra-block reconciliations)                                                                | int256    |
-| encoding            | The topic of the event (if this is an ERC20 reconcilation), the four-byte signature of the transaction otherwise                               | string    |
-| signature           | If possible, the articulated name of the function or event signature                                                                           | string    |
-| reconciliationType  | One of `regular`, `prevDiff-same`, `same-nextDiff`, or `same-same`. Appended with `eth` or `token`                                             | string    |
-| reconciled          | a calculated field -- true if `endBal === endBalCalc` and `begBal === prevBal`. `false` otherwise.                                             | bool      |
-| totalIn             | a calculated field -- the sum of the following `In` fields                                                                                     | int256    |
-| amountIn            | the top-level value of the incoming transfer for the accountedFor address                                                                      | int256    |
-| internalIn          | the internal value of the incoming transfer for the accountedFor address                                                                       | int256    |
-| selfDestructIn      | the incoming value of a self-destruct if recipient is the accountedFor address                                                                 | int256    |
-| minerBaseRewardIn   | the base fee reward if the miner is the accountedFor address                                                                                   | int256    |
-| minerNephewRewardIn | the nephew reward if the miner is the accountedFor address                                                                                     | int256    |
-| minerTxFeeIn        | the transaction fee reward if the miner is the accountedFor address                                                                            | int256    |
-| minerUncleRewardIn  | the uncle reward if the miner who won the uncle block is the accountedFor address                                                              | int256    |
-| prefundIn           | at block zero (0) only, the amount of genesis income for the accountedFor address                                                              | int256    |
-| totalOut            | a calculated field -- the sum of the following `Out` fields                                                                                    | int256    |
-| amountOut           | the amount (in units of the asset) of regular outflow during this transaction                                                                  | int256    |
-| internalOut         | the value of any internal value transfers out of the accountedFor account                                                                      | int256    |
-| selfDestructOut     | the value of the self-destructed value out if the accountedFor address was self-destructed                                                     | int256    |
-| gasOut              | if the transaction's original sender is the accountedFor address, the amount of gas expended                                                   | int256    |
-| totalOutLessGas     | a calculated field -- totalOut - gasOut                                                                                                        | int256    |
-| prevAppBlk          | the block number of the previous appearance, or 0 if this is the first appearance                                                              | blknum    |
-| prevBal             | the account balance for the given asset for the previous reconciliation                                                                        | int256    |
-| begBalDiff          | a calculated field -- difference between expected beginning balance and balance at last reconciliation, if non-zero, the reconciliation failed | int256    |
-| endBalDiff          | a calculated field -- endBal - endBalCalc, if non-zero, the reconciliation failed                                                              | int256    |
-| endBalCalc          | a calculated field -- begBal + amountNet                                                                                                       | int256    |
+You may also choose which portions of the Ethereum data structures (`--transactions`, `--logs`,
+`--traces`, etc.) as you wish.
 
-### Notes
+By default, the results of the extraction are delivered to your console, however, you may export
+the results to any database (with a little bit of work). The format of the data, its content and
+its destination are up to you.
 
-**Intra-block transactions**: In many cases two or more transactions requiring a reconciliation may occur in a single block. Because the Ethereum blockchain only provides balance queries at the end of blocks, it is not possible to query for the balance of an asset at the end of transactions for which there are other following transactions in the block nor for the beginning balance for which there are transactions prior to the given transaction in the same block. In these cases, TrueBlocks simulates the beginning and ending balance as needed and adds `partial` to the `reconciliationType`.
+```[plaintext]
+Purpose:
+  Export full detail of transactions for one or more addresses.
 
-**Spot Price**: If the `spotPrice` is available from an on-chain source (such as UniSwap), then it represents the ETH/DAI value at the time of the transaction if the reconciliation is for ETH. For other assets, the `spotPrice` represents the asset's value relative to `ETH`, so to price a non-ETH asset in US dollars, one would need to convert first to `ETH` then to dollars. If a price is not available on-chain, the `spotPrice` will be zero and the caller is encouraged to get the price for the asset from other sources.
+Usage:
+  chifra export [flags] <address> [address...] [topics...] [fourbytes...]
 
-## Monitor
+Arguments:
+  addrs - one or more addresses (0x...) to export (required)
+  topics - filter by one or more log topics (only for --logs option)
+  fourbytes - filter by one or more fourbytes (only for transactions and trace options)
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-A Monitor is a list of [Appearances](/data-model/accounts/#appearance) associated with a given
-address along with various details about those appearances. A monitor is created when a user
-expresses interest in an address by calling either [chifra list](/docs/chifra/accounts/#chifra-list)
-or [chifra export](/docs/chifra/accounts/#chifra-export) tool (or querying thier associated APIs).
+Flags:
+  -p, --appearances         export a list of appearances
+  -r, --receipts            export receipts instead of transactional data
+  -l, --logs                export logs instead of transactional data
+  -t, --traces              export traces instead of transactional data
+  -n, --neighbors           export the neighbors of the given address
+  -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
+  -A, --statements          for the accounting options only, export only statements
+  -a, --articulate          articulate transactions, traces, logs, and outputs
+  -i, --cache               write transactions to the cache (see notes)
+  -R, --cache_traces        write traces to the cache (see notes)
+  -U, --count               only available for --appearances mode, if present, return only the number of records
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
+      --relevant            for log and accounting export only, export only logs relevant to one of the given export addresses
+      --emitter strings     for log export only, export only logs if emitted by one of these address(es)
+      --topic strings       for log export only, export only logs with this topic(s)
+      --asset strings       for the accounting options only, export statements only for this asset
+  -f, --flow string         for the accounting options only, export statements with incoming, outgoing, or zero value
+                            One of [ in | out | zero ]
+  -y, --factory             for --traces only, report addresses created by (or self-destructed by) the given address(es)
+  -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
+  -F, --first_block uint    first block to process (inclusive)
+  -L, --last_block uint     last block to process (inclusive)
+  -x, --fmt string          export format, one of [none|json*|txt|csv]
+  -v, --verbose             enable verbose (increase detail with --log_level)
+  -h, --help                display this help screen
 
-Once created, a monitor may be periodically *freshened* by calling either `chifra list` or `chifra
-export`, however, it is also possible to freshen a monitor continually with
-[chifra scrape --monitors](/docs/chifra/admin/#chifra-scrape). This tool watches the front of the
-chain and repeatedly calls `chifra list`.
+Notes:
+  - An address must start with '0x' and be forty-two characters long.
+  - Articulating the export means turn the EVM's byte data into human-readable text (if possible).
+  - For the --logs option, you may optionally specify one or more --emitter, one or more --topics, or both.
+  - The --logs option is significantly faster if you provide an --emitter or a --topic.
+  - Neighbors include every address that appears in any transaction in which the export address also appears.
+  - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
+```
 
-The following commands produce and manage Monitors:
+Data models produced by this tool:
 
-- [chifra monitors](/docs/chifra/accounts/#chifra-monitors)
-- [chifra list](/docs/chifra/accounts/#chifra-list)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
-- [chifra config](/docs/chifra/admin/#chifra-config)
+- [appearance](/data-model/accounts/#appearance)
+- [reconciliation](/data-model/accounts/#reconciliation)
+- [monitor](/data-model/accounts/#monitor)
+- [appearancecount](/data-model/accounts/#appearancecount)
+- [transaction](/data-model/chaindata/#transaction)
+- [transfer](/data-model/chaindata/#transfer)
+- [receipt](/data-model/chaindata/#receipt)
+- [log](/data-model/chaindata/#log)
+- [trace](/data-model/chaindata/#trace)
+- [traceaction](/data-model/chaindata/#traceaction)
+- [traceresult](/data-model/chaindata/#traceresult)
+- [function](/data-model/other/#function)
+- [parameter](/data-model/other/#parameter)
 
-Monitors consist of the following fields:
+Links:
 
-| Field       | Description                                    | Type    |
-| ----------- | ---------------------------------------------- | ------- |
-| nApps       | the number of appearances for this monitor     | blknum  |
-| firstApp    | the first block at which this address appears  | blknum  |
-| latestApp   | the latest block at which this address appears | blknum  |
-| sizeInBytes | the size of this monitor on disc               | uint64  |
-| tags        | the tag given to this address                  | string  |
-| address     | the address being monitored                    | address |
-| name        | the name given to this address                 | string  |
-| isCustom    | `true` if this address is customized           | bool    |
-| deleted     | `true` if deleted, `false` otherwise           | bool    |
-| symbol      |                                                | string  |
-| source      |                                                | string  |
-| decimals    |                                                | uint64  |
-| isContract  |                                                | bool    |
+- [api docs](/api/#operation/accounts-export)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export)
 
-## Name
+## chifra monitors
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-TrueBlocks allows you to associate a human-readable name with an address. This feature goes a long
-way towards making the blockchain data one extracts with a [Monitor](/data-model/accounts/#monitor)
-much more readable.
+<!-- markdownlint-disable MD041 -->
+`chifra monitors`` has two purposes: (1) to `--watch` a set of addresses. This function is in its early
+stages and will be better explained elsewhere. Please see an example of what one may do with
+`chifra monitors --watch` [here](https://tokenomics.io/), and (2) allows one to manage existing
+monitored addresses.
 
-Unlike the blockchain data itself, which is globally available and impossible to censor, the
-association of names with address is not on chain (excepting ENS, which, while fine, is incomplete).
-TrueBlocks allows you to name addresses of interest to you and either share those names (through
-an on-chain mechanism) or keep them private if you so desire.
+A "monitor" is simply a file on a hard drive that represents the transactional history of a given
+Ethereum address. Monitors are very small, being only the `<block_no><tx_id>` pair representing each
+appearance of an address. Monitor files are only created when a user expresses interest in a
+particular address. In this way, TrueBlock is able to continue to work on small desktop or even
+laptop computers. (See `chifra list`.)
 
-Over the years, we've paid careful attention to the 'airwaves' and have collected together a
-'starter-set' of named addresses which is available through the [chifra names](/docs/chifra/accounts/#chifra-names)
-command line. For example, every time people say "Show me your address, and we will airdrop some
-tokens" on Twitter, we copy and paste all those addresses. We figure if you're going to DOX
-yourselves, we might as well take advantage of it. Sorry...not sorry.
+You may use the `--delete` command to delete (or `--undelete` if already deleted) an address. The
+monitor is not removed from your computer if you delete it. It is just marked as being deleted
+making it invisible to the TrueBlocks explorer.
 
-The following commands produce and manage Names:
+Use the `--remove` command to permanently remove a monitor from your computer. This is an
+irreversible operation and requires the monitor to have been previously deleted.
 
-- [chifra names](/docs/chifra/accounts/#chifra-names)
+```[plaintext]
+Purpose:
+  Add, remove, clean, and list address monitors.
 
-Names consist of the following fields:
+Usage:
+  chifra monitors [flags] <address> [address...]
 
-| Field      | Description                                                                         | Type    |
-| ---------- | ----------------------------------------------------------------------------------- | ------- |
-| tags       | colon separated list of tags                                                        | string  |
-| address    | the address associated with this name                                               | address |
-| name       | the name associated with this address (retrieved from on-chain data if available)   | string  |
-| symbol     | the symbol for this address (retrieved from on-chain data if available)             | string  |
-| source     | user supplied source of where this name was found (or on-chain if name is on-chain) | string  |
-| decimals   | number of decimals retrieved from an ERC20 smart contract, defaults to 18           | uint64  |
-| petname    | the petname such as described here http://www.erights.org/elib/capability/pnml.html | string  |
-| deleted    | `true` if deleted, `false` otherwise                                                | bool    |
-| isCustom   | `true` if the address is a custom address, `false` otherwise                        | bool    |
-| isPrefund  | `true` if the address was one of the prefund addresses, `false` otherwise           | bool    |
-| isContract | `true` if the address is a smart contract, `false` otherwise                        | bool    |
-| isErc20    | `true` if the address is an ERC20, `false` otherwise                                | bool    |
-| isErc721   | `true` if the address is an ERC720, `false` otherwise                               | bool    |
+Arguments:
+  addrs - one or more addresses (0x...) to process
 
-## Abi
+Flags:
+      --clean         clean (i.e. remove duplicate appearances) from monitors
+      --delete        delete a monitor, but do not remove it
+      --undelete      undelete a previously deleted monitor
+      --remove        remove a previously deleted monitor
+      --decache       removes a monitor and all associated data from the cache
+      --list          list monitors in the cache (--verbose for more detail)
+      --watch         continually scan for new blocks and extract data for monitored addresses
+  -s, --sleep float   seconds to sleep between monitor passes (default 14)
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-An ABI describes an Application Binary Interface -- in other words, the [Function](/data-model/other/#function)
-and Event signatures for a given smart contract. Along with [Names](/data-model/accounts/#names) the
-use of ABIs goes a very long way towards making your Ethereum data much more understandable.
+Notes:
+  - An address must start with '0x' and be forty-two characters long.
+  - If no address is presented to the --clean command, all monitors will be cleaned.
+  - The --decache option will remove all cache items (blocks, txs, traces, recons) for the given address(es).
+```
 
-Similar to names of addresses, ABI files are not available on-chain which means they must be
-acquired somewhere. Unfortunately, the Ethereum community has not yet understand that EtherScan
-is not a good place to store this very important information. For this reason, TrueBlocks uses
-EtherScan to acquire ABI files and therefor one needs to get an EtherScan API key to use this
-function.
+Data models produced by this tool:
 
-The following commands produce and manage Abis:
+- [monitor](/data-model/accounts/#monitor)
 
-- [chifra abis](/docs/chifra/accounts/#chifra-abis)
+Links:
 
-Abis consist of the following fields:
+- [api docs](/api/#operation/accounts-monitors)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/monitors)
 
-| Field      | Description                                  | Type                                      |
-| ---------- | -------------------------------------------- | ----------------------------------------- |
-| address    | the smart contract that implements this abi  | address                                   |
-| interfaces | the list of events and functions on this abi | [Function[]](/data-model/other/#function) |
+## chifra names
 
-### Notes
+<!-- markdownlint-disable MD041 -->
+`chifra names` is a surprisingly useful tool. It allows one to associate textual names with Ethereum
+addresses. One may ask why this is necessary given that ENS exists. The answer is a single
+word: "privacy". ENS names are public. In many cases, users desire to keep personal addresses
+private. Try to do this on a website.
 
-See the [chifra abis](/docs/chifra/accounts/#chifra-abis) command line for information about getting an EtherScan key.
+Like `chifra abis`, this tool is useful from the command line but is primarily used in support of
+other tools, especially `chifra export` where naming addresses becomes the single best way to
+turn unintelligible blockchain data into understandable information.
 
-## AppearanceCount
+The various options allow you to search and filter the results. The `tags` option is used primarily
+by the TrueBlocks explorer.
 
-<!-- markdownlint-disable MD033 MD036 MD041 MD047 -->
-The `appearanceCount` data model is used mostly by the frontend explorer application. It carries
-various information about the monitor data for an address.
+You may use the TrueBlocks explorer to manage (add, edit, delete) address-name associations.
 
-The following commands produce and manage AppearanceCounts:
+```[plaintext]
+Purpose:
+  Query addresses or names of well known accounts.
 
-- [chifra list](/docs/chifra/accounts/#chifra-list)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+Usage:
+  chifra names [flags] <term> [term...]
 
-AppearanceCounts consist of the following fields:
+Arguments:
+  terms - a space separated list of one or more search terms (required)
 
-| Field    | Description                                               | Type    |
-| -------- | --------------------------------------------------------- | ------- |
-| address  | the address for this count                                | address |
-| nRecords | the number of appearances for the given address           | uint64  |
-| fileSize | the size of the monitor file containing those appearances | uint64  |
+Flags:
+  -e, --expand       expand search to include all fields (search name, address, and symbol otherwise)
+  -m, --match_case   do case-sensitive search
+  -l, --all          include all accounts in the search
+  -c, --custom       include your custom named accounts
+  -p, --prefund      include prefund accounts
+  -n, --named        include well know token and airdrop addresses in the search
+  -a, --addr         display only addresses in the results (useful for scripting)
+  -g, --tags         export the list of tags and subtags only
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
+  -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
-## Base types
+Notes:
+  - The tool will accept up to three terms, each of which must match against any field in the database.
+  - The --match_case option enables case sensitive matching.
+```
 
-This documentation mentions the following basic data types.
+Data models produced by this tool:
 
-| Type      | Description                         | Notes          |
-| --------- | ----------------------------------- | -------------- |
-| address   | an '0x'-prefixed 20-byte hex string | lowercase      |
-| blknum    | an alias for a uint64               |                |
-| bool      | either `true`, `false`, `1`, or `0` |                |
-| datetime  | a JSON formatted date               | as a string    |
-| double    | a double precision float            | 64 bits        |
-| hash      | an '0x'-prefixed 32-byte hex string | lowercase      |
-| int256    | a signed big number                 | as a string    |
-| string    | a normal character string           |                |
-| timestamp | a 64-bit unsigned integer           | Unix timestamp |
-| uint64    | a 64-bit unsigned integer           |                |
+- [name](/data-model/accounts/#name)
+
+Links:
+
+- [api docs](/api/#operation/accounts-names)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/names)
+
+## chifra abis
+
+<!-- markdownlint-disable MD041 -->
+`chifra abis` retrieves ABI files for the given address(es). It searches for the ABI in this order:
+the current local folder, the TrueBlocks cache, [Etherscan](http://etherscan.io), or (in the
+future) ENS and Sourcify.
+
+While this tool may be used from the command line and the API, its primary purpose is in support of
+tools such as `chifra export` to support the `--articulate` option.
+
+The `--known` option prints a list of semi-standard function signatures such as the ERC20 standard,
+ERC 721 standard, various functions from OpenZeppelin, various Uniswap functions, etc. As an
+optimization, the `known` signatures are searched first during articulation.
+
+The `--sol` option converts the provided Solidity file into an ABI json file. The results are
+dropped into the current working folder.
+
+The `--find` option is experimental. It scans the cross product of two sets. The first set contains
+more than 100,000 function and event names. The second set contains approximately 700 function
+signatures. The cross product of these two sets creates 70,000,000 combinations of `name(signature)`
+each of which is hashed to create either a four-byte or a 32-byte hash. Very infrequently, the tool
+will find matches for an otherwise unknown signatures.
+
+```[plaintext]
+Purpose:
+  Fetches the ABI for a smart contract.
+
+Usage:
+  chifra abis [flags] <address> [address...]
+
+Arguments:
+  addrs - a list of one or more smart contracts whose ABIs to display (required)
+
+Flags:
+  -k, --known          load common 'known' ABIs from cache
+  -s, --sol            extract the abi definition from the provided .sol file(s)
+  -f, --find strings   search for function or event declarations given a four- or 32-byte code(s)
+  -n, --hint strings   for the --find option only, provide hints to speed up the search
+  -x, --fmt string     export format, one of [none|json*|txt|csv]
+  -v, --verbose        enable verbose (increase detail with --log_level)
+  -h, --help           display this help screen
+
+Notes:
+  - For the --sol option, place the solidity files in the current working folder.
+  - Search for either four byte signatures or event signatures with the --find option.
+```
+
+Data models produced by this tool:
+
+- [abi](/data-model/accounts/#abi)
+- [function](/data-model/other/#function)
+- [parameter](/data-model/other/#parameter)
+
+Links:
+
+- [api docs](/api/#operation/accounts-abis)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis)
+

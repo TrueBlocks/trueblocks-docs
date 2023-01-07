@@ -70,6 +70,24 @@ weight = 35
     weight = 20
 
 [[main]]
+identifier = "sdks"
+name = "SDKs"
+url = "/sdks/introduction"
+weight = 35
+
+    [[sdks]]
+    identifier = "introduction"
+    name = "sdks"
+    url = "/sdks/introduction"
+    weight = 10
+
+    [[sdks]]
+    identifier = "langauges"
+    name = "Langauges"
+    url = "/sdks/langauges"
+    weight = 20
+
+[[main]]
 identifier = "data"
 name = "Data Model"
 url = "/data-model/intro"

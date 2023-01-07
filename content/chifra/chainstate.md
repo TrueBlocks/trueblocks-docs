@@ -9,95 +9,119 @@ menu:
 weight: 1400
 toc: true
 ---
-
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-The data structures produced by tools in the Chain State category provide details on the balances
-(ERC20 or ETH) of an address against a particular token or block. Additionally, direct access to
-a smart contract's state may be queries with the `chirfa state` tool. Data structures in that case
-are specific to the particular smart contract.
+The two tools in this group deal with the _Chain State_. As chain state data concerns balances and
+byte code. it is distinct from Chain Data, which concerns things like blocks, transactions, or
+traces.
 
-Each data structure is created by one or more tools which are detailed below.
+The two tools are `chifra state` and `chifra tokens`. The first allows you to query account
+balances, the byte code of a smart contract (if available), the nonce, and other information about
+an address. The second tool, `chifra tokens`, deals with ERC20 and ERC721 token balances and
+other data.
 
-## EthState
+Note: The amount of information you can retrieve depends on the type of node you run. Archive nodes
+and tracing allow you to query historical state (that is, all the way back to the genesis block).
+TrueBlocks works with non-archive nodes, but they are much less informative.
+## chifra state
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `state` object displays information about the type of account associated with an address, the
-block the address first appeared on the chain, the proxy address if the address is a proxied smart
-contract as well as account balance and a few other things.
+<!-- markdownlint-disable MD041 -->
+The `chifra state` tool retrieves the balance of an address (or list of addresses) at the given block
+(or blocks). Specify multiple addresses and/or multiple blocks if you wish, but you must specify
+at least one address. If no block is specified, the latest block is reported.
 
-The following commands produce and manage EthStates:
+You may also query to see if an address is a smart contract as well as retrieve a contract's
+byte code.
 
-- [chifra state](/docs/chifra/chainstate/#chifra-state)
+```[plaintext]
+Purpose:
+  Retrieve account balance(s) for one or more addresses at given block(s).
 
-EthStates consist of the following fields:
+Usage:
+  chifra state [flags] <address> [address...] [block...]
 
-| Field       | Description                                                                     | Type    |
-| ----------- | ------------------------------------------------------------------------------- | ------- |
-| blockNumber | the block number at which this state was taken                                  | blknum  |
-| address     | the address of the state being queried                                          | address |
-| proxy       | if this is a proxy, this is the proxied-to address                              | address |
-| balance     | the balance at the address at the given block height                            | wei     |
-| nonce       | the nonce of the address at the given block height                              | uint64  |
-| code        | the byte code at the address (if this is a smart contract)                      | bytes   |
-| deployed    | the block number at which this smart contract was deployed (if a smart contact) | blknum  |
-| accttype    | the type of the address at the given block                                      | string  |
+Arguments:
+  addrs - one or more addresses (0x...) from which to retrieve balances (required)
+  blocks - an optional list of one or more blocks at which to report balances, defaults to 'latest'
 
-## EthCall
+Flags:
+  -p, --parts strings   control which state to export
+                        One or more of [ none | some | all | balance | nonce | code | proxy | deployed | accttype ]
+  -c, --changes         only report a balance when it changes from one block to the next
+  -n, --no_zero         suppress the display of zero balance accounts
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-For the `chifra state --call` tool, the `result` is the result returned by the call to the smart
-contract. This is the decoded `output` value of the smart contract call.
+Notes:
+  - An address must start with '0x' and be forty-two characters long.
+  - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
+  - If the queried node does not store historical state, the results are undefined.
+  - Special blocks are detailed under chifra when --list.
+  - Balance is the default mode. To select a single mode use none first, followed by that mode.
+  - You may specify multiple modes on a single line.
+```
 
-The following commands produce and manage EthCalls:
+Data models produced by this tool:
 
-- [chifra state](/docs/chifra/chainstate/#chifra-state)
+- [ethstate](/data-model/chainstate/#ethstate)
+- [ethcall](/data-model/chainstate/#ethcall)
 
-EthCalls consist of the following fields:
+Links:
 
-| Field            | Description                                                                     | Type                                    |
-| ---------------- | ------------------------------------------------------------------------------- | --------------------------------------- |
-| blockNumber      | the block number at which this call was made                                    | blknum                                  |
-| address          | the address of contract being called                                            | address                                 |
-| signature        | the canonical signature of the interface                                        | string                                  |
-| encoding         | the encoding for the function call                                              | string                                  |
-| bytes            | the bytes data following the encoding of the call                               | string                                  |
-| callResult       | the result of the call to the contract                                          | [Function](/data-model/other/#function) |
-| compressedResult | the compressed version of the result of the call to the contract                | string                                  |
-| deployed         | the block number at which this smart contract was deployed (if a smart contact) | blknum                                  |
+- [api docs](/api/#operation/chainstate-state)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/state)
 
-## TokenBalance
+## chifra tokens
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The data model displays the token balance records for the `chifra tokens` tool.
+<!-- markdownlint-disable MD041 -->
+Given the address of an ERC20 token contract, the `chifra tokens` tool reports token balances for one or
+more additional addresses. Alternatively, the tool can report the token balances for multiple ERC20
+tokens for a single addresses.
 
-The following commands produce and manage TokenBalances:
+In normal operation the **first item** in the `address_list` is assumed to be an ERC20 token
+contract whose balances are being queried, whereas the remainder of the list is assumed to be
+addresses on which to report.
 
-- [chifra tokens](/docs/chifra/chainstate/#chifra-tokens)
+In `--byAcct` mode, **all addresses** in the `address_list` are assumed to be ERC20 token contracts,
+except the final one which is the account whose token balances are reported.
 
-TokenBalances consist of the following fields:
+You may optionally specify one or more blocks at which to report. If no block is specified, the
+latest block is assumed. You may also optionally specify which parts of the token data to extract.
 
-| Field      | Description                                                  | Type    |
-| ---------- | ------------------------------------------------------------ | ------- |
-| holder     | the address for which we are reporting the token balance     | address |
-| balance    | the balance at the address at the given block height         | wei     |
-| address    | the address of the token contract being queried              | address |
-| name       | the name of the token contract, if available                 | string  |
-| symbol     | the symbol for this token contract                           | string  |
-| decimals   | the number of decimals for the token contract                | uint64  |
-| isContract | `true` if the address is a smart contract, `false` otherwise | bool    |
-| isErc20    | `true` if the address is an ERC20, `false` otherwise         | bool    |
-| isErc721   | `true` if the address is an ERC720, `false` otherwise        | bool    |
+```[plaintext]
+Purpose:
+  Retrieve token balance(s) for one or more addresses at given block(s).
 
-## Base types
+Usage:
+  chifra tokens [flags] <address> <address> [address...] [block...]
 
-This documentation mentions the following basic data types.
+Arguments:
+  addrs - two or more addresses (0x...), the first is an ERC20 token, balances for the rest are reported (required)
+  blocks - an optional list of one or more blocks at which to report balances, defaults to 'latest'
 
-| Type    | Description                         | Notes       |
-| ------- | ----------------------------------- | ----------- |
-| address | an '0x'-prefixed 20-byte hex string | lowercase   |
-| blknum  | an alias for a uint64               |             |
-| bool    | either `true`, `false`, `1`, or `0` |             |
-| bytes   | an arbitrarily long string of bytes |             |
-| string  | a normal character string           |             |
-| uint64  | a 64-bit unsigned integer           |             |
-| wei     | an unsigned big number              | as a string |
+Flags:
+  -p, --parts strings   which parts of the token information to retrieve
+                        One or more of [ name | symbol | decimals | totalSupply | version | none | all ]
+  -b, --by_acct         consider each address an ERC20 token except the last, whose balance is reported for each token
+  -n, --no_zero         suppress the display of zero balance accounts
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
+
+Notes:
+  - An address must start with '0x' and be forty-two characters long.
+  - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
+  - If the token contract(s) from which you request balances are not ERC20 compliant, the results are undefined.
+  - If the queried node does not store historical state, the results are undefined.
+  - Special blocks are detailed under chifra when --list.
+```
+
+Data models produced by this tool:
+
+- [tokenbalance](/data-model/chainstate/#tokenbalance)
+
+Links:
+
+- [api docs](/api/#operation/chainstate-tokens)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/tokens)
+

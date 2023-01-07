@@ -9,287 +9,303 @@ menu:
 weight: 1200
 toc: true
 ---
-
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-The following data structures describe the output of various TrueBlocks blockchain queries. These
-data structures basically mimic the data available directly from the RPC.
+The TrueBlocks tools extract raw blockchain data directly from the node. You may extract block
+data, transactional data, receipts, logs, and traces. Each tool has it own set of options,
+allowing you to get exactly the data that you want.
+## chifra blocks
 
-Each data structure is created by one or more tools which are detailed below.
+<!-- markdownlint-disable MD041 -->
+The `chifra blocks` tool retrieves block data from your Ethereum node or, if previously cached, from the
+TrueBlocks cache. You may specify multiple blocks per invocation.
 
-## Block
+By default, `chifra blocks` queries the full transactional details of the block (including receipts).
+You may optionally retrieve only the transaction hashes in the block (which is significantly faster).
+Additionally, you may also use this tool to retrieve uncle blocks at a give height.
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-`chifra blocks` returns top level data specified block. You can also include an array for the
-blocks' transactions.
+Another useful feature of `chifra blocks` is the ability to extract address appearances from a block.
+TrueBlocks uses a similar feature internally to build its index of appearances. This type of data
+is very insightful when studying end user behavior and chain-wide adoption analysis.
 
-The following commands produce and manage Blocks:
+```[plaintext]
+Purpose:
+  Retrieve one or more blocks from the chain or local cache.
 
-- [chifra blocks](/docs/chifra/chaindata/#chifra-blocks)
+Usage:
+  chifra blocks [flags] <block> [block...]
 
-Blocks consist of the following fields:
+Arguments:
+  blocks - a space-separated list of one or more block identifiers (required)
 
-| Field         | Description                                                   | Type                                                |
-| ------------- | ------------------------------------------------------------- | --------------------------------------------------- |
-| gasLimit      | the system-wide maximum amount of gas permitted in this block | gas                                                 |
-| hash          | the hash of the current block                                 | hash                                                |
-| blockNumber   | the number of the block                                       | blknum                                              |
-| parentHash    | hash of previous block                                        | hash                                                |
-| miner         | Address of block's winning miner                              | address                                             |
-| difficulty    | the computational difficulty at this block                    | uint64                                              |
-| timestamp     | the Unix timestamp of the object                              | timestamp                                           |
-| transactions  | a possibly empty array of transactions or transaction hashes  | [Transaction[]](/data-model/chaindata/#transaction) |
-| baseFeePerGas | the base fee for this block                                   | wei                                                 |
-| finalized     | flag indicating the system considers this data final          | bool                                                |
-| unclesCnt     | the number of uncles in this block                            | uint64                                              |
+Flags:
+  -e, --hashes        display only transaction hashes, default is to display full transaction detail
+  -c, --uncles        display uncle blocks (if any) instead of the requested block
+  -t, --trace         export the traces from the block as opposed to the block data
+  -s, --apps          display a list of uniq address appearances in the block
+  -u, --uniq          display a list of uniq address appearances per transaction
+  -f, --flow string   for the uniq and apps options only, export only from or to (including trace from or to)
+                      One of [ from | to | reward ]
+  -U, --count         display the number of the lists of appearances for --addrs or --uniq
+  -o, --cache         force a write of the block to the cache
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
-## Transaction
+Notes:
+  - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
+  - Blocks may be specified as either numbers or hashes.
+  - Special blocks are detailed under chifra when --list.
+  - With the --logs option, optionally specify one or more --emitter, one or more --topics, either or both.
+  - The --logs option is significantly faster if you provide an --emitter and/or a --topic.
+  - Multiple topics match on topic0, topic1, and so on, not on different topic0's.
+  - Large block ranges may crash the node, use --big_range to specify a larger range.
+```
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-Transactions represent eth transfers to and from other addresses.
+Data models produced by this tool:
 
-Most of the fields that TrueBlocks returns are standard to all eth transaction. However, one field
-is very interesting: `articulatedTx` provides a human readable output of the `input` field.
+- [block](/data-model/chaindata/#block)
 
-This is a very powerful way to understand the story behind a smart contract.
+Links:
 
-The following commands produce and manage Transactions:
+- [api docs](/api/#operation/chaindata-blocks)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/blocks)
 
-- [chifra transactions](/docs/chifra/chaindata/#chifra-transactions)
-- [chifra slurp](/docs/chifra/other/#chifra-slurp)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+## chifra transactions
 
-Transactions consist of the following fields:
+<!-- markdownlint-disable MD041 -->
+The `chifra transactions` tool retrieves transactions directly from the Ethereum node (using the `--raw`
+option) or from the TrueBlocks cache (if present). You may specify multiple transaction identifiers
+per invocation. Unlike the Ethereum RPC, the reported transactions include the transaction's receipt
+and generated logs.
 
-| Field            | Description                                                                                           | Type                                                     |
-| ---------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| hash             | The hash of the transaction                                                                           | hash                                                     |
-| blockHash        | The hash of the block containing this transaction                                                     | hash                                                     |
-| blockNumber      | the number of the block                                                                               | blknum                                                   |
-| transactionIndex | the zero-indexed position of the transaction in the block                                             | blknum                                                   |
-| nonce            | sequence number of the transactions sent by the sender                                                | uint64                                                   |
-| timestamp        | the Unix timestamp of the object                                                                      | timestamp                                                |
-| from             | address from which the transaction was sent                                                           | address                                                  |
-| to               | address to which the transaction was sent                                                             | address                                                  |
-| value            | the amount of wei sent with this transactions                                                         | wei                                                      |
-| gas              | the maximum number of gas allowed for this transaction                                                | gas                                                      |
-| gasPrice         | the number of wei per unit of gas the sender is willing to spend                                      | gas                                                      |
-| input            | byte data either containing a message or funcational data for a smart contracts. See the --articulate | bytes                                                    |
-| receipt          |                                                                                                       | [Receipt](/data-model/chaindata/#receipt)                |
-| statements       | array of reconciliations                                                                              | [Reconciliation[]](/data-model/accounts/#reconciliation) |
-| articulatedTx    |                                                                                                       | [Function](/data-model/other/#function)                  |
-| compressedTx     | truncated, more readable version of the articulation                                                  | string                                                   |
-| hasToken         | `true` if the transaction is token related, `false` otherwise                                         | uint8                                                    |
-| finalized        | flag indicating the system considers this data final                                                  | bool                                                     |
-| extraData        |                                                                                                       | string                                                   |
-| isError          | `true` if the transaction ended in error, `false` otherwise                                           | uint8                                                    |
-| date             |                                                                                                       | datetime                                                 |
+The `--articulate` option fetches the ABI from each encountered smart contract (including those
+encountered in a trace--if the `--trace` option is enabled) to better describe the reported data.
 
-## Transfer
+The `--trace` option attaches an array transaction traces to the output (if the node you're querying
+has --tracing enabled), while the `--uniq` option displays a list of uniq address appearances
+instead of the underlying data (including uniq addresses in traces if enabled).
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `transfer` data model is produced by the reconciliation process of `chifra export`. It
-represents, for all intents and purposes, the asset value transfer produced by nearly all value
-transfers on any blockchain. While the details of various token transfers are varied, the
-underlying mechanism is through token transfers. In our accounting, we focus on the token transfers
-and label each such transfer on the `input` data or `event topic` data. In this way, our accounting
-remains relatively easy (we only reconcile tokens and ETH), but we cover every conceivable token
-asset transfer of any type.
+```[plaintext]
+Purpose:
+  Retrieve one or more transactions from the chain or local cache.
 
-The following commands produce and manage Transfers:
+Usage:
+  chifra transactions [flags] <tx_id> [tx_id...]
 
-- [chifra transactions](/docs/chifra/chaindata/#chifra-transactions)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+Arguments:
+  transactions - a space-separated list of one or more transaction identifiers (required)
 
-Transfers consist of the following fields:
+Flags:
+  -a, --articulate           articulate the retrieved data if ABIs can be found
+  -t, --trace                include the transaction's traces in the results
+  -u, --uniq                 display a list of uniq addresses found in the transaction
+  -f, --flow string          for the uniq option only, export only from or to (including trace from or to)
+                             One of [ from | to ]
+  -A, --account_for string   reconcile the transaction as per the provided address
+  -o, --cache                force the results of the query into the tx cache (and the trace cache if applicable)
+  -x, --fmt string           export format, one of [none|json*|txt|csv]
+  -v, --verbose              enable verbose (increase detail with --log_level)
+  -h, --help                 display this help screen
 
-| Field            | Description                                                                                    | Type      |
-| ---------------- | ---------------------------------------------------------------------------------------------- | --------- |
-| blockNumber      | the number of the block                                                                        | blknum    |
-| transactionIndex | the zero-indexed position of the transaction in the block                                      | blknum    |
-| logIndex         | the zero-indexed position of the log in the transaction                                        | blknum    |
-| transactionHash  | the hash of the transaction that triggered this reconciliation                                 | hash      |
-| timestamp        | the Unix timestamp of the object                                                               | timestamp |
-| date             | a calculated field -- the date of this transaction                                             | datetime  |
-| sender           | the initiator of the transfer (the sender)                                                     | address   |
-| recipient        | the receiver of the transfer (the recipient)                                                   | address   |
-| assetAddr        | 0xeeee...eeee for ETH reconcilations, the token address otherwise                              | address   |
-| assetSymbol      | either ETH, WEI or the symbol of the asset being reconciled as queried from the chain          | string    |
-| decimals         | Equivalent to the queried value of `decimals` from an ERC20 contract or, if ETH or WEI then 18 | uint64    |
-| amount           | the amount of the transfer in the units of the asset                                           | uint256   |
-| spotPrice        | The on-chain price in USD (or if a token in ETH, or zero) at the time of the transaction       | double    |
-| priceSource      | The on-chain source from which the spot price was taken                                        | string    |
-| encoding         | The four-byte encoding of the transaction's function call                                      | string    |
+Notes:
+  - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
+  - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+  - If the queried node does not store historical state, the results for most older transactions are undefined.
+```
 
-## Receipt
+Data models produced by this tool:
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-Receipts record the amount of gas used for a transaction among other things. If the transaction
-succeeded, a receipt might also have logs.
+- [transaction](/data-model/chaindata/#transaction)
+- [transfer](/data-model/chaindata/#transfer)
 
-If the `to` address of a transaction is `0x0`, the `input` data is considered to be the source
-code (byte code) of a smart contract. In this case, if the creation of the contract succeeds,
-the `contractAddress` field of the receipt carries the address of the newly created contract.
+Links:
 
-The following commands produce and manage Receipts:
+- [api docs](/api/#operation/chaindata-transactions)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/transactions)
 
-- [chifra receipts](/docs/chifra/chaindata/#chifra-receipts)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+## chifra receipts
 
-Receipts consist of the following fields:
+<!-- markdownlint-disable MD041 -->
+`chifra receipts` returns the given transaction's receipt. You may specify multiple transaction identifiers
+per invocation.
 
-| Field           | Description                                                                | Type                                |
-| --------------- | -------------------------------------------------------------------------- | ----------------------------------- |
-| status          | `1` on transaction suceess, `null` if tx preceeds Byzantium, `0` otherwise | uint32                              |
-| contractAddress | the address of the newly created contract, if any                          | address                             |
-| gasUsed         | the amount of gas actually used by the transaction                         | gas                                 |
-| logs            | a possibly empty array of logs                                             | [Log[]](/data-model/chaindata/#log) |
+The `--articulate` option fetches the ABI from each encountered smart contract (including those
+encountered in a trace--if the `--trace` option is enabled) to better describe the reported data.
 
-## Log
+Generally speaking, this tool is less useful than others as you may report the same data using
+`chifra transactions` and more focused data using `chifra logs`. It is included here for
+completeness, as the `receipt` is a fundamental data structure in Ethereum.
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-Logs appear in a possibly empty array in the transaction's receipt. They are only created if the
-underlying transaction suceeded. In the case where the transaction failed, no logs will appear in
-the receipt. Logs are only ever generated during transactions whose `to` address is a smart
-contract.
+```[plaintext]
+Purpose:
+  Retrieve receipts for the given transaction(s).
 
-The following commands produce and manage Logs:
+Usage:
+  chifra receipts [flags] <tx_id> [tx_id...]
 
-- [chifra logs](/docs/chifra/chaindata/#chifra-logs)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+Arguments:
+  transactions - a space-separated list of one or more transaction identifiers (required)
 
-Logs consist of the following fields:
+Flags:
+  -a, --articulate   articulate the retrieved data if ABIs can be found
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
+  -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
-| Field            | Description                                                                                       | Type                                    |
-| ---------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| blockNumber      | the number of the block                                                                           | blknum                                  |
-| transactionIndex | the zero-indexed position of the transaction in the block                                         | blknum                                  |
-| logIndex         | the zero-indexed position of this log relative to the block                                       | blknum                                  |
-| transactionHash  | the hash of the transction                                                                        | hash                                    |
-| timestamp        | the timestamp of the block this log appears in                                                    | timestamp                               |
-| address          | the smart contract that emitted this log                                                          | address                                 |
-| topics           | The first topic hashes event signature of the log, up to 3 additional index parameters may appear | topic[]                                 |
-| data             | any remaining un-indexed parameters to the event                                                  | bytes                                   |
-| articulatedLog   | a human-readable version of the topic and data fields                                             | [Function](/data-model/other/#function) |
-| compressedLog    | a truncated, more readable version of the articulation                                            | string                                  |
+Notes:
+  - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
+  - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+  - If the queried node does not store historical state, the results for most older transactions are undefined.
+```
 
-## Trace
+Data models produced by this tool:
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The deepest layer of the Ethereum data is the trace. Every transaction has at least one trace which
-is itself a record of the transaction. If the `to` address of the transaction is a smart contract,
-other traces may appear, if, for example, that smart contract calls other smart contracts.
+- [receipt](/data-model/chaindata/#receipt)
 
-Traces may be arbitrarily deep (up to the gasLimit) and ultimately represent a tree of function
-calls. Some transactions have 100s of traces. The format of the trace is similar to the transaction
-itself have a trace `action` (which contains `from`, `to`, `value` like the transaction) and the
-trace `result` (containing `gasUsed` like the receipt).
+Links:
 
-The following commands produce and manage Traces:
+- [api docs](/api/#operation/chaindata-receipts)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/receipts)
 
-- [chifra traces](/docs/chifra/chaindata/#chifra-traces)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+## chifra logs
 
-Traces consist of the following fields:
+<!-- markdownlint-disable MD041 -->
+`chifra logs` returns the given transaction's logs. You may specify multiple transaction identifiers
+per invocation.
 
-| Field            | Description                                               | Type                                              |
-| ---------------- | --------------------------------------------------------- | ------------------------------------------------- |
-| blockHash        | The hash of the block containing this trace               | hash                                              |
-| blockNumber      | the number of the block                                   | blknum                                            |
-| timestamp        | the timestamp of the block                                | timestamp                                         |
-| transactionHash  | the transaction's hash containing this trace              | hash                                              |
-| transactionIndex | the zero-indexed position of the transaction in the block | blknum                                            |
-| traceAddress     | a particular trace's address in the trace tree            | string[]                                          |
-| subtraces        | the number of children traces that the trace hash         | uint64                                            |
-| type             | the type of the trace                                     | string                                            |
-| action           | the trace action for this trace                           | [TraceAction](/data-model/chaindata/#traceaction) |
-| result           | the trace result of this trace                            | [TraceResult](/data-model/chaindata/#traceresult) |
-| articulatedTrace | human readable version of the trace action input data     | [Function](/data-model/other/#function)           |
-| compressedTrace  | a compressed string version of the articulated trace      | string                                            |
+The `--articulate` option fetches the ABI from each encountered smart contract to better describe
+the reported data. The `--topic` and `--source` options allow you to filter your results.
 
-## TraceAction
+```[plaintext]
+Purpose:
+  Retrieve logs for the given transaction(s).
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-Other than the first trace which is the trace of the transaction itself, traces represent calls
-into smart contracts. Because of this, `trace actions` closely resemble the fields of the
-[transaction](#transactions).
+Usage:
+  chifra logs [flags] <tx_id> [tx_id...]
 
-The following commands produce and manage TraceActions:
+Arguments:
+  transactions - a space-separated list of one or more transaction identifiers (required)
 
-- [chifra traces](/docs/chifra/chaindata/#chifra-traces)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+Flags:
+  -a, --articulate   articulate the retrieved data if ABIs can be found
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
+  -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
-TraceActions consist of the following fields:
+Notes:
+  - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
+  - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+  - If the queried node does not store historical state, the results for most older transactions are undefined.
+  - If you specify a 32-byte hash, it will be assumed to be a transaction hash, if the transaction is not found, it will be used as a topic.
+```
 
-| Field         | Description                                                                | Type    |
-| ------------- | -------------------------------------------------------------------------- | ------- |
-| from          | address from which the trace was sent                                      | address |
-| to            | address to which the trace was sent                                        | address |
-| gas           | the maximum number of gas allowed for this trace                           | gas     |
-| input         | an encoded version of the function call                                    | bytes   |
-| callType      | the type of call                                                           | string  |
-| refundAddress | if the call type is self-destruct, the address to which the refund is sent | address |
+Data models produced by this tool:
 
-## TraceResult
+- [log](/data-model/chaindata/#log)
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-As mentioned above, other than the first trace, traces represent calls into other smart contracts.
-Because of this, the trace results closely resembles the fields of the [receipt](#receipts).
+Links:
 
-The following commands produce and manage TraceResults:
+- [api docs](/api/#operation/chaindata-logs)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/logs)
 
-- [chifra traces](/docs/chifra/chaindata/#chifra-traces)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+## chifra traces
 
-TraceResults consist of the following fields:
+<!-- markdownlint-disable MD041 -->
+The `chifra traces` tool retrieves a transaction's traces. You may specify multiple transaction
+identifiers per invocation.
 
-| Field       | Description                                                                    | Type    |
-| ----------- | ------------------------------------------------------------------------------ | ------- |
-| newContract | Address of new contract, if any                                                | address |
-| code        | if this trace is creating a new smart contract, the byte code of that contract | bytes   |
-| gasUsed     | the amount of gas used by this trace                                           | gas     |
-| output      | the result of the call of this trace                                           | bytes   |
+The `--articulate` option fetches the ABI from each encountered smart contract to better describe
+the reported data.
 
-## NamedBlock
+The `--filter` option calls your node's `trace_filter` routine (if available) using a bang-separated
+string of the same values used by `trace_fitler`.
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-Left to its own devices, the blockchain would try to convince us that only hashes and bytes are
-important, but being human beings we know that this is not true. TrueBlocks `articulates` various
-types of data with [chifra names](/docs/chifra/accounts/#chifra-names) detailing the names for
-addresses, `-articulate` describing the Functions and Events of a transaction, and
-[chifra when](/docs/chifra/chaindata/#chifra-when) describing dated blocks. Dated blocks assign a
-human-readable date to blocks given block numbers or timestamps and visa versa.
+```[plaintext]
+Purpose:
+  Retrieve traces for the given transaction(s).
 
-The following commands produce and manage NamedBlocks:
+Usage:
+  chifra traces [flags] <tx_id> [tx_id...]
 
-- [chifra when](/docs/chifra/chaindata/#chifra-when)
+Arguments:
+  transactions - a space-separated list of one or more transaction identifiers (required)
 
-NamedBlocks consist of the following fields:
+Flags:
+  -a, --articulate      articulate the retrieved data if ABIs can be found
+  -f, --filter string   call the node's trace_filter routine with bang-separated filter
+  -d, --statediff       export state diff traces (not implemented)
+  -U, --count           show the number of traces for the transaction only (fast)
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
 
-| Field       | Description                         | Type      |
-| ----------- | ----------------------------------- | --------- |
-| blockNumber | the number of the block             | blknum    |
-| timestamp   | the Unix timestamp of the block     | timestamp |
-| date        | Human readable version of timestamp | datetime  |
-| name        | an optional name for the block      | string    |
+Notes:
+  - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
+  - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
+  - If the queried node does not store historical state, the results for most older transactions are undefined.
+  - A bang separated filter has the following fields (at least one of which is required) and is separated with a bang (!): fromBlk, toBlk, fromAddr, toAddr, after, count.
+  - A state diff trace describes, for each modified address, what changed during that trace.
+```
 
-## Base types
+Data models produced by this tool:
 
-This documentation mentions the following basic data types.
+- [trace](/data-model/chaindata/#trace)
+- [traceaction](/data-model/chaindata/#traceaction)
+- [traceresult](/data-model/chaindata/#traceresult)
 
-| Type      | Description                         | Notes          |
-| --------- | ----------------------------------- | -------------- |
-| address   | an '0x'-prefixed 20-byte hex string | lowercase      |
-| blknum    | an alias for a uint64               |                |
-| bool      | either `true`, `false`, `1`, or `0` |                |
-| bytes     | an arbitrarily long string of bytes |                |
-| datetime  | a JSON formatted date               | as a string    |
-| double    | a double precision float            | 64 bits        |
-| gas       | an unsigned big number              | as a string    |
-| hash      | an '0x'-prefixed 32-byte hex string | lowercase      |
-| string    | a normal character string           |                |
-| timestamp | a 64-bit unsigned integer           | Unix timestamp |
-| uint256   | a 256-bit unsigned integer          |                |
-| uint32    | a 32-bit unsigned integer           |                |
-| uint64    | a 64-bit unsigned integer           |                |
-| uint8     | an alias for the boolean type       |                |
-| wei       | an unsigned big number              | as a string    |
+Links:
+
+- [api docs](/api/#operation/chaindata-traces)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/traces)
+
+## chifra when
+
+<!-- markdownlint-disable MD041 -->
+The `chifra when` tool answers one of two questions: (1) "At what date and time did a given block
+occur?" or (2) "What block occurred at or before a given date and time?"
+
+In the first case, supply a block number or hash and the date and time of that block are displayed.
+In the later case, supply a date (and optionally a time) and the block number that occurred at or
+just prior to that date is displayed.
+
+The values for `date` and `time` are specified in JSON format. `hour`/`minute`/`second` are
+optional, and if omitted, default to zero in each case. Block numbers may be specified as either
+integers or hexadecimal number or block hashes. You may specify any number of dates and/or blocks
+per invocation.
+
+```[plaintext]
+Purpose:
+  Find block(s) based on date, blockNum, timestamp, or 'special'.
+
+Usage:
+  chifra when [flags] < block | date > [ block... | date... ]
+
+Arguments:
+  blocks - one or more dates, block numbers, hashes, or special named blocks (see notes)
+
+Flags:
+  -l, --list         export a list of the 'special' blocks
+  -t, --timestamps   display or process timestamps
+  -U, --count        with --timestamps only, returns the number of timestamps in the cache
+  -r, --repair       with --timestamps only, repairs block(s) in the block range by re-querying from the chain
+  -c, --check        with --timestamps only, checks the validity of the timestamp data
+      --update       with --timestamps only, bring the timestamp database forward to the latest block
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
+  -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
+
+Notes:
+  - The block list may contain any combination of number, hash, date, special named blocks.
+  - Block numbers, timestamps, or dates in the future are estimated with 13 second blocks.
+  - Dates must be formatted in JSON format: YYYY-MM-DD[THH[:MM[:SS]]].
+```
+
+Data models produced by this tool:
+
+- [namedblock](/data-model/chaindata/#namedblock)
+
+Links:
+
+- [api docs](/api/#operation/chaindata-when)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/when)
+

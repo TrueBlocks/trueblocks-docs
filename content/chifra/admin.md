@@ -9,318 +9,328 @@ menu:
 weight: 1700
 toc: true
 ---
-
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-The data models produced by the tools in the Admin category relate to scraping the chain, producing
-the Unchained Index, and querying the configuration of the system. Additional data related to
-sharing the indexes via IPFS and pinning the same are also produced by tools in this category.
-
-Each data structure is created by one or more tools which are detailed below.
-
-## Status
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The [chifra config](/docs/chifra/admin/#chifra-config) tool reports on the state (and size) of the
-various TrueBlocks local binary caches. TrueBlocks produces nine difference caches: `abis`, `blocks`,
-`monitors`, `names`, `objs`, `recons`, `slurps`, `traces`, `txs`. In general practice, these caches
-may take up a few GB of hard drive space, however, for very popular smart contract the size of the
-caches may grow rather large. Keep an eye on it.
-
-The `status` data model is a complex beast. It contains various information including a list of
-registered chains, information about many of the internal binary caches maintained by `chifra`
-as well as current status information about the system including version information for both
-`chifra` and the node it's running against.
-
-The following commands produce and manage Statuses:
-
-- [chifra config](/docs/chifra/admin/#chifra-config)
-
-Statuses consist of the following fields:
-
-| Field             | Description                                              | Type                                |
-| ----------------- | -------------------------------------------------------- | ----------------------------------- |
-| clientVersion     | the version string as reported by the rpcProvider        | string                              |
-| clientIds         | netword_id and chain_id from the rpcProvider             | string                              |
-| trueblocksVersion | the TrueBlocks version string                            | string                              |
-| rpcProvider       | the current rpcProvider                                  | string                              |
-| configPath        | the path to config files                                 | string                              |
-| cachePath         | the path to the local binary caches                      | string                              |
-| indexPath         | the path to the local binary indexes                     | string                              |
-| host              | the host portion of the local API server                 | string                              |
-| isTesting         | `true` if the server is running in test mode             | bool                                |
-| isApi             | `true` if the server is running in API mode              | bool                                |
-| isScraping        | `true` if the index scraper is running                   | bool                                |
-| isArchive         | `true` if the rpcProvider is an archive node             | bool                                |
-| isTracing         | `true` if the rpcProvider provides Parity traces         | bool                                |
-| hasEskey          | `true` if an EtherScan key is present                    | bool                                |
-| hasPinkey         | `true` if a Pinata API key is present                    | bool                                |
-| ts                | the timestamp when this status data was produced         | timestamp                           |
-| chains            | the list of configured chains                            | [Chain[]](/data-model/admin/#chain) |
-| caches            | a collection of information concerning the binary caches | [Cache[]](/data-model/admin/#cache) |
-
-## Manifest
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The Manifest details the index of appearance's PinnedChunks. Each record in the Manifest details
-the block range represented by the chunk as well as the IPFS hash of the index chunk along with
-the associated IPFS hash for the Bloom filter of the chunk. The manifest itself is also pushed
-to IPFS and the IPFS of the hash of the manifest is published periodically to the Unchained Index
-smart contract.
-
-The following commands produce and manage Manifests:
-
-- [chifra chunks](/docs/chifra/admin/#chifra-chunks)
-- [chifra init](/docs/chifra/admin/#chifra-init)
-- [chifra scrape](/docs/chifra/admin/#chifra-scrape)
-
-Manifests consist of the following fields:
-
-| Field     | Description                                                           | Type                                            |
-| --------- | --------------------------------------------------------------------- | ----------------------------------------------- |
-| version   | the version string hashed into the chunk data                         | string                                          |
-| chain     | the chain to which this manifest belongs                              | string                                          |
-| schemas   | IPFS cid of file describing the schemas for the various databases     | ipfshash                                        |
-| databases | IPFS cid of file containing CIDs for the various databases            | ipfshash                                        |
-| chunks    | a list of the IPFS hashes of all of the chunks in the unchained index | [PinnedChunk[]](/data-model/admin/#pinnedchunk) |
-
-## PinnedChunk
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The TrueBlocks index scraper periodically creates a chunked portion of the index so that it can
-be more easily stored in a content-addresable data store such as IPFS. We call these
-periodically-created chunks, PinnedChunks. The format of said item is described here. A pinned
-chunk is effectively a relational table relating all of the addresses appearing in the chunk
-with a list of appearances appearing in the chunk.
+The Admin component allows you to query the status of the TrueBlocks system. You can query the
+status; query for information about TrueBlocks caches; control the creation, sharing, and pinning
+of the TrueBlocks index of appearances; and even serve the data through an API.
+
+[See the API documentation for all information about using the API](/api).
+## chifra config
+
+<!-- markdownlint-disable MD041 -->
+The `chifra config` program allows you to manage the various TrueBlocks caches. You may list all of the
+caches, some of the cache, or even individual caches either in terse or full detail. The cache of
+interest is specified with the `modes` option.
 
-The following commands produce and manage PinnedChunks:
+TrueBlocks maintains caches for the index of address appearances, named addresses, abi files, as
+well as other data including blockchain data, and address monitors.
 
-- [chifra chunks](/docs/chifra/admin/#chifra-chunks)
-- [chifra init](/docs/chifra/admin/#chifra-init)
-- [chifra scrape](/docs/chifra/admin/#chifra-scrape)
+```[plaintext]
+Purpose:
+  Report on and edit the configuration of the TrueBlocks system.
+
+Usage:
+  chifra config <mode> [mode...] [flags]
+
+Arguments:
+  modes - either show or edit the configuration
+	One or more of [ show | edit ]
+
+Aliases:
+  config, status
+
+Flags:
+      --module strings   the type of information to show or edit
+                         One or more of [ index | monitors | names | abis | caches | some | all ]
+  -d, --details          include details about items found in monitors, slurps, abis, or price caches
+  -t, --types strings    for caches module only, which type(s) of cache to report
+                         One or more of [ blocks | txs | traces | slurps | all ]
+  -x, --fmt string       export format, one of [none|json*|txt|csv]
+  -v, --verbose          enable verbose (increase detail with --log_level)
+  -h, --help             display this help screen
+
+Notes:
+  - The 'status' alias is deprecated and will be removed shortly.
+```
+
+Data models produced by this tool:
+
+- [monitor](/data-model/accounts/#monitor)
+- [status](/data-model/admin/#status)
+- [cache](/data-model/admin/#cache)
+- [cacheentry](/data-model/admin/#cacheentry)
+- [indexcacheitem](/data-model/admin/#indexcacheitem)
+- [chain](/data-model/admin/#chain)
+
+Links:
+
+- [api docs](/api/#operation/admin-config)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/config)
+
+## chifra daemon
+
+<!-- markdownlint-disable MD041 -->
+`chifra daemon` manages chifra's long-running processes include its JSON API server. Each of the
+`chifra` commands along with all of its options, are provided not only by the command line, but
+also the API server. We call this process the `flame` server, which is written in Go.
 
-PinnedChunks consist of the following fields:
+In the future, this daemon may also manage other long-running processes.
+
+Another way to get help to run `chifra --help` or `chifra <cmd> --help` on your command line.
+See below for an example of converting command line options to a call to the API. There's a
+one-to-one correspondence between the command line tools and options and the API routes and
+their options.
+
+```[plaintext]
+Purpose:
+  Initalize and control long-running processes such as the API and the scrapers.
 
-| Field     | Description                                                 | Type     |
-| --------- | ----------------------------------------------------------- | -------- |
-| range     | for each chunk, the range of blocks contained in that chunk | string   |
-| bloomHash | the IPFS hash of the bloom filter at that range             | ipfshash |
-| indexHash | the IPFS hash of the index chunk at that range              | ipfshash |
-| firstApp  | the first appearance in the chunk                           | blknum   |
-| latestApp | the latest appearance in the chunk                          | blknum   |
+Usage:
+  chifra daemon [flags]
+
+Aliases:
+  daemon, serve
 
-## ChunkIndex
+Flags:
+  -p, --port string     specify the server's port (default ":8080")
+  -s, --scrape string   start the scraper, initialize it with either just blooms or entire index, generate for new blocks
+                        One of [ off | blooms | full-index ]
+  -m, --monitor         instruct the node to start the monitors tool
+  -a, --api string      instruct the node to start the API server
+                        One of [ off | on ] (default "on")
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
+
+Notes:
+  - To start API open terminal window and run chifra daemon.
+  - See the API documentation (https://trueblocks.io/api) for more information.
+  - The 'serve' alias is deprecated and will be removed shortly.
+```
+
+Data models produced by this tool:
+
+- none
+
+Links:
+
+- no api for this command
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/daemon)
+
+## chifra scrape
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `indexchunk` data model represents internal information about each Unchained Index index chunk.
-It is used mostly interenally to study the characteristics of the Unchained Index.
+<!-- markdownlint-disable MD041 -->
+The `chifra scrape` application creates TrueBlocks' chunked index of address appearances -- the
+fundamental data structure of the entire system. It also, optionally, pins each chunk of the index
+to IPFS.
+
+`chifra scrape` is a long running process, therefore we advise you run it as a service or in terminal
+multiplexer such as `tmux`. You may start and stop `chifra scrape` as needed, but doing so means the
+scraper will not be keeping up with the front of the blockchain. The next time it starts, it will
+have to catch up to the chain, a process that may take several hours depending on how long ago it
+was last run. See the section below and the "Papers" section of our website for more information
+on how the scraping process works and prerequisites for it proper operation.
 
-The following commands produce and manage ChunkIndexes:
+You may adjust the speed of the index creation with the `--sleep` and `--block_cnt` options. On
+some machines, or when running against some EVM node software, the scraper may overburden the
+hardware. Slowing things down will ensure proper operation. Finally, you may optionally `--pin`
+each new chunk to IPFS which naturally shards the database among all users. By default, pinning
+is against a locally running IPFS node, but the `--remote` option allows pinning to an IPFS
+pinning service such as Pinata or Estuary.
+
+```[plaintext]
+Purpose:
+  Scan the chain and update the TrueBlocks index of appearances.
 
-- [chifra chunks](/docs/chifra/admin/#chifra-chunks)
+Usage:
+  chifra scrape [flags]
+
+Flags:
+  -n, --block_cnt uint   maximum number of blocks to process per pass (default 2000)
+  -i, --pin              pin new chunks (requires locally-running IPFS daemon or --remote)
+  -m, --remote           pin new chunks to the gateway (requires pinning service keys)
+  -s, --sleep float      seconds to sleep between scraper passes (default 14)
+  -x, --fmt string       export format, one of [none|json*|txt|csv]
+  -v, --verbose          enable verbose (increase detail with --log_level)
+  -h, --help             display this help screen
+```
+
+Data models produced by this tool:
+
+- [manifest](/data-model/admin/#manifest)
+- [pinnedchunk](/data-model/admin/#pinnedchunk)
+
+Links:
+
+- [api docs](/api/#operation/admin-scrape)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/scrape)
+
+### configuration
+
+Each of the following additional configurable command line options are available.
+
+**Configuration file:** `$CONFIG/$CHAIN/blockScrape.toml`  
+**Configuration group:** `[settings]`  
+
+| Item               | Type         | Default      | Description / Default |
+| ------------------ | ------------ | ------------ | --------- |
+| apps&lowbar;per&lowbar;chunk | uint64       | 200000       | the number of appearances to build into a chunk before consolidating it |
+| snap&lowbar;to&lowbar;grid | uint64       | 100000       | an override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index |
+| first&lowbar;snap  | uint64       | 0            | the first block at which snap_to_grid is enabled |
+| unripe&lowbar;dist | uint64       | 28           | the distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe |
+| channel&lowbar;count | uint64       | 20           | number of concurrent processing channels |
+| allow&lowbar;missing | bool         | true         | do not report errors for blockchains that contain blocks with zero addresses |
+
+
+These items may be set in three ways, each overridding the preceeding method:
+
+-- in the above configuration file under the `[settings]` group,  
+-- in the environment by exporting the configuration item as UPPER&lowbar;CASE, without underbars, and prepended with TB_SETTINGS&lowbar;, or  
+-- on the command line using the configuration item with leading dashes (i.e., `--name`).  
+
+<!-- markdownlint-disable MD041 -->
+### Further information
+
+Each time `chifra scrape` runs, it begins at the last block it completed processing (plus one). With
+each pass, the scraper descends as deeply as is possible into each block's data. (This is why
+TrueBlocks requires a `--tracing` node.) As the scraper encounters appearances of address in the
+block's data, it adds those appearance to a growing index. Periodically (after processing the the
+block that contains the 2,000,000th appearance), the system consolidates an **index chunk**.
+
+An **index chunk** is a portion of the index containing approximately 2,000,000 records (although,
+this number is adjustable for different chains). As part of the consolidation, the scraper creates
+a Bloom filter representing the set membership in the associated index portion. The Bloom filters
+are an order of magnitude smaller than the index chunks. The system then pushes both the index
+chunk and the Bloom filter to IPFS. In this way, TrueBlocks creates an immutable, uncapturable
+index of appearances that can be used not only by TrueBlocks, but any member of the community who
+needs it. (Hint: We all need it.)
+
+Users of the [TrueBlocks Explorer](https://github.com/TrueBlocks/trueblocks-explorer) (or any other
+software) may subsequently download the Bloom filters, query them to determine which **index
+chunks** need to be downloaded, and thereby build a historical list of transactions for a given
+address. This is accomplished while imposing a minimum amount of resource requirement on the end
+user's machine.
+
+Recently, we enabled the ability for the end user to pin these downloaded index chunks and blooms
+on their own machines. The user needs the data for the software to operate--sharing requires
+minimal effort and makes the data available to other people. Everyone is better off. A
+naturally-occuring network effect.
+
+### Prerequisites
+
+`chifra scrape` works with any EVM-based blockchain, but does not currently work without a "tracing,
+archive" RPC endpoint. The Erigon blockchain node, given its minimal disc footprint for an archive
+node and its support of the required `trace_` endpoint routines, is highly recommended.
+
+Please [see this article](https://trueblocks.io/blog/a-long-winded-explanation-of-trueblocks/) for
+more information about running the scraper and building and sharing the index of appearances.
+
+## chifra chunks
+
+<!-- markdownlint-disable MD041 -->
+The chifra chunks routine provides tools for interacting with, checking the validity of, cleaning up,
+and analyizing the Unchained Index. It provides options to list pins, the Manifest, summary data
+on the index, Bloom filters, addresses, and appearances. While still in its early stages, this
+tool will eventually allow users to clean their local index, clean their remote index, study
+the indexes, etc. Stay tuned.
+
+```[plaintext]
+Purpose:
+  Manage, investigate, and display the Unchained Index.
+
+Usage:
+  chifra chunks <mode> [flags] [blocks...] [address...]
+
+Arguments:
+  mode - the type of data to process (required)
+	One of [ status | manifest | index | blooms | addresses | appearances | stats ]
+  blocks - an optional list of blocks to intersect with chunk ranges
+
+Flags:
+  -c, --check             check the manifest, index, or blooms for internal consistency
+  -i, --pin               pin the manifest or each index chunk and bloom
+  -p, --publish           publish the manifest to the Unchained Index smart contract
+  -n, --truncate uint     truncate the entire index at this block (requires a block identifier)
+  -m, --remote            prior to processing, retreive the manifest from the Unchained Index smart contract
+  -b, --belongs strings   in index mode only, checks the address(es) for inclusion in the given index chunk
+  -s, --sleep float       for --remote pinning only, seconds to sleep between API calls
+  -x, --fmt string        export format, one of [none|json*|txt|csv]
+  -v, --verbose           enable verbose (increase detail with --log_level)
+  -h, --help              display this help screen
+
+Notes:
+  - Mode determines which type of data to display or process.
+  - Certain options are only available in certain modes.
+  - If blocks are provided, only chunks intersecting with those blocks are displayed.
+  - The --truncate option updates data, but does not --pin or --publish.
+  - You may combine the --pin and --publish options.
+  - The --belongs option is only available in the index mode.
+```
+
+Data models produced by this tool:
+
+- [manifest](/data-model/admin/#manifest)
+- [pinnedchunk](/data-model/admin/#pinnedchunk)
+- [chunkindex](/data-model/admin/#chunkindex)
+- [chunkblooms](/data-model/admin/#chunkblooms)
+- [chunkaddresses](/data-model/admin/#chunkaddresses)
+- [chunkappearances](/data-model/admin/#chunkappearances)
+- [chunkstats](/data-model/admin/#chunkstats)
+
+Links:
+
+- [api docs](/api/#operation/admin-chunks)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/chunks)
+
+## chifra init
+
+<!-- markdownlint-disable MD041 -->
+When invoked, `chifra init` reads a value from a smart contract called **The Unchained Index**
+([0x0c316b7042b419d07d343f2f4f5bd54ff731183d](https://etherscan.io/address/0x0c316b7042b419d07d343f2f4f5bd54ff731183d)).
+
+This value (`manifestHashMap`) is an IPFS hash pointing to a pinned file (called the Manifest) that
+contains a large collection of other IPFS hashes. These other hashes point to each of the Bloom
+filter and Index Chunk. TrueBlocks periodically publishes the Manifest's hash to the smart contract.
+This makes the index available for our software to use and impossible for us to withhold. Both of
+these aspects of the manifest are by design.
+
+If you stop `chifra init` before it finishes, it will pick up again where it left off the next
+time you run it.
+
+Certain parts of the system (`chifra list` and `chifra export` for example) if you have not
+previously run `chifra init` or `chifra scrape`. You will be warned by the system until it's
+satified.
+
+If you run `chifra init` and allow it to complete, the next time you run `chifra scrape`, it will
+start where `init` finished. This means that only the blooms will be stored on your hard drive.
+Subsequent scraping will produce both chunks and blooms, although you can, if you wish delete
+chunks that are not being used. You may periodically run `chifra init` if you prefer not to scrape.
+
+```[plaintext]
+Purpose:
+  Initialize the TrueBlocks system by downloading from IPFS.
+
+Usage:
+  chifra init [flags]
+
+Flags:
+  -a, --all           in addition to Bloom filters, download full index chunks
+  -s, --sleep float   seconds to sleep between downloads
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
+
+Notes:
+  - Re-run chifra init as often as you wish. It will repair or freshen the index.
+```
+
+Data models produced by this tool:
+
+- [manifest](/data-model/admin/#manifest)
+- [pinnedchunk](/data-model/admin/#pinnedchunk)
+
+Links:
+
+- [api docs](/api/#operation/admin-init)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/init)
 
-ChunkIndexes consist of the following fields:
-
-| Field           | Description                                                        | Type       |
-| --------------- | ------------------------------------------------------------------ | ---------- |
-| range           | The block range (inclusive) covered by this chunk                  | blockRange |
-| magic           | An internal use only magic number to indicate file format          | string     |
-| hash            | The hash of the specification under which this chunk was generated | hash       |
-| addressCount    | The number of addresses in this chunk                              | uint64     |
-| appearanceCount | The number of appearances in this chunk                            | uint64     |
-| size            | The size of the chunk in bytes                                     | uint64     |
-
-## ChunkBlooms
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `blooms` data model represents the bloom filter files that front the Unchained Index index
-portions. The information here is mostly for internal use only as it includes the size and number
-of the bloom filters present as well as the number of addresses inserted into the bloom. This
-information is used to study the characteristics of the Unchained Index.
-
-The following commands produce and manage ChunkBlooms:
-
-- [chifra chunks](/docs/chifra/admin/#chifra-chunks)
-
-ChunkBlooms consist of the following fields:
-
-| Field     | Description                                                        | Type       |
-| --------- | ------------------------------------------------------------------ | ---------- |
-| range     | The block range (inclusive) covered by this chunk                  | blockRange |
-| magic     | An internal use only magic number to indicate file format          | string     |
-| hash      | The hash of the specification under which this chunk was generated | hash       |
-| count     | The number of individual bloom filters in this bloom file          | uint64     |
-| nInserted | The number of addresses inserted into the bloom file               | uint64     |
-| size      | The size on disc in bytes of this bloom file                       | uint64     |
-| width     | The width of the bloom filter                                      | uint64     |
-
-## ChunkAddresses
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `addresses` data model is produced by `chifra chunks` and represents the records found in the
-addresses table of each Unchained Index chunk. The `offset` and `count` fields represent the
-location and number of records in the `appearances` table to which the address table is related.
-
-The following commands produce and manage ChunkAddresses:
-
-- [chifra chunks](/docs/chifra/admin/#chifra-chunks)
-
-ChunkAddresses consist of the following fields:
-
-| Field   | Description                                                               | Type       |
-| ------- | ------------------------------------------------------------------------- | ---------- |
-| address | The address in this record                                                | address    |
-| range   | The block range of the chunk from which this address record was taken     | blockRange |
-| offset  | The offset into the appearance table of the first record for this address | uint64     |
-| count   | The number of records in teh appearance table for this address            | uint64     |
-
-## ChunkAppearances
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `appearances` data model is the second of two tables inside of the Unchained Index chunks. The
-other is the `addresses` table which relates the addresses in that table to this table via the
-`offset` and `count` fields.
-
-The following commands produce and manage ChunkAppearances:
-
-- [chifra chunks](/docs/chifra/admin/#chifra-chunks)
-
-ChunkAppearances consist of the following fields:
-
-| Field            | Description                              | Type   |
-| ---------------- | ---------------------------------------- | ------ |
-| blockNumber      | The block number of this appearance      | uint64 |
-| transactionIndex | The transaction index of this appearance | uint64 |
-
-## ChunkStats
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `stats` data model is produced by `chifra chunks` and brings together various statistical
-information such as average number of addresses in an Unchained Index chunk among other information.
-
-The following commands produce and manage ChunkStats:
-
-- [chifra chunks](/docs/chifra/admin/#chifra-chunks)
-
-ChunkStats consist of the following fields:
-
-| Field         | Description                                      | Type   |
-| ------------- | ------------------------------------------------ | ------ |
-| start         | the first block in the chunk's range             | uint64 |
-| end           | the last block in the chunk's range              | uint64 |
-| nAddrs        | the number of addresses in the chunk             | uint64 |
-| nApps         | the number of appearances in the chunk           | uint64 |
-| nBlocks       | the number of blocks in the chunk                | uint64 |
-| nBlooms       | the number of bloom filters in the chunk's bloom | uint64 |
-| recWid        | the record width of a single bloom filter        | uint64 |
-| bloomSz       | the size of the bloom filters on disc in bytes   | uint64 |
-| chunkSz       | the size of the chunks on disc in bytes          | uint64 |
-| addrsPerBlock | the average number of addresses per block        | double |
-| appsPerBlock  | the average number of appearances per block      | double |
-| appsPerAddr   | the average number of appearances per address    | double |
-| ratio         | the ratio of appearances to addresses            | double |
-
-## Cache
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The [chifra config <type>](/docs/chifra/admin/#chifra-config) reports on the binary caches. Those
-reports come in the form of the Cache data type. Each cache data object may carry unique
-information for the given cache. See the source code for more information.
-
-The following commands produce and manage Caches:
-
-- [chifra config](/docs/chifra/admin/#chifra-config)
-
-Caches consist of the following fields:
-
-| Field       | Description                                             | Type                                          |
-| ----------- | ------------------------------------------------------- | --------------------------------------------- |
-| type        | the type of the cache (one of the nine different types) | string                                        |
-| path        | the physical path to the cache on the hard drive        | string                                        |
-| nFiles      | the number of files in the cache                        | uint64                                        |
-| nFolders    | the number of subfolders in the cache                   | uint64                                        |
-| sizeInBytes | the size of the cache in bytes                          | uint64                                        |
-| items       | an array of cache items                                 | [CacheEntry[]](/data-model/admin/#cacheentry) |
-
-## CacheEntry
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `cacheEntry` data model is used to display various caches displayed from the `chifra config`
-tool.
-
-The following commands produce and manage CacheEntries:
-
-- [chifra config](/docs/chifra/admin/#chifra-config)
-
-CacheEntries consist of the following fields:
-
-| Field   | Description | Type    |
-| ------- | ----------- | ------- |
-| address |             | address |
-| name    |             | string  |
-
-## IndexCacheItem
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `indexCacheItem` is used to present a single Unchained Index chunk in the Explorer app.
-
-The following commands produce and manage IndexCacheItems:
-
-- [chifra config](/docs/chifra/admin/#chifra-config)
-
-IndexCacheItems consist of the following fields:
-
-| Field          | Description                                          | Type      |
-| -------------- | ---------------------------------------------------- | --------- |
-| nAddrs         | the number of addresses in this chunk                | uint32    |
-| nApps          | the number of appearances in this chunk              | uint32    |
-| firstApp       | the first appearance in this chunk                   | blknum    |
-| latestApp      | the last appeaerance in this chunk                   | blknum    |
-| firstTs        | the first timestamp in this chunk                    | timestamp |
-| latestTs       | the last timestamp in this chunk                     | timestamp |
-| filename       | the filename of this chunk                           | string    |
-| fileDate       | the file date of this chunk                          | datetime  |
-| indexSizeBytes | the size in bytes of the index portion of this chunk | uint32    |
-| indexHash      | the IPFS hash of the index portion of this chunk     | ipfshash  |
-| bloomSizeBytes | the size in bytes of the bloom filter for this chunk | uint32    |
-| bloomHash      | the IPFS has of the bloom filter for this chunk      | ipfshash  |
-
-## Chain
-
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-The `chain` data model represents the configured chain data found in the `trueBlocks.toml`
-configuration file.
-
-The following commands produce and manage Chains:
-
-- [chifra config](/docs/chifra/admin/#chifra-config)
-
-Chains consist of the following fields:
-
-| Field          | Description                                                      | Type   |
-| -------------- | ---------------------------------------------------------------- | ------ |
-| chain          | The common name of the chain                                     | string |
-| chainId        | The chain id as reported by the RPC                              | uint64 |
-| symbol         | The symbol of the base currency on the chain                     | string |
-| rpcProvider    | A valid RPC provider for the chain                               | string |
-| apiProvider    | A valid API provider for the explorer                            | string |
-| remoteExplorer | A remote explorer for the chain such as EtherScan                | string |
-| localExplorer  | The local explorer for the chain (typically TrueBlocks Explorer) | string |
-| ipfsGateway    | An IPFS gateway for pinning the index if enabled                 | string |
-
-## Base types
-
-This documentation mentions the following basic data types.
-
-| Type      | Description                         | Notes          |
-| --------- | ----------------------------------- | -------------- |
-| address   | an '0x'-prefixed 20-byte hex string | lowercase      |
-| blknum    | an alias for a uint64               |                |
-| bool      | either `true`, `false`, `1`, or `0` |                |
-| datetime  | a JSON formatted date               | as a string    |
-| double    | a double precision float            | 64 bits        |
-| hash      | an '0x'-prefixed 32-byte hex string | lowercase      |
-| ipfshash  | a multi-hash produced by IPFS       | mixed-case     |
-| string    | a normal character string           |                |
-| timestamp | a 64-bit unsigned integer           | Unix timestamp |
-| uint32    | a 32-bit unsigned integer           |                |
-| uint64    | a 64-bit unsigned integer           |                |

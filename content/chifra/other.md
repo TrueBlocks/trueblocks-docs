@@ -9,75 +9,91 @@ menu:
 weight: 1800
 toc: true
 ---
-
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-The following commands provide useful miscellaneous tools:
+These commands call some useful miscellaneous tools:
 
 - `chifra explore` a quick way to open a blockchain explorer,
-- `ethslurp` an older tool that lets you call data from EtherScan. (This has issues of centralization and data quality, see explanation in its section).
+- `ethslurp` an older tool that lets you call data from EtherScan. (This has issues of
+centralization and data quality, see explanation in its section).
 
-Note: some of these tools, such as `ethslurp`, require an EtherScan key. [Follow these instructions
+Note: some of these tools, like `ethslurp`, require an EtherScan key. [Follow these instructions
 to add a key to your config](/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys).
 
-Each data structure is created by one or more tools which are detailed below.
+## chifra explore
 
-## Function
+<!-- markdownlint-disable MD041 -->
+`chifra explore` opens Etherscan (and other explorers -- including our own) to the block identifier,
+transaction identifier, or address you specify. It's a handy (configurable) way to open an explorer
+from the command line, nothing more.
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-ABI files are derived from the Solidity source code of a smart contract by extracting the canonical
-function and event signatures in a JSON structure. The function signatures are hashed (using
-keccak) into four-byte encodings for functions and 32-byte encodings for events. Because the
-blockchain only deals with byte data, TrueBlocks needs a way to decode the bytes back into the
-human-readable function and event signatures. We call this process `--articulate`. Most TrueBlocks
-commands provide an `--articulate` option. See the commands themselves for more information.
+```[plaintext]
+Purpose:
+  Open a local or remote explorer for one or more addresses, blocks, or transactions.
 
-The following commands produce and manage Functions:
+Usage:
+  chifra explore [flags] <term> [term...]
 
-- [chifra abis](/docs/chifra/accounts/#chifra-abis)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+Arguments:
+  terms - one or more address, name, block, or transaction identifier
 
-Functions consist of the following fields:
+Flags:
+  -l, --local    open the local TrueBlocks explorer
+  -g, --google   search google excluding popular blockchain explorers
+  -h, --help     display this help screen
+```
 
-| Field     | Description                                             | Type                                        |
-| --------- | ------------------------------------------------------- | ------------------------------------------- |
-| name      | the name of the interface                               | string                                      |
-| type      | the type of the interface, either 'event' or 'function' | string                                      |
-| signature | the canonical signature of the interface                | string                                      |
-| encoding  | the signature encoded with keccak                       | string                                      |
-| inputs    | the input parameters to the function, if any            | [Parameter[]](/data-model/other/#parameter) |
-| outputs   | the output parameters to the function, if any           | [Parameter[]](/data-model/other/#parameter) |
+Data models produced by this tool:
 
-## Parameter
+- none
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
-Parameters are a constituent part of a [Function or Event](/data-model/accounts/#function). The
-parameters of a function are each individual value passed into the function. Along with the
-function's name, the parameters types (once canonicalized) are used to create a function's four
-byte signature (or an event's 32-byte signature). Parameters are important to TrueBlocks because
-we use them as part of the ABI decoding and the `--articulate` process to conver the blockchain's
-bytes into human-readable text.
+Links:
 
-The following commands produce and manage Parameters:
+- no api for this command
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/explore)
 
-- [chifra abis](/docs/chifra/accounts/#chifra-abis)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+## chifra slurp
 
-Parameters consist of the following fields:
+<!-- markdownlint-disable MD041 -->
+`chifra slurp` is the first tool we built in the Ethereum space. It even has its [own website](http://ethslurp.com).
 
-| Field        | Description                                                 | Type                                        |
-| ------------ | ----------------------------------------------------------- | ------------------------------------------- |
-| type         | the type of this parameter                                  | string                                      |
-| name         | the name of this parameter                                  | string                                      |
-| strDefault   | the default value of this parameter, if any                 | string                                      |
-| indexed      | `true` if this parameter is indexed                         | bool                                        |
-| internalType | for composite types, the internal type of the parameter     | string                                      |
-| components   | for composite types, the parameters making up the composite | [Parameter[]](/data-model/other/#parameter) |
+While it's useful, it has two shortcomings. First, it is fully centralized, pulling its data from
+[http://etherscan.io](http://etherscan.io). Second, is that it does not report every transaction
+for a given account. This is actually a shortcoming with EtherScan. It's too complicated to explain
+here, but see our blog.
 
-## Base types
+While `chifra slurp` has its shortcomings, it does provides some nice features. You may use it to pull
+any transaction initiated by an EOA for example or to explore mining rewards. Visit the above
+referenced website for more information.
 
-This documentation mentions the following basic data types.
+```[plaintext]
+Purpose:
+  Fetch data from EtherScan for any address.
 
-| Type   | Description                         | Notes |
-| ------ | ----------------------------------- | ----- |
-| bool   | either `true`, `false`, `1`, or `0` |       |
-| string | a normal character string           |       |
+Usage:
+  chifra slurp [flags] <address> [address...] [block...]
+
+Arguments:
+  addrs - one or more addresses to slurp from Etherscan (required)
+  blocks - an optional range of blocks to slurp
+
+Flags:
+  -t, --types strings   which types of transactions to request
+                        One or more of [ ext | int | token | nfts | miner | uncles | all ]
+  -p, --appearances     show only the blocknumber.tx_id appearances of the exported transactions
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
+
+Notes:
+  - Portions of this software are Powered by Etherscan.io APIs.
+```
+
+Data models produced by this tool:
+
+- [transaction](/data-model/chaindata/#transaction)
+
+Links:
+
+- [api docs](/api/#operation/other-slurp)
+- [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/slurp)
+
