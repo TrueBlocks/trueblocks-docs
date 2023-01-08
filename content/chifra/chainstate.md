@@ -7,6 +7,8 @@ lastmod:
   - lastmod
   - publishDate
 draft: false
+alias:
+ - "/docs/chifra/chainstate"
 menu:
   chifra:
     parent: commands

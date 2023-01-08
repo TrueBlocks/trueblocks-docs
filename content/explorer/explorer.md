@@ -7,6 +7,8 @@ lastmod:
   - lastmod
   - publishDate
 draft: false
+alias:
+ - "/docs/explorer/explorer"
 menu: 
   explorer:
     parent: "pages"
