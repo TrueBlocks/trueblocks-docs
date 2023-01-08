@@ -1,6 +1,6 @@
+resources/_gen/*
 file
 shit
-*_gen*
 makefile
 .hugo_build.lock
 publish-jay.sh
