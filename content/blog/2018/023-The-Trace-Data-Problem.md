@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 977
 ---
 
 I recently wrote a piece discussing how I [defeated the Ethereum DDos attack](https://medium.com/@tjayrush/defeating-the-ethereum-ddos-attacks-d3d773a9a063) using TrueBlocks. Doing this was important because it freed me from the pain of a slow RPC. Speed allows me to analyze the Ethereum data iteratively. I can find more interesting stuff.

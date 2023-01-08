@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 993
 ---
 
 ![](/blog/img/007-A-Too-Often-Neglected-Aspect-of-Smart-Contracts-Auditability-001.png)

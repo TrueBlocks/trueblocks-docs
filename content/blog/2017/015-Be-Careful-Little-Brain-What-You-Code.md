@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 985
 ---
 
 When I was a kid, my mother used to send my brothers and me to vacation Bible school. Having children of my own, I’m pretty certain she did that to get rid of us for the summer. The experience had no lasting effect on me (thank God), but I remember a song we used to sing:

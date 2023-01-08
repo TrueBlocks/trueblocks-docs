@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 967
 ---
 
 **All about the Ethereum Difficulty Calculation**

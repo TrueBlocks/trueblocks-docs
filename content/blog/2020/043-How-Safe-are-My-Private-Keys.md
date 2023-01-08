@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 957
 ---
 
 ![](/blog/img/043-How-Safe-are-My-Private-Keys-001.png)

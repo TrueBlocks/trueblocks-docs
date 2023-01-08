@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 965
 ---
 
 One of the reasons I fell in love with blockchain tech way back in 2013 was because I felt that for the first time in history, engineers had created a system that could produced undeniable data. Undeniable access — yes, but more importantly, undeniably high-quality data. That was a paradigm shift.

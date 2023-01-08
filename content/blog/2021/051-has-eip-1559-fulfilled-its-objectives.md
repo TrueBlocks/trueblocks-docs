@@ -9,11 +9,10 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 tags: ["community"]
 contributors: ["Pintail"]
+weight: 949
 ---
 
 Pintail ([twitter](https://twitter.com/pintail_xyz)) wrote an [amazing article](https://pintail.xyz/posts/gas-market-analysis/) on EIP-1559

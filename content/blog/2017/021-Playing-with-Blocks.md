@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 979
 ---
 
 I am so deep down the rabbit hole of Ethereum data that I sometimes forget there is such a thing as the real world. And I care exactly zero if I never come up. Don’t ask me why. I’m pretty sure there’s no good reason.

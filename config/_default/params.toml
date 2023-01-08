@@ -33,11 +33,7 @@ portraitPhotoWidths = [800, 700, 600, 500]
 quality = 85
 
 # Footer
-footer = "Powered by <a href=\"https://gohugo.io/\">Hugo</a> and <a href=\"https://getdoks.org/\">Doks</a>"
-
-# Alert
-alert = false
-alertText = "Like Doks? <a class=\"alert-link\" href=\"https://github.com/TrueBlocks/trueblocks-core/stargazers\">Star on GitHub</a>. Thanks!</a>"
+footer = "Powered by <a href=\"https://gohugo.io/\">Hugo</a>"
 
 # Edit Page
 docsRepo = "https://github.com/TrueBlocks/trueblocks-docs"
@@ -45,7 +41,6 @@ editPage = true
 
 [options]
 bootStrapJs = false
-breadCrumb = false
 clipBoard = true
 darkMode = true
 flexSearch = true

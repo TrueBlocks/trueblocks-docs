@@ -9,11 +9,10 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 contributor: ["rush"]
 tags: ["trueblocks"]
+weight: 946
 ---
 
 Have you ever had the desire to look at every trace of every transaction of every block on every blockchain? Yes? Well, pull up a chair and visit with us for a while.
@@ -40,7 +39,7 @@ I conclude the article by talking about a new bit of code we wrote called `forEv
 
 ### forEveryTrace
 
-We assume a certain amount of familiarity with TrueBlocks in particular how to [install it and get it running](https://trueblocks.io/docs/installing-trueblocks.md). We also assume you have access to your own node software. We highly recommend [Erigon](https://github.com/ledgerwatch/erigon) running locally, and while the following code will work with Infura, you may not want to do that, as it will definitely get you rate limited. Don’t say we didn’t warn you.
+We assume a certain amount of familiarity with TrueBlocks in particular how to [install it and get it running](https://trueblocks.io/docs/install/install-core.md). We also assume you have access to your own node software. We highly recommend [Erigon](https://github.com/ledgerwatch/erigon) running locally, and while the following code will work with Infura, you may not want to do that, as it will definitely get you rate limited. Don’t say we didn’t warn you.
 
 In our repo there’s a folder called `./examples` and in that folder, there’s an example in a sub-folder called `./forEvery`. This is the contents of the code in the folder:
 

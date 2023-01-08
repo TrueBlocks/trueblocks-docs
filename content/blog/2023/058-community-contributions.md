@@ -9,11 +9,10 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 contributor: ["leo"]
 tags: ["community"]
+weight: 942
 ---
 
 From one of our community members. Thanks Leo!

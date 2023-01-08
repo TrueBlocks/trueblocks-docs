@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 972
 ---
 
 I wanted to share with you (through a series of charts) what happens when one releases a world-class data scientist such as [Ed Mazurek](https://medium.com/u/d272dbeef59a) on fresh-baked Ethereum difficulty data.

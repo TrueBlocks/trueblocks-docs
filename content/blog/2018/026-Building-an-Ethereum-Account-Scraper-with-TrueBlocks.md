@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 974
 ---
 
 When I first heard of Ethereum, I thought to myself _“Excellent! I no longer have to keep track of my spending. Everything will be automated.”_
@@ -23,7 +24,7 @@ In this post, I will show you how to build an Ethereum account scraper. An _acco
 
 #### Installing TrueBlocks
 
-Here’s [instructions for installing and building TrueBlocks](https://trueblocks.io/docs/install/install-trueblocks/). I won’t go into details. If you have trouble, please contact us through our [discord channel](https://discord.gg/RAz6DJ6xkf). Note — TrueBlocks requires a running Parity node, and that node must be a tracing node. It works against Infura, but Infura doesn’t support tracing, so you won’t get complete results. Try it though. You’ll be able to get some data even from Infura. Assuming you’re running a local Parity node…
+Here’s [instructions for installing and building TrueBlocks](https://trueblocks.io/docs/install/install-core/). I won’t go into details. If you have trouble, please contact us through our [discord channel](https://discord.gg/RAz6DJ6xkf). Note — TrueBlocks requires a running Parity node, and that node must be a tracing node. It works against Infura, but Infura doesn’t support tracing, so you won’t get complete results. Try it though. You’ll be able to get some data even from Infura. Assuming you’re running a local Parity node…
 
 #### Building an Account Scraper
 

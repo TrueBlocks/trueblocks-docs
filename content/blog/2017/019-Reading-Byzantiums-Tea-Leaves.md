@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 981
 ---
 
 I used to watch a television show called “Wall Street Week with Louis Rukeyser.” The host would frequently laugh at the way Alan Greenspan, the Chairman of the Federal Reserve, would testify in front of Congress. Rukeyser found it comical that we all had to “read the tea leaves” after Greenspan spoke.

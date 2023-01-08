@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 990
 ---
 
 _I am posting this previously unpublished post now because I’m clearing out my drafts folder, and I didn’t want to simply delete the post. I wrote it soon after the DAO hack, but before it became apparent that the White Hats rescue the remaining ether in The DAO (or as some have called it “safely steal the ether”). The post is probably only interesting for historical reasons. References to days of the week in this post are to be read as meaning the week of Friday, June 17th._

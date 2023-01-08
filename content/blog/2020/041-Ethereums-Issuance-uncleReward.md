@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 959
 ---
 
 This the second in a series of two articles detailing Ethereum’s **issuance**. Read the [first part](https://medium.com/@tjayrush/ethereums-issuance-minerreward-3cad5b9a72ff), which discusses the `blockReward` calculation. Also, see [the code base](https://github.com/TrueBlocks/trueblocks-core/tree/develop/src/other/issuance) for the actual code. This article discusses the `uncleReward`.
