@@ -2,9 +2,10 @@ name: Check links on site
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
     branches: [ main ]
-
 jobs:
   run_linkinator:
     runs-on: ubuntu-latest
