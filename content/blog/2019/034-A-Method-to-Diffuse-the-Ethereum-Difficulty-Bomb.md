@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 966
 ---
 
 There is no more angst-ridden profession than being a member of a [bomb squad](https://en.wikipedia.org/wiki/Bomb_disposal). You’ll know what I’m talking about if you’ve ever seen the movie [The Hurt Locker](https://en.wikipedia.org/wiki/The_Hurt_Locker). In a recent Gitter post in the All Core Devs channel, Alexey Akhunov says of the difficulty bomb that it, “…forces people to make rushed decisions and be reckless, without real emergency…” This is true currently, but we can do better.

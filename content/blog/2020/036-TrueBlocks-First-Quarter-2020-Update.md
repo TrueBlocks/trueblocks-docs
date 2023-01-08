@@ -5,12 +5,10 @@ date: '2020-02-11T17:08:44.489Z'
 categories:
 - Trueblocks
 tags: ['trueblocks']
-menu: 
-  blog:
-    parent: "trueblocks"
 draft: false
 categories: []
 keywords: []
+weight: 964
 ---
 
 This is short update on what we’ve been doing since receiving so many wonderful grants during the GitCoin CLR matching fandango. This money goes a long way. It allows one of us (Rush) to make a trip to EthDenver, where he will be judging some hacks. It has also paid for some much needed help developing the React frontend. If you donated (or even if you didn’t), and you’re in Denver this week, seek me out. I’ll be happy to share our latest work.

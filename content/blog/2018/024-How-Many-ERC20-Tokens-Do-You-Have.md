@@ -7,6 +7,7 @@ categories:
 - TrueBlocks
 tags: ['trueblocks']
 keywords: []
+weight: 976
 ---
 
 I was recently included [in a discussion](https://twitter.com/ricburton/status/986459891035525120) about why it’s so difficult to get ERC20 token balances (and other data) from the Ethereum blockchain. I thought I’d take a crack at answering the question.

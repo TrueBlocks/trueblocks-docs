@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 994
 ---
 
 I’m building a piece of software called [EthSlurp](http://ethslurp.com). It’s a blockchain data scraper. It runs from the command line and takes various parameters such as an Ethereum contract address, an output format, a date and/or block range, and various other options.

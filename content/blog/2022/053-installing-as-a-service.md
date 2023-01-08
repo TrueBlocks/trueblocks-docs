@@ -9,11 +9,10 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 contributor: ["hansson"]
 tags: ["community"]
+weight: 947
 ---
 
 One of our users ([Magnus Hansson](https://magnushansson.xyz/)) has written an excellent article on how to install all three of [Erigon](https://github.com/ledgerwatch/erigon), Erigon's RPC, and [TrueBlocks](http://github.com/TrueBlocks/trueblocks-core) as serives on Ubuntu.

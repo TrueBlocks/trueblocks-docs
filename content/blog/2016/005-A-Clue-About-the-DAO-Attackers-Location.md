@@ -8,6 +8,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 995
 ---
 
 I used EthSlurp to scrape every transaction from The DAO since its inception. This first chart shows those transactions distributed by hour. There are more than 121,000 transactions:

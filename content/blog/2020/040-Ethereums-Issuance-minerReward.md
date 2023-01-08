@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 960
 ---
 
 Recently, there was a dustup on Crypto Twitter (started [here](https://twitter.com/pierre_rochard/status/1291522796410089474), carries on [here](https://twitter.com/hashtag/SupplyGate)) about Ethereum’s money supply. The claim was made that Ethereum’s money supply was not easily available, nor was it widely agreed upon.

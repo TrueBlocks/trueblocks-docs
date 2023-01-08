@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 992
 ---
 
 …_or How I Learned to Love the Input Data Field…_

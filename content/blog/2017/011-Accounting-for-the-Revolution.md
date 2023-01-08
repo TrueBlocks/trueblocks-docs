@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 989
 ---
 
 In recent weeks, the price of ether has risen from around $10.00 US dollars per ether to hovering around $20.00 US in recent days. Needless to say, this has caused a lot of [discussion](https://www.reddit.com/r/ethereum/comments/5yxlax/any_reason_why_we_shouldnt_half_the_gas_price_to/).

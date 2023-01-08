@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 963
 ---
 
 * [The Liberal Radicalism Mechanism for Producing Public Goods \[_Tabarrok_\]](https://marginalrevolution.com/marginalrevolution/2018/09/liberal-radicalism-mechanism-producing-public-goods.html "https://marginalrevolution.com/marginalrevolution/2018/09/liberal-radicalism-mechanism-producing-public-goods.html")

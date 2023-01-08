@@ -9,11 +9,10 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 contributor: ["rush"]
 tags: ["trueblocks"]
+weight: 943
 ---
 
 Eth accounting is identical

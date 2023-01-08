@@ -1,7 +1,6 @@
 ---
 title: "User contribution: Simple Blockchain Indexing with TrueBlocks"
 description: "An article about various indexing solutions including TrueBlocks"
-lead: "An article about various indexing solutions including TrueBlocks"
 date: 2022-09-07T18:10:28-04:00
 lastmod:
   - :git
@@ -9,13 +8,11 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 tags: ["community"]
 contributors: ["dspty"]
+weight: 944
 ---
 
-This is a great (and favorable) article about TrueBlocks and how our indexers work written by one of our community members.
+An [article about TrueBlocks](https://dspyt.com/blockchain-data-indexer-with-trueblocks) and how our indexers work. Written by one of our community members.<!--more-->
 
-[Here's the link](https://dspyt.com/blockchain-data-indexer-with-trueblocks). Enjoy.

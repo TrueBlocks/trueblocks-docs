@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 998
 ---
 
 Apparently there are two types of software engineers in the world. One type writes code, pushes it out into the world to see how it works, keeps track of the bugs, and then goes back to drawing board, re-writes the code, fixes the bugs, and re-releases. Write-release-fix, write-release-fix. A never-ending circle.

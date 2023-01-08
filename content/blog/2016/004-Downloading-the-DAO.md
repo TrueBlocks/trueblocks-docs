@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 996
 ---
 
 I am obsessed with the DAO. I spend a ridiculously large amount of time thinking about it, reading about it, and trying to figure it out. The most interesting thing to me is the data. The fact that the smallest transactions —both into and out of the DAO — are recorded forever is very interesting to me.

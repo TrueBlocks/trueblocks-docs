@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 969
 ---
 
 Given a blockchain, our goal was to create a list of every appearance of every address in any block on that chain. We define an “appearance” as either the use of the address in one of the common ‘address’ fields of a transaction (such as `to`, `from`, or `contractAddress`) or its use as data in one of the data fields in a transaction. We do not check numeric fields such as `value` or `gasUsed`.

@@ -5,11 +5,10 @@ date: '2020-12-09T09:43:00.250Z'
 categories:
 - Ethereum
 tags: ['ethereum']
-menu: 
-  blog
 draft: false
 categories: []
 keywords: []
+weight: 958
 ---
 
 …a piece of open source software called an Ethereum node collects together a random, unordered collection of transactions, and after throwing out the invalid ones, puts the rest in a well-defined order.

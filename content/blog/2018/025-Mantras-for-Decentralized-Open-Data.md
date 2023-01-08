@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 975
 ---
 
 I had a wonderful experience at [EdCon in Toronto](https://edcon.io/) this week. Mostly because of all the great new people I met and the many people I reacquainted myself with. The Ethereum community is freakin’ cool.

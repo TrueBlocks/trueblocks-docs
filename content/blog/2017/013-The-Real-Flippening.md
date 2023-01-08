@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 987
 ---
 
 My wife constantly tells me we should sell our Ethereum holdings, and I constantly resist. She wants to buy a new sewing machine. I want to wait until “The Flippening.”

@@ -7,13 +7,10 @@ lastmod: 2021-04-05T19:21:58-03:00
 categories:
 - trueblocks
 tags: ['trueblocks']
-menu:
-  blog:
 draft: false
-weight: 150
 images: []
-toc: true
 contributors: [Thomas Jay Rush]
+weight: 955
 ---
 
 Recently, I was engaged in a tweetstorm with Nick Johnson, for whom I

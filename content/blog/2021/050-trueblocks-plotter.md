@@ -9,11 +9,10 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 tags: ["community"]
 contributors: ["Matt Soloman"]
+weight: 950
 ---
 
 Matt Solomon, over at ScopeLift, used TrueBlocks as a backend to build a cool tool.
