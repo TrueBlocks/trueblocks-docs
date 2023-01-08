@@ -3,7 +3,7 @@ title: "Indexing Addresses"
 description: "Using TrueBlocks to Create the Missing Index"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
-draft: true	
+draft: true
 images: []
 weight: 0500
 toc: true

@@ -40,7 +40,7 @@ I work on a project called TrueBlocks, so I’ll use that to carry out the above
 
 \* — wait for a long time while the node syncs.
 
-For more information on running node, you’ll have to look online (or checkout [DAppNode](https://medium.com/u/8d628dbdf3c2), which makes running Ethereum nodes very easy). Instructions for downloading and running TrueBlocks is [here](https://trueblocks.io/docs/install/install-trueblocks/).
+For more information on running node, you’ll have to look online (or checkout [DAppNode](https://medium.com/u/8d628dbdf3c2), which makes running Ethereum nodes very easy). Instructions for downloading and running TrueBlocks is [here](https://trueblocks.io/docs/install/install-core/).
 
 #### Building the Sample Code
 

@@ -1,16 +1,11 @@
-<p>
-<small>Posted {{ .PublishDate.Format "January 2, 2006" }}
-&nbsp;&hyphen;&nbsp;
-<strong>{{ .ReadingTime -}}&nbsp;min read</strong>
-</small>
-</p>
-<p>
-  <small>
-Tags: 
-{{ with (.GetTerms "tags") }}
-  {{ range $i, $t := . }}
-    {{ if $i }},&nbsp;{{ end }}<a href="{{ $t.Permalink }}">{{ $t.LinkTitle }}</a>
-  {{ end }}
-{{ end }}
+<small>
+  Posted {{ .PublishDate.Format "January 2, 2006" }}&nbsp;&hyphen;&nbsp;<strong>{{ .ReadingTime -}}&nbsp;min read</strong>
+  <small><br>
+  tags: [
+  {{ with (.GetTerms "tags") }}
+    {{ range $i, $t := . }}
+      {{ if $i }},&nbsp;{{ end }}<a href="{{ $t.Permalink }}">{{ $t.LinkTitle }}</a>
+    {{ end }}
+  {{ end }} ]
   </small>
-</p>
+</small>

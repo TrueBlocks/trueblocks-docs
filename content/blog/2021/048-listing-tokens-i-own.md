@@ -3,13 +3,13 @@ title: "Recipe: List Tokens I Own"
 description: "A method to list token balances for an address from known ERC 20 tokens"
 lead: "What do I Own?"
 categories:
-- Recipes
-tags: ['recipes']
+- Tutorials
+tags: ['tutorials']
 date: 2021-04-13T08:00:02-04:00
 menu: 
   blog:
-    parent: "recipes"
-draft: true
+    parent: "tutorials"
+draft: false
 weight: 50
 images: []
 contributors: ["Thomas Jay Rush"]

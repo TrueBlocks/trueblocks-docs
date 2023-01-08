@@ -76,15 +76,6 @@ a.btn:focus {
   padding-bottom: 1rem;
 }
 
-/*
-.section svg {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-top;
-}
-*/
-
 body {
   padding-top: 3.5625rem;
 }
@@ -97,6 +88,8 @@ body {
   .docs-sidebar {
     order: 0;
     border-right: 1px solid $gray-200;
+    white-space: nowrap;
+    min-width: 220px;
   }
 
   @supports ((position:-webkit-sticky) or (position:sticky)) {
