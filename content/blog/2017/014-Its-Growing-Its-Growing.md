@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 986
 ---
 
 I spend much of my free time on the [Ethereum Stack Exchange](https://ethereum.stackexchange.com/) answering questions about Solidity and asking questions about the Ethereum data, so I’m well aware which questions are most frequently asked.

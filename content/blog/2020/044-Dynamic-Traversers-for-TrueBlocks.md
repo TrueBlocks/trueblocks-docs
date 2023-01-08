@@ -7,11 +7,9 @@ lastmod: .lastmod
 categories:
 - Trueblocks
 tags: ['trueblocks']
-menu:
-  blog:
-    parent: "trueblocks"
 draft: false
 keywords: []
+weight: 956
 ---
 
 ## Dynamic Traversers in TrueBlocks

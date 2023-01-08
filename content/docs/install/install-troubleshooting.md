@@ -6,12 +6,10 @@ date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
-alias:
-  - "/docs/prologue/installing-trueblocks"
 menu:
   docs:
     parent: "install"
-weight: 0500
+weight: 0600
 toc: true
 ---
 
@@ -144,7 +142,7 @@ The format of that file is documented [TODO: PLACE_HOLDER](#).
 #### How do I add a EtherScan key?
 
 Some small part of TrueBlocks requires an EtherScan API key. In particular
-this is the [`--articulate` option](/docs/chifra/chaindata/). We are working
+this is the [`--articulate` option](/chifra/chaindata/). We are working
 hard to remove this centralized dependency, but in the mean time you
 may get a warning of a missing key.
 
@@ -181,7 +179,7 @@ in more detail.
 
 No matter which method you use, downloading or creating the index will take
 somewhere between a few minutes and a day or two. So you might want to play
-around with some [chifra blockchain commands](/docs/chifra/chaindata) first.
+around with some [chifra blockchain commands](/chifra/chaindata) first.
 
 ### Archive nodes
 

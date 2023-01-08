@@ -43,7 +43,7 @@ To get only the Bloom filters, run `chifra init`.
 
 If you do this, you will have to periodically re-run the command to update your index. ([Read about the finding the latest manifest](#Supplementary-how-can-I-see-when-the-manifest-was-last-published)).
 
-For more information, see the [`chifra init` command documentation](/docs/chifra/admin#chifra-init).
+For more information, see the [`chifra init` command documentation](/chifra/admin#chifra-init).
 
 **Initial set up time**: `chifra init` takes only about a half an hour on a machine with a good connection. (We've had report from some users that it takes much longer, but we suspect they are on slow machines.) We highly prefer you have a capable machine.
 
@@ -70,7 +70,7 @@ To get the entirety of the appearance index, run `chifra init --all`.
 
 If you use this command and don't run `chifra scrape`, you will have to update the index periodically by running the command again. ([Read about the finding the latest manifest](#Supplementary-how-can-I-see-when-the-manifest-was-last-published)).
 
-For detailed instructions, see the [`chifra pins` documentation](/docs/chifra/admin#chifra-pins).
+For detailed instructions, see the [`chifra pins` documentation](/chifra/admin#chifra-pins).
 
 **Initial set up time**: Somewhere between six and ten hours depending on the speed of your connection.
 
@@ -98,7 +98,7 @@ As is true of the previous methods, if you enable caching, subsequent queries fo
 
 To build your own index without any downloading, run `chifra scrape`.
 
-For detailed instructions, see the [`chifra scrape` command documentation](/docs/chifra/admin#chifra-scrape).
+For detailed instructions, see the [`chifra scrape` command documentation](/chifra/admin#chifra-scrape).
 
 **Initial set up time**: This method requires a locally-running tracing / archive node such as dAppNode running Erigon. Early users have reported 2-4 days to build the index from scratch. (You may wish to run `chifra scrape` in an application like `tmux`, so you can close the terminal window while it builds.)
 

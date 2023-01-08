@@ -34,7 +34,7 @@ and some good hardware.
 If you want to build your own index, plan for a few days and run `chifra scrape`.
 Before doing so, you probably want to read the relevant section in the
 ["How Can I Get the Index"](/docs/install/build-unchained-index) article,
-and [the `scrape` command documentation](/docs/chifra/admin#chifra-scrape).
+and [the `scrape` command documentation](/chifra/admin#chifra-scrape).
 
 Fortunately, TrueBlocks also publishes the index on the IPFS,
 which lets you access it locally without running a node.

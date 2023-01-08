@@ -10,11 +10,10 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 tags: ['community']
 contributors: ['Perama']
+weight: 951
 ---
 
 [Go read the post](https://perama-v.github.io/ethereum/local-data).

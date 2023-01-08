@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 997
 ---
 
 When I was nine, my Dad took me to a Phillies baseball game for my birthday. I don’t remember the game, but I do remember that he yelled at me for not being careful with my money.

@@ -1,5 +1,5 @@
 ---
-title: "Installing Core"
+title: "Install core"
 description: "TrueBlocks works on Linux and Mac"
 lead: "TrueBlocks runs on Linux and Mac. We do not support Windows."
 date: 2020-11-16T13:59:39+01:00
@@ -8,6 +8,7 @@ draft: false
 images: []
 alias:
   - "/docs/prologue/installing-trueblocks"
+  - "/docs/install/install-trueblocks"
 menu:
   docs:
     parent: "install"

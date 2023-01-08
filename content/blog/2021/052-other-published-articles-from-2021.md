@@ -9,10 +9,9 @@ lastmod:
   - date
   - publishDate
 images: []
-weight: 10
-toc: true
 draft: false
 tags: ["trueblocks"]
+weight: 948
 ---
 
 Here's links to a few other articles we published in 2021 on Medium.

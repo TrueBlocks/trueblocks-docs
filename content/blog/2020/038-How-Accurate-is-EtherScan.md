@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 962
 ---
 
 Why build an 18-decimal place accurate ledger if it doesn’t balance?

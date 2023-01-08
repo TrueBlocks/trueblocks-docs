@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 970
 ---
 
 A New Way to Think About Data APIs

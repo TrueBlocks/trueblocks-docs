@@ -2,10 +2,8 @@
 title: "Installing Docker"
 description: "How to Run TrueBlocks using Docker."
 lead: "How to Run TrueBlocks using Docker."
-date: 2021-07-01T11:40:11-03:00
 draft: false
 url: "/docker/introduction"
-images: []
 menu: 
   docker:
     parent: introduction

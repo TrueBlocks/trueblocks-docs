@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 968
 ---
 
 Did you ever notice that the only way to get the history of an Ethereum account is to visit a fully-centralized, database-driven, _old-fashioned_ web-2.0 website?

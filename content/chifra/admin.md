@@ -2,11 +2,15 @@
 title: "Admin"
 description: ""
 lead: ""
+lastmod:
+  - :git
+  - lastmod
+  - publishDate
 draft: false
 menu:
   chifra:
     parent: commands
-weight: 1700
+weight: 1600
 toc: true
 ---
 <!-- markdownlint-disable MD033 MD036 MD041 -->

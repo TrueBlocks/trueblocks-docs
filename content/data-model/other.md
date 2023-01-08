@@ -2,14 +2,11 @@
 title: "Other"
 description: ""
 lead: ""
-date: 2023-01-04T06:02:09
 lastmod:
   - :git
   - lastmod
-  - date
   - publishDate
 draft: false
-images: []
 menu:
   data:
     parent: "collections"
@@ -40,8 +37,8 @@ commands provide an `--articulate` option. See the commands themselves for more 
 
 The following commands produce and manage Functions:
 
-- [chifra abis](/docs/chifra/accounts/#chifra-abis)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+- [chifra abis](/chifra/accounts/#chifra-abis)
+- [chifra export](/chifra/accounts/#chifra-export)
 
 Functions consist of the following fields:
 
@@ -66,8 +63,8 @@ bytes into human-readable text.
 
 The following commands produce and manage Parameters:
 
-- [chifra abis](/docs/chifra/accounts/#chifra-abis)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+- [chifra abis](/chifra/accounts/#chifra-abis)
+- [chifra export](/chifra/accounts/#chifra-export)
 
 Parameters consist of the following fields:
 

@@ -2,6 +2,10 @@
 title: "Accounts"
 description: ""
 lead: ""
+lastmod:
+  - :git
+  - lastmod
+  - publishDate
 draft: false
 menu:
   chifra:

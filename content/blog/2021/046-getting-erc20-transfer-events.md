@@ -7,13 +7,10 @@ lastmod: .lastmod
 categories:
 - Tutorials
 tags: ['tutorials']
-menu: 
-  blog:
-    parent: "tutorials"
 draft: false
-weight: 50
 images: []
 contributors: ["Thomas Jay Rush"]
+weight: 954
 ---
 
 A TrueBlocks recipe to show every ERC20 Transfer event from a given smart contract.

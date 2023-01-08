@@ -58,9 +58,9 @@ such an application with our [Account Explorer](/docs/install/install-explorer).
 
 ### Avoiding winner-take-all
 
-In it's best incarnation, TrueBlocks runs locally against your own locally running node. If you build the thing yourself, no-one can take it away from you. After the initial syncronization of your node (Erigon, for example) which may take a few weeks, you can run one of TrueBlocks' command line tools called [chifra scrape](/docs/chifra/admin/#chifra-scrape). This process takes a few days.
+In it's best incarnation, TrueBlocks runs locally against your own locally running node. If you build the thing yourself, no-one can take it away from you. After the initial syncronization of your node (Erigon, for example) which may take a few weeks, you can run one of TrueBlocks' command line tools called [chifra scrape](/chifra/admin/#chifra-scrape). This process takes a few days.
 
-To ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using [chifra init](/docs/chifra/admin/#chifra-init). Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the "holder of all data" which eventually leads to winner-take-all like Google. We want to purposfully avoid that. 
+To ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using [chifra init](/chifra/admin/#chifra-init). Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the "holder of all data" which eventually leads to winner-take-all like Google. We want to purposfully avoid that. 
 
 This whole process is [better explained here](/docs/install/build-unchained-index/).
 

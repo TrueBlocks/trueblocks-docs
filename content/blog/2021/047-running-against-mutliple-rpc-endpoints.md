@@ -5,20 +5,12 @@ lead: "Can I run against different RPC endpoints?"
 categories:
 - Tutorials
 tags: ['tutorials']
-menu: 
-  blog:
-    parent: "tutorials"
 date: 2021-04-21T17:13:04-04:00
 lastmod: 2021-04-21T17:13:04-04:00
 draft: false
-weight: 50
 images: ["running-against-mutliple-rpc-endpoints.jpg"]
 contributors: ["Thomas Jay Rush"]
-menu: 
-  blog
-weight: 50
-toc: true
-
+weight: 953
 ---
  
 One user asked if it was possible to run TrueBlocks against multiple RPC endpoints at the same time. This is short recipe to accomplish just that.

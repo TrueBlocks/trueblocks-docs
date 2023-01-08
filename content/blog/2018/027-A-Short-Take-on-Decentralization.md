@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 973
 ---
 
 This is a very short take on something I’ve been thinking about for quite a while. “Why do I give a shit about decentralization? Should I compromise?” Here’s why I come down emphatically on the side of “Yes, I give a shit, and no you should never compromise!”.

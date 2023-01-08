@@ -124,7 +124,7 @@ chifra logs --fmt json --articulate 4503002.2
 
 You'll see additional (and much more easy to understand) data. In particular, you'll see an `articulatedLog`. That is "ugly log data presented in human-readable form."
 
-See [Getting ERC20 Transfer Events](/blog/recipe-getting-erc20-transfer-events/) for an example of using articulation.
+See [Getting ERC20 Transfer Events](https://trueblocks.io/blog/how-many-erc20-tokens-do-you-have/) for an example of using articulation.
 
 ## Links to more detail
 

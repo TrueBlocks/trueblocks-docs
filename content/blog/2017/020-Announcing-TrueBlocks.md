@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 980
 ---
 
 We are pleased to announce the release today of the first of three white papers describing TrueBlocks: [Faster, Richer, Fully Customizable Data from Programmable Blockchains](http://trueblocks.io/wp-content/uploads/2017/10/2017-Rush-Faster-Richer-Fully-Customizable-Data-from-Programmable-Blockchains.pdf). Additionally, we are announcing the release of an updated and improved website ([http://trueblocks.io](http://trueblocks.io)) as well as fourteen open-source command line tools.
@@ -43,7 +44,7 @@ which reports on the number of Omisigo tokens one holds. You can furthermore use
 
 ![](/blog/img/020-Announcing-TrueBlocks-002.png)
 
-To be honest, the combinations are nearly endless. Check out [our documentation](http://trueblocks.io/docs/index.html) for more information.
+To be honest, the combinations are nearly endless. Check out [our documentation](http://trueblocks.io/docs/) for more information.
 
 #### Where to from Here?
 

@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 988
 ---
 
 _What’s the cheapest way to publish data while maintaining an unchangeable, permanent record of having done so?_

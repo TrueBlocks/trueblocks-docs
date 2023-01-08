@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 978
 ---
 
 I spend a lot of time looking at historical Ethereum transactional data. I do this by scanning the chain using [TrueBlocks](http://trueblocks.io).

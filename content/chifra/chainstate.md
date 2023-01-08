@@ -2,6 +2,10 @@
 title: "Chain state"
 description: ""
 lead: ""
+lastmod:
+  - :git
+  - lastmod
+  - publishDate
 draft: false
 menu:
   chifra:

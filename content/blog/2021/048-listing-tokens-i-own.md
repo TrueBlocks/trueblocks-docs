@@ -6,13 +6,10 @@ categories:
 - Tutorials
 tags: ['tutorials']
 date: 2021-04-13T08:00:02-04:00
-menu: 
-  blog:
-    parent: "tutorials"
-draft: true
-weight: 50
+draft: false
 images: []
 contributors: ["Thomas Jay Rush"]
+weight: 952
 ---
 
 A TrueBlocks recipe to show ERC 20 token balances for an address.

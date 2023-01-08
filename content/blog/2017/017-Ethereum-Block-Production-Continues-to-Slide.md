@@ -7,6 +7,7 @@ categories:
 - Ethereum
 tags: ['ethereum']
 keywords: []
+weight: 983
 ---
 
 Two weeks ago, we wrote [this Medium post](https://medium.com/@tjayrush/is-the-ice-age-effecting-block-production-4c943c835975) in which we describe the slowdown in per-week block production due to the Ice Age or Ethereum Difficulty Bomb. We thought it would be interesting to continue to watch the process as it unfolds. We wondered “Is the difficulty bomb having its desired effect”?

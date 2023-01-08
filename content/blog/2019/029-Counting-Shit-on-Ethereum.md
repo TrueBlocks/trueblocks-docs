@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 971
 ---
 
 I like to count shit. I’ll count anything I can find. Cracks in the sidewalk. Pennies in a cup.

@@ -1,10 +1,12 @@
 REDIRECTS:
 
 Old > new
-/docs/chifra/introducing-chifra > /docs/using/introducing-chifra 
-/docs/chifra/using-chifra > /docs/using/using-chifra
+/docs/chifra/introducing-chifra > /chifra/using/
+/docs/chifra/using-chifra > /chifra/using/
 
 /docs/prologue/installing-trueblocks.md > /docs/install/install-core
+/docs/install/install-trueblocks > /docs/install/install-core
+/docs/install/ > /docs/install/install-core
 /docs/prologue/how-can-i-get-the-index.md > /docs/install/build-unchained-index
 /docs/install/get-the-index > /docs/install/build-unchained-index
 /docs/prologue/install-explorer.md > /docs/install/install-explorer

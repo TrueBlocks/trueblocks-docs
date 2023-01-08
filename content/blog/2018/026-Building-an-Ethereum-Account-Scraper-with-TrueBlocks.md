@@ -7,6 +7,7 @@ categories:
 - Trueblocks
 tags: ['trueblocks']
 keywords: []
+weight: 974
 ---
 
 When I first heard of Ethereum, I thought to myself _“Excellent! I no longer have to keep track of my spending. Everything will be automated.”_
