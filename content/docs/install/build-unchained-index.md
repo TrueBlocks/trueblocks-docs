@@ -11,7 +11,7 @@ lastmod:
   - date
   - publishDate
 draft: false
-alias:
+aliases:
  - "/docs/prologue/how-can-i-get-the-index"
  - "/docs/install/get-the-index"
 images: []

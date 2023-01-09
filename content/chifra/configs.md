@@ -8,7 +8,7 @@ lastmod:
   - publishDate
 draft: false
 images: []
-alias:
+aliases:
  - "/docs/chifra/configs"
 menu:
   chifra:

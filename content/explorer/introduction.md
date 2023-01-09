@@ -4,7 +4,7 @@ description: "Ethereum consists of multiple different data models. TrueBlocks ex
 lead: "Ethereum consists of multiple different data models. TrueBlocks exposes them all."
 draft: false
 url: "/explorer/introduction"
-alias:
+aliases:
  - "/docs/explorer/"
 menu: 
   explorer:

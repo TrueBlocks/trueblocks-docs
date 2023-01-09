@@ -6,7 +6,7 @@ date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
-alias:
+aliases:
   - "/docs/prologue/installing-trueblocks"
   - "/docs/install/install-trueblocks"
 menu:

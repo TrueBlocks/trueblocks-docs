@@ -3,7 +3,7 @@ title: "Tutorials"
 description: "How to use TrueBlocks to get useful data"
 lead: "How to use TrueBlocks to get useful data."
 draft: false
-alias:
+aliases:
  - "/docs/using/using-chifra"
 menu:
   chifra:
