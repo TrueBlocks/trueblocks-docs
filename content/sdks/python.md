@@ -7,8 +7,10 @@ url: "/sdks/python-sdk"
 menu: 
   sdks:
     parent: langauges
-weight: 1000
+weight: 3000
 toc: true
 ---
 
-This document tells you how to use the SDKs
+Here's a link to the [Python SDK](https://github.com/TrueBlocks/trueblocks-sdk/tree/main/python).
+
+**Warning:** It's in its very early stage.

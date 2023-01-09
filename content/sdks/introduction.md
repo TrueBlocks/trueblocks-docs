@@ -11,4 +11,11 @@ weight: 1000
 toc: true
 ---
 
-This document tells you how to use the SDKs
+The [chifra serve](/chifra/admin/#chifra-daemon) command provides an API interface to `chifra`. As part of this functionality, we've
+started writing SDKs to make using the API easier. There are two SDKs so far, both in their earliest stages.
+
+The two SDKs are the [TypeScript SDK](/sdks/typescript-sdk/) and the [Python SDK](/sdks/typescript-sdk/).
+
+We welcome PRs supporting other languages -- particularly GoLang or Rust.
+
+Here's the [SDKs repo](https://github.com/TrueBlocks/trueblocks-sdk).
