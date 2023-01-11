@@ -1,0 +1,25 @@
+// this tag is used to set the width of the
+// left sidebar, as its the only block in
+// the layout that's this size.
+//     large screen: 992px
+//     number of columns: 16
+//     4 column width: 248px (992px * 4 / 16)
+//     3 column width: 186px (992px * 3 / 16)
+.col-lg-4 {
+    min-width: 180px;
+    max-width: 180px; 
+}
+
+// main body block fills up the remaining space
+// only on xl screens
+.col-xl-9 {
+    min-width: calc(100% - 180px - 240px);
+    max-width: 100%;
+}
+
+// remove extra top padding from the first item in a list
+// this is used to display the first docs page, which replaces
+// what would otherwise be a list of docs pages in the layout
+.docs.list .content {
+    padding-top: 0;
+  }
