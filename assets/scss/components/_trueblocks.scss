@@ -8,6 +8,10 @@
 // main body block fills up the remaining space
 // only on xl screens
 @include media-breakpoint-up(lg) {
+    .col-lg-12 {
+        min-width: calc(100% - 180px - 0px); // no right sidebar
+        max-width: 100%;
+    }
     .col-lg-11 {
         min-width: calc(100% - 180px - 0px); // no right sidebar
         max-width: 100%;
