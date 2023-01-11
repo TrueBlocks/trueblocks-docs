@@ -109,25 +109,25 @@
   .main-nav .nav-item:last-child .nav-link,
   .social-nav .nav-item:last-child .nav-link {
     padding-right: 0;
-    // margin-right: 2rem;
+    margin-right: 2rem;
   }
 
   .navbar-form {
     margin-top: 0;
-    // margin-left: 2rem;
+    margin-left: 2rem;
     margin-right: 0.5rem;
   }
 }
 
 @include media-breakpoint-up(lg) {
   .navbar-form {
-    // margin-left: 3rem;
+    margin-left: 3rem;
   }
 }
 
 @include media-breakpoint-up(xl) {
   .navbar-form {
-    // margin-left: 4rem;
+    margin-left: 4rem;
   }
 }
 
