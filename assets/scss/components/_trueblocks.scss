@@ -1,3 +1,10 @@
+// make padding full gutter width, to avoid overlap
+.docs-sidebar,
+.docs-content {
+    padding-left: calc(var(--bs-gutter-x) * 1);
+    padding-right: calc(var(--bs-gutter-x) * 1);
+}
+
 // remove margin from navbar, to avoid scrunching the search box
 @include media-breakpoint-up(md) {
     .navbar-form {
