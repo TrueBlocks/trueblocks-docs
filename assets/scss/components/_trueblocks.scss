@@ -4,6 +4,10 @@
     padding-left: calc(var(--bs-gutter-x) * 1);
     padding-right: calc(var(--bs-gutter-x) * 1);
 }
+.docs-links {
+    padding-left: calc(var(--bs-gutter-x) * 1);
+    padding-right: calc(var(--bs-gutter-x) * 2);
+}
 
 // remove margin from navbar, to avoid scrunching the search box
 @include media-breakpoint-up(md) {
@@ -16,11 +20,11 @@
 // only on xl screens
 @include media-breakpoint-up(lg) {
     .col-lg-12 {
-        min-width: calc(100% - 180px - 0px); // no right sidebar
+        min-width: calc(100% - 180px - var(--bs-gutter-x)*1 - 0px); // no right sidebar
         max-width: 100%;
     }
     .col-lg-11 {
-        min-width: calc(100% - 180px - 0px); // no right sidebar
+        min-width: calc(100% - 180px - 180px - var(--bs-gutter-x)*1 - 0px); // no right sidebar
         max-width: 100%;
     }
     // this tag is used to set the width of the
@@ -31,8 +35,8 @@
     //     4 column width: 248px (992px * 4 / 16)
     //     3 column width: 186px (992px * 3 / 16)
     .col-lg-4 {
-        min-width: 180px;
-        max-width: 180px;
+        min-width: calc(180px + var(--bs-gutter-x));
+        max-width: calc(180px + var(--bs-gutter-x));
     }
     // less whitespace on the header on the right
     .docs-links h3,
