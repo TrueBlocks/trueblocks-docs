@@ -31,7 +31,7 @@ weight = 200
 
 [[main]]
 identifier = "data"
-name = "Data Model"
+name = "Models"
 url = "/data-model/intro"
 weight = 300
     [[data]]
