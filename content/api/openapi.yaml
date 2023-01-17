@@ -860,7 +860,7 @@ paths:
           explode: true
           schema:
             type: boolean
-        - name: trace
+        - name: traces
           description: export the traces from the block as opposed to the block data
           required: false
           style: form
@@ -1018,7 +1018,7 @@ paths:
           explode: true
           schema:
             type: boolean
-        - name: trace
+        - name: traces
           description: include the transaction's traces in the results
           required: false
           style: form
@@ -2492,18 +2492,32 @@ components:
       description: "receipt data as returned from the RPC (with slight enhancements)"
       type: object
       properties:
+        blockNumber:
+          type: number
+          format: blknum
+        transactionIndex:
+          type: number
+          format: blknum
+        transactionHash:
+          type: string
+          format: hash
+        blockHash:
+          type: string
+          format: hash
         status:
           type: number
           format: uint32
           description: "`1` on transaction suceess, `null` if tx preceeds Byzantium, `0` otherwise"
-        contractAddress:
-          type: string
-          format: address
-          description: "the address of the newly created contract, if any"
         gasUsed:
           type: string
           format: gas
           description: "the amount of gas actually used by the transaction"
+        contractAddress:
+          type: string
+          format: address
+          description: "the address of the newly created contract, if any"
+        isError:
+          type: boolean
         logs:
           type: array
           items:
@@ -2691,16 +2705,26 @@ components:
           format: uint64
           example: 20
           description: "the number of uncles in the block"
+        logsCnt:
+          type: number
+          format: uint64
+          example: 30
+          description: "the number of logs in the block"
         tracesCnt:
           type: number
           format: uint64
           example: 30
           description: "the number of traces in the block"
-        appearancesCnt:
+        appsCnt:
           type: number
           format: uint64
           example: 40
           description: "the number of address appearances in the block"
+        uniqsCnt:
+          type: number
+          format: uint64
+          example: 40
+          description: "the number of address appearances in the block per transaction"
     namedBlock:
       description: "a block that has been given a particular name such as `first` or `latest`"
       type: object
