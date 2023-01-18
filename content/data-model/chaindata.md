@@ -308,6 +308,25 @@ NamedBlocks consist of the following fields:
 | date        | Human readable version of timestamp | datetime  |
 | name        | an optional name for the block      | string    |
 
+## TraceCount
+
+<!-- markdownlint-disable MD033 MD036 MD041 -->
+`chifra trace --count` returns the number of traces the given transaction.
+
+The following commands produce and manage TraceCounts:
+
+- [chifra traces](/chifra/chaindata/#chifra-traces)
+
+TraceCounts consist of the following fields:
+
+| Field            | Description                             | Type      |
+| ---------------- | --------------------------------------- | --------- |
+| blockNumber      | the block number                        | blknum    |
+| transactionIndex | the transaction index                   | blknum    |
+| transactionHash  | the transaction's hash                  | hash      |
+| timestamp        | the timestamp of the block              | timestamp |
+| tracesCnt        | the number of traces in the transaction | uint64    |
+
 ## Base types
 
 This documentation mentions the following basic data types.
