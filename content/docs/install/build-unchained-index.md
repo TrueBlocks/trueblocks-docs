@@ -61,10 +61,10 @@ When you run `chifra init`, TrueBlocks downloads a set of Bloom filters from the
 
 1. Scans the Bloom filters for potential matches and if there's a hit, downloads the corresponding index chunks.
 2. Returns the set of `appearances` for the address as pairs of `<block number>` and `<transaction_id>`. (This permits direct queries for exact details of desired transaction histories).
-3. Given the list of `appearances`, TrueBlocks pulls the full transacitonal history of the account from any (remote or local) RPC endpoint.
+3. Given the list of `appearances`, TrueBlocks pulls the full transactional history of the account from any (remote or local) RPC endpoint.
 4. During the query, you may instruct TrueBlocks to cache the response locally, making future queries for this same address nearly instantaneous.
 
-### Use chifra init --all to get the entirity of the index
+### Use chifra init --all to get the entirety of the index
 
 To get the entirety of the appearance index, run `chifra init --all`.
 

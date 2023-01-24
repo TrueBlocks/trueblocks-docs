@@ -105,5 +105,5 @@ There's a lot left to learn. Have fun:
 
   - [Using the Unchained Index](/docs/install/build-unchained-index/)
   - [Explore some coding examples](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples)
-  - [View data science recipies](/tags/tutorials/)
+  - [View data science recipes](/tags/tutorials/)
   - [Use the explorer application](/docs/install/install-explorer/)
