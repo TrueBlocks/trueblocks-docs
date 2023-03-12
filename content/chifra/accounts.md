@@ -7,7 +7,7 @@ lastmod:
   - lastmod
   - publishDate
 draft: false
-alias:
+aliases:
  - "/docs/chifra/accounts"
 menu:
   chifra:
@@ -16,12 +16,14 @@ weight: 1000
 toc: true
 ---
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-This group of commands is at the heart of TrueBlocks. They allow you to produce and analyze
-transactional histories for a given Ethereum address.
+The Accounts group of commands is at the heart of TrueBlocks. They allow you to produce and analyze
+transactional histories for one or more Ethereum addresses.
 
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove
-monitors, and, most importantly, export transactional histories to various formats, This
+monitors, and, most importantly, export transactional histories in various formats, This
 includes re-directing output to remote or local databases.
+
+To the right is a list of commands in this group. Click on a command to see its full documentation.
 ## chifra list
 
 <!-- markdownlint-disable MD041 -->
@@ -249,11 +251,10 @@ Arguments:
 Flags:
   -e, --expand       expand search to include all fields (search name, address, and symbol otherwise)
   -m, --match_case   do case-sensitive search
-  -l, --all          include all accounts in the search
-  -c, --custom       include your custom named accounts
-  -p, --prefund      include prefund accounts
-  -n, --named        include well know token and airdrop addresses in the search
-  -a, --addr         display only addresses in the results (useful for scripting)
+  -l, --all          include all (including custom) names in the search
+  -c, --custom       include only custom named accounts in the search
+  -p, --prefund      include prefund accounts in the search
+  -a, --addr         display only addresses in the results (useful for scripting, assumes --no_header)
   -g, --tags         export the list of tags and subtags only
   -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
@@ -290,11 +291,7 @@ optimization, the `known` signatures are searched first during articulation.
 The `--sol` option converts the provided Solidity file into an ABI json file. The results are
 dropped into the current working folder.
 
-The `--find` option is experimental. It scans the cross product of two sets. The first set contains
-more than 100,000 function and event names. The second set contains approximately 700 function
-signatures. The cross product of these two sets creates 70,000,000 combinations of `name(signature)`
-each of which is hashed to create either a four-byte or a 32-byte hash. Very infrequently, the tool
-will find matches for an otherwise unknown signatures.
+The `--find` option is experimental. Please see the notes below for more information.
 
 ```[plaintext]
 Purpose:
@@ -307,16 +304,16 @@ Arguments:
   addrs - a list of one or more smart contracts whose ABIs to display (required)
 
 Flags:
-  -k, --known          load common 'known' ABIs from cache
-  -s, --sol            extract the abi definition from the provided .sol file(s)
-  -f, --find strings   search for function or event declarations given a four- or 32-byte code(s)
-  -n, --hint strings   for the --find option only, provide hints to speed up the search
-  -x, --fmt string     export format, one of [none|json*|txt|csv]
-  -v, --verbose        enable verbose (increase detail with --log_level)
-  -h, --help           display this help screen
+  -k, --known           load common 'known' ABIs from cache
+  -f, --find strings    search for function or event declarations given a four- or 32-byte code(s)
+  -n, --hint strings    for the --find option only, provide hints to speed up the search
+  -e, --encode string   generate the 32-byte encoding for a given cannonical function or event signature
+  -c, --clean           remove an abi file for an address or all zero-length files if no address is given
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
 
 Notes:
-  - For the --sol option, place the solidity files in the current working folder.
   - Search for either four byte signatures or event signatures with the --find option.
 ```
 
@@ -330,4 +327,12 @@ Links:
 
 - [api docs](/api/#operation/accounts-abis)
 - [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis)
+
+<!-- markdownlint-disable MD041 -->
+### notes
+
+The `chifra abis --find` option scans the cross product of two sets. The first set contains more than 100,000 function and event
+names. The second set contains approximately 700 function signatures. The cross product of these two sets creates 70,000,000
+combinations of name(signature) each of which is hashed to create either a four-byte or a 32-byte hash. Very infrequently,
+the tool will find matches for an otherwise unknown signatures.
 

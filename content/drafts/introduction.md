@@ -15,7 +15,7 @@ toc: true
 
 2. Indexes and content-addressable data stores such as IPFS do not play well together. This leads to directly to centralized (and old-fashioned) Web 2.0 data access through blockchain explorers which have already become the only way most users can get transactional histories of their own accounts. That's not decentralized.
 
-3. If a single entity (or a small number of entities) becomes the only way for users to get their transactional histories, that entity will capture those users. This will happen either by the entity withholding the data and charging for access or (more likely) by giving the data away for free and return for much more lucritive payment through privacy invasion.
+3. If a single entity (or a small number of entities) becomes the only way for users to get their transactional histories, that entity will capture those users. This will happen either by the entity withholding the data and charging for access or (more likely) by giving the data away for free and return for much more lucrative payment through privacy invasion.
 
 4. To solve this problem, the Ethereum node needs to index the blockchain. TrueBlocks builds this missing index. However, we don't want to build it and be able to later control it or limit access to it. That's where IPFS comes in. We build a chunked index (that is, periodically we stop adding data to the growing chunk). This allows us to store the chunk immutably on IPFS.
 

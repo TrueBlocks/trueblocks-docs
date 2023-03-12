@@ -7,7 +7,7 @@ lastmod:
   - lastmod
   - publishDate
 draft: false
-alias:
+aliases:
  - "/docs/chifra/chaindata"
 menu:
   chifra:
@@ -16,9 +16,11 @@ weight: 1200
 toc: true
 ---
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-The TrueBlocks tools extract raw blockchain data directly from the node. You may extract block
-data, transactional data, receipts, logs, and traces. Each tool has it own set of options,
-allowing you to get exactly the data that you want.
+The Chain Data group of tools extract raw blockchain data directly from the node. You may extract
+block data, transactional data, receipts, logs, traces, and other information. Each tool has it own
+set of options, allowing you to get exactly the data you need.
+
+To the right is a list of commands in this group. Click on a command to see its full documentation.
 ## chifra blocks
 
 <!-- markdownlint-disable MD041 -->
@@ -46,7 +48,7 @@ Arguments:
 Flags:
   -e, --hashes        display only transaction hashes, default is to display full transaction detail
   -c, --uncles        display uncle blocks (if any) instead of the requested block
-  -t, --trace         export the traces from the block as opposed to the block data
+  -t, --traces        export the traces from the block as opposed to the block data
   -s, --apps          display a list of uniq address appearances in the block
   -u, --uniq          display a list of uniq address appearances per transaction
   -f, --flow string   for the uniq and apps options only, export only from or to (including trace from or to)
@@ -69,7 +71,13 @@ Notes:
 
 Data models produced by this tool:
 
+- [appearance](/data-model/accounts/#appearance)
 - [block](/data-model/chaindata/#block)
+- [log](/data-model/chaindata/#log)
+- [trace](/data-model/chaindata/#trace)
+- [traceaction](/data-model/chaindata/#traceaction)
+- [traceresult](/data-model/chaindata/#traceresult)
+- [blockcount](/data-model/chaindata/#blockcount)
 
 Links:
 
@@ -103,7 +111,7 @@ Arguments:
 
 Flags:
   -a, --articulate           articulate the retrieved data if ABIs can be found
-  -t, --trace                include the transaction's traces in the results
+  -t, --traces               include the transaction's traces in the results
   -u, --uniq                 display a list of uniq addresses found in the transaction
   -f, --flow string          for the uniq option only, export only from or to (including trace from or to)
                              One of [ from | to ]
@@ -202,7 +210,7 @@ Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
   - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
   - If the queried node does not store historical state, the results for most older transactions are undefined.
-  - If you specify a 32-byte hash, it will be assumed to be a transaction hash, if the transaction is not found, it will be used as a topic.
+  - If you specify a 32-byte hash, it will be assumed to be a transaction hash, if it is not, the hash will be used as a topic.
 ```
 
 Data models produced by this tool:
@@ -239,7 +247,6 @@ Arguments:
 Flags:
   -a, --articulate      articulate the retrieved data if ABIs can be found
   -f, --filter string   call the node's trace_filter routine with bang-separated filter
-  -d, --statediff       export state diff traces (not implemented)
   -U, --count           show the number of traces for the transaction only (fast)
   -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
@@ -250,7 +257,6 @@ Notes:
   - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
   - If the queried node does not store historical state, the results for most older transactions are undefined.
   - A bang separated filter has the following fields (at least one of which is required) and is separated with a bang (!): fromBlk, toBlk, fromAddr, toAddr, after, count.
-  - A state diff trace describes, for each modified address, what changed during that trace.
 ```
 
 Data models produced by this tool:
@@ -258,6 +264,7 @@ Data models produced by this tool:
 - [trace](/data-model/chaindata/#trace)
 - [traceaction](/data-model/chaindata/#traceaction)
 - [traceresult](/data-model/chaindata/#traceresult)
+- [tracecount](/data-model/chaindata/#tracecount)
 
 Links:
 

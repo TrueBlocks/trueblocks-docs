@@ -5,7 +5,7 @@ lead: "If you want to use TrueBlocks to its full potential, then, yes, you need
 a node. But if you don't have a node, we use the IPFS to provide some workarounds."
 date: 2020-10-06T08:48:45+00:00
 draft: false
-alias: "/docs/prologue/do-i-need-a-node"
+aliases: "/docs/prologue/do-i-need-a-node"
 images: []
 menu:
   docs:

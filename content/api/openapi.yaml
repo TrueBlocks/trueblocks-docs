@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 0.50.0-beta
+  version: 0.60.0-beta
   description: >
 
     A REST layer over the TrueBlocks application. With `chifra daemon`, you can
@@ -617,7 +617,7 @@ paths:
           schema:
             type: boolean
         - name: all
-          description: include all accounts in the search
+          description: include all (including custom) names in the search
           required: false
           style: form
           in: query
@@ -625,7 +625,7 @@ paths:
           schema:
             type: boolean
         - name: custom
-          description: include your custom named accounts
+          description: include only custom named accounts in the search
           required: false
           style: form
           in: query
@@ -633,15 +633,7 @@ paths:
           schema:
             type: boolean
         - name: prefund
-          description: include prefund accounts
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: named
-          description: include well know token and airdrop addresses in the search
+          description: include prefund accounts in the search
           required: false
           style: form
           in: query
@@ -649,7 +641,8 @@ paths:
           schema:
             type: boolean
         - name: addr
-          description: display only addresses in the results (useful for scripting)
+          description: >
+            display only addresses in the results (useful for scripting, assumes --no_header)
           required: false
           style: form
           in: query
@@ -658,6 +651,14 @@ paths:
             type: boolean
         - name: tags
           description: export the list of tags and subtags only
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: named
+          description: please use the --all option instead
           required: false
           style: form
           in: query
@@ -741,14 +742,6 @@ paths:
           explode: true
           schema:
             type: boolean
-        - name: sol
-          description: extract the abi definition from the provided .sol file(s)
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
         - name: find
           description: search for function or event declarations given a four- or 32-byte code(s)
           required: false
@@ -771,6 +764,24 @@ paths:
             items:
               type: string
               format: string
+        - name: encode
+          description: >
+            generate the 32-byte encoding for a given cannonical function or event signature
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: string
+        - name: clean
+          description: >
+            remove an abi file for an address or all zero-length files if no address is given
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -860,7 +871,7 @@ paths:
           explode: true
           schema:
             type: boolean
-        - name: trace
+        - name: traces
           description: export the traces from the block as opposed to the block data
           required: false
           style: form
@@ -971,10 +982,17 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Block data as returned from the RPC (with slight enhancements). Produces <a href="/data-model/chaindata/#block">Block</a> data. Corresponds to the <a href="/chifra/chaindata/#chifra-blocks">chifra blocks</a> command line.
+                    description: Produces <a href="/data-model/accounts/#appearance">Appearance</a>, <a href="/data-model/chaindata/#block">Block</a>, <a href="/data-model/chaindata/#log">Log</a>, <a href="/data-model/chaindata/#trace">Trace</a>, <a href="/data-model/chaindata/#traceaction">Traceaction</a>, <a href="/data-model/chaindata/#traceresult">Traceresult</a>, and/or <a href="/data-model/chaindata/#blockcount">Blockcount</a> data. Corresponds to the <a href="/chifra/chaindata/#chifra-blocks">chifra blocks</a> command line.
                     type: array
                     items:
-                      $ref: "#/components/schemas/block"
+                      oneOf:
+                        - $ref: "#/components/schemas/appearance"
+                        - $ref: "#/components/schemas/block"
+                        - $ref: "#/components/schemas/log"
+                        - $ref: "#/components/schemas/trace"
+                        - $ref: "#/components/schemas/traceAction"
+                        - $ref: "#/components/schemas/traceResult"
+                        - $ref: "#/components/schemas/blockCount"
                 example:
                   {
                     "blockNumber": 3141592,
@@ -1011,7 +1029,7 @@ paths:
           explode: true
           schema:
             type: boolean
-        - name: trace
+        - name: traces
           description: include the transaction's traces in the results
           required: false
           style: form
@@ -1189,14 +1207,6 @@ paths:
           explode: true
           schema:
             type: string
-        - name: statediff
-          description: export state diff traces (not implemented)
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
         - name: count
           description: show the number of traces for the transaction only (fast)
           required: false
@@ -1213,13 +1223,14 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Produces <a href="/data-model/chaindata/#trace">Trace</a>, <a href="/data-model/chaindata/#traceaction">Traceaction</a>, and/or <a href="/data-model/chaindata/#traceresult">Traceresult</a> data. Corresponds to the <a href="/chifra/chaindata/#chifra-traces">chifra traces</a> command line.
+                    description: Produces <a href="/data-model/chaindata/#trace">Trace</a>, <a href="/data-model/chaindata/#traceaction">Traceaction</a>, <a href="/data-model/chaindata/#traceresult">Traceresult</a>, and/or <a href="/data-model/chaindata/#tracecount">Tracecount</a> data. Corresponds to the <a href="/chifra/chaindata/#chifra-traces">chifra traces</a> command line.
                     type: array
                     items:
                       oneOf:
                         - $ref: "#/components/schemas/trace"
                         - $ref: "#/components/schemas/traceAction"
                         - $ref: "#/components/schemas/traceResult"
+                        - $ref: "#/components/schemas/traceCount"
         "400":
           description: bad input parameter
   /when:
@@ -2315,10 +2326,6 @@ components:
           type: boolean
           example: true
           description: "flag indicating the system considers this data final"
-        unclesCnt:
-          type: number
-          format: uint64
-          description: "the number of uncles in this block"
     transaction:
       description: "transaction data as returned from the RPC (with slight enhancements)"
       type: object
@@ -2485,18 +2492,32 @@ components:
       description: "receipt data as returned from the RPC (with slight enhancements)"
       type: object
       properties:
+        blockNumber:
+          type: number
+          format: blknum
+        transactionIndex:
+          type: number
+          format: blknum
+        transactionHash:
+          type: string
+          format: hash
+        blockHash:
+          type: string
+          format: hash
         status:
           type: number
           format: uint32
           description: "`1` on transaction suceess, `null` if tx preceeds Byzantium, `0` otherwise"
-        contractAddress:
-          type: string
-          format: address
-          description: "the address of the newly created contract, if any"
         gasUsed:
           type: string
           format: gas
           description: "the amount of gas actually used by the transaction"
+        contractAddress:
+          type: string
+          format: address
+          description: "the address of the newly created contract, if any"
+        isError:
+          type: boolean
         logs:
           type: array
           items:
@@ -2643,7 +2664,7 @@ components:
       description: "trace result data as returned from the RPC (with slight enhancements)"
       type: object
       properties:
-        newContract:
+        address:
           type: string
           format: address
           example: "0xf503...179b"
@@ -2660,6 +2681,50 @@ components:
           type: string
           format: bytes
           description: "the result of the call of this trace"
+    blockCount:
+      description: "counts of various parts of the block data such as tx_count, trace_count, etc."
+      type: object
+      properties:
+        blockNumber:
+          type: number
+          format: blknum
+          example: 10
+          description: "the block's block number"
+        timestamp:
+          type: number
+          format: timestamp
+          example: 10
+          description: "the timestamp of the block"
+        transactionsCnt:
+          type: number
+          format: uint64
+          example: 10
+          description: "the number transactions in the block"
+        unclesCnt:
+          type: number
+          format: uint64
+          example: 20
+          description: "the number of uncles in the block"
+        logsCnt:
+          type: number
+          format: uint64
+          example: 30
+          description: "the number of logs in the block"
+        tracesCnt:
+          type: number
+          format: uint64
+          example: 30
+          description: "the number of traces in the block"
+        appsCnt:
+          type: number
+          format: uint64
+          example: 40
+          description: "the number of address appearances in the block"
+        uniqsCnt:
+          type: number
+          format: uint64
+          example: 40
+          description: "the number of address appearances in the block per transaction"
     namedBlock:
       description: "a block that has been given a particular name such as `first` or `latest`"
       type: object
@@ -2683,6 +2748,35 @@ components:
           type: string
           example: "byzantium"
           description: "an optional name for the block"
+    traceCount:
+      description: "counts the number of traces in a transaction"
+      type: object
+      properties:
+        blockNumber:
+          type: number
+          format: blknum
+          example: 10
+          description: "the block number"
+        transactionIndex:
+          type: number
+          format: blknum
+          example: 10
+          description: "the transaction index"
+        transactionHash:
+          type: string
+          format: hash
+          example: "10"
+          description: "the transaction's hash"
+        timestamp:
+          type: number
+          format: timestamp
+          example: 10
+          description: "the timestamp of the block"
+        tracesCnt:
+          type: number
+          format: uint64
+          example: 30
+          description: "the number of traces in the transaction"
     ethState:
       description: "the on-chain state of a given address including ETH balance, nonce, and smart contract byte code if present"
       type: object

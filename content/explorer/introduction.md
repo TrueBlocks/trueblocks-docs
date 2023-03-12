@@ -4,7 +4,7 @@ description: "Ethereum consists of multiple different data models. TrueBlocks ex
 lead: "Ethereum consists of multiple different data models. TrueBlocks exposes them all."
 draft: false
 url: "/explorer/introduction"
-alias:
+aliases:
  - "/docs/explorer/"
 menu: 
   explorer:
@@ -17,13 +17,13 @@ toc: true
 
 ## TrueBlocks data
 
-On its own blockchain data is an unintelligable blob of binary bytes. But, we all know there
+On its own blockchain data is an unintelligible blob of binary bytes. But, we all know there
 is an amazing collection of deeply interesting information contained therein. Thousands of 
 people are trading, voting, expressing their preferences, making markets for valueless
 items every minute.
 
 What interests us about this data are answers to questions such as:
-* What exaclty is going on?
+* What exactly is going on?
 * Where is my money?
 * Didn't I have some of those tokens somewhere?
 * May I please just get a list of my transactions?

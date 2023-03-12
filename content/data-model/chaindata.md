@@ -44,7 +44,6 @@ Blocks consist of the following fields:
 | transactions  | a possibly empty array of transactions or transaction hashes  | [Transaction[]](/data-model/chaindata/#transaction) |
 | baseFeePerGas | the base fee for this block                                   | wei                                                 |
 | finalized     | flag indicating the system considers this data final          | bool                                                |
-| unclesCnt     | the number of uncles in this block                            | uint64                                              |
 
 ## Transaction
 
@@ -141,12 +140,17 @@ The following commands produce and manage Receipts:
 
 Receipts consist of the following fields:
 
-| Field           | Description                                                                | Type                                |
-| --------------- | -------------------------------------------------------------------------- | ----------------------------------- |
-| status          | `1` on transaction suceess, `null` if tx preceeds Byzantium, `0` otherwise | uint32                              |
-| contractAddress | the address of the newly created contract, if any                          | address                             |
-| gasUsed         | the amount of gas actually used by the transaction                         | gas                                 |
-| logs            | a possibly empty array of logs                                             | [Log[]](/data-model/chaindata/#log) |
+| Field            | Description                                                                | Type                                |
+| ---------------- | -------------------------------------------------------------------------- | ----------------------------------- |
+| blockNumber      |                                                                            | blknum                              |
+| transactionIndex |                                                                            | blknum                              |
+| transactionHash  |                                                                            | hash                                |
+| blockHash        |                                                                            | hash                                |
+| status           | `1` on transaction suceess, `null` if tx preceeds Byzantium, `0` otherwise | uint32                              |
+| gasUsed          | the amount of gas actually used by the transaction                         | gas                                 |
+| contractAddress  | the address of the newly created contract, if any                          | address                             |
+| isError          |                                                                            | bool                                |
+| logs             | a possibly empty array of logs                                             | [Log[]](/data-model/chaindata/#log) |
 
 ## Log
 
@@ -160,6 +164,7 @@ The following commands produce and manage Logs:
 
 - [chifra logs](/chifra/chaindata/#chifra-logs)
 - [chifra export](/chifra/accounts/#chifra-export)
+- [chifra blocks](/chifra/chaindata/#chifra-blocks)
 
 Logs consist of the following fields:
 
@@ -192,6 +197,7 @@ The following commands produce and manage Traces:
 
 - [chifra traces](/chifra/chaindata/#chifra-traces)
 - [chifra export](/chifra/accounts/#chifra-export)
+- [chifra blocks](/chifra/chaindata/#chifra-blocks)
 
 Traces consist of the following fields:
 
@@ -210,6 +216,22 @@ Traces consist of the following fields:
 | articulatedTrace | human readable version of the trace action input data     | [Function](/data-model/other/#function)           |
 | compressedTrace  | a compressed string version of the articulated trace      | string                                            |
 
+### Notes
+
+When produced using the `--raw` option to `chifra traces`, this data model actually produces `transactionPosition` instead of `transactionIndex`. When produced without the `--raw` option, the model uses `transactionIndex` to be consistent with other data models such as the `transaction`.
+
+Traces and TraceActions, when produced during a self-destruct, export different fields when rendered in JSON. In CSV and TXT output, these fields change thier meaning while retaining the header of the original fields. The following table describes these differences:
+
+Fields that change during self-destruct transaction:
+
+| Field         | When rendered in JSON | When rendered in csv/txt |
+| ------------- | --------------------- | ------------------------ |
+| Action.From   |                       | Action.Address           |
+| Action::To    |                       | Action.RefundAddress     |
+| Action::Value |                       | Action.Balance           |
+|               | Action.RefundAddress  |                          |
+|               | Action.Balance        |                          |
+
 ## TraceAction
 
 <!-- markdownlint-disable MD033 MD036 MD041 -->
@@ -221,6 +243,7 @@ The following commands produce and manage TraceActions:
 
 - [chifra traces](/chifra/chaindata/#chifra-traces)
 - [chifra export](/chifra/accounts/#chifra-export)
+- [chifra blocks](/chifra/chaindata/#chifra-blocks)
 
 TraceActions consist of the following fields:
 
@@ -243,15 +266,39 @@ The following commands produce and manage TraceResults:
 
 - [chifra traces](/chifra/chaindata/#chifra-traces)
 - [chifra export](/chifra/accounts/#chifra-export)
+- [chifra blocks](/chifra/chaindata/#chifra-blocks)
 
 TraceResults consist of the following fields:
 
-| Field       | Description                                                                    | Type    |
-| ----------- | ------------------------------------------------------------------------------ | ------- |
-| newContract | Address of new contract, if any                                                | address |
-| code        | if this trace is creating a new smart contract, the byte code of that contract | bytes   |
-| gasUsed     | the amount of gas used by this trace                                           | gas     |
-| output      | the result of the call of this trace                                           | bytes   |
+| Field   | Description                                                                    | Type    |
+| ------- | ------------------------------------------------------------------------------ | ------- |
+| address | Address of new contract, if any                                                | address |
+| code    | if this trace is creating a new smart contract, the byte code of that contract | bytes   |
+| gasUsed | the amount of gas used by this trace                                           | gas     |
+| output  | the result of the call of this trace                                           | bytes   |
+
+## BlockCount
+
+<!-- markdownlint-disable MD033 MD036 MD041 -->
+`chifra blocks --count` returns the number of various types of data in a block. For example, `transactionCnt` is the number of transactions in the block, 
+and so on.
+
+The following commands produce and manage BlockCounts:
+
+- [chifra blocks](/chifra/chaindata/#chifra-blocks)
+
+BlockCounts consist of the following fields:
+
+| Field           | Description                                                    | Type      |
+| --------------- | -------------------------------------------------------------- | --------- |
+| blockNumber     | the block's block number                                       | blknum    |
+| timestamp       | the timestamp of the block                                     | timestamp |
+| transactionsCnt | the number transactions in the block                           | uint64    |
+| unclesCnt       | the number of uncles in the block                              | uint64    |
+| logsCnt         | the number of logs in the block                                | uint64    |
+| tracesCnt       | the number of traces in the block                              | uint64    |
+| appsCnt         | the number of address appearances in the block                 | uint64    |
+| uniqsCnt        | the number of address appearances in the block per transaction | uint64    |
 
 ## NamedBlock
 
@@ -275,6 +322,25 @@ NamedBlocks consist of the following fields:
 | timestamp   | the Unix timestamp of the block     | timestamp |
 | date        | Human readable version of timestamp | datetime  |
 | name        | an optional name for the block      | string    |
+
+## TraceCount
+
+<!-- markdownlint-disable MD033 MD036 MD041 -->
+`chifra trace --count` returns the number of traces the given transaction.
+
+The following commands produce and manage TraceCounts:
+
+- [chifra traces](/chifra/chaindata/#chifra-traces)
+
+TraceCounts consist of the following fields:
+
+| Field            | Description                             | Type      |
+| ---------------- | --------------------------------------- | --------- |
+| blockNumber      | the block number                        | blknum    |
+| transactionIndex | the transaction index                   | blknum    |
+| transactionHash  | the transaction's hash                  | hash      |
+| timestamp        | the timestamp of the block              | timestamp |
+| tracesCnt        | the number of traces in the transaction | uint64    |
 
 ## Base types
 

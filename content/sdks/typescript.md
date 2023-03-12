@@ -7,8 +7,10 @@ url: "/sdks/typescript-sdk"
 menu: 
   sdks:
     parent: langauges
-weight: 1000
+weight: 2000
 toc: true
 ---
 
-This document tells you how to use the SDKs
+Here's a link to the [TypeScript SDK](https://github.com/TrueBlocks/trueblocks-sdk/tree/main/typescript).
+
+**Warning:** It's in its very early stage.

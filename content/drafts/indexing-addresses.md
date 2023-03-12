@@ -104,7 +104,7 @@ chifra state --call "0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd!0x337f3f32"
 
 You should get some interesting JSON data with one field called `manifestHash` equal to an IPFS hash.
 
-What happened here? TrueBlocks queried the smart contract called Unchained Index to retreive the value stored in the `manifestHash` variable. We can now use that to get the manifest of the entire TrueBlocks address index.
+What happened here? TrueBlocks queried the smart contract called Unchained Index to retrieve the value stored in the `manifestHash` variable. We can now use that to get the manifest of the entire TrueBlocks address index.
 
 Use this command to retrieve the manifest from IPFS:
 
@@ -127,6 +127,6 @@ curl -s "http://gateway.ipfs.io/ipfs/QmSJeyXsvNpyXprdfwL5JyiS39VLU7m1kQNun4uM5XQ
 
 ## Getting all the Blooms
 
-Additionally, we publish the IPFS hash of a manifest file to smart contract we call the _Unchained Index._ The mainfest file details all the hashes of all the chunks of the index along with all the Bloom filters.
+Additionally, we publish the IPFS hash of a manifest file to smart contract we call the _Unchained Index._ The manifest file details all the hashes of all the chunks of the index along with all the Bloom filters.
 
 [ UNDER CONSTRUCTION -- PLEASE RETURN LATER ]

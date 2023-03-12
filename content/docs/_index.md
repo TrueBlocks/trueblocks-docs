@@ -17,20 +17,6 @@ weight: 0101
 toc: true
 ---
 
-<font color=red><b>Are you here for the OpenData Community Hackathon?</b></font>
-
-- [Install the docker version and download (or build) the Unchained Index](https://github.com/TrueBlocks/trueblocks-docker)
-- Tutorials:
-  - [Showing ERC20 transfers on the token contract](/blog/showing-erc-20-transfers/)
-  - [Listing contracts created by an address (including UniSwap)](https://tjayrush.medium.com/recipe-factories-ce78fa4c5f5b)
-  - [Monthly ERC20 token balance for one or more addresses](https://tjayrush.medium.com/recipe-monthly-token-balances-ff6a302fda80)
-  - [Calling into smart contracts with `chifra state`](https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7)
-  - [The Rent is Too Damn High](https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259)
-  - [Commanding the Line](https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1)
-
-<p><big><big>&#8593</big></big></p>
-
-------
 Are blockchains really meeting their promise?
 
 ## Problem Statement

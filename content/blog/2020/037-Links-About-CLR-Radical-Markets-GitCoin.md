@@ -1,5 +1,5 @@
 ---
-title: Links About CLR / Radical Markets / GitCoin
+title: Links About CLR, Radical Markets & GitCoin
 lead: This stuff matters
 date: '2020-05-13T02:33:50.840Z'
 draft: false

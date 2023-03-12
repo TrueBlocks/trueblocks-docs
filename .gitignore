@@ -5,7 +5,6 @@ file
 shit
 makefile
 .hugo_build.lock
-publish-jay.sh
 .DS_Store
 node_modules
 public
