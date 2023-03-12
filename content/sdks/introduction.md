@@ -14,7 +14,7 @@ toc: true
 The [chifra serve](/chifra/admin/#chifra-daemon) command provides an API interface to `chifra`. As part of this functionality, we've
 started writing SDKs to make using the API easier. There are two SDKs so far, both in their earliest stages.
 
-The two SDKs are the [TypeScript SDK](/sdks/typescript-sdk/) and the [Python SDK](/sdks/typescript-sdk/).
+The two SDKs are the [TypeScript SDK](/sdks/typescript-sdk/) and the [Python SDK](/sdks/python-sdk/).
 
 We welcome PRs supporting other languages -- particularly GoLang or Rust.
 
