@@ -39,6 +39,7 @@ Here we present a number of articles we've written about TrueBlocks over the yea
 
 | Title and description                                                                                                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [A Specification of the Unchained Index](https://trueblocks.io/papers/2023/specification-for-the-unchained-index-v0.51.0-beta.pdf)<br>- *in which we fully and in a detailed way explain the Unchained Index*                                       |
 | [A Long-Winded Explanation of TrueBlocks](https://trueblocks.io/blog/a-long-winded-explanation-of-trueblocks/)<br>- *in which we go on and on about how things work and why*                                       |
 | [How Accurate is EtherScan](https://trueblocks.io/blog/how-accurate-is-etherscan/)<br>- *in which we compare TrueBlocks with EtherScan's apis*                                                                     |
 | [Comparison of TrueBlocks and The Graph](https://trueblocks.io/papers/2021/the-difference-between-trueBlocks-and-rotki-and-trueBlocks-and-thegraph.pdf)<br>- *in which we compare TrueBlocks to The Graph*         |
