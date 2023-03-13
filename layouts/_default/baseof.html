@@ -1,21 +1,5 @@
 <!doctype html>
 <html lang="{{ .Site.LanguageCode | default "en" }}">
-<<<<<<< HEAD
-  <style>
-    element {
-      max-width: 100%;
-    }
-    .col-xl-9 {
-      min-width: calc(100% - 248px - 330px);
-      max-width: 100%;
-    }
-    .col-lg-4 {
-      min-width: 248px; /* 992 * 4 / 16 = 248 */
-      max-width: 248px; /* 992 * 4 / 16 = 248 */
-    }
-  </style>
-=======
->>>>>>> main
   {{ partial "head/head.html" . }}
   {{ if eq .Kind "home" -}}
     {{ .Scratch.Set "class" "home" -}}
