@@ -27,7 +27,7 @@ If you need help with a particular step, see the [installation's troubleshooting
 
 - Install or upgrade the build dependancies: _git_, _cmake_, _ninja_, _curl_, _python_, _clang-format_, _jq_
 
-  - [Install dependencies](/docs/install/install-core/#how-do-i-install-packages-on-the-command-line)
+  - [Install dependencies](https://trueblocks.io/docs/install/install-troubleshooting/#installing-build-tools)
 <br><br>
 - Clone the repo and compile the executable:
 
