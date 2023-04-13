@@ -31,11 +31,7 @@ weight = 200
 
 [[main]]
 identifier = "data"
-<<<<<<< HEAD
-name = "Data Model"
-=======
 name = "Models"
->>>>>>> main
 url = "/data-model/intro"
 weight = 300
     [[data]]
@@ -49,10 +45,7 @@ weight = 300
     url = "/data-model/collections"
     weight = 20
 
-<<<<<<< HEAD
-=======
 # TODO: BOGUS
->>>>>>> main
 # [[main]]
 # identifier = "docker"
 # name = "Docker"
@@ -85,23 +78,6 @@ weight = 500
    url = "/explorer/pages"
    weight = 20
 
-<<<<<<< HEAD
-# [[main]]
-# identifier = "sdks"
-# name = "SDKs"
-# url = "/sdks/introduction"
-# weight = 600
-#    [[sdks]]
-#    identifier = "introduction"
-#    name = "sdks"
-#    url = "/sdks/introduction"
-#    weight = 10
-#    [[sdks]]
-#    identifier = "langauges"
-#    name = "Langauges"
-#    url = "/sdks/langauges"
-#    weight = 20
-=======
 [[main]]
 identifier = "sdks"
 name = "SDKs"
@@ -117,7 +93,6 @@ weight = 600
    name = "Langauges"
    url = "/sdks/langauges"
    weight = 20
->>>>>>> main
 
 [[main]]
 name = "Blog"
