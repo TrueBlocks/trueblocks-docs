@@ -3452,6 +3452,8 @@ components:
       format: hash
       description: "The 32-byte hash"
       example: "0xf128...1e98"
+    address:
+      type: string
     string:
       type: string
     topic:
