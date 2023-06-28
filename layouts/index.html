@@ -1,22 +1,73 @@
 {{ define "main" }}
 <section class="section container-fluid mt-n3 pb-3">
   <div class="row justify-content-center">
-    <div class="col-lg-12 text-center">
-      <h1 class="mt-0">{{ .Title }}</h1>
-    </div>
     <div class="col-lg-9 col-xl-8 text-center">
-      <p class="lead">Lightweight indexing for any EVM-based blockchain</p>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/" | relURL }}' role="button">About</a>
+      <h1 class="mt-0">Lightweight indexing for any EVM-based blockchain</h1>
+      <a class="btn btn-outline-primary btn-lg px-4 mb-2" href='{{ "docs/" | relURL }}' role="button">About</a>
       <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/install/install-core//" | relURL }}'
         role="button">Install</a>
       <p class="meta"><a href="https://github.com/trueblocks/trueblocks-core">Open-source</a>
       </p>
     </div>
   </div>
+
+  {{ partial "main/section-tabs" . }}
+
+  {{ partial "short-description" . }}
+
+  <section>
+    <h1>
+      TrueBlocks is <span>⚡️</span> Fast!
+    </h1>
+
+    {{ partial "main/section-fast" . }}
+  </section>
+
+  <section>
+    <h1>
+      Great <span class="gradient-text">developer</span> experience
+    </h1>
+
+    {{ partial "main/section-features" . }}
+  </section>
+
+  <section>
+    <h1>
+      What users say
+    </h1>
+
+    {{ partial "main/testimonials" . }}
+  </section>
+
+  <section>
+    <div class="text-center">
+      <strong class="d-block">No paid plans.</strong>
+      <strong class="d-block">No rate limits.</strong>
+      <strong class="d-block">Open sourced public good.</strong>
+      <a class="btn btn-outline-primary btn-lg px-4 mb-2" href="https://discord.com/invite/kAFcZH2x7K" role="button">Join the community</a>
+      <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/install/install-core//" | relURL }}'
+        role="button">Install</a>
+      </div>
+  </section>
+
+  <section>
+    <h1>
+      Proud grantee of
+    </h1>
+
+    <div class="text-center">
+      <img src="grant_logos/op.svg" alt="Optimism" height="80">
+      <img src="grant_logos/ef.webp" alt="Ethereum Foundation" height="80">
+      <img alt="MolochDAO" src="grant_logos/molochdao.png" style="filter: invert()" height="80">
+      <img src="grant_logos/giveth.svg" alt="Giveth" height="80">
+      <img src="grant_logos/gitcoin.png" alt="Gitcoin" height="80">
+    </div>
+  </section>
+
 </section>
 {{ end }}
 
-{{ define "sidebar-prefooter" }}
+{{ define "partials/short-description.html" }}
 <section class="section section-sm">
   <div class="container">
     <div class="row justify-content-center text-center">
@@ -25,49 +76,13 @@
         <p>The index may be created and cached on your local machine</p>
       </div>
       <div class="col-lg-5">
-        <h2 class="h4">Fast!<br><br>⚡️</h2>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Immutable</h2>
-        <p>Immutable data permits immutable indexes. Create once, read forever</p>
-      </div>
-    </div>
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-5">
-        <h2 class="h4">Lightweight</h2>
-        <p>Bloom filters massively reduce the size of data on disk</p>
-      </div>
-      <div class="col-lg-5">
         <h2 class="h4">Multi Chain</h2>
         <p>Supports any EVM-based chain</p>
       </div>
       <div class="col-lg-5">
-        <h2 class="h4">Accurate</h2>
-        <p>Reconciles your accounts to 18-decimals places for any assets</p>
+        <h2 class="h4">Lightweight</h2>
+        <p>Bloom filters massively reduce the size of data on disk</p>
       </div>
-    </div>
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-5">
-        <h2 class="h4">Built-in Sharing</h2>
-        <p>Bloom filters and IPFS allows automatic sharing among users</p>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Fast!<br><br>⚡️</h2>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Local Explorer</h2>
-        <p>Allows perfectly private browsing of your transaction history</p>
-      </div>
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{ define "sidebar-footer" }}
-<section class="section section-sm container-fluid">
-  <div class="row justify-content-center text-center">
-    <div class="col-lg-9">
-      {{- .Content -}}
     </div>
   </div>
 </section>
