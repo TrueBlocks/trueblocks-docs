@@ -1,75 +1,21 @@
 {{ define "main" }}
-<section class="section container-fluid mt-n3 pb-3">
-  <div class="row justify-content-center">
+<main class="container-fluid mt-n3 pb-3">
+  <header class="section row justify-content-center">
     <div class="col-lg-9 col-xl-8 text-center">
       <h1 class="mt-0">Lightweight indexing for any EVM-based blockchain</h1>
-      <a class="btn btn-outline-primary btn-lg px-4 mb-2" href='{{ "docs/" | relURL }}' role="button">About</a>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/install/install-core//" | relURL }}'
+      <div class="d-flex gap-4 justify-content-center">
+        <a class="btn btn-outline-primary btn-lg px-4 mb-2" href='{{ "docs/" | relURL }}' role="button">About</a>
+        <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/install/install-core//" | relURL }}'
         role="button">Install</a>
+      </div>
       <p class="meta"><a href="https://github.com/trueblocks/trueblocks-core">Open-source</a>
       </p>
     </div>
-  </div>
+  </header>
 
   {{ partial "main/section-tabs" . }}
 
-  {{ partial "short-description" . }}
-
-  <section>
-    <h1>
-      TrueBlocks is <span>⚡️</span> Fast!
-    </h1>
-
-    {{ partial "main/section-fast" . }}
-  </section>
-
-  <section>
-    <h1>
-      Great <span class="gradient-text">developer</span> experience
-    </h1>
-
-    {{ partial "main/section-features" . }}
-  </section>
-
-  <section>
-    <h1>
-      What users say
-    </h1>
-
-    {{ partial "main/testimonials" . }}
-  </section>
-
-  <section>
-    <div class="text-center">
-      <strong class="d-block">No paid plans.</strong>
-      <strong class="d-block">No rate limits.</strong>
-      <strong class="d-block">Open sourced public good.</strong>
-      <a class="btn btn-outline-primary btn-lg px-4 mb-2" href="https://discord.com/invite/kAFcZH2x7K" role="button">Join the community</a>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/install/install-core//" | relURL }}'
-        role="button">Install</a>
-      </div>
-  </section>
-
-  <section>
-    <h1>
-      Proud grantee of
-    </h1>
-
-    <div class="text-center">
-      <img src="grant_logos/op.svg" alt="Optimism" height="80">
-      <img src="grant_logos/ef.webp" alt="Ethereum Foundation" height="80">
-      <img alt="MolochDAO" src="grant_logos/molochdao.png" style="filter: invert()" height="80">
-      <img src="grant_logos/giveth.svg" alt="Giveth" height="80">
-      <img src="grant_logos/gitcoin.png" alt="Gitcoin" height="80">
-    </div>
-  </section>
-
-</section>
-{{ end }}
-
-{{ define "partials/short-description.html" }}
-<section class="section section-sm">
-  <div class="container">
+  <section class="container">
     <div class="row justify-content-center text-center">
       <div class="col-lg-5">
         <h2 class="h4">Local First</h2>
@@ -84,6 +30,99 @@
         <p>Bloom filters massively reduce the size of data on disk</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="container speed">
+    <h1>
+      TrueBlocks is <span>⚡️</span> Fast!
+    </h1>
+
+    <div class="table-wrapper">
+      {{ partial "main/section-fast" . }}
+    </div>
+  </section>
+
+  <section class="container">
+    <h1>
+      Great <span class="gradient-text">developer</span> experience
+    </h1>
+
+    {{ partial "main/section-features" . }}
+  </section>
+
+  <section class="container">
+    <h1>
+      What users say
+    </h1>
+
+    {{ partial "main/testimonials" . }}
+  </section>
+
+  <section class="container bottom-install">
+    <div class="text-center">
+      <ul class="list-no-style">
+        <li>
+          No paid plans.
+        </li>
+        <li>
+          No rate limits.
+        </li>
+        <li>
+          Open source public good.
+        </li>
+      </ul>
+      <div class="buttons">
+        <a class="btn btn-outline-primary btn-lg px-4 mb-2" href="https://discord.com/invite/kAFcZH2x7K" role="button">Join the community</a>
+        <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/install/install-core//" | relURL }}'
+          role="button">Install</a>
+        </div>
+      </div>
+  </section>
+
+  <section class="container grants text-center">
+    <h1>
+      Proudly supported by
+    </h1>
+
+    <ul class="text-center list-no-style">
+      <li>
+        <img
+          src="grant_logos/op.svg"
+          alt="Optimism"
+          title="Optimism"
+        >
+      </li>
+      <li>
+        <img
+          src="grant_logos/ef.webp"
+          alt="Ethereum Foundation"
+          title="Ethereum Foundation"
+        >
+      </li>
+      <li>
+        <img
+          src="grant_logos/molochdao.png"
+          alt="Moloch DAO"
+          title="Moloch DAO"
+          class="moloch-dao"
+        >
+      </li>
+      <li>
+        <img
+          src="grant_logos/giveth.svg"
+          alt="Giveth"
+          title="Giveth"
+        >
+      </li>
+      <li>
+        <img
+          src="grant_logos/gitcoin.png"
+          alt="Gitcoin"
+          title="Gitcoin"
+        >
+      </li>
+    </ul>
+  </section>
+
+</main>
 {{ end }}
