@@ -1,3 +1,12 @@
+main.main-site {
+    pre {
+        margin: 0;
+        button {
+            display: none;
+        }
+    }
+}
+
 section.container {
     margin: $space-section auto;
 
@@ -10,14 +19,14 @@ section.container {
     }
 }
 
-.tabs {
-    .form-check {
-        font-size: small;
-    }
-
+.component-tabs {
     code,
     output {
         display: block;
+
+        body.light &, body.dark & {
+        background: none;
+        }
     }
 
     .prompt {
@@ -27,10 +36,6 @@ section.container {
 
     output pre {
         color: $gray-500;
-
-        button {
-            display: none;
-        }
     }
 }
 
@@ -47,6 +52,65 @@ section.container {
         body.dark & {
             &, table > :not(caption) > * > * {
             background-color: $gray-800;
+            }
+        }
+    }
+}
+
+.features {
+    .articulation {
+        .figure-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        figure {
+            margin: $space-s;
+
+            figcaption {
+                text-align: center;
+                font-weight: bold;
+            }
+
+            code {
+                display: block;
+            }
+        }
+
+        .raw {
+            code {
+                background: none;
+                color: $gray-600;
+            }
+        }
+    }
+
+    .block-expressions {
+        .figure-wrapper {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        figure {
+            margin: $space-s;
+            text-align: center;
+
+            figcaption {
+                font-style: italic;
+            }
+        }
+    }
+
+    .solidity {
+        code {
+            display: block;
+            color: $gray-500;
+
+            span {
+                color: $primary;
+                body.dark & {
+                    color: $blue-300;
+                }
             }
         }
     }
