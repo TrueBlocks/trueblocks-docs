@@ -5,8 +5,8 @@
 
 
     <ul class="tabs">
-        <li><label for="tab1">Query contract event</label></li>
-        <li><label for="tab2">Find transaction</label></li>
+        <li><label for="tab1">Get all account transactions</label></li>
+        <li><label for="tab2">Query event</label></li>
         <li><label for="tab3">Read a smart contract</label></li>
     </ul>
 
@@ -25,7 +25,7 @@
 
     <div class="panel">
         <div class="content">
-            {{ partial "cmd_line_example2" . }}
+            {{ partial "cmd_line_example3" . }}
         </div>
     </div>
 
@@ -34,7 +34,55 @@
 {{ define "partials/cmd_line_example1" }}
 {{ partial "command_line/start" . }}
 <code>
-<span class="prompt">$</span>chifra export <abbr title="Exports logs">--logs</abbr> <abbr title="make the data human-readable">--articulate</abbr> <abbr title="only include txs relevant to this address">--relevant</abbr> 0xf503017D7baF7FBC0fff7492b751025c6A78179b <abbr title="output results as JSON">--fmt</abbr> json
+<span class="prompt">$</span>chifra export <abbr title="Output results as JSON">--fmt json</abbr> 0xf503017D7baF7FBC0fff7492b751025c6A78179b
+</code>
+<output>
+    <pre>
+{
+    data: [
+        {
+            "hash": "0xb7d80298ad62d68f47a9e3faeaa78ca7888e33dc714707a83eb4dfbbcdc01b09",
+            "blockHash": "0x61dfb0ff34d48012414f63f57273395259d5a1112132bc37f46b551d6d06dfbc",
+            "blockNumber": 8856290,
+            "transactionIndex": 62,
+            "timestamp": 1572660966,
+            "from": "0xf503017d7baf7fbc0fff7492b751025c6a78179b",
+            "to": "0xb97073b754660bb356dfe12f78ae366d77dbc80f",
+            "value": 10000000000000000,
+            "gas": 21000,
+            "gasPrice": 10000000000,
+            "maxFeePerGas": 0,
+            "maxPriorityFeePerGas": 0,
+            "isError": 0,
+            "hasToken": 0,
+            "receipt": {
+                "contractAddress": "0x0",
+                "gasUsed": 21000,
+                "effectiveGasPrice": 10000000000,
+                "status": 1
+            },
+            "compressedTx": "0x()",
+            "gasCost": 210000000000000,
+            "gasUsed": 21000,
+            "date": "2019-11-02 02:16:06 UTC",
+            "ether": 0.010000000000000000
+        }
+    ]
+}
+      </pre>
+</output>
+{{ partial "command_line/end" . }}
+{{ end }}
+
+{{ define "partials/cmd_line_example2" }}
+{{ partial "command_line/start" . }}
+<code>
+    <span class="prompt">$</span>chifra export
+    <abbr title="Output logs only">--logs</abbr>
+    <abbr title="Make the values human-readable">--articulate</abbr>
+    <abbr title="Only include transactions relevant to this address">--relevant</abbr>
+    <abbr title="Output results as JSON">--fmt json</abbr>
+    0xf503017D7baF7FBC0fff7492b751025c6A78179b
 </code>
 <output>
     <pre>
@@ -70,7 +118,7 @@
 {{ partial "command_line/end" . }}
 {{ end }}
 
-{{ define "partials/cmd_line_example2" }}
+{{ define "partials/cmd_line_example3" }}
 {{ partial "command_line/start" . }}
 <code>
 <span class="prompt">$</span>chifra state --call 'liquidity()' 0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8
