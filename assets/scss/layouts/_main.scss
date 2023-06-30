@@ -44,6 +44,7 @@ section.container {
         background: $gray-100;
         border-radius: $border-radius;
         padding: $space;
+        overflow-x: auto;
 
         table {
             border-color: $gray-500;
@@ -51,7 +52,7 @@ section.container {
 
         body.dark & {
             &, table > :not(caption) > * > * {
-            background-color: $gray-800;
+                background-color: $gray-800;
             }
         }
     }
@@ -84,6 +85,15 @@ section.container {
             code {
                 background: none;
                 color: $gray-600;
+
+                display: block;
+                word-wrap: anywhere
+            }
+        }
+
+        @media screen and (max-width: 780px) {
+            .articulated {
+                width: 100%;
             }
         }
     }
@@ -106,6 +116,7 @@ section.container {
         code {
             display: block;
             color: $gray-500;
+            word-wrap: anywhere;
 
             span {
                 color: $primary;
