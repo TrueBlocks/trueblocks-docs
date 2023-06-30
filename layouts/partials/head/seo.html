@@ -22,17 +22,7 @@
   <meta name="description" content="{{ .Site.Params.description }}">
 {{ end -}}
 
-{{ if $.Scratch.Get "paginator" }}
-  <link rel="canonical" href="{{ .Paginator.URL | relURL }}">
-  {{ if .Paginator.HasPrev -}}
-    <link rel="prev" href="{{ .Paginator.Prev.URL | relURL }}">
-  {{ end -}}
-  {{ if .Paginator.HasNext -}}
-    <link rel="next" href="{{ .Paginator.Next.URL | relURL }}">
-  {{ end -}}
-{{ else -}}
-  <link rel="canonical" href="{{ .RelPermalink }}">
-{{ end -}}
+<link rel="canonical" href="{{ .Site.BaseURL }}">
 
 {{ partial "head/twitter_cards.html" . }}
 <meta name="twitter:site" content="@{{ .Site.Params.twitterSite }}">

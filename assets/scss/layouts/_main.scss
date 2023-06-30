@@ -174,24 +174,28 @@ section.container {
     ul {
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: $space-s;
 
         img {
-            height: 5rem;
-        }
-
-        img.moloch-dao {
-            filter: invert(1);
+            height: 80px;
         }
 
         body.dark & {
-            img, img.moloch-dao {
-                filter: invert(.4);
+            img {
+                filter: grayscale(1) invert(.7);
             }
         }
 
         @media screen and (max-width: 700px) {
             img {
                 height: 2.5rem;
+            }
+        }
+
+        @media screen and (min-width: 2500px) {
+            img {
+                height: 110px;
             }
         }
     }
