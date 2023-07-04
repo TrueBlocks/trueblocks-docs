@@ -51,26 +51,29 @@ Arguments:
   blocks - an optional list of one or more blocks at which to report balances, defaults to 'latest'
 
 Flags:
-  -p, --parts strings   control which state to export
-                        One or more of [ none | some | all | balance | nonce | code | proxy | deployed | accttype ]
-  -c, --changes         only report a balance when it changes from one block to the next
-  -n, --no_zero         suppress the display of zero balance accounts
-  -x, --fmt string      export format, one of [none|json*|txt|csv]
-  -v, --verbose         enable verbose (increase detail with --log_level)
-  -h, --help            display this help screen
+  -p, --parts strings      control which state to export
+                           One or more of [ none | some | all | balance | nonce | code | proxy | deployed | accttype ]
+  -c, --changes            only report a balance when it changes from one block to the next
+  -n, --no_zero            suppress the display of zero balance accounts
+  -a, --call string        call a smart contract with a solidity syntax, a four-byte and parameters, or encoded call data
+  -r, --proxy_for string   for the --call option only, redirects calls to this implementation
+  -x, --fmt string         export format, one of [none|json*|txt|csv]
+  -v, --verbose            enable verbose (increase detail with --log_level)
+  -h, --help               display this help screen
 
 Notes:
-  - An address must start with '0x' and be forty-two characters long.
+  - An address must be either an ENS name or start with '0x' and be forty-two characters long.
   - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
   - If the queried node does not store historical state, the results are undefined.
   - Special blocks are detailed under chifra when --list.
   - Balance is the default mode. To select a single mode use none first, followed by that mode.
+  - Valid parameters for --call include Solidity-like syntax: balanceOf(0x316b...183d), a four-byte followed by parameters: 0x70a08231(0x316b...183d), or encoded input data.
   - You may specify multiple modes on a single line.
 ```
 
 Data models produced by this tool:
 
-- [ethstate](/data-model/chainstate/#ethstate)
+- [callresult](/data-model/chainstate/#callresult)
 - [ethcall](/data-model/chainstate/#ethcall)
 
 Links:
@@ -116,7 +119,7 @@ Flags:
   -h, --help            display this help screen
 
 Notes:
-  - An address must start with '0x' and be forty-two characters long.
+  - An address must be either an ENS name or start with '0x' and be forty-two characters long.
   - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
   - If the token contract(s) from which you request balances are not ERC20 compliant, the results are undefined.
   - If the queried node does not store historical state, the results are undefined.
@@ -125,7 +128,7 @@ Notes:
 
 Data models produced by this tool:
 
-- [tokenbalance](/data-model/chainstate/#tokenbalance)
+- [tokenbal](/data-model/chainstate/#tokenbal)
 
 Links:
 
