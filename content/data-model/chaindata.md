@@ -120,7 +120,7 @@ Transfers consist of the following fields:
 | assetAddr        | 0xeeee...eeee for ETH reconcilations, the token address otherwise                              | address   |
 | assetSymbol      | either ETH, WEI or the symbol of the asset being reconciled as queried from the chain          | string    |
 | decimals         | Equivalent to the queried value of `decimals` from an ERC20 contract or, if ETH or WEI then 18 | uint64    |
-| amount           | the amount of the transfer in the units of the asset                                           | wei       |
+| amount           | the amount of the transfer in the units of the asset                                           | int256    |
 | spotPrice        | the on-chain price in USD (or if a token in ETH, or zero) at the time of the transaction       | double    |
 | priceSource      | the on-chain source from which the spot price was taken                                        | string    |
 | encoding         | the four-byte encoding of the transaction's function call                                      | string    |
@@ -183,6 +183,26 @@ Logs consist of the following fields:
 | data             | any remaining un-indexed parameters to the event                                                  | bytes                                   |
 | articulatedLog   | a human-readable version of the topic and data fields                                             | [Function](/data-model/other/#function) |
 | compressedLog    | a truncated, more readable version of the articulation                                            | string                                  |
+
+## LogFilter
+
+<!-- markdownlint-disable MD033 MD036 MD041 -->
+Log filters are used to speed up querying of the node when searching for logs.
+
+The following commands produce and manage LogFilters:
+
+- [chifra blocks](/chifra/chaindata/#chifra-blocks)
+- [chifra logs](/chifra/chaindata/#chifra-logs)
+
+LogFilters consist of the following fields:
+
+| Field     | Description                                                            | Type          |
+| --------- | ---------------------------------------------------------------------- | ------------- |
+| fromBlock | the first block in the block range to query with eth_getLogs           | blknum        |
+| toBlock   | the last block in the range to query with eth_getLogs                  | blknum        |
+| blockHash | an alternative to blocks specification, the hash of the block to query | hash          |
+| emitters  | one or more emitting addresses from which logs were emitted            | Address       |
+| topics    | one or more topics which logs represent                                | topic[]       |
 
 ## Trace
 
@@ -258,6 +278,7 @@ TraceActions consist of the following fields:
 | input         | an encoded version of the function call                                    | bytes   |
 | callType      | the type of call                                                           | string  |
 | refundAddress | if the call type is self-destruct, the address to which the refund is sent | address |
+| rewardType    | the type of reward                                                         | string  |
 
 ## TraceResult
 
@@ -339,8 +360,7 @@ BlockCounts consist of the following fields:
 | unclesCnt       | the number of uncles in the block                              | uint64    |
 | logsCnt         | the number of logs in the block                                | uint64    |
 | tracesCnt       | the number of traces in the block                              | uint64    |
-| appsCnt         | the number of address appearances in the block                 | uint64    |
-| uniqsCnt        | the number of address appearances in the block per transaction | uint64    |
+| addressCnt      | the number of address appearances in the block per transaction | uint64    |
 
 ## NamedBlock
 
@@ -411,6 +431,7 @@ This documentation mentions the following basic data types.
 | double    | a double precision float            | 64 bits        |
 | gas       | an unsigned big number              | as a string    |
 | hash      | an '0x'-prefixed 32-byte hex string | lowercase      |
+| int256    | a signed big number                 | as a string    |
 | string    | a normal character string           |                |
 | timestamp | a 64-bit unsigned integer           | Unix timestamp |
 | uint32    | a 32-bit unsigned integer           |                |

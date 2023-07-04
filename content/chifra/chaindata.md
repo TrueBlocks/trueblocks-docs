@@ -46,19 +46,23 @@ Arguments:
   blocks - a space-separated list of one or more block identifiers (required)
 
 Flags:
-  -e, --hashes        display only transaction hashes, default is to display full transaction detail
-  -c, --uncles        display uncle blocks (if any) instead of the requested block
-  -t, --traces        export the traces from the block as opposed to the block data
-  -s, --apps          display a list of uniq address appearances in the block
-  -u, --uniq          display a list of uniq address appearances per transaction
-  -f, --flow string   for the uniq and apps options only, export only from or to (including trace from or to)
-                      One of [ from | to | reward ]
-  -U, --count         display the number of the lists of appearances for --addrs or --uniq
-  -o, --cache         force a write of the block to the cache
-  -D, --decache       removes a block and any transactions or traces in the block from the cache
-  -x, --fmt string    export format, one of [none|json*|txt|csv]
-  -v, --verbose       enable verbose (increase detail with --log_level)
-  -h, --help          display this help screen
+  -e, --hashes            display only transaction hashes, default is to display full transaction detail
+  -c, --uncles            display uncle blocks (if any) instead of the requested block
+  -t, --traces            export the traces from the block as opposed to the block data
+  -u, --uniq              display a list of uniq address appearances per transaction
+  -f, --flow string       for the uniq option only, export only from or to (including trace from or to)
+                          One of [ from | to | reward ]
+  -l, --logs              display only the logs found in the block(s)
+  -m, --emitter strings   for the --logs option only, filter logs to show only those logs emitted by the given address(es)
+  -B, --topic strings     for the --logs option only, filter logs to show only those with this topic(s)
+  -a, --articulate        for the --logs option only, articulate the retrieved data if ABIs can be found
+  -r, --big_range uint    for the --logs option only, allow for block ranges larger than 500 (default 500)
+  -U, --count             display the number of the lists of appearances for --addrs or --uniq
+  -o, --cache             force a write of the block to the cache
+  -D, --decache           removes a block and any transactions or traces in the block from the cache
+  -x, --fmt string        export format, one of [none|json*|txt|csv]
+  -v, --verbose           enable verbose (increase detail with --log_level)
+  -h, --help              display this help screen
 
 Notes:
   - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
@@ -67,7 +71,7 @@ Notes:
   - With the --logs option, optionally specify one or more --emitter, one or more --topics, either or both.
   - The --logs option is significantly faster if you provide an --emitter and/or a --topic.
   - Multiple topics match on topic0, topic1, and so on, not on different topic0's.
-  - Large block ranges may crash the node, use --big_range to specify a larger range.
+  - For the --logs option, large block ranges may crash the node, use --big_range to specify a larger range.
 ```
 
 Data models produced by this tool:
@@ -75,6 +79,7 @@ Data models produced by this tool:
 - [appearance](/data-model/accounts/#appearance)
 - [block](/data-model/chaindata/#block)
 - [log](/data-model/chaindata/#log)
+- [logfilter](/data-model/chaindata/#logfilter)
 - [trace](/data-model/chaindata/#trace)
 - [traceaction](/data-model/chaindata/#traceaction)
 - [traceresult](/data-model/chaindata/#traceresult)
@@ -116,6 +121,9 @@ Flags:
   -u, --uniq                 display a list of uniq addresses found in the transaction
   -f, --flow string          for the uniq option only, export only from or to (including trace from or to)
                              One of [ from | to ]
+  -l, --logs                 display only the logs found in the transaction(s)
+  -m, --emitter strings      for the --logs option only, filter logs to show only those logs emitted by the given address(es)
+  -B, --topic strings        for the --logs option only, filter logs to show only those with this topic(s)
   -A, --account_for string   reconcile the transaction as per the provided address
   -o, --cache                force the results of the query into the tx cache (and the trace cache if applicable)
   -D, --decache              removes a transactions and any traces in the transaction from the cache
@@ -127,10 +135,12 @@ Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
   - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
   - If the queried node does not store historical state, the results for most older transactions are undefined.
+  - The --traces option, when used with --account_for, will descend into traces to complete reconciliations.
 ```
 
 Data models produced by this tool:
 
+- [statement](/data-model/accounts/#statement)
 - [transaction](/data-model/chaindata/#transaction)
 - [transfer](/data-model/chaindata/#transfer)
 
@@ -218,6 +228,7 @@ Notes:
 Data models produced by this tool:
 
 - [log](/data-model/chaindata/#log)
+- [logfilter](/data-model/chaindata/#logfilter)
 
 Links:
 
@@ -305,7 +316,8 @@ Flags:
   -U, --count        with --timestamps only, returns the number of timestamps in the cache
   -r, --repair       with --timestamps only, repairs block(s) in the block range by re-querying from the chain
   -c, --check        with --timestamps only, checks the validity of the timestamp data
-      --update       with --timestamps only, bring the timestamp database forward to the latest block
+  -u, --update       with --timestamps only, bring the timestamp database forward to the latest block
+  -d, --deep         with --timestamps --check only, verifies timestamps from on chain (slow)
   -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
