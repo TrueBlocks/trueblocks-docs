@@ -58,7 +58,7 @@
     "rimraf": "^3.0",
     "shx": "^0.3.3",
     "standard-version": "^9.1",
-    "stylelint": "^13.12",
+    "stylelint": "^15.10",
     "stylelint-config-standard": "^22.0"
   },
   "dependencies": {
