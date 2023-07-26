@@ -50,12 +50,13 @@ Arguments:
 
 Flags:
   -U, --count               display only the count of records for each monitor
-  -n, --no_zero             for the --count option only, suppress the display of zero appearance accounts
+  -z, --no_zero             for the --count option only, suppress the display of zero appearance accounts
   -b, --bounds              report first and last block this address appears
   -u, --unripe              list transactions labeled upripe (i.e. less than 28 blocks old)
   -s, --silent              freshen the monitor only (no reporting)
-  -c, --first_record uint   the first record to process (default 1)
+  -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 250)
+  -E, --reversed            produce results in reverse chronological order
   -F, --first_block uint    first block to export (inclusive, ignored when freshening)
   -L, --last_block uint     last block to export (inclusive, ignored when freshening)
   -x, --fmt string          export format, one of [none|json*|txt|csv]
@@ -117,11 +118,11 @@ Flags:
   -n, --neighbors           export the neighbors of the given address
   -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
   -A, --statements          for the accounting options only, export only statements
+  -b, --balances            traverse the transaction history and show each change in ETH balances
   -a, --articulate          articulate transactions, traces, logs, and outputs
-  -o, --cache               write transactions to the cache (see notes)
-  -R, --cache_traces        write traces to the cache (see notes)
+  -R, --cache_traces        force the transaction's traces into the cache
   -U, --count               only available for --appearances mode, if present, return only the number of records
-  -c, --first_record uint   the first record to process (default 1)
+  -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 250)
   -N, --relevant            for log and accounting export only, export only logs relevant to one of the given export addresses
   -m, --emitter strings     for log export only, export only logs if emitted by one of these address(es)
@@ -131,8 +132,12 @@ Flags:
                             One of [ in | out | zero ]
   -y, --factory             for --traces only, report addresses created by (or self-destructed by) the given address(es)
   -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
+  -E, --reversed            produce results in reverse chronological order
+  -z, --no_zero             for the --count option only, suppress the display of zero appearance accounts
   -F, --first_block uint    first block to process (inclusive)
   -L, --last_block uint     last block to process (inclusive)
+  -H, --ether               specify value in ether
+  -o, --cache               force the results of the query into the cache
   -x, --fmt string          export format, one of [none|json*|txt|csv]
   -v, --verbose             enable verbose (increase detail with --log_level)
   -h, --help                display this help screen
@@ -144,6 +149,8 @@ Notes:
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
   - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
+  - The --first_record and --max_record options are zero-based (as are the block options).
+  - The _block and _record options are ignored when used with the --count option.
 ```
 
 Data models produced by this tool:
@@ -160,6 +167,7 @@ Data models produced by this tool:
 - [trace](/data-model/chaindata/#trace)
 - [traceaction](/data-model/chaindata/#traceaction)
 - [traceresult](/data-model/chaindata/#traceresult)
+- [tokenbalance](/data-model/chainstate/#tokenbalance)
 - [function](/data-model/other/#function)
 - [parameter](/data-model/other/#parameter)
 
@@ -173,8 +181,7 @@ Links:
 <!-- markdownlint-disable MD041 -->
 `chifra monitors`` has two purposes: (1) to `--watch` a set of addresses. This function is in its early
 stages and will be better explained elsewhere. Please see an example of what one may do with
-`chifra monitors --watch` [here](https://tokenomics.io/), and (2) allows one to manage existing
-monitored addresses.
+`chifra monitors --watch`, and (2) allows one to manage existing monitored addresses.
 
 A "monitor" is simply a file on a hard drive that represents the transactional history of a given
 Ethereum address. Monitors are very small, being only the `<block_no><tx_id>` pair representing each
@@ -289,7 +296,7 @@ Links:
 
 <!-- markdownlint-disable MD041 -->
 `chifra abis` retrieves ABI files for the given address(es). It searches for the ABI in this order:
-the current local folder, the TrueBlocks cache, [Etherscan](http://etherscan.io), or (in the
+the current local folder, the TrueBlocks cache, Etherscan, or (in the
 future) ENS and Sourcify.
 
 While this tool may be used from the command line and the API, its primary purpose is in support of

@@ -76,7 +76,7 @@ Arguments:
 	One or more of [ index | blooms | blocks | txs | traces | monitors | names | abis | recons | slurps | staging | unripe | maps | some | all ]
 
 Flags:
-  -c, --first_record uint   the first record to process (default 1)
+  -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 10000)
   -x, --fmt string          export format, one of [none|json*|txt|csv]
   -v, --verbose             enable verbose (increase detail with --log_level)
@@ -182,7 +182,6 @@ Flags:
   -r, --remote             pin new chunks to the gateway (requires pinning service keys)
   -s, --sleep float        seconds to sleep between scraper passes (default 14)
   -l, --start_block uint   first block to visit when scraping (snapped back to most recent snap_to_grid mark)
-  -x, --fmt string         export format, one of [none|json*|txt|csv]
   -v, --verbose            enable verbose (increase detail with --log_level)
   -h, --help               display this help screen
 ```
@@ -325,7 +324,7 @@ Links:
 
 <!-- markdownlint-disable MD041 -->
 When invoked, `chifra init` reads a value from a smart contract called **The Unchained Index**
-([0x0c316b7042b419d07d343f2f4f5bd54ff731183d](https://etherscan.io/address/0x0c316b7042b419d07d343f2f4f5bd54ff731183d)).
+(0x0c316b7042b419d07d343f2f4f5bd54ff731183d).
 
 This value (`manifestHashMap`) is an IPFS hash pointing to a pinned file (called the Manifest) that
 contains a large collection of other IPFS hashes. These other hashes point to each of the Bloom
@@ -357,7 +356,6 @@ Flags:
   -d, --dry_run            display the results of the download without actually downloading
   -F, --first_block uint   do not download any chunks earlier than this block
   -s, --sleep float        seconds to sleep between downloads
-  -x, --fmt string         export format, one of [none|json*|txt|csv]
   -v, --verbose            enable verbose (increase detail with --log_level)
   -h, --help               display this help screen
 

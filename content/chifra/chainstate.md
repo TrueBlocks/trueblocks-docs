@@ -54,9 +54,11 @@ Flags:
   -p, --parts strings      control which state to export
                            One or more of [ none | some | all | balance | nonce | code | proxy | deployed | accttype ]
   -c, --changes            only report a balance when it changes from one block to the next
-  -n, --no_zero            suppress the display of zero balance accounts
+  -z, --no_zero            suppress the display of zero balance accounts
   -a, --call string        call a smart contract with a solidity syntax, a four-byte and parameters, or encoded call data
   -r, --proxy_for string   for the --call option only, redirects calls to this implementation
+  -H, --ether              specify value in ether
+  -o, --cache              force the results of the query into the cache
   -x, --fmt string         export format, one of [none|json*|txt|csv]
   -v, --verbose            enable verbose (increase detail with --log_level)
   -h, --help               display this help screen
@@ -113,7 +115,9 @@ Flags:
   -p, --parts strings   which parts of the token information to retrieve
                         One or more of [ name | symbol | decimals | totalSupply | version | all ]
   -b, --by_acct         consider each address an ERC20 token except the last, whose balance is reported for each token
-  -n, --no_zero         suppress the display of zero balance accounts
+  -c, --changes         only report a balance when it changes from one block to the next
+  -z, --no_zero         suppress the display of zero balance accounts
+  -o, --cache           force the results of the query into the cache
   -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
@@ -124,11 +128,12 @@ Notes:
   - If the token contract(s) from which you request balances are not ERC20 compliant, the results are undefined.
   - If the queried node does not store historical state, the results are undefined.
   - Special blocks are detailed under chifra when --list.
+  - If the --parts option is not empty, all addresses are considered tokens and each token's attributes are presented.
 ```
 
 Data models produced by this tool:
 
-- [tokenbal](/data-model/chainstate/#tokenbal)
+- [tokenbalance](/data-model/chainstate/#tokenbalance)
 
 Links:
 
