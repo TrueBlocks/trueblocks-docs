@@ -2,14 +2,12 @@
 <main class="main-site container-fluid mt-n3 pb-3">
   <header class="section row justify-content-center">
     <div class="col-lg-9 col-xl-8 text-center">
-      <h1 class="mt-0">Lightweight indexing for any EVM-based blockchain</h1>
+      <h1 class="mt-0">Indexing for EVM-based blockchains</h1>
       <div class="d-flex gap-4 justify-content-center">
         <a class="btn btn-outline-primary btn-lg px-4 mb-2" href='{{ "docs/" | relURL }}' role="button">About</a>
         <a class="btn btn-primary btn-lg px-4 mb-2" href='{{ "docs/install/install-core//" | relURL }}'
         role="button">Install</a>
       </div>
-      <p class="meta"><a href="https://github.com/trueblocks/trueblocks-core">Open-source</a>
-      </p>
     </div>
   </header>
 
@@ -32,13 +30,13 @@
     </div>
   </section>
 
-  <section class="container speed">
+  <section class="container citizen">
     <h1>
-      TrueBlocks is ⚡️fast
+      TrueBlocks is for crypto citizens ❤️
     </h1>
 
-    <div class="table-wrapper">
-      {{ partial "main/section-fast" . }}
+    <div class="citizen-wrapper">
+      {{ partial "main/section-citizens" . }}
     </div>
   </section>
 
@@ -62,13 +60,13 @@
     <div class="text-center">
       <ul class="list-no-style">
         <li>
-          No paid plans.
+          No paid plans
         </li>
         <li>
-          No rate limits.
+          No rate limits
         </li>
         <li>
-          Open source public good.
+          Open source public good
         </li>
       </ul>
       <div class="buttons">
@@ -77,6 +75,11 @@
           role="button">Install</a>
         </div>
       </div>
+  </section>
+
+  <section class="container newsletter text-center">
+    Subscribe to updates about TrueBlocks. We will never send you spam.
+    <div class="ml-embedded" data-form="UHPgOS"></div>
   </section>
 
   <section class="container grants text-center">
