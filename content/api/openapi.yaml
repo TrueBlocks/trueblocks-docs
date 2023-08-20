@@ -474,6 +474,22 @@ paths:
           schema:
             type: number
             format: blknum
+        - name: ether
+          description: export values in ether
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -482,12 +498,11 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Produces <a href="/data-model/accounts/#appearance">Appearance</a>, <a href="/data-model/accounts/#reconciliation">Reconciliation</a>, <a href="/data-model/accounts/#monitor">Monitor</a>, <a href="/data-model/accounts/#appearancecount">Appearancecount</a>, <a href="/data-model/accounts/#statement">Statement</a>, <a href="/data-model/chaindata/#transaction">Transaction</a>, <a href="/data-model/chaindata/#transfer">Transfer</a>, <a href="/data-model/chaindata/#receipt">Receipt</a>, <a href="/data-model/chaindata/#log">Log</a>, <a href="/data-model/chaindata/#trace">Trace</a>, <a href="/data-model/chaindata/#traceaction">Traceaction</a>, <a href="/data-model/chaindata/#traceresult">Traceresult</a>, <a href="/data-model/chainstate/#token">Token</a>, <a href="/data-model/other/#function">Function</a>, and/or <a href="/data-model/other/#parameter">Parameter</a> data. Corresponds to the <a href="/chifra/accounts/#chifra-export">chifra export</a> command line.
+                    description: Produces <a href="/data-model/accounts/#appearance">Appearance</a>, <a href="/data-model/accounts/#monitor">Monitor</a>, <a href="/data-model/accounts/#appearancecount">Appearancecount</a>, <a href="/data-model/accounts/#statement">Statement</a>, <a href="/data-model/chaindata/#transaction">Transaction</a>, <a href="/data-model/chaindata/#transfer">Transfer</a>, <a href="/data-model/chaindata/#receipt">Receipt</a>, <a href="/data-model/chaindata/#log">Log</a>, <a href="/data-model/chaindata/#trace">Trace</a>, <a href="/data-model/chaindata/#traceaction">Traceaction</a>, <a href="/data-model/chaindata/#traceresult">Traceresult</a>, <a href="/data-model/chainstate/#token">Token</a>, <a href="/data-model/other/#function">Function</a>, and/or <a href="/data-model/other/#parameter">Parameter</a> data. Corresponds to the <a href="/chifra/accounts/#chifra-export">chifra export</a> command line.
                     type: array
                     items:
                       oneOf:
                         - $ref: "#/components/schemas/appearance"
-                        - $ref: "#/components/schemas/reconciliation"
                         - $ref: "#/components/schemas/monitor"
                         - $ref: "#/components/schemas/appearanceCount"
                         - $ref: "#/components/schemas/statement"
@@ -498,7 +513,7 @@ paths:
                         - $ref: "#/components/schemas/trace"
                         - $ref: "#/components/schemas/traceAction"
                         - $ref: "#/components/schemas/traceResult"
-                        - $ref: "#/components/schemas/tokenBalance"
+                        - $ref: "#/components/schemas/token"
                         - $ref: "#/components/schemas/function"
                         - $ref: "#/components/schemas/parameter"
                 example:
@@ -1032,6 +1047,22 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: raw
+          description: report raw data direclty from the source
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -1156,6 +1187,30 @@ paths:
           explode: true
           schema:
             type: string
+        - name: ether
+          description: export values in ether
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: raw
+          description: report raw data direclty from the source
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -1200,6 +1255,22 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: raw
+          description: report raw data direclty from the source
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -1235,6 +1306,22 @@ paths:
               format: tx_id
         - name: articulate
           description: articulate the retrieved data if ABIs can be found
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: raw
+          description: report raw data direclty from the source
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
           required: false
           style: form
           in: query
@@ -1294,6 +1381,22 @@ paths:
             type: string
         - name: count
           description: show the number of traces for the transaction only (fast)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: raw
+          description: report raw data direclty from the source
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
           required: false
           style: form
           in: query
@@ -1382,6 +1485,14 @@ paths:
             type: boolean
         - name: deep
           description: with --timestamps --check only, verifies timestamps from on chain (slow)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
           required: false
           style: form
           in: query
@@ -1482,6 +1593,15 @@ paths:
           explode: true
           schema:
             type: string
+        - name: articulate
+          description: >
+            for the --call option only, articulate the retrieved data if ABIs can be found
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: proxyFor
           description: for the --call option only, redirects calls to this implementation
           required: false
@@ -1490,6 +1610,22 @@ paths:
           explode: true
           schema:
             type: string
+        - name: ether
+          description: export values in ether
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -1498,11 +1634,11 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Produces <a href="/data-model/chainstate/#callresult">Callresult</a>, and/or <a href="/data-model/chainstate/#ethcall">Ethcall</a> data. Corresponds to the <a href="/chifra/chainstate/#chifra-state">chifra state</a> command line.
+                    description: Produces <a href="/data-model/chainstate/#result">Result</a>, and/or <a href="/data-model/chainstate/#ethcall">Ethcall</a> data. Corresponds to the <a href="/chifra/chainstate/#chifra-state">chifra state</a> command line.
                     type: array
                     items:
                       oneOf:
-                        - $ref: "#/components/schemas/callResult"
+                        - $ref: "#/components/schemas/result"
                         - $ref: "#/components/schemas/ethCall"
                 example:
                   {
@@ -1598,6 +1734,14 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: cache
+          description: force the results of the query into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -1609,7 +1753,7 @@ paths:
                     description: On-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block. Produces <a href="/data-model/chainstate/#token">Token</a> data. Corresponds to the <a href="/chifra/chainstate/#chifra-tokens">chifra tokens</a> command line.
                     type: array
                     items:
-                      $ref: "#/components/schemas/tokenBalance"
+                      $ref: "#/components/schemas/token"
                 example:
                  {
                    "data": [
@@ -1710,12 +1854,16 @@ paths:
                 - index
                 - blooms
                 - blocks
-                - txs
+                - transactions
                 - traces
+                - logs
+                - statements
+                - results
+                - state
+                - tokens
                 - monitors
                 - names
                 - abis
-                - recons
                 - slurps
                 - staging
                 - unripe
@@ -1740,6 +1888,14 @@ paths:
           schema:
             type: number
             format: uint64
+        - name: chains
+          description: include a list of chain configurations in the output
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -1968,7 +2124,7 @@ paths:
                         - $ref: "#/components/schemas/chunkAddress"
                         - $ref: "#/components/schemas/chunkStats"
                         - $ref: "#/components/schemas/reportCheck"
-                        - $ref: "#/components/schemas/pinReport"
+                        - $ref: "#/components/schemas/chunkPinReport"
                 example:
                   {
                     "data": [
@@ -2122,6 +2278,22 @@ paths:
           schema:
             type: number
             format: double
+        - name: raw
+          description: report raw data direclty from the source
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cache
+          description: force the results of the query into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
       responses:
         "200":
           description: returns the requested data
@@ -2130,10 +2302,10 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Transaction data as returned from the RPC (with slight enhancements). Produces <a href="/data-model/chaindata/#transaction">Transaction</a> data. Corresponds to the <a href="/chifra/other/#chifra-slurp">chifra slurp</a> command line.
+                    description: Transaction data as returned from by Etherscan. Produces <a href="/data-model/other/#slurp">Slurp</a> data. Corresponds to the <a href="/chifra/other/#chifra-slurp">chifra slurp</a> command line.
                     type: array
                     items:
-                      $ref: "#/components/schemas/transaction"
+                      $ref: "#/components/schemas/slurp"
                 example:
                   [
                     {
@@ -2193,181 +2365,8 @@ components:
           description: "the timestamp for this appearance"
         date:
           type: string
-          description: "the date represented by the timestamp"
-    reconciliation:
-      description: "a reconiciliation, including all inflows and outflows, for a single transfer of an asset (including ETH) to or from a given address"
-      type: object
-      properties:
-        blockNumber:
-          type: number
-          format: blknum
-          example: 10021
-          description: "the number of the block"
-        transactionIndex:
-          type: number
-          format: blknum
-          example: 305
-          description: "the zero-indexed position of the transaction in the block"
-        logIndex:
-          type: number
-          format: blknum
-          example: 2
-          description: "the zero-indexed position the log in the block, if applicable"
-        transactionHash:
-          type: string
-          format: hash
-          description: "the hash of the transaction that triggered this reconciliation"
-        timestamp:
-          type: number
-          format: timestamp
-          example: 1438335038
-          description: "the Unix timestamp of the object"
-        date:
-          type: string
           format: datetime
-          description: "a calculated field -- the date of this transaction"
-        assetAddr:
-          type: string
-          format: address
-          example: "0x6b17...1d0f"
-          description: "0xeeee...eeee for ETH reconciliations, the token address otherwise"
-        assetSymbol:
-          type: string
-          description: "either ETH, WEI, or the symbol of the asset being reconciled as extracted from the chain"
-        decimals:
-          type: number
-          format: uint64
-          description: "the value of `decimals` from an ERC20 contract or, if ETH or WEI, then 18"
-        spotPrice:
-          type: number
-          format: double
-          description: "the on-chain price in USD (or if a token in ETH, or zero) at the time of the transaction"
-        priceSource:
-          type: string
-          description: "the on-chain source from which the spot price was taken"
-        accountedFor:
-          type: string
-          format: address
-          example: "0x1bd0...9ce9"
-          description: "the address being accounted for in this reconciliation"
-        sender:
-          type: string
-          format: address
-          example: "0xf503...179b"
-          description: "the initiator of the transfer (the sender)"
-        recipient:
-          type: string
-          format: address
-          example: "0x38d1...1310"
-          description: "the receiver of the transfer (the recipient)"
-        begBal:
-          type: string
-          format: int256
-          description: "the beginning balance of the asset prior to the transaction"
-        amountNet:
-          type: string
-          format: int256
-          description: "a calculated field -- totalIn - totalOut"
-        endBal:
-          type: string
-          format: int256
-          description: "the on-chain balance of the asset (see notes about intra-block reconciliations)"
-        encoding:
-          type: string
-          example: "0xa9059cbb"
-          description: "the topic of the event (if this is an ERC20 reconcilation), the four-byte signature of the transaction otherwise"
-        signature:
-          type: string
-          example: "Transfer(...)"
-          description: "if possible, the articulated name of the function or event signature"
-        reconciliationType:
-          type: string
-          description: "one of `regular`, `prevDiff-same`, `same-nextDiff`, or `same-same`. Appended with `eth` or `token`"
-        reconciled:
-          type: boolean
-          example: [true|false]
-          description: "a calculated field -- true if `endBal === endBalCalc` and `begBal === prevBal`. `false` otherwise."
-        totalIn:
-          type: string
-          format: int256
-          description: "a calculated field -- the sum of the following `In` fields"
-        amountIn:
-          type: string
-          format: int256
-          description: "the top-level value of the incoming transfer for the accountedFor address"
-        internalIn:
-          type: string
-          format: int256
-          description: "the internal value of the incoming transfer for the accountedFor address"
-        selfDestructIn:
-          type: string
-          format: int256
-          description: "the incoming value of a self-destruct if recipient is the accountedFor address"
-        minerBaseRewardIn:
-          type: string
-          format: int256
-          description: "the base fee reward if the miner is the accountedFor address"
-        minerNephewRewardIn:
-          type: string
-          format: int256
-          description: "the nephew reward if the miner is the accountedFor address"
-        minerTxFeeIn:
-          type: string
-          format: int256
-          description: "the transaction fee reward if the miner is the accountedFor address"
-        minerUncleRewardIn:
-          type: string
-          format: int256
-          description: "the uncle reward if the miner who won the uncle block is the accountedFor address"
-        prefundIn:
-          type: string
-          format: int256
-          description: "at block zero (0) only, the amount of genesis income for the accountedFor address"
-        totalOut:
-          type: string
-          format: int256
-          description: "a calculated field -- the sum of the following `Out` fields"
-        amountOut:
-          type: string
-          format: int256
-          description: "the amount (in units of the asset) of regular outflow during this transaction"
-        internalOut:
-          type: string
-          format: int256
-          description: "the value of any internal value transfers out of the accountedFor account"
-        selfDestructOut:
-          type: string
-          format: int256
-          description: "the value of the self-destructed value out if the accountedFor address was self-destructed"
-        gasOut:
-          type: string
-          format: int256
-          description: "if the transaction's original sender is the accountedFor address, the amount of gas expended"
-        totalOutLessGas:
-          type: string
-          format: int256
-          description: "a calculated field -- totalOut - gasOut"
-        prevAppBlk:
-          type: number
-          format: blknum
-          example: 10021
-          description: "the block number of the previous appearance, or 0 if this is the first appearance"
-        prevBal:
-          type: string
-          format: int256
-          description: "the account balance for the given asset for the previous reconciliation"
-        begBalDiff:
-          type: string
-          format: int256
-          description: "a calculated field -- difference between expected beginning balance and balance at last reconciliation, if non-zero, the reconciliation failed"
-        endBalDiff:
-          type: string
-          format: int256
-          description: "a calculated field -- endBal - endBalCalc, if non-zero, the reconciliation failed"
-        endBalCalc:
-          type: string
-          format: int256
-          description: "a calculated field -- begBal + amountNet"
+          description: "a calculated field -- the date for this appearance"
     monitor:
       description: "a local file indicating a user's interest in an address. Includes caches for reconicilations, transactions, and appearances as well as an optional association to named account"
       type: object
@@ -2509,6 +2508,10 @@ components:
           type: number
           format: timestamp
           description: "the timestamp of the first appearance of this address"
+        firstDate:
+          type: string
+          format: datetime
+          description: "a calculated field -- the date of the first appearance"
         latestApp:
           type: RawAppearance
           description: "the block number and transaction id of the latest appearance of this address"
@@ -2516,6 +2519,10 @@ components:
           type: number
           format: timestamp
           description: "the timestamp of the latest appearance of this address"
+        latestDate:
+          type: string
+          format: datetime
+          description: "a calculated field -- the date of the latest appearance"
     statement:
       description: "a statement, including all inflows and outflows, for a single transfer of an asset (including ETH) to or from a given address"
       type: object
@@ -2732,6 +2739,10 @@ components:
           format: timestamp
           example: 1438335038
           description: "the Unix timestamp of the object"
+        date:
+          type: string
+          format: datetime
+          description: "a calculated field -- the date of the object"
         transactions:
           type: array
           items:
@@ -2742,10 +2753,6 @@ components:
           format: wei
           example: "120911"
           description: "the base fee for this block"
-        finalized:
-          type: boolean
-          example: true
-          description: "flag indicating the system considers this data final"
         uncles:
           type: array
           items:
@@ -2784,6 +2791,9 @@ components:
           format: timestamp
           example: 1438335038
           description: "the Unix timestamp of the object"
+        date:
+          type: string
+          format: datetime
         from:
           type: string
           format: address
@@ -2819,31 +2829,22 @@ components:
         statements:
           type: array
           items:
-            $ref: "#/components/schemas/reconciliation"
+            $ref: "#/components/schemas/statement"
           description: "array of reconciliations"
         articulatedTx:
           type: object
           items:
             $ref: "#/components/schemas/function"
+        hasToken:
+          type: boolean
+          description: "`true` if the transaction is token related, `false` otherwise"
+        isError:
+          type: boolean
+          description: "`true` if the transaction ended in error, `false` otherwise"
         compressedTx:
           type: string
           example: "0x3d18b912( )"
           description: "truncated, more readable version of the articulation"
-        hasToken:
-          type: boolean
-          description: "`true` if the transaction is token related, `false` otherwise"
-        finalized:
-          type: boolean
-          example: true
-          description: "flag indicating the system considers this data final"
-        extraData:
-          type: string
-        isError:
-          type: boolean
-          description: "`true` if the transaction ended in error, `false` otherwise"
-        date:
-          type: string
-          format: datetime
     transfer:
       description: "the representation of a token transfer"
       type: object
@@ -2966,10 +2967,6 @@ components:
           format: uint64
           example: 354
           description: "the zero-indexed position of this log relative to the block"
-        transactionHash:
-          type: string
-          format: hash
-          description: "the hash of the transction"
         timestamp:
           type: number
           format: timestamp
@@ -2977,7 +2974,7 @@ components:
         date:
           type: string
           format: datetime
-          description: "the date of the block this log appears in"
+          description: "the date of the block this log appears in (calculated)"
         address:
           type: string
           format: address
@@ -2993,6 +2990,14 @@ components:
           format: bytes
           example: "0x0000...3ff6"
           description: "any remaining un-indexed parameters to the event"
+        transactionHash:
+          type: string
+          format: hash
+          description: "the hash of the transction"
+        blockHash:
+          type: string
+          format: hash
+          description: "the hash of the block"
         articulatedLog:
           type: object
           items:
@@ -3046,6 +3051,10 @@ components:
           type: number
           format: timestamp
           description: "the timestamp of the block"
+        date:
+          type: string
+          format: datetime
+          description: "a calculated value - the date of the block"
         transactionHash:
           type: string
           format: hash
@@ -3162,6 +3171,11 @@ components:
           format: timestamp
           example: 10
           description: "the timestamp of the block"
+        date:
+          type: string
+          format: datetime
+          example: "10"
+          description: "a calculated field -- the date of the block"
         tracesCnt:
           type: number
           format: uint64
@@ -3209,6 +3223,11 @@ components:
           format: timestamp
           example: 10
           description: "the timestamp of the block"
+        date:
+          type: string
+          format: datetime
+          example: "10"
+          description: "a calculated field -- the date of the block"
         transactionsCnt:
           type: number
           format: uint64
@@ -3271,10 +3290,13 @@ components:
           format: timestamp
           example: 1508131331
           description: "the Unix timestamp of the block"
+        date:
+          type: string
+          format: datetime
+          description: "a calculated field -- the date of the block"
         diff:
-          type: number
-          format: timestamp
-          example: 12
+          type: int64
+          example: "12"
           description: "the number of seconds since the last block"
     timestampCount:
       description: "the number of timestamps in the timestamps database"
@@ -3284,7 +3306,7 @@ components:
           type: number
           format: uint64
           description: "the number of timestamps in the timestamps database"
-    callResult:
+    result:
       description: "the result (articulated if possible, as bytes otherwise) of a call to a smart contract"
       type: object
       properties:
@@ -3293,6 +3315,14 @@ components:
           format: blknum
           example: 10021
           description: "the block number at which this call was made"
+        timestamp:
+          type: number
+          format: timestamp
+          description: "the timestamp of the block for this call"
+        date:
+          type: string
+          format: datetime
+          description: "the date of the block for this call (calculated)"
         address:
           type: string
           format: address
@@ -3310,10 +3340,12 @@ components:
         encodedArguments:
           type: string
           description: "the bytes data following the encoding of the call"
-        outputs:
-          type: Outputs
-          description: "the result of the call to the contract"
-    tokenBalance:
+        articulatedOut:
+          type: object
+          items:
+            $ref: "#/components/schemas/function"
+          description: "the result of the call articulated as other models"
+    token:
       description: "on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block"
       type: object
       properties:
@@ -3329,6 +3361,10 @@ components:
           type: number
           format: timestamp
           description: "the timestamp of the block"
+        date:
+          type: string
+          format: datetime
+          description: "a calculated field -- the date of the block"
         totalSupply:
           type: string
           format: int256
@@ -3396,11 +3432,6 @@ components:
         bytes:
           type: string
           description: "the bytes data following the encoding of the call"
-        callResult:
-          type: object
-          items:
-            $ref: "#/components/schemas/function"
-          description: "the result of the call to the contract"
         compressedResult:
           type: string
           description: "the compressed version of the result of the call to the contract"
@@ -3612,8 +3643,9 @@ components:
           format: blkrange
           example: "013142464-013145212"
           description: "the block range (inclusive) covered by this chunk"
-        date:
+        rangeEnd:
           type: string
+          format: datetime
           description: "the date of the last block in this range"
         nAddrs:
           type: number
@@ -3740,7 +3772,7 @@ components:
           items:
             type: string
           description: "an array of messages explaining failed checks"
-    pinReport:
+    chunkPinReport:
       description: "a JSON object containing the results of pinning the Unchained Index"
       type: object
       properties:
@@ -3841,6 +3873,86 @@ components:
           items:
             $ref: "#/components/schemas/parameter"
           description: "for composite types, the parameters making up the composite"
+    slurp:
+      description: "transaction data as returned from by Etherscan"
+      type: object
+      properties:
+        hash:
+          type: string
+          format: hash
+          example: "0xf128...1e98"
+          description: "the hash of the transaction"
+        blockHash:
+          type: string
+          format: hash
+          example: "0xc421...fb04"
+          description: "the hash of the block containing this transaction"
+        blockNumber:
+          type: number
+          format: blknum
+          example: 10021
+          description: "the number of the block"
+        transactionIndex:
+          type: number
+          format: blknum
+          example: 305
+          description: "the zero-indexed position of the transaction in the block"
+        nonce:
+          type: number
+          format: uint64
+          example: 232
+          description: "sequence number of the transactions sent by the sender"
+        timestamp:
+          type: number
+          format: timestamp
+          example: 1438335038
+          description: "the Unix timestamp of the object"
+        date:
+          type: string
+          format: datetime
+          description: "a calculated field -- the date of the object"
+        from:
+          type: string
+          format: address
+          description: "address from which the transaction was sent"
+        to:
+          type: string
+          format: address
+          description: "address to which the transaction was sent"
+        value:
+          type: string
+          format: wei
+          example: "0"
+          description: "the amount of wei sent with this transactions"
+        gas:
+          type: string
+          format: gas
+          example: "158660"
+          description: "the maximum number of gas allowed for this transaction"
+        gasPrice:
+          type: string
+          format: gas
+          example: "63525836552"
+          description: "the number of wei per unit of gas the sender is willing to spend"
+        input:
+          type: string
+          format: bytes
+          example: "0x3d18b912"
+          description: "byte data either containing a message or funcational data for a smart contracts. See the --articulate"
+        hasToken:
+          type: boolean
+          description: "`true` if the transaction is token related, `false` otherwise"
+        articulatedTx:
+          type: object
+          items:
+            $ref: "#/components/schemas/function"
+        compressedTx:
+          type: string
+          example: "0x3d18b912( )"
+          description: "truncated, more readable version of the articulation"
+        isError:
+          type: boolean
+          description: "`true` if the transaction ended in error, `false` otherwise"
     response:
       required:
         - result
