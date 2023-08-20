@@ -56,8 +56,9 @@ Flags:
   -L, --last_block uint     last block to process (inclusive)
   -H, --ether               specify value in ether
   -o, --cache               force the results of the query into the cache
+  -D, --decache             removes related items from the cache
   -x, --fmt string          export format, one of [none|json*|txt|csv]
-  -v, --verbose             enable verbose (increase detail with --log_level)
+  -v, --verbose             enable verbose output
   -h, --help                display this help screen
 
 Notes:
@@ -66,9 +67,11 @@ Notes:
   - For the --logs option, you may optionally specify one or more --emitter, one or more --topics, or both.
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
-  - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
+  - If present, --first_/--last_block are applied, followed by user-supplied filters such as asset or topic, followed by --first_/--max_record if present.
   - The --first_record and --max_record options are zero-based (as are the block options).
-  - The _block and _record options are ignored when used with the --count option.
+  - The _block and _record filters are ignored when used with the --count option.
+  - If the --reversed option is present, the appearance list is reversed prior to all processing (including filtering).
+  - The --decache option will remove all cache items (blocks, transactions, traces, etc.) for the given address(es).
 ```
 
 Data models produced by this tool:
@@ -85,7 +88,7 @@ Data models produced by this tool:
 - [trace](/data-model/chaindata/#trace)
 - [traceaction](/data-model/chaindata/#traceaction)
 - [traceresult](/data-model/chaindata/#traceresult)
-- [tokenbalance](/data-model/chainstate/#tokenbalance)
+- [token](/data-model/chainstate/#token)
 - [function](/data-model/other/#function)
 - [parameter](/data-model/other/#parameter)
 
