@@ -23,7 +23,6 @@ Each data structure is created by one or more tools which are detailed below.
 
 ## Status
 
-  // cache-list
 <!-- markdownlint-disable MD033 MD036 MD041 -->
 The [chifra config](/chifra/admin/#chifra-config) tool reports on the state (and size) of the
 various TrueBlocks local binary caches. TrueBlocks produces nine difference caches: `abis`, `blocks`,
@@ -267,16 +266,16 @@ ReportChecks consist of the following fields:
 | result     | the result of the check                       | string   |
 | msgStrings | an array of messages explaining failed checks | []string |
 
-## PinReport
+## ChunkPinReport
 
 <!-- markdownlint-disable MD033 MD036 MD041 -->
 Reports on the result of the command `chifra chunks manifest --pin [--deep]`.
 
-The following commands produce and manage PinReports:
+The following commands produce and manage ChunkPinReports:
 
 - [chifra chunks](/chifra/admin/#chifra-chunks)
 
-PinReports consist of the following fields:
+ChunkPinReports consist of the following fields:
 
 | Field        | Description                                                       | Type     |
 | ------------ | ----------------------------------------------------------------- | -------- |
