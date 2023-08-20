@@ -23,10 +23,11 @@ Each data structure is created by one or more tools which are detailed below.
 
 ## Status
 
+  // cache-list
 <!-- markdownlint-disable MD033 MD036 MD041 -->
 The [chifra config](/chifra/admin/#chifra-config) tool reports on the state (and size) of the
 various TrueBlocks local binary caches. TrueBlocks produces nine difference caches: `abis`, `blocks`,
-`monitors`, `names`, `objs`, `recons`, `slurps`, `traces`, `txs`. In general practice, these caches
+`monitors`, `names`, `objs`, `recons`, `slurps`, `traces`, `transactions`. In general practice, these caches
 may take up a few GB of hard drive space, however, for very popular smart contract the size of the
 caches may grow rather large. Keep an eye on it.
 
@@ -191,7 +192,7 @@ ChunkStats consist of the following fields:
 | Field         | Description                                       | Type     |
 | ------------- | ------------------------------------------------- | -------- |
 | range         | the block range (inclusive) covered by this chunk | blkrange |
-| date          | the date of the last block in this range          | string   |
+| rangeEnd      | the date of the last block in this range          | datetime |
 | nAddrs        | the number of addresses in the chunk              | uint64   |
 | nApps         | the number of appearances in the chunk            | uint64   |
 | nBlocks       | the number of blocks in the chunk                 | uint64   |
@@ -319,6 +320,7 @@ This documentation mentions the following basic data types.
 | address   | an '0x'-prefixed 20-byte hex string | lowercase      |
 | blkrange  | a pair of nine-digit block numbers  | zero padded    |
 | bool      | either `true`, `false`, `1`, or `0` |                |
+| datetime  | a JSON formatted date               | as a string    |
 | double    | a double precision float            | 64 bits        |
 | hash      | an '0x'-prefixed 32-byte hex string | lowercase      |
 | int64     | a 64-bit signed integer             |                |
