@@ -48,7 +48,7 @@ Arguments:
 Flags:
   -a, --paths        show the configuration paths for the system
   -x, --fmt string   export format, one of [none|json*|txt|csv]
-  -v, --verbose      enable verbose (increase detail with --log_level)
+  -v, --verbose      enable verbose output
   -h, --help         display this help screen
 ```
 
@@ -73,13 +73,14 @@ Usage:
 
 Arguments:
   modes - the (optional) name of the binary cache to report on, terse otherwise
-	One or more of [ index | blooms | blocks | txs | traces | monitors | names | abis | recons | slurps | staging | unripe | maps | some | all ]
+	One or more of [ index | blooms | blocks | transactions | traces | logs | statements | results | state | tokens | monitors | names | abis | slurps | staging | unripe | maps | some | all ]
 
 Flags:
   -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 10000)
+  -a, --chains              include a list of chain configurations in the output
   -x, --fmt string          export format, one of [none|json*|txt|csv]
-  -v, --verbose             enable verbose (increase detail with --log_level)
+  -v, --verbose             enable verbose output
   -h, --help                display this help screen
 
 Notes:
@@ -131,7 +132,7 @@ Flags:
   -m, --monitor         instruct the node to start the monitors tool
   -g, --grpc            run gRPC server to serve names
   -x, --fmt string      export format, one of [none|json*|txt|csv]
-  -v, --verbose         enable verbose (increase detail with --log_level)
+  -v, --verbose         enable verbose output
   -h, --help            display this help screen
 
 Notes:
@@ -182,7 +183,7 @@ Flags:
   -r, --remote             pin new chunks to the gateway (requires pinning service keys)
   -s, --sleep float        seconds to sleep between scraper passes (default 14)
   -l, --start_block uint   first block to visit when scraping (snapped back to most recent snap_to_grid mark)
-  -v, --verbose            enable verbose (increase detail with --log_level)
+  -v, --verbose            enable verbose output
   -h, --help               display this help screen
 ```
 
@@ -289,7 +290,7 @@ Flags:
   -d, --deep               if true, dig more deeply during checking (manifest only)
   -s, --sleep float        for --remote pinning only, seconds to sleep between API calls
   -x, --fmt string         export format, one of [none|json*|txt|csv]
-  -v, --verbose            enable verbose (increase detail with --log_level)
+  -v, --verbose            enable verbose output
   -h, --help               display this help screen
 
 Notes:
@@ -356,7 +357,7 @@ Flags:
   -d, --dry_run            display the results of the download without actually downloading
   -F, --first_block uint   do not download any chunks earlier than this block
   -s, --sleep float        seconds to sleep between downloads
-  -v, --verbose            enable verbose (increase detail with --log_level)
+  -v, --verbose            enable verbose output
   -h, --help               display this help screen
 
 Notes:
