@@ -62,6 +62,13 @@ The more weight it has, the farther down the section will be.
 
 When you create content, you probably want to create corresponding directories in `content`.
 
+## Adding pages
+In `content` directory, create a new one. In the new directory, add a file called `_index.md`. The name must start with `_`, unless
+you only need one page. If you need subpages, you add them to the same directory.
+
+The new page will use the default layout. It may happen that it goes into "list" mode (the text content is not displayed and part of it is rendered as headers). In such a case, add `layout: single` in front matter.
+If you need a different layout for the pages, create a new directory in `layouts` using the same name as in `content`.
+
 ## Contributing
 
 We love contributors. Please see information about our [work flow](https://github.com/TrueBlocks/trueblocks-core/blob/develop/docs/BRANCHING.md) before proceeding.
