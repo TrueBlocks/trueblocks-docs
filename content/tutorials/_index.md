@@ -64,8 +64,8 @@ Pay particular attention to the versions of the tools (especially golang). The b
 Complete the following commands to download and build TrueBlocks:
 
 ```[bash]
-git clone https://github.com/TrueBlocks/trueblocks-core
-cd trueblocks-core
+git clone https://github.com/TrueBlocks/trueblocks-tutorials
+cd trueblocks-tutorials
 mkdir -p build && cd build
 cmake ../src
 make -j 4
@@ -79,13 +79,6 @@ chifra version
 chifra status
 ```
 
-### Export your PATH
+### Save your PATH
 
-Complete these commands:
-
-```[bash]
-cd ..             # you should now be in the root folder to TrueBlocks' repo
-echo $(pwd)/bin
-```
-
-Add the result to your shell's PATH variable. For example, if you're using bash, edit the `~/.bashrc` file. In this way, you will be able to enter `chifra` on the command line from any folder. The tutorial assumes you've done this.
+It makes sense to save the change to your PATH so each time you log in to a shell, you don't have to repeat the above `export`. We leave that as an exercise for you.
