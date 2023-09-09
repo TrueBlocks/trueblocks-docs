@@ -1,5 +1,5 @@
 ---
-title: "Tutorials"
+title: "TrueBlocks in Berlin - 2023"
 description: "Learn how to use TrueBlocks, chifra, and the Unchained Index."
 date: 2023-09-05T19:25:12+02:00
 lastmod:
@@ -16,52 +16,55 @@ layout: single
 
 An interactive demonstration of TrueBlocks at dAppCon Berlin 2023.
 
-### Prior to Attending the Session
+### Prior to attending the session
 
 To save time for everyone, please complete the [Prerequisites](#prerequisites) before you come.
 
-### What We Hope to Accomplish
+### What we hope to accomplish
 
-Accessing Ethereum data from a locally running Ethereum node is orders of magnitude faster than accessing it remotely.
+We hope to show just how true this statement is: "Accessing Ethereum data from a locally running Ethereum node is orders of magnitude better than accessing it remotely."
 
-We say that above statement frequently. I don't think people realize what we mean. 
-
-We're going to make the above statement so obvious to you that you will never want to use an old-fashioned Web 2.0 API again.
+People don't understand what this actually means. Come learn. Hint: it's not just about speed.
 
 ### Tasks
 
 - [Prerequisites](#prerequisites)
 - [Building TrueBlocks](#building-trueblocks)
-- [Step 1](step1)
-- [Step 2](step2)
-- [Step 3](step3)
-- [Step 4](step4)
-- [Step 5](step5)
-- [Step 6](step6)
+- [Step 1 - Getting Started](step1)
+- [Step 2 - Getting Data?](step2)
+- [Step 3 - Getting Details](step3)
+- [Step 4 - Getting Serious](step4)
 
 ### Prerequisites
 
-TrueBlocks is built from source and, therefore, you'll need a few build tools:
+TrueBlocks is built from source and, therefore, you'll need a few build tools. Run the following commands depending on your operating system.
 
 | Operating System | Command                                                                                                           |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **Linux:**       | `sudo apt install build-essential git cmake ninja-build python3 python3-dev libcurl4-openssl-dev clang-format jq` |
 | **Mac:**         | `brew install cmake ninja git clang-format jq`                                                                    |
 
-Check that things are working and install anything that's missing.
+Check that things are working and install anything that's missing. Pay particular attention to the versions of the tools (especially golang). The build won't work if the versions are too old.
 
-Pay particular attention to the versions of the tools (especially golang). The build won't work if the versions are too old.
+#### Required tools
 
-| Tool   | check version?    | Download                                            | Version   |
-| ------ | ----------------- | --------------------------------------------------- | --------- |
-| jq     | `jq --version`    | [download](https://stedolan.github.io/jq/download/) | >= 1.6    |
-| git    | `git version`     | [download](https://git-scm.com/downloads)           | >= 2.17.1 |
-| cmake  | `cmake --version` | [download](https://cmake.org/install/)              | >= 3.20.1 |
-| golang | `go version`      | [download](https://golang.org/doc/install)          | >= 1.12.1 |
+| Tool   | run this...       | ...if you get this, you're done... | ...if not, download it                     |
+| ------ | ----------------- | ---------------------------------- | ------------------------------------------ |
+| git    | `git version`     | >= 2.17.1                          | [download](https://git-scm.com/downloads)  |
+| cmake  | `cmake --version` | >= 3.20.1                          | [download](https://cmake.org/install/)     |
+| golang | `go version`      | >= 1.12.1                          | [download](https://golang.org/doc/install) |
+
+#### Optional tool
+
+This tool is optional but is sometimes useful for making the data easier to see.
+
+| Tool | run this...    | ...if you get this, you're done... | ...if it doesn't work, download it                  |
+| ---- | -------------- | ---------------------------------- | --------------------------------------------------- |
+| jq   | `jq --version` | >= 1.6                             | [download](https://stedolan.github.io/jq/download/) |
 
 ### Building TrueBlocks
 
-Complete the following commands to download and build TrueBlocks:
+The following commands will download and build TrueBlocks. This will take a moment. In the meantime....
 
 ```[bash]
 git clone https://github.com/TrueBlocks/trueblocks-tutorials
@@ -71,13 +74,19 @@ cmake ../src
 make -j 4
 ```
 
-### To Test the Build
+### To test the build
+
+Once TrueBlocks is built, run these commands to test your installation.
 
 ```[bash]
 export PATH=../bin:$PATH
+which chifra # it should say ../bin/chifra
 chifra version
 chifra status
+
 ```
+
+Let's proceed with the tutorial with [Step 1 - Getting Started](/tutorials/step1).
 
 ### Save your PATH
 
