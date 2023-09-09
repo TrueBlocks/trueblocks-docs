@@ -12,12 +12,7 @@ images: []
 layout: single
 ---
 
-WHAT WHAT?
-- [step1](step1)
-
 <!-- smarkdownlint-disable -->
-
-chifra init --chain sepolia --publisher 0xCCd7Fc08532953676ff801791DEF07D3617ec712
 
 ## dAppCon Berlin 2023 - Interactive Session
 
@@ -39,7 +34,12 @@ We're going to make the above statement so obvious to you that you will never wa
 
 - [Prerequisites](#prerequisites)
 - [Building TrueBlocks](#building-trueblocks)
-- [Step1](https://trueblocks.io/tutorials/step1)
+- [Step 1](step1)
+- [Step 2](step2)
+- [Step 3](step3)
+- [Step 4](step4)
+- [Step 5](step5)
+- [Step 6](step6)
 
 ### Prerequisites
 
@@ -54,11 +54,12 @@ Check that things are working and install anything that's missing.
 
 Pay particular attention to the versions of the tools (especially golang). The build won't work if the versions are too old.
 
-| Tool   | check version? | Download                                            | Version   |
-| ------ | -------------- | --------------------------------------------------- | --------- |
-| jq     | jq --version   | [download](https://stedolan.github.io/jq/download/) | >= 1.6    |
-| git    | git version    | [download](https://git-scm.com/downloads)           | >= 2.17.1 |
-| golang | go version     | [download](https://golang.org/doc/install)          | >= 1.12.1 |
+| Tool   | check version?    | Download                                            | Version   |
+| ------ | ----------------- | --------------------------------------------------- | --------- |
+| jq     | `jq --version`    | [download](https://stedolan.github.io/jq/download/) | >= 1.6    |
+| git    | `git version`     | [download](https://git-scm.com/downloads)           | >= 2.17.1 |
+| cmake  | `cmake --version` | [download](https://cmake.org/install/)              | >= 3.20.1 |
+| golang | `go version`      | [download](https://golang.org/doc/install)          | >= 1.12.1 |
 
 ### Building TrueBlocks
 
@@ -75,7 +76,9 @@ make -j 4
 ### To Test the Build
 
 ```[bash]
-PATH=$PATH:../bin chifra version
+export PATH=$PATH:$(pwd)/bin
+chifra version
+chifra status
 ```
 
 ### Export your PATH
