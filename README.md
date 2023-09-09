@@ -1,14 +1,15 @@
-<!-- markdownlint-disable MD041 MD029 -->
-
-### TrueBlocks Documentation
-
 GitHub repo for [TrueBlocks.io](https://trueblocks.io).
 
-[![hugo rsync](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/build-and-deploy.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/build-and-deploy.yaml) [![link checker](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/check-links.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/check-links.yaml)
+[![hugo rsync](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy.yaml)
+[![link checker](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/link-checker.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/link-checker.yaml)
 
-To develop on this site, you need `yarn` and `hugo`.
+### Contributing
 
-1. Install yarn dependencies
+To develop on this site, you need `npm` and `hugo`.
+
+To run locally:
+
+1. Install npm dependencies
 
 ```shell
 npm install
@@ -17,8 +18,11 @@ npm install
 2. serve hugo to local host
 
 ```shell
-hugo serve --disableFastRender --logLevel info
+hugo server
 ```
+
+We have a few customizations, but all the hard work for creating this theme was done by the good people at Doks:
+https://github.com/h-enk/doks/
 
 ## Important directories:
 
@@ -26,10 +30,6 @@ hugo serve --disableFastRender --logLevel info
 - Content templates go in `archetypes`
 - `layouts` contains all information about templates
 - `config/_default/menus.toml` contains the structure for the overall menu and the section menus
-
-## How to add a page
-
-`hugo new content/<section>/document-title.md`
 
 ## How to add menu items
 
@@ -39,23 +39,25 @@ If you want to add a head section, add a config to [[main]].
 
 ```TOML
 [[main]]
-name = "Docs"
-url = "/docs/prologue/introduction/"
-weight = 10
+  name = "Docs"
+  url = "/docs/prologue/introduction/"
+  weight = 10
+
 ```
 
 The more "weight", the farther to the left it will be.
 
-Then change some files in `layouts`. Check out the files the template owner changed [here](https://github.com/atwriter/new_doks_site/pull/1).
+Then change some files in `layouts`. Check out the files the template owner changed here.
+https://github.com/atwriter/new_doks_site/pull/1
 
 If you want to add a subsection, it will look like this under `[[<section-name>]]`
 
-```TOML
+```
 [[docs]]
-name = "Tools"
-weight = 20
-identifier = "tools"
-url = "/docs/concepts/"
+  name = "Tools"
+  weight = 20
+  identifier = "tools"
+  url = "/docs/concepts/"
 ```
 
 The more weight it has, the farther down the section will be.
