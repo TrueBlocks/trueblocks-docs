@@ -74,7 +74,7 @@ make -j 4
 ### To Test the Build
 
 ```[bash]
-export PATH=$PATH:$(pwd)/bin
+export PATH=../bin:$PATH
 chifra version
 chifra status
 ```
