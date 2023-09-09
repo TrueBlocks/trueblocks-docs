@@ -14,9 +14,7 @@ layout: single
 
 <!-- smarkdownlint-disable -->
 
-## dAppCon Berlin 2023 - Interactive Session
-
-This session will be an interactive demonstration of TrueBlocks. It is a work in progress.
+An interactive demonstration of TrueBlocks at dAppCon Berlin 2023.
 
 ### Prior to Attending the Session
 
