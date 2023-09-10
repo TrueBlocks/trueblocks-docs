@@ -9,15 +9,15 @@ lastmod:
 draft: false
 ---
 
-Now, we're finally able to get some data from the chain. But are we? Let's find out.
+We're finally able to get some data from the chain. But are we? Let's find out.
 
-Do this command:
+Run this command:
 
 ```[bash]
 chifra
 ```
 
-TrueBlocks is a collection of sub-tools. Notice the two groups: `Chain Data` and `Chain State`. Similar to the RPC, these tools pull data directly from the node. With a few improvements...
+TrueBlocks is a collection of command line tools. Notice the two groups: `Chain Data` and `Chain State`. Similar to the RPC, these tools pull data directly from the node. With a few improvements...
 
 ### Getting data
 
@@ -28,9 +28,15 @@ chifra blocks 2001007
 chifra transactions --fmt json 0xc9c5f47ed17445070a68fab0c5336f39e6a70a74c67c8fce2a586b5f6596b3fb
 chifra receipts --fmt json 4001009.32
 chifra logs --fmt json 0xc9c5f47ed17445070a68fab0c5336f39e6a70a74c67c8fce2a586b5f6596b3fb
+chifra traces --fmt json 0xc9c5f47ed17445070a68fab0c5336f39e6a70a74c67c8fce2a586b5f6596b3fb
 ```
 
 They bring straight, raw PRC data from the node. Try adding `--cache` to each of the above commands? What happens? Did it get faster? Why?
+
+----
+**`[Talk about the RPC endpoint]`**
+
+----
 
 Let's try something a bit more complicated:
 
@@ -45,14 +51,20 @@ This is every receipt (or log, or transaction, or trace if you have a tracing no
 How about a block with a lot of transacitons? Try this:
 
 ```[bash]
-chifra logs 4001009.\* --fmt csv
+chifra blocks 4100000 --uniq --cache --cache_txs --cache_traces
 ```
+
+----
+**`[Talk about the Unchained Index]`**
+[The Unchained Index](https://docs.google.com/presentation/d/1_KoMQV7ciYctgwiGdLpwn9nU6swmlb1l-w9XQo-VrDk/edit?usp=sharing)
+
+----
 
 **Important:** If you get rate limited, don't run the command again. They may cut you off permenantly.
 
 Did you get rate limited? We didn't.
 
-### **Lesson 1**
+### **Lesson**
 
 Decentralizing your data source brings a number of massive upsides to you.
 
@@ -69,7 +81,7 @@ Every chifra command is available through a local API server. Try this:
 In one window:
 
 ```[bash]
-chifra server
+chifra serve
 ```
 
 In another window:
@@ -86,9 +98,9 @@ Chifra provides a lot other very useful tools. Check them out.
 chifra names
 chifra names vitalik.eth
 chifra names unchainedindex.eth
-chifra when 4001001                                                       # by block
-chifra when 1690827372                                                    # by timestmap
-chifra when 2023-07-31T18:16:12                                           # by date
+chifra when 2001001                                                       # by block
+<!-- chifra when 1664656944                                                    # by timestmap
+chifra when 2022-10-01T20:42:24                                           # by date -->
 chifra when 2000000-4000000:weekly                                        # time period ranges
 chifra abis --chain mainnet 0x6b175474e89094c44da98b954eedeac495271d0f    # requires an Etherscan key
 ```

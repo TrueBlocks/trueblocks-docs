@@ -11,10 +11,32 @@ draft: false
 
 ### Step 4 - Getting Serious
 
-chifra list 0x0087a081a9b430fd8f688c6ac5dd24421bfb060d
-chifra export 0x0087a081a9b430fd8f688c6ac5dd24421bfb060d --fmt json --cache
-chifra export 0x0087a081a9b430fd8f688c6ac5dd24421bfb060d --fmt json --cache --logs
-chifra export 0x0087a081a9b430fd8f688c6ac5dd24421bfb060d --fmt json --cache --logs --articulate
+In this step, we'll start to use the command line interface (CLI) to do some serious work. We'll start by looking at the `chifra` command, which is the CLI for the `chifra` package. This package is the core of TrueBlocks and is used by all the other packages. It is the package that does the heavy lifting of reading the blockchain, caching the data, and providing the data to the other packages.
+
+```bash
+chifra export --fmt json --cache trueblocks.eth
+chifra export --fmt json --cache trueblocks.eth --receipts
+```
+
+```bash
+chifra export --fmt json --cache trueblocks.eth --logs
+chifra export --fmt json --cache trueblocks.eth --logs 0x3bb7428b25f9bdad9bd2faa4c6a7a9e5d5882657e96c1d24cc41c1d6c1910a98
+chifra export --fmt json --cache trueblocks.eth --logs --emitter 0x7d655c57f71464b6f83811c55d84009cd9f5221c
+```
+
+```bash
+chifra export --fmt json --cache trueblocks.eth --logs --emitter 0x7d655c57f71464b6f83811c55d84009cd9f5221c --articulate
+```
+
+```bash
+chifra export --fmt json --cache unchainedindex.eth --traces
+chifra export --fmt json --cache unchainedindex.eth --traces --articulate
+```
+
+```bash
+chifra export --fmt json --cache --last_block 12000000 vitalik.eth --balances
+chifra export --fmt json --cache trueblocks.eth --accounting --statements
+```
 
 ---
 [<< Prev](/tutorials/step3) | [Home](/tutorials/)

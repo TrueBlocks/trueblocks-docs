@@ -22,19 +22,24 @@ To save time for everyone, please complete the [Prerequisites](#prerequisites) b
 
 ### What we hope to accomplish
 
-We hope to show just how true this statement is: "Accessing Ethereum data from a locally running Ethereum node is orders of magnitude better than accessing it remotely."
+```plaintext
+"Accessing Ethereum data from a locally running Ethereum node
+is orders of magnitude better than accessing it remotely."
 
-People don't understand what this actually means. Come learn. Hint: it's not just about speed.
+Thomas Jay Rush, every day
+```
 
-### Tasks
+We hope to show why:
 
-- [Prerequisites](#prerequisites)
-- [Building TrueBlocks](#building-trueblocks)
-- [Step 1 - Getting Started](step1)
-- [Step 2 - Getting Data?](step2)
-- [Step 3 - Getting Details](step3)
-- [Step 4 - Getting Serious](step4)
-
+- Running a local Ethereum node is not that hard,
+- The RPC is broken, but it can be fixed,
+- Rate limiting is your enemy and leads to:
+  - Capture
+  - Privacy ivasion
+  - Winner takes all
+  - Not what we want to be building,
+- Content addressable data stores hold the key.
+ 
 ### Prerequisites
 
 TrueBlocks is built from source and, therefore, you'll need a few build tools. Run the following commands depending on your operating system.
@@ -52,7 +57,7 @@ Check that things are working and install anything that's missing. Pay particula
 | ------ | ----------------- | ---------------------------------- | ------------------------------------------ |
 | git    | `git version`     | >= 2.17.1                          | [download](https://git-scm.com/downloads)  |
 | cmake  | `cmake --version` | >= 3.20.1                          | [download](https://cmake.org/install/)     |
-| golang | `go version`      | >= 1.12.1                          | [download](https://golang.org/doc/install) |
+| golang | `go version`      | >= 1.20.0                          | [download](https://golang.org/doc/install) |
 
 #### Optional tool
 
@@ -70,6 +75,7 @@ The following commands will download and build TrueBlocks. This will take a mome
 git clone https://github.com/TrueBlocks/trueblocks-tutorials
 cd trueblocks-tutorials
 mkdir -p build && cd build
+pwd                                             # should say ./trueblocks-tutorials/build
 cmake ../src
 make -j 4
 ```
@@ -80,13 +86,23 @@ Once TrueBlocks is built, run these commands to test your installation.
 
 ```[bash]
 export PATH=../bin:$PATH
-which chifra # it should say ../bin/chifra
+which chifra                    # it should say ../bin/chifra
 chifra version
-chifra status
+chifra status                   # this may download a file from an IPFS gateway
 
 ```
 
-Let's proceed with the tutorial with [Step 1 - Getting Started](/tutorials/step1).
+----
+**`[Show Reth and Docker]`**
+
+[Grafana](https://localhost:3000)
+
+----
+
+- [Step 1 - Getting Started](step1)
+- [Step 2 - Getting Data?](step2)
+- [Step 3 - Getting Details](step3)
+- [Step 4 - Getting Serious](step4)
 
 ### Save your PATH
 

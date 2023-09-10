@@ -34,7 +34,7 @@ Notice we piped the list of addresses into a file.
 The `chifra state` tool allows us to query the balance of a give account. Note how slow this is (TrueBlocks is a work in progress).
 
 ```[bash]
-chifra state --no_header --chain mainnet --file grants.txt 2>/dev/null
+chifra state --no_header --ether --chain mainnet --file grants.txt
 ```
 
 A bit slow, but this is the current ether balance of each of the grant receipients. I don't know about you, all other things equal, I'd give to a project with a smaller balance than an larger one. Even if only because they're smart enough to drain thier wallet.
@@ -42,8 +42,9 @@ A bit slow, but this is the current ether balance of each of the grant receipien
 Notice four other things with this command:
 
 1. The `--no_header` option removes the header from the output. This is useful when you're piping the output into another command.
-2. The `--chain mainnet` option tells the tool to use the mainnet. If you don't specify a chain, the tool will use the default chain, which is a configuration item.
-3. The `--file` option tells the tool to read the list of addresses from the file `grants.txt`. This is a convenience option. You could have just as easily piped the output of the `chifra names` command into the `chifra state` command.
+2. The `--ether` option reports the number in ether. This option is available for tools when it makes sense.
+3. The `--chain mainnet` option tells the tool to use the mainnet. If you don't specify a chain, the tool will use the default chain, which is a configuration item.
+4. The `--file` option tells the tool to read the list of addresses from the file `grants.txt`. This is a convenience option. You could have just as easily piped the output of the `chifra names` command into the `chifra state` command.
 
 ### Getting Token Balances
 
