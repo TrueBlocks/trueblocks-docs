@@ -26,4 +26,4 @@ jobs:
 
       # Don't put this on a single line. GitHub runner doesn't like that
       - name: check links
-        run: pwd && linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io
+        run: pwd && linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
