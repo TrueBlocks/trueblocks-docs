@@ -33,11 +33,13 @@ We hope to show why:
 
 - Running a local Ethereum node is not that hard,
 - The RPC is broken, but it can be fixed,
-- Rate limiting is your enemy and leads to:
-  - Capture
-  - Privacy ivasion
-  - Winner takes all
-  - Not what we want to be building,
+- Web 2.0 APIs delivering Web 3.0 data makes NO SENSE!
+  - Rate limiting slows the world to molasses,
+  - Thier non-standard endpoints will capture you,
+  - They MUST know who you are so they can rate limit you,
+  - The API game is winner-take-all. Witness Google,
+  - How do we know they're not lying?
+  - Why wouldn't regulators shut them down?
 - Content addressable data stores hold the key.
  
 ### Prerequisites
@@ -71,7 +73,7 @@ This tool is optional but is sometimes useful for making the data easier to see.
 
 The following commands will download and build TrueBlocks. This will take a moment. In the meantime....
 
-```[bash]
+```bash
 git clone https://github.com/TrueBlocks/trueblocks-tutorials
 cd trueblocks-tutorials
 mkdir -p build && cd build
@@ -84,12 +86,11 @@ make -j 4
 
 Once TrueBlocks is built, run these commands to test your installation.
 
-```[bash]
+```bash
 export PATH=../bin:$PATH
 which chifra                    # it should say ../bin/chifra
 chifra version
 chifra status                   # this may download a file from an IPFS gateway
-
 ```
 
 ----

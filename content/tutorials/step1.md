@@ -42,7 +42,7 @@ Progress:          4259662, 0, 0, 0 ts: 4438781
 
 Run this command which displays the current state of the index. It will report an error.
 
-```[bash]
+```bash
 chifra chunks blooms
 ```
 
@@ -50,7 +50,7 @@ This makes sense. It's telling you that you've not yet initalized the system. It
 
 Run:
 
-```[bash]
+```bash
 chifra scrape
 ```
 
@@ -62,13 +62,13 @@ This is one of the reasons we tell people they want to run their own node. If yo
 
 Let's try `chifra init`.
 
-```[bash]
+```bash
 chifra init
 ```
 
 This will download the Bloom filter part of the index from an IPFS gateway. It will take a few minutes, but when it's done, you will be able to rerun the above `chifra chunks blooms` command.
 
-```[bash]
+```bash
 chifra chunks blooms
 ```
 

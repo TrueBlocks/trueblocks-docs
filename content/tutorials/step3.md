@@ -17,23 +17,24 @@ Let's dig deeper. Let's query specific addresses. In other words, snoop.
 
 Do this:
 
-```[bash]
-chifra names GitCoin:Grants | head -30
+```bash
+chifra names GitCoin:Grants
 ```
 
-This command lists 30 randomly selected GitCoin grants. The `chifra names` tool allows you to keep track of the addresses you're interested in. Adding the `-s` option shows only the addresses.
+This command shows about 1,900 GitCoin grants from past rounds. Add a selector to the command:
 
-```[bash]
-chifra names GitCoin:Grants -s | head -30 | tee grants.txt
-```
+```bash
+chifra names GitCoin:Grants -s 291 | tee grants.txt            # `291` is random. It just picks address that have 291 in them.
+ ```
 
-Notice we piped the list of addresses into a file. 
+The `chifra names` tool allows you to keep track of the addresses you're interested in. Adding the `-s` option shows only the addresses and selects a subset of the addresses. The `tee` command saves the output to a file.
 
 ### Getting Balances
 
-The `chifra state` tool allows us to query the balance of a give account. Note how slow this is (TrueBlocks is a work in progress).
+Now we can use this list of addresses to query the state of each of the addresses. Let's get the balance of each of the addresses.
+Note how slow this is (TrueBlocks is a work in progress).
 
-```[bash]
+```bash
 chifra state --no_header --ether --chain mainnet --file grants.txt
 ```
 
@@ -48,7 +49,27 @@ Notice four other things with this command:
 
 ### Getting Token Balances
 
-We leave this part of the tutorial as an excercise. Run `chifra tokens`. Read the help text. Figure out how to get token balances for each of the grant receipients for any token.
+We leave this part of the tutorial as an excercise. Run `chifra tokens`. Read the help text. Figure out how to get token balances for each of the grant receipients for any token, but here's a hint:
+
+The holdings as the latest block for each of the grants receipients for the DAI stable coin:
+
+```bash
+chifra names dai stable 0x6 -s | chifra tokens --no_header --chain mainnet 0x6b175474e89094c44da98b954eedeac495271d0f --file grants.txt --cache
+```
+
+The holdings each week for each of the grants receipients for the DAI stable coin:
+
+```bash
+chifra names dai stable 0x6 -s | chifra tokens --no_header --chain mainnet 0x6b175474e89094c44da98b954eedeac495271d0f --file grants.txt --cache 14000000-15000000:weekly
+```
+
+Don't forget you can do a server version of this as well:
+
+```bash
+curl "http://localhost:8081/tokens?addrs=0x6b175474e89094c44da98b954eedeac495271d0f&no_header&chain=mainnet&file=grants.txt&cache&blocks=14000000-15000000:weekly"
+
+curl "http://localhost:8081/tokens?addrs=0x6b175474e89094c44da98b954eedeac495271d0f&chain=mainnet&cache&blocks=10000000-17000000:daily&fmt=txt"
+```
 
 ### Getting Serious
 

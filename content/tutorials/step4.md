@@ -35,8 +35,24 @@ chifra export --fmt json --cache unchainedindex.eth --traces --articulate
 
 ```bash
 chifra export --fmt json --cache --last_block 12000000 vitalik.eth --balances
-chifra export --fmt json --cache trueblocks.eth --accounting --statements
+chifra export --fmt json --cache --last_block 12000000 vitalik.eth --accounting --statements
 ```
+
+### Some other crazy shit you can do.
+
+Every donor to TrueBlocks' GitCoin grant:
+
+```bash
+chifra export --fmt json --cache trueblocks.eth --logs --emitter 0x7d655c57f71464b6f83811c55d84009cd9f5221c --articulate | jq ".data[].articulatedLog" | jq ".inputs.dest" | sort | uniq -c | sort -n
+```
+
+The most frequent donor to TrueBlocks' GitCoin grant's most frequent donations
+
+```bash
+chifra export --fmt json --cache 0xd27d90b337717Fd91C4D409F712B890D4eE2FdD6 --logs --emitter 0x7d655c57f71464b6f83811c55d84009cd9f5221c --articulate | jq ".data[].articulatedLog" | jq ".inputs.dest" | sort | uniq -c | sort -n
+```
+
+
 
 ---
 [<< Prev](/tutorials/step3) | [Home](/tutorials/)

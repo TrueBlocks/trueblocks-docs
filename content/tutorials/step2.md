@@ -13,7 +13,7 @@ We're finally able to get some data from the chain. But are we? Let's find out.
 
 Run this command:
 
-```[bash]
+```bash
 chifra
 ```
 
@@ -23,7 +23,7 @@ TrueBlocks is a collection of command line tools. Notice the two groups: `Chain 
 
 Try any of these commands:
 
-```[bash]
+```bash
 chifra blocks 2001007
 chifra transactions --fmt json 0xc9c5f47ed17445070a68fab0c5336f39e6a70a74c67c8fce2a586b5f6596b3fb
 chifra receipts --fmt json 4001009.32
@@ -40,7 +40,7 @@ They bring straight, raw PRC data from the node. Try adding `--cache` to each of
 
 Let's try something a bit more complicated:
 
-```[bash]
+```bash
 chifra receipts 2010732.\* --fmt csv
 ```
 
@@ -50,7 +50,7 @@ This is every receipt (or log, or transaction, or trace if you have a tracing no
 
 How about a block with a lot of transacitons? Try this:
 
-```[bash]
+```bash
 chifra blocks 4100000 --uniq --cache --cache_txs --cache_traces
 ```
 
@@ -80,21 +80,32 @@ Every chifra command is available through a local API server. Try this:
 
 In one window:
 
-```[bash]
+```bash
 chifra serve
 ```
 
 In another window:
 
-```[bash]
+```bash
 curl "http://localhost:8080/blocks?blocks=2001007"
 ```
+
+<!-- ### Getting fresh data
+
+Chifra has a command called `chifra monitors --watch` that will watch the chain for new appearances of a list of addresses. This could be the basis for a real-time notification system and/or dashboard.
+
+```bash
+chifra monitors --list
+echo "chifra export" >commands.fil
+cat grants.txt
+chifra monitors --watch --commands commands.fil --addresses grants.txt --sleep 1
+``` -->
 
 ### Getting names / abis / dates
 
 Chifra provides a lot other very useful tools. Check them out.
 
-```[bash]
+```bash
 chifra names
 chifra names vitalik.eth
 chifra names unchainedindex.eth
