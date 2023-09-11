@@ -52,6 +52,10 @@ The most frequent donor to TrueBlocks' GitCoin grant's most frequent donations
 chifra export --fmt json --cache 0xd27d90b337717Fd91C4D409F712B890D4eE2FdD6 --logs --emitter 0x7d655c57f71464b6f83811c55d84009cd9f5221c --articulate | jq ".data[].articulatedLog" | jq ".inputs.dest" | sort | uniq -c | sort -n
 ```
 
+---
+**`[Show Spreadsheet]`**
+
+---
 
 
 ---

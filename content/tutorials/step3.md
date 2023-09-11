@@ -71,6 +71,13 @@ curl "http://localhost:8081/tokens?addrs=0x6b175474e89094c44da98b954eedeac495271
 curl "http://localhost:8081/tokens?addrs=0x6b175474e89094c44da98b954eedeac495271d0f&chain=mainnet&cache&blocks=10000000-17000000:daily&fmt=txt"
 ```
 
+---
+**`[Talk about Tokenomics]`**
+
+[Tokenomics](https://www.tokenomics.io/gitcoin)
+
+---
+
 ### Getting Serious
 
 All this is fun, but let's get serious in the next (and final) step: [Step 4 - Getting Serious](/tutorials/step4).

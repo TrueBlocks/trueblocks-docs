@@ -80,6 +80,7 @@ mkdir -p build && cd build
 pwd                                             # should say ./trueblocks-tutorials/build
 cmake ../src
 make -j 4
+ls -l ../bin                                    # should see an executable called chifra
 ```
 
 ### To test the build
@@ -96,9 +97,15 @@ chifra status                   # this may download a file from an IPFS gateway
 ----
 **`[Show Reth and Docker]`**
 
-[Grafana](https://localhost:3000)
-
 ----
+
+### Lesson
+
+In this lesson, we've built TrueBlocks, explored `chifra status` and shown that running a local Reth node through docker is simple.
+
+### Next
+
+Now, let's get some data.
 
 - [Step 1 - Getting Started](step1)
 - [Step 2 - Getting Data?](step2)
