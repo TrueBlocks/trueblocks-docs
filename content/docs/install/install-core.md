@@ -97,7 +97,7 @@ You should get results similar to these:
 }
 ```
 
-- Assuming the above works, you're system is properly installed. If not, see the [TroubleShooting section](/docs/install/install-troubleshooting).
+- Assuming the above works, your system is properly installed. If not, see the [TroubleShooting section](/docs/install/install-troubleshooting).
 
 ## More information
 
