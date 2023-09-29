@@ -1,9 +1,9 @@
 GitHub repo for [TrueBlocks.io](https://trueblocks.io).
 
-[![hugo rsync](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy.yaml)
-[![link checker](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/link-checker.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/link-checker.yaml)
+[![hugo rsync](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/build-and-deploy.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/build-and-deploy.yaml)
+[![link checker](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/check-links.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/check-links.yaml)
 
-### Contributing
+### Contributing to the docs
 
 To develop on this site, you need `npm` and `hugo`.
 
@@ -15,16 +15,15 @@ To run locally:
 npm install
 ```
 
-2. serve hugo to local host
+1. serve hugo to local host
 
 ```shell
 hugo server
 ```
 
-We have a few customizations, but all the hard work for creating this theme was done by the good people at Doks:
-https://github.com/h-enk/doks/
+We have a few customizations, but all the hard work for creating this theme was done by [the good people at Doks](https://github.com/h-enk/doks/).
 
-## Important directories:
+## Important directories
 
 - The Homepage is in the `layouts/index.html`
 - Content templates go in `archetypes`
@@ -35,29 +34,27 @@ https://github.com/h-enk/doks/
 
 Open up `config/_default/menus.toml`.
 
-If you want to add a head section, add a config to [[main]].
+If you want to add a head section, add a config to `[[main]]`.
 
 ```TOML
 [[main]]
-  name = "Docs"
-  url = "/docs/prologue/introduction/"
-  weight = 10
-
+name = "Docs"
+url = "/docs/prologue/introduction/"
+weight = 10
 ```
 
 The more "weight", the farther to the left it will be.
 
-Then change some files in `layouts`. Check out the files the template owner changed here.
-https://github.com/atwriter/new_doks_site/pull/1
+Then change some files in `layouts`. Check out the files the template owner changed [here](https://github.com/atwriter/new_doks_site/pull/1).
 
 If you want to add a subsection, it will look like this under `[[<section-name>]]`
 
-```
+```TOML
 [[docs]]
-  name = "Tools"
-  weight = 20
-  identifier = "tools"
-  url = "/docs/concepts/"
+name = "Tools"
+weight = 20
+identifier = "tools"
+url = "/docs/concepts/"
 ```
 
 The more weight it has, the farther down the section will be.
@@ -65,11 +62,11 @@ The more weight it has, the farther down the section will be.
 When you create content, you probably want to create corresponding directories in `content`.
 
 ## Adding pages
-In `content` directory, create a new one. In the new directory, add a file called `_index.md`. The name must start with `_`, unless
-you only need one page. If you need subpages, you add them to the same directory.
+In the `content` folder, create a new page. In the new directory, add a file called `_index.md`. The name must start with `_`, unless you only need one page. If you need subpages, you add them to the same directory.
 
 The new page will use the default layout. It may happen that it goes into "list" mode (the text content is not displayed and part of it is rendered as headers). In such a case, add `layout: single` in front matter.
-If you need a different layout for the pages, create a new directory in `layouts` using the same name as in `content`.
+
+If you need a different layout for the pages, create a new directory in `layouts` using the same name as in `content` folder.
 
 ## Contributing
 

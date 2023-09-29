@@ -11,6 +11,6 @@ weight: 2000
 toc: true
 ---
 
-Here's a link to the [TypeScript SDK](https://github.com/TrueBlocks/trueblocks-sdk/tree/main/typescript).
+Here's a link to the [TypeScript SDK](https://github.com/TrueBlocks/trueblocks-core/tree/master/sdk/typescript).
 
 **Warning:** It's in its very early stage.
