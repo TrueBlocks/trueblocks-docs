@@ -48,8 +48,7 @@ For more information on running node, you’ll have to look online (or checkout 
 Before we write the code to do the counting, we want to make sure you can build the sample project. Instructions for that are [here](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples), but the short version is:
 
 \# Download TrueBlocks  
-git clone \\  
-    -b develop [https://github.com/TrueBlocks/trueblocks-core](https://github.com/TrueBlocks/trueblocks-core)  
+git clone -b master https://github.com/TrueBlocks/trueblocks-core  
 cd trueblocks-core  
 mkdir build  
 cd build  
