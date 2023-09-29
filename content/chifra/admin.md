@@ -102,13 +102,21 @@ Links:
 ## chifra daemon
 
 <!-- markdownlint-disable MD041 -->
-`chifra daemon` manages chifra's long-running processes include its JSON API server. Each of the
-`chifra` commands along with all of its options, are provided not only by the command line, but
-also the API server. We call this process the `flame` server, which is written in Go.
+`chifra daemon` manages chifra's API server. Each of the `chifra` commands along with all of its options,
+are provided not only by the command line, but also the API server. We call this process the
+`flame` server, which is written in Go. `chifra serve` is an alias for the `chifra daemon` command.
 
-In the future, this daemon may also manage other long-running processes.
+In the future, this daemon may also manage other long-running processes such as `chifra scrape`
+and `chifra monitors`, but for now, it's only managing the API server.
 
-Another way to get help to run `chifra --help` or `chifra <cmd> --help` on your command line.
+The `--grpc` option turns on a GRPC server that may speed up certain command such as `chifra names`,
+although this option is experimental and therefore not recommended for production use.
+
+If the default port for the API server is in use, you may change it with the `--port` option.
+
+To get help for any command, please see the API documentation on our website. But, you may 
+also run `chifra --help` or `chifra <cmd> --help` on your command line to get help.
+
 See below for an example of converting command line options to a call to the API. There's a
 one-to-one correspondence between the command line tools and options and the API routes and
 their options.
@@ -124,16 +132,11 @@ Aliases:
   daemon, serve
 
 Flags:
-  -p, --port string     specify the server's port (default ":8080")
-  -a, --api string      instruct the node to start the API server
-                        One of [ off | on ] (default "on")
-  -s, --scrape string   start the scraper, initialize it with either just blooms or entire index, generate for new blocks
-                        One of [ off | blooms | index ]
-  -m, --monitor         instruct the node to start the monitors tool
-  -g, --grpc            run gRPC server to serve names
-  -x, --fmt string      export format, one of [none|json*|txt|csv]
-  -v, --verbose         enable verbose output
-  -h, --help            display this help screen
+  -p, --port string   specify the server's port (default ":8080")
+  -g, --grpc          run gRPC server to serve names
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
+  -v, --verbose       enable verbose output
+  -h, --help          display this help screen
 
 Notes:
   - To start API open terminal window and run chifra daemon.
@@ -148,6 +151,15 @@ Links:
 
 - no api for this command
 - [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/daemon)
+
+<!-- markdownlint-disable MD041 -->
+### notes
+
+To convert the options for a command line tool to an API call, do the following:
+
+1. Any `--snake_case` argument to the command line should be converted to `camelCase`. For example, `--no_header` on the command line should be sent as `&noHeader` to the API server.
+2. Any `switch` on the command line, (i.e., options whose presence indicates `true` and whose absence indicates `false`) should be sent as a `boolean` to the API server. For example, `--no_header` on the command line should be sent as `&noHeader=true` to the API server. If the option is `fales`, you do not need to send it to the API server.
+3. Positionals such as the addresses, topics, and four-bytes for `chifra export`, must be prepended with their positional name. For example, `chifra export <address> <topic>` should be sent as `&addrs=<address>&topics=<topic>` to the API server. For some commands (experiment) you may send more than one value for a positional with `%20` seperating the entries or by sending multiple positionals (i.e., `&addrs=<address1>&addrs=<address2>`).
 
 ## chifra scrape
 
@@ -168,7 +180,7 @@ some machines, or when running against some EVM node software, the scraper may o
 hardware. Slowing things down will ensure proper operation. Finally, you may optionally `--pin`
 each new chunk to IPFS which naturally shards the database among all users. By default, pinning
 is against a locally running IPFS node, but the `--remote` option allows pinning to an IPFS
-pinning service such as Pinata or Estuary.
+pinning service such as Pinata.
 
 ```[plaintext]
 Purpose:
@@ -201,24 +213,25 @@ Links:
 
 Each of the following additional configurable command line options are available.
 
-**Configuration file:** `$CONFIG/$CHAIN/blockScrape.toml`  
-**Configuration group:** `[settings]`  
+**Configuration file:** `trueBlocks.toml`  
+**Configuration group:** `[scrape.<chain>]`  
 
 | Item               | Type         | Default      | Description / Default |
 | ------------------ | ------------ | ------------ | --------- |
-| apps&lowbar;per&lowbar;chunk | uint64       | 200000       | the number of appearances to build into a chunk before consolidating it |
-| snap&lowbar;to&lowbar;grid | uint64       | 100000       | an override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index |
-| first&lowbar;snap  | uint64       | 0            | the first block at which snap_to_grid is enabled |
-| unripe&lowbar;dist | uint64       | 28           | the distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe |
-| channel&lowbar;count | uint64       | 20           | number of concurrent processing channels |
-| allow&lowbar;missing | bool         | true         | do not report errors for blockchains that contain blocks with zero addresses |
+| appsPerChunk       | uint64       | 500000       | the number of appearances to build into a chunk before consolidating it |
+| snapToGrid         | uint64       | 100000       | an override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index |
+| firstSnap          | uint64       | 500000       | the first block at which snap_to_grid is enabled |
+| unripeDist         | uint64       | 28           | the distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe |
+| channelCount       | uint64       | 20           | number of concurrent processing channels |
+| allowMissing       | bool         | true         | do not report errors for blockchains that contain blocks with zero addresses |
 
+Note that for Ethereum mainnet, the default values for appsPerChunk and firstSnap are 2,000,000 and 2,300,000 respectively. See the specification for a justification of these values.
 
 These items may be set in three ways, each overridding the preceeding method:
 
--- in the above configuration file under the `[settings]` group,  
--- in the environment by exporting the configuration item as UPPER&lowbar;CASE, without underbars, and prepended with TB_SETTINGS&lowbar;, or  
--- on the command line using the configuration item with leading dashes (i.e., `--name`).  
+-- in the above configuration file under the `[scrape.<chain>]` group,  
+-- in the environment by exporting the configuration item as UPPER&lowbar;CASE (with underbars removed) and prepended with TB_SCRAPE&lowbar;CHAIN&lowbar;, or  
+-- on the command line using the configuration item with leading dashes and in snake case (i.e., `--snake_case`).  
 
 <!-- markdownlint-disable MD041 -->
 ### further information
@@ -302,6 +315,7 @@ Notes:
   - The --first_block and --last_block options apply only to addresses, appearances, and index --belongs mode.
   - The --pin option requires a locally running IPFS node or a pinning service API key.
   - The --publish option requires a private key.
+  - The --publisher option is ignored with the --publish option since the sender of the transaction is recorded as the publisher.
 ```
 
 Data models produced by this tool:
