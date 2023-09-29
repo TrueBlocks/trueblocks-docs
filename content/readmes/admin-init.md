@@ -32,7 +32,6 @@ Usage:
 Flags:
   -a, --all                in addition to Bloom filters, download full index chunks (recommended)
   -d, --dry_run            display the results of the download without actually downloading
-  -P, --publisher string   the publisher of the index to download (default "0xf503017d7baf7fbc0fff7492b751025c6a78179b")
   -F, --first_block uint   do not download any chunks earlier than this block
   -s, --sleep float        seconds to sleep between downloads
   -v, --verbose            enable verbose output
