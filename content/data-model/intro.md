@@ -26,7 +26,7 @@ people are trading, voting, expressing their preferences, making markets for val
 items every minute.
 
 What interests us about this data are answers to questions such as:
-* What exaclty is going on?
+* What exactly is going on?
 * Where is my money?
 * Didn't I have some of those tokens somewhere?
 * May I please just get a list of my transactions?
