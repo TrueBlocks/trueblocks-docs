@@ -28,8 +28,6 @@ Usage:
 
 Flags:
   -n, --block_cnt uint     maximum number of blocks to process per pass (default 2000)
-  -i, --pin                pin new chunks (requires locally-running IPFS daemon or --remote)
-  -r, --remote             pin new chunks to the gateway (requires pinning service keys)
   -s, --sleep float        seconds to sleep between scraper passes (default 14)
   -l, --start_block uint   first block to visit when scraping (snapped back to most recent snap_to_grid mark)
   -v, --verbose            enable verbose output
@@ -55,9 +53,9 @@ Each of the following additional configurable command line options are available
 
 | Item               | Type         | Default      | Description / Default |
 | ------------------ | ------------ | ------------ | --------- |
-| appsPerChunk       | uint64       | 500000       | the number of appearances to build into a chunk before consolidating it |
-| snapToGrid         | uint64       | 100000       | an override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index |
-| firstSnap          | uint64       | 500000       | the first block at which snap_to_grid is enabled |
+| appsPerChunk       | uint64       | 2000000      | the number of appearances to build into a chunk before consolidating it |
+| snapToGrid         | uint64       | 250000       | an override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index |
+| firstSnap          | uint64       | 2000000      | the first block at which snap_to_grid is enabled |
 | unripeDist         | uint64       | 28           | the distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe |
 | channelCount       | uint64       | 20           | number of concurrent processing channels |
 | allowMissing       | bool         | true         | do not report errors for blockchains that contain blocks with zero addresses |
