@@ -18,4 +18,4 @@ The two SDKs are the [TypeScript SDK](/sdks/typescript-sdk/) and the [Python SDK
 
 We welcome PRs supporting other languages -- particularly GoLang or Rust.
 
-Here's the [SDKs repo](https://github.com/TrueBlocks/trueblocks-sdk).
+Here's the [SDKs repo](https://github.com/TrueBlocks/trueblocks-core/blob/master/sdk/README.md).
