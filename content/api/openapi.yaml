@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 1.5.0-release
+  version: 2.0.0-release
   description: >
 
     A REST layer over the TrueBlocks application. With `chifra daemon`, you can
@@ -222,7 +222,7 @@ paths:
       tags:
         - Accounts
       summary: Export details
-      description: Export full detail of transactions for one or more addresses. Corresponds to the <a href="/chifra/accounts/#chifra-export">chifra export</a> command line.
+      description: Export full details of transactions for one or more addresses. Corresponds to the <a href="/chifra/accounts/#chifra-export">chifra export</a> command line.
       operationId: accounts-export
       parameters:
         - name: addrs
@@ -685,7 +685,7 @@ paths:
       tags:
         - Accounts
       summary: Names
-      description: Query addresses or names of well known accounts. Corresponds to the <a href="/chifra/accounts/#chifra-names">chifra names</a> command line.
+      description: Query addresses or names of well-known accounts. Corresponds to the <a href="/chifra/accounts/#chifra-names">chifra names</a> command line.
       operationId: accounts-names
       parameters:
         - name: terms
@@ -1976,7 +1976,7 @@ paths:
           schema:
             type: number
             format: double
-        - name: startBlock
+        - name: touch
           description: >
             first block to visit when scraping (snapped back to most recent snap_to_grid mark)
           required: false
