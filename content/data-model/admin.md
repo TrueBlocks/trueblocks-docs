@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD033 MD036 MD041 -->
 ---
 title: "Admin"
 description: ""
@@ -14,6 +13,7 @@ menu:
 weight: 1700
 toc: true
 ---
+<!-- markdownlint-disable MD033 MD036 MD041 -->
 
 The data models produced by the tools in the Admin category relate to scraping the chain, producing
 the Unchained Index, and querying the configuration of the system. Additional data related to
@@ -181,13 +181,13 @@ The following commands produce and manage IpfsPins:
 
 IpfsPins consist of the following fields:
 
-| Field      | Description                                                   | Type     |
-| ---------- | ------------------------------------------------------------- | -------- |
-| cid        | the CID of the file                                           | ipfshash |
-| datePinned | the date the CID was first created                            | string   |
-| status     | the status of the file (one of [all|pinned|unpinned|pending]) | string   |
-| size       | the size of the file in bytes                                 | int64    |
-| fileName   | the metadata name of the pinned file                          | string   |
+| Field      | Description                          | Type     |
+| ---------- | ------------------------------------ | -------- |
+| cid        | the CID of the file                  | ipfshash |
+| datePinned | the date the CID was first created   | string   |
+| status     | the status of the file (one of [all  | pinned   | unpinned | pending]) | string |
+| size       | the size of the file in bytes        | int64    |
+| fileName   | the metadata name of the pinned file | string   |
 
 ## ChunkStats
 
@@ -244,15 +244,15 @@ The following commands produce and manage CacheItems:
 
 CacheItems consist of the following fields:
 
-| Field       | Description                                         | Type      |
-| ----------- | --------------------------------------------------- | --------- |
-| type        | the type of the cache                               | string    |
-| items       | the individual items in the cache (if --verbose)    | Any       |
-| lastCached  | the date of the most recent item added to the cache | string    |
-| nFiles      | the number of items in the cache                    | uint64    |
-| nFolders    | the number of folders holding that many items       | uint64    |
-| path        | the path to the top of the given cache              | string    |
-| sizeInBytes | the size of the cache in bytes                      | int64     |
+| Field       | Description                                         | Type   |
+| ----------- | --------------------------------------------------- | ------ |
+| type        | the type of the cache                               | string |
+| items       | the individual items in the cache (if --verbose)    | Any    |
+| lastCached  | the date of the most recent item added to the cache | string |
+| nFiles      | the number of items in the cache                    | uint64 |
+| nFolders    | the number of folders holding that many items       | uint64 |
+| path        | the path to the top of the given cache              | string |
+| sizeInBytes | the size of the cache in bytes                      | int64  |
 
 ## ReportCheck
 

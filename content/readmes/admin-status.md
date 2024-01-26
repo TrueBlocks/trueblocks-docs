@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD041 -->
 ## chifra status
 
 The `chifra status` program allows you to manage the various TrueBlocks caches. You may list all of the
