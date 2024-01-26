@@ -1,6 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 ## chifra monitors
 
-<!-- markdownlint-disable MD041 -->
 `chifra monitors` has two purposes: (1) to display information about the current set of monitors, and (2)
 to `--watch` a set of addresses. The `--watch` function allows one to "follow" an address (or set
 of addresses) and keep an off-chain database fresh.
@@ -64,6 +64,7 @@ Flags:
   -c, --commands string    available with --watch option only, the file containing the list of commands to apply to each watched address
   -b, --batch_size uint    available with --watch option only, the number of monitors to process in each batch (default 8)
   -s, --sleep float        available with --watch option only, the number of seconds to sleep between runs (default 14)
+  -D, --decache            removes related items from the cache
   -x, --fmt string         export format, one of [none|json*|txt|csv]
   -v, --verbose            enable verbose output
   -h, --help               display this help screen

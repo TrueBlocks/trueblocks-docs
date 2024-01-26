@@ -1,6 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 ## chifra export
 
-<!-- markdownlint-disable MD041 -->
 The `chifra export` tools provides a major part of the functionality of the TrueBlocks system. Using
 the index of appearances created with `chifra scrape` and the list of transaction identifiers
 created with `chifra list`, `chifra export` completes the actual extraction of an address's transactional
@@ -18,7 +18,7 @@ its destination are up to you.
 
 ```[plaintext]
 Purpose:
-  Export full detail of transactions for one or more addresses.
+  Export full details of transactions for one or more addresses.
 
 Usage:
   chifra export [flags] <address> [address...] [topics...] [fourbytes...]
@@ -44,8 +44,9 @@ Flags:
   -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 250)
   -N, --relevant            for log and accounting export only, export only logs relevant to one of the given export addresses
-  -m, --emitter strings     for log export only, export only logs if emitted by one of these address(es)
-  -B, --topic strings       for log export only, export only logs with this topic(s)
+  -m, --emitter strings     for the --logs option only, filter logs to show only those logs emitted by the given address(es)
+  -B, --topic strings       for the --logs option only, filter logs to show only those with this topic(s)
+  -V, --reverted            export only transactions that were reverted
   -P, --asset strings       for the accounting options only, export statements only for this asset
   -f, --flow string         for the accounting options only, export statements with incoming, outgoing, or zero value
                             One of [ in | out | zero ]
@@ -83,7 +84,6 @@ Data models produced by this tool:
 - [appearancecount](/data-model/accounts/#appearancecount)
 - [statement](/data-model/accounts/#statement)
 - [transaction](/data-model/chaindata/#transaction)
-- [transfer](/data-model/chaindata/#transfer)
 - [receipt](/data-model/chaindata/#receipt)
 - [log](/data-model/chaindata/#log)
 - [trace](/data-model/chaindata/#trace)
