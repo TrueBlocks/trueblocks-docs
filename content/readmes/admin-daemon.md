@@ -13,7 +13,7 @@ although this option is experimental and therefore not recommended for productio
 
 If the default port for the API server is in use, you may change it with the `--port` option.
 
-To get help for any command, please see the API documentation on our website. But, you may 
+To get help for any command, please see the API documentation on our website. But, you may
 also run `chifra --help` or `chifra <cmd> --help` on your command line to get help.
 
 See below for an example of converting command line options to a call to the API. There's a
@@ -22,7 +22,7 @@ their options.
 
 ```[plaintext]
 Purpose:
-  Initalize and control long-running processes such as the API and the scrapers.
+  Initialize and control long-running processes such as the API and the scrapers.
 
 Usage:
   chifra daemon [flags]
@@ -31,11 +31,11 @@ Aliases:
   daemon, serve
 
 Flags:
-  -p, --port string   specify the server's port (default ":8080")
-  -g, --grpc          run gRPC server to serve names
-  -x, --fmt string    export format, one of [none|json*|txt|csv]
-  -v, --verbose       enable verbose output
-  -h, --help          display this help screen
+  -u, --url string   specify the API server's url and optionally its port (default "localhost:8080")
+  -g, --grpc         run gRPC server to serve names
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
+  -v, --verbose      enable verbose output
+  -h, --help         display this help screen
 
 Notes:
   - To start API open terminal window and run chifra daemon.
@@ -51,7 +51,6 @@ Links:
 - no api for this command
 - [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/daemon)
 
-<!-- markdownlint-disable MD041 -->
 ### notes
 
 To convert the options for a command line tool to an API call, do the following:

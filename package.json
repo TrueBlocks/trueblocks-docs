@@ -57,14 +57,13 @@
     "purgecss-whitelister": "^2.4",
     "rimraf": "^3.0",
     "shx": "^0.3.3",
-    "standard-version": "^9.1",
-    "stylelint": "^13.12",
-    "stylelint-config-standard": "^22.0"
+    "standard-version": "^9.1"
   },
   "dependencies": {
     "glob-parent": "^6.0.2",
     "markdown-it": "^12.3.2",
     "semver-regex": "^4.0.5",
-    "shelljs": ">=0.8.5"
+    "shelljs": ">=0.8.5",
+    "stylelint": "^16.2.0"
   }
 }

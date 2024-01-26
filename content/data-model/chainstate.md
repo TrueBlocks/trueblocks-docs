@@ -13,7 +13,6 @@ menu:
 weight: 1400
 toc: true
 ---
-
 <!-- markdownlint-disable MD033 MD036 MD041 -->
 The data structures produced by tools in the Chain State category provide details on the balances
 (ERC20 or ETH) of an address against a particular token or block. Additionally, direct access to
@@ -24,7 +23,6 @@ Each data structure is created by one or more tools which are detailed below.
 
 ## Result
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
 For the `chifra state --call` tool, the `result` is the result returned by the call to the smart
 contract. This is the decoded `output` value of the smart contract call.
 
@@ -34,21 +32,20 @@ The following commands produce and manage Results:
 
 Results consist of the following fields:
 
-| Field            | Description                                        | Type                                    |
-| ---------------- | -------------------------------------------------- | --------------------------------------- |
-| blockNumber      | the block number at which this call was made       | blknum                                  |
-| timestamp        | the timestamp of the block for this call           | timestamp                               |
-| date             | the date of the block for this call (calculated)   | datetime                                |
-| address          | the address of contract being called               | address                                 |
-| name             | the name of the function call                      | string                                  |
-| encoding         | the encoding for the function call                 | string                                  |
-| signature        | the canonical signature of the interface           | string                                  |
-| encodedArguments | the bytes data following the encoding of the call  | string                                  |
-| articulatedOut   | the result of the call articulated as other models | [Function](/data-model/other/#function) |
+| Field            | Description                                               | Type                                    |
+| ---------------- | --------------------------------------------------------- | --------------------------------------- |
+| blockNumber      | the block number at which this call was made              | blknum                                  |
+| timestamp        | the timestamp of the block for this call                  | timestamp                               |
+| date             | the date of the block for this call (ulated) (calculated) | datetime                                |
+| address          | the address of contract being called                      | address                                 |
+| name             | the name of the function call                             | string                                  |
+| encoding         | the encoding for the function call                        | string                                  |
+| signature        | the canonical signature of the interface                  | string                                  |
+| encodedArguments | the bytes data following the encoding of the call         | string                                  |
+| articulatedOut   | the result of the call articulated as other models        | [Function](/data-model/other/#function) |
 
 ## State
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
 For the `chifra state --call` tool, the `result` is the result returned by the call to the smart
 contract. This is the decoded `output` value of the smart contract call.
 
@@ -62,7 +59,7 @@ States consist of the following fields:
 | ----------- | ----------------------------------------------------------------------------- | --------- |
 | blockNumber | the block number at which this call was made                                  | blknum    |
 | timestamp   | the timestamp of the block for this call                                      | timestamp |
-| date        | the date of the block for this call (calculated)                              | datetime  |
+| date        | the date of the block for this call (ulated) (calculated)                     | datetime  |
 | address     | the address of contract being called                                          | address   |
 | accountType | the type of account at the given block                                        | string    |
 | balance     | the balance of the account at the given block                                 | wei       |
@@ -73,7 +70,6 @@ States consist of the following fields:
 
 ## Token
 
-<!-- markdownlint-disable MD033 MD036 MD041 -->
 The `token` data model represents the name, decmials, token symbol, and optionally the totalSupply
 of an ERC-20 token.
 
@@ -89,7 +85,7 @@ Tokens consist of the following fields:
 | blockNumber      | the block at which the report is made                                 | blknum    |
 | transactionIndex | the transaction index (if applicable) at which the report is made     | blknum    |
 | timestamp        | the timestamp of the block                                            | timestamp |
-| date             | a calculated field -- the date of the block                           | datetime  |
+| date             | the timestamp as a date (calculated)                                  | datetime  |
 | totalSupply      | the total supply of the token contract                                | int256    |
 | address          | the address of the token contract                                     | address   |
 | holder           | the holder address for which we are reporting                         | address   |
