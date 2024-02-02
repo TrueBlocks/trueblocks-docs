@@ -1,21 +1,20 @@
 name: hugo rsync
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
-    branches: [ main, develop ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0 # we need this because Hugo is configured with enableGitInfo = true
 
       - uses: actions/setup-node@v2
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install

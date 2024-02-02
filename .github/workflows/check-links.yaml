@@ -1,29 +1,28 @@
 name: Check links on site
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
   workflow_dispatch:
-    branches: [ main, develop ]
 jobs:
   run_linkinator:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0 # we need this because Hugo is configured with enableGitInfo = true
+
       - uses: actions/setup-node@v2
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
-      - name: checkout deploy
-        run: sleep 3m; git checkout deploy
-      
       - name: Install linkinator
         run: npm install -g linkinator
 
-      # Don't put this on a single line. GitHub runner doesn't like that
+      - name: sleep waiting for rsync to finish
+        run: sleep 2m; git checkout deploy
+
       - name: check links
         run: pwd && linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
