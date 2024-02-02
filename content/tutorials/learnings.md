@@ -15,7 +15,6 @@ Our repo is WAY too big. It has a six year history of storing many changes to ma
     - etc.
 We need to clean it up (i.e., kill history)
 
-THEY NEED A ETHERSCAN API KEY 
-
+THEY NEED A ETHERSCAN API KEY
 
 https://ethereumnodes.com

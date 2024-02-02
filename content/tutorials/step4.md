@@ -38,7 +38,7 @@ chifra export --fmt json --cache --last_block 12000000 vitalik.eth --balances
 chifra export --fmt json --cache --last_block 12000000 vitalik.eth --accounting --statements
 ```
 
-### Some other crazy shit you can do.
+### Some other crazy shit you can do
 
 Every donor to TrueBlocks' GitCoin grant:
 
@@ -56,7 +56,6 @@ chifra export --fmt json --cache 0xd27d90b337717Fd91C4D409F712B890D4eE2FdD6 --lo
 **`[Show Spreadsheet]`**
 
 ---
-
 
 ---
 [<< Prev](/tutorials/step3) | [Home](/tutorials/)

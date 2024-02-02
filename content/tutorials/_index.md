@@ -41,7 +41,7 @@ We hope to show why:
   - How do we know they're not lying?
   - Why wouldn't regulators shut them down?
 - Content addressable data stores hold the key.
- 
+
 ### Prerequisites
 
 TrueBlocks is built from source and, therefore, you'll need a few build tools. Run the following commands depending on your operating system.

@@ -17,6 +17,8 @@ weight: 1100
 toc: true
 ---
 
+<!-- markdownlint-disable MD041 MD033 -->
+
 <img src="/data-model/img/the-index.png" alt="The Unchained Index." width="600"/>
 
 ## Benefits of unchaining the index

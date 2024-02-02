@@ -17,6 +17,5 @@ Complete the instructions up to [Testing the Build](/tutorials/#to-test-the-buil
 
 chifra init –chain sepolia –publisher 0xCCd7Fc08532953676ff801791DEF07D3617ec712
 
-
 ---
 [<< Prev](/tutorials/step5) | [Home](/tutorials/)

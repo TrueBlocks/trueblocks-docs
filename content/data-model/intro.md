@@ -16,16 +16,19 @@ weight: 1000
 toc: true
 ---
 
+<!-- markdownlint-disable MD041 MD033 -->
+
 <img src="/data-model/img/data-model-600.png" alt="TrueBlocks is full of data that interrelates." width="600"/>
 
 ## TrueBlocks data
 
 On its own blockchain data is an unintelligable blob of binary bytes. But, we all know there
-is an amazing collection of deeply interesting information contained therein. Thousands of 
+is an amazing collection of deeply interesting information contained therein. Thousands of
 people are trading, voting, expressing their preferences, making markets for valueless
 items every minute.
 
 What interests us about this data are answers to questions such as:
+
 * What exactly is going on?
 * Where is my money?
 * Didn't I have some of those tokens somewhere?
@@ -37,7 +40,7 @@ against one's own wallet address (or anyone else's for that matter).
 
 The `--articulate` option, which is available on many commands, reanimates
 or articulates the impossible-to-understand `input` and `event` data fields.
-TrueBlocks even articulates trace data which reveals the deep history of 
+TrueBlocks even articulates trace data which reveals the deep history of
 any transaction include multi-layer deep smart contract calls.
 
 TrueBlocks works as easily with multiple related addresses at a time as it
