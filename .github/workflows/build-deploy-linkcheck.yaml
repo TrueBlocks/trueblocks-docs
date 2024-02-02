@@ -57,12 +57,7 @@ jobs:
           remote_key: ${{ secrets.DEPLOY_SSH_KEY }}
 
       - name: check links
-        run: linkinator -r index.html docs/ papers/ data-model/ api/ \
-          --skip localhost:23456 \
-          --skip tokenomics.io \
-          --skip etherscan.io \
-          --skip https://twitter.com/trueblocks \
-          --skip intro
+        run: pwd && linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
 
       - name: Test Failure
         uses: rjstone/discord-webhook-notify@v1
