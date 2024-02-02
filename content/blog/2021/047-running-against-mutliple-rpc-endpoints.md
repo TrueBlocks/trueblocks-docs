@@ -96,7 +96,7 @@ You should get a different results.
 
 Any configuration value for any tool or application may be customized in the environment by specify a new value using the item's group and key, thus:
 
-```
+```[bash]
 export GROUP_KEY = <new value>
 ```
 

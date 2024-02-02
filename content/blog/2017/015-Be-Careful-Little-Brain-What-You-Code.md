@@ -22,7 +22,7 @@ I was only eight years old, but I remember thinking to myself, “How would I kn
 
 It was just one of many things that didn’t make sense to me back then. I realize now that I simply did not understand a concept called “Situational Awareness” or “Planning Ahead.”
 
-#### The Blockchain Will Save the World. Hallelujah!
+#### The Blockchain Will Save the World. Hallelujah
 
 I had two experiences recently, both related the blockchain and both related to the idea of a person’s identity. The first one excited me. The second one made me think of that song.
 

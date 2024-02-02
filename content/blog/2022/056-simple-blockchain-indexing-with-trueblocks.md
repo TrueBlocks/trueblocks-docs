@@ -15,4 +15,3 @@ weight: 944
 ---
 
 An [article about TrueBlocks](https://dspyt.com/blockchain-data-indexer-with-trueblocks) and how our indexers work. Written by one of our community members.<!--more-->
-

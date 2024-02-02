@@ -27,7 +27,6 @@ Token accounting is improved in these ways:
    4. If the balance goes up - label the transation as implied-mint and add to a feild called impliedMint
    5. If the balance goes down - label the reconciliation as impied-burn and add to a field called impliedBurn
 
-
 Bugs fixed:
    In previous code, if a token transacted multple times in a single block the entire net transfer was assigned to the first transfer. In new code, each individual inter-block transfer is accounting for. Show a picture
 

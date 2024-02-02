@@ -10,7 +10,7 @@ keywords: []
 weight: 967
 ---
 
-**All about the Ethereum Difficulty Calculation**
+## All about the Ethereum Difficulty Calculation
 
 _Special thanks to a first-rate Tuftian and data scientist, Ed Mazurek, for early versions of the R code used in this article._
 
@@ -34,7 +34,7 @@ It’s possible, as I do below, to separate these two components. This makes it 
 
 As is usually true when dealing with data, we start by acquiring data. We used our own software library, TrueBlocks, to write the following code:
 
-# include “etherlib.h”  
+\# include “etherlib.h”  
 int main(int argc, char \*argv\[\]) {  
     init\_etherlib();  
     for (int i = 0 ; i < getLatestBlock() ; i++) {  

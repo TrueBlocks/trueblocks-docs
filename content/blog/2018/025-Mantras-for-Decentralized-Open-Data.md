@@ -44,7 +44,7 @@ These are my thoughts in no particular order, nor are they very well thought out
 12. There will be a broad range of solutions because there are a broad range of needs.
 13. …
 
-#### Screech….
+#### Screech
 
 ![](/blog/img/025-Mantras-for-Decentralized-Open-Data-002.jpg)
 

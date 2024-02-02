@@ -56,7 +56,7 @@ whose data input field translates to this:
 
 I then scraped that address, and recognized it as The DAO Curator’s Multisig contract. So now I knew that somehow the DAO Curator’s Multisig was put on the Dark Dao’s whitelist.
 
-#### Oh My God! I’m the Only Person in the World Who Knows This!
+#### Oh My God! I’m the Only Person in the World Who Knows This
 
 When I first saw this, I was pretty sure I was the only person on earth who knew about this transaction other than the White Hat group and perhaps the Dark DAO Dick (as I call the attacker). Of course, I don’t know that for sure.
 

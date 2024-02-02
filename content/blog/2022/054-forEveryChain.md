@@ -15,6 +15,8 @@ tags: ["trueblocks"]
 weight: 946
 ---
 
+<!-- markdownlint-disable MD041 MD033 -->
+
 Have you ever had the desire to look at every trace of every transaction of every block on every blockchain? Yes? Well, pull up a chair and visit with us for a while.
 
 ### It’s a Multi-Chain World
@@ -25,7 +27,7 @@ If you know us at TrueBlocks at all, you know we're decentralization maximalists
 
 This week we took a stab at trying answering that question by adding a new feature to TrueBlocks that we call **multi-chain support**. This feature seems relatively simple on its face — a user only has to add `--chain <whatever>` to any of his/her chifra command lines — but it opens up a whole new world of possibilities (and headaches) — but...
 
-```
+```[bash]
 OUR CODE STILL WORKS ON A DESKTOP      ← this should be our new logo!
 ```
 
@@ -51,26 +53,29 @@ If you’re familiar with C++ code at all, you’ll notice the `main` function a
 While simple, that one function packs a wallop. It does exactly as it says, it visits every block in the entire blockchain it’s configured for. (By default TrueBlocks is configured to run against Ethereum Mainnet, but we’ll get back to this in a minute.)
 
 What line 38 does is:
-```
+
+```[plaintext]
 For every block in the current blockchain,
   call the function visitBlock (line 29) and pass it a pointer to counter.
 ```
 
 What does the visitBlock function do?
-```
+
+```[plaintext]
 For every transaction in the given block,
   call the function visitTransaction (line 24) passing in the same pointer.
 ```
 
 What does the function visitTransaction do?
-```
+
+```[plaintext]
 For every trace in the given transaction,
   call the function visitTrace (line 16) passing in the same pointer.
 ```
 
 And finally, what does visitTrace do?
 
-```
+```[plaintext]
 It keeps a count of the total number of traces in the entire blockchain and prints out each trace.
 ```
 
@@ -99,7 +104,7 @@ I was inspired to write this post because I thought of the following modificatio
 
 What does this actually do?
 
-```
+```[plaintext]
 It visits
   every trace
     in every transaction
