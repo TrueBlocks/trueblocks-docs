@@ -29,7 +29,6 @@ go version
 
 TrueBlocks needs version 1.16.x or later. If you to install or update Go, [see here](https://golang.org/doc/install).
 
-
 ### Installing build tools
 
 #### How do I install the build packages for my system?
@@ -168,7 +167,7 @@ in the `[settings]` group.
 #### Why do I need the index of appearances?
 
 If you're only querying basic block or transaction data, you don't really
-need the index of appearances. 
+need the index of appearances.
 
 However, most of our users with to explore the entire history of their own
 addresses. If you wish to do that, you will need the index.

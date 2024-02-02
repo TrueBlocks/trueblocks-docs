@@ -16,6 +16,8 @@ weight: 0200
 toc: true
 ---
 
+<!-- markdownlint-disable MD041 MD033 -->
+
 These instructions assume you can navigate the command line and edit configuration files.
 If you need help with a particular step, see the [installation's troubleshooting section](/docs/install/install-troubleshooting).
 

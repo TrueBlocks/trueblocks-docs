@@ -22,6 +22,8 @@ weight: 0300
 toc: true
 ---
 
+<!-- markdownlint-disable MD041 MD033 -->
+
 | If you want...                                                                           | and you don't mind...                                                                                                                                | then use...                                                  |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | to minimize the size of the data stored locally and<br>you want to get started faster... | slower first-time queries on new addresses, an index<br>that's slightly behind the head of the chain, an index<br>created by someone else...         | [`chifra init`](#use-init-to-get-only-the-chunks-you-query)  |
@@ -90,7 +92,6 @@ As is true of the previous methods, if you enable caching, subsequent queries fo
 
 ## Use chifra scrape to build your own index
 
-
 > 👉 **Note**:
 > If you don't have a node with tracing or archiving, `scrape` exits by default.
 > You can still use scrape, but you need to
@@ -111,7 +112,6 @@ The end result of `chifa scrape` is the same as the end result of `chifra init -
 (One note: It's possible to run against any RPC endpoint -- remote or local -- but because the TrueBlocks scraper hits the node continually and very aggressively, you will probably get rate-limited against a shared RPC server such as Infura.)
 
 A good explanation of this whole process requires a long form article. For now, the curious may look at the best documentation available, the `src` directory of the source code.
-
 
 ## One final note on building / making the index
 

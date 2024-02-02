@@ -19,7 +19,7 @@ toc: true
 
 ## The three commandments
 
-1.  **Let users query this data without asking third-parties for permission.**
+1. **Let users query this data without asking third-parties for permission.**
 
     If you can access blockchain data only through a third party (e.g. a cloud provider),
     is the data really decentralized?
@@ -38,7 +38,6 @@ toc: true
 No application can do all things. All design decisions involve tradeoffs.
 TrueBlocks tries to make trade off _consciously_, so that we always
 make the application best serve our core values.
-
 
 ### Core design values
 
@@ -111,4 +110,3 @@ If repeated endlessly, they will eventually sink in:
 * Some users, but not all, care about everything
 * Everyone needs to do accounting and pay taxes
 * The node can, and should be, be improved
-

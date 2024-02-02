@@ -17,6 +17,8 @@ weight: 0101
 toc: true
 ---
 
+<!-- markdownlint-disable MD041 MD033 -->
+
 Are blockchains really meeting their promise?
 
 ## Problem Statement
@@ -85,4 +87,3 @@ environment to provide you ingress and egress to the chain.
 ## Solution
 
 [dAppNode](https://dappnode.io/), [Erigon](https://github.com/ledgerwatch/erigon) and TrueBlocks.
-

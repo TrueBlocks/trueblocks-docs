@@ -45,7 +45,7 @@ The goal of TrueBlocks is to provide exactly that missing piece. We call our sol
 
 The Unchained Index is created locally on your machine -- on the dAppNode. As a direct result of being local, the index has a number of amazing qualities:
 
-1. **It fixes the broken node:** Without an index, one cannot query the node for a "list of everything that ever happened to an address." With one, which is what the Unchained Index provides, one can make such a query. In effect this turns the node from a "really shitting database," into a perfectly fine database. 
+1. **It fixes the broken node:** Without an index, one cannot query the node for a "list of everything that ever happened to an address." With one, which is what the Unchained Index provides, one can make such a query. In effect this turns the node from a "really shitting database," into a perfectly fine database.
 2. **No rate limiting:** Because both your node and the Unchained Index are local and not shared with other users, there is no need for rate limiting. Your can query the local node 100s of times faster than you can an API. This has massive implications for the types of applications you can build.
 3. **Perfectly private:** All queries happen against your local node - you don't expose your IP address to anyone, nor do you expose any information about which addresses you're interested in.
 4. **Faster queries leads to a better index::** Because we can query so much faster, we can dig MUCH deeper into the details of every block. This means our index contains more information about where an address appears on the chain. In fact, in tests against two popular Ethereum APIs, we consistently find 20-30% more appearances.
@@ -60,7 +60,7 @@ such an application with our [Account Explorer](/docs/install/install-explorer).
 
 In it's best incarnation, TrueBlocks runs locally against your own locally running node. If you build the thing yourself, no-one can take it away from you. After the initial synchronization of your node (Erigon, for example) which may take a few weeks, you can run one of TrueBlocks' command line tools called [chifra scrape](/chifra/admin/#chifra-scrape). This process takes a few days.
 
-To ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using [chifra init](/chifra/admin/#chifra-init). Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the "holder of all data" which eventually leads to winner-take-all like Google. We want to purposefully avoid that. 
+To ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using [chifra init](/chifra/admin/#chifra-init). Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the "holder of all data" which eventually leads to winner-take-all like Google. We want to purposefully avoid that.
 
 This whole process is [better explained here](/docs/install/build-unchained-index/).
 
@@ -80,6 +80,6 @@ said](https://lwn.net/Articles/193245/):
 
 > In fact, I'm a huge proponent of designing your code around the data, rather than the other way around.
 
-## More words!
+## More words
 
 We've got more words for you. [This blog post covers these topics in much more detail](/blog/a-long-winded-explanation-of-trueblocks/).

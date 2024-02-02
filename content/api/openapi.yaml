@@ -2100,7 +2100,7 @@ paths:
             type: boolean
         - name: remote
           description: >
-            prior to processing, retreive the manifest from the Unchained Index smart contract
+            prior to processing, retrieve the manifest from the Unchained Index smart contract
           required: false
           style: form
           in: query
@@ -2975,7 +2975,7 @@ components:
         date:
           type: string
           format: datetime
-          description: "the date of the block this log appears in (ulated) (calculated)"
+          description: "the timestamp as a date (calculated)"
         address:
           type: string
           format: address
@@ -3024,7 +3024,7 @@ components:
         date:
           type: string
           format: datetime
-          description: "a ulated value - the date of the block (calculated)"
+          description: "the timestamp as a date (calculated)"
         transactionHash:
           type: string
           format: hash
@@ -3299,7 +3299,7 @@ components:
         date:
           type: string
           format: datetime
-          description: "the date of the block for this call (ulated) (calculated)"
+          description: "the timestamp as a date (calculated)"
         address:
           type: string
           format: address
@@ -3336,7 +3336,7 @@ components:
         date:
           type: string
           format: datetime
-          description: "the date of the block for this call (ulated) (calculated)"
+          description: "the timestamp as a date (calculated)"
         address:
           type: string
           format: address

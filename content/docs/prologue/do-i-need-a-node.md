@@ -60,4 +60,3 @@ of building an index from your own node:
 * You still must query transaction data from remote RPCs
 * You must trust the data TrueBlocks publishes (though you can verify the build)
 * You can only query up to the last time TrueBlocks published the manifest
-

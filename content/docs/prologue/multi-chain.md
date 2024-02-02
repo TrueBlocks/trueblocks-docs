@@ -43,7 +43,7 @@ Once you do start to run your own node software, you will be very glad you did. 
 
 Notwithstanding the above, we've provided default configurations for the following eight (8) EVM compatible chains:
 
-```
+```[bash]
 mainnet, rinkeby, ropsten, goerli, kovan,
 gnosis, optimism, polygon
 ```
@@ -60,13 +60,13 @@ To configure a chain or add a new one, you must edit an entry for the `chains` a
 
 Once added, you may use your new chain entry by naming it to the `--chain` option:
 
-```
+```[bash]
 chifra <cmd> <options> --chain <chain-name>
 ```
 
 Below is one of the pre-configured sections for Ethereum Mainnet. Following that is a description of fields making up a chain configuration. Note that the section header of the chain must start with `chains.` and becomes the name of the chain.
 
-```
+```[bash]
 [chains.mainnet]
 chainId = "1"
 rpcProvider = "http://localhost:8545"
@@ -101,4 +101,3 @@ There are two things that currently do not work with Multi-Chain:
 1) The command `chifra init` only works with Ethereum Mainnet. While we will never provide an index for every chain (we must rely on our user base to do that and hopefully share it), we will, in the future be supporting some chains, notably the gnosis chain.
 
 2) Pricing using UniSwap only works on the mainnet. In the future, once more standardization appears relative to pricing on multiple chains, this choice will be revisited.
-

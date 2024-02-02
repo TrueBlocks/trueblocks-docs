@@ -36,4 +36,3 @@ Then, in a new terminal, run these commands:
 5. yarn develop
 
 Open your browser, and access the app from `localhost:1234`.
-
