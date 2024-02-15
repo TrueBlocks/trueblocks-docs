@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 2.5.0-release
+  version: 2.5.8-release
   description: >
 
     A REST layer over the TrueBlocks application. With `chifra daemon`, you can
@@ -348,8 +348,7 @@ paths:
           schema:
             type: boolean
         - name: count
-          description: >
-            only available for --appearances mode, if present, return only the number of records
+          description: for --appearances mode only, display only the count of records
           required: false
           style: form
           in: query
@@ -1092,7 +1091,7 @@ paths:
             type: number
             format: uint64
         - name: count
-          description: display the number of the lists of appearances for --addrs or --uniq
+          description: display only the count of appearances for --addrs or --uniq
           required: false
           style: form
           in: query
@@ -1446,7 +1445,7 @@ paths:
           schema:
             type: string
         - name: count
-          description: show the number of traces for the transaction only (fast)
+          description: display only the number of traces for the transaction (fast)
           required: false
           style: form
           in: query
@@ -2346,15 +2345,25 @@ paths:
           explode: true
           schema:
             type: boolean
-        - name: perPage
-          description: the number of records to request on each page
+        - name: source
+          description: the source of the slurped data
           required: false
           style: form
           in: query
           explode: true
           schema:
-            type: number
-            format: uint64
+            type: string
+            enum:
+              - etherscan
+              - key
+        - name: count
+          description: for --appearances mode only, display only the count of records
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: sleep
           description: seconds to sleep between requests
           required: false
