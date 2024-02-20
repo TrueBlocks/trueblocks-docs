@@ -33,17 +33,17 @@ jobs:
         with:
           args: "bundle --options.disableGoogleFont=true content/api/openapi.yaml -o public/api/index.html"
 
-      # - name: Push to deploy branch
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./public
-      #     publish_branch: deploy
+      - name: Create a deploy branch of just the public folder
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: deploy
 
-      # - name: checkout deploy
-      #   run: git checkout -f deploy
+      - name: Checkout that deploy branch
+        run: git checkout -f deploy
 
-      - name: rsync deployments
+      - name: Rsync to the server machine
         uses: burnett01/rsync-deployments@5.1
         with:
           switches: -avzr --delete --exclude=".git" --exclude=".github"
@@ -56,10 +56,10 @@ jobs:
       - name: Install linkinator
         run: npm install -g linkinator
 
-      - name: check links
-        run: linkinator -r public/index.html public/docs/ public/papers/ public/data-model/ public/api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip public/intro
+      - name: Run lininator
+        run: linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
 
-      - name: Test Failure
+      - name: Check for failure and report to Discord
         uses: rjstone/discord-webhook-notify@v1
         if: failure()
         with:
@@ -70,3 +70,16 @@ jobs:
       - name: Report job status
         run: |
           echo "This job's status is ${{ job.status }}"
+
+      - name: Also deploy to new server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.NEW_SERVER_HOST }}
+          username: ${{ secrets.DOCS_USER }}
+          key: ${{ secrets.DOCS_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.DOCS_USER }}/trueblocks-website
+            npm run build
+            chown -R ${{ secrets.DOCS_USER }}:trueblocks public
+            chmod 644 /var/www/key.trueblocks.io/html/service-worker.js
+            cp -pR public/* /var/www/key.trueblocks.io/html/
