@@ -15,7 +15,7 @@ info:
 
     ## How to use this API effectively
 
-    This API's endpoints are exact translations of the commands used by the chifra
+    The endpoints in this API are exact translations of the commands used by the chifra
     CLI application, and the query parameters mirror the commands' options and
     flags. If you want details, [the commands have their own documentation page](/chifra/introduction/).
 
