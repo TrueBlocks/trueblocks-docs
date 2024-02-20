@@ -186,7 +186,7 @@ change the IPFS location of the index file. However, we must continually
 add new records to the index in order to be able to query right up to
 the head of the chain.
 
-## Here's the solution:** after a certain amount of data has accumulated
+Here's the solution: after a certain amount of data has accumulated
 in the index we stop adding new records and create what we call an
 **index chunk**. We can then add that **chunk** to IPFS, and begin a new
 chunk.
