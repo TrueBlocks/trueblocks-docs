@@ -59,6 +59,20 @@ jobs:
       - name: Run lininator
         run: linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
 
+      - name: Deploy to new server also
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.NEW_SERVER_HOST }}
+          username: ${{ secrets.DOCS_USER }}
+          key: ${{ secrets.DOCS_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.DOCS_USER }}/trueblocks-website
+            chown -R ${{ secrets.DOCS_USER }}:trueblocks .
+            cp -pR * /var/www/trueblocks.io/html/
+            echo "Running lininator..."
+            cd /var/www/trueblocks.io/html/
+            linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
+
       - name: Check for failure and report to Discord
         uses: rjstone/discord-webhook-notify@v1
         if: failure()
@@ -71,13 +85,3 @@ jobs:
         run: |
           echo "This job's status is ${{ job.status }}"
 
-      - name: Deploy to new server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.NEW_SERVER_HOST }}
-          username: ${{ secrets.DOCS_USER }}
-          key: ${{ secrets.DOCS_PRIVATE_KEY }}
-          script: |
-            cd /home/${{ secrets.DOCS_USER }}/trueblocks-website
-            chown -R ${{ secrets.DOCS_USER }}:trueblocks .
-            cp -pR * /var/www/trueblocks.io/html/
