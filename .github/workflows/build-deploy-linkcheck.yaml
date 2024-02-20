@@ -79,7 +79,5 @@ jobs:
           key: ${{ secrets.DOCS_PRIVATE_KEY }}
           script: |
             cd /home/${{ secrets.DOCS_USER }}/trueblocks-website
-            npm run build
-            chown -R ${{ secrets.DOCS_USER }}:trueblocks public
-            chmod 644 /var/www/key.trueblocks.io/html/service-worker.js
-            cp -pR public/* /var/www/key.trueblocks.io/html/
+            chown -R ${{ secrets.DOCS_USER }}:trueblocks .
+            cp -pR * /var/www/trueblocks.io/html/
