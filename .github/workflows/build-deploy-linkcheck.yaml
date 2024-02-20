@@ -57,7 +57,7 @@ jobs:
         run: npm install -g linkinator
 
       - name: check links
-        run: linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
+        run: linkinator -r public/index.html public/docs/ public/papers/ public/data-model/ public/api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip public/intro
 
       - name: Test Failure
         uses: rjstone/discord-webhook-notify@v1
