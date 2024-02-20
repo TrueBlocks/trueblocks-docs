@@ -40,9 +40,6 @@ jobs:
           publish_dir: ./public
           publish_branch: deploy
 
-      - name: Install linkinator
-        run: npm install -g linkinator
-
       - name: checkout deploy
         run: git checkout -f deploy
 
@@ -51,21 +48,16 @@ jobs:
         with:
           switches: -avzr --delete --exclude=".git" --exclude=".github"
           path: public/
-          remote_path: /home/docs/Websites/trueblocks.io
-          remote_host: ${{ secrets.HOST }}
-          remote_user: ${{ secrets.HOST_USER }}
-          remote_key: ${{ secrets.DEPLOY_SSH_KEY }}
+          remote_path: /home/${{ secrets.DOCS_USER }}/trueblocks-website
+          remote_host: ${{ secrets.NEW_SERVER_HOST }}
+          remote_user: ${{ secrets.DOCS_USER }}
+          remote_key: ${{ secrets.DOCS_PRIVATE_KEY }}
+
+      - name: Install linkinator
+        run: npm install -g linkinator
 
       - name: check links
         run: linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
-
-      - name: Test Failure
-        uses: rjstone/discord-webhook-notify@v1
-        if: failure()
-        with:
-          severity: error
-          details: Test Failed!
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Report job status
         run: |
