@@ -19,20 +19,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build API page
-        uses: seeebiii/redoc-cli-github-action@v10
-        with:
-          args: "bundle --options.disableGoogleFont=true content/api/openapi.yaml -o public/api/index.html"
-
-      # - name: Push to deploy branch
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./public
-      #     publish_branch: deploy
-      # - name: checkout deploy
-      #   run: git checkout -f deploy
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -41,6 +27,21 @@ jobs:
 
       - name: Build Hugo site
         run: hugo --minify
+
+      - name: Build API page
+        uses: seeebiii/redoc-cli-github-action@v10
+        with:
+          args: "bundle --options.disableGoogleFont=true content/api/openapi.yaml -o public/api/index.html"
+
+      - name: Push to deploy branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: deploy
+
+      - name: checkout deploy
+        run: git checkout -f deploy
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.1
