@@ -1,74 +1,48 @@
-name: Sync the website
+name: Deploy Hugo Site
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # we need this because Hugo is configured with enableGitInfo = true
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 # we need this because Hugo is configured with enableGitInfo = true
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "20"
-          cache: "npm"
+    # This assumes that both hugo and lininator are already installed on the target machine
 
-      - name: Install dependencies
-        run: npm install
+    - name: Deploy to new server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.NEW_SERVER_HOST }}
+        username: ${{ secrets.DOCS_USER }}
+        key: ${{ secrets.DOCS_PRIVATE_KEY }}
+        script: |
+          export PATH=$PATH:/usr/local/go/bin
+          cd /home/${{ secrets.DOCS_USER }}/trueblocks.io
+          git pull
+          npm install postcss-cli
+          npx @redocly/cli build-docs --disableGoogleFont=true content/api/openapi.yaml -o public/api/index.html
+          npm run build
+          chown -R ${{ secrets.DOCS_USER }}:${{ secrets.DOCS_USER }} .
+          cp -pR public/* /var/www/trueblocks.io/html/
+          cd /var/www/trueblocks.io/html/
+          linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "0.122.0"
-          extended: true
+    - name: Check for failure and report to Discord
+      uses: rjstone/discord-webhook-notify@v1
+      if: failure()
+      with:
+        severity: error
+        details: Test Failed!
+        webhookUrl: ${{ secrets.DOC_WEBHOOK }}
 
-      - name: Build Hugo site
-        run: hugo --minify
-
-      - name: Build API page
-        uses: seeebiii/redoc-cli-github-action@v10
-        with:
-          args: "bundle --options.disableGoogleFont=true content/api/openapi.yaml -o public/api/index.html"
-
-      - name: Create a deploy branch of just the public folder
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: deploy
-
-      - name: Checkout that deploy branch
-        run: git checkout -f deploy
-
-      - name: Deploy to new server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.NEW_SERVER_HOST }}
-          username: ${{ secrets.DOCS_USER }}
-          key: ${{ secrets.DOCS_PRIVATE_KEY }}
-          script: |
-            cd /home/${{ secrets.DOCS_USER }}/trueblocks.io
-            git checkout main
-            git pull
-            npm run build
-            chown -R ${{ secrets.DOCS_USER }}:trueblocks .
-            cp -pR * /var/www/trueblocks.io/html/
-            echo "Running lininator..."
-            cd /var/www/trueblocks.io/html/
-            linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
-
-      - name: Check for failure and report to Discord
-        uses: rjstone/discord-webhook-notify@v1
-        if: failure()
-        with:
-          severity: error
-          details: Test Failed!
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-
-      - name: Report job status
-        run: |
-          echo "This job's status is ${{ job.status }}"
+    - name: Report job status
+      run: |
+        echo "This job's status is ${{ job.status }}"
 
