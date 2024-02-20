@@ -33,15 +33,15 @@ jobs:
         with:
           args: "bundle --options.disableGoogleFont=true content/api/openapi.yaml -o public/api/index.html"
 
-      - name: Push to deploy branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: deploy
+      # - name: Push to deploy branch
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./public
+      #     publish_branch: deploy
 
-      - name: checkout deploy
-        run: git checkout -f deploy
+      # - name: checkout deploy
+      #   run: git checkout -f deploy
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.1
