@@ -66,7 +66,7 @@ jobs:
           username: ${{ secrets.DOCS_USER }}
           key: ${{ secrets.DOCS_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.DOCS_USER }}/trueblocks-website
+            cd /home/${{ secrets.DOCS_USER }}/trueblocks.io
             git checkout main
             git pull
             npm run build
