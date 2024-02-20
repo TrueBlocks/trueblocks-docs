@@ -43,23 +43,23 @@ jobs:
       - name: Checkout that deploy branch
         run: git checkout -f deploy
 
-      - name: Rsync to the server machine
-        uses: burnett01/rsync-deployments@5.1
-        with:
-          switches: -avzr --delete --exclude=".git" --exclude=".github"
-          path: public/
-          remote_path: /home/docs/Websites/trueblocks.io
-          remote_host: ${{ secrets.HOST }}
-          remote_user: ${{ secrets.HOST_USER }}
-          remote_key: ${{ secrets.DEPLOY_SSH_KEY }}
+      # - name: Rsync to the server machine
+      #   uses: burnett01/rsync-deployments@5.1
+      #   with:
+      #     switches: -avzr --delete --exclude=".git" --exclude=".github"
+      #     path: public/
+      #     remote_path: /home/docs/Websites/trueblocks.io
+      #     remote_host: ${{ secrets.HOST }}
+      #     remote_user: ${{ secrets.HOST_USER }}
+      #     remote_key: ${{ secrets.DEPLOY_SSH_KEY }}
 
-      - name: Install linkinator
-        run: npm install -g linkinator
+      # - name: Install linkinator
+      #   run: npm install -g linkinator
 
-      - name: Run lininator
-        run: linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
+      # - name: Run lininator
+      #   run: linkinator -r index.html docs/ papers/ data-model/ api/ --skip localhost:23456 --skip tokenomics.io --skip etherscan.io --skip https://twitter.com/trueblocks --skip intro
 
-      - name: Deploy to new server also
+      - name: Deploy to new server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.NEW_SERVER_HOST }}
@@ -67,6 +67,9 @@ jobs:
           key: ${{ secrets.DOCS_PRIVATE_KEY }}
           script: |
             cd /home/${{ secrets.DOCS_USER }}/trueblocks-website
+            git checkout main
+            git pull
+            npm run build
             chown -R ${{ secrets.DOCS_USER }}:trueblocks .
             cp -pR * /var/www/trueblocks.io/html/
             echo "Running lininator..."
