@@ -71,7 +71,7 @@ jobs:
         run: |
           echo "This job's status is ${{ job.status }}"
 
-      - name: Also deploy to new server
+      - name: Deploy to new server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.NEW_SERVER_HOST }}
