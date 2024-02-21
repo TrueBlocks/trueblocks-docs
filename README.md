@@ -1,80 +1,57 @@
 # TrueBlocks Docs
 
+[![Deploy Hugo Site](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy_website.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/deploy_website.yaml)
+
 Repo for the [TrueBlocks.io website](https://trueblocks.io).
 
 Note: There is only a `main` branch which is protected. Make any PRs against this branch and we will review and merge if approriate.
-
-[![hugo rsync](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/build-and-deploy.yaml/badge.svg)](https://github.com/TrueBlocks/trueblocks-docs/actions/workflows/build-and-deploy.yaml)
 
 ## Contributing to the docs
 
 To develop on this site, you need `yarn` and `hugo`.
 
-To run locally first clone the repo then:
-
-1. Install dependencies
+To run locally, clone the repo then:
 
 ```[shell]
 yarn install
+hugo
+hugo serve --ignoreCache --disableFastRender
 ```
 
-1. serve hugo to local host
-
-```[shell]
-hugo serve
-```
-
-Open the website in your browser at http://localhost:1313.
-
-The theme was done by [the good people at Doks](https://github.com/h-enk/doks/).
+Open your browser to [the local copy](http://localhost:1313).
 
 ## Important directories
 
-- The homepage is in the `layouts/index.html`.
+- The homepage is in `layouts/index.html`.
 - Content templates are stored in `archetypes`.
 - `layouts` contains all information about templates.
-- `config/_default/menus.toml` contains the structure for the overall menu and the section menus.
+- `config/_default/menus.toml` contains the structure of the site.
 
 ## How to add menu items
 
 Open up `config/_default/menus.toml`.
 
-### Adding a main section
-
-If you want to add a head section, add a config to `[[main]]`.
+### Main sections
 
 ```TOML
 [[main]]
-name = "Docs"
-url = "/docs/prologue/introduction/"
+name = "NewSection"
+url = "/newsection/"
 weight = 10
 ```
 
-The more "weight", the farther to the left it will be.
+The more "weight", the farther to the left.
 
-Then change some files in `layouts`. Check out the files the template owner changed [here](https://github.com/atwriter/new_doks_site/pull/1).
-
-### Adding a sub section
-
-If you want to add a subsection, it will look like this under `[[<section-name>]]`
-
-```TOML
-[[docs]]
-name = "Tools"
-weight = 20
-identifier = "tools"
-url = "/docs/concepts/"
-```
-
-The more weight it has, the farther down the section will be.
-
-When you create content, you probably want to create corresponding directories in `content`.
+You must also add a corresponding file in `layouts` for your new section.
 
 ## Adding new pages
 
-In the `content` folder, create a new page. In the new directory, add a file called `_index.md`. The name must start with `_`, unless you only need one page. If you need subpages, you add them to the same directory.
+Add you pages to the `content` folder:
 
-The new page will use the default layout. It may happen that it goes into "list" mode (the text content is not displayed and part of it is rendered as headers). In such a case, add `layout: single` in front matter.
+- if it's the first page in a subfolder, call it `_index.md`.
+- add subpages to the same directory.
+
+The new page uses the default layout. If you need to use "list" mode, add `layout: single` in the front matter.
 
 If you need a different layout for the pages, create a new directory in `layouts` using the same name as in `content` folder.
 
