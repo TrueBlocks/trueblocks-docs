@@ -49,7 +49,7 @@
     identifier = "sdks"
     name = "SDKs"
     url = "/sdks/introduction"
-    weight = 600
+    weight = 500
 [[sdks]]
     identifier = "introduction"
     name = "sdks"
@@ -62,25 +62,25 @@
     weight = 20
 
 [[main]]
-    identifier = "faq"
-    name = "FAQ"
-    url = "/faq/"
-    weight = 600
-
-[[main]]
     name = "Blog"
     url = "/blog/"
-    weight = 700
+    weight = 600
 
 [[main]]
     identifier = "papers"
     name = "Papers"
     url = "/papers/"
-    weight = 800
+    weight = 700
 [[papers]]
     name = "Papers"
     url = "/papers/2023"
     weight = 50
+
+[[main]]
+    identifier = "faq"
+    name = "FAQ"
+    url = "/faq/"
+    weight = 800
 
 [[social]]
     name = "API"
