@@ -1,5 +1,5 @@
 ---
-title: "TrueBlocks SDKs"
+title: "SDKs"
 description: "We've generated a few SDKs for your use"
 lead: ""
 draft: false
