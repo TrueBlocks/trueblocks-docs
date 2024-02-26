@@ -46,7 +46,7 @@ make                   # may be faster with make -j <nproc>
 - Type `chifra config --paths`. This will produce a display similar to the following (ignore any errors). Note the `$CONFIG` paths.
 
 ```[shell]
-chifra status --paths:
+chifra config --paths:
   Config: $HOME/Library/Application Support/TrueBlocks/
   Cache : $HOME/Library/Application Support/TrueBlocks/cache/mainnet
   Index : $HOME/Library/Application Support/TrueBlocks/unchained/mainnet
