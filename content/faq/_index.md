@@ -9,15 +9,15 @@ layout: "single"
 
 {{< toc >}}
 
-## *Usage*
+### *Usage*
 
-### -- Can I get my balance for a given token?
+#### -- Can I get my balance for a given token?
 
 Yes. There is. In fact, this is one of TrueBlocks' most important features. Simply do `chifra export --statements <address(es)>` or query the API serve with `http://localhost:8080/export?addr=<address>&statements`.
 
 Note that `chifra export` has many, many other options which produce similarly-informative data such as `--logs`, `--appearances`, `--neighbors`, `--accounting`, and so on. See the entire help file with `chifra export --help`.
 
-### -- Token four-bytes come in two flavors. How do you handle that?
+#### -- Token four-bytes come in two flavors. How do you handle that?
 
 [Here's an example](https://www.4byte.directory/signatures/?bytes4_signature=0xa9059cbb).
 
@@ -27,17 +27,17 @@ If we encounter such as case (where there is a conflict in the four-byte or even
 
 In other words, regular old-fashioned, off-chain double-entry accounting will comes to the rescue. This is by design because as you point out, it's not possible to be perfect using purely on-chain data.
 
-### -- Can I use my own ABI for the --articulate option?
+#### -- Can I use my own ABI for the --articulate option?
 
 The chifra abis routine will try to find the ABI in the local folder by looking for `<address>.json`, although you may specify the --sol option and feed it the solidity code. Failing that, `chifra` looks to EtherScan for the ABI. Failing that it falls back to a collection of about 2,800 'known' signatures from EIP standards (ERC20, etc.) and some popular smart contracts ENS, Zephlin, etc.
 
-### -- I want to make a list of all tokens I own and their historical balances. How do?
+#### -- I want to make a list of all tokens I own and their historical balances. How do?
 
 An article on why this is hard: https://trueblocks.io/blog/how-many-erc20-tokens-do-you-have/
 
 A first draft of an article on how to accomplish this: https://github.com/TrueBlocks/tokenomics/blob/main/explorations/accounting-03/notes.md
 
-### -- How does chifra handle multiple accounts?
+#### -- How does chifra handle multiple accounts?
 
 I will try to answer this myself by going through the code, but how does chifra handle multiple accounts? Say I have 10 addresses that I view as a single bundle. One wallet may buy a token and send it to another wallet that ultimately sells it. In this context, there was a buy and a sell and it doesn’t really matter which wallet it came from. Can chifra handle this situation to produce the financial statements and double entry accounting at the “bundle” level instead of the address level?
 tjayrush | TrueBlocks.io — Today at 11:21 AM
@@ -59,9 +59,9 @@ Note this only works for non-CEX addresses which must be handled separately and 
 
 ----
 
-## *Running a Node*
+### *Running a Node*
 
-### -- Why would anyone want to run a local Ethereum node?
+#### -- Why would anyone want to run a local Ethereum node?
 
 It's faster, cheaper, uncensorable, and private.
 
@@ -77,7 +77,7 @@ One could, if they wished, used "node-as-a-service" such as Infura or QuickNode,
 
 Our recommendation is definitely a local machine running Erigon, with TrueBlocks installed on the same machine. An excellent option is [dAppNode](https://dappnode.io).
 
-### -- The docs say you require Erigon. Is that true?
+#### -- The docs say you require Erigon. Is that true?
 
 There's four reasons we suggest Erigon (the last is a deal-breaker).
 
@@ -104,9 +104,9 @@ If you're running against node software that is both an archive node and support
 
 ----
 
-## *Building the Unchained Index*
+### *Building the Unchained Index*
 
-### -- What do the terms finalized, staging, ripe, and unripe mean?
+#### -- What do the terms finalized, staging, ripe, and unripe mean?
 
 Run this command: `chifra config`. You will see output similar to this:
 
@@ -135,7 +135,7 @@ Here's what these numbers mean:
 
 For a much better explaination of these numbers (and more generally the scraper), please see the [TrueBlocks Spec](https://trueblocks.io/papers/2022/file-format-spec-v0.40.0-beta.pdf).
 
-### -- I'm getting an error message: current file does not sequentially follow previous file. What do?
+#### -- I'm getting an error message: current file does not sequentially follow previous file. What do?
 
 When using chifra scrape indexer you may get the above message. What this means is a completely empty block was
 returned from the RPC. When I say completely empty, this means there's not even a miner address. Our scraper
@@ -163,13 +163,13 @@ allow_missing = true
 
 This error may also manifest itself with the message "A block was not processed."
 
-### -- Must I have a copy of the Unchained Index in order to use chifra?
+#### -- Must I have a copy of the Unchained Index in order to use chifra?
 
 Since TrueBlocks only provides Unchained Index data for Eth mainnet, Sepolia, and Gnosis, how can I run the `chifra init` for Polygon?
 
 This is a very, very good question. TrueBlocks is not a "service." By that, I mean that we do not provide you (the user) with anything other than the ability to create and use the Unchained Index yourself. It's as if we were giving you a hammer as opposed to, say, being carpenter that you can hire to complete a project. We provide Eth mainnet, Sepolia, and Gnosis because *we need those chains*. If someone else needs a different chain, they need to provide it for themselves. The innovation that TrueBlocks makes is that (if it makes any), is to allow you to provide the index for yourself. Furthermore, with TrueBlocks, the index is shared with other people without doing anything special. Super importantly -- other people can share perhaps other data with you. And it flows out from there. TrueBlocks is purposefully designed this way because "decentralization," which we believe must work by default.
 
-### -- How do I build an index?
+#### -- How do I build an index?
 
 cryptoguru — Yesterday at 3:10 PM
 I did scan the docs, but nothing really stood out to me as the way to define a sort of schema to build an index
@@ -189,7 +189,7 @@ Or, Just How Bad was my year?
 cryptoguru — Yesterday at 11:29 PM
 This is an excellent explanation! Thanks for sharing the blog post recipes, seems to be a great practical example with a starting point of how to make use of it for my use case. I'll take a further look and try out the examples! 
 
-### -- Is it normal for the index to be about six minutes behind the head?
+#### -- Is it normal for the index to be about six minutes behind the head?
 
 A conversation with a user:
 
@@ -294,7 +294,7 @@ There is no option currently to export everything. And I can see that we should 
 
 (Sorry for the long-windedness. I'm writing this in detail, so I can copy it into an issue.)
 
-### -- Are there commands to check the consistency of the Unchained Index?
+#### -- Are there commands to check the consistency of the Unchained Index?
 
 **Answer:** `chifra chunks index --check` does some high level consistency checks (but this does require someone to have published the manifest hash to the smart contract, so maybe that doesn't work.
 
@@ -306,13 +306,13 @@ You may also export "everything" in each chunk with `chifra chunks addresses --v
 
 ----
 
-## *Build Problems*
+### *Build Problems*
 
-### -- What are the requirements for building and running TrueBlocks?
+#### -- What are the requirements for building and running TrueBlocks?
 
 XXX
 
-### -- I am having uild problems. Can you help?
+#### -- I am having uild problems. Can you help?
 
 When run the make command, I got this error:
 
@@ -327,9 +327,9 @@ libs/utillib/CMakeFiles/util.dir/build.make:902: recipe for target 'libs/utillib
 
 ----
 
-## *About the project*
+### *About the project*
 
-### -- Why does TrueBlocks use a file-based cache?
+#### -- Why does TrueBlocks use a file-based cache?
 
 Kevin11 — Yesterday at 10:08 PM
 Just curious why the TrueBlocks caches results as files?
@@ -342,7 +342,7 @@ May I ask the results of chifra list <address> --count shows for the address tha
 Also, are you caching transactions or traces?
 Also, are you using the --accounting options?
 
-### -- What's the long term vision for TrueBlocks?
+#### -- What's the long term vision for TrueBlocks?
 
 **Answer:**
 
@@ -353,7 +353,7 @@ Also, are you using the --accounting options?
 - 1-month vision: get a speaking gig at EthDenver.
 - 1-day vision: finish porting chifra traces to GoLang.
 
-### -- What is your policy on new features?
+#### -- What is your policy on new features?
 
 **Answer:**
 
