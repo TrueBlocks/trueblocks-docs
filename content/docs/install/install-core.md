@@ -30,14 +30,14 @@ If you need help with a particular step, see the [installation's troubleshooting
 - Install or upgrade the build dependencies: _git_, _cmake_, _ninja_, _curl_, _python_, _clang-format_, _jq_
 
   - [Install dependencies](https://trueblocks.io/docs/install/install-troubleshooting/#installing-build-tools)
-<br><br>
+    <br><br>
+
 - Clone the repo and compile the executable:
 
 ```shell
 git clone --depth 1 --branch master https://github.com/TrueBlocks/trueblocks-core
 cd trueblocks-core
 mkdir build && cd build
-../scripts/make-go-work.sh
 cmake ../src
 make                   # may be faster with make -j <nproc>
 ```
@@ -106,7 +106,7 @@ You should get results similar to these:
 
 There's a lot left to learn. Have fun:
 
-  - [Using the Unchained Index](/docs/install/build-unchained-index/)
-  - [Explore some coding examples](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples)
-  - [View data science recipes](/tags/tutorials/)
-  - [Use the explorer application](/docs/install/install-explorer/)
+- [Using the Unchained Index](/docs/install/build-unchained-index/)
+- [Explore some coding examples](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples)
+- [View data science recipes](/tags/tutorials/)
+- [Use the explorer application](/docs/install/install-explorer/)
