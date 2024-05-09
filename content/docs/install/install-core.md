@@ -37,7 +37,7 @@ If you need help with a particular step, see the [installation's troubleshooting
 git clone --depth 1 --branch master https://github.com/TrueBlocks/trueblocks-core
 cd trueblocks-core
 mkdir build && cd build
-../scripts/make-go-work.sh
+../scripts/go-work-sync.sh  # if on develop branch
 cmake ../src
 make                   # may be faster with make -j <nproc>
 ```
