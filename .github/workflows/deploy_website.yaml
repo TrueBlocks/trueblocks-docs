@@ -23,7 +23,8 @@ jobs:
         username: ${{ secrets.DOCS_USER }}
         key: ${{ secrets.DOCS_PRIVATE_KEY }}
         script: |
-          set -e
+          # turn this back on if your suspect an error
+          # set -e
           export PATH=$PATH:/usr/local/go/bin
           cd /home/${{ secrets.DOCS_USER }}/trueblocks.io
           git pull
