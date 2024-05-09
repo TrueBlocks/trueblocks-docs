@@ -39,7 +39,7 @@ cd trueblocks-core
 mkdir build && cd build
 ../scripts/go-work-sync.sh  # if on develop branch
 cmake ../src
-make                   # may be faster with make -j <nproc>
+make                        # may be faster with make -j <nproc>
 ```
 
 - Add `./trueblocks-core/bin` to your shell's $PATH. Check Google if you don't know what this means.
