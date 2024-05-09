@@ -23,6 +23,7 @@ jobs:
         username: ${{ secrets.DOCS_USER }}
         key: ${{ secrets.DOCS_PRIVATE_KEY }}
         script: |
+          set -e
           export PATH=$PATH:/usr/local/go/bin
           cd /home/${{ secrets.DOCS_USER }}/trueblocks.io
           git pull
@@ -45,4 +46,3 @@ jobs:
     - name: Report job status
       run: |
         echo "This job's status is ${{ job.status }}"
-
