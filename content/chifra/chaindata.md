@@ -16,7 +16,7 @@ weight: 21000
 toc: true
 ---
 
-The Chain Data group of tools extract raw blockchain data directly from the node. You may extract
+The Chain Data group of tools extract blockchain data directly from the node. You may extract
 block data, transactional data, receipts, logs, traces, and other information. Each tool has it own
 set of options, allowing you to get exactly the data you need.
 
@@ -57,10 +57,8 @@ Flags:
   -B, --topic strings     for the --logs option only, filter logs to show only those with this topic(s)
   -i, --withdrawals       export the withdrawals from the block as opposed to the block data
   -a, --articulate        for the --logs option only, articulate the retrieved data if ABIs can be found
-  -r, --big_range uint    for the --logs option only, allow for block ranges larger than 500 (default 500)
   -U, --count             display only the count of appearances for --addrs or --uniq
   -H, --ether             specify value in ether
-  -w, --raw               report JSON data from the source with minimal processing
   -o, --cache             force the results of the query into the cache
   -D, --decache           removes related items from the cache
   -x, --fmt string        export format, one of [none|json*|txt|csv]
@@ -74,7 +72,6 @@ Notes:
   - With the --logs option, optionally specify one or more --emitter, one or more --topics, either or both.
   - The --logs option is significantly faster if you provide an --emitter and/or a --topic.
   - Multiple topics match on topic0, topic1, and so on, not on different topic0's.
-  - For the --logs option, large block ranges may crash the node, use --big_range to specify a larger range.
   - The --decache option removes the block(s), all transactions in those block(s), and all traces in those transactions from the cache.
   - The --withdrawals option is only available on certain chains. It is ignored otherwise.
 ```
@@ -84,8 +81,9 @@ Data models produced by this tool:
 - [appearance](/data-model/accounts/#appearance)
 - [block](/data-model/chaindata/#block)
 - [blockcount](/data-model/chaindata/#blockcount)
+- [lightblock](/data-model/chaindata/#lightblock)
 - [log](/data-model/chaindata/#log)
-- [logfilter](/data-model/chaindata/#logfilter)
+- [message](/data-model/other/#message)
 - [trace](/data-model/chaindata/#trace)
 - [traceaction](/data-model/chaindata/#traceaction)
 - [traceresult](/data-model/chaindata/#traceresult)
@@ -98,8 +96,7 @@ Links:
 
 ## chifra transactions
 
-The `chifra transactions` tool retrieves transactions directly from the Ethereum node (using the `--raw`
-option) or from the TrueBlocks cache (if present). You may specify multiple transaction identifiers
+The `chifra transactions` tool retrieves transactions directly from the Ethereum node or from the TrueBlocks cache (if present). You may specify multiple transaction identifiers
 per invocation. Unlike the Ethereum RPC, the reported transactions include the transaction's receipt
 and generated logs.
 
@@ -130,7 +127,6 @@ Flags:
   -m, --emitter strings   for the --logs option only, filter logs to show only those logs emitted by the given address(es)
   -B, --topic strings     for the --logs option only, filter logs to show only those with this topic(s)
   -H, --ether             specify value in ether
-  -w, --raw               report JSON data from the source with minimal processing
   -o, --cache             force the results of the query into the cache
   -D, --decache           removes related items from the cache
   -x, --fmt string        export format, one of [none|json*|txt|csv]
@@ -146,6 +142,11 @@ Notes:
 
 Data models produced by this tool:
 
+- [appearance](/data-model/accounts/#appearance)
+- [function](/data-model/other/#function)
+- [log](/data-model/chaindata/#log)
+- [message](/data-model/other/#message)
+- [parameter](/data-model/other/#parameter)
 - [transaction](/data-model/chaindata/#transaction)
 
 Links:
@@ -177,7 +178,6 @@ Arguments:
 
 Flags:
   -a, --articulate   articulate the retrieved data if ABIs can be found
-  -w, --raw          report JSON data from the source with minimal processing
   -o, --cache        force the results of the query into the cache
   -D, --decache      removes related items from the cache
   -x, --fmt string   export format, one of [none|json*|txt|csv]
@@ -192,6 +192,8 @@ Notes:
 
 Data models produced by this tool:
 
+- [function](/data-model/other/#function)
+- [parameter](/data-model/other/#parameter)
 - [receipt](/data-model/chaindata/#receipt)
 
 Links:
@@ -221,7 +223,6 @@ Flags:
   -m, --emitter strings   filter logs to show only those logs emitted by the given address(es)
   -B, --topic strings     filter logs to show only those with this topic(s)
   -a, --articulate        articulate the retrieved data if ABIs can be found
-  -w, --raw               report JSON data from the source with minimal processing
   -o, --cache             force the results of the query into the cache
   -D, --decache           removes related items from the cache
   -x, --fmt string        export format, one of [none|json*|txt|csv]
@@ -237,8 +238,10 @@ Notes:
 
 Data models produced by this tool:
 
+- [function](/data-model/other/#function)
 - [log](/data-model/chaindata/#log)
-- [logfilter](/data-model/chaindata/#logfilter)
+- [message](/data-model/other/#message)
+- [parameter](/data-model/other/#parameter)
 
 Links:
 
@@ -271,7 +274,6 @@ Flags:
   -f, --filter string   call the node's trace_filter routine with bang-separated filter
   -U, --count           display only the number of traces for the transaction (fast)
   -H, --ether           specify value in ether
-  -w, --raw             report JSON data from the source with minimal processing
   -o, --cache           force the results of the query into the cache
   -D, --decache         removes related items from the cache
   -x, --fmt string      export format, one of [none|json*|txt|csv]
@@ -287,6 +289,9 @@ Notes:
 
 Data models produced by this tool:
 
+- [function](/data-model/other/#function)
+- [message](/data-model/other/#message)
+- [parameter](/data-model/other/#parameter)
 - [trace](/data-model/chaindata/#trace)
 - [traceaction](/data-model/chaindata/#traceaction)
 - [tracecount](/data-model/chaindata/#tracecount)
@@ -344,7 +349,7 @@ Notes:
 
 Data models produced by this tool:
 
-- [block](/data-model/chaindata/#block)
+- [message](/data-model/other/#message)
 - [namedblock](/data-model/chaindata/#namedblock)
 - [timestamp](/data-model/chaindata/#timestamp)
 - [timestampcount](/data-model/chaindata/#timestampcount)

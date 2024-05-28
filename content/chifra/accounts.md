@@ -52,7 +52,7 @@ Flags:
   -U, --count               display only the count of records for each monitor
   -z, --no_zero             for the --count option only, suppress the display of zero appearance accounts
   -b, --bounds              report first and last block this address appears
-  -u, --unripe              list transactions labeled upripe (i.e. less than 28 blocks old)
+  -u, --unripe              list transactions labeled unripe (i.e. less than 28 blocks old)
   -s, --silent              freshen the monitor only (no reporting)
   -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 250)
@@ -71,7 +71,6 @@ Notes:
 Data models produced by this tool:
 
 - [appearance](/data-model/accounts/#appearance)
-- [appearancecount](/data-model/accounts/#appearancecount)
 - [bounds](/data-model/accounts/#bounds)
 - [monitor](/data-model/accounts/#monitor)
 
@@ -132,7 +131,7 @@ Flags:
   -f, --flow string         for the accounting options only, export statements with incoming, outgoing, or zero value
                             One of [ in | out | zero ]
   -y, --factory             for --traces only, report addresses created by (or self-destructed by) the given address(es)
-  -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
+  -u, --unripe              export transactions labeled unripe (i.e. less than 28 blocks old)
   -E, --reversed            produce results in reverse chronological order
   -z, --no_zero             for the --count option only, suppress the display of zero appearance accounts
   -F, --first_block uint    first block to process (inclusive)
@@ -161,19 +160,19 @@ Notes:
 Data models produced by this tool:
 
 - [appearance](/data-model/accounts/#appearance)
-- [appearancecount](/data-model/accounts/#appearancecount)
 - [function](/data-model/other/#function)
 - [log](/data-model/chaindata/#log)
+- [message](/data-model/other/#message)
 - [monitor](/data-model/accounts/#monitor)
 - [parameter](/data-model/other/#parameter)
 - [receipt](/data-model/chaindata/#receipt)
-- [state](/data-model/chainstate/#state)
 - [statement](/data-model/accounts/#statement)
 - [token](/data-model/chainstate/#token)
 - [trace](/data-model/chaindata/#trace)
 - [traceaction](/data-model/chaindata/#traceaction)
 - [traceresult](/data-model/chaindata/#traceresult)
 - [transaction](/data-model/chaindata/#transaction)
+- [withdrawal](/data-model/chaindata/#withdrawal)
 
 Links:
 
@@ -260,6 +259,7 @@ Notes:
 
 Data models produced by this tool:
 
+- [message](/data-model/other/#message)
 - [monitor](/data-model/accounts/#monitor)
 - [monitorclean](/data-model/admin/#monitorclean)
 
@@ -317,6 +317,7 @@ Notes:
 
 Data models produced by this tool:
 
+- [message](/data-model/other/#message)
 - [name](/data-model/accounts/#name)
 
 Links:
