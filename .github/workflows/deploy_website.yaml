@@ -12,9 +12,18 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        fetch-depth: 0 # we need this because Hugo is configured with enableGitInfo = true
+        fetch-depth: 0
 
-    # This assumes that both hugo and lininator are already installed on the target machine
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install Redocly CLI
+      run: npm install -g @redocly/cli
+
+    - name: Validate Redocly Configuration
+      run: cat .redocly.yaml
 
     - name: Deploy to new server
       uses: appleboy/ssh-action@master
@@ -23,7 +32,6 @@ jobs:
         username: ${{ secrets.DOCS_USER }}
         key: ${{ secrets.DOCS_PRIVATE_KEY }}
         script: |
-          # turn this back on if your suspect an error
           set -e
           export PATH=$PATH:/usr/local/go/bin
           cd /home/${{ secrets.DOCS_USER }}/trueblocks.io
@@ -35,6 +43,7 @@ jobs:
           npm install postcss-cli
           echo "------------------- redocly -------------------  "
           echo ""
+          cat .redocly.yaml
           npx @redocly/cli build-docs --disableGoogleFont=true content/api/openapi.yaml -o content/api/index.html
           echo "------------------- npm run build -------------------  "
           echo ""
