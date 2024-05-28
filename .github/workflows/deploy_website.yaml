@@ -14,17 +14,6 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-
-    - name: Install Redocly CLI
-      run: npm install -g @redocly/cli
-
-    - name: Validate Redocly Configuration
-      run: cat .redocly.yaml
-
     - name: Deploy to new server
       uses: appleboy/ssh-action@master
       with:
@@ -70,3 +59,4 @@ jobs:
     - name: Report job status
       run: |
         echo "This job's status is ${{ job.status }}"
+
