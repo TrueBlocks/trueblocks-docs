@@ -34,13 +34,17 @@ If you need help with a particular step, see the [installation's troubleshooting
 - Clone the repo and compile the executable:
 
 ```shell
-git clone --depth 1 --branch master https://github.com/TrueBlocks/trueblocks-core
+git clone --depth 1 --recurse-submodules --branch develop https://github.com/TrueBlocks/trueblocks-core
 cd trueblocks-core
 mkdir build && cd build
 ../scripts/go-work-sync.sh  # if on develop branch
 cmake ../src
-make                        # may be faster with make -j <nproc>
+make
 ```
+
+- Switch to the `master` branch if you want a more stable version.
+
+- The build may be faster with `make -j <nproc>`.
 
 - Add `./trueblocks-core/bin` to your shell's $PATH. Check Google if you don't know what this means.
 
