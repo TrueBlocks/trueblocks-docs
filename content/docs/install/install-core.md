@@ -34,10 +34,10 @@ If you need help with a particular step, see the [installation's troubleshooting
 - Clone the repo and compile the executable:
 
 ```shell
-git clone --depth 1 --recurse-submodules --branch develop https://github.com/TrueBlocks/trueblocks-core
+git clone --depth 1 --no-single-branch --recurse-submodules --branch develop https://github.com/TrueBlocks/trueblocks-core
 cd trueblocks-core
 mkdir build && cd build
-../scripts/go-work-sync.sh  # if on develop branch
+../scripts/go-work-sync.sh
 cmake ../src
 make
 ```
