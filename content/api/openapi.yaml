@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: TrueBlocks API
   contact:
@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 2.9.0-release
+  version: 3.0.0-release
   description: >
     A REST layer over the TrueBlocks chifra command line. With `chifra daemon`, you can
     run this on your own machine, and make calls to `localhost`.
@@ -668,48 +668,6 @@ paths:
           explode: true
           schema:
             type: boolean
-        - name: watch
-          description: continually scan for new blocks and extract data as per the command file
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: watchlist
-          description: available with --watch option only, a file containing the addresses to watch
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: string
-        - name: commands
-          description: available with --watch option only, the file containing the list of commands to apply to each watched address
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: string
-        - name: batchSize
-          description: available with --watch option only, the number of monitors to process in each batch
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: number
-            format: uint64
-        - name: sleep
-          description: available with --watch option only, the number of seconds to sleep between runs
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: number
-            format: float64
         - name: chain
           description: the chain to use
           required: false
@@ -1244,6 +1202,22 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: cacheTxs
+          description: force a write of the block's transactions to the cache (slow)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: cacheTraces
+          description: force a write of the block's traces to the cache (slower)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: chain
           description: the chain to use
           required: false
@@ -1410,6 +1384,14 @@ paths:
             items:
               type: string
               format: topic
+        - name: cacheTraces
+          description: force the transaction's traces into the cache
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: chain
           description: the chain to use
           required: false
@@ -2111,7 +2093,7 @@ paths:
           schema:
             type: boolean
         - name: call
-          description: call a smart contract with a solidity syntax, a four-byte and parameters, or encoded call data
+          description: call a smart contract with one or more solidity calls, four-byte plus parameters, or encoded call data strings
           required: false
           style: form
           in: query
@@ -2512,6 +2494,14 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: healthcheck
+          description: an alias for the diagnose endpoint
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: chain
           description: the chain to use
           required: false
@@ -2553,65 +2543,6 @@ paths:
                         - $ref: "#/components/schemas/status"
         "400":
           description: bad input parameter
-  /scrape:
-    get:
-      tags:
-        - Admin
-      summary: Scrape index
-      description: Scan the chain and update the TrueBlocks index of appearances. Corresponds to the <a href="/chifra/admin/#chifra-scrape">chifra scrape</a> command line.
-      operationId: admin-scrape
-      parameters:
-        - name: blockCnt
-          description: maximum number of blocks to process per pass
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: number
-            format: uint64
-        - name: sleep
-          description: seconds to sleep between scraper passes
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: number
-            format: float64
-        - name: touch
-          description: first block to visit when scraping (snapped back to most recent snap_to_grid mark)
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: number
-            format: blknum
-        - name: chain
-          description: the chain to use
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: returns the requested data
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    description: Produces <a href="/data-model/admin/#chunkrecord">ChunkRecord</a> or <a href="/data-model/admin/#manifest">Manifest</a> data. Corresponds to the <a href="/chifra/admin/#chifra-scrape">chifra scrape</a> command line.
-                    type: array
-                    items:
-                      oneOf:
-                        - $ref: "#/components/schemas/chunkRecord"
-                        - $ref: "#/components/schemas/manifest"
-        "400":
-          description: bad input parameter
   /chunks:
     get:
       tags:
@@ -2649,30 +2580,6 @@ paths:
               format: blknum
         - name: check
           description: check the manifest, index, or blooms for internal consistency
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: pin
-          description: pin the manifest or each index chunk and bloom
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: publish
-          description: publish the manifest to the Unchained Index smart contract
-          required: false
-          style: form
-          in: query
-          explode: true
-          schema:
-            type: boolean
-        - name: remote
-          description: prior to processing, retrieve the manifest from the Unchained Index smart contract
           required: false
           style: form
           in: query
@@ -2830,6 +2737,14 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: example
+          description: create an example for the SDK with the given name
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: string
         - name: dryRun
           description: display the results of the download without actually downloading
           required: false
@@ -2910,7 +2825,7 @@ paths:
             items:
               type: string
               format: blknum
-        - name: types
+        - name: parts
           description: which types of transactions to request
           required: false
           style: form
@@ -2968,6 +2883,32 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: page
+          description: the page to retrieve (page number)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: number
+            format: uint64
+        - name: pageId
+          description: the page to retrieve (page ID)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: string
+        - name: perPage
+          description: the number of records to request on each page
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: number
+            format: uint64
         - name: sleep
           description: seconds to sleep between requests
           required: false
