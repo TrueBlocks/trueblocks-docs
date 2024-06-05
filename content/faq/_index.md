@@ -137,31 +137,22 @@ For a much better explaination of these numbers (and more generally the scraper)
 
 #### -- I'm getting an error message: current file does not sequentially follow previous file. What do?
 
-When using chifra scrape indexer you may get the above message. What this means is a completely empty block was
-returned from the RPC. When I say completely empty, this means there's not even a miner address. Our scraper
-thinks that every block must contain at least one address, but on some chains this is not true (for example,
-on some private chains).
+When using chifra scrape you may get the above message. What this means is at least one empty block was
+encountered during a single pass. When I say "empty", I mean that the block did not even contain a
+miner address. Our scraper assumes every block must contain at least one address, but on some chains
+this is not true (for example, on some private chains).
 
-Alternatively, this sometimes happens when you run `chifra scrape` and `chifra init` incorrectly, although
-this last issue should be fixed if you've kept up with the latest updates.
-
-You may turn this warning off by editing a per-chain configuration file. Search for the word 'allow_missing'
-on this page: https://trueblocks.io/chifra/configs/.
-
-The file you want to edit is in $CONFIG_FOLDER/config/$CHAIN/blockScrape.toml where $CONFIG_FOLDER
-is dependent on your operating system (~/.local/share/trueblocks for linux, ~/Library/Application Support/TrueBlocks
-for Mac) and $CHAIN is the name of the chain you're scraping.
-
-You can find $CONFIG_FOLDER by typing `chifra config --paths`.
-
-Create the above file if it doesn't exist and add the following value (creating the section inside the file if you need to):
-
-```[shell]
-[settings]
-allow_missing = true
-```
+You may turn this warning off by starting `chifra scrape` with the undocumented `--allow_missing` option. This will
+disable the warning and allow the scraper to continue.
 
 This error may also manifest itself with the message "A block was not processed."
+
+**Important note**: On some chains, there are long stretches of such empty blocks. In this case, `--allow_missing` may
+not fix the problem. `--allow_missing` works on one or a small number of missing blocks in a row, but extended ranges
+of missing blocks may still cause a problem. This is related to how many blocks `chifra scrape` process in a single pass.
+By default, the scraper processes 2,000 blocks at a time. If the range of empty blocks is larger than 2,000, even
+settting `--allow_missing` will not help. In this case, you must increase the number of blocks processed in a pass
+to be larger than the number of empty blocks in a row. Do this with the `--block_cnt` option. For example, `--block_cnt 5000`
 
 #### -- Must I have a copy of the Unchained Index in order to use chifra?
 
