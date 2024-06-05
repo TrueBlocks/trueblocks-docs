@@ -155,6 +155,7 @@ Notes:
   - If the --reversed option is present, the appearance list is reversed prior to all processing (including filtering).
   - The --decache option will remove all cache items (blocks, transactions, traces, etc.) for the given address(es).
   - The --withdrawals option is only available on certain chains. It is ignored otherwise.
+  - The --traces option requires your RPC to provide trace data. See the README for more information.
 ```
 
 Data models produced by this tool:
@@ -178,6 +179,10 @@ Links:
 
 - [api docs](/api/#operation/accounts-export)
 - [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export)
+
+### further information
+
+The `--traces` option requires your node to enable the `trace_block` (and related) RPC endpoints. Please see the README file for the `chifra traces` command for more information.
 
 ## chifra monitors
 
@@ -243,6 +248,7 @@ Flags:
   -a, --watchlist string   available with --watch option only, a file containing the addresses to watch
   -c, --commands string    available with --watch option only, the file containing the list of commands to apply to each watched address
   -b, --batch_size uint    available with --watch option only, the number of monitors to process in each batch (default 8)
+  -u, --run_count uint     available with --watch option only, run the monitor this many times, then quit
   -s, --sleep float        available with --watch option only, the number of seconds to sleep between runs (default 14)
   -D, --decache            removes related items from the cache
   -x, --fmt string         export format, one of [none|json*|txt|csv]
