@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 3.0.0-release
+  version: 3.1.2-release
   description: >
     A REST layer over the TrueBlocks chifra command line. With `chifra daemon`, you can
     run this on your own machine, and make calls to `localhost`.
@@ -919,8 +919,7 @@ paths:
                       "name": "LibraToken",
                       "symbol": "LBA",
                       "source": "On chain",
-                      "decimals": 18,
-                      "petname": "actively-happy-mite"
+                      "decimals": 18
                     },
                     { "...": "..." }
                   ]
@@ -3095,10 +3094,6 @@ components:
           type: number
           format: uint64
           description: "number of decimals retrieved from an ERC20 smart contract, defaults to 18"
-        petname:
-          type: string
-          format: string
-          description: "the petname such as described here http://www.erights.org/elib/capability/pnml.html"
         deleted:
           type: boolean
           format: boolean
