@@ -157,6 +157,7 @@ The following commands produce and manage Messages:
 - [chifra logs](/chifra/chaindata/#chifra-logs)
 - [chifra monitors](/chifra/accounts/#chifra-monitors)
 - [chifra names](/chifra/accounts/#chifra-names)
+- [chifra scrape](/chifra/admin/#chifra-scrape)
 - [chifra state](/chifra/chainstate/#chifra-state)
 - [chifra traces](/chifra/chaindata/#chifra-traces)
 - [chifra transactions](/chifra/chaindata/#chifra-transactions)
