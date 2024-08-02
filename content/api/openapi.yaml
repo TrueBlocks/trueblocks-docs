@@ -961,6 +961,14 @@ paths:
           schema:
             type: string
             format: address
+        - name: list
+          description: a list of downloaded abi files
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: find
           description: search for function or event declarations given a four- or 32-byte code(s)
           required: false
@@ -1039,11 +1047,12 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Produces <a href="/data-model/other/#abi">Abi</a>, <a href="/data-model/other/#function">Function</a> or <a href="/data-model/other/#parameter">Parameter</a> data. Corresponds to the <a href="/chifra/accounts/#chifra-abis">chifra abis</a> command line.
+                    description: Produces <a href="/data-model/other/#abi">Abi</a>, <a href="/data-model/other/#abifile">AbiFile</a>, <a href="/data-model/other/#function">Function</a> or <a href="/data-model/other/#parameter">Parameter</a> data. Corresponds to the <a href="/chifra/accounts/#chifra-abis">chifra abis</a> command line.
                     type: array
                     items:
                       oneOf:
                         - $ref: "#/components/schemas/abi"
+                        - $ref: "#/components/schemas/abiFile"
                         - $ref: "#/components/schemas/function"
                         - $ref: "#/components/schemas/parameter"
                 examples:
@@ -4598,6 +4607,26 @@ components:
           items:
             $ref: "#/components/schemas/parameter"
           description: "for composite types, the parameters making up the composite"
+    abiFile:
+      description: "represents an abi file stored in the cache or configuration folders"
+      type: object
+      properties:
+        path:
+          type: string
+          format: string
+          description: "the folder holding the abi file"
+        name:
+          type: string
+          format: string
+          description: "the filename of the ABI (likely the smart contract address)"
+        fileSize:
+          type: number
+          format: int64
+          description: "the size of this file on disc"
+        lastModDate:
+          type: string
+          format: string
+          description: "the last update date of the file"
     slurp:
       description: "transaction data as returned from by remote APIs"
       type: object

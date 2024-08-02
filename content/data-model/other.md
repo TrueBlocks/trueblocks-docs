@@ -113,6 +113,23 @@ Parameters consist of the following fields:
 | internalType | for composite types, the internal type of the parameter     | string                                      |
 | components   | for composite types, the parameters making up the composite | [Parameter[]](/data-model/other/#parameter) |
 
+## AbiFile
+
+
+
+The following commands produce and manage AbiFiles:
+
+- [chifra abis](/chifra/accounts/#chifra-abis)
+
+AbiFiles consist of the following fields:
+
+| Field       | Description                                                 | Type   |
+| ----------- | ----------------------------------------------------------- | ------ |
+| path        | the folder holding the abi file                             | string |
+| name        | the filename of the ABI (likely the smart contract address) | string |
+| fileSize    | the size of this file on disc                               | int64  |
+| lastModDate | the last update date of the file                            | string |
+
 ## Slurp
 
 THIS SHOULD BE ETHERSCAN DATA RELATED, BUT IT'S NOT TIED IN, SO IT DOESN'T DO ANYTHING
