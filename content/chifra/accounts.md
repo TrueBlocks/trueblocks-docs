@@ -386,7 +386,6 @@ Notes:
 Data models produced by this tool:
 
 - [abi](/data-model/other/#abi)
-- [abifile](/data-model/other/#abifile)
 - [function](/data-model/other/#function)
 - [parameter](/data-model/other/#parameter)
 
