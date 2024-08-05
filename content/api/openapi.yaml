@@ -3058,6 +3058,10 @@ components:
           type: string
           format: address
           description: "the address of this monitor"
+        name:
+          type: string
+          format: string
+          description: "the name of this monitor (if any)"
         nRecords:
           type: number
           format: int64

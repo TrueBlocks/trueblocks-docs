@@ -84,6 +84,7 @@ Monitors consist of the following fields:
 | Field       | Description                                | Type    |
 | ----------- | ------------------------------------------ | ------- |
 | address     | the address of this monitor                | address |
+| name        | the name of this monitor (if any)          | string  |
 | nRecords    | the number of appearances for this monitor | int64   |
 | fileSize    | the size of this monitor on disc           | int64   |
 | lastScanned | the last scanned block number              | uint32  |
