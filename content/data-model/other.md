@@ -177,6 +177,21 @@ Messages consist of the following fields:
 | msg   | the message        | string |
 | num   | a number if needed | int64  |
 
+## Count
+
+Shows the number of timestamps in the timestamps database.
+
+The following commands produce and manage Counts:
+
+- [chifra when](/chifra/chaindata/#chifra-when)
+- [chifra chunks](/chifra/admin/#chifra-chunks)
+
+Counts consist of the following fields:
+
+| Field | Description                               | Type   |
+| ----- | ----------------------------------------- | ------ |
+| count | the number of items in the given database | uint64 |
+
 ## Base types
 
 This documentation mentions the following basic data types.
@@ -195,6 +210,7 @@ This documentation mentions the following basic data types.
 | string    | a normal character string              |                |
 | timestamp | a 64-bit unsigned integer              | Unix timestamp |
 | txnum     | an alias for a uint64                  |                |
+| uint64    | a 64-bit unsigned integer              |                |
 | value     | an alias for a 64-bit unsigned integer |                |
 | wei       | an unsigned big number                 | as a string    |
 

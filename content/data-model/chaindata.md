@@ -363,20 +363,6 @@ Timestamps consist of the following fields:
 | date        | the timestamp as a date (calculated)       | datetime  |
 | diff        | the number of seconds since the last block | int64     |
 
-## TimestampCount
-
-Shows the number of timestamps in the timestamps database.
-
-The following commands produce and manage TimestampCounts:
-
-- [chifra when](/chifra/chaindata/#chifra-when)
-
-TimestampCounts consist of the following fields:
-
-| Field | Description                                         | Type   |
-| ----- | --------------------------------------------------- | ------ |
-| count | the number of timestamps in the timestamps database | uint64 |
-
 ## LightBlock
 
 `chifra blocks --hashes` returns top level data specified block with only

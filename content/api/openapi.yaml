@@ -2014,14 +2014,14 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Produces <a href="/data-model/other/#message">Message</a>, <a href="/data-model/chaindata/#namedblock">NamedBlock</a>, <a href="/data-model/chaindata/#timestamp">Timestamp</a> or <a href="/data-model/chaindata/#timestampcount">TimestampCount</a> data. Corresponds to the <a href="/chifra/chaindata/#chifra-when">chifra when</a> command line.
+                    description: Produces <a href="/data-model/other/#count">Count</a>, <a href="/data-model/other/#message">Message</a>, <a href="/data-model/chaindata/#namedblock">NamedBlock</a> or <a href="/data-model/chaindata/#timestamp">Timestamp</a> data. Corresponds to the <a href="/chifra/chaindata/#chifra-when">chifra when</a> command line.
                     type: array
                     items:
                       oneOf:
+                        - $ref: "#/components/schemas/count"
                         - $ref: "#/components/schemas/message"
                         - $ref: "#/components/schemas/namedBlock"
                         - $ref: "#/components/schemas/timestamp"
-                        - $ref: "#/components/schemas/timestampCount"
                 examples:
                   [
                     {
@@ -2648,7 +2648,7 @@ paths:
           schema:
             type: boolean
         - name: count
-          description: for the pins mode only, display only the count of records
+          description: for certain modes only, display the count of records
           required: false
           style: form
           in: query
@@ -2696,7 +2696,7 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Produces <a href="/data-model/accounts/#appearance">Appearance</a>, <a href="/data-model/accounts/#appearancetable">AppearanceTable</a>, <a href="/data-model/admin/#chunkaddress">ChunkAddress</a>, <a href="/data-model/admin/#chunkbloom">ChunkBloom</a>, <a href="/data-model/admin/#chunkindex">ChunkIndex</a>, <a href="/data-model/admin/#chunkpin">ChunkPin</a>, <a href="/data-model/admin/#chunkrecord">ChunkRecord</a>, <a href="/data-model/admin/#chunkstats">ChunkStats</a>, <a href="/data-model/admin/#ipfspin">IpfsPin</a>, <a href="/data-model/admin/#manifest">Manifest</a>, <a href="/data-model/other/#message">Message</a> or <a href="/data-model/admin/#reportcheck">ReportCheck</a> data. Corresponds to the <a href="/chifra/admin/#chifra-chunks">chifra chunks</a> command line.
+                    description: Produces <a href="/data-model/accounts/#appearance">Appearance</a>, <a href="/data-model/accounts/#appearancetable">AppearanceTable</a>, <a href="/data-model/admin/#chunkaddress">ChunkAddress</a>, <a href="/data-model/admin/#chunkbloom">ChunkBloom</a>, <a href="/data-model/admin/#chunkindex">ChunkIndex</a>, <a href="/data-model/admin/#chunkpin">ChunkPin</a>, <a href="/data-model/admin/#chunkrecord">ChunkRecord</a>, <a href="/data-model/admin/#chunkstats">ChunkStats</a>, <a href="/data-model/other/#count">Count</a>, <a href="/data-model/admin/#ipfspin">IpfsPin</a>, <a href="/data-model/admin/#manifest">Manifest</a>, <a href="/data-model/other/#message">Message</a> or <a href="/data-model/admin/#reportcheck">ReportCheck</a> data. Corresponds to the <a href="/chifra/admin/#chifra-chunks">chifra chunks</a> command line.
                     type: array
                     items:
                       oneOf:
@@ -2708,6 +2708,7 @@ paths:
                         - $ref: "#/components/schemas/chunkPin"
                         - $ref: "#/components/schemas/chunkRecord"
                         - $ref: "#/components/schemas/chunkStats"
+                        - $ref: "#/components/schemas/count"
                         - $ref: "#/components/schemas/ipfsPin"
                         - $ref: "#/components/schemas/manifest"
                         - $ref: "#/components/schemas/message"
@@ -3884,14 +3885,6 @@ components:
           type: number
           format: int64
           description: "the number of seconds since the last block"
-    timestampCount:
-      description: "the number of timestamps in the timestamps database"
-      type: object
-      properties:
-        count:
-          type: number
-          format: uint64
-          description: "the number of timestamps in the timestamps database"
     lightBlock:
       description: "a block containing only the hashes of the transactions"
       type: object
@@ -4727,6 +4720,14 @@ components:
           type: number
           format: int64
           description: "a number if needed"
+    count:
+      description: "the number of items in the given database"
+      type: object
+      properties:
+        count:
+          type: number
+          format: uint64
+          description: "the number of items in the given database"
     response:
       required:
         - result
