@@ -4226,10 +4226,10 @@ components:
           type: number
           format: int64
           description: "the size of the index portion in bytes"
-        bounds:
+        rangeDates:
           type: object
           items:
-            $ref: "#/components/schemas/bounds"
+            $ref: "#/components/schemas/rangeDates"
           description: "if verbose, the block and timestamp bounds of the chunk"
     chunkIndex:
       description: "internal-use only data model detailing a single index chunk file"
@@ -4259,6 +4259,11 @@ components:
           type: number
           format: uint64
           description: "the size of the chunk in bytes"
+        rangeDates:
+          type: object
+          items:
+            $ref: "#/components/schemas/rangeDates"
+          description: "if verbose, the block and timestamp bounds of the chunk"
     chunkBloom:
       description: "internal-use only data model detailing a single bloom filter file"
       type: object
@@ -4291,6 +4296,11 @@ components:
           type: number
           format: uint64
           description: "the width of the bloom filter"
+        rangeDates:
+          type: object
+          items:
+            $ref: "#/components/schemas/rangeDates"
+          description: "if verbose, the block and timestamp bounds of the chunk"
     chunkAddress:
       description: "internal-use only data model detailing a single address record in the address table of an index chunk"
       type: object
@@ -4311,6 +4321,11 @@ components:
           type: number
           format: uint64
           description: "the number of records in teh appearance table for this address"
+        rangeDates:
+          type: object
+          items:
+            $ref: "#/components/schemas/rangeDates"
+          description: "if verbose, the block and timestamp bounds of the chunk"
     ipfsPin:
       description: "internal-use only data model detailing a single remote or local ipfs pinned file"
       type: object
@@ -4387,10 +4402,10 @@ components:
           type: number
           format: float64
           description: "the ratio of appearances to addresses"
-        bounds:
+        rangeDates:
           type: object
           items:
-            $ref: "#/components/schemas/bounds"
+            $ref: "#/components/schemas/rangeDates"
           description: "if verbose, the block and timestamp bounds of the chunk"
     monitorClean:
       description: "report on cleaning dups out of monitors"
