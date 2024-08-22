@@ -308,22 +308,22 @@ Chains consist of the following fields:
 | localExplorer  | the local explorer for the chain (typically TrueBlocks Explorer) | string |
 | ipfsGateway    | an IPFS gateway for pinning the index if enabled                 | string |
 
-## RangeBounds
+## RangeDates
 
 
 
-The following commands produce and manage RangeBounds:
+The following commands produce and manage RangeDates:
 
 - [chifra chunks](/chifra/admin/#chifra-chunks)
 
-RangeBounds consist of the following fields:
+RangeDates consist of the following fields:
 
 | Field     | Description                                          | Type      |
 | --------- | ---------------------------------------------------- | --------- |
 | firstTs   | the timestamp of the first block in this range       | timestamp |
-| firstDate | the first timestamp as a date (calculated)           | datetime  |
+| firstDate | the first timestamp as a date                        | datetime  |
 | lastTs    | the timestamp of the most recent block in this range | timestamp |
-| lastDate  | the last timestamp as a date (calculated)            | datetime  |
+| lastDate  | the last timestamp as a date                         | datetime  |
 
 ## Base types
 
