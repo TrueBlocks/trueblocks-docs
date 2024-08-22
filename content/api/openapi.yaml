@@ -4226,6 +4226,11 @@ components:
           type: number
           format: int64
           description: "the size of the index portion in bytes"
+        bounds:
+          type: object
+          items:
+            $ref: "#/components/schemas/bounds"
+          description: "if verbose, the block and timestamp bounds of the chunk"
     chunkIndex:
       description: "internal-use only data model detailing a single index chunk file"
       type: object
@@ -4338,10 +4343,6 @@ components:
           type: string
           format: blkrange
           description: "the block range (inclusive) covered by this chunk"
-        rangeEnd:
-          type: string
-          format: datetime
-          description: "the date of the last block in this range"
         nAddrs:
           type: number
           format: uint64
@@ -4386,6 +4387,11 @@ components:
           type: number
           format: float64
           description: "the ratio of appearances to addresses"
+        bounds:
+          type: object
+          items:
+            $ref: "#/components/schemas/bounds"
+          description: "if verbose, the block and timestamp bounds of the chunk"
     monitorClean:
       description: "report on cleaning dups out of monitors"
       type: object

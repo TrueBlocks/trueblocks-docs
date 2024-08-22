@@ -196,7 +196,6 @@ ChunkStats consist of the following fields:
 | Field         | Description                                       | Type     |
 | ------------- | ------------------------------------------------- | -------- |
 | range         | the block range (inclusive) covered by this chunk | blkrange |
-| rangeEnd      | the date of the last block in this range          | datetime |
 | nAddrs        | the number of addresses in the chunk              | uint64   |
 | nApps         | the number of appearances in the chunk            | uint64   |
 | nBlocks       | the number of blocks in the chunk                 | uint64   |
