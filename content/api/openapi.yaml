@@ -2696,7 +2696,7 @@ paths:
               schema:
                 properties:
                   data:
-                    description: Produces <a href="/data-model/accounts/#appearance">Appearance</a>, <a href="/data-model/accounts/#appearancetable">AppearanceTable</a>, <a href="/data-model/admin/#chunkaddress">ChunkAddress</a>, <a href="/data-model/admin/#chunkbloom">ChunkBloom</a>, <a href="/data-model/admin/#chunkindex">ChunkIndex</a>, <a href="/data-model/admin/#chunkpin">ChunkPin</a>, <a href="/data-model/admin/#chunkrecord">ChunkRecord</a>, <a href="/data-model/admin/#chunkstats">ChunkStats</a>, <a href="/data-model/other/#count">Count</a>, <a href="/data-model/admin/#ipfspin">IpfsPin</a>, <a href="/data-model/admin/#manifest">Manifest</a>, <a href="/data-model/other/#message">Message</a> or <a href="/data-model/admin/#reportcheck">ReportCheck</a> data. Corresponds to the <a href="/chifra/admin/#chifra-chunks">chifra chunks</a> command line.
+                    description: Produces <a href="/data-model/accounts/#appearance">Appearance</a>, <a href="/data-model/accounts/#appearancetable">AppearanceTable</a>, <a href="/data-model/admin/#chunkaddress">ChunkAddress</a>, <a href="/data-model/admin/#chunkbloom">ChunkBloom</a>, <a href="/data-model/admin/#chunkindex">ChunkIndex</a>, <a href="/data-model/admin/#chunkpin">ChunkPin</a>, <a href="/data-model/admin/#chunkrecord">ChunkRecord</a>, <a href="/data-model/admin/#chunkstats">ChunkStats</a>, <a href="/data-model/other/#count">Count</a>, <a href="/data-model/admin/#ipfspin">IpfsPin</a>, <a href="/data-model/admin/#manifest">Manifest</a>, <a href="/data-model/other/#message">Message</a>, <a href="/data-model/admin/#rangebounds">RangeBounds</a> or <a href="/data-model/admin/#reportcheck">ReportCheck</a> data. Corresponds to the <a href="/chifra/admin/#chifra-chunks">chifra chunks</a> command line.
                     type: array
                     items:
                       oneOf:
@@ -2712,6 +2712,7 @@ paths:
                         - $ref: "#/components/schemas/ipfsPin"
                         - $ref: "#/components/schemas/manifest"
                         - $ref: "#/components/schemas/message"
+                        - $ref: "#/components/schemas/rangeBounds"
                         - $ref: "#/components/schemas/reportCheck"
                 examples:
                   [
@@ -4531,6 +4532,26 @@ components:
           type: string
           format: string
           description: "an IPFS gateway for pinning the index if enabled"
+    rangeBounds:
+      description: "shows first and last timestamps and dates for a given block range"
+      type: object
+      properties:
+        firstTs:
+          type: number
+          format: timestamp
+          description: "the timestamp of the first block in this range"
+        firstDate:
+          type: string
+          format: datetime
+          description: "the first timestamp as a date (calculated)"
+        lastTs:
+          type: number
+          format: timestamp
+          description: "the timestamp of the most recent block in this range"
+        lastDate:
+          type: string
+          format: datetime
+          description: "the last timestamp as a date (calculated)"
     abi:
       description: "a human-readable representation of a Solidity smart contract"
       type: object
