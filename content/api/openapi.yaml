@@ -969,6 +969,14 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: count
+          description: show the number of abis downloaded
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: find
           description: search for function or event declarations given a four- or 32-byte code(s)
           required: false
