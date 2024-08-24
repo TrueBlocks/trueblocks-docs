@@ -4621,6 +4621,14 @@ components:
           type: number
           format: int64
           description: "if verbose, the number of events in the ABI"
+        hasConstructor:
+          type: boolean
+          format: boolean
+          description: "if verbose and the abi has a constructor, then `true`, else `false`"
+        hasFallback:
+          type: boolean
+          format: boolean
+          description: "if verbose and the abi has a fallback, then `true`, else `false`"
         functions:
           type: array
           items:
