@@ -4609,6 +4609,10 @@ components:
           type: boolean
           format: boolean
           description: "true if this is the ABI for a known smart contract or protocol"
+        isEmpty:
+          type: boolean
+          format: boolean
+          description: "true if the ABI could not be found (and won't be looked for again)"
         nFunctions:
           type: number
           format: int64

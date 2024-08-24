@@ -42,17 +42,18 @@ The following commands produce and manage Abis:
 
 Abis consist of the following fields:
 
-| Field       | Description                                                    | Type                                      |
-| ----------- | -------------------------------------------------------------- | ----------------------------------------- |
-| address     | the address for the ABI                                        | address                                   |
-| name        | the filename of the ABI (likely the smart contract address)    | string                                    |
-| path        | the folder holding the abi file                                | string                                    |
-| fileSize    | the size of this file on disc                                  | int64                                     |
-| lastModDate | the last update date of the file                               | string                                    |
-| isKnown     | true if this is the ABI for a known smart contract or protocol | bool                                      |
-| nFunctions  | if verbose, the number of functions in the ABI                 | int64                                     |
-| nEvents     | if verbose, the number of events in the ABI                    | int64                                     |
-| functions   | the functions for this address                                 | [Function[]](/data-model/other/#function) |
+| Field       | Description                                                        | Type                                      |
+| ----------- | ------------------------------------------------------------------ | ----------------------------------------- |
+| address     | the address for the ABI                                            | address                                   |
+| name        | the filename of the ABI (likely the smart contract address)        | string                                    |
+| path        | the folder holding the abi file                                    | string                                    |
+| fileSize    | the size of this file on disc                                      | int64                                     |
+| lastModDate | the last update date of the file                                   | string                                    |
+| isKnown     | true if this is the ABI for a known smart contract or protocol     | bool                                      |
+| isEmpty     | true if the ABI could not be found (and won't be looked for again) | bool                                      |
+| nFunctions  | if verbose, the number of functions in the ABI                     | int64                                     |
+| nEvents     | if verbose, the number of events in the ABI                        | int64                                     |
+| functions   | the functions for this address                                     | [Function[]](/data-model/other/#function) |
 
 ### Notes
 
