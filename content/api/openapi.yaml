@@ -668,6 +668,14 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: count
+          description: show the number of active monitors (included deleted but not removed monitors)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: chain
           description: the chain to use
           required: false
