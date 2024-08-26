@@ -223,12 +223,14 @@ The following commands produce and manage MonitorCleans:
 
 MonitorCleans consist of the following fields:
 
-| Field    | Description                                                | Type    |
-| -------- | ---------------------------------------------------------- | ------- |
-| address  | the address being cleaned                                  | address |
-| sizeThen | the number of appearances in the monitor prior to cleaning | int64   |
-| sizeNow  | the number of appearances in the monitor after cleaning    | int64   |
-| dups     | the number of duplicates removed                           | int64   |
+| Field    | Description                                                         | Type    |
+| -------- | ------------------------------------------------------------------- | ------- |
+| address  | the address being cleaned                                           | address |
+| sizeThen | the number of appearances in the monitor prior to cleaning          | int64   |
+| sizeNow  | the number of appearances in the monitor after cleaning             | int64   |
+| dups     | the number of duplicates removed                                    | int64   |
+| staged   | `true` if the address is in the stage, `false` otherwise            | bool    |
+| removed  | `true` if the address was removed from the stage, `false` otherwise | bool    |
 
 ## CacheItem
 

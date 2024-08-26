@@ -653,7 +653,7 @@ paths:
           schema:
             type: boolean
         - name: clean
-          description: clean (i.e. remove duplicate appearances) from monitors
+          description: clean (i.e. remove duplicate appearances) from monitors, optionally clear stage
           required: false
           style: form
           in: query
@@ -670,6 +670,14 @@ paths:
             type: boolean
         - name: count
           description: show the number of active monitors (included deleted but not removed monitors)
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
+        - name: staged
+          description: for --clean, --list, and --count options only, include staged monitors
           required: false
           style: form
           in: query
@@ -4451,6 +4459,14 @@ components:
           type: number
           format: int64
           description: "the number of duplicates removed"
+        staged:
+          type: boolean
+          format: boolean
+          description: "`true` if the address is in the stage, `false` otherwise"
+        removed:
+          type: boolean
+          format: boolean
+          description: "`true` if the address was removed from the stage, `false` otherwise"
     cacheItem:
       description: "a single entry in the results of a status query when `--verbose` is enabled"
       type: object
