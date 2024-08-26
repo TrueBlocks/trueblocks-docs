@@ -81,14 +81,16 @@ The following commands produce and manage Monitors:
 
 Monitors consist of the following fields:
 
-| Field       | Description                                | Type    |
-| ----------- | ------------------------------------------ | ------- |
-| address     | the address of this monitor                | address |
-| name        | the name of this monitor (if any)          | string  |
-| nRecords    | the number of appearances for this monitor | int64   |
-| fileSize    | the size of this monitor on disc           | int64   |
-| lastScanned | the last scanned block number              | uint32  |
-| deleted     | `true` if this monitor has been deleted    | bool    |
+| Field       | Description                                                   | Type    |
+| ----------- | ------------------------------------------------------------- | ------- |
+| address     | the address of this monitor                                   | address |
+| name        | the name of this monitor (if any)                             | string  |
+| nRecords    | the number of appearances for this monitor                    | int64   |
+| fileSize    | the size of this monitor on disc                              | int64   |
+| lastScanned | the last scanned block number                                 | uint32  |
+| isEmpty     | `true` if the monitor has no appearances, `false` otherwise   | bool    |
+| isStaged    | `true` if the monitor file in on the stage, `false` otherwise | bool    |
+| deleted     | `true` if this monitor has been deleted, `false` otherwise    | bool    |
 
 ## Name
 

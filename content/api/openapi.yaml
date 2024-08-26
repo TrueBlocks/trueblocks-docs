@@ -7,7 +7,7 @@ info:
   license:
     name: GPL 3.0
     url: http://www.gnu.org/licenses/
-  version: 3.1.2-release
+  version: 3.1.3-release
   description: >
     A REST layer over the TrueBlocks chifra command line. With `chifra daemon`, you can
     run this on your own machine, and make calls to `localhost`.
@@ -3092,10 +3092,18 @@ components:
           type: number
           format: uint32
           description: "the last scanned block number"
+        isEmpty:
+          type: boolean
+          format: boolean
+          description: "`true` if the monitor has no appearances, `false` otherwise"
+        isStaged:
+          type: boolean
+          format: boolean
+          description: "`true` if the monitor file in on the stage, `false` otherwise"
         deleted:
           type: boolean
           format: boolean
-          description: "`true` if this monitor has been deleted"
+          description: "`true` if this monitor has been deleted, `false` otherwise"
     name:
       description: "an association between a human-readable name and an address used throughout TrueBlocks"
       type: object
