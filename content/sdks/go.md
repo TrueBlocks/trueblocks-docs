@@ -11,4 +11,6 @@ weight: 2000
 toc: true
 ---
 
-The GoLang SDK is pre-alpha. There is no documentation other than the code.
+The GoLang SDK is in alpha.
+
+The best documentation is available [here](https://pkg.go.dev/github.com/TrueBlocks/trueblocks-core/sdk/v3).
