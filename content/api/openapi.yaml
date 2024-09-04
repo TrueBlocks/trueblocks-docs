@@ -4262,7 +4262,7 @@ components:
           type: object
           items:
             $ref: "#/components/schemas/rangeDates"
-          description: "if verbose, the block and timestamp bounds of the chunk"
+          description: "if verbose, the block and timestamp bounds of the chunk (may be null)"
     chunkIndex:
       description: "internal-use only data model detailing a single index chunk file"
       type: object
@@ -4295,7 +4295,7 @@ components:
           type: object
           items:
             $ref: "#/components/schemas/rangeDates"
-          description: "if verbose, the block and timestamp bounds of the chunk"
+          description: "if verbose, the block and timestamp bounds of the chunk (may be null)"
     chunkBloom:
       description: "internal-use only data model detailing a single bloom filter file"
       type: object
@@ -4332,7 +4332,7 @@ components:
           type: object
           items:
             $ref: "#/components/schemas/rangeDates"
-          description: "if verbose, the block and timestamp bounds of the chunk"
+          description: "if verbose, the block and timestamp bounds of the chunk (may be null)"
     chunkAddress:
       description: "internal-use only data model detailing a single address record in the address table of an index chunk"
       type: object
@@ -4357,7 +4357,7 @@ components:
           type: object
           items:
             $ref: "#/components/schemas/rangeDates"
-          description: "if verbose, the block and timestamp bounds of the chunk"
+          description: "if verbose, the block and timestamp bounds of the chunk (may be null)"
     ipfsPin:
       description: "internal-use only data model detailing a single remote or local ipfs pinned file"
       type: object
@@ -4438,7 +4438,7 @@ components:
           type: object
           items:
             $ref: "#/components/schemas/rangeDates"
-          description: "if verbose, the block and timestamp bounds of the chunk"
+          description: "if verbose, the block and timestamp bounds of the chunk (may be null)"
     monitorClean:
       description: "report on cleaning dups out of monitors"
       type: object
