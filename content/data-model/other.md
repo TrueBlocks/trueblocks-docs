@@ -195,6 +195,23 @@ Counts consist of the following fields:
 | ----- | ----------------------------------------- | ------ |
 | count | the number of items in the given database | uint64 |
 
+## Destination
+
+
+
+The following commands produce and manage Destinations:
+
+- [chifra explore](/chifra/other/#chifra-explore)
+
+Destinations consist of the following fields:
+
+| Field    | Description                      | Type     |
+| -------- | -------------------------------- | -------- |
+| term     | the term used to produce the url | string   |
+| termType | the type of the term             | DestType |
+| url      | the url produced                 | string   |
+| source   | the option that produced the url | string   |
+
 ## Base types
 
 This documentation mentions the following basic data types.

@@ -4822,6 +4822,27 @@ components:
           type: number
           format: uint64
           description: "the number of items in the given database"
+    destination:
+      description: "an enhanced url used by chifra explore"
+      type: object
+      properties:
+        term:
+          type: string
+          format: string
+          description: "the term used to produce the url"
+        termType:
+          type: object
+          items:
+            $ref: "#/components/schemas/destType"
+          description: "the type of the term"
+        url:
+          type: string
+          format: string
+          description: "the url produced"
+        source:
+          type: string
+          format: string
+          description: "the option that produced the url"
     response:
       required:
         - result
