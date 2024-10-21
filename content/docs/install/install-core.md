@@ -25,7 +25,7 @@ If you need help with a particular step, see the [installation's troubleshooting
 
 - Open a terminal window.
 
-- Type `go version`. If Go is not installed or your version is less than 1.22.0, [install the latest version of Go](https://go.dev/doc/install)
+- Type `go version`. If Go is not installed or your version is less than 1.23.0, [install the latest version of Go](https://go.dev/doc/install)
 
 - Install or upgrade the build dependencies: _git_, _cmake_, _ninja_, _curl_, _python_, _clang-format_, _jq_
 
