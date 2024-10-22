@@ -110,7 +110,7 @@ You should get results similar to these:
 
 There's a lot left to learn. Have fun:
 
-  - [Using the Unchained Index](/docs/install/build-unchained-index/)
-  - [Explore some coding examples](https://github.com/TrueBlocks/trueblocks-examples)
-  - [View data science recipes](/tags/tutorials/)
-  - [Use the explorer application](/docs/install/install-explorer/)
+- [Using the Unchained Index](/docs/install/build-unchained-index/)
+- [Explore some coding examples](https://github.com/TrueBlocks/trueblocks-examples)
+- [View data science recipes](/tags/tutorials/)
+- [Use the explorer application](/docs/install/install-explorer/)
