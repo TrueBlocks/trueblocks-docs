@@ -108,11 +108,11 @@ ChunkRecords consist of the following fields:
 The `indexchunk` data model represents internal information about each Unchained Index index chunk.
 It is used mostly interenally to study the characteristics of the Unchained Index.
 
-The following commands produce and manage ChunkIndexs:
+The following commands produce and manage ChunkIndexes:
 
 - [chifra chunks](/chifra/admin/#chifra-chunks)
 
-ChunkIndexs consist of the following fields:
+ChunkIndexes consist of the following fields:
 
 | Field        | Description                                                           | Type                                        |
 | ------------ | --------------------------------------------------------------------- | ------------------------------------------- |
