@@ -28,7 +28,7 @@ access to the most accurate and agreed-upon data ever produced. Near perfect dat
 
 But in reality, it's as if we're just lost at sea. Awash in bytes.
 
-<img src="/docs/img/steam-boat-off-a-harbor.jpg" alt="Who's stearing this boat?" width="500"/>
+<img src="/docs/img/steam-boat-off-a-harbor.jpg" alt="Who's steering this boat?" width="500"/>
 
 ## World-wide
 
@@ -66,7 +66,7 @@ own transactions.
 ---
 Like Infura, anyone may visit EtherScan. That is true. Both of those systems are kind enough to
 give us (give us!) whatever we ask for. But how long do you think it will take before they realize
-(hint: they've already have) how valuable their position in the ecosystem is? Do you think they're
+(hint: they've already) how valuable their position in the ecosystem is? Do you think they're
 not paying attention to what you're doing? Do you think they're not connecting your Ethereum address
 to your IP address? I would be if I were them.
 
