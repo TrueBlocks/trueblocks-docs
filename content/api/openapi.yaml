@@ -2397,6 +2397,14 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: dump
+          description: dump the configuration to stdout
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: chain
           description: the chain to use
           required: false
