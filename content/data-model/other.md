@@ -31,9 +31,9 @@ and Event signatures for a given smart contract. Along with [Names](/data-model/
 use of ABIs goes a very long way towards making your Ethereum data much more understandable.
 
 Similar to names of addresses, ABI files are not available on-chain which means they must be
-acquired somewhere. Unfortunately, the Ethereum community has not yet understand that Etherscan
+acquired somewhere. Unfortunately, the Ethereum community has not yet understood that Etherscan
 is not a good place to store this very important information. For this reason, TrueBlocks uses
-Etherscan to acquire ABI files and therefor one needs to get an Etherscan API key to use this
+Etherscan to acquire ABI files and therefore one needs to get an Etherscan API key to use this
 function.
 
 The following commands produce and manage Abis:
@@ -96,9 +96,9 @@ Functions consist of the following fields:
 
 Parameters are a constituent part of a [Function or Event](/data-model/accounts/#function). The
 parameters of a function are each individual value passed into the function. Along with the
-function's name, the parameters types (once canonicalized) are used to create a function's four
+function's name, the parameter types (once canonicalized) are used to create a function's four
 byte signature (or an event's 32-byte signature). Parameters are important to TrueBlocks because
-we use them as part of the ABI decoding and the `--articulate` process to conver the blockchain's
+we use them as part of the ABI decoding and the `--articulate` process to convert the blockchain's
 bytes into human-readable text.
 
 The following commands produce and manage Parameters:
