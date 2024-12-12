@@ -2124,7 +2124,15 @@ paths:
           schema:
             type: boolean
         - name: call
-          description: call a smart contract with one or more solidity calls, four-byte plus parameters, or encoded call data strings
+          description: write-only call to a smart contract with one or more solidity calls, four-byte plus parameters, or encoded call data strings
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: string
+        - name: send
+          description: send a transaction to a smart contract using a solidity function, a four-byte plus parameters, or an encoded call data string
           required: false
           style: form
           in: query
