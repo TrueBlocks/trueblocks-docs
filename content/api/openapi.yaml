@@ -2123,6 +2123,14 @@ paths:
           explode: true
           schema:
             type: boolean
+        - name: call
+          description: write-only call (a query) to a smart contract
+          required: false
+          style: form
+          in: query
+          explode: true
+          schema:
+            type: boolean
         - name: calldata
           description: for commands (--call or --send), provides the call data (in various forms) for the command (may be empty for --send)
           required: false
