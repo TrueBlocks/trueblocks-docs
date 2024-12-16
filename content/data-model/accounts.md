@@ -15,7 +15,6 @@ toc: true
 ---
 
 <!-- markdownlint-disable MD012 MD034 -->
-
 The primary tool of TrueBlocks is `chifra export`. This tool extracts, directly from the chain,
 entire transactional histories for one or more addresses and presents that information for use
 outside the blockchain. The results of this extraction is stored in a data structure called a
@@ -68,7 +67,7 @@ address along with various details about those appearances. A monitor is created
 expresses interest in an address by calling either [chifra list](/chifra/accounts/#chifra-list)
 or [chifra export](/chifra/accounts/#chifra-export) tool (or querying thier associated APIs).
 
-Once created, a monitor may be periodically _freshened_ by calling either `chifra list` or `chifra
+Once created, a monitor may be periodically *freshened* by calling either `chifra list` or `chifra
 export`, however, it is also possible to freshen a monitor continually with
 [chifra scrape --monitors](/chifra/admin/#chifra-scrape). This tool watches the front of the
 chain and repeatedly calls `chifra list`.
@@ -254,4 +253,4 @@ This documentation mentions the following basic data types.
 | uint64    | a 64-bit unsigned integer              |                |
 | value     | an alias for a 64-bit unsigned integer |                |
 
-_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._
+*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*

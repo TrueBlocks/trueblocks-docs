@@ -197,6 +197,8 @@ Counts consist of the following fields:
 
 ## Destination
 
+
+
 The following commands produce and manage Destinations:
 
 - [chifra explore](/chifra/other/#chifra-explore)
@@ -232,4 +234,4 @@ This documentation mentions the following basic data types.
 | value     | an alias for a 64-bit unsigned integer |                |
 | wei       | an unsigned big number                 | as a string    |
 
-_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._
+*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*

@@ -8,7 +8,7 @@ lastmod:
   - publishDate
 draft: false
 aliases:
-  - "/docs/chifra/admin"
+ - "/docs/chifra/admin"
 menu:
   chifra:
     parent: commands
@@ -439,4 +439,4 @@ Links:
 - [api docs](/api/#operation/admin-init)
 - [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/init)
 
-_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._
+*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*

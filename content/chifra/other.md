@@ -8,7 +8,7 @@ lastmod:
   - publishDate
 draft: false
 aliases:
-  - "/docs/chifra/other"
+ - "/docs/chifra/other"
 menu:
   chifra:
     parent: commands
@@ -71,7 +71,6 @@ any transaction initiated by an EOA for example or to explore mining rewards. Vi
 referenced website for more information.
 
 Currently supported API providers:
-
 - [TrueBlocks Key](https://key.trueblocks.io)
 - Etherscan
 - Covalent
@@ -130,13 +129,11 @@ Links:
 - [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/slurp)
 
 ### Adding provider API key
-
 Call `chifra config edit` to edit the configuration file.
 
 For TrueBlocks Key, add `keyEndpoint = "your-key-endpoint-url"` to `chains.mainnet` section.
 
 For all other providers add an entry to `keys` section like this:
-
 ```toml
 [keys]
   [keys.etherscan]
@@ -147,4 +144,4 @@ For all other providers add an entry to `keys` section like this:
     apiKey = "alchemy-apikey"
 ```
 
-_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._
+*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*
