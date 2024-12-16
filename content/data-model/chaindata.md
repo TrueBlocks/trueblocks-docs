@@ -330,7 +330,7 @@ important, but being human beings we know that this is not true. TrueBlocks `art
 types of data with [chifra names](/chifra/accounts/#chifra-names) detailing the names for
 addresses, `-articulate` describing the Functions and Events of a transaction, and
 [chifra when](/chifra/chaindata/#chifra-when) describing dated blocks. Dated blocks assign a
-human-readable date to blocks given block numbers or timestamps and visa versa.
+human-readable date to blocks given block numbers or timestamps and vice versa.
 
 The following commands produce and manage NamedBlocks:
 
@@ -414,4 +414,4 @@ This documentation mentions the following basic data types.
 | value     | an alias for a 64-bit unsigned integer |                |
 | wei       | an unsigned big number                 | as a string    |
 
-*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*
+_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._

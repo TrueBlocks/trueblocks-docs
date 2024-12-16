@@ -8,7 +8,7 @@ lastmod:
   - publishDate
 draft: false
 aliases:
- - "/docs/chifra/chaindata"
+  - "/docs/chifra/chaindata"
 menu:
   chifra:
     parent: commands
@@ -385,4 +385,4 @@ Links:
 - [api docs](/api/#operation/chaindata-when)
 - [source code](https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/when)
 
-*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*
+_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._

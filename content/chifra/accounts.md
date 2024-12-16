@@ -8,7 +8,7 @@ lastmod:
   - publishDate
 draft: false
 aliases:
- - "/docs/chifra/accounts"
+  - "/docs/chifra/accounts"
 menu:
   chifra:
     parent: commands
@@ -406,4 +406,4 @@ names. The second set contains approximately 700 function signatures. The cross 
 combinations of name(signature) each of which is hashed to create either a four-byte or a 32-byte hash. Very infrequently,
 the tool will find matches for an otherwise unknown signatures.
 
-*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*
+_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._

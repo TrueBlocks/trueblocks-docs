@@ -15,6 +15,7 @@ toc: true
 ---
 
 <!-- markdownlint-disable MD012 MD034 -->
+
 The primary tool of TrueBlocks is `chifra export`. This tool extracts, directly from the chain,
 entire transactional histories for one or more addresses and presents that information for use
 outside the blockchain. The results of this extraction is stored in a data structure called a
@@ -67,7 +68,7 @@ address along with various details about those appearances. A monitor is created
 expresses interest in an address by calling either [chifra list](/chifra/accounts/#chifra-list)
 or [chifra export](/chifra/accounts/#chifra-export) tool (or querying thier associated APIs).
 
-Once created, a monitor may be periodically *freshened* by calling either `chifra list` or `chifra
+Once created, a monitor may be periodically _freshened_ by calling either `chifra list` or `chifra
 export`, however, it is also possible to freshen a monitor continually with
 [chifra scrape --monitors](/chifra/admin/#chifra-scrape). This tool watches the front of the
 chain and repeatedly calls `chifra list`.
@@ -99,7 +100,7 @@ way towards making the blockchain data one extracts with a [Monitor](/data-model
 much more readable.
 
 Unlike the blockchain data itself, which is globally available and impossible to censor, the
-association of names with address is not on chain (excepting ENS, which, while fine, is incomplete).
+association of names with addresses is not on chain (excepting ENS, which, while fine, is incomplete).
 TrueBlocks allows you to name addresses of interest to you and either share those names (through
 an on-chain mechanism) or keep them private if you so desire.
 
@@ -253,4 +254,4 @@ This documentation mentions the following basic data types.
 | uint64    | a 64-bit unsigned integer              |                |
 | value     | an alias for a 64-bit unsigned integer |                |
 
-*Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker.*
+_Copyright (c) 2024, TrueBlocks, LLC. All rights reserved. Generated with goMaker._
